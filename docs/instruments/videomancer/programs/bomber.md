@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 27
 slug: /instruments/videomancer/bomber
@@ -7,402 +7,433 @@ image: /img/instruments/videomancer/bomber/bomber_hero_s1.png
 description: "Every arcade game has its moment of spectacle — the bomb detonation, the boss defeat, the screen-clearing super move."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import bomber_control_panel from '/img/instruments/videomancer/bomber/bomber_control_panel.png';
-import bomber_source1_sunset from '/img/instruments/videomancer/bomber/bomber_source1_sunset.png';
-import bomber_source2_house from '/img/instruments/videomancer/bomber/bomber_source2_house.png';
-import bomber_source3_elephant from '/img/instruments/videomancer/bomber/bomber_source3_elephant.png';
-import bomber_source4_pattern from '/img/instruments/videomancer/bomber/bomber_source4_pattern.png';
-import bomber_source5_boy from '/img/instruments/videomancer/bomber/bomber_source5_boy.png';
-import bomber_source6_berries from '/img/instruments/videomancer/bomber/bomber_source6_berries.png';
-import bomber_hero_s1 from '/img/instruments/videomancer/bomber/bomber_hero_s1.png';
-import bomber_hero_s2 from '/img/instruments/videomancer/bomber/bomber_hero_s2.png';
-import bomber_hero_s3 from '/img/instruments/videomancer/bomber/bomber_hero_s3.png';
-import bomber_hero_s4 from '/img/instruments/videomancer/bomber/bomber_hero_s4.png';
-import bomber_hero_s5 from '/img/instruments/videomancer/bomber/bomber_hero_s5.png';
-import bomber_hero_s6 from '/img/instruments/videomancer/bomber/bomber_hero_s6.png';
-import bomber_ex1_s1 from '/img/instruments/videomancer/bomber/bomber_ex1_s1.png';
-import bomber_ex1_s2 from '/img/instruments/videomancer/bomber/bomber_ex1_s2.png';
-import bomber_ex1_s3 from '/img/instruments/videomancer/bomber/bomber_ex1_s3.png';
-import bomber_ex1_s4 from '/img/instruments/videomancer/bomber/bomber_ex1_s4.png';
-import bomber_ex1_s5 from '/img/instruments/videomancer/bomber/bomber_ex1_s5.png';
-import bomber_ex1_s6 from '/img/instruments/videomancer/bomber/bomber_ex1_s6.png';
-import bomber_ex2_s1 from '/img/instruments/videomancer/bomber/bomber_ex2_s1.png';
-import bomber_ex2_s2 from '/img/instruments/videomancer/bomber/bomber_ex2_s2.png';
-import bomber_ex2_s3 from '/img/instruments/videomancer/bomber/bomber_ex2_s3.png';
-import bomber_ex2_s4 from '/img/instruments/videomancer/bomber/bomber_ex2_s4.png';
-import bomber_ex2_s5 from '/img/instruments/videomancer/bomber/bomber_ex2_s5.png';
-import bomber_ex2_s6 from '/img/instruments/videomancer/bomber/bomber_ex2_s6.png';
-import bomber_ex3_s1 from '/img/instruments/videomancer/bomber/bomber_ex3_s1.png';
-import bomber_ex3_s2 from '/img/instruments/videomancer/bomber/bomber_ex3_s2.png';
-import bomber_ex3_s3 from '/img/instruments/videomancer/bomber/bomber_ex3_s3.png';
-import bomber_ex3_s4 from '/img/instruments/videomancer/bomber/bomber_ex3_s4.png';
-import bomber_ex3_s5 from '/img/instruments/videomancer/bomber/bomber_ex3_s5.png';
-import bomber_ex3_s6 from '/img/instruments/videomancer/bomber/bomber_ex3_s6.png';
-
-# Bomber
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: bomber_source1_sunset, after: bomber_hero_s1 },
-    { label: "House", before: bomber_source2_house, after: bomber_hero_s2 },
-    { label: "Elephant", before: bomber_source3_elephant, after: bomber_hero_s3 },
-    { label: "Pattern", before: bomber_source4_pattern, after: bomber_hero_s4 },
-    { label: "Boy", before: bomber_source5_boy, after: bomber_hero_s5 },
-    { label: "Berries", before: bomber_source6_berries, after: bomber_hero_s6 },
-  ]}
-/>
-*Bomber launching an expanding concentric shockwave with white flash effect, the ring sweeping outward from center and leaving a dimmed aftermath in its wake.*
+![Bomber hero image](/img/instruments/videomancer/bomber/bomber_hero_s1.png)
+*Bomber detonating an expanding shockwave ring over a live video feed, the wavefront carrying a white flash that sweeps outward from the blast center.*
 
 ---
 
 ## Overview
 
-Every arcade game has its moment of spectacle — the bomb detonation, the boss defeat, the screen-clearing super move. What they share is the **radial shockwave**: an expanding ring of visual energy that transforms everything it touches. Bomber recreates this mechanic as a video processing effect. An expanding concentric ring emanates from a triggerable center point, carrying one of eight selectable visual effects — white flash, inversion, dissolve, color blast, displacement, posterization, ripple, or reveal — as it sweeps across the image. Behind the ring, the video either returns to normal or remains transformed, depending on the post-wave mode.
+Bomber is a radial shockwave wipe processor that detonates concentric ring blasts across the video frame. An expanding wavefront emanates from a triggerable center point, carrying one of eight visual effects: white flash, color inversion, dissolve, color blast, and more: as it sweeps across each pixel. Once the wave passes, the aftermath can either revert to the clean input or leave a dimmed, latched impression behind.
 
-The program chains four processing stages: input registration with per-pixel distance calculation, zone classification based on ring geometry, effect application within the wavefront zone, and composite output through a wet/dry mix. A separate per-frame engine expands the ring radius, handles auto-triggering at configurable intervals, and drifts the center point along a two-dimensional Lissajous path for non-repeating blast positions. The name references both the explosive mechanic and Hudson Soft's 1983 arcade classic *Bomber* (later *Bomberman*), where grid-based chain detonations defined a genre.
+At its simplest, Bomber produces dramatic circular wipes: a bright ring expands outward from the center of the screen, swallowing the image. At its most complex, overlapping waves detonate from drifting Lissajous positions, each carrying a different visual payload, layering concentric halos of processed video over the source. The effect is visceral and immediate (a detonation you can see.)
 
-At conservative settings — slow speed, narrow ring, flash effect — Bomber produces clean geometric halos that sweep gracefully across the image. At extreme settings — rapid auto-trigger, wide ring, multi-wave stacking, dissolve or ripple effect — it generates overlapping shockwaves of noise and distortion that consume the input signal in a cascade of visual chaos.
+:::tip
+Bomber is at its most spectacular when auto-triggering with **Center Drift** engaged. Successive blasts fire from shifting positions, creating overlapping interference patterns that evolve continuously.
+:::
+
+### What's In a Name?
+
+The name ***Bomber*** is a direct reference to the arcade game ***Bomberman*** (Hudson Soft, 1983) and the visual language of classic arcade explosions. From Bomberman's grid-filling chain blasts to the screen-clearing detonations of ***R-Type*** (Irem, 1987) and ***Metal Slug*** (Nazca, 1996), the expanding radial shockwave is gaming's most universal moment of spectacle. Bomber distills that explosive energy into a real-time video processing tool: every trigger is a detonation, and every pixel is in the blast radius.
 
 ---
 
 ## Quick Start
 
-1. **Speed and frame count**: At maximum speed, a wave crosses a 1080p screen in about 6 frames — blink and you miss it. Start below 10% to see the ring structure clearly, then increase for dramatic fast-wipes.
-2. **Ring width sets the mood**: A narrow ring (under 10%) creates a sharp, precise shockwave edge. A wide ring (over 40%) creates a gradual, sweeping transformation zone. Match ring width to the effect — Flash looks best narrow, Dissolve and Ripple look best wide.
-3. **Latch mode for reveals**: Set Post Intns to 100% (black aftermath) with a slow Flash ring. As the ring expands, it erases the image to black behind a wall of white light — a dramatic reveal-to-black transition.
+1. Make sure **Trigger** (Switch 9) is set to **Auto** and **Mix** (Fader 12) is at maximum. You should see periodic shockwave rings expanding outward from the center of the screen.
+2. Adjust **Speed** (Knob 1) to control how quickly the ring expands. Slower speeds let you see the wave's structure; faster speeds create sudden flashes.
+3. Turn **Ring Width** (Knob 2) clockwise to widen the active blast zone. A narrow ring produces a sharp edge; a wide ring creates a soft, gradual transition.
+4. Increase **Center Dft** (Knob 4) to engage the ***Lissajous drift***: successive blasts will detonate from different positions, creating overlapping interference patterns.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Bomber loaded](/img/instruments/videomancer/bomber/bomber_control_panel.png)
+*Videomancer's front panel with Bomber active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Speed** controls how quickly the shockwave ring expands outward from its detonation point. Each video frame, the ring radius grows by an amount proportional to this value. At 0%, the wave barely moves, crawling outward pixel by pixel. At 100%, the blast tears across the entire screen in just a few frames.
+
+:::note
+The ring radius increases by approximately one quarter of the raw Speed value per frame. At high speeds, the ring may expand so fast that the wavefront effect is visible for only a single frame (a dramatic flash rather than a rolling wave.)
+:::
+
+---
+
+### Knob 2 — Ring Width
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Ring Width** sets the thickness of the active wavefront zone. The blast ring has an inner and outer boundary, and every pixel whose distance from the center falls between those boundaries receives the selected effect. At 0%, the ring is razor-thin: a single-pixel line of fire sweeping outward. At 100%, the ring is extremely wide, turning the blast into a broad wash that covers most of the screen simultaneously.
+
+Wider rings reveal more of the wavefront effect at any given moment, while narrower rings create sharper, more dramatic transitions.
+
+---
+
+### Knob 3 — Auto Rate
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Auto Rate** controls the interval between automatically triggered waves when **Trigger** (Switch 9) is set to **Auto**. At 0%, waves fire every frame, creating continuous concentric ripples. At 100%, the interval between detonations is long, allowing each wave to fully expand and expire before the next one fires.
+
+:::tip
+Very low Auto Rate values with **Multi Wave** (Switch 10) set to **Multi** produce dense concentric ring patterns (like ripples spreading from a stone dropped in water.)
+:::
+
+---
+
+### Knob 4 — Center Dft
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Center Dft** (Center Drift) controls the amplitude of a ***Lissajous drift*** applied to the blast center point. At 0%, all waves detonate from dead center. As the value increases, the center traces a smooth, looping figure-eight path driven by two sine oscillators running at different frequencies (a 3:5 ratio). Each successive auto-triggered wave fires from a different position along this path.
+
+The drift is computed from a 32-entry sine lookup table. The horizontal and vertical phase accumulators advance by 3 and 5 steps respectively on each trigger, producing a pattern that repeats every 256 triggers.
+
+---
+
+### Knob 5 — Post Intns
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Post Intns** (Post Intensity) controls the brightness of the aftermath zone when **Post Mode** (Switch 8) is set to **Latch**. In latch mode, pixels behind the wavefront are dimmed proportionally to this value. At 0%, the latch has no dimming effect: the post-wave region looks identical to the input. At 100%, the post-wave region is aggressively darkened. In **Pass** mode, this parameter has no visible effect.
+
+The dimming formula subtracts a fraction of each pixel's own luminance, preserving relative brightness relationships while pulling the entire post-wave region toward black.
+
+---
+
+### Knob 6 — Flash Brt
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Flash Brt** (Flash Brightness) controls the luminance level used by wavefront effects that generate their own light: specifically the **White Flash** (mode 0), **Color Blast** (mode 4), and **Freeze/Reveal** (mode 5) effects. At 0%, the flash is black (invisible). At 100%, the flash is maximum white. This parameter has no effect on modes that transform the input signal rather than replacing it (Invert, Displacement, Dissolve, Posterize, Ripple).
+
+---
+
+### Switch 7 — Effect
+
+| Property | Value |
+|----------|-------|
+| Off | Flash |
+| On | Ripple |
+| Default | Flash |
+
+**Effect** selects between two families of wavefront effects. In the **Flash** position, the wavefront carries even-numbered effects (White Flash, Radial Displacement, Color Blast, or Posterize). In the **Ripple** position, the wavefront carries odd-numbered effects (Invert, Dissolve, Freeze/Reveal, or Ripple). The specific effect within each family depends on the positions of **Post Mode** (Switch 8) and **Trigger** (Switch 9), which together with Effect form a 3-bit mode selector. See the Toggle Group Notes below for the full 8-mode table.
+
+---
+
+### Switch 8 — Post Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Pass |
+| On | Latch |
+| Default | Pass |
+
+**Post Mode** controls what happens to pixels *after* the wavefront has passed over them. In the **Pass** position, once the blast ring moves beyond a pixel, it reverts to the clean input: the wave passes through and leaves no trace. In the **Latch** position, the post-wave region retains a dimmed version of the input, controlled by **Post Intns** (Knob 5). Latch mode creates the visual impression of scorched earth left behind by the blast.
+
+:::note
+Post Mode also contributes to the 3-bit wavefront effect selector. Changing it will alter the wavefront effect as well as the post-wave behavior.
+:::
+
+---
+
+### Switch 9 — Trigger
+
+| Property | Value |
+|----------|-------|
+| Off | Manual |
+| On | Auto |
+| Default | Auto |
+
+**Trigger** selects between manual and automatic wave triggering. In the **Manual** position, a wave fires on the rising edge when you toggle this switch from Auto back to Manual (edge-detected). In the **Auto** position, waves fire periodically at the interval set by **Auto Rate** (Knob 3). Auto mode is the primary way to generate continuous wave patterns.
+
+:::note
+Trigger also contributes to the 3-bit wavefront effect selector. Changing from Manual to Auto will switch to a different wavefront effect (see Toggle Group Notes).
+:::
+
+---
+
+### Switch 10 — Multi Wave
+
+| Property | Value |
+|----------|-------|
+| Off | Single |
+| On | Multi |
+| Default | Single |
+
+**Multi Wave** controls whether new waves can fire while a previous wave is still active. In the **Single** position, a new wave cannot start until the current one has fully expanded past the maximum screen distance and deactivated. In the **Multi** position, waves can be triggered at any time, even while a prior wave is still expanding. Multi mode enables overlapping concentric rings.
+
+:::tip
+With Multi Wave on and a fast Auto Rate, you can create dense fields of concentric rings that interfere and overlap: Bomber's most visually complex mode.
+:::
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all blast processing. The sync delay pipeline still aligns timing, so there is no glitch when toggling. Use Bypass for instant A/B comparison between the raw input and the processed result.
+
+---
+
+:::note Toggle Group Notes
+
+Switches 7, 8, and 9 form a combined 3-bit wavefront effect selector. Each toggle has its own independent function (effect family selection, post-wave behavior, and trigger mode), but their combined bit pattern also determines which of eight wavefront effects is applied at the blast ring. The full mode table:
+
+| Effect (Sw 7) | Post Mode (Sw 8) | Trigger (Sw 9) | Wavefront Effect |
+|---------------|-------------------|-----------------|------------------|
+| Flash | Pass | Manual | **White Flash** — pixels driven to Flash Brt luminance, neutral chroma |
+| Ripple | Pass | Manual | **Invert** — bitwise complement of all three YUV channels |
+| Flash | Latch | Manual | **Radial Displacement** — luminance shifted by distance fraction |
+| Ripple | Latch | Manual | **Dissolve** — pixels replaced by LFSR pseudo-random noise |
+| Flash | Pass | Auto | **Color Blast** — Flash Brt luminance with quadrant-based saturated hue |
+| Ripple | Pass | Auto | **Freeze/Reveal** — grey flash at half Flash Brt |
+| Flash | Latch | Auto | **Posterize** — extreme 2-bit quantization of all channels |
+| Ripple | Latch | Auto | **Ripple** — LFSR-modulated luminance perturbation |
+
+Because Post Mode and Trigger each serve dual roles, changing either one alters *both* the wavefront effect and the corresponding behavior (post-wave handling or trigger mechanism).
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input and the wet (blast-processed) output using a per-channel ***interpolator***. At 0%, only the dry signal passes through: no blast effect is visible. At 100%, the full blast-processed output is shown. Intermediate values blend the two, which can soften the visual impact of the wavefront.
 
 ---
 
 ## Background
 
-### Arcade Explosions and the Radial Shockwave
+### Radial distance and the shockwave metaphor
 
-The explosion is gaming's most universal moment of visual impact. Defender (Williams, 1981) scattered pixel particles across its bitmap display. Bomber (Hudson Soft, 1983) filled grid cells in expanding cross patterns. R-Type (Irem, 1987) detonated bosses in expanding circles of white flash. Metal Slug (Nazca, 1996) delivered hand-animated pyrotechnics that remain the gold standard of two-dimensional explosions. Each hardware generation had its own explosion language, shaped by the capabilities and constraints of the display technology.
+Every pixel on screen has a distance from the blast center. Bomber computes this distance every clock cycle using the ***alpha-max-plus-beta-min*** approximation: a fast, hardware-friendly alternative to the Pythagorean formula that avoids square roots entirely. The approximation computes:
 
-But the most hardware-characteristic explosion pattern is the **radial shockwave wipe** — where a detonation point produces an expanding ring of visual transformation. This pattern appears in boss-defeat sequences (the screen goes white in an expanding circle), stage transitions (the next level is revealed behind an expanding ring), and power-up effects (a blast wave distorts everything in its path). The ring itself carries the visual energy: brightness flash, color inversion, displacement, or dissolve. What makes it different from a simple circular wipe is the active zone — the ring is not a boundary but a region, with distinct behavior inside, on, and outside the wavefront.
+$$\text{dist} \approx \max(|dx|, |dy|) + \frac{3}{8} \cdot \min(|dx|, |dy|)$$
 
-### Radial Wipes in Broadcast Video
+This produces a distance estimate with roughly 3.5% maximum error. The result is slightly octagonal rather than perfectly circular, but at video rates the difference is imperceptible. The ring appears round.
 
-Television production has used circular and radial wipes since the earliest days of electronic switching. The standard SMPTE wipe set (Society of Motion Picture and Television Engineers) includes circle reveal, iris open/close, and expanding ring transitions. These are clean geometric boundaries that separate two video sources — one inside the wipe, one outside.
+The expanding ring divides every pixel into one of three zones: ***pre-wave*** (untouched, ahead of the blast), ***wavefront*** (inside the ring, receiving the active effect), and ***post-wave*** (behind the ring, showing the aftermath). This three-zone spatial classification is the core of Bomber's architecture.
 
-Bomber extends this broadcast concept by adding an **active effect zone** within the wipe boundary. Instead of simply revealing a second source behind an expanding circle, Bomber transforms the single input signal differently at each radial zone. The wavefront ring is not just a transition edge but a carrier of visual effects — a moving processing region that applies flash, inversion, noise, or displacement to every pixel it passes over. The result is closer to a cinematic shockwave than a clean broadcast transition.
+### Lissajous center drift
 
-### The Alpha-Max-Beta-Min Distance Approximation
+When Center Drift is nonzero, the blast center traces a ***Lissajous figure***: a smooth, looping curve produced by combining two sinusoidal oscillators at different frequencies. Bomber's horizontal oscillator advances 3 steps per trigger while the vertical oscillator advances 5 steps, drawing a 3:5 Lissajous figure that creates complex, non-repeating drift paths. The sine values come from a 32-entry lookup table embedded in the FPGA fabric.
 
-Computing the Euclidean distance from each pixel to the blast center requires a square root — an expensive operation on FPGA hardware without dedicated DSP multipliers. The **alpha-max-plus-beta-min** approximation replaces the square root with a weighted sum of the absolute coordinate differences. Given horizontal offset dx and vertical offset dy from the center point:
+### LFSR noise generation
 
-$$\text{dist} \approx \max(|dx|, |dy|) + \tfrac{5}{8} \times \min(|dx|, |dy|)$$
-
-Implemented in hardware as three shifts and an add: $\max + \min \gg 1 + \min \gg 3$. The approximation produces an octagonal iso-distance contour rather than a true circle — the ring's shape is slightly faceted at the diagonals. At video resolution, this faceting is invisible. The approximation runs in a single clock cycle with zero BRAM and minimal LUT usage, enabling real-time per-pixel distance classification at 74.25 MHz.
-
-### Lissajous Figures and Center Drift
-
-When auto-triggering successive blasts, a fixed center point produces concentric rings centered on the same spot — visually repetitive. Bomber optionally drifts the center point along a **Lissajous curve**, a two-dimensional parametric path defined by sinusoidal oscillations on independent axes with different frequencies.
-
-The Lissajous path is generated from a 32-entry sine lookup table with coprime phase increments — 3 per frame for the horizontal axis and 5 per frame for the vertical axis. Because 3 and 5 share no common factors, the path does not repeat until both phases simultaneously return to their starting positions ($3 \times 5 \times 32 = 480$ frames at minimum). The result is a wandering, non-repeating trajectory that scatters successive blast centers across the image. The drift amplitude is controllable from zero (fixed center) to full-range (center can reach beyond the image edges).
+Several wavefront effects rely on a 16-bit ***linear feedback shift register*** (LFSR) for pseudo-random values. The LFSR advances every pixel clock, generating noise for the Dissolve and Ripple modes. The feedback polynomial taps bits 15, 13, 12, and 10, producing a maximal-length sequence of 65,535 values before repeating.
 
 
 ---
 
 ## Signal Flow
 
-Input Register → Distance Calculation → Zone Classification → Composite Output
+### Signal Flow Notes
 
-```
-Wave Generator (per frame, at vsync)
-├── Radius += Speed >> 2
-├── Auto-trigger: counter vs Auto Rate threshold
-├── Lissajous center: sine LUT with coprime phase increments (3, 5)
-└── Deactivate when radius > 1600
-         │
-         │  ring_radius, wave_active, center_x, center_y
-         ▼
-Input Video (YUV 4:4:4)
-│
-├── Stage 1: Input Register (1 clk) ────────────────────────────
-│   ├── Register Y, U, V inputs
-│   ├── dx = hcount − center_x
-│   └── dy = vcount − center_y
-│
-├── Stage 2: Distance Calculation (1 clk) ──────────────────────
-│   ├── abs_dx, abs_dy
-│   └── dist = max(abs_dx, abs_dy) + min/2 + min/8
-│
-├── Stage 3: Zone Classification + Effect (1 clk) ──────────────
-│   ├── ring_inner = radius − ring_width (clamped ≥ 0)
-│   ├── ring_outer = radius + ring_width
-│   │
-│   ├── Zone "00" — No wave (wave_active = 0): passthrough
-│   ├── Zone "01" — Pre-wave (dist > ring_outer): passthrough
-│   ├── Zone "10" — Wavefront (ring_inner ≤ dist ≤ ring_outer):
-│   │   ├── Flash:     Y = Flash Brt, U/V = 512
-│   │   ├── Invert:    Y/U/V = NOT(input)
-│   │   ├── Displace:  Y = Y/2 + dist/4
-│   │   ├── Dissolve:  Y/U/V = LFSR noise
-│   │   ├── Color:     Y = Flash Brt, U/V = quadrant hue
-│   │   ├── Reveal:    Y = Flash Brt / 2, U/V = 512
-│   │   ├── Posterize: Y/U/V = top 2 bits, zero lower 8
-│   │   └── Ripple:    Y += (LFSR − 512) >> 2
-│   │
-│   └── Zone "11" — Post-wave (dist < ring_inner):
-│       ├── Pass mode: passthrough
-│       └── Latch mode: Y = Y − (Y × Post Intns) >> 10
-│
-├── Stage 4: Composite Output (1 clk) ──────────────────────────
-│   └── Register effect output
-│
-├── Interpolator Mix (4 clks) ──────────────────────────────────
-│   └── result = lerp(dry, wet, Mix)    ×3 (Y, U, V)
-│
-├── Sync Delay Pipeline (8 clks) ───────────────────────────────
-│   └── Aligned hsync, vsync, field, dry Y/U/V
-│
-└── Bypass Mux ─────────────────────────────────────────────────
-    └── Output = bypass ? delayed_input : mixed_output
-```
+The processing has two timescales. Per-frame logic (at vsync) manages the wave lifecycle: expanding the ring radius, checking auto-trigger timing, updating the Lissajous center, and detecting manual trigger edges. Per-pixel logic (every clock) computes the distance from the current pixel to the blast center, classifies the pixel into a zone, and applies the appropriate effect.
 
-Two key architectural features define Bomber's character. First, the **zone classification** is purely radial — every pixel is classified solely by its distance from the current center point, creating perfect concentric ring geometry (octagonal due to the alpha-max-beta-min approximation). There is no angular variation in the zone boundaries, though some effects (Color Blast) introduce angular variation within the wavefront zone itself. Second, the **wave generator operates at frame rate** — the ring radius expands once per vsync, not per pixel. This means the ring geometry is constant within a single frame; the effect is a spatial pattern that changes from frame to frame, not a per-pixel temporal effect.
+The wavefront effect engine is a single large case statement that selects among eight processing modes based on the combined toggle state. Some modes generate new pixel data (White Flash, Color Blast, Dissolve), while others transform the input (Invert, Posterize, Ripple, Displacement). The post-wave zone either passes the input unchanged or applies a luminance dimming proportional to Post Intensity.
 
-The LFSR (Linear Feedback Shift Register) is a 16-bit pseudo-random generator seeded at `0xDEAD` with polynomial feedback (taps at bits 15, 13, 12, 10). It advances once per pixel clock, producing a different noise value for every pixel in the frame. The Dissolve and Ripple effects sample this running noise, creating spatially varied patterns within the wavefront ring.
-
----
-
-## Parameter Reference
-
-<img src={bomber_control_panel} alt="Videomancer front panel with Bomber loaded"/>
-*Videomancer's front panel with Bomber active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Speed
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-At 0%, the ring is frozen in place. At higher values, the ring expands faster, sweeping across the image in fewer frames. The expansion rate is the register value right-shifted by 2 (divided by 4), so at maximum setting the ring advances approximately 255 pixels per frame — fast enough to clear a 1080p screen in about six frames. At very low settings (under 5%), the expansion is slow enough to study the ring structure in detail. Internally, controls the wave expansion rate — how many pixels the ring radius grows per video frame.
-
----
-
-#### Knob 2 — Ring Width
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-Controls the thickness of the active wavefront ring — the radial distance over which the selected effect is applied. The ring width is added to and subtracted from the current radius to define the outer and inner boundaries of the effect zone. At 0%, the wavefront is a single-pixel-thin line (nearly invisible). At higher values, the ring broadens into a wide band of effect. A wide ring combined with a slow speed creates a gradual, sweeping transformation; a narrow ring with high speed creates a sharp, fast-moving edge of visual impact.
-
----
-
-#### Knob 3 — Auto Rate
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-Sets the interval between auto-triggered waves when Trigger mode is set to Auto. The auto-trigger counter increments once per frame and fires a new wave when it reaches the threshold set by this control. Lower values fire waves more frequently (rapid bombardment); higher values space them out. At 0%, waves fire every frame — continuous shockwave generation. Combined with Multi Wave mode, rapid auto-triggering creates dense overlapping ring patterns.
-
----
-
-#### Knob 4 — Center Dft
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-At 0% (default), all waves originate from the exact center of the image. As you increase this control, the center follows a two-dimensional Lissajous path with coprime frequency ratios (3:5), creating a smoothly wandering, non-repeating trajectory. At maximum, the center can drift well beyond the visible image area, producing off-center blasts whose rings enter from the edges. Internally, controls the amplitude of the Lissajous center drift — how far the blast center wanders from the default screen center between successive auto-triggered waves.
-
----
-
-#### Knob 5 — Post Intns
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Controls the intensity of the post-wave dimming when Post Mode is set to Latch. In latch mode, pixels behind the expanding ring (the post-wave zone) are darkened by subtracting a fraction of their luminance: the fraction equals this control's register value divided by 1024. At 0%, no dimming occurs — the post-wave area looks identical to the input. At 50%, luminance is halved. At 100%, the post-wave area is driven to black. In Pass mode, this control has no visible effect since the post-wave zone simply passes the input unchanged.
-
----
-
-#### Knob 6 — Flash Brt
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Sets the brightness level used by the Flash, Color, and Reveal wavefront effects. Flash drives the wavefront luminance to this value with neutral chroma (white flash). Color uses this value as the wavefront luminance while deriving chroma from the pixel's angular position relative to the center. Reveal uses half this value for a dimmer neutral flash. At maximum (default), Flash produces a full white ring. Reducing this control dims the flash to gray, creating a subtler wavefront. Has no effect on Invert, Displace, Dissolve, Posterize, or Ripple modes.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Effect** | Flash | Ripple |
-| **8 — Post Mode** | Pass | Latch |
-| **9 — Trigger** | Manual | Auto |
-| **10 — Multi Wave** | Single | Multi |
-| **11 — Bypass** | Off | On |
-
-Toggle 7 is a 3-bit selector (steps_8 mode) choosing one of eight wavefront effects — this is the primary creative control determining what the expanding ring does to the image. Toggles 8–10 control wave behavior: post-wave treatment (pass or latch), trigger mode (manual or auto), and wave stacking (single or multi). Toggle 11 is the standard bypass. The effect selection and behavior toggles are independent — any effect can be combined with any post-wave mode and trigger configuration.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Bomber processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
-
----
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Bomber-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::tip
+Because the distance calculation and zone classification happen pixel-by-pixel, the ring boundary is truly per-pixel: it follows the octagonal distance contour precisely, with no blockiness or quantization artifacts.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from a single clean shockwave to overlapping multi-wave chaos. Each introduces new controls while building on the previous configuration.
+These exercises progress from a single dramatic blast to complex layered detonation patterns. Each exercise builds on the previous, introducing more of Bomber's wavefront and triggering capabilities.
+### Exercise 1: The First Blast
 
-### Exercise 1: The Expanding Ring
+![The First Blast result](/img/instruments/videomancer/bomber/bomber_ex1_s1.png)
+*The First Blast — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: bomber_source1_sunset, after: bomber_ex1_s1 },
-    { label: "House", before: bomber_source2_house, after: bomber_ex1_s2 },
-    { label: "Elephant", before: bomber_source3_elephant, after: bomber_ex1_s3 },
-    { label: "Pattern", before: bomber_source4_pattern, after: bomber_ex1_s4 },
-    { label: "Boy", before: bomber_source5_boy, after: bomber_ex1_s5 },
-    { label: "Berries", before: bomber_source6_berries, after: bomber_ex1_s6 },
-  ]}
-/>
-*The Expanding Ring — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with recognizable subjects and saturated color.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Observe the basic shockwave mechanic — an expanding ring of white flash sweeping outward from the image center.
+#### Learning Outcomes
 
-1. **Set a slow speed**: Turn Speed to approximately 5%. The ring should expand slowly enough to study its geometry.
-2. **Widen the ring**: Set Ring Width to approximately 15%. A wider ring makes the wavefront clearly visible.
-3. **Trigger a wave**: With Trigger in Auto mode and Auto Rate at approximately 25%, waves fire periodically. Watch the expanding white circle sweep across the image.
-4. **Compare effects**: Cycle through the Effect toggle: Flash produces a clean white ring, Invert creates a photographic-negative ring, Dissolve replaces the ring with noise. Each effect changes only the wavefront zone — the surrounding image is untouched.
-5. **Adjust brightness**: With Flash selected, sweep the Flash Brt control. At maximum, the ring is pure white. Reducing it dims the flash to progressively darker gray.
+A single, dramatic white-flash shockwave expanding from the center of the screen.
 
-**Key concepts**: The blast center is fixed at the image center, the ring expands at a constant rate per frame, the wavefront zone applies the selected effect while pre-wave and post-wave zones pass the input unchanged
+#### Key Concepts
 
----
+- The expanding radial wipe is Bomber's core visual gesture
+- Speed and Ring Width define the blast's character
+- Flash Brightness controls the intensity of flash-based effects
 
-### Exercise 2: Aftermath and Latch
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: bomber_source1_sunset, after: bomber_ex2_s1 },
-    { label: "House", before: bomber_source2_house, after: bomber_ex2_s2 },
-    { label: "Elephant", before: bomber_source3_elephant, after: bomber_ex2_s3 },
-    { label: "Pattern", before: bomber_source4_pattern, after: bomber_ex2_s4 },
-    { label: "Boy", before: bomber_source5_boy, after: bomber_ex2_s5 },
-    { label: "Berries", before: bomber_source6_berries, after: bomber_ex2_s6 },
-  ]}
-/>
-*Aftermath and Latch — simulated result across source images.*
-**Source**: High-contrast footage with a mix of bright and dark regions — shows dimming effect clearly.
+A live camera feed or recorded footage with visible detail across the frame.
 
-**What You'll Create**: Explore post-wave latch mode, where the expanding ring leaves a darkened aftermath across the image.
+#### Steps
 
-1. **Enable latch**: Set Post Mode to Latch and Post Intns to approximately 50%. Now the area behind the ring will be visibly darkened.
-2. **Slow expansion**: Keep Speed at approximately 5% to watch the aftermath grow behind the ring.
-3. **Trigger a wave**: With auto-trigger enabled, observe how the expanding ring leaves a dimmed region behind it. The dimming amount matches the Post Intns setting.
-4. **Increase post intensity**: Sweep Post Intns from 0% to 100%. At 0%, no dimming (same as Pass mode). At 50%, half brightness. At 100%, the post-wave area goes to black — the ring erases the image as it passes.
-5. **Try Invert + Latch**: Switch the Effect to Invert. Now the ring inverts the image, and the post-wave latch dims the inverted result. The combination creates a dramatic before/after split as the ring expands.
+1. Set **Trigger** (Switch 9) to **Manual** and **Effect** (Switch 7) to **Flash**. The screen shows undisturbed input.
+2. Set **Speed** (Knob 1) to about 30% and **Ring Width** (Knob 2) to about 25%.
+3. Set **Flash Brt** (Knob 6) to maximum and **Mix** (Fader 12) to maximum.
+4. Toggle **Trigger** to **Auto** and back to **Manual** to fire a single wave. A white ring expands from the center, sweeping across the entire frame.
+5. Adjust **Speed** and **Ring Width** to shape the blast. Slower speed with narrow ring creates a precise, surgical wipe. Faster speed with wide ring creates an explosive flash.
 
-**Key concepts**: Post-wave latch transforms the aftermath, Post Intns controls dimming depth, latch mode combined with different effects creates layered visual transformations
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Speed | ~30% |
+| Ring Width | ~25% |
+| Auto Rate | 25% |
+| Center Dft | 0% |
+| Post Intns | 50% |
+| Flash Brt | 100% |
+| Effect | Flash |
+| Post Mode | Pass |
+| Trigger | Manual |
+| Multi Wave | Single |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Bombardment
+### Exercise 2: Concentric Ripples
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: bomber_source1_sunset, after: bomber_ex3_s1 },
-    { label: "House", before: bomber_source2_house, after: bomber_ex3_s2 },
-    { label: "Elephant", before: bomber_source3_elephant, after: bomber_ex3_s3 },
-    { label: "Pattern", before: bomber_source4_pattern, after: bomber_ex3_s4 },
-    { label: "Boy", before: bomber_source5_boy, after: bomber_ex3_s5 },
-    { label: "Berries", before: bomber_source6_berries, after: bomber_ex3_s6 },
-  ]}
-/>
-*Bombardment — simulated result across source images.*
-**Source**: Any footage — the source will be largely consumed by overlapping shockwaves.
+![Concentric Ripples result](/img/instruments/videomancer/bomber/bomber_ex2_s1.png)
+*Concentric Ripples — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Combine auto-trigger, multi-wave, Lissajous center drift, and the Dissolve effect for maximal visual chaos.
+***A description of the exercise illustration.***
 
-1. **Enable multi-wave**: Set Multi Wave to Multi. New triggers no longer reset the existing wave — rings accumulate.
-2. **Enable auto-trigger with rapid rate**: Set Trigger to Auto and Auto Rate to approximately 15%. Waves fire frequently.
-3. **Enable center drift**: Set Center Dft to approximately 40%. Successive blasts now originate from different positions along the Lissajous path.
-4. **Select Dissolve**: Set Effect to Dissolve. Each wavefront ring replaces pixels with LFSR noise — a fizzing disintegration.
-5. **Enable latch**: Set Post Mode to Latch and Post Intns to approximately 30%. Each wave leaves a dimmed aftermath, and overlapping post-wave zones compound the darkening.
-6. **Increase speed**: Gradually raise Speed to approximately 20%. Faster expansion means each ring covers the screen quickly, and new rings pile up before the old ones finish. The result is a churning field of overlapping noise shockwaves consuming the image.
-7. **Reduce mix**: Lower the Mix fader to approximately 60% to blend the chaos with the original signal, softening the effect into a shimmering distortion overlay.
+#### Learning Outcomes
 
-**Key concepts**: Multi-wave allows overlapping concurrent rings, Lissajous drift scatters blast centers across the image, rapid auto-trigger creates dense ring patterns, post-wave latch compounds across overlapping waves
+A continuous field of expanding concentric rings drifting across the screen, creating interference patterns.
+
+#### Key Concepts
+
+- Auto-trigger creates periodic waves
+- Multi Wave enables overlapping ring patterns
+- Center Drift moves the detonation point along a Lissajous path
+
+#### Video Source
+
+Footage with mid-range brightness and some texture (a landscape, a face, or abstract patterns.)
+
+#### Steps
+
+1. Set **Trigger** (Switch 9) to **Auto** and **Multi Wave** (Switch 10) to **Multi**.
+2. Set **Speed** (Knob 1) to about 40% and **Auto Rate** (Knob 3) to about 20%. Rings should fire frequently and expand at a moderate pace.
+3. Increase **Ring Width** (Knob 2) to about 40%. The overlapping rings create bands of processed and unprocessed video.
+4. Turn **Center Dft** (Knob 4) to about 50%. The blast center begins tracing a smooth figure-eight path, so rings emerge from different positions on each trigger.
+5. Try different effects: toggle **Effect** (Switch 7) to **Ripple** to switch from White Flash to Invert mode. The concentric rings now carry inverted video instead of white flash.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Speed | ~40% |
+| Ring Width | ~40% |
+| Auto Rate | ~20% |
+| Center Dft | ~50% |
+| Post Intns | 50% |
+| Flash Brt | 100% |
+| Effect | Ripple |
+| Post Mode | Pass |
+| Trigger | Auto |
+| Multi Wave | Multi |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Scorched Earth
 
-## Tips
+![Scorched Earth result](/img/instruments/videomancer/bomber/bomber_ex3_s1.png)
+*Scorched Earth — simulated result across source images.*
+#### Exercise Illustration
 
-- **Color Blast for prismatic rings**: The Color effect divides the wavefront into four angular quadrants, each with a different saturated hue. Combined with a narrow ring and slow speed, this creates a rainbow halo that sweeps outward — delicate and geometric.
-- **Feedback loops**: Route the output back to the input with Latch enabled. Each wave compounds the dimming of the previous wave's aftermath, progressively darkening the image with each blast. After several cycles, only the wavefront rings remain visible against black.
-- **Mix for subtlety**: Reduce Mix to 30–50% to blend the shockwave with the clean signal. The wavefront becomes a translucent overlay rather than a hard replacement — useful for layering Bomber's effect over other video without fully obscuring the source.
-- **Dissolve for disintegration**: The Dissolve effect fills the wavefront with LFSR pseudo-random noise, different for every pixel. Combined with latch mode and rapid auto-trigger, it simulates the image being eaten alive by expanding circles of static.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+An aftermath landscape where each blast leaves a darkened scar on the image, building up layers of destruction.
+
+#### Key Concepts
+
+- Latch mode creates persistent aftermath zones
+- Post Intensity controls the severity of the aftermath dimming
+- Toggle combinations select different wavefront effects
+
+#### Video Source
+
+High-contrast footage or a colorful still image: the darkening effect is most visible against bright content.
+
+#### Steps
+
+1. Set **Post Mode** (Switch 8) to **Latch** and **Trigger** (Switch 9) to **Auto**. This selects the Posterize wavefront effect (mode 110).
+2. Set **Speed** (Knob 1) to about 25% and **Auto Rate** (Knob 3) to about 60% (moderate interval between detonations).
+3. Set **Post Intns** (Knob 5) to about 70%. The aftermath zone behind each passing ring is noticeably darkened.
+4. Watch as successive waves sweep across the frame. Each pass leaves a dimmer post-wave zone. The cumulative effect builds up, darkening the image with each detonation.
+5. Toggle **Effect** (Switch 7) to **Ripple** to switch the wavefront from Posterize to Ripple effect (mode 111). The wavefront now carries a noisy luminance perturbation, with the same darkened latch behind it.
+6. Adjust **Mix** (Fader 12) to about 60% to blend the scorched result with the clean input, softening the destruction.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Speed | ~25% |
+| Ring Width | ~30% |
+| Auto Rate | ~60% |
+| Center Dft | ~40% |
+| Post Intns | ~70% |
+| Flash Brt | 100% |
+| Effect | Ripple |
+| Post Mode | Latch |
+| Trigger | Auto |
+| Multi Wave | Single |
+| Bypass | Off |
+| Mix | ~60% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Alpha-max-beta-min** | A fast approximation of Euclidean distance using weighted sums of absolute coordinate differences, avoiding the need for a square root operation. |
-| **Coprime** | Two integers that share no common factor other than 1; coprime frequency ratios prevent Lissajous paths from repeating quickly. |
-| **DDS (Direct Digital Synthesis)** | A technique for generating waveforms using a phase accumulator that increments at a controlled rate, producing precise frequency output from a lookup table. |
-| **LFSR (Linear Feedback Shift Register)** | A shift register whose input bit is a linear function of its previous state, producing a deterministic pseudo-random bit sequence used here for Dissolve and Ripple effects. |
-| **Lissajous curve** | A two-dimensional parametric path traced by sinusoidal oscillations on independent axes with different frequencies, producing non-repeating wandering trajectories. |
-| **LUT (Look-Up Table)** | A pre-computed array of values stored in FPGA logic that replaces real-time calculation with a simple memory read. |
-| **Posterize** | Reducing the number of discrete tonal levels in an image, creating harsh banding between adjacent brightness or color regions. |
-| **Radial wipe** | A video transition where a boundary expands outward from a center point in a circular or ring pattern. |
-| **SMPTE** | Society of Motion Picture and Television Engineers, the standards body that defines broadcast video wipe patterns and transition types. |
-| **Vsync (Vertical Sync)** | A timing pulse that marks the beginning of each new video frame, used here to trigger per-frame wave expansion. |
-| **Wavefront zone** | The annular region between the inner and outer ring boundaries where the active visual effect is applied to each pixel. |
+- **Alpha-Max-Plus-Beta-Min**: A fast distance approximation that avoids square roots by combining the larger and smaller coordinate differences with fixed coefficients; produces slightly octagonal distance contours.
+
+- **Blast Radius**: The distance from the detonation center to the outer edge of the expanding wavefront ring.
+
+- **Interpolator**: A crossfade circuit that blends two signals by a fractional amount; used here for the wet/dry mix between processed and clean video.
+
+- **LFSR**: Linear Feedback Shift Register; a shift register with XOR feedback taps that generates a deterministic pseudo-random sequence. Used for Dissolve and Ripple effects.
+
+- **Lissajous Figure**: A smooth, looping curve produced by combining two sinusoidal oscillators at different frequencies; used to drift the blast center.
+
+- **Posterization**: Reducing pixel values to a very small number of discrete levels, creating hard-edged flat color regions.
+
+- **Radial Wipe**: A transition effect where content is revealed or concealed by an expanding circle or ring.
+
+- **Shockwave**: The expanding ring wavefront that carries visual effects as it sweeps across the frame.
+
+- **Wavefront**: The active effect zone within the expanding ring, bounded by the inner and outer ring radii.
+
+- **Zone Classification**: The per-pixel determination of whether a pixel is in the pre-wave, wavefront, or post-wave region relative to the current ring position.
 
 ---

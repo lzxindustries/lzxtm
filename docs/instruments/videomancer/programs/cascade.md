@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 39
 slug: /instruments/videomancer/cascade
@@ -7,367 +7,415 @@ image: /img/instruments/videomancer/cascade/cascade_hero_s1.png
 description: "A CRT phosphor does not turn off instantly."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import cascade_control_panel from '/img/instruments/videomancer/cascade/cascade_control_panel.png';
-import cascade_source1_house from '/img/instruments/videomancer/cascade/cascade_source1_house.png';
-import cascade_source2_skull from '/img/instruments/videomancer/cascade/cascade_source2_skull.png';
-import cascade_source3_clouds from '/img/instruments/videomancer/cascade/cascade_source3_clouds.png';
-import cascade_source4_pattern from '/img/instruments/videomancer/cascade/cascade_source4_pattern.png';
-import cascade_source5_woman from '/img/instruments/videomancer/cascade/cascade_source5_woman.png';
-import cascade_source6_knit from '/img/instruments/videomancer/cascade/cascade_source6_knit.png';
-import cascade_hero_s1 from '/img/instruments/videomancer/cascade/cascade_hero_s1.png';
-import cascade_hero_s2 from '/img/instruments/videomancer/cascade/cascade_hero_s2.png';
-import cascade_hero_s3 from '/img/instruments/videomancer/cascade/cascade_hero_s3.png';
-import cascade_hero_s4 from '/img/instruments/videomancer/cascade/cascade_hero_s4.png';
-import cascade_hero_s5 from '/img/instruments/videomancer/cascade/cascade_hero_s5.png';
-import cascade_hero_s6 from '/img/instruments/videomancer/cascade/cascade_hero_s6.png';
-import cascade_ex1_s1 from '/img/instruments/videomancer/cascade/cascade_ex1_s1.png';
-import cascade_ex1_s2 from '/img/instruments/videomancer/cascade/cascade_ex1_s2.png';
-import cascade_ex1_s3 from '/img/instruments/videomancer/cascade/cascade_ex1_s3.png';
-import cascade_ex1_s4 from '/img/instruments/videomancer/cascade/cascade_ex1_s4.png';
-import cascade_ex1_s5 from '/img/instruments/videomancer/cascade/cascade_ex1_s5.png';
-import cascade_ex1_s6 from '/img/instruments/videomancer/cascade/cascade_ex1_s6.png';
-import cascade_ex2_s1 from '/img/instruments/videomancer/cascade/cascade_ex2_s1.png';
-import cascade_ex2_s2 from '/img/instruments/videomancer/cascade/cascade_ex2_s2.png';
-import cascade_ex2_s3 from '/img/instruments/videomancer/cascade/cascade_ex2_s3.png';
-import cascade_ex2_s4 from '/img/instruments/videomancer/cascade/cascade_ex2_s4.png';
-import cascade_ex2_s5 from '/img/instruments/videomancer/cascade/cascade_ex2_s5.png';
-import cascade_ex2_s6 from '/img/instruments/videomancer/cascade/cascade_ex2_s6.png';
-import cascade_ex3_s1 from '/img/instruments/videomancer/cascade/cascade_ex3_s1.png';
-import cascade_ex3_s2 from '/img/instruments/videomancer/cascade/cascade_ex3_s2.png';
-import cascade_ex3_s3 from '/img/instruments/videomancer/cascade/cascade_ex3_s3.png';
-import cascade_ex3_s4 from '/img/instruments/videomancer/cascade/cascade_ex3_s4.png';
-import cascade_ex3_s5 from '/img/instruments/videomancer/cascade/cascade_ex3_s5.png';
-import cascade_ex3_s6 from '/img/instruments/videomancer/cascade/cascade_ex3_s6.png';
-
-# Cascade
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: cascade_source1_house, after: cascade_hero_s1 },
-    { label: "Skull", before: cascade_source2_skull, after: cascade_hero_s2 },
-    { label: "Clouds", before: cascade_source3_clouds, after: cascade_hero_s3 },
-    { label: "Pattern", before: cascade_source4_pattern, after: cascade_hero_s4 },
-    { label: "Woman", before: cascade_source5_woman, after: cascade_hero_s5 },
-    { label: "Knit", before: cascade_source6_knit, after: cascade_hero_s6 },
-  ]}
-/>
-*Cascade painting tinted scanline echoes across a portrait, each delay tap accumulating warm phosphor trails that bleed through the frame.*
+![Cascade hero image](/img/instruments/videomancer/cascade/cascade_hero_s1.png)
+*Cascade painting luminance-tinted scanline echoes across the frame, each trail displaced and colored like light refracting through a prism of time.*
 
 ---
 
 ## Overview
 
-A CRT phosphor does not turn off instantly. When the electron beam moves on, the phosphor dot continues to glow — fading over microseconds or milliseconds depending on the chemistry. That afterglow produces ghostly trails that follow moving objects, a persistence that became part of the visual language of analogue television and early computer monitors. Cascade recreates that persistence digitally, using BRAM delay lines to store and replay scanline data with configurable read offsets.
+Cascade is a scanline echo and trail generator. It stores each line of incoming video in a dual-bank memory buffer and reads it back at a configurable offset, producing horizontal displacement echoes that streak across the image like afterimages burned into a phosphor screen. Two independent echo taps alternate line by line, creating layered, interleaved trails at different displacements. The echoed signal can be tinted per channel: adjusting brightness, shifting hue: so that each trail carries its own color signature.
 
-The program provides two independent echo taps, each with its own delay control. The echoed signal can be tinted per-channel — luma gain for brightness control, and additive U/V offsets for colour shifting — producing coloured afterimage trails that evoke the warm amber of P1 phosphor, the cool blue of P11, or any arbitrary hue. A feedback toggle routes the mixed output back into the delay line input, creating iterative echo accumulation where each pass adds another layer of displaced, tinted imagery. The name *Cascade* refers to this waterfall of layered echoes, each one displaced further from the original and tinted deeper into the chosen colour.
+The program's personality emerges from three interlocking features. First, ***feedback*** routes the mixed output back into the delay buffer, causing echoes to accumulate and evolve over time. Second, ***mirror read*** reverses the direction the buffer is read, folding the echo into a palindrome pattern. Third, ***luma modulation*** bends the echo displacement based on the brightness of the source image, so that bright regions echo at a different offset than dark regions.
 
-At conservative settings, Cascade adds subtle ghost trails behind moving objects. At extreme settings with feedback enabled, it builds dense, recursive echo structures that fill the frame with displaced copies of the source — a digital stutter effect where the image trips over its own reflections. Freeze holds the contents of the delay buffer, mirror-read reverses the scan direction for kaleidoscopic symmetry, and luma modulation lets the source brightness dynamically warp the delay offset.
+At gentle settings, Cascade adds subtle trailing afterimages and phosphor-like persistence. At extreme settings, it tears the image apart into interlocking ribbons of displaced color, stuttering and smearing across the frame in rhythmic waves.
+
+:::tip
+***Feedback is the key to Cascade's deepest textures.*** Without it, you get clean displaced echoes. With it, echoes accumulate into dense, evolving textures that respond to every control change.
+:::
+
+### What's In a Name?
+
+The name ***Cascade*** refers to a waterfall of repeating echoes, each one displaced further from the original and tinted with its own color: like water spilling over ledges in a terraced falls. It also references the engineering concept of ***cascaded stages***, where the output of one process feeds the input of the next, which is exactly what feedback mode does.
 
 ---
 
 ## Quick Start
 
-1. **Start with one tap**: Set Echo 2 Delay to 0% while learning the controls. The interlaced dual-tap behaviour can be confusing — start with a clean single echo.
-2. **Mix controls feedback intensity**: The Echo Mix fader doubles as a feedback gain control. Lower mix values create gentle decay trails; 100% mix creates sustained, non-decaying feedback loops.
-3. **Tint after delay, before mix**: The tint is applied to the echo only — the dry signal passes through untouched. This means you can colour the trail without affecting the live image.
+1. Push **Echo Mix** (Fader 12) to about 75%. Turn **Echo Delay** (Knob 1) clockwise to about 40%. You'll see a displaced copy of the image overlaid on the original, shifted horizontally.
+2. Turn **Echo Y Tint** (Knob 4) counter-clockwise. The echo copy darkens, creating a shadow trail. Turn it clockwise past center and the echo brightens.
+3. Turn up **Echo U Tint** (Knob 5) and **Echo V Tint** (Knob 6) to shift the echo's color. The original image retains its true colors while the echo takes on a tinted hue.
+4. Flip **Feedback** (Switch 7) to **On**. The echo feeds back into itself, building up iterative trails that compound and evolve. Adjust **Echo Delay** to change the spacing of the cascading trails.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Cascade loaded](/img/instruments/videomancer/cascade/cascade_control_panel.png)
+*Videomancer's front panel with Cascade active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Echo Delay
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Echo Delay** sets the horizontal displacement of the first echo tap. At 0%, the echo reads from nearly the same position as the write head, producing minimal visible displacement. As the value increases, the echo reads further behind the current pixel, stretching the trail across the scan line. At 100%, the offset spans close to the full width of the line buffer. This control defines the basic spacing of the echo effect. Because the two echo taps alternate on successive scan lines, this parameter defines the displacement on every other line.
+
+:::note
+The delay is measured in pixels along a scan line, not in time. Even lines use this tap; odd lines use **Echo 2 Delay**. The interleaving creates a woven pattern when the two taps are set to different values.
+:::
+
+---
+
+### Knob 2 — Echo 2 Delay
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Echo 2 Delay** sets the horizontal displacement of the second echo tap. It functions identically to **Echo Delay** but operates on alternating scan lines. When both taps are set to the same value, the echo appears uniform across the frame. When set to different values, the two taps create a scanline-interleaved pattern: each line echoes at a different offset, producing a combed or woven texture. Setting one tap to zero and the other to a high value creates a dramatic alternation between untouched and heavily displaced lines.
+
+---
+
+### Knob 3 — Luma Mod
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Luma Mod** modulates both echo tap offsets based on the brightness of the input image. At 0%, both taps read at their fixed offsets. As the value increases, bright pixels push the read offset further while dark pixels keep it closer to zero, bending the echo displacement across the image. At 100%, the modulation is at full strength and the echo trails visibly follow the luminance contours of the source. The result is an ***adaptive displacement*** (bright areas stretch further than dark areas.)
+
+:::tip
+Luma Mod interacts with **Luma Invert** (Switch 9). Inverting luminance swaps which regions receive more displacement. Together, they let you sculpt which parts of the image "cascade" and which remain anchored.
+:::
+
+---
+
+### Knob 4 — Echo Y Tint
+
+| Property | Value |
+|----------|-------|
+| Range | -100.0% – 100.0% |
+| Default | 0.1% |
+
+**Echo Y Tint** controls the brightness gain of the echoed signal. At center (0%), the echo's luminance passes through unchanged: unity gain. Turning counter-clockwise darkens the echo toward black. Turning clockwise brightens the echo, doubling its luminance at the maximum. This control affects only the echo; the dry signal retains its original brightness. Use it to create shadow trails (darkened echo) or glowing afterimages (brightened echo).
+
+---
+
+### Knob 5 — Echo U Tint
+
+| Property | Value |
+|----------|-------|
+| Range | -100.0% – 100.0% |
+| Default | 0.1% |
+
+**Echo U Tint** shifts the blue-difference chrominance of the echo signal. At center (0%), no shift is applied. Turning counter-clockwise shifts U toward its negative extreme; turning clockwise shifts it toward its positive extreme. Combined with **Echo V Tint**, this control lets you apply an arbitrary color cast to the echoed image while leaving the dry signal untouched. Small offsets create subtle warm or cool tints; large offsets push the echo into vivid, saturated hues.
+
+---
+
+### Knob 6 — Echo V Tint
+
+| Property | Value |
+|----------|-------|
+| Range | -100.0% – 100.0% |
+| Default | 0.1% |
+
+**Echo V Tint** shifts the red-difference chrominance of the echo signal. It operates identically to **Echo U Tint** but on the V axis. Together, the U and V tint controls form a two-dimensional color offset. For example, boosting V while reducing U tints the echo toward magenta; the opposite combination tints toward green. At center, both tints are neutral and the echo carries the same color as the source.
+
+:::tip
+Setting **Echo Y Tint** below center while shifting **Echo U Tint** and **Echo V Tint** off-center creates deeply tinted shadow trails (like colored ghosts following the image.)
+:::
+
+---
+
+### Switch 7 — Feedback
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Feedback** routes the mixed output back into the delay line input, replacing the live video feed. When set to **Off**, the delay line stores the incoming video directly, producing clean single-generation echoes. When set to **On**, each echo pass feeds back into the buffer, causing trails to accumulate iteratively. The echo compounds on itself, growing denser and more saturated with each cycle. Tint controls are applied on every feedback pass, so even small tint offsets accumulate into vivid color shifts over successive generations.
+
+:::warning
+Feedback with high **Echo Mix** and bright **Echo Y Tint** can saturate the image to white. Pull **Echo Y Tint** slightly below center to create decaying trails that fade over time rather than building up.
+:::
+
+---
+
+### Switch 8 — Mirror Read
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Mirror Read** reverses the read direction of echo tap A in the delay line buffer. When set to **Off**, the buffer is read in the same direction it was written: left to right. When set to **On**, the buffer is read in reverse: right to left. This flips the echo horizontally, creating a palindrome or kaleidoscopic effect where the echo is a mirror image of the source. Combined with feedback, mirror read produces symmetrical textures that fold and unfold across the center of the frame.
+
+---
+
+### Switch 9 — Luma Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Luma Invert** flips the brightness of the input signal before it enters the processing chain. When set to **Off**, luminance passes through normally. When set to **On**, luminance is bitwise-complemented: bright becomes dark and dark becomes bright. Because this happens at the very first stage, it affects everything downstream: the image stored in the delay line is inverted, the luma modulation offset is computed from inverted brightness, and the feedback loop accumulates inverted data.
+
+---
+
+### Switch 10 — Freeze
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Freeze** holds the current contents of the delay line buffer, preventing new data from being written. When set to **Off**, the buffer updates continuously with incoming video (or feedback output). When set to **On**, the buffer stops accepting new data and replays its stored contents indefinitely. The echoed output becomes a static, looping pattern frozen at the moment the switch was engaged. Combined with **Echo Mix** and the tint controls, Freeze turns the buffer into a fixed texture source that can be blended and colored independently of the live input.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all Cascade processing stages. The internal sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the echoed result.
+
+---
+
+### Fader 12 — Echo Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Echo Mix** crossfades between the dry (unprocessed) input and the wet (tinted echo) signal. At 0%, the output is purely dry: the echo is inaudible. At 100%, the output is purely the tinted echo, with no dry signal present. At 50%, equal parts dry and wet are blended. This is the master intensity control for the entire echo effect. With feedback active, even moderate Mix values produce strong trails because the feedback loop compounds the echo internally.
 
 ---
 
 ## Background
 
-### Phosphor Persistence and CRT Afterimage
+### Scanline delay and displacement
 
-Cathode ray tubes create images by sweeping an electron beam across a phosphor-coated screen. Different phosphor compounds produce different persistence characteristics — the time the dot continues to emit light after the beam passes. Short-persistence phosphors (like P4, used in television) decay in microseconds, producing clean motion with minimal trailing. Long-persistence phosphors (like P7 or P39, used in radar displays) maintain a visible afterimage for seconds, creating green or amber ghost trails behind any moving feature. Cascade simulates this persistence by reading data from earlier positions in the scanline buffer, producing a displaced echo that overlays the current image like a phosphor trail frozen mid-decay.
+Cascade's core mechanism is a ***scanline delay line***: a block of memory (BRAM) that stores one line of video and reads it back at a configurable offset. As each pixel arrives, it's written into the buffer at the current position. Simultaneously, the buffer is read at a position offset by the Echo Delay parameter. The result is a horizontally displaced copy of the scan line, shifted to the left or right depending on the offset value.
 
-### BRAM Ping-Pong Delay Lines
+The delay line uses a ***dual-bank ping-pong*** architecture. Two memory banks alternate roles: while one bank is being written with the current line, the other is being read to produce the echo. At the start of each new line, the roles swap. This ensures that the echo always reads from a complete, stable line rather than from partially written data.
 
-The delay effect is built on a `mirror_delay_line_slv` — a dual-bank BRAM structure that operates in a ping-pong configuration. While one bank writes the current scanline, the other bank serves reads from a configurable offset address. At the end of each line, the roles swap. This architecture provides sample-accurate random-access delay without stalling the video pipeline. The delay depth is 2048 samples (11-bit address space), consuming four BRAMs for the 30-bit packed YUV data path. Two independent read taps (A and B) share the structure, selected by the vertical accumulator alternating each line.
+### Interleaved echo taps
 
-### Feedback Topology
+Cascade provides two independent echo taps, each with its own delay offset. Rather than mixing both taps simultaneously, the program interleaves them: even scan lines use **Echo Delay** (tap A), and odd scan lines use **Echo 2 Delay** (tap B). This alternation is driven by a vertical accumulator that toggles a bank-select signal once per scan line.
 
-In a standard delay configuration, the delay line input comes from the source video. The feedback toggle reroutes the delay line input to receive the *mixed output* — the result of blending dry signal with the tinted echo. Each frame, the echo feeds back through the delay and tint stages again, accumulating displacement and colour shift. The intensity of this feedback loop depends on the Echo Mix fader: at 100% wet, the feedback is maximum and echoes build rapidly; at lower mix values, each pass is attenuated, producing a more gradual trail that fades over several frames. Feedback combined with freeze creates a snapshot that the delay line replays indefinitely.
+When both taps are set to the same offset, the interleaving is invisible: every line echoes identically. When the taps differ, the image develops a fine-grained, line-by-line texture. One line might echo 20% across the frame while the next echoes 60%, creating a combed or interlaced displacement pattern.
 
-### Luma-Modulated Delay Offset
+### Tinting and color trails
 
-The Luma Mod control multiplies the input luminance by a scaling factor and adds the result to both echo delay offsets. This makes the delay distance dependent on the brightness of the source image — bright regions read from different delay positions than dark regions, warping the echo pattern across the frame. With luma inversion active, the brightness-to-delay mapping reverses: dark areas get maximum displacement while bright areas read from nearby positions. The modulation is computed as a 10-bit × 10-bit multiply, with the top 11 bits extracted as the offset.
+After the echo is read from the delay line, it passes through a two-stage ***tint pipeline***. The Y (luma) channel is multiplied by the **Echo Y Tint** value, functioning as a gain control: values below center attenuate, center is unity pass-through, and above center amplifies up to approximately double brightness. The U and V (chroma) channels are shifted by additive offsets derived from **Echo U Tint** and **Echo V Tint**: the center position (512) is neutral, and deviations add or subtract color.
 
-### Colour Tinting
+All three tint results are saturated to the valid 10-bit range (0 to 1023) before proceeding to the mix stage. This prevents overflow from creating wrap-around artifacts.
 
-The echo signal passes through a per-channel tint stage before mixing. Luma tinting is multiplicative — the Echo Y Tint control acts as a gain factor, with 512 (midpoint) representing unity gain. Values below 512 darken the echo; values above brighten it toward clipping. Chroma tinting is additive — the Echo U Tint and Echo V Tint controls add signed offsets to the echo's colour channels, with 512 representing zero offset. This asymmetry matches the different natures of the channels: luma is a magnitude (gain is natural), while chroma is a signed deviation from neutral grey (offset is natural). Saturation clamping on all three channels prevents overflow.
+### Feedback accumulation
+
+When **Feedback** is engaged, the mixed output of the previous pixel clock is routed back into the delay line input instead of the live video signal. Each successive echo generation is tinted again, so color offsets and brightness changes compound. A small Y tint reduction below unity causes each echo generation to decay, creating a fading trail. Equal tint values create a steady-state loop. Y tint above unity causes exponential brightening that saturates to white.
+
+The feedback path introduces a one-cycle latency because the previous mix result must be registered before it can be written back. This means the feedback signal is always one pixel behind the current input, adding a subtle diagonal slant to feedback trails.
 
 
 ---
 
 ## Signal Flow
 
-Input Register → Feedback Mux → Luma Modulation → ... → Tint Stage 2 — Saturate → Interpolator Mix
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├─ 1. Input Register + Luma Invert     (optional bitwise complement of Y)
-│
-├─ 2. Feedback Mux                     (select: input / previous mix output / freeze)
-│      └─ if feedback=on & freeze=off → previous mix output → delay input
-│      └─ if freeze=on → delay input held (zero Y, neutral UV)
-│      └─ otherwise → input Y/U/V → delay input
-│
-├─ 3. Luma Modulation                  (Y × Luma Mod → delay offset)
-│
-├─ 4. YUV Pack → Mirror Delay Line     (30-bit packed, 2×2048 BRAM, dual taps A/B)
-│      ├─ rd_offset_a = Echo Delay + luma mod offset
-│      ├─ rd_offset_b = Echo 2 Delay + luma mod offset
-│      ├─ mirror_a = Mirror Read toggle
-│      └─ AB bank selected by vertical accumulator (alternates each line)
-│
-├─ 5. Echo Unpack + Register           (30-bit → Y + U + V, 1 clock)
-│
-├─ 6. Tint Stage 1 — Multiply / Add    (1 clock)
-│      ├─ echo_Y × Echo Y Tint         (multiplicative gain)
-│      ├─ echo_U + (Echo U Tint − 512) (additive offset)
-│      └─ echo_V + (Echo V Tint − 512) (additive offset)
-│
-├─ 7. Tint Stage 2 — Saturate          (1 clock, clamp 0–1023)
-│
-├─ 8. Interpolator Mix (×3 channels)   (4 clocks — dry/wet crossfade)
-│      └─ t = Echo Mix: 0 = dry (input), 1023 = wet (tinted echo)
-│
-├─ Sync/Data Delay Pipeline             (11-clock shift register for sync alignment)
-│
-└─ Output Mux
-    ├─ Bypass off → mixed Y/U/V + aligned sync
-    └─ Bypass on  → delayed input Y/U/V + aligned sync
-```
+Two key architectural features define Cascade's behavior:
 
-The critical feedback path runs from the interpolator output (stage 8) back to the feedback mux (stage 2). When feedback is enabled, the signal that was just mixed — already containing one iteration of delay and tint — becomes the input for the next frame's delay line. Each pass through the loop adds another layer of displacement and tint, with the mix fader controlling how much of each iteration survives. This creates exponential decay when mix is below 100%, or sustained accumulation at 100%.
+1. **Feedback before tinting**: The feedback mux sits at the input to the delay line, before tinting is applied. This means each feedback generation is stored as a pre-tint signal. The tint is then applied fresh on every readout. The consequence is that tint changes affect all accumulated feedback generations simultaneously: adjusting the tint knobs "recolors" the entire trail history in real time.
 
-The freeze mechanism works by blocking new data from entering the delay line — the feedback mux outputs black Y and neutral chroma, effectively holding whatever is already stored in the BRAM buffers. The frozen echo continues to be read and tinted, creating a static afterimage that the live signal paints over. When freeze is released, new data immediately begins overwriting the buffer.
+2. **Interleaved tap selection**: The two echo taps share a single delay line output, selected per scan line by the vertical accumulator. This is not a blend: it's a hard switch. Each line sees exactly one tap. This creates the characteristic combed texture when the taps are set to different offsets, and it means that feedback on even lines accumulates through tap A while feedback on odd lines accumulates through tap B.
 
-The two echo taps (A and B) are not blended in parallel — the delay line selects between them using the vertical accumulator, alternating the active tap on each scanline. This creates an interlaced echo effect where odd and even lines can show different delay depths, producing a subtle spatial texture in the echo pattern.
+:::tip
+**The mix interpolator determines what "dry" means.** At full dry (Echo Mix = 0%), you see the input delayed by the sync pipeline. At full wet (100%), you see only the tinted echo. At intermediate values, the dry input anchors the echo in place, providing spatial reference. With feedback, moderate mix values produce cleaner trails because the dry signal "refreshes" the image each frame.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={cascade_control_panel} alt="Videomancer front panel with Cascade loaded"/>
-*Videomancer's front panel with Cascade active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises progress from clean displacement echoes through tinted afterimages to dense feedback textures. Each one builds on the interactions explored in the previous exercise.
+### Exercise 1: Displacement Echo
 
-### Rotary Potentiometers (Knobs 1–6)
+![Displacement Echo result](/img/instruments/videomancer/cascade/cascade_ex1_s1.png)
+*Displacement Echo — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Echo Delay
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-At 0% the echo reads from the current write position, producing no visible displacement. At 100% the echo reads from the maximum offset (2048 samples back), creating the longest possible trail. Because the delay line operates on packed scanlines, the displacement appears as a horizontal shift of the echoed image. The luma modulation offset is added on top of this base value, so the actual read position varies pixel-by-pixel when Luma Mod is active. Internally, sets the read offset for echo tap A — the primary delay distance measured in scanline samples.
+#### Learning Outcomes
 
----
+A clean, split-echo displacement effect with visible line-by-line interleaving and brightness-adaptive offset.
 
-#### Knob 2 — Echo 2 Delay
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
+#### Key Concepts
 
-Sets the read offset for echo tap B — the secondary delay distance. Tap B alternates with tap A on successive scanlines, so setting different values for the two taps creates a vertically interlaced echo where odd and even lines show different displacement depths. When both taps are set to the same value, the echo is uniform; when they differ, the echo acquires a horizontal-stripe texture that becomes more pronounced as the difference increases.
+- The delay line produces horizontal displacement
+- Two taps interleave on alternating scan lines
+- Luma modulation bends the displacement
 
----
+#### Video Source
 
-#### Knob 3 — Luma Mod
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
+A live camera feed or recorded footage with strong vertical edges and varied brightness (a backlit subject works well.)
 
-Controls how strongly the input luminance modulates the delay read offset. At 0% the delay offset is uniform across the frame, determined solely by the Echo Delay knobs. As Luma Mod increases, bright pixels read from further positions in the delay line while dark pixels read from closer positions, warping the echo pattern to follow the tonal structure of the source. With Luma Invert active, this mapping reverses — dark areas get maximum displacement. The modulation is a full 10×10-bit multiply, providing smooth control over the modulation depth.
+#### Steps
 
----
+1. **Single echo**: Set **Echo Mix** (Fader 12) to about 75%. Turn **Echo Delay** (Knob 1) clockwise to about 40%. A displaced copy of the image appears, shifted horizontally.
+2. **Second tap**: Turn **Echo 2 Delay** (Knob 2) to a different value: try about 15%. Notice how alternating scan lines now show different displacements, creating a fine-combed texture.
+3. **Matched taps**: Set both Echo Delay and Echo 2 Delay to the same value. The combing disappears and the echo is uniform across all lines.
+4. **Luma modulation**: Turn up **Luma Mod** (Knob 3). Bright areas displace further than dark areas. The echo bends around brightness contours in the source.
+5. **Inversion**: Flip **Luma Invert** (Switch 9) to **On**. Dark areas now displace further and bright areas stay anchored. Flip it back.
 
-#### Knob 4 — Echo Y Tint
-| Property | Value |
-|----------|-------|
-| Range | -100.0% – 100.0% |
-| Default | 0.1% |
-| Suffix | % |
+#### Settings
 
-Controls the brightness gain applied to the echo signal. The tint stage multiplies the echo luma by this value, with 512 (centre position) representing unity gain — the echo retains its original brightness. Turning below centre darkens the echo toward black; turning above brightens it toward clipping. This lets you control how prominently the echo appears independently of the mix fader, creating subtle ghost trails (low gain) or bright afterimage flashes (high gain). The gain is applied after the delay line read but before the wet/dry mix.
-
----
-
-#### Knob 5 — Echo U Tint
-| Property | Value |
-|----------|-------|
-| Range | -100.0% – 100.0% |
-| Default | 0.1% |
-| Suffix | % |
-
-Adds a signed colour offset to the echo's U (blue-yellow) channel. At centre position (512) the offset is zero — no colour shift. Turning counter-clockwise shifts the echo toward yellow; clockwise shifts toward blue. Combined with the V Tint, this lets you place the echo's colour anywhere in the UV colour plane. A warm amber phosphor look uses negative U and positive V; a cool blue-green uses positive U and negative V.
+| Control | Value |
+|---------|-------|
+| Echo Delay | ~40% |
+| Echo 2 Delay | ~15% |
+| Luma Mod | ~60% |
+| Echo Y Tint | 0% |
+| Echo U Tint | 0% |
+| Echo V Tint | 0% |
+| Feedback | Off |
+| Mirror Read | Off |
+| Luma Invert | Off |
+| Freeze | Off |
+| Bypass | Off |
+| Echo Mix | ~75% |
 
 ---
 
-#### Knob 6 — Echo V Tint
-| Property | Value |
-|----------|-------|
-| Range | -100.0% – 100.0% |
-| Default | 0.1% |
-| Suffix | % |
+### Exercise 2: Phosphor Afterimage
 
-Adds a signed colour offset to the echo's V (red-cyan) channel. At centre position (512) the offset is zero. Counter-clockwise shifts the echo toward cyan; clockwise toward red-magenta. The U and V tint controls are independent and additive, so any combination of the two reaches any hue in the colour circle. Both offsets are clamped to the 0–1023 range after addition, preventing wraparound artifacts.
+![Phosphor Afterimage result](/img/instruments/videomancer/cascade/cascade_ex2_s1.png)
+*Phosphor Afterimage — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-### Toggle Switches (Switches 7–11)
+#### Learning Outcomes
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Feedback** | Off | On |
-| **8 — Mirror Read** | Off | On |
-| **9 — Luma Invert** | Off | On |
-| **10 — Freeze** | Off | On |
-| **11 — Bypass** | Off | On |
+A CRT-style phosphor persistence effect with colored afterimage trails that decay behind moving objects.
 
-The five toggle switches control independent binary features that can be combined freely. Feedback (7) and Freeze (10) interact directly with the delay line input path — feedback routes mixed output back to the delay, while freeze blocks all input. Mirror Read (8) affects only the delay line read address. Luma Invert (9) affects the input luma before it enters both the delay line and the modulation calculation. Bypass (11) overrides the entire processing chain. All five can be active simultaneously, though freeze overrides feedback's input routing.
+#### Key Concepts
 
----
+- Y tint controls echo brightness (multiply)
+- U/V tint controls shift echo color (additive offset)
+- Tint affects only the echo, not the dry signal
 
-### Linear Potentiometer (Fader 12)
+#### Video Source
 
-#### Fader 12 — Echo Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
+Footage with slow or moderate motion (a hand waving, a pendulum, or scrolling text.)
 
-Crossfades between the dry input signal and the tinted echo signal. At 0% (fader down), the output is pure dry — no echo is audible. At 100% (fader up), the output is pure wet — only the tinted echo signal passes through. Intermediate positions blend the two. This is the master control for echo intensity and, when feedback is enabled, also controls the feedback gain — lower mix values attenuate each feedback iteration, creating a natural decay envelope for the echo trail.
+#### Steps
 
+1. **Dim echo**: Set **Echo Delay** (Knob 1) to about 30% and **Echo Mix** (Fader 12) to about 50%. Turn **Echo Y Tint** (Knob 4) counter-clockwise to about −50%. The echo darkens into a shadow trail.
+2. **Color the ghost**: Turn **Echo U Tint** (Knob 5) clockwise to about 30% and **Echo V Tint** (Knob 6) counter-clockwise to about −30%. The shadow trail takes on a cool blue-green tint, like a decaying CRT phosphor.
+3. **Warm trail**: Now reverse: turn Echo U Tint counter-clockwise and Echo V Tint clockwise. The trail shifts to warm amber-orange.
+4. **Mirror the echo**: Flip **Mirror Read** (Switch 8) to **On**. The echo reverses direction, creating a mirrored afterimage that extends in the opposite direction from the source motion.
+5. **Match taps**: Set **Echo 2 Delay** (Knob 2) to a similar value as Echo Delay. The trail smooths out across all scan lines.
 
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
+#### Settings
 
-Routes the unprocessed input signal directly to the output, bypassing all Cascade processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises build from a simple single-tap echo through tinted delay trails to full feedback loop structures. Each one introduces a new feature of the echo engine while reinforcing the controls learned earlier.
-
-### Exercise 1: Basic Echo Trail
-
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: cascade_source1_house, after: cascade_ex1_s1 },
-    { label: "Skull", before: cascade_source2_skull, after: cascade_ex1_s2 },
-    { label: "Clouds", before: cascade_source3_clouds, after: cascade_ex1_s3 },
-    { label: "Pattern", before: cascade_source4_pattern, after: cascade_ex1_s4 },
-    { label: "Woman", before: cascade_source5_woman, after: cascade_ex1_s5 },
-    { label: "Knit", before: cascade_source6_knit, after: cascade_ex1_s6 },
-  ]}
-/>
-*Basic Echo Trail — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with moving subjects and clear edges.
-
-**What You'll Create**: Understand how the two delay taps create displaced echo images and how the mix fader controls echo visibility.
-
-1. **Single echo**: Set Echo Delay to ~40%. Leave Echo 2 Delay at 0%. Push Echo Mix fader to ~60%. A ghost copy of the image appears horizontally displaced.
-2. **Dual echo**: Increase Echo 2 Delay to ~70%. Alternate lines now show two different echo distances, creating a vertically interlaced double-echo.
-3. **Mix balance**: Sweep the Echo Mix fader from 0% to 100%. At 0%, the echo vanishes; at 100%, only the echo is visible and the dry signal disappears.
-4. **Luma modulation**: Slowly increase Luma Mod from 0% to ~50%. The echo displacement begins to follow the brightness contours of the source, warping the trail around bright and dark areas.
-5. **Mirror**: Enable Mirror Read (Toggle 8). The echo becomes a reversed reflection, creating symmetry effects.
-
-**Key concepts**: Two independent delay taps alternate per scanline, the mix fader controls echo visibility and feedback gain, luma modulation warps echo displacement with image brightness
+| Control | Value |
+|---------|-------|
+| Echo Delay | ~30% |
+| Echo 2 Delay | ~30% |
+| Luma Mod | 0% |
+| Echo Y Tint | ~−50% |
+| Echo U Tint | ~30% |
+| Echo V Tint | ~−30% |
+| Feedback | Off |
+| Mirror Read | On |
+| Luma Invert | Off |
+| Freeze | Off |
+| Bypass | Off |
+| Echo Mix | ~50% |
 
 ---
 
-### Exercise 2: Phosphor Tint Trails
+### Exercise 3: Feedback Cascade
 
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: cascade_source1_house, after: cascade_ex2_s1 },
-    { label: "Skull", before: cascade_source2_skull, after: cascade_ex2_s2 },
-    { label: "Clouds", before: cascade_source3_clouds, after: cascade_ex2_s3 },
-    { label: "Pattern", before: cascade_source4_pattern, after: cascade_ex2_s4 },
-    { label: "Woman", before: cascade_source5_woman, after: cascade_ex2_s5 },
-    { label: "Knit", before: cascade_source6_knit, after: cascade_ex2_s6 },
-  ]}
-/>
-*Phosphor Tint Trails — simulated result across source images.*
-**Source**: Footage with strong subject outlines — a person walking, a hand waving, or scrolling text.
+![Feedback Cascade result](/img/instruments/videomancer/cascade/cascade_ex3_s1.png)
+*Feedback Cascade — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Use the tint controls to colour the echo trail and create phosphor-inspired afterimages.
+***A description of the exercise illustration.***
 
-1. **Prepare echo**: Set Echo Delay ~50%, Echo Mix ~70%, Feedback off.
-2. **Darken echo**: Turn Echo Y Tint below centre (~30%). The echo becomes a dim shadow trailing the source.
-3. **Warm phosphor**: Set Echo U Tint to ~35% (shift toward yellow) and Echo V Tint to ~65% (shift toward red). The echo acquires a warm amber tint reminiscent of P1 long-persistence phosphor.
-4. **Cool phosphor**: Try Echo U Tint ~70% (toward blue) and Echo V Tint ~35% (toward cyan). The echo shifts to a cool blue-green, evoking P11 phosphor.
-5. **Bright flash**: Push Echo Y Tint above centre (~80%). The echo becomes brighter than the source, creating hot afterimage flashes.
-6. **Enable feedback**: Toggle Feedback (Toggle 7). The tinted echo feeds back into the delay, and each iteration tints further — the colour deepens with each pass.
+#### Learning Outcomes
 
-**Key concepts**: Y tint is multiplicative gain controlling echo brightness, U and V tints are additive offsets that colour-shift the echo, feedback accumulates tint over multiple iterations
+A dense, evolving feedback texture with compounding color shifts and a frozen snapshot captured mid-cascade.
 
----
+#### Key Concepts
 
-### Exercise 3: Feedback Stutter and Freeze
+- Feedback routes mixed output back into the delay line
+- Tint values compound across feedback generations
+- Freeze captures a moment and holds it indefinitely
 
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: cascade_source1_house, after: cascade_ex3_s1 },
-    { label: "Skull", before: cascade_source2_skull, after: cascade_ex3_s2 },
-    { label: "Clouds", before: cascade_source3_clouds, after: cascade_ex3_s3 },
-    { label: "Pattern", before: cascade_source4_pattern, after: cascade_ex3_s4 },
-    { label: "Woman", before: cascade_source5_woman, after: cascade_ex3_s5 },
-    { label: "Knit", before: cascade_source6_knit, after: cascade_ex3_s6 },
-  ]}
-/>
-*Feedback Stutter and Freeze — simulated result across source images.*
-**Source**: High-contrast footage — strong outlines against a plain background work best.
+#### Video Source
 
-**What You'll Create**: Explore feedback accumulation and freeze to create dense recursive echo structures.
+Any footage with motion: geometric patterns, rotating shapes, or hand gestures produce striking results.
 
-1. **Prepare feedback loop**: Set Echo Delay ~60%, Echo Mix ~85%, Feedback on.
-2. **Watch accumulation**: With live video, observe how the echo builds over time — each frame adds another displaced, tinted layer.
-3. **Modulate the offset**: Increase Luma Mod to ~60%. The feedback trail warps around the brightness structure, creating a zig-zag cascade pattern.
-4. **Freeze snapshot**: While a rich echo pattern is on screen, enable Freeze (Toggle 10). The buffer holds its contents — any accumulated echo structure becomes a static afterimage.
-5. **Overlay freeze**: With freeze held, the live input continues to mix with the frozen echo. Adjust Echo Mix to balance the frozen pattern against the live signal.
-6. **Release and repeat**: Disable Freeze. New video immediately begins overwriting the buffer. Enable Freeze again at a different moment to capture a different pattern.
-7. **Luma Invert feedback**: Enable Luma Invert (Toggle 9) while feedback is active. The brightness mapping reverses — echoes now accumulate with inverted modulation.
+#### Steps
 
-**Key concepts**: Feedback routes mixed output back to delay input creating iterative accumulation, freeze holds the BRAM buffer as a static afterimage, luma invert reverses the modulation mapping within the feedback loop
+1. **Enable feedback**: Set **Echo Delay** (Knob 1) to about 50%, **Echo Mix** (Fader 12) to about 70%, and flip **Feedback** (Switch 7) to **On**. Trails begin compounding, building up into dense streaks.
+2. **Decaying tint**: Pull **Echo Y Tint** (Knob 4) slightly below center to about −10%. Each feedback generation dims slightly, creating a natural decay curve.
+3. **Color accumulation**: Push **Echo U Tint** (Knob 5) and **Echo V Tint** (Knob 6) off-center by small amounts. Even small shifts accumulate rapidly through feedback (after a few generations, the trails carry vivid color.)
+4. **Offset the second tap**: Set **Echo 2 Delay** (Knob 2) to a distinctly different value, about 80%. The interleaved taps create two competing feedback streams at different spacings.
+5. **Luma-modulated feedback**: Turn up **Luma Mod** (Knob 3) to about 40%. The feedback trails bend according to image brightness, creating curved, flowing echo patterns.
+6. **Freeze the moment**: When the feedback texture reaches an interesting state, flip **Freeze** (Switch 10) to **On**. The buffer holds its contents. Adjust the tint knobs to recolor the frozen pattern in real time (the tint pipeline still processes the stored data.)
+7. **Release**: Flip Freeze back to **Off** and watch the feedback cascade resume from the frozen state.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Echo Delay | ~50% |
+| Echo 2 Delay | ~80% |
+| Luma Mod | ~40% |
+| Echo Y Tint | ~−10% |
+| Echo U Tint | ~15% |
+| Echo V Tint | ~−15% |
+| Feedback | On |
+| Mirror Read | Off |
+| Luma Invert | Off |
+| Freeze | Off |
+| Bypass | Off |
+| Echo Mix | ~70% |
 
 ---
-
-
-## Tips
-
-- **Freeze captures the moment**: Freeze the buffer when an interesting feedback pattern appears. The frozen echo becomes a persistent overlay that you can composite against new live footage.
-- **Luma Mod follows brightness**: Luma modulation makes the echo displacement content-dependent — bright areas get longer trails. This creates organic, image-aware displacement patterns.
-- **Mirror for symmetry**: Mirror Read reverses the echo on tap A only, creating partial symmetry effects that are more interesting than full-frame mirroring.
-- **Invert changes the modulation map**: Luma Invert doesn't just negate the echo — it reverses which part of the image gets displaced furthest by luma modulation.
-- **Bypass for comparison**: Use Toggle 11 for instant before/after comparison. There is no glitch on transition.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **BRAM (Block RAM)** | Dedicated memory blocks embedded in the FPGA fabric, used here for the dual-bank scanline delay line. |
-| **Chrominance** | The colour-difference components (U and V) of a YUV video signal, encoding hue and saturation independently of brightness. |
-| **CRT (Cathode Ray Tube)** | A vacuum tube display technology in which an electron beam excites phosphor dots on a coated screen to produce an image. |
-| **Echo tap** | A read point in a delay line that retrieves stored data from a configurable offset, producing a time-displaced copy of the signal. |
-| **Feedback topology** | A signal routing configuration in which the processed output is fed back to the input, creating iterative accumulation with each pass through the loop. |
-| **Luma** | Short for luminance; the brightness component (Y channel) of a YUV video signal. |
-| **Phosphor persistence** | The duration a CRT phosphor dot continues to glow after the electron beam moves on, producing visible afterimage trails behind moving objects. |
-| **Ping-pong buffer** | A dual-bank memory architecture in which one bank is written while the other is read, swapping roles each cycle to provide continuous access without stalling. |
-| **Saturation clamping** | Limiting a signal value to a valid range (0–1023) to prevent arithmetic overflow or wraparound artefacts. |
-| **Scanline** | A single horizontal line of video data, scanned left to right by the display system. |
+- **BRAM**: Block RAM; dedicated memory blocks within the FPGA used to store scan line data for delay and echo effects.
+
+- **Delay Line**: A memory buffer that stores incoming data and reads it back at a later position, producing a time- or position-shifted copy of the signal.
+
+- **Displacement**: Shifting an image horizontally by reading scan line data at an offset from where it was written.
+
+- **Feedback**: Routing the processed output back into the input, causing effects to compound and accumulate across successive passes.
+
+- **Interpolation**: Blending between two values using a mix parameter; Cascade uses this for the dry/wet crossfade.
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness.
+
+- **Mirror Read**: Reversing the read direction of a delay line buffer, producing a horizontally flipped copy of the stored data.
+
+- **Ping-Pong Buffer**: A dual-bank memory architecture where two buffers alternate between reading and writing roles, ensuring stable readout.
+
+- **Saturation (signal)**: Clamping a computed value to a valid range (0 to 1023) to prevent overflow or underflow artifacts.
+
+- **Scan Line**: A single horizontal row of pixels in a video frame, traced left to right by the display beam.
+
+- **Tint**: A per-channel brightness or color offset applied to the echo signal, coloring the displaced copy independently of the source.
 
 ---

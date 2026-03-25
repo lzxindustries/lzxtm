@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 83
 slug: /instruments/videomancer/diffract
@@ -7,366 +7,419 @@ image: /img/instruments/videomancer/diffract/diffract_hero_s1.png
 description: "When white light passes through a diffraction grating — a surface scored with thousands of parallel slits — each wavelength bends at a slightly different angle."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import diffract_control_panel from '/img/instruments/videomancer/diffract/diffract_control_panel.png';
-import diffract_source1_car from '/img/instruments/videomancer/diffract/diffract_source1_car.png';
-import diffract_source2_parrot from '/img/instruments/videomancer/diffract/diffract_source2_parrot.png';
-import diffract_source3_clouds from '/img/instruments/videomancer/diffract/diffract_source3_clouds.png';
-import diffract_source4_pattern from '/img/instruments/videomancer/diffract/diffract_source4_pattern.png';
-import diffract_source5_girl from '/img/instruments/videomancer/diffract/diffract_source5_girl.png';
-import diffract_source6_paint from '/img/instruments/videomancer/diffract/diffract_source6_paint.png';
-import diffract_hero_s1 from '/img/instruments/videomancer/diffract/diffract_hero_s1.png';
-import diffract_hero_s2 from '/img/instruments/videomancer/diffract/diffract_hero_s2.png';
-import diffract_hero_s3 from '/img/instruments/videomancer/diffract/diffract_hero_s3.png';
-import diffract_hero_s4 from '/img/instruments/videomancer/diffract/diffract_hero_s4.png';
-import diffract_hero_s5 from '/img/instruments/videomancer/diffract/diffract_hero_s5.png';
-import diffract_hero_s6 from '/img/instruments/videomancer/diffract/diffract_hero_s6.png';
-import diffract_ex1_s1 from '/img/instruments/videomancer/diffract/diffract_ex1_s1.png';
-import diffract_ex1_s2 from '/img/instruments/videomancer/diffract/diffract_ex1_s2.png';
-import diffract_ex1_s3 from '/img/instruments/videomancer/diffract/diffract_ex1_s3.png';
-import diffract_ex1_s4 from '/img/instruments/videomancer/diffract/diffract_ex1_s4.png';
-import diffract_ex1_s5 from '/img/instruments/videomancer/diffract/diffract_ex1_s5.png';
-import diffract_ex1_s6 from '/img/instruments/videomancer/diffract/diffract_ex1_s6.png';
-import diffract_ex2_s1 from '/img/instruments/videomancer/diffract/diffract_ex2_s1.png';
-import diffract_ex2_s2 from '/img/instruments/videomancer/diffract/diffract_ex2_s2.png';
-import diffract_ex2_s3 from '/img/instruments/videomancer/diffract/diffract_ex2_s3.png';
-import diffract_ex2_s4 from '/img/instruments/videomancer/diffract/diffract_ex2_s4.png';
-import diffract_ex2_s5 from '/img/instruments/videomancer/diffract/diffract_ex2_s5.png';
-import diffract_ex2_s6 from '/img/instruments/videomancer/diffract/diffract_ex2_s6.png';
-import diffract_ex3_s1 from '/img/instruments/videomancer/diffract/diffract_ex3_s1.png';
-import diffract_ex3_s2 from '/img/instruments/videomancer/diffract/diffract_ex3_s2.png';
-import diffract_ex3_s3 from '/img/instruments/videomancer/diffract/diffract_ex3_s3.png';
-import diffract_ex3_s4 from '/img/instruments/videomancer/diffract/diffract_ex3_s4.png';
-import diffract_ex3_s5 from '/img/instruments/videomancer/diffract/diffract_ex3_s5.png';
-import diffract_ex3_s6 from '/img/instruments/videomancer/diffract/diffract_ex3_s6.png';
-
-# Diffract
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: diffract_source1_car, after: diffract_hero_s1 },
-    { label: "Parrot", before: diffract_source2_parrot, after: diffract_hero_s2 },
-    { label: "Clouds", before: diffract_source3_clouds, after: diffract_hero_s3 },
-    { label: "Pattern", before: diffract_source4_pattern, after: diffract_hero_s4 },
-    { label: "Girl", before: diffract_source5_girl, after: diffract_hero_s5 },
-    { label: "Paint", before: diffract_source6_paint, after: diffract_hero_s6 },
-  ]}
-/>
-*Diffract splitting edge transitions into prismatic color fringes through horizontal shift register tap differencing.*
+![Diffract hero image](/img/instruments/videomancer/diffract/diffract_hero_s1.png)
+*Diffract splitting edge transitions into prismatic chromatic fringes that shimmer across the U and V color channels.*
 
 ---
 
 ## Overview
 
-When white light passes through a diffraction grating — a surface scored with thousands of parallel slits — each wavelength bends at a slightly different angle. Red bends the most, violet the least, and the spectrum fans out into a rainbow of separated colors. Diffract recreates this phenomenon in the video domain by treating luminance transitions as optical edges that split incoming chrominance into colored fringes.
+Diffract simulates the behavior of a ***diffraction grating***: an optical element that splits light into its component colors based on wavelength. When light passes through a real grating, it fans out into a rainbow of colored copies, each offset by a slightly different angle. Diffract applies this principle to video: it reads brightness differences at nearby pixel positions and converts those differences into chromatic offsets in the U and V color channels. The result is vivid spectral fringes that appear along edges, transitions, and contours in the source image.
 
-The program maintains a 32-entry horizontal shift register that stores recent Y (luminance) values as pixels stream through the pipeline. Three taps — near, mid, and far — read from configurable positions within the register. The signed differences between these taps produce the chromatic fringes: the primary fringe (near minus far) drives one color channel, while the secondary fringe (mid minus near) drives the other. Only the U and V channels are modified; luminance passes through untouched, preserving the structural clarity of the original image while wrapping its edges in spectral color.
+The effect draws its color energy from the luminance structure of the input. Flat, uniform areas produce no fringe: there's nothing to split. High-contrast edges and sharp transitions produce the strongest chromatic halos. Soft gradients produce gentle, painterly color washes. This makes Diffract inherently content-responsive: the fringes live where the action is.
 
-The name evokes both the physical phenomenon of diffraction and the mathematical act of splitting a signal into constituent parts. At subtle settings, Diffract adds gentle rainbow halos to high-contrast edges — much like chromatic aberration in vintage lenses. At extreme settings, it transforms the entire UV plane into a chrominance map derived from horizontal or vertical luminance gradients, producing vivid prismatic textures that bear little resemblance to the source color.
+Two dispersion modes are available. Horizontal mode uses a 32-entry ***shift register*** to create pixel-delay taps, producing left-right chromatic spreading. Vertical mode uses a ***line buffer*** to compare the current scan line with the previous one, producing top-bottom fringe. Three toggles control the color geometry of the fringe, giving eight distinct spectral configurations from a single processing chain.
+
+:::tip
+Diffract works best with high-contrast source material. Feed it graphics, text, silhouettes, or anything with strong edges, and watch the prismatic colors bloom.
+:::
+
+### What's In a Name?
+
+***Diffraction*** is the bending of waves around obstacles or through narrow openings. When white light hits a diffraction grating: a surface scored with thousands of fine parallel grooves: each wavelength bends by a different amount, fanning the light out into a spectrum. The word comes from the Latin *diffringere*, meaning "to break apart." Diffract breaks the luminance signal apart into chromatic copies, just as a grating breaks white light into its constituent colors.
 
 ---
 
 ## Quick Start
 
-1. **Fringes only appear at edges**: Because Diffract derives color from luminance *differences*, flat regions of uniform brightness produce no visible effect. Feed it high-contrast material for maximum impact.
-2. **Two attenuation stages stack**: Intensity and Falloff each provide 0–3 bits of right-shift. Combined, you have up to 6 bits of attenuation (divide by 64) for ultra-subtle tinting, or zero attenuation for vivid prismatic bands.
-3. **Order inversion is binary**: The Spread pot's top bit is all that matters — the control flips fringe polarity at the 50% mark. Use it as a toggle, not a continuous sweep.
+1. Feed a high-contrast source into Videomancer and load **Diffract**. Turn **Grating** (Knob 1) to about 50%. You should see colored halos appearing along the edges of bright objects: blues and oranges hugging opposite sides of every transition.
+2. Sweep **Orders** (Knob 2) from low to high. The fringes grow from barely visible whispers to vivid chromatic bands. This controls how strongly the edge differences translate into color.
+3. Flip **Mode** (Switch 7) from **Split** to **Cross**. The fringe orientation shifts from horizontal to vertical: now the colors stack above and below edges instead of left and right.
+4. Bring **Angle** (Knob 6) down toward 0%. The processed effect fades and the original image returns. This is your wet/dry blend: use it to dial in the perfect balance between source and spectral color.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Diffract loaded](/img/instruments/videomancer/diffract/diffract_control_panel.png)
+*Videomancer's front panel with Diffract active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Grating
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Grating** controls the spacing between delay taps in the horizontal shift register, setting how far apart the chromatic copies are. Internally, the 10-bit pot value is quantized into eight discrete spacing levels, from closely packed taps at 0% to maximally separated taps at 100%. Wider spacing means the fringe samples brightness from pixels that are further apart, producing broader, more dramatic color spreads. Narrower spacing produces tight, fine-featured fringes that hug edges closely.
+
+At 0%, the taps are only 4 pixels apart and the spectral splitting is subtle and compact. At 100%, the taps span the full 31-entry depth of the shift register, and the chromatic copies are pulled wide apart. In vertical mode (**Mode** set to **Cross**), Grating has no direct effect because the line buffer provides a fixed one-line delay.
+
+:::note
+Because the spacing is quantized to eight levels, you'll notice the fringe width changing in discrete steps as you sweep the knob. This is by design: it keeps the tap positions aligned to integer pixel offsets for clean, alias-free results.
+:::
+
+---
+
+### Knob 2 — Orders
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Orders** controls the intensity of the chromatic fringe: how strongly edge differences are converted into color. The pot value is mapped to four attenuation levels. At 0%, the fringe signal is divided by eight, producing very faint pastel halos. At 25%, it's divided by four. At 50%, divided by two. At 100%, the full, unattenuated fringe is applied.
+
+Think of Orders as the "gain" of the diffraction process. Low values produce delicate, translucent color washes. High values produce bold, saturated spectral bands. Orders combines multiplicatively with **Falloff** (Knob 5), so the total attenuation is the product of both controls.
+
+---
+
+### Knob 3 — Disperse
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Disperse** shifts the position of the entire tap group within the horizontal shift register. The top three bits of the pot value are used, giving eight discrete offset positions. At 0%, the taps start near the beginning of the delay line (the most recent pixels). As Disperse increases, the taps shift deeper into the register, sampling older pixels.
+
+Shifting the tap group changes the character of the fringe. Near the start of the register, the fringe responds to immediate pixel-to-pixel transitions. Deeper in the register, it responds to broader structures: the fringe "looks further back" in time and space. Combined with **Grating** (Knob 1), Disperse lets you position the spectral window precisely within the 32-pixel delay line.
+
+---
+
+### Knob 4 — Spread
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Spread** controls the polarity of the chromatic fringe. Only the top bit of the pot value is used, making this a binary control disguised as a knob. Below 50%, the fringe polarity is normal: one color appears on the leading edge of a transition and the complementary color appears on the trailing edge. Above 50%, the polarity inverts: the colors swap sides.
+
+This is equivalent to flipping a prism upside down: the rainbow reverses. It's a creative tool for matching the color orientation of the fringe to the aesthetic you want.
+
+:::tip
+Because only the MSB matters, you can think of **Spread** as a toggle with a dead zone. Any position from 0% to just under 50% produces the same normal polarity. Anything from 50% to 100% produces inverted polarity.
+:::
+
+---
+
+### Knob 5 — Falloff
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Falloff** applies additional attenuation to the chromatic fringe, stacking on top of the **Orders** control. The pot value is mapped to four levels of attenuation. At 0%, no additional reduction is applied: the fringe intensity is governed solely by Orders. At 25%, the fringe is halved. At 50%, quartered. At 100%, the fringe is divided by eight.
+
+Falloff and Orders work together to provide a wide range of intensity control. With Orders at full and Falloff at zero, the fringe is at maximum strength. With both at their most attenuating positions, the fringe is divided by 64: effectively invisible. Use Falloff to tame an otherwise aggressive fringe without changing the tap geometry.
+
+---
+
+### Knob 6 — Angle
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Angle** controls the wet/dry crossfade between the original input signal and the processed output. At 0%, fully counterclockwise, the output is entirely dry: the unprocessed source passes through unchanged. At 100%, fully clockwise, the output is entirely wet: only the diffracted result is heard. Intermediate positions blend the two proportionally.
+
+This is Diffract's master mix control. Use it to fold the chromatic fringe gently into the source at low values, or to commit fully to the spectral effect at high values.
+
+---
+
+### Switch 7 — Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Split |
+| On | Cross |
+| Default | Split |
+
+**Mode** selects the orientation of the dispersion source. In the **Split** position, Diffract uses the horizontal shift register: three taps at configurable positions sample the luminance of recent pixels, and the differences between those taps generate the chromatic fringe. This produces left-right color spreading along horizontal edges and transitions.
+
+In the **Cross** position, Diffract uses a ***line buffer*** that stores the previous scan line. The difference between the current pixel's luminance and the luminance of the same pixel on the previous line generates the fringe. This produces top-bottom color splitting along vertical edges and transitions.
+
+:::note
+In Cross mode, the **Grating** and **Disperse** controls have no effect because the line buffer uses a fixed one-line delay. **Orders** and **Falloff** still control fringe intensity in both modes.
+:::
+
+---
+
+### Switch 8 — Spectrum
+
+| Property | Value |
+|----------|-------|
+| Off | Full |
+| On | Custom |
+| Default | Full |
+
+**Spectrum** selects between two fringe-channel configurations. In the **Full** position, the U and V color channels receive independent, complementary fringes. The primary difference (near-tap minus far-tap) drives one channel while the secondary difference (mid-tap minus near-tap) drives the other. This produces the classic diffraction look: complementary colors flanking each edge, like magenta and green, or blue and orange.
+
+In the **Custom** position, the same fringe signal is applied to both U and V channels identically. This collapses the complementary-color effect into a monochromatic fringe: both channels shift together, producing a single-hue tint at edges rather than a rainbow split.
+
+---
+
+### Switch 9 — Blend
+
+| Property | Value |
+|----------|-------|
+| Off | Add |
+| On | Screen |
+| Default | Add |
+
+**Blend** controls the color-channel assignment of the fringe. In the **Add** position, the primary fringe drives U and the secondary fringe drives V, producing the default color mapping. In the **Screen** position, the assignments are swapped: the primary fringe drives V and the secondary drives U. This rotates the hue of the spectral fringes, shifting blues toward reds and vice versa.
+
+Combined with **Spectrum** (Switch 8), Blend provides four distinct color configurations. With Spectrum set to Full, you get two complementary-color modes (one the hue-rotation of the other). With Spectrum set to Custom, you get two monochromatic modes with different base hues.
+
+---
+
+### Switch 10 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Animate** enables or disables animation of the chromatic dispersion effect. With Animate set to **On** (the default), the fringe pattern evolves dynamically in response to moving video. Set to **Off**, the effect applies to each frame independently with no temporal variation.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Diffract processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the diffracted result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** provides an overall wet/dry blend control via the fader. At 0%, the output is entirely dry. At 100%, the output is entirely wet. This works alongside **Angle** (Knob 6) to control the balance between processed and unprocessed signal. With both at maximum, the full diffraction effect is applied.
 
 ---
 
 ## Background
 
-### What Is a Diffraction Grating?
+### Diffraction gratings
 
-A diffraction grating is an optical element consisting of a large number of equally spaced parallel slits or grooves. When a beam of light strikes the grating, each slit acts as a point source of wavelets that interfere constructively and destructively depending on wavelength and angle. The result is spatial separation of the light into its constituent wavelengths — a spectrum. Unlike a prism, which separates colors through refraction (bending due to a change in medium), a grating separates colors through interference (superposition of waves). Diffraction gratings produce sharper, more evenly spaced spectra than prisms and are the basis of most modern spectrometers.
+A ***diffraction grating*** is an optical component made of a flat surface etched with hundreds or thousands of evenly spaced grooves. When light strikes the grating, each groove acts as a tiny source of waves. These waves interfere with one another: where wave peaks align, they reinforce (***constructive interference***); where peaks meet troughs, they cancel (***destructive interference***). Because different wavelengths of light bend at different angles, white light fans out into a spectrum: just like a prism, but using wave interference rather than refraction.
 
-Diffract borrows this concept by treating horizontally adjacent luminance values as an edge — a boundary where brightness changes rapidly. The shift register taps at different horizontal offsets act like the slit spacing of a grating: wider separation produces broader spectral splitting, while narrower taps concentrate the fringes closer to the edge.
+The number and spacing of the grooves determines how far the colors spread. Finer gratings produce wider spectral fans. This is analogous to Diffract's **Grating** control: wider tap spacing in the shift register means the program samples brightness differences across a larger pixel span, producing broader chromatic fringes.
 
-### Spectral Dispersion and Color Orders
+### Chromatic aberration
 
-In physical optics, a diffraction grating produces multiple **orders** of spectra. The zeroth order is the undeviated beam (no color separation). The first order fans the spectrum outward at a moderate angle. Higher orders spread the spectrum further, with diminishing intensity. The angular separation between orders depends on the grating's slit spacing and the wavelength of light.
+In real cameras and lenses, ***chromatic aberration*** is usually considered a flaw: an unwanted colored fringe that appears because the lens bends different wavelengths by slightly different amounts. The edges of objects pick up colored halos, typically magenta on one side and green on the other. Diffract deliberately recreates this artifact as a creative tool. By computing luminance differences at nearby pixel positions and injecting them into the U and V color channels, it synthesizes the characteristic complementary-color halos of chromatic aberration on demand.
 
-Diffract's three-tap architecture loosely parallels this structure. The near tap captures differences close to the current pixel — a first-order fringe. The mid and far taps capture differences across wider spans — higher-order fringes with greater spatial separation but potentially different intensity. The Intensity control scales the fringe amplitude, mimicking the brightness falloff of higher diffraction orders.
+### Shift registers and line buffers
 
-### Chromatic Aberration in Optics
+Diffract uses two different delay structures to generate its dispersion. The ***shift register*** is a chain of 32 flip-flops that passes each pixel's luminance value from one stage to the next on every clock cycle. Reading from different positions in the chain gives access to the luminance of pixels that arrived 1, 2, 4, 8, or more clocks ago: which, at video rate, corresponds to pixels at different horizontal positions. Three taps (near, mid, and far) sample this chain, and the differences between their values create the fringe signal.
 
-Chromatic aberration occurs when a lens fails to bring all wavelengths to the same focal point. Longitudinal chromatic aberration causes different colors to focus at different distances from the lens; lateral (transverse) chromatic aberration causes different colors to form images at different sizes or positions on the sensor. The visible result is colored fringing at high-contrast edges — purple halos on the bright side, green halos on the dark side.
-
-Videographers and cinematographers have long exploited chromatic aberration deliberately: vintage lenses with uncorrected aberration produce a distinctive look prized for its organic imperfection. Diffract produces a similar aesthetic digitally. Because the fringes are derived from luminance differences, they appear only at transitions — exactly where optical chromatic aberration would manifest.
-
-### Shift Registers as Delay Lines
-
-In digital signal processing, a shift register is a chain of storage elements that passes data from one stage to the next on each clock cycle. In Diffract, the shift register stores 32 consecutive luminance values, creating a sliding window across the scan line. Reading from different positions within this register yields the same pixel's brightness as it appeared 1, 2, … 32 clock cycles ago — which, since pixels arrive sequentially along a scan line, corresponds to spatial offsets of 1 to 32 pixels to the left.
-
-This is identical in principle to the analog bucket-brigade delay used in vintage audio effects: a chain of capacitors passes a sample from one to the next on each clock pulse. The BBD produced flanging and chorus by mixing the delayed signal with the original; Diffract produces colored fringes by differencing delayed luminance values and injecting the result into the chrominance channels.
-
-### Horizontal vs Vertical Fringing
-
-Most optical aberrations produce fringes along both axes simultaneously. Diffract provides two independent sources of fringe data. Horizontal mode (the default) derives fringes from the shift register, capturing left–right luminance transitions within a single scan line. Vertical mode derives fringes from a line buffer that stores the previous scan line's luminance, capturing top–bottom transitions between consecutive lines. Switching between modes changes the directional emphasis of the color splitting — horizontal mode creates side-by-side chromatic halos, while vertical mode creates vertically stacked fringes.
+The ***line buffer*** uses a block of RAM to store an entire scan line. As each pixel of the current line is processed, the corresponding pixel from the previous line is read from RAM. The difference between current and previous-line luminance drives the vertical fringe. Together, these two structures give Diffract both horizontal and vertical dispersion capability.
 
 
 ---
 
 ## Signal Flow
 
-Y Channel → Fringe Computation → U/V Channels → Sync Signals → Output
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 1. Input register (stage 1)
-│   ├─ 2. Feed into 32-entry horizontal shift register
-│   ├─ 3. Feed into video_line_buffer (previous-line Y storage)
-│   └─ 4. Passthrough to output (Y unmodified)
-│
-├── Fringe Computation ─────────────────────────────────────────
-│   │
-│   ├─ 5a. H mode: Read 3 taps (near/mid/far) from shift register
-│   │       diff_nf = tap_near − tap_far (primary fringe → U)
-│   │       diff_mn = tap_mid − tap_near (secondary fringe → V)
-│   │
-│   ├─ 5b. V mode: Compare current Y vs previous-line Y
-│   │       diff_nf = current − previous (primary fringe → U)
-│   │       diff_mn = −(current − previous) (secondary fringe → V)
-│   │
-│   ├─ 6. Intensity scaling (right-shift 0–3)
-│   ├─ 7. Falloff attenuation (additional right-shift 0–3)
-│   ├─ 8. Order inversion (optional polarity flip)
-│   ├─ 9. Color swap (optional U↔V exchange)
-│   └─ 10. Double mode (optional: both channels get same fringe)
-│
-├── U/V Channels ───────────────────────────────────────────────
-│   │
-│   ├─ 11. Add fringes to source U and V
-│   ├─ 12. Clamp to 0–1023
-│   └─ 13. Wet/dry mix via 3× interpolator_u
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ Delay pipeline (8 clocks)
-│
-└── Output ─────────────────────────────────────────────────────
-    └─ Mixed Y, U, V + delayed sync
-```
+The critical insight is that Diffract derives all its color from the ***luminance*** channel. The input U and V values pass through to the output with fringe offsets added: but the fringe itself is computed entirely from Y-channel differences. A monochrome input with no chroma information will still produce vivid colored fringes, because the edge structure in the Y channel is what generates the U/V offsets.
 
-The critical design decision is that luminance passes through unmodified — only the chrominance channels are altered. This means Diffract never changes perceived brightness or spatial structure. All visible change occurs in the color domain, driven entirely by the shape of luminance transitions. Flat regions produce zero fringe (the tap differences are near zero), while sharp edges produce strong colored halos. The total fringe attenuation combines two independent right-shift stages (Intensity and Falloff), allowing six bits of range (divide by 1 through 64) for fine control over fringe visibility.
+The intensity pipeline has two independent attenuation stages: **Orders** and **Falloff**, each providing a right-shift of 0 to 3 bits. These are applied sequentially, so the total attenuation ranges from ÷1 (both at zero shift) to ÷64 (both at maximum shift). This wide dynamic range allows the fringe to be dialed from invisible to overwhelming.
 
----
-
-## Parameter Reference
-
-<img src={diffract_control_panel} alt="Videomancer front panel with Diffract loaded"/>
-*Videomancer's front panel with Diffract active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Grating
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At low values, all three taps cluster close together (base offset of 4 pixels), producing narrow, tight fringes concentrated at sharp edges. As the control increases, the base offset widens through 8, 12, 16, 20, 24, 28, and finally 31 pixels. Wider separation means the fringe computation compares pixels that are further apart, which broadens the color halo and causes even gradual transitions to produce visible splitting. At maximum, the near and far taps span the full 32-entry shift register, turning the entire horizontal neighborhood into a source of chromatic offset. Internally, controls the base separation between the three shift register taps.
-
----
-
-#### Knob 2 — Orders
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At low settings, the shift is 3 (dividing the difference by 8), producing very subtle pastel fringes visible only at the hardest edges. At mid settings the shift decreases to 2 then 1, progressively strengthening the color deviation. At maximum, no shift is applied — the full signed difference is injected into the UV channels, producing vivid, saturated prismatic bands. Internally, controls the fringe intensity by selecting how many bits of right-shift to apply to the raw difference values.
-
----
-
-#### Knob 3 — Disperse
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Offsets the positions of all three taps within the shift register, shifting the fringe computation window left or right along the delay line. At zero, the near tap reads from position 1 (one pixel behind the current sample). As Disperse increases, a direction offset (derived from the top 3 bits, range 0–7) shifts all three tap positions deeper into the register. This moves the fringe spatially relative to the edge that produced it — at moderate settings the color halo leads or trails the luminance transition, creating an asymmetric chromatic split that mimics lateral chromatic aberration.
-
----
-
-#### Knob 4 — Spread
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-The top bit of this control's register value determines whether the fringe polarity is inverted. Below 50%, fringes maintain their natural polarity — a bright-to-dark transition produces a specific color assignment. Above 50%, the polarity flips: the same transition produces the complementary color. This is analogous to viewing a spectrum through an inverting prism, swapping which side of an edge gets blue-shifted and which gets red-shifted. The lower 9 bits of the register are unused.
-
----
-
-#### Knob 5 — Falloff
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Applies an additional attenuation stage after intensity scaling, further reducing fringe amplitude. At minimum, no extra attenuation is applied. As the control increases through its four steps (right-shift 0, 1, 2, 3), the fringes progressively fade. This interacts multiplicatively with the Intensity scaling — with both at their midpoints, the total attenuation is a right-shift of 3 (divide by 8), producing delicate pastel halos. With both at opposite extremes you can achieve either full-strength fringes or nearly invisible tinting.
-
----
-
-#### Knob 6 — Angle
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At 0%, the output is entirely dry — no fringes are visible. At 100%, the output is fully wet — the maximum fringe effect is applied. Intermediate values blend the two proportionally, allowing fine control over the overall prominence of the prismatic color splitting without changing the fringe structure itself. In the VHDL implementation, this control maps directly to the interpolator mix parameter. Internally, controls the wet/dry crossfade between the processed signal (with chromatic fringes) and the original unprocessed signal.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Mode** | Split | Cross |
-| **8 — Spectrum** | Full | Custom |
-| **9 — Blend** | Add | Screen |
-| **10 — Animate** | Off | On |
-| **11 — Bypass** | Off | On |
-
-Three toggle bits control the fringe routing topology. Mode selects the source of fringe data (horizontal shift register or vertical line buffer). Spectrum selects whether each UV channel receives a distinct fringe or both receive the same fringe. Blend swaps which fringe feeds U and which feeds V. The three toggles interact combinatorially — there are eight possible routing configurations, each producing a distinct spatial and chromatic character. Animate and Bypass are reserved controls defined in the parameter map.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Overall output mix level. At full position, the processed signal with chromatic fringes is output at maximum. This control provides a master fade for the Diffract effect. In the current implementation the primary wet/dry crossfade is handled by the Angle knob (Pot 6), which directly drives the interpolator mix parameter; the fader may serve as an additional attenuation stage depending on firmware version.
-
-
-
+:::tip
+**Order of operations matters.** Polarity inversion (**Spread**) is applied after intensity scaling but before the color swap (**Blend**) and double-mode (**Spectrum**) stages. This means inverting polarity affects the raw fringe, while the UV routing decisions are applied to the already-scaled, already-inverted signal.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from basic horizontal chromatic fringes through vertical mode and advanced fringe routing, building familiarity with how each control shapes the prismatic color splitting.
+These exercises explore Diffract's spectral fringe capabilities, from subtle chromatic halos to full prismatic textures. Each exercise builds on the previous, engaging more of the processing chain.
+### Exercise 1: Prismatic Edge Halos
 
-### Exercise 1: Horizontal Edge Fringes
+![Prismatic Edge Halos result](/img/instruments/videomancer/diffract/diffract_ex1_s1.png)
+*Prismatic Edge Halos — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: diffract_source1_car, after: diffract_ex1_s1 },
-    { label: "Parrot", before: diffract_source2_parrot, after: diffract_ex1_s2 },
-    { label: "Clouds", before: diffract_source3_clouds, after: diffract_ex1_s3 },
-    { label: "Pattern", before: diffract_source4_pattern, after: diffract_ex1_s4 },
-    { label: "Girl", before: diffract_source5_girl, after: diffract_ex1_s5 },
-    { label: "Paint", before: diffract_source6_paint, after: diffract_ex1_s6 },
-  ]}
-/>
-*Horizontal Edge Fringes — simulated result across source images.*
-**Source**: High-contrast footage with strong vertical edges — architectural lines, window frames, or graphic text overlays.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Create rainbow-like chromatic halos along vertical edges using horizontal shift register differencing.
+#### Learning Outcomes
 
-1. **Establish fringes**: Slowly increase Orders from 0% until colored halos become visible along vertical edges in the source. At about 75%, the fringes should be clearly saturated.
-2. **Widen the grating**: Increase Grating from 50% upward. Watch the color halos broaden as the tap separation increases. At maximum, even gradual transitions produce wide chromatic bands.
-3. **Shift the dispersion**: Sweep Disperse across its range. Notice how the fringe position slides relative to the edge that generated it — at one extreme the color leads the edge, at the other it trails.
-4. **Invert polarity**: Turn Spread past 50%. The fringe colors flip — blue becomes orange, magenta becomes green. Return below 50% to restore.
-5. **Attenuate**: Increase Falloff to soften the fringes into pastel tints. Combine with moderate Orders for delicate vintage-lens chromatic aberration.
+Subtle, camera-lens-like chromatic aberration halos hugging the edges of objects in your source video.
 
-**Key concepts**: Shift register taps at different offsets create spatial luminance differences that become UV color fringes, wider tap separation broadens fringes, intensity and falloff give two independent amplitude controls
+#### Key Concepts
 
----
+- Luminance differences at edges generate chromatic fringe
+- Grating controls the horizontal span of the spectral splitting
+- Orders and Falloff jointly control fringe intensity
 
-### Exercise 2: Vertical Fringe Mode
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: diffract_source1_car, after: diffract_ex2_s1 },
-    { label: "Parrot", before: diffract_source2_parrot, after: diffract_ex2_s2 },
-    { label: "Clouds", before: diffract_source3_clouds, after: diffract_ex2_s3 },
-    { label: "Pattern", before: diffract_source4_pattern, after: diffract_ex2_s4 },
-    { label: "Girl", before: diffract_source5_girl, after: diffract_ex2_s5 },
-    { label: "Paint", before: diffract_source6_paint, after: diffract_ex2_s6 },
-  ]}
-/>
-*Vertical Fringe Mode — simulated result across source images.*
-**Source**: Footage with strong horizontal edges — landscape horizons, stacked bookshelves, or horizontally striped patterns.
+High-contrast footage with clear edges: text overlays, silhouettes, or architectural footage with strong lines.
 
-**What You'll Create**: Switch to vertical fringe mode and observe how chromatic splitting follows horizontal edges instead of vertical ones.
+#### Steps
 
-1. **Start in H mode**: Set Grating ~50%, Orders ~75%, all other controls at defaults. Observe horizontal fringes along vertical edges.
-2. **Switch to V mode**: Set Mode to Fan. The fringes now appear along horizontal edges — the program is differencing the current scan line against the previous one via the line buffer.
-3. **Compare**: Toggle Mode back and forth between Split and Fan. Note that vertical edges produce fringes in H mode, horizontal edges in V mode.
-4. **Combine with color swap**: Set Blend to Screen. The fringe hue rotates, shifting the color character of the vertical fringes.
-5. **Double mode**: Set Spectrum to Red. Both U and V receive the same fringe, eliminating the complementary split and producing a single-hue tint that follows edge direction.
+1. Load **Diffract** and set **Grating** (Knob 1) to about 30%. A moderate tap spacing produces compact, realistic-looking fringes.
+2. Set **Orders** (Knob 2) to about 75% and **Falloff** (Knob 5) to about 25%. This gives a strong but not overwhelming fringe intensity.
+3. Set **Angle** (Knob 6) to 100% for the full wet signal.
+4. Confirm **Mode** (Switch 7) is set to **Split** for horizontal dispersion. You should see complementary-colored halos along vertical edges (a warm color on one side, a cool color on the other.)
+5. Now slowly reduce **Angle** (Knob 6) toward 50%. The prismatic halos blend with the clean source, creating a naturalistic chromatic aberration look (as though your camera lens has a beautiful flaw.)
 
-**Key concepts**: Vertical mode uses a line buffer instead of the shift register, H and V modes emphasize perpendicular edge orientations, color swap rotates the fringe hue axis
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Grating | 30% |
+| Orders | 75% |
+| Disperse | 50% |
+| Spread | 0% |
+| Falloff | 25% |
+| Angle | 50% |
+| Mode | Split |
+| Spectrum | Full |
+| Blend | Add |
+| Animate | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Prismatic Texture Synthesis
+### Exercise 2: Vertical Rainbow Contours
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: diffract_source1_car, after: diffract_ex3_s1 },
-    { label: "Parrot", before: diffract_source2_parrot, after: diffract_ex3_s2 },
-    { label: "Clouds", before: diffract_source3_clouds, after: diffract_ex3_s3 },
-    { label: "Pattern", before: diffract_source4_pattern, after: diffract_ex3_s4 },
-    { label: "Girl", before: diffract_source5_girl, after: diffract_ex3_s5 },
-    { label: "Paint", before: diffract_source6_paint, after: diffract_ex3_s6 },
-  ]}
-/>
-*Prismatic Texture Synthesis — simulated result across source images.*
-**Source**: Any footage with rich tonal variation — nature scenes, skin tones, fabric textures.
+![Vertical Rainbow Contours result](/img/instruments/videomancer/diffract/diffract_ex2_s1.png)
+*Vertical Rainbow Contours — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Push all fringe controls to create vivid prismatic textures that transform the entire chrominance plane.
+***A description of the exercise illustration.***
 
-1. **Maximum splitting**: Set Grating to 100%, Orders to 100%, Falloff to 0%. The full raw fringe difference is applied with no attenuation.
-2. **Color swap**: Set Blend to Screen to explore the complementary color palette.
-3. **Double mode**: Set Spectrum to Red. Both channels receive the same fringe — the image takes on a strongly tinted look driven entirely by luminance gradients.
-4. **Invert**: Toggle Spread past 50% to flip the entire color assignment.
-5. **Mix back**: Reduce Angle to ~50% to blend the extreme prismatic effect with the original color, creating a more balanced, iridescent result.
-6. **Disperse sweep**: Slowly sweep Disperse while watching the fringe offset slide across edges. At specific settings the fringes align with source features to produce unexpected constructive patterns.
+#### Learning Outcomes
 
-**Key concepts**: At maximum intensity the UV plane becomes entirely luminance-gradient-derived, double mode eliminates complementary splitting, mix brings extreme effects back to usable territory
+Vivid vertical chromatic contours that trace horizontal edges and gradients in the source, producing a neon-outlined look.
+
+#### Key Concepts
+
+- Cross mode uses the line buffer for vertical fringe
+- Spectrum and Blend toggles reshape the color palette
+- Polarity inversion via Spread reverses the rainbow
+
+#### Video Source
+
+Footage with strong horizontal features: landscapes with horizons, stacked objects, or text with horizontal strokes.
+
+#### Steps
+
+1. Flip **Mode** (Switch 7) to **Cross** for vertical dispersion. The fringe now runs top-to-bottom, coloring horizontal edges.
+2. Set **Orders** (Knob 2) to 100% for full intensity and **Falloff** (Knob 5) to 0% for no additional attenuation. The fringes should be bold and vivid.
+3. Set **Angle** (Knob 6) to 100% for fully wet output.
+4. Toggle **Spectrum** (Switch 8) to **Custom**. The complementary-color split collapses into a monochromatic hue (edges are now tinted a single color instead of rainbowed.)
+5. Toggle **Blend** (Switch 9) to **Screen** to rotate the hue of the monochromatic fringe.
+6. Flip **Spread** (Knob 4) above 50% to invert the fringe polarity. The color shifts to the opposite side of each edge.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Grating | 50% |
+| Orders | 100% |
+| Disperse | 50% |
+| Spread | 75% |
+| Falloff | 0% |
+| Angle | 100% |
+| Mode | Cross |
+| Spectrum | Custom |
+| Blend | Screen |
+| Animate | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Full-Spectrum Texture Wash
 
-## Tips
+![Full-Spectrum Texture Wash result](/img/instruments/videomancer/diffract/diffract_ex3_s1.png)
+*Full-Spectrum Texture Wash — simulated result across source images.*
+#### Exercise Illustration
 
-- **Vertical mode needs horizontal edges**: H mode creates fringes along vertical edges; V mode creates fringes along horizontal edges. Choose the mode that matches the dominant edge orientation in your source.
-- **Double mode for tinted looks**: Setting Spectrum to the alternate position forces both U and V to the same fringe value, producing a monochromatic tint that follows edge structure — useful for subtle warm or cool lens-aberration effects.
-- **Mix control for blending**: The Angle knob controls the wet/dry balance via the internal interpolators. Use moderate settings (40–60%) to layer prismatic fringes subtly over the original color.
-- **Feedback loops**: Routing Diffract's output back to its input creates accumulating chromatic fringes — each pass adds another layer of spectral splitting, building into dense rainbow textures.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+An abstract, heavily processed spectral texture where the source is barely recognizable: a wash of prismatic color driven by the original image's edge structure.
+
+#### Key Concepts
+
+- Maximum tap spacing and intensity create extreme spectral effects
+- Toggle combinations produce eight distinct color configurations
+- Disperse shifts the chromatic window through the delay line
+
+#### Video Source
+
+Any high-contrast footage. Geometric patterns, digital graphics, or video feedback loops work especially well.
+
+#### Steps
+
+1. Set **Grating** (Knob 1) to 100% for maximum tap spacing. The chromatic copies are pulled as far apart as the shift register allows.
+2. Set **Orders** (Knob 2) to 100% and **Falloff** (Knob 5) to 0% for full, unattenuated fringe intensity.
+3. Set **Disperse** (Knob 3) to about 75%. The tap group shifts deep into the shift register, sampling older pixel data for broader spatial fringe structures.
+4. Set **Spread** (Knob 4) below 50% for normal polarity.
+5. Set **Angle** (Knob 6) to 100%.
+6. Confirm **Mode** (Switch 7) is **Split**, **Spectrum** (Switch 8) is **Full**, and **Blend** (Switch 9) is **Add**.
+7. Now begin cycling through the eight toggle combinations. Flip each switch in turn: Mode, Spectrum, Blend. Each combination reshapes the color geometry of the fringe. Find the one that best complements your source.
+8. While holding your favorite toggle combination, slowly sweep **Disperse** (Knob 3) from 0% to 100%. The fringe window slides through the delay line, shifting the spatial character of the color wash.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Grating | 100% |
+| Orders | 100% |
+| Disperse | 75% |
+| Spread | 0% |
+| Falloff | 0% |
+| Angle | 100% |
+| Mode | Split |
+| Spectrum | Full |
+| Blend | Add |
+| Animate | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Chromatic Aberration** | An optical defect where a lens fails to bring all wavelengths to the same focus, producing colored fringes at high-contrast edges. |
-| **Diffraction** | The bending and spreading of waves around obstacles or through apertures, separating wavelengths by angle. |
-| **Dispersion** | The separation of light into its constituent wavelengths, as by a prism or diffraction grating. |
-| **Fringe** | A band of color produced by interference or diffraction, appearing at the boundary between bright and dark regions. |
-| **Grating** | An optical element with periodic structure that diffracts light into multiple spectral orders. |
-| **Line Buffer** | A single-line BRAM delay that stores one scan line of video data for vertical comparison. |
-| **Shift Register** | A chain of storage elements that passes data from one stage to the next on each clock cycle, providing horizontal pixel delay. |
-| **Tap** | A read point within a delay line or shift register, extracting a sample at a specific offset. |
+- **Chromatic Aberration**: A lens artifact where different wavelengths of light focus at slightly different points, producing colored fringes at edges.
+
+- **Clamp**: Constraining a computed value to a legal range (0 to 1023 for 10-bit video) to prevent overflow or underflow artifacts.
+
+- **Diffraction**: The bending and spreading of waves as they pass through an opening or around an obstacle, causing interference patterns.
+
+- **Diffraction Grating**: An optical element with many fine parallel grooves that splits white light into a spectrum via constructive and destructive interference.
+
+- **Fringe**: A band of color appearing at the boundary between light and dark areas, caused by chromatic dispersion or interference.
+
+- **Interpolator**: A hardware unit that computes a weighted blend between two values; used here for wet/dry crossfade.
+
+- **Line Buffer**: A block RAM that stores one full scan line of video data, allowing comparison between consecutive lines.
+
+- **Polarity**: The sign (positive or negative) of the fringe offset; inverting polarity swaps which color appears on which side of an edge.
+
+- **Shift Register**: A chain of storage elements where data moves one position forward on each clock cycle, providing multi-tap pixel delay.
+
+- **Tap**: A read point in a delay line; multiple taps at different positions provide access to pixel values at different spatial offsets.
 
 ---

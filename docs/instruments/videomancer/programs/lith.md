@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 175
 slug: /instruments/videomancer/lith
@@ -7,349 +7,380 @@ image: /img/instruments/videomancer/lith/lith_hero_s1.png
 description: "In the photographic darkroom, lith printing is a process that defies conventional wisdom."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import lith_control_panel from '/img/instruments/videomancer/lith/lith_control_panel.png';
-import lith_source1_dog from '/img/instruments/videomancer/lith/lith_source1_dog.png';
-import lith_source2_fruit from '/img/instruments/videomancer/lith/lith_source2_fruit.png';
-import lith_source3_turtle from '/img/instruments/videomancer/lith/lith_source3_turtle.png';
-import lith_source4_pattern from '/img/instruments/videomancer/lith/lith_source4_pattern.png';
-import lith_source5_girl from '/img/instruments/videomancer/lith/lith_source5_girl.png';
-import lith_source6_wood from '/img/instruments/videomancer/lith/lith_source6_wood.png';
-import lith_hero_s1 from '/img/instruments/videomancer/lith/lith_hero_s1.png';
-import lith_hero_s2 from '/img/instruments/videomancer/lith/lith_hero_s2.png';
-import lith_hero_s3 from '/img/instruments/videomancer/lith/lith_hero_s3.png';
-import lith_hero_s4 from '/img/instruments/videomancer/lith/lith_hero_s4.png';
-import lith_hero_s5 from '/img/instruments/videomancer/lith/lith_hero_s5.png';
-import lith_hero_s6 from '/img/instruments/videomancer/lith/lith_hero_s6.png';
-import lith_ex1_s1 from '/img/instruments/videomancer/lith/lith_ex1_s1.png';
-import lith_ex1_s2 from '/img/instruments/videomancer/lith/lith_ex1_s2.png';
-import lith_ex1_s3 from '/img/instruments/videomancer/lith/lith_ex1_s3.png';
-import lith_ex1_s4 from '/img/instruments/videomancer/lith/lith_ex1_s4.png';
-import lith_ex1_s5 from '/img/instruments/videomancer/lith/lith_ex1_s5.png';
-import lith_ex1_s6 from '/img/instruments/videomancer/lith/lith_ex1_s6.png';
-import lith_ex2_s1 from '/img/instruments/videomancer/lith/lith_ex2_s1.png';
-import lith_ex2_s2 from '/img/instruments/videomancer/lith/lith_ex2_s2.png';
-import lith_ex2_s3 from '/img/instruments/videomancer/lith/lith_ex2_s3.png';
-import lith_ex2_s4 from '/img/instruments/videomancer/lith/lith_ex2_s4.png';
-import lith_ex2_s5 from '/img/instruments/videomancer/lith/lith_ex2_s5.png';
-import lith_ex2_s6 from '/img/instruments/videomancer/lith/lith_ex2_s6.png';
-import lith_ex3_s1 from '/img/instruments/videomancer/lith/lith_ex3_s1.png';
-import lith_ex3_s2 from '/img/instruments/videomancer/lith/lith_ex3_s2.png';
-import lith_ex3_s3 from '/img/instruments/videomancer/lith/lith_ex3_s3.png';
-import lith_ex3_s4 from '/img/instruments/videomancer/lith/lith_ex3_s4.png';
-import lith_ex3_s5 from '/img/instruments/videomancer/lith/lith_ex3_s5.png';
-import lith_ex3_s6 from '/img/instruments/videomancer/lith/lith_ex3_s6.png';
-
-# Lith
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: lith_source1_dog, after: lith_hero_s1 },
-    { label: "Fruit", before: lith_source2_fruit, after: lith_hero_s2 },
-    { label: "Turtle", before: lith_source3_turtle, after: lith_hero_s3 },
-    { label: "Pattern", before: lith_source4_pattern, after: lith_hero_s4 },
-    { label: "Girl", before: lith_source5_girl, after: lith_hero_s5 },
-    { label: "Wood", before: lith_source6_wood, after: lith_hero_s6 },
-  ]}
-/>
-*Lith applying infectious development processing to transform video into ultra-high-contrast prints with warm brown shadow tones and papery highlights.*
+![Lith hero image](/img/instruments/videomancer/lith/lith_hero_s1.png)
+*Lith rendering a portrait as an extreme-contrast print with warm brown shadows, creamy paper-white highlights, and organic grain in the transition zone (the unmistakable look of infectious development.)*
 
 ---
 
 ## Overview
 
-In the photographic darkroom, lith printing is a process that defies conventional wisdom. You deliberately overexpose silver gelatin paper by two to four stops, then develop the print in extremely dilute lith developer — so dilute that development proceeds at a glacial pace. The chemistry exhausts differently in shadows than in highlights, creating a phenomenon called *infectious development*: once a dark area begins to develop, it accelerates its own development and the development of neighboring areas, producing an abrupt, almost binary transition between black and white. The highlights, meanwhile, develop slowly and never reach full density, settling into soft, creamy tones — the characteristic "papery" whites that lith printers prize.
+Lith recreates the aesthetic of ***lith printing***, a specialized darkroom technique that produces images with extreme contrast, warm shadow tones, and a distinctive organic grain pattern. In the traditional process, photographic paper is vastly overexposed and then developed in highly dilute lith developer. The result is a transfer curve unlike any normal photographic process: shadows lock to deep black or warm brown, highlights become creamy paper white, and the transition between the two is abrupt and nonlinear: controlled by a phenomenon called ***infectious development***.
 
-Lith recreates this photochemical process in the digital domain. The program constructs a nonlinear transfer curve that mimics the infectious development step function: below the exposure threshold, values collapse to black; above it, they rise rapidly to a configurable paper white. The mid-tone transition zone — where the chemistry fights between development and exhaustion — is where the most interesting things happen. Grain concentrates in this transition zone, warm brown toning appears in the shadows, and optional split-tone processing adds cool blue-grey accents to the highlights. The name is simply the darkroom shorthand for the technique itself.
+The lith print look is immediately recognizable: high contrast with no mid-tones in the conventional sense, warm brown shadow areas that feel almost hand-tinted, papery white highlights, and organic grain that clusters in the transition zone between light and dark. Lith brings this entire photochemical process into the video domain, with control over the exposure threshold, infection steepness, shadow warmth, and split-tone temperature.
 
-At moderate settings, Lith produces the subtle warmth and gentle grain of a carefully processed darkroom print. At extreme settings, it reduces the image to stark black-and-white silhouettes with hot paper whites and deep, warm blacks — the signature lith aesthetic that photographers spend hours chasing in the darkroom.
+### What's In a Name?
+
+***Lith*** is short for ***lithographic***, referring to lith developer (originally used for graphic arts and lithographic film) that has been heavily diluted for creative photographic printing. The developer's chemistry with high-contrast silver halide emulsions produces the infectious development that gives lith prints their signature look. The name is both a material reference and a darkroom tradition ("to lith" a print is a verb among fine art photographers.)
 
 ---
 
 ## Quick Start
 
-1. **Start with Paper at maximum**: The Paper control scales the entire transfer curve. Set it high first, then adjust Exposure and Spread to place the threshold where you want it.
-2. **Dilute developer for subtlety**: Dilute mode gives you four gradual steepness levels via the Infection knob. Strong mode is dramatic but leaves little room for nuance.
-3. **Grain follows the transition zone**: The grain noise only appears in the mid-tone band between the low and high threshold edges. Widening the Spread widens the grain band.
+1. Feed a video source into Videomancer with Lith loaded. The image snaps to a high-contrast rendering with warm shadows.
+2. Adjust **Exposure** (Knob 1) to find the threshold where the image splits between shadow and highlight. Moving the threshold up or down dramatically changes which parts of the image go dark versus light.
+3. Turn **Infectn** (Knob 2) to about 70%. The transition between black and white becomes sharper and more abrupt.
+4. Increase **Warmth** (Knob 5) to about 60%. The shadow regions take on a rich brown tone, while highlights remain creamy white.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Lith loaded](/img/instruments/videomancer/lith/lith_control_panel.png)
+*Videomancer's front panel with Lith active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Exposure
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Exposure** sets the brightness threshold that separates shadow regions from highlight regions. At 50%, the split point sits at mid-gray. Lowering the value pushes the threshold darker, converting more of the image to paper white. Raising it pushes the threshold brighter, converting more of the image to deep shadow. This simulates the overexposure control in traditional lith printing: the amount of light that hits the paper determines where the infectious development boundary falls.
+
+:::note
+Unlike a simple brightness control, **Exposure** moves the ***decision point*** that separates the two tonal zones. Everything below the threshold goes toward black (or warm brown); everything above goes toward paper white. The transition steepness is controlled separately by **Infectn**.
+:::
+
+---
+
+### Knob 2 — Infectn
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 68% |
+
+**Infectn** (Infection) controls the steepness of the transfer curve at the shadow-to-highlight transition. At low values, the transition is relatively gradual: there's a range of mid-tone gray between black and white. As infection increases, the transition becomes sharper and more abrupt, approaching a hard binary threshold. At maximum, the curve is near-vertical: pixels are either black or white with almost nothing in between. The Developer switch further modifies this behavior, with Strong developer producing a harder step at equivalent infection settings.
+
+---
+
+### Knob 3 — Spread
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Spread** controls the width of the transition zone between full shadow and full highlight. At narrow values (low settings), the transition happens over a very small brightness range, creating a hard edge. At wider values, the transition extends across a broader range of input brightness, allowing more mid-tone information to survive. This is analogous to the "snatch point" timing in real lith printing: how long the developer has to work before the print is snatched from the tray.
+
+---
+
+### Knob 4 — Grain
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 29% |
+
+**Grain** adds LFSR-based noise to the luminance channel, concentrated in the mid-tone transition zone. At 0%, no grain is applied. As the value increases, grain appears in the area between full shadow and full highlight: exactly where real lith prints show their characteristic organic grain. Pure black and pure white areas remain clean, mimicking the way infectious development concentrates grain in the developing boundary.
+
+:::tip
+The grain is applied ***only in the transition zone***: pixels flagged as mid-tones between the low and high edges. Shadows and highlights stay clean. This matches the real behavior of lith prints, where grain is concentrated at the "snatch point" between developed and undeveloped areas.
+:::
+
+---
+
+### Knob 5 — Warmth
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 59% |
+
+**Warmth** controls the intensity of the warm brown tint applied to shadow regions. At 0%, shadows are neutral. As warmth increases, pixels below the brightness of 400 receive a push toward warm brown in the U (−shift) and V (+shift) chroma channels. This simulates the characteristic warm-tone reaction of lith developer with chlorobromide paper emulsions (the slower the development, the warmer the shadows.)
+
+---
+
+### Knob 6 — Paper
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 88% |
+
+**Paper** controls the brightness level of the highlight regions: the "paper white" ceiling. At 100%, highlights are at full brightness (1023). Reducing this value dims the paper white, as if the paper being printed on is a warm cream rather than bright white. This affects the entire upper portion of the transfer curve, lowering the ceiling that the infectious development pushes highlights toward.
+
+---
+
+### Switch 7 — Developer
+
+| Property | Value |
+|----------|-------|
+| Off | Dilute |
+| On | Strong |
+| Default | Dilute |
+
+**Developer** selects between two development strengths. **Dilute** simulates heavily diluted lith developer, which produces a more gradual transition with finer tonal nuance in the mid-tones. **Strong** simulates a more concentrated developer, which produces harder, more binary transitions: shadows go blacker and highlights go whiter with less gradation between them.
+
+---
+
+### Switch 8 — Grain
+
+| Property | Value |
+|----------|-------|
+| Off | Fine |
+| On | Coarse |
+| Default | Fine |
+
+**Grain** (Fine/Coarse) controls the visual scale of the film grain, following the same fine/coarse grain system as other Film category programs. **Fine** produces small, dense grain particles. **Coarse** produces larger, more visible grain clumps.
+
+---
+
+### Switch 9 — Split
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Split** enables split-tone processing. When **Off**, highlights remain neutral (achromatic paper white) while shadows receive the warm tone from the Warmth control. When **On**, highlights above a brightness of 600 receive a cool blue-cyan tint (U +20, V −15), creating a ***split-tone*** effect: warm shadows and cool highlights, a classic fine art photographic printing technique.
+
+---
+
+### Switch 10 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** flips the processed luminance after all other stages. With Invert **On**, the lith print becomes a negative: warm highlights and paper-dark shadows. This can produce interesting effects when the inverted lith treatment is applied to already high-contrast source material.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Lith processing stages. Use for instant A/B comparison.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** crossfades between the dry (unprocessed) signal and the wet (Lith-processed) signal. At partial mix values, the extreme contrast of the lith look is softened by blending with the original tonal range, which can produce a stylized high-contrast color effect.
 
 ---
 
 ## Background
 
-### Infectious Development
+### Lith printing in the darkroom
 
-The key to lith printing is the developer chemistry. Standard photographic developers work linearly — exposed silver halide crystals develop at a rate proportional to their exposure. Lith developer works differently. It contains a low concentration of hydroquinone as the sole active developing agent, and development is *autocatalytic*: the byproducts of the reduction reaction (bromide ions and oxidized hydroquinone) alter the local pH, which accelerates the reaction. In areas of heavy exposure, this feedback loop causes development to accelerate exponentially once it passes a critical threshold. Areas just below that threshold barely develop at all. The result is an extremely steep transfer curve in the mid-tones — a cliff rather than a slope. This is the "infection" that gives the technique its name.
+Lith printing emerged as a creative darkroom technique in the 1990s, popularized by photographers like Tim Rudman, who documented the process extensively. The technique requires using lith developer (typically Kodalith or Fotospeed Lith developer) at extreme dilutions: typically 1:20 to 1:50: with long development times of 5 to 20 minutes. The paper is overexposed by 2 to 5 stops beyond normal, and the development is visually monitored until the image reaches the desired point, at which the print is "snatched" from the developer tray.
 
-### Exposure and Paper White
+### Infectious development
 
-In the darkroom, lith printers control two key variables: the enlarger exposure time (which sets where the threshold falls on the tonal scale) and the development time (which determines the paper white — how bright the highlights get before you pull the print from the developer). Lith's Exposure knob maps directly to the enlarger exposure bias, shifting the threshold up or down the luminance range. The Paper knob maps to the development endpoint, setting the maximum brightness that highlights can reach. Together, these two controls define the basic "negative space" of the lith print — how much of the image is black, how much is paper white, and where the cliff falls between them.
+The hallmark of lith printing is ***infectious development***, a self-accelerating chemical reaction. In dilute lith developer, the development process starts slowly and evenly. But once a critical density of silver is reached in any area, the development reaction at that point begins producing its own accelerating chemistry: the byproducts of development catalyze further development in adjacent areas. This creates a positive feedback loop: dark areas develop exponentially faster, while light areas barely develop at all. The result is the characteristic abrupt transition between shadow and highlight, with the speed and steepness of the transition determined by the developer dilution and the snatch timing.
 
-### Dilute vs. Strong Developer
+### The transfer curve
 
-Real lith printing uses dilute developer — typically 1:4 to 1:9 dilutions of a standard stock solution. The more dilute the chemistry, the more gradual the onset of infectious development and the wider the transition zone. Concentrated developer produces a harder, more abrupt step. Lith's Developer toggle switches between these two behaviors: Dilute mode preserves a wider range of mid-tone values through the transition (using the Infection control to set the steepness), while Strong mode creates a harder binary step that collapses the mid-tones more aggressively.
-
-### Toning and Split Tone
-
-Lith prints are naturally warm-toned because the image is formed primarily by the lower-contrast developing agent (hydroquinone) rather than the faster, cooler-toned agents used in standard developers. The warm brown color is most visible in the shadow regions where infectious development has run to completion. Lith's Warmth control simulates this by shifting the U and V chroma channels toward brown in areas where luma falls below the mid-tone threshold. The Split Tone toggle adds a complementary cool shift to the highlight regions, creating the classic warm-shadow / cool-highlight aesthetic sought by fine-art printers.
-
-### Film Grain
-
-Lith prints exhibit pronounced grain, but it is not uniformly distributed. The grain concentrates in the transition zone — the narrow band of tones where the chemistry is indecisive, hovering between development and exhaustion. Fully developed (black) areas and undeveloped (paper white) areas show minimal grain. Lith replicates this behavior by gating the LFSR noise signal with a mid-tone flag, applying grain only to pixels that fall within the transition zone between the low and high threshold edges.
+The Lith program models this nonlinear transfer curve using threshold-based comparison logic. Input brightness is evaluated against a window defined by the Exposure threshold ± the Spread width. Pixels below the window go to black (or near-black); pixels above go to paper white. Within the window, the Infection parameter controls how the transition happens: from a smooth ramp (low infection) to an abrupt step (high infection). The Developer toggle modifies whether the transition favors a harder (Strong) or softer (Dilute) curve shape, with each producing different intermediate values within the transition zone.
 
 
 ---
 
 ## Signal Flow
 
-Y Channel → U/V Channels → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 1. Input Register            (1 clk — latch Y)
-│   ├─ 2. Threshold Edge Calc       (1 clk — low/mid/high edges from Exposure + Spread)
-│   ├─ 3. Transfer Curve            (1 clk — infectious dev step function + mid-tone flag)
-│   ├─ 4. Toning + Grain Calc       (1 clk — warm brown U/V shift + LFSR grain)
-│   ├─ 5. Grain Apply + Split Tone  (1 clk — mid-tone grain + cool highlights + invert)
-│   └─ 6. Interpolator              (4 clk — wet/dry mix)
-│
-├── U/V Channels ───────────────────────────────────────────────
-│   │
-│   ├─ 4. Warm Tone (shadows)       (brown shift from Warmth, neutral in highlights)
-│   ├─ 5. Split Tone (highlights)   (cool shift when enabled, warm shadows preserved)
-│   └─ 6. Interpolator              (4 clk — wet/dry mix)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ Delay pipeline (9 clk matched)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The key design decision is that Lith processes ***only luminance through the transfer curve***: the input U and V channels are discarded entirely. The output chroma comes solely from the toning stage: warm brown for shadows, neutral for highlights, and optionally cool for highlights when split-tone is enabled. This is accurate to real lith printing, which is fundamentally a monochrome process with color coming only from the paper-developer interaction, not from the original image's colors.
 
-The critical interaction is between the threshold edge calculation (Stage 2) and the transfer curve (Stage 3). Exposure sets the center point of the transition, Spread sets its width, Infection controls the steepness within that zone, and Developer selects between two families of curves. The mid-tone flag generated in Stage 3 gates the grain in Stage 5, ensuring grain appears only in the transition zone — exactly where real lith chemistry produces visible grain. Toning in Stage 4 is gated by a fixed luma threshold of 400 (roughly 39% brightness), placing warm brown color only in the shadow regions regardless of where the Exposure control is set.
+The grain placement is tied to the mid-tone flag from the transfer curve stage. Only pixels that fall within the transition zone between low_edge and hi_edge receive grain. This matches the physical behavior of infectiously developed prints, where grain is concentrated at the boundary between fully developed (dark) and undeveloped (light) areas.
 
----
-
-## Parameter Reference
-
-<img src={lith_control_panel} alt="Videomancer front panel with Lith loaded"/>
-*Videomancer's front panel with Lith active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Exposure
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Exposure sets the center point of the lith threshold — the luminance value around which the infectious development transition occurs. Think of it as the enlarger exposure dial in the darkroom. Low values place the threshold near black, leaving most of the image as paper white. High values push the threshold up, sending more of the image into the developed (dark) zone. The Spread control widens the transition zone around this center point, and the Infection control determines how steep the curve is within that zone.
-
----
-
-#### Knob 2 — Infectn
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 68% |
-| Suffix | % |
-
-Infection controls the steepness of the infectious development transfer curve within the transition zone. At low values, the transition from black to paper white is gradual — a soft slope with multiple intermediate tones. At high values, the transition becomes abrupt — a near-vertical cliff that mimics the autocatalytic feedback of real lith chemistry. The behavior changes depending on the Developer toggle: in Dilute mode, four discrete steepness levels produce a range of gradual transitions; in Strong mode, the curve snaps between a hard binary step and a slightly softer step.
-
----
-
-#### Knob 3 — Spread
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Spread controls the width of the mid-tone transition zone — the range of input luminance values that fall between pure black and paper white. Wide spread creates a broad transition with more room for grain, toning, and intermediate tones. Narrow spread compresses the transition to a thin band, producing a harder silhouette effect. The minimum spread is 16 counts (the +8 offset ensures there is always a finite transition zone even at the zero setting).
-
----
-
-#### Knob 4 — Grain
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 29% |
-| Suffix | % |
-
-Grain controls the intensity of the LFSR-based noise added to the transition zone. The noise is only applied where the mid-tone flag is active — pixels that fall between the low and high threshold edges. At zero, the lith effect is clean and graphic. As grain increases, the transition zone fills with random texture that breaks up the hard edge between black and white. The Grain toggle (Switch 8) selects between fine grain (6-bit LFSR range, subtle) and coarse grain (wider bit extraction, more aggressive).
-
----
-
-#### Knob 5 — Warmth
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 59% |
-| Suffix | % |
-
-Warmth controls the intensity of warm brown toning applied to shadow regions. The toning shifts U (blue-yellow axis) downward and V (red-cyan axis) upward, creating a sepia-brown color cast in areas where the lith Y value falls below 400. At zero, the shadows are neutral black. At maximum, deep shadows carry a rich brown tint characteristic of lith chemistry. The shift is proportional — Warmth divided by 16 sets the U displacement, and Warmth divided by 32 adds an extra V push for a redder brown.
-
----
-
-#### Knob 6 — Paper
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 88% |
-| Suffix | % |
-
-Paper sets the maximum brightness that the paper white can reach — the ceiling of the transfer curve. In the darkroom, this corresponds to the point at which you pull the print from the developer: pull early and the highlights are soft, creamy, and subdued; let development run longer and the paper brightens to full white. At low Paper values, the entire processed image is compressed into a dark, moody range. At maximum, highlights reach full brightness (1023). This control interacts with every other parameter because the entire transfer curve scales proportionally with Paper.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Developer** | Dilute | Strong |
-| **8 — Grain** | Fine | Coarse |
-| **9 — Split** | Off | On |
-| **10 — Invert** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles control independent binary options that modify different stages of the pipeline. Developer (Switch 7) and Grain (Switch 8) affect the mid-tone processing character. Split (Switch 9) adds post-processing highlight toning. Invert (Switch 10) applies a full-scale luminance complement at the output stage. Bypass (Switch 11) routes the original signal directly to the output.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Controls the wet/dry crossfade between the original input and the processed lith output. At 0%, the output is entirely the original (dry) signal. At 100%, the output is entirely the processed (wet) signal. Intermediate values blend the two, which can create a subtle lith-tinted overlay on the original — a gentler version of the effect that preserves some of the source's tonal range while adding warmth and grain.
-
-
-
+:::note
+Because the transfer curve is compare-based with no variable multiplications, it evaluates in a single clock cycle. The "Infection" parameter does not create a smooth mathematical curve: it selects among a small number of discrete output levels within the transition zone. This gives a stepped, quantized feel to the mid-tones that actually approximates the abrupt nature of real infectious development quite well.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from basic threshold printing to full lith darkroom emulation with toning, grain, and split-tone processing.
+These exercises progress from a basic lith print look to a fully styled split-tone effect.
+### Exercise 1: Basic Lith Print
 
-### Exercise 1: Basic Lith Threshold
+![Basic Lith Print result](/img/instruments/videomancer/lith/lith_ex1_s1.png)
+*Basic Lith Print — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: lith_source1_dog, after: lith_ex1_s1 },
-    { label: "Fruit", before: lith_source2_fruit, after: lith_ex1_s2 },
-    { label: "Turtle", before: lith_source3_turtle, after: lith_ex1_s3 },
-    { label: "Pattern", before: lith_source4_pattern, after: lith_ex1_s4 },
-    { label: "Girl", before: lith_source5_girl, after: lith_ex1_s5 },
-    { label: "Wood", before: lith_source6_wood, after: lith_ex1_s6 },
-  ]}
-/>
-*Basic Lith Threshold — simulated result across source images.*
-**Source**: A portrait or figure with a full tonal range — both deep shadows and bright highlights.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Learn the fundamental lith threshold behavior: Exposure, Spread, and their interaction with Paper white.
+#### Learning Outcomes
 
-1. **Set Paper to maximum**: Turn Paper fully clockwise to set the brightest possible highlight.
-2. **Center the threshold**: Set Exposure to about 50%. The image should show a clear division between black and white regions.
-3. **Widen the spread**: Increase Spread from minimum. Watch the abrupt black/white boundary soften into a transition zone with intermediate tones.
-4. **Shift the exposure**: Sweep Exposure slowly from low to high. Watch the boundary slide across the image — more of the frame goes dark as exposure increases.
-5. **Lower Paper**: Pull Paper back to about 50%. The highlights dim to a soft grey rather than blinding white.
+A high-contrast, nearly two-tone image with clean paper-white highlights and deep shadows (the basic lith print.)
 
-**Key concepts**: Exposure sets threshold center, Spread controls transition width, Paper sets highlight ceiling, these three controls define the fundamental lith print geometry
+#### Key Concepts
 
----
+- Exposure threshold separates the image into shadow and highlight zones
+- The transfer curve collapses mid-tones into either black or paper white
+- Grain concentrates in the transition zone
 
-### Exercise 2: Infectious Development and Toning
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: lith_source1_dog, after: lith_ex2_s1 },
-    { label: "Fruit", before: lith_source2_fruit, after: lith_ex2_s2 },
-    { label: "Turtle", before: lith_source3_turtle, after: lith_ex2_s3 },
-    { label: "Pattern", before: lith_source4_pattern, after: lith_ex2_s4 },
-    { label: "Girl", before: lith_source5_girl, after: lith_ex2_s5 },
-    { label: "Wood", before: lith_source6_wood, after: lith_ex2_s6 },
-  ]}
-/>
-*Infectious Development and Toning — simulated result across source images.*
-**Source**: Footage with gradual tonal transitions — overcast skies, fog, or soft lighting.
+A portrait or scene with a range of brightness values, ideally with some mid-tone detail to see the threshold effect.
 
-**What You'll Create**: Explore the infectious development curve and warm brown toning.
+#### Steps
 
-1. **Set a moderate threshold**: Exposure ~50%, Spread ~40%, Paper ~90%.
-2. **Sweep Infection**: Slowly increase Infection from zero. Watch the mid-tone transition steepen — smooth gradients collapse into sharper divisions.
-3. **Toggle Developer**: Switch from Dilute to Strong. Notice how the same Infection setting produces a much harder step.
-4. **Add warmth**: Increase Warmth from zero. The dark regions take on a brown-sepia cast while the paper whites remain neutral.
-5. **Enable split tone**: Toggle Split On. The highlights shift to a cool blue-grey, creating warm/cool contrast.
-6. **Add grain**: Increase Grain to about 30%. Texture appears in the transition zone — the narrow band between black and paper white.
+1. Set **Exposure** (Knob 1) to ~50%, **Infectn** (Knob 2) to ~50%, **Developer** (Switch 7) to Dilute.
+2. Set **Paper** (Knob 6) to ~90% for bright paper white.
+3. Set **Warmth** (Knob 5) to 0% to see the effect in pure monochrome first.
+4. Slowly sweep **Exposure** up and down. Watch how the threshold moves, converting different tonal zones between black and white.
+5. Increase **Infectn** to ~80%. The transition becomes more abrupt (fewer mid-tone grays survive.)
 
-**Key concepts**: Infection shapes the transfer curve steepness, Developer selects the curve family, Warmth tones shadows independently, Split adds cool counterpoint to warm shadows, grain concentrates in mid-tones
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Exposure | ~50% |
+| Infectn | ~50% (step 2) / ~80% (step 5) |
+| Spread | ~50% |
+| Grain | ~0% |
+| Warmth | ~0% |
+| Paper | ~90% |
+| Developer | Dilute |
+| Grain | Fine |
+| Split | Off |
+| Invert | Off |
+| Bypass | Off |
+| Mix | ~100% |
 
 ---
 
-### Exercise 3: Full Lith Darkroom
+### Exercise 2: Warm-Tone Lith with Grain
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: lith_source1_dog, after: lith_ex3_s1 },
-    { label: "Fruit", before: lith_source2_fruit, after: lith_ex3_s2 },
-    { label: "Turtle", before: lith_source3_turtle, after: lith_ex3_s3 },
-    { label: "Pattern", before: lith_source4_pattern, after: lith_ex3_s4 },
-    { label: "Girl", before: lith_source5_girl, after: lith_ex3_s5 },
-    { label: "Wood", before: lith_source6_wood, after: lith_ex3_s6 },
-  ]}
-/>
-*Full Lith Darkroom — simulated result across source images.*
-**Source**: High-contrast material — backlit silhouettes, stage lighting, or architectural shadows.
+![Warm-Tone Lith with Grain result](/img/instruments/videomancer/lith/lith_ex2_s1.png)
+*Warm-Tone Lith with Grain — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Combine all controls for a complete lith darkroom print with grain, toning, and split-tone.
+***A description of the exercise illustration.***
 
-1. **Establish the print**: Exposure ~60%, Spread ~30%, Infection ~80%, Paper ~85%.
-2. **Strong developer**: Toggle Developer to Strong for maximum infectious contrast.
-3. **Full warmth**: Set Warmth to ~80%. Deep shadows glow brown.
-4. **Split tone**: Enable Split for cool highlight accents.
-5. **Coarse grain**: Set Grain to ~40%, toggle Grain to Coarse. Heavy texture fills the transition zone.
-6. **Invert**: Toggle Invert to see the print as a negative — warm highlights, cool shadows.
-7. **Mix**: Pull Mix back to ~70% to blend lith processing with the original, creating a tinted overlay.
+#### Learning Outcomes
 
-**Key concepts**: All lith parameters interact — Exposure and Spread define the threshold geometry, Infection and Developer shape the curve within it, Warmth and Split color the result, grain concentrates in the transition zone, and Mix blends with the dry signal
+A classic warm-toned lith print with organic grain in the transition zone (the darkroom aesthetic.)
+
+#### Key Concepts
+
+- Warmth adds brown toning to shadow regions only
+- Grain appears only in the mid-tone transition zone
+- Paper controls the ceiling brightness of highlights
+
+#### Video Source
+
+A portrait or figure study: the warm shadows on skin tones produce an especially evocative result.
+
+#### Steps
+
+1. Set **Exposure** to ~50%, **Infectn** to ~70%, **Spread** to ~50%.
+2. Increase **Warmth** (Knob 5) to ~60%. Shadow areas turn warm brown.
+3. Add **Grain** (Knob 4) at ~40% with **Grain** (Switch 8) set to Fine. Notice how grain appears only in the transition zone between dark and light.
+4. Reduce **Paper** (Knob 6) to ~80%. Highlights become a warmer, creamier white.
+5. Try switching **Developer** to Strong. The transition sharpens, and the grain zone narrows.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Exposure | ~50% |
+| Infectn | ~70% |
+| Spread | ~50% |
+| Grain | ~40% |
+| Warmth | ~60% |
+| Paper | ~80% |
+| Developer | Dilute (step 1) / Strong (step 5) |
+| Grain | Fine |
+| Split | Off |
+| Invert | Off |
+| Bypass | Off |
+| Mix | ~100% |
 
 ---
 
+### Exercise 3: Split-Tone Masterprint
 
-## Tips
+![Split-Tone Masterprint result](/img/instruments/videomancer/lith/lith_ex3_s1.png)
+*Split-Tone Masterprint — simulated result across source images.*
+#### Exercise Illustration
 
-- **Warmth is fixed at Y=400**: The warm brown toning always activates below lith Y=400 regardless of the Exposure setting. This means the color boundary is independent of the contrast boundary.
-- **Split tone adds depth**: Enabling Split creates a warm-shadow / cool-highlight contrast that prevents the image from looking monotone even at extreme settings.
-- **Mix for tinted overlay**: Pulling Mix back from 100% blends the lith processing with the original, creating a color-tinted version of the source rather than a full replacement.
-- **Invert for negatives**: Toggling Invert produces a lith negative — dark paper with bright grain and inverted toning. The visual character is very different from simply inverting the source before processing.
-- **Feedback loops**: Route the output back to the input for recursive lith processing. Each pass narrows the transition zone further, eventually collapsing the image to pure black and white.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A split-toned lith print with warm brown shadows, cool blue highlights, and visible grain in the razor-thin transition zone.
+
+#### Key Concepts
+
+- Split-tone combines warm shadows with cool highlights
+- Strong developer produces the most dramatic shadow-highlight separation
+- High infection with narrow spread creates a near-binary result
+
+#### Video Source
+
+High-contrast subject matter: architecture, trees against sky, or strong backlit portraits.
+
+#### Steps
+
+1. Set **Developer** to Strong, **Infectn** to ~80%, **Spread** to ~30%.
+2. Set **Warmth** to ~80% for deep brown shadows.
+3. Enable **Split** (Switch 9). Bright areas gain a cool blue tint.
+4. Add **Grain** at ~50%, Coarse, for visible organic texture in the transition zone.
+5. Set **Exposure** to ~60% and **Paper** to ~90%.
+6. Reduce **Mix** to ~80% to let a hint of the original image show through.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Exposure | ~60% |
+| Infectn | ~80% |
+| Spread | ~30% |
+| Grain | ~50% |
+| Warmth | ~80% |
+| Paper | ~90% |
+| Developer | Strong |
+| Grain | Coarse |
+| Split | On |
+| Invert | Off |
+| Bypass | Off |
+| Mix | ~80% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Autocatalytic** | A chemical reaction whose products accelerate the same reaction, creating positive feedback. |
-| **BT.601** | The ITU-R standard defining the YUV color space used by standard-definition video and throughout the Videomancer pipeline. |
-| **Dilute Developer** | Lith chemistry diluted to slow the development process and widen the transition between developed and undeveloped regions. |
-| **Infectious Development** | The autocatalytic behavior of lith developer where heavily exposed areas accelerate the development of neighboring areas. |
-| **LFSR** | Linear Feedback Shift Register; a deterministic pseudo-random number generator used for grain noise. |
-| **Lith Printing** | A photographic darkroom process using dilute lith developer and overexposure to produce extreme contrast with warm-toned shadows. |
-| **Mid-tone Flag** | A per-pixel boolean indicating that the input luminance falls within the transition zone between the low and high threshold edges. |
-| **Paper White** | The maximum brightness of the unexposed paper surface in a photographic print; in Lith, the ceiling of the transfer curve. |
-| **Split Tone** | A toning technique where shadows and highlights receive different color casts — typically warm shadows and cool highlights. |
-| **Transfer Curve** | The mathematical function mapping input luminance to output luminance, here shaped by infectious development dynamics. |
+- **Chlorobromide Paper**: Photographic paper with a silver emulsion containing both silver chloride and silver bromide, producing warm-tone results in lith development.
+
+- **Infectious Development**: A self-accelerating chemical reaction where the byproducts of silver development catalyze further development in adjacent areas, creating exponentially faster shadow formation.
+
+- **LFSR**: Linear Feedback Shift Register; a deterministic pseudo-random number generator used here for grain simulation.
+
+- **Lith Developer**: A high-contrast graphic arts developer (typically hydroquinone-based) used at extreme dilutions for creative fine art printing.
+
+- **Lith Printing**: A creative darkroom technique using overexposed paper developed in dilute lith developer to produce extreme contrast, warm tones, and organic grain.
+
+- **Snatch Point**: The moment in lith development when the print is removed from the developer tray. Earlier snatching preserves more mid-tones; later snatching increases contrast.
+
+- **Split Tone**: A printing technique where shadow and highlight areas receive different color tints (typically warm shadows and cool highlights.)
+
+- **Transfer Curve**: The mathematical relationship between input brightness and output brightness, which in lith printing is highly nonlinear with an abrupt transition.
 
 ---

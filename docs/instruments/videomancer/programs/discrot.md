@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 86
 slug: /instruments/videomancer/discrot
@@ -7,377 +7,421 @@ image: /img/instruments/videomancer/discrot/discrot_hero_s1.png
 description: "Every technology carries the seeds of its own decay."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import discrot_control_panel from '/img/instruments/videomancer/discrot/discrot_control_panel.png';
-import discrot_source1_skull from '/img/instruments/videomancer/discrot/discrot_source1_skull.png';
-import discrot_source2_car from '/img/instruments/videomancer/discrot/discrot_source2_car.png';
-import discrot_source3_turtle from '/img/instruments/videomancer/discrot/discrot_source3_turtle.png';
-import discrot_source4_pattern from '/img/instruments/videomancer/discrot/discrot_source4_pattern.png';
-import discrot_source5_woman from '/img/instruments/videomancer/discrot/discrot_source5_woman.png';
-import discrot_source6_paint from '/img/instruments/videomancer/discrot/discrot_source6_paint.png';
-import discrot_hero_s1 from '/img/instruments/videomancer/discrot/discrot_hero_s1.png';
-import discrot_hero_s2 from '/img/instruments/videomancer/discrot/discrot_hero_s2.png';
-import discrot_hero_s3 from '/img/instruments/videomancer/discrot/discrot_hero_s3.png';
-import discrot_hero_s4 from '/img/instruments/videomancer/discrot/discrot_hero_s4.png';
-import discrot_hero_s5 from '/img/instruments/videomancer/discrot/discrot_hero_s5.png';
-import discrot_hero_s6 from '/img/instruments/videomancer/discrot/discrot_hero_s6.png';
-import discrot_ex1_s1 from '/img/instruments/videomancer/discrot/discrot_ex1_s1.png';
-import discrot_ex1_s2 from '/img/instruments/videomancer/discrot/discrot_ex1_s2.png';
-import discrot_ex1_s3 from '/img/instruments/videomancer/discrot/discrot_ex1_s3.png';
-import discrot_ex1_s4 from '/img/instruments/videomancer/discrot/discrot_ex1_s4.png';
-import discrot_ex1_s5 from '/img/instruments/videomancer/discrot/discrot_ex1_s5.png';
-import discrot_ex1_s6 from '/img/instruments/videomancer/discrot/discrot_ex1_s6.png';
-import discrot_ex2_s1 from '/img/instruments/videomancer/discrot/discrot_ex2_s1.png';
-import discrot_ex2_s2 from '/img/instruments/videomancer/discrot/discrot_ex2_s2.png';
-import discrot_ex2_s3 from '/img/instruments/videomancer/discrot/discrot_ex2_s3.png';
-import discrot_ex2_s4 from '/img/instruments/videomancer/discrot/discrot_ex2_s4.png';
-import discrot_ex2_s5 from '/img/instruments/videomancer/discrot/discrot_ex2_s5.png';
-import discrot_ex2_s6 from '/img/instruments/videomancer/discrot/discrot_ex2_s6.png';
-import discrot_ex3_s1 from '/img/instruments/videomancer/discrot/discrot_ex3_s1.png';
-import discrot_ex3_s2 from '/img/instruments/videomancer/discrot/discrot_ex3_s2.png';
-import discrot_ex3_s3 from '/img/instruments/videomancer/discrot/discrot_ex3_s3.png';
-import discrot_ex3_s4 from '/img/instruments/videomancer/discrot/discrot_ex3_s4.png';
-import discrot_ex3_s5 from '/img/instruments/videomancer/discrot/discrot_ex3_s5.png';
-import discrot_ex3_s6 from '/img/instruments/videomancer/discrot/discrot_ex3_s6.png';
-
-# Discrot
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: discrot_source1_skull, after: discrot_hero_s1 },
-    { label: "Car", before: discrot_source2_car, after: discrot_hero_s2 },
-    { label: "Turtle", before: discrot_source3_turtle, after: discrot_hero_s3 },
-    { label: "Pattern", before: discrot_source4_pattern, after: discrot_hero_s4 },
-    { label: "Woman", before: discrot_source5_woman, after: discrot_hero_s5 },
-    { label: "Paint", before: discrot_source6_paint, after: discrot_hero_s6 },
-  ]}
-/>
-*Discrot applying concentric ring dropouts and speckle noise to simulate LaserDisc oxidation damage on a live video signal.*
+![Discrot hero image](/img/instruments/videomancer/discrot/discrot_hero_s1.png)
+*Discrot simulating progressive LaserDisc oxidation with concentric ring dropouts, specular speckle noise, and chroma desaturation across a degrading video signal.*
 
 ---
 
 ## Overview
 
-Every technology carries the seeds of its own decay. LaserDiscs and CED videodiscs encoded analog video into physical structures — pits pressed into aluminum, grooves cut into carbon — that a beam of light or a stylus tip could read back as a moving image. When those physical structures corrode, the video degrades in ways that are unique to the medium: concentric bands of missing picture, bright speckle from misread pits, snow filling the gaps where signal used to be, and color draining away before brightness does.
+Discrot is a real-time disc rot simulator that recreates the progressive physical degradation of optical and capacitance-based video disc formats. It models the specific failure modes of LaserDisc oxidation and CED stylus wear: concentric ring dropouts that trace the disc's spiral track structure, specular speckle noise from laser read errors, chroma desaturation as the FM color carrier deteriorates ahead of the luminance signal, and random analog snow in the most damaged regions. The damage pattern can optionally rotate across the frame, mimicking the disc spinning under the laser pickup.
 
-Discrot recreates that decay as a real-time video effect. It computes a radial distance from screen center for every pixel — approximating the concentric groove structure of a spinning disc — and applies probabilistic damage based on ring position and an LFSR noise source. Damaged pixels either drop to black or freeze at their last good value. Specular speckle and additive snow fill the corrupted regions. Chroma desaturates independently of luma, mimicking how FM color carriers fail before brightness carriers in analog disc formats. The name is a portmanteau of *disc* (the optical or capacitance medium) and *rot* (the oxidation process that destroys it).
+At low settings, Discrot adds subtle, localized corruption: a faint ring of missing pixels here, a scatter of bright speckle dots there. At high settings, entire concentric bands of the image collapse into black or noise, color bleeds away from damaged zones, and frame skipping produces the jarring temporal discontinuities of a disc that can no longer be tracked. The result is an uncanny reproduction of a format dying on screen.
 
-At low Damage settings, Discrot adds subtle ring-shaped interference that suggests a slightly worn disc. At high settings with Heavy Rot engaged, the image disintegrates into concentric bands of snow, speckle, and black — a faithful recreation of a disc that has been sitting in a humid garage for thirty years. Because there is no bypass toggle, the only way to reduce the effect to zero is the Mix fader.
+:::note
+Discrot is a ***processing*** program. It transforms an input video signal. Without a source connected, there is nothing to degrade.
+:::
+
+### What's In a Name?
+
+***Disc rot*** is the colloquial term for the physical deterioration of optical disc media: most famously LaserDiscs, but also some early CDs and DVDs. The aluminum reflective layer oxidizes through pinholes in the protective lacquer, creating translucent spots the laser cannot read. The name **Discrot** compresses that phenomenon into a single word: a disc that has rotted, a signal that is rotting before your eyes.
 
 ---
 
 ## Quick Start
 
-1. **Mix is your bypass**: Since there is no bypass toggle, use the Mix fader (Pot 12) for A/B comparison. Full counter-clockwise = clean signal; full clockwise = full effect.
-2. **Color dies first**: Increase Desat before cranking Damage for the most realistic disc rot look — real oxidation degrades the chroma FM carrier before the luma carrier.
-3. **Hold mode for subtlety**: Hold dropout (Toggle 8) produces more naturalistic artifacts than black dropout because real disc players attempted to conceal errors by repeating previous samples.
+1. Connect a video source and set **Mix** (Fader 12) fully clockwise. Turn **Damage** (Knob 1) clockwise to about 25%. Concentric rings of black dropout appear across the image, radiating outward from the center of the frame.
+2. Increase **Speckle** (Knob 2) to about 25%. Bright white dots scatter across the damaged regions (specular noise from simulated laser read errors.)
+3. Set **Animate** (Switch 9) to **Rotate**. The damage pattern slowly drifts across the frame as the virtual disc spins. Adjust **Rotation** (Knob 4) to control the speed.
+4. Increase **Desat** (Knob 5) clockwise. Color drains from the damaged bands first, leaving monochrome ghosts where the chroma carrier has failed.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Discrot loaded](/img/instruments/videomancer/discrot/discrot_control_panel.png)
+*Videomancer's front panel with Discrot active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Damage
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Damage** controls the probability that any pixel inside a damage band will drop out. At 0%, fully counterclockwise, no pixels are affected: the image passes through clean. As the value increases, more pixels within each concentric ring fail the LFSR threshold test and are replaced by dropout fill. At 100%, fully clockwise, every pixel inside a damage band is corrupted.
+
+The damage decision is per-pixel and pseudo-random: each pixel's fate is determined by comparing a 16-bit ***linear feedback shift register*** noise value against the Damage threshold. This produces an organic, varying edge to each damaged region rather than a hard geometric boundary.
+
+:::tip
+Start with Damage around 25% for a realistic, mild disc rot look. Values above 50% produce catastrophic damage more typical of a disc that has been stored improperly for decades.
+:::
+
+---
+
+### Knob 2 — Speckle
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Speckle** controls the intensity of bright specular noise dots within damaged regions. At 0%, no speckle is added: dropouts are silent. As the value increases, more pixels in damaged areas are replaced with full-brightness white. At 100%, damaged areas become dense fields of white specular points.
+
+Speckle only appears where the damage decision has already flagged a pixel: it layers on top of the dropout fill. This reproduces the bright "sparkle" artifacts seen on real rotted LaserDiscs, where the laser encounters pitted aluminum and returns a maximum-intensity reflection instead of meaningful data.
+
+---
+
+### Knob 3 — Ring Width
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Ring Width** controls the width of each concentric damage band. At 0%, damage bands are at their narrowest. At 50%, bands occupy roughly half the period of each ring. At 100%, the bands cover the full ring period, meaning every radial position is potentially damaged. The interaction between Ring Width and **Damage** (Knob 1) determines the overall visual density of corruption: narrow bands with high damage create thin arcs of severe dropout, while wide bands with low damage produce broad regions of sparse speckle.
+
+---
+
+### Knob 4 — Rotation
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Rotation** sets the animation speed of the damage pattern when **Animate** (Switch 9) is set to **Rotate**. At 0%, the pattern rotates very slowly. At 100%, the pattern sweeps rapidly across the frame. When Animate is set to **Static**, the Rotation knob has no visible effect.
+
+The rotation is implemented as a 16-bit accumulator that adds the Rotation parameter value on each frame. The accumulated offset shifts the ring index computation, causing the concentric damage bands to drift across the image.
+
+---
+
+### Knob 5 — Desat
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 37.5% |
+
+**Desat** controls the amount of color desaturation applied inside damaged regions. At 0%, chroma passes through unchanged even in damaged areas. As the value increases, the U and V chrominance channels are attenuated toward their neutral midpoint. At 100%, damaged areas are fully desaturated (monochrome.)
+
+This models the real-world behavior of disc rot: the FM chroma subcarrier is more fragile than the baseband luminance signal, so color information deteriorates first. A disc in the early stages of rot often plays back with washed-out or absent color before the picture itself breaks up.
+
+:::note
+Desat affects only pixels that are inside a damage band. Undamaged regions retain full color regardless of this setting.
+:::
+
+---
+
+### Knob 6 — Snow
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 12.5% |
+
+**Snow** controls how much random analog static is blended into severely damaged areas. At 0%, no snow is added. As the value increases, the LFSR output is summed with the luma channel in regions where the damage level exceeds a threshold derived from this control. At 100%, heavily damaged areas fill with full-amplitude white noise.
+
+Snow layers on top of all other damage effects. In real disc rot, the worst areas degenerate from structured dropout into pure analog noise: the player's error correction has given up entirely and the output falls back to random RF hash.
+
+---
+
+### Switch 7 — Rot Pattern
+
+| Property | Value |
+|----------|-------|
+| Off | Rings |
+| On | Streaks |
+| Default | Rings |
+
+**Rot Pattern** selects the spatial structure of the damage. With the switch set to **Rings**, damage follows concentric circular bands radiating from the center of the frame: matching how oxidation spreads from the disc edge or inner hub along the spiral track. With the switch set to **Streaks**, damage follows radial angular sectors instead, creating spoke-like patterns that shoot outward from the center.
+
+Rings mode uses the computed radial distance modulo <b>Ring Width</b> to determine per-pixel band membership. Streaks mode uses a pseudo-angular approximation (the XOR of the absolute horizontal and vertical displacements from center) as the band index instead.
+
+---
+
+### Switch 8 — Drop Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Black |
+| On | Hold |
+| Default | Black |
+
+**Drop Mode** selects the fill behavior for dropped-out pixels. With the switch set to **Black**, damaged pixels are replaced with black (Y = 0, U = 512, V = 512): a clean, hard dropout. With the switch set to **Hold**, damaged pixels are replaced with the most recent undamaged pixel values: a ***sample-and-hold*** fill that smears the last good data across the gap.
+
+:::tip
+**Hold** mode produces a more analog, "sticky" look reminiscent of a real player struggling to maintain sync. **Black** mode creates a cleaner, more digital blackout look.
+:::
+
+---
+
+### Switch 9 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Static |
+| On | Rotate |
+| Default | Rotate |
+
+**Animate** controls whether the damage pattern is stationary or rotating. With the switch set to **Static**, the concentric ring or streak pattern remains fixed on screen, frame after frame. With the switch set to **Rotate**, the pattern slowly drifts, controlled by the **Rotation** knob (Knob 4). In Rotate mode, the rotation offset accumulates smoothly across frames, creating the impression of a disc spinning beneath the laser pickup.
+
+---
+
+### Switch 10 — Frame Skip
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Frame Skip** enables a pseudo-random temporal glitch that freezes the output on occasional frames. With the switch set to **Off**, every frame processes live. With the switch set to **On**, a random LFSR sample is checked at each vertical sync; roughly one in four frames may toggle the freeze state, causing the output to hold the last non-skipped result. This reproduces the temporal stutter of a disc player whose tracking servo is intermittently losing lock.
+
+---
+
+### Switch 11 — Heavy Rot
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Heavy Rot** doubles the effective Damage threshold, dramatically increasing the density and severity of dropout. With the switch set to **Off**, the Damage knob operates at its normal range. With the switch set to **On**, the threshold is left-shifted by one bit (doubled), clamped to the 10-bit maximum of 1023. A Damage setting of 50% with Heavy Rot On behaves like 100% Damage with Heavy Rot Off.
+
+:::warning
+Heavy Rot can obliterate the image rapidly. Use it when you want to simulate catastrophic, terminal-stage disc rot: the kind where the disc is probably destined for the landfill.
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input and the wet (damaged) output. At 0%, the output is the clean input: no damage is visible. At 100%, the output is fully processed. Intermediate values blend the two, allowing subtle layering of disc rot over a clean signal.
+
+The mix is implemented via three `interpolator_u` instances (one per YUV channel), each requiring 4 clock cycles. The dry input path is delay-matched through an 8-stage shift register so that the clean and processed signals arrive at the interpolator inputs in phase.
 
 ---
 
 ## Background
 
-### LaserDisc Technology
+### LaserDiscs and disc rot
 
-The LaserDisc (LD), introduced by Philips and MCA in 1978, was the first commercial optical disc format for video. A 30 cm (12-inch) disc encoded analog composite video as a frequency-modulated carrier, physically represented by a spiral track of microscopic pits stamped into an aluminum reflective layer sandwiched between two acrylic substrates. A helium-neon (later semiconductor) laser read the pit pattern through the transparent substrate. Because the video signal was analog FM rather than digital, there was no error correction in the traditional sense — any physical damage to the reflective layer translated directly into visible artifacts in the reconstructed picture.
+The LaserDisc format, introduced in 1978, recorded analog video as a frequency-modulated signal encoded in microscopic pits on an aluminum-coated plastic disc. A laser read the pattern of reflections to reconstruct the video signal. The format offered a picture quality far superior to VHS tape, but it came with a specific vulnerability: the aluminum reflective layer could oxidize if the protective lacquer coating developed pinholes. Oxygen and moisture penetrated through these defects, slowly eating away at the reflective surface.
 
-### CED Videodiscs
+The resulting damage: ***disc rot***: appeared as translucent or opaque spots that the laser could no longer read. Because the damage followed the disc's spiral track structure, it manifested on screen as concentric arcs or rings of corrupted video. A mildly rotted disc might show occasional sparkle or brief color dropout during playback. A severely rotted disc could produce whole seconds of unwatchable noise.
 
-RCA's Capacitance Electronic Disc (CED), marketed as SelectaVision from 1981 to 1986, took a different approach. A diamond stylus rode in a physical groove pressed into a carbon-loaded PVC disc, reading capacitance variations between the stylus electrode and a conductive layer beneath the groove floor. CED discs were vulnerable to groove wear, static charge, and dust contamination. Damaged areas produced streaks and dropouts that followed the disc's radial structure — similar in appearance to disc rot but caused by mechanical wear rather than chemical oxidation.
+### CED VideoDisc
 
-### What Is Disc Rot?
+The ***Capacitance Electronic Disc*** (CED), marketed as SelectaVision by RCA, was a different format entirely. Rather than a laser, it used a diamond stylus that rode in grooves on the disc surface, reading capacitance variations to decode the video signal. CED discs suffered from groove wear and conductive-coating breakdown, producing damage patterns that were more radial (following the stylus path) than concentric. Discrot's **Streaks** mode recreates this radial damage pattern.
 
-Disc rot is the progressive degradation of the aluminum reflective layer inside a LaserDisc. Moisture penetrates through imperfections in the acrylic substrate or the bonding adhesive at the disc's edge, oxidizing the aluminum into transparent aluminum oxide. The laser, unable to read the corroded areas, produces read errors that appear as:
+### Piecewise-linear radial distance
 
-1. **Concentric ring dropouts** — bands of corrupted or missing video tracing circular arcs across the frame, following the spiral track structure
-2. **Specular speckle** — bright white noise dots from laser scattering off partially corroded pits
-3. **Color loss before luma loss** — the FM chroma subcarrier, modulated at higher frequencies, is more sensitive to pit geometry degradation than the lower-frequency luma carrier
-4. **Snow fill** — in severely rotted regions, the signal degrades to full random noise
-
-The damage typically spreads inward from the disc edge or outward from the center hub, producing characteristic ring-shaped zones of increasing degradation.
-
-### Analog Video Artifacts vs. Digital Errors
-
-Digital media either reads correctly or fails completely — there is no graceful degradation. Analog disc formats occupy a middle ground: the signal degrades gradually, producing a rich vocabulary of visual artifacts that depend on the specific failure mechanism. A slightly warped disc produces subtle wobble; a mildly oxidized region loses color before losing brightness; a severely corroded section dissolves into snow. Discrot models these failure modes as independent, stackable layers, each with its own control.
-
-### Media Preservation and Aesthetic Value
-
-The disc rot aesthetic has become a visual shorthand for technological obsolescence and analog nostalgia. Archivists document the specific damage patterns of deteriorating collections; video artists deliberately seek out rotted discs for their unique visual textures. Discrot makes these textures available as a controllable effect — no decaying disc required.
+Computing the true distance from each pixel to the center of the frame would require a square root or CORDIC algorithm: expensive in FPGA logic. Discrot uses a ***piecewise-linear approximation*** instead: $r \approx \max(|dx|, |dy|) + \frac{\min(|dx|, |dy|)}{4}$. This octagonal approximation is within a few percent of the true Euclidean distance for most of the frame and costs only a comparator, a subtractor, and a shift: no multipliers, no lookup tables.
 
 
 ---
 
 ## Signal Flow
 
-Position Counters → Radial Distance → Rotation Accumulator → ... → Sync Delay Pipeline → Wet/Dry Mix
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Position Counters ──────────────────────────────────────────
-│   ├─ H counter (pixel position within line)
-│   ├─ V counter (line number within frame)
-│   ├─ Frame counter (frame number)
-│   └─ LFSR update (per-pixel, per-line, per-frame taps)
-│
-├── Radial Distance ────────────────────────────────────────────
-│   ├─ dx = |h_count - 960|
-│   ├─ dy = |v_count - 540|
-│   └─ radius ≈ max(dx, dy) + min(dx, dy) / 4
-│
-├── Rotation Accumulator ───────────────────────────────────────
-│   └─ rot_offset += rotation_speed  (per frame, if Animate on)
-│
-├── Ring Index + Damage Decision ───────────────────────────────
-│   ├─ ring_pos = (radius + rot_offset) mod ring_width
-│   ├─ threshold = damage × (2 if Heavy Rot)
-│   ├─ Rings mode:  damaged = ring_pos < ring_width AND lfsr < threshold
-│   └─ Streaks mode: damaged = angle_approx < ring_width AND lfsr < threshold
-│
-├── Damage Application ────────────────────────────────────────
-│   ├─ Dropout:
-│   │   ├─ Black mode  → Y=0, U=512, V=512
-│   │   └─ Hold mode   → Y=held_y, U=held_u, V=held_v
-│   ├─ Speckle: if lfsr < speckle → Y=1023, U=512, V=512
-│   ├─ Snow: if damage_level > snow/2 → Y += lfsr noise
-│   └─ Desaturation: U,V → (val-512)*(1023-desat)/1024+512
-│
-├── Hold-Previous Update ───────────────────────────────────────
-│   └─ When not damaged: held_y/u/v ← current input
-│
-├── Frame Skip ─────────────────────────────────────────────────
-│   └─ Random freeze: if skip_active → use frozen_y/u/v
-│
-├── Sync Delay Pipeline (8 clocks) ─────────────────────────────
-│   └─ hsync_n, vsync_n, field_n, Y, U, V delayed
-│
-└── Wet/Dry Mix (3× interpolator_u, 4 clocks) ─────────────────
-    └─ output = lerp(delayed_dry, processed_wet, mix_amount)
-```
+Three key interactions define Discrot's behavior:
 
-The processing chain applies damage effects only to pixels that fall within the current damage zone — a probabilistic combination of radial position and LFSR noise. Outside the damage zone, pixels pass through unchanged (and update the hold-previous registers). The radial distance computation uses a piecewise-linear approximation that avoids square roots: $r \approx \max(|dx|, |dy|) + \frac{\min(|dx|, |dy|)}{4}$, which produces slightly squarish rings rather than perfect circles — an acceptable approximation that adds character. The rotation accumulator shifts the ring pattern each frame, simulating the disc spinning beneath the laser pickup. Because there is no bypass toggle, the Mix fader at position 12 is the only way to crossfade between dry and wet signals.
+1. **Spatial damage structure**: The radial distance computation establishes each pixel's position relative to the frame center. In Rings mode, the ring index (radius plus rotation offset, modulo ring width) determines whether a pixel falls inside a damage band. In Streaks mode, a pseudo-angular value replaces the ring index. The LFSR then probabilities the damage within those bands, so not every pixel in a band drops out (just those that fail the threshold test.)
 
----
+2. **Layered damage effects**: Within damaged regions, effects are applied in a specific order. First, dropout fill replaces the pixel value (black or hold-previous). Then speckle may override the fill with full white. Then snow adds LFSR noise to the luma in severely damaged pixels. Finally, desaturation scales the chroma channels toward neutral. This layering produces the same progression seen in real disc rot: color loss, then dropout, then complete noise.
 
-## Parameter Reference
+3. **Temporal instability**: The rotation accumulator and frame skip features add time-domain artifacts. Rotation causes the spatial damage pattern to drift smoothly. Frame skip causes random temporal freeze-frames. Together, they simulate a disc player that is both physically degraded and mechanically unstable.
 
-<img src={discrot_control_panel} alt="Videomancer front panel with Discrot loaded"/>
-*Videomancer's front panel with Discrot active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Damage
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-At zero, no damage occurs regardless of ring position. As Damage increases, the LFSR comparison threshold rises and more pixels within each ring band fail the noise check, producing denser dropout patterns. With Heavy Rot enabled (Toggle 11), the effective threshold is doubled, making even moderate Damage settings produce severe corruption. This is the primary intensity control for the entire effect. Internally, controls the probability that any pixel within a damage ring is actually corrupted.
-
----
-
-#### Knob 2 — Speckle
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-Controls the density of bright specular speckle noise within damaged regions. Speckle simulates laser scattering off partially corroded pits — the dots are always maximum white (Y=1023) with neutral chroma, cutting through even heavily desaturated or snow-filled areas. At low values, only occasional bright dots appear; at high values, damaged regions fill with dense white speckling that can overpower the dropout and snow effects.
-
----
-
-#### Knob 3 — Ring Width
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Sets the width of the concentric damage rings (or radial streaks in Streaks mode). Narrow rings create fine, closely-spaced bands of damage separated by clean video — resembling early-stage disc rot where oxidation follows individual track grooves. Wide rings create broad swaths of corrupted image, more like late-stage damage where entire regions of the reflective layer have failed. The ring width also determines the modular arithmetic period for the ring position calculation.
-
----
-
-#### Knob 4 — Rotation
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-Controls the speed of the rotation animation when Animate is enabled (Toggle 9). The rotation accumulator adds this value to a 16-bit offset each frame, shifting the ring pattern across the image. Low values produce a slow, subtle drift; high values spin the damage pattern rapidly. At zero, the pattern is static even when Animate is on. This simulates the disc spinning beneath the laser pickup — faster rotation means more of the disc surface sweeps past the read head per frame.
-
----
-
-#### Knob 5 — Desat
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 37.5% |
-| Suffix | % |
-
-Controls chroma desaturation within damaged regions. Damaged pixels have their U and V channels pulled toward neutral (512) by an amount proportional to this control. This models how the FM chroma subcarrier, modulated at higher frequencies than luma, is more vulnerable to pit geometry degradation. At moderate settings, damaged areas appear washed out — color drains away while brightness (or its absence) remains. At maximum, damaged regions are fully monochrome. Undamaged pixels are not affected.
-
----
-
-#### Knob 6 — Snow
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 12.5% |
-| Suffix | % |
-
-Controls the intensity of additive snow noise in severely damaged areas. Snow is mixed into the luma channel only when the per-pixel damage level exceeds half the Snow threshold, creating a graduated effect where lightly damaged pixels show dropout or speckle while heavily damaged pixels dissolve into static. The snow noise comes from the LFSR, producing the characteristic analog noise grain of a completely lost signal. Higher values lower the damage threshold at which snow appears, spreading the static effect into less damaged regions.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Rot Pattern** | Rings | Streaks |
-| **8 — Drop Mode** | Black | Hold |
-| **9 — Animate** | Static | Rotate |
-| **10 — Frame Skip** | Off | On |
-| **11 — Heavy Rot** | Off | On |
-
-Toggles 7–11 select between paired damage modes and enable secondary effects. There is no bypass toggle — the only way to reduce the effect to zero is the Mix fader (Pot 12). Toggle 7 selects between concentric rings and radial streaks. Toggle 8 selects the dropout behavior (black vs. hold-previous). Toggle 9 enables or disables rotation animation. Toggle 10 enables random frame-skip freezing. Toggle 11 doubles the damage threshold for catastrophic disc rot simulation.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the original input signal and the processed (damaged) output. At 100% (fully clockwise, default), the full disc rot effect is applied. At 0%, the original signal passes through untouched. Because Discrot has no bypass toggle, the Mix fader is the only way to reduce the effect to zero. Intermediate positions blend the damaged and clean signals, which can produce a translucent overlay effect where damage regions appear as semi-transparent disturbance over the original image.
-
-
-
+:::tip
+The LFSR seed is `0xD15C`: hex for "DISC." It advances on every pixel (main process), every line start, and twice per frame (vsync), ensuring a rich, non-repeating noise texture across the entire image.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from mild disc wear to catastrophic media failure, exploring how the damage modes and secondary effects interact.
+These exercises progress from subtle disc degradation to catastrophic format failure, demonstrating the layered interactions of Discrot's damage model.
+### Exercise 1: Gentle Decay
 
-### Exercise 1: Gentle Disc Wear
+![Gentle Decay result](/img/instruments/videomancer/discrot/discrot_ex1_s1.png)
+*Gentle Decay — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: discrot_source1_skull, after: discrot_ex1_s1 },
-    { label: "Car", before: discrot_source2_car, after: discrot_ex1_s2 },
-    { label: "Turtle", before: discrot_source3_turtle, after: discrot_ex1_s3 },
-    { label: "Pattern", before: discrot_source4_pattern, after: discrot_ex1_s4 },
-    { label: "Woman", before: discrot_source5_woman, after: discrot_ex1_s5 },
-    { label: "Paint", before: discrot_source6_paint, after: discrot_ex1_s6 },
-  ]}
-/>
-*Gentle Disc Wear — simulated result across source images.*
-**Source**: Footage with smooth tonal gradients — sky, water, or skin tones work well.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Learn how ring width, damage density, and desaturation interact to produce subtle disc rot artifacts.
+#### Learning Outcomes
 
-1. **First damage**: Set Damage to about 25%. Faint concentric rings of black dropout appear over the image.
-2. **Ring width**: Sweep Ring Width from narrow to wide. Narrow settings produce many thin bands; wide settings produce fewer, broader damaged zones.
-3. **Color loss**: Increase Desat to about 50%. Damaged regions lose color while retaining their dropout pattern — the classic early-stage disc rot look.
-4. **Rotation**: Enable Animate (Toggle 9) and set Rotation to about 20%. The ring pattern slowly drifts, simulating a spinning disc.
-5. **Hold mode**: Switch Drop Mode to Hold (Toggle 8). Damaged pixels now smear horizontally instead of going black — a subtler, more realistic artifact.
+A subtle, realistic disc rot effect: the kind of damage that makes you wonder if the disc is starting to go bad, or if you're just imagining things.
 
-**Key concepts**: Ring width controls damage band spacing, desaturation mimics chroma carrier failure, hold mode simulates dropout concealment, rotation animates the disc spin
+#### Key Concepts
 
----
+- Ring-shaped dropout follows radial distance from center
+- Speckle adds specular noise on top of dropout
+- Desaturation models chroma carrier failure before luma loss
 
-### Exercise 2: Specular Speckle and Snow
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: discrot_source1_skull, after: discrot_ex2_s1 },
-    { label: "Car", before: discrot_source2_car, after: discrot_ex2_s2 },
-    { label: "Turtle", before: discrot_source3_turtle, after: discrot_ex2_s3 },
-    { label: "Pattern", before: discrot_source4_pattern, after: discrot_ex2_s4 },
-    { label: "Woman", before: discrot_source5_woman, after: discrot_ex2_s5 },
-    { label: "Paint", before: discrot_source6_paint, after: discrot_ex2_s6 },
-  ]}
-/>
-*Specular Speckle and Snow — simulated result across source images.*
-**Source**: High-contrast footage — black and white graphics, text, or high-contrast live video.
+A live camera feed or recorded footage with areas of both high and low contrast. Skin tones and saturated colors show the desaturation effect clearly.
 
-**What You'll Create**: Explore the speckle and snow effects that fill damaged regions with noise artifacts.
+#### Steps
 
-1. **Base damage**: Set Damage to about 40% with moderate Ring Width (about 50%).
-2. **Speckle injection**: Slowly increase Speckle. Bright white dots begin appearing within the damaged rings — laser read errors scattering off corroded pits.
-3. **Snow fill**: Increase Snow to about 50%. Heavily damaged areas now fill with additive LFSR noise, blending with the speckle.
-4. **Heavy Rot**: Enable Heavy Rot (Toggle 11). The damage density doubles — nearly the entire image is now affected.
-5. **Radial streaks**: Switch Rot Pattern to Streaks (Toggle 7). The damage pattern changes from concentric rings to radial spokes, creating a different failure aesthetic.
-6. **Mix blend**: Pull Mix down to about 60% to partially reveal the clean image beneath the damage.
+1. Set **Damage** (Knob 1) to about 25%. Faint concentric rings of black dropout appear across the frame.
+2. Add a small amount of **Speckle** (Knob 2), around 15%. Scattered bright dots appear within the damaged rings.
+3. Widen the affected area by setting **Ring Width** (Knob 3) to about 40%.
+4. Set **Animate** (Switch 9) to **Rotate** and adjust **Rotation** (Knob 4) to about 20%. The damage drifts slowly, as though a disc is spinning under the laser.
+5. Increase **Desat** (Knob 5) to about 50%. Color bleeds out of the damaged bands while undamaged areas retain full saturation. This is the most visually distinctive symptom of real disc rot.
 
-**Key concepts**: Speckle produces bright white dots from laser scatter simulation, snow fills severely damaged areas with static noise, Heavy Rot doubles the effective damage threshold, Mix fader is the only bypass mechanism
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Damage | 25.0% |
+| Speckle | 15.0% |
+| Ring Width | 40.0% |
+| Rotation | 20.0% |
+| Desat | 50.0% |
+| Snow | 0.0% |
+| Rot Pattern | Rings |
+| Drop Mode | Black |
+| Animate | Rotate |
+| Frame Skip | Off |
+| Heavy Rot | Off |
+| Mix | 100.0% |
 
 ---
 
-### Exercise 3: Catastrophic Media Failure
+### Exercise 2: CED Stylus Wear
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: discrot_source1_skull, after: discrot_ex3_s1 },
-    { label: "Car", before: discrot_source2_car, after: discrot_ex3_s2 },
-    { label: "Turtle", before: discrot_source3_turtle, after: discrot_ex3_s3 },
-    { label: "Pattern", before: discrot_source4_pattern, after: discrot_ex3_s4 },
-    { label: "Woman", before: discrot_source5_woman, after: discrot_ex3_s5 },
-    { label: "Paint", before: discrot_source6_paint, after: discrot_ex3_s6 },
-  ]}
-/>
-*Catastrophic Media Failure — simulated result across source images.*
-**Source**: Any footage — the source will be largely destroyed.
+![CED Stylus Wear result](/img/instruments/videomancer/discrot/discrot_ex2_s1.png)
+*CED Stylus Wear — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Combine all effects at extreme settings to simulate unrecoverable disc rot.
+***A description of the exercise illustration.***
 
-1. **Maximum damage**: Set Damage to about 80% with Heavy Rot enabled.
-2. **All noise**: Speckle to about 70%, Snow to about 80%.
-3. **Full desaturation**: Desat to 100%. All damaged areas are monochrome.
-4. **Frame skip**: Enable Frame Skip (Toggle 10). Random frame freezes add stuttering to the corruption.
-5. **Fast rotation**: Set Rotation to about 80% with Animate on. The damage pattern spins rapidly.
-6. **Narrow rings**: Set Ring Width to about 20% for dense, closely-spaced damage bands.
-7. **Observe**: The image is barely recognizable — fragments of the source peek through between damage bands, surrounded by snow, speckle, and frozen frames.
+#### Learning Outcomes
 
-**Key concepts**: Heavy Rot plus high Damage creates near-total corruption, frame skip simulates tracking servo failure, narrow ring width with fast rotation creates strobing interference, desaturation models chroma carrier destruction
+A simulation of CED SelectaVision playback failure: radial streaks of damaged video with analog snow and sample-and-hold fill, as though a worn diamond stylus is skipping across groove walls.
+
+#### Key Concepts
+
+- Streaks mode simulates radial groove damage instead of concentric oxidation
+- Hold mode smears undamaged data across gaps, mimicking analog tracking errors
+- Snow fills the worst damage with analog static
+
+#### Video Source
+
+High-contrast footage with geometric patterns or strong vertical lines. The radial streaks interact visually with vertical elements in the source.
+
+#### Steps
+
+1. Switch **Rot Pattern** (Switch 7) to **Streaks**. Damage now radiates outward from the center in angular sectors instead of concentric rings.
+2. Set **Damage** (Knob 1) to about 40% and **Ring Width** (Knob 3) to about 50%. Broad radial spoke patterns of dropout appear.
+3. Switch **Drop Mode** (Switch 8) to **Hold**. Dropout areas now smear the last good pixel across the gap instead of going black (a sticky, analog feel.)
+4. Add **Snow** (Knob 6) at about 40%. The most damaged areas fill with random analog noise on top of the hold-previous fill.
+5. Enable **Frame Skip** (Switch 10). Occasional frames freeze, producing a temporal stutter as the virtual stylus loses tracking.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Damage | 40.0% |
+| Speckle | 25.0% |
+| Ring Width | 50.0% |
+| Rotation | 25.0% |
+| Desat | 37.5% |
+| Snow | 40.0% |
+| Rot Pattern | Streaks |
+| Drop Mode | Hold |
+| Animate | Rotate |
+| Frame Skip | On |
+| Heavy Rot | Off |
+| Mix | 100.0% |
 
 ---
 
+### Exercise 3: Terminal Rot
 
-## Tips
+![Terminal Rot result](/img/instruments/videomancer/discrot/discrot_ex3_s1.png)
+*Terminal Rot — simulated result across source images.*
+#### Exercise Illustration
 
-- **Ring Width shapes the character**: Narrow rings = many fine bands (early-stage rot along individual grooves). Wide rings = broad damaged zones (late-stage delamination).
-- **Heavy Rot is exponential**: Because Heavy Rot doubles the threshold, combining it with even moderate Damage settings produces catastrophic corruption. Use it as a late-stage intensifier, not a starting point.
-- **Rotation completes the illusion**: Enable Animate with low Rotation speed for the most convincing physical disc simulation — the damage pattern should drift, not spin.
-- **Frame Skip adds temporal damage**: Real disc rot causes tracking servo instability. Frame Skip simulates this with random freezes that complement the spatial damage.
-- **Snow builds on damage**: Snow only appears in pixels with high damage levels, so it naturally concentrates in the most corrupted areas. It cannot be seen without sufficient Damage.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A catastrophic disc rot simulation: the last playback before the disc is unplayable. The image is barely recognizable through layers of dropout, noise, and color failure.
+
+#### Key Concepts
+
+- Heavy Rot doubles the damage threshold, modeling catastrophic degradation
+- All damage layers stack: dropout + speckle + snow + desaturation
+- Mix allows blending catastrophic damage with the clean source
+
+#### Video Source
+
+Any footage: recognizable subjects let you appreciate how much of the image is destroyed.
+
+#### Steps
+
+1. Enable **Heavy Rot** (Switch 11). The damage threshold doubles instantly.
+2. Set **Damage** (Knob 1) to about 80%. With Heavy Rot, this produces near-total coverage (most pixels in every damage band are corrupted.)
+3. Narrow the damage bands by setting **Ring Width** (Knob 3) to about 20%. This concentrates the destruction into dense, thin arcs.
+4. Max out **Speckle** (Knob 2) to 70% and **Snow** (Knob 6) to about 80%. Damaged areas alternate between bright specular hits and dense analog static.
+5. Set **Desat** (Knob 5) to 100%. All color is stripped from damaged regions.
+6. Set **Rotation** (Knob 4) to about 80% with **Animate** on **Rotate**. The damage sweeps rapidly, creating a violent, churning destruction pattern.
+7. Pull **Mix** (Fader 12) back to about 60%. The clean source ghosts through the devastation, creating an eerie double-exposure of the intact and destroyed signal.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Damage | 80.0% |
+| Speckle | 70.0% |
+| Ring Width | 20.0% |
+| Rotation | 80.0% |
+| Desat | 100.0% |
+| Snow | 80.0% |
+| Rot Pattern | Rings |
+| Drop Mode | Black |
+| Animate | Rotate |
+| Frame Skip | Off |
+| Heavy Rot | On |
+| Mix | 60.0% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **CED** | Capacitance Electronic Disc; RCA's grooved capacitance-based videodisc format (1981–1986). |
-| **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **Desaturation** | Reducing the intensity of color toward neutral gray by pulling U and V values toward 512. |
-| **Disc Rot** | Progressive oxidation of the aluminum reflective layer in LaserDiscs, causing read errors and visible video artifacts. |
-| **Dropout** | A region of missing or corrupted video caused by physical damage to the storage medium. |
-| **FM Carrier** | Frequency-modulated radio signal used to encode analog video on optical disc formats. |
-| **Hold-Previous** | Dropout concealment technique where the last good sample is repeated through the damaged region. |
-| **LaserDisc** | Optical disc format (1978–2001) encoding analog video as frequency-modulated pit patterns read by laser. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used for noise generation in FPGA designs. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Snow** | Random noise pattern resembling television static, characteristic of a completely lost analog signal. |
-| **Speckle** | Bright noise dots caused by laser scattering off partially corroded or irregularly shaped pits. |
+- **CED (Capacitance Electronic Disc)**: A grooved-disc video format by RCA that used a diamond stylus to read capacitance variations; prone to groove wear and conductive-coating failure.
+
+- **Chroma Subcarrier**: The modulated signal carrying color information in analog video; more fragile than the luminance baseband and typically deteriorates first during disc rot.
+
+- **Desaturation**: The reduction of color intensity toward monochrome, modeled here as scaling the U and V channels toward their neutral midpoint.
+
+- **Disc Rot**: Physical degradation of optical disc media caused by oxidation of the aluminum reflective layer through pinholes in the protective lacquer.
+
+- **Dropout**: A momentary loss of signal where pixel data is replaced with a substitute value (typically black or the last good sample).
+
+- **Interpolator**: A hardware blending unit that crossfades between two values based on a parameter; used here for the wet/dry mix.
+
+- **LaserDisc**: An analog optical disc format (1978–2001) that encoded video as frequency-modulated pits in an aluminum-coated disc, read by a laser.
+
+- **LFSR (Linear Feedback Shift Register)**: A shift register whose input bit is a linear function of its previous state; produces a deterministic pseudo-random sequence.
+
+- **Piecewise-Linear Approximation**: A method of estimating a complex function (such as Euclidean distance) using simple linear operations; avoids expensive square root computation.
+
+- **Sample and Hold**: A signal processing technique that captures a value and holds it constant until the next valid sample arrives; used here in Hold dropout mode.
+
+- **Snow**: Random analog noise (static) produced when a video player's error correction fails completely and outputs unfiltered RF hash.
+
+- **Speckle**: Bright specular noise dots caused by laser read errors on pitted or oxidized disc surfaces.
 
 ---

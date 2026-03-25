@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 184
 slug: /instruments/videomancer/macrobloc
@@ -7,373 +7,413 @@ image: /img/instruments/videomancer/macrobloc/macrobloc_hero_s1.png
 description: "Digital video compression divides every frame into small rectangular blocks and encodes each one independently."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import macrobloc_control_panel from '/img/instruments/videomancer/macrobloc/macrobloc_control_panel.png';
-import macrobloc_source1_skull from '/img/instruments/videomancer/macrobloc/macrobloc_source1_skull.png';
-import macrobloc_source2_sunset from '/img/instruments/videomancer/macrobloc/macrobloc_source2_sunset.png';
-import macrobloc_source3_collage from '/img/instruments/videomancer/macrobloc/macrobloc_source3_collage.png';
-import macrobloc_source4_pattern from '/img/instruments/videomancer/macrobloc/macrobloc_source4_pattern.png';
-import macrobloc_source5_woman from '/img/instruments/videomancer/macrobloc/macrobloc_source5_woman.png';
-import macrobloc_source6_wood from '/img/instruments/videomancer/macrobloc/macrobloc_source6_wood.png';
-import macrobloc_hero_s1 from '/img/instruments/videomancer/macrobloc/macrobloc_hero_s1.png';
-import macrobloc_hero_s2 from '/img/instruments/videomancer/macrobloc/macrobloc_hero_s2.png';
-import macrobloc_hero_s3 from '/img/instruments/videomancer/macrobloc/macrobloc_hero_s3.png';
-import macrobloc_hero_s4 from '/img/instruments/videomancer/macrobloc/macrobloc_hero_s4.png';
-import macrobloc_hero_s5 from '/img/instruments/videomancer/macrobloc/macrobloc_hero_s5.png';
-import macrobloc_hero_s6 from '/img/instruments/videomancer/macrobloc/macrobloc_hero_s6.png';
-import macrobloc_ex1_s1 from '/img/instruments/videomancer/macrobloc/macrobloc_ex1_s1.png';
-import macrobloc_ex1_s2 from '/img/instruments/videomancer/macrobloc/macrobloc_ex1_s2.png';
-import macrobloc_ex1_s3 from '/img/instruments/videomancer/macrobloc/macrobloc_ex1_s3.png';
-import macrobloc_ex1_s4 from '/img/instruments/videomancer/macrobloc/macrobloc_ex1_s4.png';
-import macrobloc_ex1_s5 from '/img/instruments/videomancer/macrobloc/macrobloc_ex1_s5.png';
-import macrobloc_ex1_s6 from '/img/instruments/videomancer/macrobloc/macrobloc_ex1_s6.png';
-import macrobloc_ex2_s1 from '/img/instruments/videomancer/macrobloc/macrobloc_ex2_s1.png';
-import macrobloc_ex2_s2 from '/img/instruments/videomancer/macrobloc/macrobloc_ex2_s2.png';
-import macrobloc_ex2_s3 from '/img/instruments/videomancer/macrobloc/macrobloc_ex2_s3.png';
-import macrobloc_ex2_s4 from '/img/instruments/videomancer/macrobloc/macrobloc_ex2_s4.png';
-import macrobloc_ex2_s5 from '/img/instruments/videomancer/macrobloc/macrobloc_ex2_s5.png';
-import macrobloc_ex2_s6 from '/img/instruments/videomancer/macrobloc/macrobloc_ex2_s6.png';
-import macrobloc_ex3_s1 from '/img/instruments/videomancer/macrobloc/macrobloc_ex3_s1.png';
-import macrobloc_ex3_s2 from '/img/instruments/videomancer/macrobloc/macrobloc_ex3_s2.png';
-import macrobloc_ex3_s3 from '/img/instruments/videomancer/macrobloc/macrobloc_ex3_s3.png';
-import macrobloc_ex3_s4 from '/img/instruments/videomancer/macrobloc/macrobloc_ex3_s4.png';
-import macrobloc_ex3_s5 from '/img/instruments/videomancer/macrobloc/macrobloc_ex3_s5.png';
-import macrobloc_ex3_s6 from '/img/instruments/videomancer/macrobloc/macrobloc_ex3_s6.png';
-
-# Macrobloc
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: macrobloc_source1_skull, after: macrobloc_hero_s1 },
-    { label: "Sunset", before: macrobloc_source2_sunset, after: macrobloc_hero_s2 },
-    { label: "Collage", before: macrobloc_source3_collage, after: macrobloc_hero_s3 },
-    { label: "Pattern", before: macrobloc_source4_pattern, after: macrobloc_hero_s4 },
-    { label: "Woman", before: macrobloc_source5_woman, after: macrobloc_hero_s5 },
-    { label: "Wood", before: macrobloc_source6_wood, after: macrobloc_hero_s6 },
-  ]}
-/>
-*Macrobloc corrupting a video source with block displacement, DC fill, freeze artifacts, and chroma separation errors.*
+![Macrobloc hero image](/img/instruments/videomancer/macrobloc/macrobloc_hero_s1.png)
+*Macrobloc simulating MPEG codec failure with displaced blocks, frozen regions, and chroma separation artifacts across a live video signal.*
 
 ---
 
 ## Overview
 
-Digital video compression divides every frame into small rectangular blocks and encodes each one independently. When the data stream is damaged — a dropped packet, a bit error, a lost reference frame — the decoder cannot reconstruct the affected blocks. The result is the distinctive breakup everyone has seen on satellite TV, streaming video, or video calls over bad connections: rectangular patches of wrong color, frozen content, shifted pixels, and green-magenta chroma smears. Macrobloc recreates those failure modes deliberately.
+**Macrobloc** recreates the visual language of digital video compression failure: the blocky, fractured artifacts that appear when an MPEG stream loses data or a satellite signal drops below threshold. It divides the incoming image into a grid of square blocks (8×8 or 16×16 pixels) and selectively corrupts them, replacing clean picture data with displaced pixels, frozen frames, flat color fills, and separated chroma channels. The result is a convincing simulation of ***macroblocking***, the signature failure mode of block-based video codecs.
 
-The program divides the screen into either 8×8 or 16×16 pixel blocks (the two standard macroblock sizes from MPEG and H.264) and randomly selects which blocks to corrupt each frame. Four corruption types are available: DC fill (a flat gray rectangle), displacement (content shifted from a wrong position), freeze (the block holds its previous value instead of updating), and chroma shift (luminance and chrominance read from different spatial positions, creating color separation artifacts). The density of corruption is continuously variable from pristine to total destruction.
+Unlike real codec failure, Macrobloc gives you full artistic control over the corruption. You choose how many blocks break, how far they shift, whether they freeze in place, and how aggressively the color channels separate. A 16-bit ***linear feedback shift register (LFSR)*** determines which blocks are corrupted, and you can lock the pattern in place or let it evolve frame by frame. An optional luminance modulation path makes dark regions of the image more susceptible to corruption, creating content-aware glitch patterns that track the source material.
 
-The name is a deliberate misspelling of *macroblock*, the standard term in video compression for the fundamental coding unit. By removing a letter, it becomes its own thing — not a decoder bug, but a creative tool that happens to look exactly like one.
+At low settings, Macrobloc introduces subtle digital imperfections: the occasional misplaced block or frozen tile that gives the image a lived-in, compressed quality. At extreme settings, the picture dissolves into a churning field of displaced fragments, frozen ghosts, and color-separated debris that bear only a passing resemblance to the original signal.
+
+### What's In a Name?
+
+The name ***Macrobloc*** is a direct reference to the ***macroblock***, the fundamental unit of block-based video compression standards like MPEG-2 and H.264. In these codecs, the image is divided into blocks (typically 8×8 or 16×16 pixels) that are independently compressed. When data is lost during transmission: a scratched DVD, a weak satellite signal, a corrupted network stream: individual macroblocks fail while their neighbors survive, producing the distinctive blocky artifacts that Macrobloc recreates. The French-influenced spelling nods to the Bloc as both a structural unit and a cinematic reference.
 
 ---
 
 ## Quick Start
 
-1. **No bypass toggle**: Use Mix at 0% for clean pass-through. This is the only way to preview the unprocessed source.
-2. **Start with DC Fill**: DC-only mode produces the clearest macroblocking effect. Add displacement and chroma shift later for more complex failure modes.
-3. **16×16 for drama**: Larger blocks create more visually impactful corruption. 8×8 blocks produce subtler, higher-frequency breakup that reads better at a distance.
+1. Turn **Corruption** (Knob 1) clockwise to about 40%. Random blocks across the image begin to glitch: some fill with flat color, some shift sideways, some show separated color channels. The grid of corruption has begun.
+2. Increase **Displacement** (Knob 2) to about 50%. Corrupted blocks now read their pixel data from the wrong location, creating a jittery, displaced mosaic where fragments of the image appear in the wrong place.
+3. Toggle **Animate** (Switch 10) to **Static**. The corruption pattern freezes in place. Toggle it back to **Animate** and the pattern re-rolls every frame, creating a dynamic, living glitch texture.
+4. Enable **Block Edge** (Switch 9). Black grid lines appear at the boundaries of every block, making the underlying block grid visible. This is the skeleton of a digital codec laid bare.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Macrobloc loaded](/img/instruments/videomancer/macrobloc/macrobloc_control_panel.png)
+*Videomancer's front panel with Macrobloc active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Corruption
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Corruption** controls the probability that any given block will be corrupted. At 0%, fully counterclockwise, no blocks are affected and the image passes through clean. As Corruption increases, more blocks are selected for corruption by the LFSR. At high values, the majority of the image is replaced with glitch artifacts. The LFSR compares its value against the Corruption threshold: blocks whose random value falls below the threshold are corrupted.
+
+:::tip
+Start with Corruption around 30–40% for a natural-looking codec failure. At 100%, essentially every block is corrupted and the original image is almost entirely destroyed: great for abstract textures, but you lose the contrast between clean and corrupted regions that makes low settings so compelling.
+:::
+
+---
+
+### Knob 2 — Displacement
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Displacement** controls how far corrupted blocks are spatially shifted from their correct position. At 0%, displaced blocks read from their normal location (no visible displacement). As the value increases, the read offset grows, pulling pixel data from increasingly distant horizontal positions. This simulates ***motion vector errors*** in inter-frame prediction: the decoder tries to reconstruct a block from a reference frame but uses the wrong offset, producing a spatially scrambled image.
+
+The displacement magnitude is modulated by the LFSR, so each corrupted block shifts by a different amount. Not all corruption types use displacement: only types "01" and "11" (displacement and chroma-shift) apply the read offset.
+
+---
+
+### Knob 3 — Freeze Rate
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Freeze Rate** controls the probability that block columns toggle into a frozen state at each frame boundary. Frozen blocks hold their previously stored pixel values instead of updating, simulating ***I-frame loss***: the decoder's reference frame becomes stale, and parts of the image stop responding to changes in the source. At 0%, no blocks freeze. As the value increases, more columns are toggled each frame, creating patches of stale imagery that persist while the rest of the image updates normally.
+
+:::note
+Freeze operates per-column, not per-individual-block. When a column is frozen, all blocks in that column hold their previous values. The freeze toggle is probabilistic: each frame, the LFSR decides whether to flip each column's freeze flag, so the frozen regions shift over time.
+:::
+
+---
+
+### Knob 4 — Chroma Shift
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Chroma Shift** introduces an independent spatial offset for the U and V (chroma) channels, separate from the Y (luma) displacement. At 0%, the chroma channels read from the same position as luma. As the value increases, chroma reads from an increasingly different horizontal position, producing green and magenta fringing artifacts that simulate ***chroma subsampling errors***: the decoder reconstructs color from the wrong spatial location relative to brightness. This creates the characteristic color-bleed look of a badly decoded MPEG stream.
+
+The chroma offset is derived from a different slice of the LFSR than the luma displacement, so each corrupted block gets an independent chroma shift direction and magnitude.
+
+---
+
+### Knob 5 — Seed
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 1023 |
+| Default | 512 |
+
+**Seed** determines the initial state of the LFSR that drives all corruption decisions. Changing the Seed produces a completely different spatial pattern of corruption while keeping the density and behavior otherwise identical. In **Static** mode (Switch 10), the LFSR resets to the Seed value every frame, so this control directly selects which specific blocks are corrupted. In **Animate** mode, the Seed sets the starting point for an evolving sequence.
+
+:::tip
+In Static mode, slowly sweeping Seed creates a scrolling, kaleidoscopic effect as different block patterns cycle through. Find a pattern you like, then lock it in place.
+:::
+
+---
+
+### Knob 6 — DC Fill
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**DC Fill** sets the luminance level of blocks that receive DC-fill corruption. At 0%, DC-filled blocks appear black. At 50%, they appear mid-gray. At 100%, they appear white. The chroma channels of DC-filled blocks are always set to neutral (U=512, V=512), so the fill color is always a shade of gray regardless of the DC Fill level.
+
+When **Corr Type** (Switch 8) is set to **DC Fill**, all corrupted blocks use this flat-fill mode instead of random corruption types. This creates a clean, geometric pattern of gray rectangles punched through the image.
+
+---
+
+### Switch 7 — Block Size
+
+| Property | Value |
+|----------|-------|
+| Off | 8x8 |
+| On | 16x16 |
+| Default | 8x8 |
+
+**Block Size** selects between two grid sizes: **8×8** and **16×16** pixels per block. Smaller blocks create a finer corruption grid with more numerous, smaller artifacts. Larger blocks create a coarser grid with fewer, more prominent corrupted regions. The 16×16 setting more closely matches the macroblock size used in H.264 and other modern codecs. The 8×8 setting matches the DCT block size used internally within those macroblocks, as well as older MPEG-2 and JPEG standards.
+
+---
+
+### Switch 8 — Corr Type
+
+| Property | Value |
+|----------|-------|
+| Off | Random |
+| On | DC Fill |
+| Default | Random |
+
+**Corr Type** selects between two corruption strategies. In **Random** mode, each corrupted block is assigned one of four corruption types by the LFSR: DC fill, displacement, freeze, or chroma-shift. The type varies from block to block, creating a diverse mix of failure modes across the image. In **DC Fill** mode, all corrupted blocks use DC fill exclusively: the corruption pattern becomes a clean grid of flat gray rectangles, ignoring displacement, freeze, and chroma shift entirely.
+
+---
+
+### Switch 9 — Block Edge
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Block Edge** enables a visible black grid line at the boundary of every block in the image: both corrupted and clean blocks. When On, the first pixel row and first pixel column of each block are replaced with black (Y=0, U=512, V=512). This makes the underlying block decomposition visible, revealing the spatial grid that the corruption algorithm operates on. The grid lines persist even when Corruption is at 0%, so you can see the block structure without any active corruption.
+
+:::tip
+Block Edge is useful for understanding how Block Size, Displacement, and Corruption interact. Enable it while adjusting other parameters to see exactly where block boundaries fall and which blocks are selected for corruption.
+:::
+
+---
+
+### Switch 10 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Static |
+| On | Animate |
+| Default | Animate |
+
+**Animate** controls whether the corruption pattern changes from frame to frame. In **Animate** mode, the LFSR advances its state at each frame boundary, producing a new corruption pattern every frame: the glitch artifacts shift, flicker, and evolve continuously. In **Static** mode, the LFSR resets to the Seed value every frame, so the same blocks are corrupted in the same way on every frame. Static mode is useful for examining a specific corruption pattern or creating a stable, repeating texture.
+
+---
+
+### Switch 11 — Luma Mod
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Luma Mod** enables luminance-dependent corruption density. When On, dark regions of the source image are more likely to be corrupted than bright regions. The corruption threshold is increased by an amount proportional to the inverse of the pixel's brightness, so dark areas effectively see a higher Corruption setting than bright areas. When Off, the Corruption threshold is uniform across the image.
+
+This creates a content-aware corruption pattern that ***follows the shadows***: dark regions dissolve into glitch artifacts while highlights remain relatively intact. We can think of this as a simulation of signal-level-dependent error rates, where weak (dark) portions of the signal are more susceptible to noise and data loss.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** crossfades between the dry (original) and wet (corrupted) signal. At 0%, fully down, the output is the unprocessed input: all corruption is hidden. At 100%, fully up, the output is the fully corrupted signal. Intermediate positions create a transparent overlay of corruption over the clean image, which can produce a subtle, ghostly quality where glitch artifacts are visible but the underlying image remains legible.
 
 ---
 
 ## Background
 
-### Macroblocking in Video Compression
+### Block-based video compression
 
-Every modern video codec — MPEG-2, H.264, HEVC — divides each frame into a grid of square blocks. In MPEG-2 these are 16×16 pixel macroblocks; H.264 can use 4×4, 8×8, or 16×16. Each block is transformed, quantized, and entropy-coded independently. When any part of that data chain is corrupted, the decoder produces a visually wrong block while surrounding blocks remain correct. The sharp rectangular boundary between correct and incorrect content is the signature of digital compression failure — fundamentally different from the smooth, gradual degradation of analog video noise.
+Modern digital video compression: MPEG-2, H.264, HEVC: works by dividing each frame into a grid of rectangular blocks and compressing each block independently. Typically these blocks are 8×8 or 16×16 pixels, called ***macroblocks***. Within each macroblock, the codec applies a ***discrete cosine transform (DCT)*** that converts the spatial pixel data into frequency components, discards the components the human eye is least sensitive to, and encodes only the survivors. Adjacent frames share information through ***inter-frame prediction***: the codec describes each block as a displacement from a block in a reference frame, transmitting only the difference. This is enormously efficient when it works.
 
-### Motion Vector Errors and Displacement
+When it fails, it fails in blocks.
 
-In inter-frame prediction, the encoder stores a *motion vector* for each block — a pointer to a region in a reference frame that looks similar. The decoder uses this vector to copy pixels from the reference and then adds a small correction. If the motion vector itself is corrupted, the decoder copies pixels from the wrong location. The result is a block of content that is internally coherent (it looks like real video) but spatially displaced from where it should be. Macrobloc's displacement mode simulates this by reading pixel data from an offset position in the line buffer.
+### How codec failure looks
 
-### I-Frame Loss and Freeze
+A lost data packet, a scratched disc surface, a weak signal: any interruption to the compressed data stream corrupts the decoded picture in characteristic ways. Because the codec operates on independent blocks, errors affect discrete rectangular regions while leaving their neighbors untouched. The most common failure modes are:
 
-Video codecs maintain reference frames that subsequent frames depend on. When a reference frame is lost or corrupted, the decoder can only display the last successfully decoded content for the affected blocks. These blocks "freeze" — they stop updating while the rest of the image continues to move. Macrobloc simulates this with a per-block freeze flag that, when set, causes the block to output its held previous values instead of the current input. The freeze map is re-rolled each frame based on the Freeze Rate parameter.
+- **DC fill**: the block's frequency data is lost, and the decoder fills it with a flat average color
+- **Displacement**: an inter-frame prediction references the wrong position, pulling pixel data from the wrong part of the reference frame
+- **Freeze**: a reference frame is lost entirely, and blocks continue displaying stale data from the last good frame
+- **Chroma separation**: the codec's chroma subsampling reconstructs color from the wrong spatial location relative to brightness, producing green and magenta fringing
 
-### Chroma Subsampling Errors
+Macrobloc implements all four of these failure modes, composing them into a controllable simulation of digital video degradation.
 
-In YUV 4:2:0 (the most common broadcast format), chroma is sampled at half the resolution of luma in both axes. If the chroma and luma data become misaligned during decoding — a common failure mode when packet boundaries are lost — the color information ends up spatially shifted relative to the brightness. This creates the characteristic green and magenta fringing seen in heavily corrupted MPEG streams. Macrobloc simulates this by reading U and V channel data from a different line buffer address than Y.
+### The LFSR engine
 
-### LFSR-Driven Block Selection
+All corruption decisions in Macrobloc are driven by a 16-bit ***linear feedback shift register (LFSR)***: a fast, deterministic pseudo-random number generator implemented in just a few logic cells. The LFSR produces a stream of values that appear random but are fully repeatable from any given seed. At the start of each block, the LFSR advances one step. The new value is compared against the Corruption threshold: if it falls below the threshold, the block is corrupted. The same LFSR value also determines the corruption type and the displacement magnitude, so everything is derived from a single pseudo-random stream.
 
-The corruption pattern is generated by a 16-bit linear feedback shift register. At the start of each block, the LFSR is advanced and its output compared against the Corruption threshold. If the LFSR value falls below the threshold, the block is marked corrupt. The corruption type is determined by the low 2 bits of the same LFSR state. In animated mode, the LFSR seed evolves frame to frame, producing dynamic corruption. In static mode, the same seed is loaded every frame, producing a fixed corruption pattern.
+In **Animate** mode, the LFSR's starting state advances each frame, producing an evolving corruption pattern. In **Static** mode, the LFSR resets to the Seed value every frame, so the pattern is frozen in place.
 
 
 ---
 
 ## Signal Flow
 
-Block Address Generation → Source Selection → Corruption Application → Block Edge + Compose
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Line Buffer Write
-│   └─ ram_y/ram_u/ram_v[wr_addr] ← Y/U/V input (continuous)
-│
-├── Stage 1: Block Address Generation + LFSR Sample
-│   ├─ h_count, v_count (pixel counters)
-│   ├─ block_x, block_y (block grid coordinates)
-│   ├─ pixel_x, pixel_y (position within block)
-│   ├─ block_start flag (top-left pixel of each block)
-│   ├─ at_edge flag (first row or column of block)
-│   ├─ LFSR advance at block_start
-│   ├─ Luma Mod: threshold += (1023 − Y) >> 4 if enabled
-│   └─ block_corrupt = LFSR < threshold; corrupt_type = LFSR[1:0]
-│
-├── Stage 2: Source Selection + Line Buffer Read
-│   ├─ Write address: h_count (current pixel)
-│   ├─ Y read address: h_count + displacement_offset (if corrupt type 01/11)
-│   ├─ UV read address: Y_addr + chroma_offset (independent shift)
-│   └─ Freeze map update at frame boundary (per-block toggle)
-│
-├── Stage 3: Corruption Application
-│   ├─ Type 00 (DC fill): Y = dc_fill_level, U = V = 512
-│   ├─ Type 01 (Displacement): Y from displaced addr, UV from chroma-shifted addr
-│   ├─ Type 10 (Freeze): Y/U/V from held previous values (if freeze flag set)
-│   ├─ Type 11 (Chroma shift): Y from normal addr, UV from chroma-shifted addr
-│   └─ Store held values for freeze (update when not frozen)
-│
-├── Stage 4: Block Edge + Compose
-│   ├─ If Block Edge On and at_edge: Y = 0, UV = 512 (black border)
-│   └─ Output proc_y/proc_u/proc_v
-│
-├── Interpolator (4 clocks)
-│   └─ Mix: lerp(dry, wet, mix_amount) per Y/U/V
-│
-└── Output
-    └─ No bypass toggle — use Mix = 0% for dry signal
-```
+The pipeline splits into two parallel paths early on. The incoming video is simultaneously written into three line-buffer BRAMs and fed into an 8-clock delay line. The line buffers allow corrupted blocks to read pixel data from displaced horizontal positions: the read address is offset by a displacement computed from the LFSR and the Displacement parameter. A second, independent read address is computed for the U and V channels, adding the Chroma Shift offset on top of the displacement offset. This means chroma and luma can read from different spatial locations, simulating the color-separation artifacts of chroma subsampling failure.
 
-The line buffers are critical to the displacement and freeze modes. Each pixel is written to the buffer at its natural horizontal address as it arrives. Displaced blocks read from a different address in the same line buffer, effectively pulling content from elsewhere in the current scan line. The chroma shift adds a second independent offset to the U/V read address, so luma and chroma can come from entirely different horizontal positions. The freeze mode bypasses the line buffer entirely, outputting held registers that were captured during a previous non-frozen pass.
+The corruption compose stage selects the output for each pixel based on the corruption type assigned to the current block. Four types are possible: DC fill (flat gray), displacement (spatially shifted), freeze (held from previous frame), and chroma shift (Y normal, UV shifted). Block edge lines are overlaid last, drawing black grid lines at the first pixel of each block row and column.
 
-The LFSR drives all randomness: which blocks are corrupt, what type of corruption they get, the magnitude of displacement offsets, and the freeze map evolution. The Seed control sets the starting state for static mode, making the corruption pattern fully reproducible. In animated mode, the LFSR evolves across frames, producing temporally varying corruption that more closely matches the look of real-time codec failure.
-
----
-
-## Parameter Reference
-
-<img src={macrobloc_control_panel} alt="Videomancer front panel with Macrobloc loaded"/>
-*Videomancer's front panel with Macrobloc active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Corruption
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
-
-Controls the percentage of blocks that are corrupted. The 10-bit register value is compared against each block's LFSR sample — higher values mean more blocks pass the corruption threshold. At 0%, no blocks are corrupted and the output is clean. At 100%, every block is corrupted. The relationship is roughly linear, though the LFSR's pseudo-random distribution means the actual percentage varies slightly from the nominal value.
-
----
-
-#### Knob 2 — Displacement
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
-
-Sets the magnitude of spatial displacement for blocks that receive displacement corruption (types 01 and 11). The displacement offset is computed by multiplying a portion of the LFSR state by this register value and scaling down. At zero, displaced blocks read from their correct position (no visible displacement). At maximum, content can shift by up to half a scan line, pulling in pixels from distant parts of the image.
-
----
-
-#### Knob 3 — Freeze Rate
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
-
-Controls the probability that each block's freeze flag is toggled at the start of each frame. A higher value means more blocks get frozen more often. The freeze state is persistent — once a block is frozen, it stays frozen until the flag is toggled back. This creates a stochastic pattern where some blocks hold stale content for many frames while others update normally, closely matching the visual behavior of I-frame loss in real codecs.
-
----
-
-#### Knob 4 — Chroma Shift
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
-
-Sets the magnitude of the independent chroma displacement. When a block is corrupted, the U and V channels are read from a different line buffer address than Y. This register controls how far apart those addresses are. At zero, chroma and luma are aligned (no visible color shift). At high values, the color information is pulled from a completely different part of the scan line, creating strong green-magenta fringing at block boundaries.
-
----
-
-#### Knob 5 — Seed
-| Property | Value |
-|----------|-------|
-| Range | 0 – 1023 |
-| Default | 512 |
-
-Sets the LFSR seed for static corruption mode. In static mode (Animate = Static), the LFSR is reset to this value at the start of every frame, producing a repeatable corruption pattern. Different seed values produce different spatial distributions of corrupted blocks. In animated mode, this parameter has reduced effect because the LFSR evolves freely across frames.
-
----
-
-#### Knob 6 — DC Fill
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Sets the luminance level for DC-fill corruption blocks. When a block receives DC fill corruption (type 00), Y is replaced with this register value and U/V are set to neutral (512). At zero, DC blocks appear black. At mid-scale, they are mid-gray. At maximum, they are near-white. This directly controls the visual intensity of the flat rectangular patches.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Block Size** | 8x8 | 16x16 |
-| **8 — Corr Type** | Random | DC Fill |
-| **9 — Block Edge** | Off | On |
-| **10 — Animate** | Static | Animate |
-| **11 — Luma Mod** | Off | On |
-
-Five toggles configure the corruption behavior. There is no bypass toggle — toggle 11 is used for Luma Modulation instead. To bypass all processing, set the Mix fader to 0% (fully dry).
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Macrobloc-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::note
+The freeze mechanism operates per-column rather than per-block. A 128-entry freeze map stores one flag per block column, and the LFSR probabilistically toggles each column's flag at each frame boundary. When a column's flag is set, all blocks in that column output held (stale) pixel values instead of the current frame.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from basic block corruption to complex multi-mode degradation. Each demonstrates a different aspect of digital codec failure and its creative potential.
-
+These exercises progress from basic block corruption through displacement and freeze effects to full codec failure simulation. Each builds on the previous one, engaging more of the corruption engine.
 ### Exercise 1: Basic Block Corruption
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: macrobloc_source1_skull, after: macrobloc_ex1_s1 },
-    { label: "Sunset", before: macrobloc_source2_sunset, after: macrobloc_ex1_s2 },
-    { label: "Collage", before: macrobloc_source3_collage, after: macrobloc_ex1_s3 },
-    { label: "Pattern", before: macrobloc_source4_pattern, after: macrobloc_ex1_s4 },
-    { label: "Woman", before: macrobloc_source5_woman, after: macrobloc_ex1_s5 },
-    { label: "Wood", before: macrobloc_source6_wood, after: macrobloc_ex1_s6 },
-  ]}
-/>
+![Basic Block Corruption result](/img/instruments/videomancer/macrobloc/macrobloc_ex1_s1.png)
 *Basic Block Corruption — simulated result across source images.*
-**Source**: A camera feed or recorded footage with moderate motion and recognizable content.
+#### Exercise Illustration
 
-**What You'll Create**: Understand how corruption density and block size interact to create the fundamental macroblocking effect.
+***A description of the exercise illustration.***
 
-1. **Start clean**: Set Corruption to 0%. Output should be pristine.
-2. **Introduce corruption**: Slowly increase Corruption. Gray rectangles (DC fill) and displaced blocks begin appearing.
-3. **Block size comparison**: Switch Block Size between 8×8 and 16×16. Observe how larger blocks create chunkier breakup.
-4. **DC only**: Switch Corruption Type to DC Fill. All corrupted blocks become uniform gray rectangles.
-5. **Adjust DC level**: Sweep DC Fill from 0% to 100%. The rectangles change from black to white.
-6. **Block edges**: Enable Block Edge to see the grid structure underlying the corruption.
+#### Learning Outcomes
 
-**Key concepts**: Corruption threshold sets block density, DC fill produces uniform rectangles, block size changes the granularity of the grid
+A clean grid of gray rectangles punched through a live video signal, simulating the most basic form of macroblock failure.
 
----
+#### Key Concepts
 
-### Exercise 2: Motion Vector Failure
+- The LFSR selects blocks for corruption based on a threshold
+- DC Fill replaces blocks with a flat gray level
+- Block Edge reveals the underlying grid structure
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: macrobloc_source1_skull, after: macrobloc_ex2_s1 },
-    { label: "Sunset", before: macrobloc_source2_sunset, after: macrobloc_ex2_s2 },
-    { label: "Collage", before: macrobloc_source3_collage, after: macrobloc_ex2_s3 },
-    { label: "Pattern", before: macrobloc_source4_pattern, after: macrobloc_ex2_s4 },
-    { label: "Woman", before: macrobloc_source5_woman, after: macrobloc_ex2_s5 },
-    { label: "Wood", before: macrobloc_source6_wood, after: macrobloc_ex2_s6 },
-  ]}
-/>
-*Motion Vector Failure — simulated result across source images.*
-**Source**: Footage with lateral motion — panning shots, moving subjects, or scrolling graphics.
+#### Video Source
 
-**What You'll Create**: Explore displacement and chroma shift to simulate motion vector and chroma subsampling errors.
+A live camera feed or recorded footage with recognizable subjects and moderate contrast.
 
-1. **Set moderate corruption**: Corruption ~50%, Corruption Type set to Random.
-2. **Add displacement**: Increase Displacement to about 60%. Corrupted blocks now show content from wrong positions rather than flat gray.
-3. **Add chroma shift**: Increase Chroma Shift to about 50%. Green and magenta fringing appears at block edges.
-4. **Maximum displacement**: Push Displacement to 100%. Blocks pull content from far across the scan line.
-5. **Animate**: Set Animate to Animated. Watch the corruption pattern shift frame to frame.
-6. **Luma modulation**: Enable Luma Mod. Dark regions become more corrupted while bright areas stay cleaner.
+#### Steps
 
-**Key concepts**: Displacement reads from wrong line buffer positions, chroma shift separates Y from UV address, luma modulation creates content-aware corruption
+1. **Set corruption type**: Toggle **Corr Type** (Switch 8) to **DC Fill** so every corrupted block becomes a flat rectangle.
+2. **Enable edges**: Toggle **Block Edge** (Switch 9) to **On** to see the block grid.
+3. **Add corruption**: Slowly turn **Corruption** (Knob 1) clockwise. Gray rectangles begin appearing across the image as blocks are selected for DC fill.
+4. **Adjust fill level**: Sweep **DC Fill** (Knob 6) from 0% to 100%. The fill rectangles change from black through gray to white.
+5. **Change block size**: Toggle **Block Size** (Switch 7) to **16×16**. The rectangles become larger and fewer. Toggle back to **8×8** to compare.
+6. **Change the pattern**: Slowly sweep **Seed** (Knob 5). Different blocks are selected for corruption as the LFSR starting state changes.
 
----
+#### Settings
 
-### Exercise 3: Frozen Reference Frame
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: macrobloc_source1_skull, after: macrobloc_ex3_s1 },
-    { label: "Sunset", before: macrobloc_source2_sunset, after: macrobloc_ex3_s2 },
-    { label: "Collage", before: macrobloc_source3_collage, after: macrobloc_ex3_s3 },
-    { label: "Pattern", before: macrobloc_source4_pattern, after: macrobloc_ex3_s4 },
-    { label: "Woman", before: macrobloc_source5_woman, after: macrobloc_ex3_s5 },
-    { label: "Wood", before: macrobloc_source6_wood, after: macrobloc_ex3_s6 },
-  ]}
-/>
-*Frozen Reference Frame — simulated result across source images.*
-**Source**: Active footage with continuous motion — handheld camera, dance performance, or sports.
-
-**What You'll Create**: Combine freeze mode with other corruption types for full codec failure simulation.
-
-1. **Moderate corruption**: Corruption ~40%, Random mode.
-2. **Enable freeze**: Set Freeze Rate to about 40%. Some blocks hold their previous values.
-3. **Add displacement**: Set Displacement ~30% and Chroma Shift ~30%.
-4. **Observe persistence**: Watch frozen blocks — they hold stale content for multiple frames while the source continues to move.
-5. **16×16 blocks**: Switch to 16×16 for dramatic, chunky freeze artifacts.
-6. **Static pattern**: Switch Animate to Static and adjust Seed to find an interesting fixed corruption pattern.
-7. **Subtle blend**: Lower Mix to about 60% to blend the corrupted signal with the clean source, creating a ghostly double-exposure with block artifacts.
-
-**Key concepts**: Freeze flags persist across frames (stochastic toggling), displacement + freeze + chroma shift compound for realistic codec failure, static mode produces repeatable patterns
+| Control | Value |
+|---------|-------|
+| Corruption | ~40% |
+| Displacement | 0% |
+| Freeze Rate | 0% |
+| Chroma Shift | 0% |
+| Seed | 512 |
+| DC Fill | ~50% |
+| Block Size | 8x8 |
+| Corr Type | DC Fill |
+| Block Edge | On |
+| Animate | Static |
+| Luma Mod | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 2: Motion Vector Chaos
 
-## Tips
+![Motion Vector Chaos result](/img/instruments/videomancer/macrobloc/macrobloc_ex2_s1.png)
+*Motion Vector Chaos — simulated result across source images.*
+#### Exercise Illustration
 
-- **Seed for composition**: In static mode, sweep the Seed knob to audition different corruption patterns. Each seed produces a unique spatial distribution.
-- **Luma Mod for narrative**: Enabling luma modulation makes shadows corrupt first, creating a natural-looking degradation where darkness hides information loss.
-- **Chroma Shift is the codec signature**: Real MPEG failures almost always show chroma misalignment. A small amount of Chroma Shift (20–30%) makes the effect read as authentically digital.
-- **Freeze needs motion**: Freeze corruption is invisible on static sources. Use moving footage to see the held-block persistence effect.
-- **Mix for compositing**: Partial mix values create a ghostly overlay of corrupted and clean content — useful for subtle datamosh aesthetics.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A dynamic, jittery corruption pattern where blocks are displaced and color-separated, simulating a streaming video with severe packet loss.
+
+#### Key Concepts
+
+- Displacement simulates inter-frame prediction failure
+- Chroma Shift separates color channels from brightness
+- Animate mode creates evolving corruption patterns
+
+#### Video Source
+
+Footage with strong horizontal features (text, geometric patterns, or architecture.)
+
+#### Steps
+
+1. **Prepare**: Set **Corruption** (Knob 1) to about 50% and **Corr Type** (Switch 8) to **Random** so the engine uses all four corruption modes.
+2. **Displacement**: Turn **Displacement** (Knob 2) clockwise to about 60%. Corrupted blocks now read from wrong positions: fragments of the image jump sideways into neighboring blocks.
+3. **Chroma separation**: Increase **Chroma Shift** (Knob 4) to about 50%. Color channels separate from brightness in corrupted blocks, creating green and magenta fringing.
+4. **Animate**: Set **Animate** (Switch 10) to **Animate**. The corruption pattern now changes every frame, creating a flickering, jittery glitch texture.
+5. **Block size**: Toggle **Block Size** (Switch 7) to **16×16** for larger, more dramatic displacements. The bigger blocks make the spatial scrambling more visible.
+6. **Luma modulation**: Enable **Luma Mod** (Switch 11). Dark regions of the image now corrupt more heavily, as if the signal degrades where it's weakest.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Corruption | ~50% |
+| Displacement | ~60% |
+| Freeze Rate | 0% |
+| Chroma Shift | ~50% |
+| Seed | 50 |
+| DC Fill | ~50% |
+| Block Size | 16x16 |
+| Corr Type | Random |
+| Block Edge | Off |
+| Animate | Animate |
+| Luma Mod | On |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Frozen Broadcast
+
+![Frozen Broadcast result](/img/instruments/videomancer/macrobloc/macrobloc_ex3_s1.png)
+*Frozen Broadcast — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A broadcast signal that partially freezes: some regions update normally while others hold stale imagery from previous frames, with displaced blocks and color artifacts layered on top.
+
+#### Key Concepts
+
+- Freeze simulates I-frame loss in inter-frame prediction
+- Combining freeze with displacement creates layered temporal artifacts
+- Mix allows transparent corruption overlay
+
+#### Video Source
+
+Footage with visible motion (a moving subject, panning camera, or scrolling graphics.)
+
+#### Steps
+
+1. **Enable freeze**: Set **Corruption** (Knob 1) to about 70% and **Freeze Rate** (Knob 3) to about 40%. Columns of blocks begin holding their previous values while the rest of the image updates.
+2. **Add displacement**: Set **Displacement** (Knob 2) to about 30%. Displaced blocks now coexist with frozen blocks: some regions show scrambled current data, others show stale past data.
+3. **Chroma fringing**: Set **Chroma Shift** (Knob 4) to about 30%. Subtle color separation appears in the displaced and chroma-shifted corruption types.
+4. **Partial mix**: Lower **Mix** (Fader 12) to about 60%. The corruption becomes semi-transparent: you can see the clean image ghosting through the corrupted regions.
+5. **Static freeze pattern**: Set **Animate** (Switch 10) to **Static**. The corruption pattern locks in place. Move the camera or change the source. Frozen blocks continue showing old imagery while displaced blocks track the new source.
+6. **Observe column behavior**: Watch how freeze affects entire columns of blocks simultaneously. When a column freezes, all blocks in that column hold their old data.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Corruption | ~70% |
+| Displacement | ~30% |
+| Freeze Rate | ~40% |
+| Chroma Shift | ~30% |
+| Seed | 250 |
+| DC Fill | ~50% |
+| Block Size | 8x8 |
+| Corr Type | Random |
+| Block Edge | Off |
+| Animate | Static |
+| Luma Mod | Off |
+| Mix | ~60% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Chroma** | Color information in a video signal, encoded as U and V offsets from neutral gray. |
-| **Chroma Subsampling** | Encoding technique that stores color at lower resolution than brightness (e.g., 4:2:0). |
-| **DC Fill** | Replacing a block with a flat solid color, simulating total data loss for that macroblock. |
-| **Displacement** | Spatial offset applied to a block's read address, simulating a corrupted motion vector. |
-| **Freeze** | Holding a block's previous pixel values instead of reading new ones, simulating reference frame loss. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator that drives corruption decisions. |
-| **Luma** | Brightness component (Y) of a YUV video signal. |
-| **Macroblock** | The fundamental rectangular coding unit in MPEG/H.264 compression, typically 8×8 or 16×16 pixels. |
-| **Motion Vector** | A pointer stored per macroblock indicating where to find similar content in a reference frame. |
+- **Chroma Subsampling**: A compression technique that stores color information at lower resolution than brightness, exploiting the eye's lower sensitivity to color detail.
+
+- **DC Fill**: Replacement of a block's content with a single flat color value, simulating the loss of all spatial frequency data in a compressed block.
+
+- **DCT (Discrete Cosine Transform)**: The mathematical transform at the heart of JPEG and MPEG compression, converting spatial pixel data into frequency components.
+
+- **I-Frame**: An intra-coded frame in video compression that contains a complete image without reference to other frames; loss of an I-frame causes subsequent frames to display stale data.
+
+- **Inter-Frame Prediction**: A compression technique where blocks are described as spatial offsets from a reference frame, transmitting only the difference.
+
+- **LFSR (Linear Feedback Shift Register)**: A simple, hardware-efficient pseudo-random number generator that produces a deterministic sequence from a given seed.
+
+- **Macroblock**: The fundamental rectangular unit (typically 8×8 or 16×16 pixels) in block-based video compression standards.
+
+- **Macroblocking**: The visible artifact of block-based codec failure, where individual rectangular blocks display incorrect data while their neighbors remain intact.
+
+- **Motion Vector**: The displacement offset used in inter-frame prediction to indicate where a block's reference data is located in a previous frame.
 
 ---

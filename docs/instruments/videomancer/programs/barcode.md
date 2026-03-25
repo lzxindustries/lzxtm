@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 14
 slug: /instruments/videomancer/barcode
@@ -7,364 +7,428 @@ image: /img/instruments/videomancer/barcode/barcode_hero_s1.png
 description: "Barcodes are a visual language designed for machines — parallel lines of varying width that encode numeric data."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import barcode_control_panel from '/img/instruments/videomancer/barcode/barcode_control_panel.png';
-import barcode_source1_boat from '/img/instruments/videomancer/barcode/barcode_source1_boat.png';
-import barcode_source2_house from '/img/instruments/videomancer/barcode/barcode_source2_house.png';
-import barcode_source3_clouds from '/img/instruments/videomancer/barcode/barcode_source3_clouds.png';
-import barcode_source4_pattern from '/img/instruments/videomancer/barcode/barcode_source4_pattern.png';
-import barcode_source5_boy from '/img/instruments/videomancer/barcode/barcode_source5_boy.png';
-import barcode_source6_berries from '/img/instruments/videomancer/barcode/barcode_source6_berries.png';
-import barcode_hero_s1 from '/img/instruments/videomancer/barcode/barcode_hero_s1.png';
-import barcode_hero_s2 from '/img/instruments/videomancer/barcode/barcode_hero_s2.png';
-import barcode_hero_s3 from '/img/instruments/videomancer/barcode/barcode_hero_s3.png';
-import barcode_hero_s4 from '/img/instruments/videomancer/barcode/barcode_hero_s4.png';
-import barcode_hero_s5 from '/img/instruments/videomancer/barcode/barcode_hero_s5.png';
-import barcode_hero_s6 from '/img/instruments/videomancer/barcode/barcode_hero_s6.png';
-import barcode_ex1_s1 from '/img/instruments/videomancer/barcode/barcode_ex1_s1.png';
-import barcode_ex1_s2 from '/img/instruments/videomancer/barcode/barcode_ex1_s2.png';
-import barcode_ex1_s3 from '/img/instruments/videomancer/barcode/barcode_ex1_s3.png';
-import barcode_ex1_s4 from '/img/instruments/videomancer/barcode/barcode_ex1_s4.png';
-import barcode_ex1_s5 from '/img/instruments/videomancer/barcode/barcode_ex1_s5.png';
-import barcode_ex1_s6 from '/img/instruments/videomancer/barcode/barcode_ex1_s6.png';
-import barcode_ex2_s1 from '/img/instruments/videomancer/barcode/barcode_ex2_s1.png';
-import barcode_ex2_s2 from '/img/instruments/videomancer/barcode/barcode_ex2_s2.png';
-import barcode_ex2_s3 from '/img/instruments/videomancer/barcode/barcode_ex2_s3.png';
-import barcode_ex2_s4 from '/img/instruments/videomancer/barcode/barcode_ex2_s4.png';
-import barcode_ex2_s5 from '/img/instruments/videomancer/barcode/barcode_ex2_s5.png';
-import barcode_ex2_s6 from '/img/instruments/videomancer/barcode/barcode_ex2_s6.png';
-import barcode_ex3_s1 from '/img/instruments/videomancer/barcode/barcode_ex3_s1.png';
-import barcode_ex3_s2 from '/img/instruments/videomancer/barcode/barcode_ex3_s2.png';
-import barcode_ex3_s3 from '/img/instruments/videomancer/barcode/barcode_ex3_s3.png';
-import barcode_ex3_s4 from '/img/instruments/videomancer/barcode/barcode_ex3_s4.png';
-import barcode_ex3_s5 from '/img/instruments/videomancer/barcode/barcode_ex3_s5.png';
-import barcode_ex3_s6 from '/img/instruments/videomancer/barcode/barcode_ex3_s6.png';
-
-# Barcode
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: barcode_source1_boat, after: barcode_hero_s1 },
-    { label: "House", before: barcode_source2_house, after: barcode_hero_s2 },
-    { label: "Clouds", before: barcode_source3_clouds, after: barcode_hero_s3 },
-    { label: "Pattern", before: barcode_source4_pattern, after: barcode_hero_s4 },
-    { label: "Boy", before: barcode_source5_boy, after: barcode_hero_s5 },
-    { label: "Berries", before: barcode_source6_berries, after: barcode_hero_s6 },
-  ]}
-/>
-*Barcode rendering a portrait as variable-width vertical stripes with luminance-driven bar density and guard bar framing.*
+![Barcode hero image](/img/instruments/videomancer/barcode/barcode_hero_s1.png)
+*Barcode encoding a live camera feed as variable-width vertical stripes, transforming luminance into a scannable pattern of dark and light bars.*
 
 ---
 
 ## Overview
 
-Barcodes are a visual language designed for machines — parallel lines of varying width that encode numeric data. Barcode takes that idea and runs it in reverse: instead of reading stripes to produce numbers, it reads the luminance values of a video signal and produces stripes. Every pixel's brightness becomes a bar-or-space decision, and the result is an image that looks like a living, moving barcode.
+Barcode turns your video signal into a field of vertical (or horizontal) stripes that look like the barcodes printed on product packaging. The program samples the brightness of the incoming image and renders it as thick or thin bars: bright areas become thin bars separated by wide white spaces, while dark areas produce thick, heavy bars. The result is a graphic, high-contrast transformation that makes any video look as if it were being read by a laser scanner at the checkout counter.
 
-The program chains four processing stages together — luminance quantization (reducing the number of brightness levels), bar/space rendering (converting quantized values into stripe patterns at configurable widths), color assignment, and output composition with brightness offset, guard bars, and invert. Three interpolators handle wet/dry mixing at the end. The name is literal: the output resembles the barcodes printed on commercial packaging, but the "data" being encoded is the video signal itself.
+Beyond simple vertical stripes, Barcode offers grid and matrix modes that extend the pattern into two dimensions, creating lattice-like overlays. A set of color tint options lets you shift the bars away from stark black-and-white into tinted palettes. Guard bars, contrast shaping, and brightness offset give you fine control over the density and tone of the barcode field. When blended with the dry signal using the fader, the bars overlay the source image like a scan-line cage.
 
-At moderate settings, the source image remains legible through the stripe pattern — faces, shapes, and motion are visible as density variations in the bars. At extreme settings, the image is reduced to abstract stripe fields where only gross brightness differences survive as changes in bar density.
+:::tip
+***The Mix fader is key to compositing.*** At full mix, the barcode replaces the image entirely. Pull the fader back to overlay the bar pattern on top of the source video, creating a hybrid of data and image.
+:::
+
+### What's In a Name?
+
+The name ***Barcode*** refers directly to the machine-readable stripe patterns printed on packaging and labels. These ***Universal Product Codes*** encode numeric data as sequences of bars and spaces of varying widths. Barcode borrows the visual vocabulary of that encoding system: quantized luminance, fixed-width stripe cells, guard bars at the margins, and quiet zones of blank space. The program doesn't encode real data, but it transforms video into imagery that looks convincingly like it could be scanned.
 
 ---
 
 ## Quick Start
 
-1. **Bar width sets the character**: Values around 4–12 produce the most recognizable barcode patterns. Wider bars become abstract stripes; width 1 is just luminance quantization.
-2. **Quantization is the vocabulary**: Fewer levels create a more dramatic, graphic-poster barcode. More levels create subtle density variations that read almost like halftone printing.
-3. **Guard bars complete the illusion**: Enable Guard to add the start/stop markers that make the output look like a real barcode format. Combined with Quiet Zone, the result is compositionally framed.
+1. Turn **Bar W** (Knob 1) to the midpoint. The image breaks into a pattern of vertical stripes: alternating bars and white spaces that tile across the screen.
+2. Sweep **Levels** (Knob 2) slowly. The number of brightness steps in the bars changes: fewer levels create stark, high-contrast bars, while more levels let the bars carry more tonal nuance from the source.
+3. Toggle **Type** (Switch 7) to **Matrix**. The stripe pattern rotates, adding a second dimension to the barcode field.
+4. Pull the **Mix** fader (Fader 12) to the midpoint. The barcode pattern blends with the original video, overlaying stripes on top of the source image.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Barcode loaded](/img/instruments/videomancer/barcode/barcode_control_panel.png)
+*Videomancer's front panel with Barcode active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Bar W
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Bar W** controls the width of each individual bar in the stripe pattern. At low values, bars are narrow: just one or two pixels wide: producing a dense, fine-grained field of hairline stripes. As you increase Bar W, the bars grow wider and the pattern becomes chunkier, with broad blocks of color separated by equally broad spaces. At maximum, each bar occupies up to 64 pixels, creating a very coarse, blocky grid.
+
+The bar width also determines the spatial period of the stripe pattern: wider bars mean fewer stripes visible across the screen. Narrow bars produce dense, textile-like textures; wide bars produce bold, graphic partitions.
+
+---
+
+### Knob 2 — Levels
+
+| Property | Value |
+|----------|-------|
+| Range | 2 – 16 |
+| Default | 9 |
+
+**Levels** controls the number of ***quantization*** levels applied to the luminance of each bar. At low values, the brightness of the bars is crushed into very few steps: the bars snap to just a handful of distinct tones, producing stark, poster-like contrast. As Levels increases, more brightness steps are preserved, and the bars carry a richer gradient of tones inherited from the source image.
+
+:::note
+Levels uses a stepped control mode with eight detent positions. Each position selects a different quantization depth internally.
+:::
+
+---
+
+### Knob 3 — Contrast
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Contrast** adjusts the tonal separation between bright and dark bars. At the midpoint, contrast is neutral. Turning Contrast above the midpoint pushes bright bars brighter and dark bars darker, increasing the visual punch of the barcode pattern. Below the midpoint, bright and dark bars converge toward a flat gray, reducing the legibility of the stripe pattern.
+
+---
+
+### Knob 4 — Spacing
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Spacing** controls the gap between adjacent bars. At low values, bars are packed tightly together with little or no visible space between them, creating a dense, saturated stripe field. Increasing Spacing widens the white gaps between bars, letting the background breathe and making individual bars more distinct (closer to the look of a printed barcode label.)
+
+---
+
+### Knob 5 — Quiet Zn
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Quiet Zn** sets the width of the ***quiet zone***, the blank margin of white space at the left and right edges of the barcode field. Real barcodes require quiet zones so that scanners can distinguish the code from surrounding graphics. At zero, the stripe pattern extends all the way to the edges of the frame. Increasing Quiet Zn pushes the stripes inward, framing the barcode within a border of empty space.
+
+---
+
+### Knob 6 — Bright
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Bright** applies a global brightness offset to the entire barcode image. At the midpoint, brightness is neutral: no offset is applied. Turning Bright above the midpoint lifts the entire image, washing out the darkest bars. Below the midpoint, the image darkens, and even the white spaces between bars begin to gray out. Use Bright to shift the overall exposure of the barcode pattern without changing the contrast relationship between bars.
+
+---
+
+### Switch 7 — Type
+
+| Property | Value |
+|----------|-------|
+| Off | 1D Vert |
+| On | Matrix |
+| Default | 1D Vert |
+
+**Type** selects the orientation of the bar pattern. In the **1D Vert** position, bars run vertically: the classic barcode look, with stripes marching from left to right. In the **Matrix** position, the bar orientation changes, creating a different spatial arrangement of the stripe field.
+
+:::tip
+Combine **Type** with **Color** (Switch 8) for additional pattern modes. The two switches together select from a family of bar geometries: vertical stripes, horizontal stripes, and two-dimensional grid patterns.
+:::
+
+---
+
+### Switch 8 — Color
+
+| Property | Value |
+|----------|-------|
+| Off | B/W |
+| On | Green |
+| Default | B/W |
+
+**Color** selects the color tint of the barcode pattern. In the **B/W** position, bars are rendered in neutral black and white with no color bias. In the **Green** position, the bars take on a green tint: the same sickly green glow of a barcode scanner's laser line.
+
+---
+
+### Switch 9 — Guard
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Guard** enables the ***guard bars***, the tall, dark lines at the very beginning and end of a barcode that mark where the code starts and stops. When Guard is set to **On**, thin black bars appear at the left and right edges of the active video area. When set to **Off**, the stripe pattern extends uninterrupted to the frame edges.
+
+:::tip
+Guard bars add a finishing touch that makes the barcode pattern look authentic. Enable them when you want the output to resemble an actual product label.
+:::
+
+---
+
+### Switch 10 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** reverses the luminance of the barcode pattern. When **Off**, bars are dark on a light background: the standard barcode appearance. When **On**, the polarity flips: bars become bright on a dark background, like a photographic negative of a barcode.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all barcode processing stages. The sync delay pipeline still aligns timing, so there is no glitch when toggling. Use Bypass for instant A/B comparison between the raw input and the barcode-processed result.
+
+---
+
+:::note Toggle Group Notes
+
+**Type** (Switch 7) and **Color** (Switch 8) together form a combined two-bit mode selector that controls both bar orientation and color tint. The four combinations produce distinct visual modes:
+
+| Type | Color | Result |
+|------|-------|--------|
+| 1D Vert | B/W | Vertical black-and-white stripes (classic barcode) |
+| Matrix | B/W | Horizontal black-and-white stripes |
+| 1D Vert | Green | Two-dimensional grid pattern (vertical + horizontal bars) |
+| Matrix | Green | Vertical stripes with green tint |
+
+Similarly, **Guard** (Switch 9) and **Invert** (Switch 10) together form a combined two-bit color tint selector:
+
+| Guard | Invert | Result |
+|-------|--------|--------|
+| Off | Off | Neutral black and white |
+| On | Off | Warm reddish tint |
+| Off | On | Cool bluish tint |
+| On | On | Green tint |
+
+:::note
+Because these toggles interact in groups, the label on each individual switch describes only part of the combined behavior. Experiment with all four combinations to explore the full palette of modes.
+:::
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** controls the wet/dry blend between the barcode-processed signal and the original input. At 100%, fully right, the output is entirely barcode: the source video is completely replaced by the stripe pattern. At 0%, fully left, the output is the unprocessed source. Intermediate positions overlay the barcode on top of the source with variable opacity, creating a composited look where the stripe pattern is visible but the underlying image shows through.
+
+:::tip
+A Mix value around 50% creates a striking overlay effect: the barcode stripes act as a semi-transparent grid laid over the source footage. This is especially effective with moving video, where the bars remain static while the image flows beneath them.
+:::
 
 ---
 
 ## Background
 
-### What Is a Barcode?
+### Barcodes and machine vision
 
-A **barcode** is a machine-readable representation of data using parallel lines (bars) and gaps (spaces) of varying width. The Universal Product Code (UPC) printed on grocery items is the most familiar example: a sequence of black bars and white spaces whose widths encode a 12-digit number. The key principle is that information is carried by the *ratio* of bar and space widths, not by absolute dimensions. Barcode applies this principle to video — the ratio of bar to space at each horizontal position is determined by the source luminance at that position.
+The first patent for a barcode system was filed in 1952 by Norman Woodland and Bernard Silver. Woodland's original design used concentric circles: a bull's-eye pattern: but the idea of encoding data as parallel lines of varying width eventually won out. The ***Universal Product Code*** (UPC), introduced in 1974, became the ubiquitous standard: a sequence of black bars and white spaces that encodes a 12-digit number. A laser scanner reads the pattern by measuring the reflectance of each stripe.
 
-### Luminance Quantization
+In a real UPC barcode, data is encoded in the ***widths*** of bars and spaces. A wider bar represents a different bit pattern than a narrow bar. The start and end of the code are marked by fixed ***guard bars***, and a blank ***quiet zone*** on either side ensures the scanner can distinguish the code from its surroundings. Barcode borrows all of these visual conventions: variable width, guard bars, quiet zones: and applies them to video.
 
-Before rendering bars, the program quantizes the input luminance. Quantization reduces a continuous range of values to a discrete set of levels — like rounding every price to the nearest dollar. In FPGA hardware, this is implemented efficiently as a right-shift followed by a left-shift: shifting right by N bits discards the N least significant bits, and shifting back left restores the original scale but with the fine detail lost. The Levels control selects among four shift amounts (2, 3, 4, or 5 bits), yielding 256, 128, 64, or 32 distinct brightness levels. Fewer levels produce a more stylized, poster-like barcode pattern; more levels preserve finer tonal gradations.
+### Quantization and level reduction
 
-### Bar Width and Spatial Encoding
+***Quantization*** is the process of mapping a continuous range of values to a smaller set of discrete steps. When you photograph a scene, the camera's sensor captures billions of possible brightness levels, but the digital file stores only a fixed number: 256 levels for 8-bit video, or 1024 for 10-bit. Reducing the number of levels further produces visible banding: smooth gradients collapse into flat plateaus separated by hard edges. This is the same principle behind ***posterization*** in image editing.
 
-The bar width parameter controls how many pixels wide each stripe region is. The VHDL divides the pot value by 16 and adds 1, giving a range of 1 to 64 pixels. Within each stripe region, the position modulo the bar width determines whether a pixel is a "bar" (dark, carrying the quantized luminance) or a "space" (white). This is the core encoding mechanism: wider bars at a given position mean higher luminance, narrower bars mean lower luminance — exactly the same principle that drives commercial barcode scanners.
+Barcode uses quantization to decide how dark each bar should be. The incoming luminance of each stripe region is rounded down to the nearest quantization step, then rendered as a bar of that brightness. Fewer levels mean more aggressive rounding, and the bars snap to a small set of distinct tones. More levels let the bars carry a wider range of brightness, producing a more detailed barcode.
 
-### Guard Bars and Quiet Zones
+### Color encoding in barcodes
 
-Real barcodes include structural elements beyond the data bars. **Guard bars** are fixed-width bars at the left and right edges that tell a scanner where the code begins and ends. **Quiet zones** are blank margins outside the guard bars that prevent adjacent visual elements from being misread as data. Barcode implements both: the Guard toggle enables 8-pixel-wide black bars at the horizontal edges (positions 0–7 and 1273–1279), and the Quiet Zone control blanks a configurable margin at the left edge of the frame. These elements reinforce the barcode aesthetic and provide visual framing.
-
-### Orientation Modes
-
-While traditional barcodes are one-dimensional (vertical stripes), modern data encoding uses two-dimensional patterns — QR codes, Data Matrix, and PDF417 all arrange data in a grid. Barcode offers four orientation modes: 1D Vertical (standard barcode stripes), 1D Horizontal (rotated 90 degrees, using vertical position instead of horizontal), 2D Grid (combining horizontal and vertical tests with OR logic — bars appear wherever either axis criterion is met), and Matrix (an alternate 2D combination). These modes transform the same quantized luminance data into fundamentally different spatial patterns.
+Traditional barcodes are strictly monochrome: the contrast between black ink and white paper is what makes them reliable. Two-dimensional codes like ***QR codes*** are also black and white, though some modern implementations add color for branding. Barcode takes the liberty of tinting the stripe pattern with selectable color palettes: warm reds, cool blues, and green tones inspired by the laser scanners used to read real barcodes. The tint is applied uniformly to the UV chrominance channels, shifting the entire pattern away from neutral.
 
 
 ---
 
 ## Signal Flow
 
-Input Register → Luminance Quantization → Bar Draw → Guard Bars
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Stage 1: Input Register + Position Counters ──────────────
-│   ├─ Latch Y, U, V
-│   ├─ h_count (0–1279) horizontal position
-│   └─ v_count (0–719) vertical position
-│
-├── Stage 2: Luminance Quantization + Bar Width ──────────────
-│   ├─ Shift-based quantize (shift 2/3/4/5 based on Levels)
-│   ├─ bar_width = pot/16 + 1 (range 1–64)
-│   ├─ Position mod bar_width → bar or space
-│   └─ Type select: V uses h_count, H uses v_count,
-│      Grid = H OR V, Matrix = alternate
-│
-├── Stage 3: Bar Draw + Color Assignment ─────────────────────
-│   ├─ Bar pixel: Y = quantized luma
-│   ├─ Space pixel: Y = 1023 (white)
-│   ├─ Contrast adjustment (expand/compress around 512)
-│   └─ Color tint: B/W=U512/V512, Red=U400/V700,
-│      Blue=U700/V400, Green=U400/V400
-│
-├── Stage 4: Guard Bars + Brightness + Invert ────────────────
-│   ├─ Brightness offset (signed, pot − 512)
-│   ├─ Guard bars: 8px black at h<8 or h>1272
-│   ├─ Invert: 1023 − Y
-│   └─ Output compose
-│
-├── Interpolator Stage (4 clocks) ────────────────────────────
-│   └─ 3× interpolator_u: wet/dry mix (Y, U, V)
-│
-├── Sync Delay Pipeline ──────────────────────────────────────
-│   └─ 8+4 clock delay matching processing latency
-│
-└── Bypass Mux ───────────────────────────────────────────────
-    └─ Select processed or delayed original
-```
+Two key architectural features define the barcode pipeline:
 
-The critical interaction is between the quantization and bar-draw stages. Quantization reduces the number of distinct luminance values in the image, and the bar-draw stage converts each quantized value into a spatial pattern within the stripe region. Fewer quantization levels mean fewer distinct bar widths, producing a coarser, more stylized result. The bar width control sets the spatial frequency of the stripe pattern independently of the quantization depth — wide bars with fine quantization create broad stripes with many possible densities, while narrow bars with coarse quantization create a rapid switching pattern with few density levels.
+1. **Position-based stripe generation**: The program maintains horizontal and vertical pixel counters synchronized to the video timing. Each pixel's position is tested against the bar width using modular arithmetic on the lower 6 bits of the counter. This creates a repeating stripe pattern with a fixed spatial period. The bar orientation mode selects whether the horizontal counter, vertical counter, or both are used, controlling whether stripes run vertically, horizontally, or in a grid.
 
----
+2. **Luminance-driven bar darkness**: The quantized luminance of the source image determines how dark each bar is drawn. In bar regions, the output Y value is the quantized luma: bright source areas produce light bars, dark areas produce dark bars. In space regions (between bars), the output is forced to white (1023). This creates the characteristic barcode appearance where bar width is fixed but bar darkness varies with the source content.
 
-## Parameter Reference
-
-<img src={barcode_control_panel} alt="Videomancer front panel with Barcode loaded"/>
-*Videomancer's front panel with Barcode active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Bar W
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the width of each bar stripe region in pixels. The VHDL divides the 10-bit pot value by 16 and adds 1, giving a range of 1 to 64 pixels. At minimum (bar width 1), every pixel is an independent bar — the image becomes a simple quantized version of the source. At maximum (bar width 64), broad stripe regions dominate the frame, and the barcode structure becomes the primary visual element. Intermediate values around 8–16 produce the most classically barcode-like appearance.
-
----
-
-#### Knob 2 — Levels
-| Property | Value |
-|----------|-------|
-| Range | 2 – 16 |
-| Default | 9 |
-
-Controls the number of quantization levels applied to the luminance channel before bar rendering. Four shift amounts are selected by threshold: pot values above 768 give 256 levels (shift 2), above 512 give 128 levels (shift 3), above 256 give 64 levels (shift 4), and below give 32 levels (shift 5). Fewer levels produce more distinct, poster-like bar density steps. At the coarsest setting, only 32 brightness values survive — the barcode becomes a stark graphic with a small vocabulary of bar widths.
-
----
-
-#### Knob 3 — Contrast
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the contrast of the rendered bars. The VHDL computes a signed offset from the pot value (divided by 4, minus 128) and applies it asymmetrically — values above mid-gray are pushed brighter, values below are pushed darker. This expands the visual difference between bars and spaces. At minimum contrast, bars and spaces have similar brightness and the barcode pattern is subtle. At maximum, bars are deep black and spaces are bright white, producing the sharpest possible stripe pattern.
-
----
-
-#### Knob 4 — Spacing
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the amount of white space inserted between bar groups. The spacing value adds pixels of white separation, visually thinning the bar pattern and introducing rhythm to the stripe sequence. At zero, bars fill their full width. As spacing increases, the bars become narrower relative to the spaces, creating an airier, more open pattern. This interacts with bar width — narrow bars with high spacing produce a sparse, delicate barcode, while wide bars with low spacing produce a dense, heavy one.
-
----
-
-#### Knob 5 — Quiet Zn
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
-
-Controls the width of the quiet zone — a blank white margin at the left edge of the frame. In real barcodes, quiet zones are mandatory clearance areas that prevent scanners from misreading adjacent elements. Here, the quiet zone provides visual framing and compositional control. At zero, bars extend to the frame edge. As you increase the control, a progressively wider white border appears at the left, pushing the barcode pattern inward.
-
----
-
-#### Knob 6 — Bright
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Applies a signed brightness offset to the entire processed signal. The offset is computed as the pot value minus 512, giving a range of −512 to +511. At center (pot = 512), no offset is applied. Turning below center darkens the output; turning above center brightens it. This is applied after contrast and before guard bars and invert, so it shifts the entire tonal range of the barcode uniformly. Use it to match the output level to downstream equipment or to create intentionally over- or under-exposed barcode textures.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Type** | 1D Vert | Matrix |
-| **8 — Color** | B/W | Green |
-| **9 — Guard** | Off | On |
-| **10 — Invert** | Off | On |
-| **11 — Bypass** | Off | On |
-
-Switches 7 and 8 each use two bits to select among four options — they are multi-position toggles, not simple on/off switches. Switch 7 selects the bar orientation mode (1D Vertical, 1D Horizontal, 2D Grid, Matrix). Switch 8 selects the color scheme (B/W, Red, Blue, Green). Switches 9 and 10 are standard on/off toggles for guard bars and invert respectively. Switch 11 is bypass.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Barcode-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::tip
+**Processing order matters.** Quantization happens in Stage 2 before contrast and brightness adjustments in Stages 3–4. This means contrast and brightness shape the quantized result, not the raw input. Adjusting Contrast after quantization exaggerates the steps between quantized levels.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from basic vertical barcode rendering through spatial modes and color options to full compositional control. Each exercise produces a visually distinct result.
+These exercises progress from basic stripe generation to full barcode compositing. Each exercise builds on the previous one, introducing more controls and creative possibilities.
+### Exercise 1: Classic Vertical Barcode
 
-### Exercise 1: Classic Barcode
+![Classic Vertical Barcode result](/img/instruments/videomancer/barcode/barcode_ex1_s1.png)
+*Classic Vertical Barcode — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: barcode_source1_boat, after: barcode_ex1_s1 },
-    { label: "House", before: barcode_source2_house, after: barcode_ex1_s2 },
-    { label: "Clouds", before: barcode_source3_clouds, after: barcode_ex1_s3 },
-    { label: "Pattern", before: barcode_source4_pattern, after: barcode_ex1_s4 },
-    { label: "Boy", before: barcode_source5_boy, after: barcode_ex1_s5 },
-    { label: "Berries", before: barcode_source6_berries, after: barcode_ex1_s6 },
-  ]}
-/>
-*Classic Barcode — simulated result across source images.*
-**Source**: A portrait or image with a broad range of tones — skin, hair, background.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Learn how bar width and quantization interact to produce recognizable vertical barcode patterns.
+#### Learning Outcomes
 
-1. **Start simple**: Set Bar W to ~30%, Levels to mid-position, all toggles off except Guard on. You should see vertical stripes of varying density corresponding to the brightness regions of the source.
-2. **Adjust bar width**: Sweep Bar W from minimum to maximum. At minimum, the image is almost its normal self (just quantized). At maximum, thick stripes dominate and fine detail disappears.
-3. **Change quantization**: Sweep Levels from maximum to minimum. Watch the number of distinct stripe widths decrease — the barcode vocabulary shrinks from 256 levels to 32.
-4. **Add contrast**: Increase Contrast to sharpen the difference between bars and spaces. The barcode becomes more graphic and machine-readable.
-5. **Enable guard bars**: Toggle Guard on. Black reference bars frame the left and right edges, completing the barcode format.
+A clean vertical barcode where the stripe darkness follows the luminance of the source image.
 
-**Key concepts**: Bar width sets spatial frequency, quantization sets the vocabulary of bar densities, contrast sharpens the bar/space distinction, guard bars provide structural framing
+#### Key Concepts
 
----
+- Bar width controls stripe density
+- Quantization levels determine tonal richness of bars
+- Contrast shapes the visual weight of the pattern
 
-### Exercise 2: Color Grid Pattern
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: barcode_source1_boat, after: barcode_ex2_s1 },
-    { label: "House", before: barcode_source2_house, after: barcode_ex2_s2 },
-    { label: "Clouds", before: barcode_source3_clouds, after: barcode_ex2_s3 },
-    { label: "Pattern", before: barcode_source4_pattern, after: barcode_ex2_s4 },
-    { label: "Boy", before: barcode_source5_boy, after: barcode_ex2_s5 },
-    { label: "Berries", before: barcode_source6_berries, after: barcode_ex2_s6 },
-  ]}
-/>
-*Color Grid Pattern — simulated result across source images.*
-**Source**: An image with strong color variation — macaws, fruit, or geometric patterns.
+A live camera feed or recorded footage with a mix of bright and dark regions (a face, a landscape, or a high-contrast graphic.)
 
-**What You'll Create**: Explore 2D grid mode and color tinting to create crosshatch barcode patterns.
+#### Steps
 
-1. **2D Grid mode**: Set Type to 2D Grid. Bars appear on both horizontal and vertical axes, creating a crosshatch pattern.
-2. **Color tint**: Switch Color from B/W to Red. The bars take on a warm tint. Try Blue and Green as well — each creates a different mood.
-3. **Spacing**: Increase Spacing to open up the grid. The crosshatch pattern becomes more airy, with wider white gaps between bars.
-4. **Quiet zone**: Add a quiet zone (~30%) to observe how the left margin blanks to white, framing the active barcode area.
-5. **Invert**: Toggle Invert to see the color-negative grid — white bars on a dark, tinted background.
+1. **Set bar width**: Turn **Bar W** (Knob 1) to about 30%. The image breaks into a field of medium-width vertical stripes.
+2. **Reduce levels**: Turn **Levels** (Knob 2) fully clockwise for maximum quantization depth. The bars carry a range of tones from the source.
+3. **Boost contrast**: Increase **Contrast** (Knob 3) to about 70%. The difference between dark and light bars becomes more pronounced.
+4. **Add guard bars**: Set **Guard** (Switch 9) to **On**. Thin black bars appear at the left and right edges, framing the barcode.
+5. **Compare**: Toggle **Bypass** (Switch 11) to compare the barcode pattern with the raw source.
 
-**Key concepts**: 2D Grid combines horizontal and vertical bar tests with OR logic, color tinting applies uniform chrominance to all bars, spacing controls bar-to-space ratio, invert swaps the polarity of the entire pattern
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Bar W | ~30% |
+| Levels | 16 |
+| Contrast | ~70% |
+| Spacing | ~50% |
+| Quiet Zn | 0% |
+| Bright | ~50% |
+| Type | 1D Vert |
+| Color | B/W |
+| Guard | On |
+| Invert | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Barcode Overlay
+### Exercise 2: Tinted Grid Overlay
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: barcode_source1_boat, after: barcode_ex3_s1 },
-    { label: "House", before: barcode_source2_house, after: barcode_ex3_s2 },
-    { label: "Clouds", before: barcode_source3_clouds, after: barcode_ex3_s3 },
-    { label: "Pattern", before: barcode_source4_pattern, after: barcode_ex3_s4 },
-    { label: "Boy", before: barcode_source5_boy, after: barcode_ex3_s5 },
-    { label: "Berries", before: barcode_source6_berries, after: barcode_ex3_s6 },
-  ]}
-/>
-*Barcode Overlay — simulated result across source images.*
-**Source**: Any footage with movement — performers, nature, or abstract video feedback.
+![Tinted Grid Overlay result](/img/instruments/videomancer/barcode/barcode_ex2_s1.png)
+*Tinted Grid Overlay — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Use the wet/dry mix to blend barcode patterns over the source as a compositional overlay.
+***A description of the exercise illustration.***
 
-1. **Set up barcode**: Configure a strong 1D Vertical barcode with moderate bar width (~20%), high contrast, guard bars on, B/W color.
-2. **Reduce mix**: Lower the Mix fader to ~50%. The barcode pattern becomes translucent over the original image. The source subjects are visible beneath the stripe pattern.
-3. **Horizontal mode**: Switch Type to 1D Horiz. The overlay changes to horizontal stripes, creating a venetian-blind effect over the source.
-4. **Brightness offset**: Adjust Bright to shift the barcode tonal range — darkening the overlay makes it more subtle, brightening makes it more intrusive.
-5. **Animate**: Slowly sweep Bar W while the mix is at ~50%. The stripe frequency changes smoothly, creating a scanning or shimmering overlay effect.
+#### Learning Outcomes
 
-**Key concepts**: The wet/dry mix blends processed and original signals via interpolation, mixing below 100% creates transparent overlays, brightness offset shifts the overlay density, sweeping parameters during mix creates animated textures
+A colored two-dimensional grid overlaid on the source video at partial opacity.
+
+#### Key Concepts
+
+- Toggle combinations create grid patterns and color tints
+- The Mix fader composites the barcode over the source
+- Brightness offset shifts the overall exposure of the pattern
+
+#### Video Source
+
+Footage with smooth gradients and gentle motion (clouds, water, or abstract color fields work well.)
+
+#### Steps
+
+1. **Enable grid mode**: Set **Type** (Switch 7) to **1D Vert** and **Color** (Switch 8) to **Green**. A two-dimensional grid of intersecting bars appears.
+2. **Set bar width**: Turn **Bar W** (Knob 1) to about 50%. The grid lines are medium thickness with visible gaps between them.
+3. **Add color tint**: Set **Guard** (Switch 9) to **On**. The grid shifts to a warm reddish tint.
+4. **Reduce mix**: Pull the **Mix** fader (Fader 12) to about 50%. The grid blends with the source, becoming a semi-transparent overlay.
+5. **Adjust brightness**: Sweep **Bright** (Knob 6) to shift the overall lightness of the grid. Find a balance where the grid is visible but doesn't overwhelm the source.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Bar W | ~50% |
+| Levels | 12 |
+| Contrast | ~50% |
+| Spacing | ~30% |
+| Quiet Zn | ~30% |
+| Bright | ~40% |
+| Type | 1D Vert |
+| Color | Green |
+| Guard | On |
+| Invert | Off |
+| Bypass | Off |
+| Mix | ~50% |
 
 ---
 
+### Exercise 3: Inverted Barcode Negative
 
-## Tips
+![Inverted Barcode Negative result](/img/instruments/videomancer/barcode/barcode_ex3_s1.png)
+*Inverted Barcode Negative — simulated result across source images.*
+#### Exercise Illustration
 
-- **Color tinting is instant drama**: Switching from B/W to Red or Blue creates an immediate visual transformation with no luminance change — useful for live performance transitions.
-- **Mix for layering**: At 40–60% mix, the barcode becomes a transparent texture overlay. This is particularly effective when the source has strong motion — the bars shimmer with the movement.
-- **Invert for negative barcodes**: White bars on dark backgrounds have a completely different visual weight. Combined with color tinting, invert produces rich color-negative barcode patterns.
-- **Horizontal mode for scanlines**: 1D Horiz creates horizontal stripe patterns that evoke CRT scanlines or venetian blinds. Combined with narrow bar width and low contrast, this produces subtle raster-line textures.
-- **Feedback loops**: Route the output back to the input for recursive barcode encoding — the already-barcode signal gets re-encoded, creating fractal-like stripe nesting.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A high-contrast inverted barcode with guard bars and quiet zones, resembling a photographic negative of a product label.
+
+#### Key Concepts
+
+- Inversion reverses the polarity of the barcode
+- Combining all stages produces the most dramatic transformations
+- Quiet zone framing completes the barcode aesthetic
+
+#### Video Source
+
+High-contrast footage with strong shapes: silhouettes, geometric patterns, or text on a plain background.
+
+#### Steps
+
+1. **Narrow bars**: Set **Bar W** (Knob 1) to about 45%. The stripe pattern is moderately dense.
+2. **High contrast**: Turn **Contrast** (Knob 3) to about 70%. Bars are punchy and well-separated.
+3. **Reduce levels**: Set **Levels** (Knob 2) low. The bars snap to just a few distinct brightness levels, producing a stark, graphic quality.
+4. **Invert**: Set **Invert** (Switch 10) to **On**. The barcode flips to bright bars on a dark background.
+5. **Add quiet zone**: Increase **Quiet Zn** (Knob 5) to about 30%. White margins appear at the edges, framing the barcode.
+6. **Guard bars**: Set **Guard** (Switch 9) to **On** for the finishing touch.
+7. **Full mix**: Ensure the **Mix** fader (Fader 12) is at 100% for the full barcode effect.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Bar W | ~45% |
+| Levels | 4 |
+| Contrast | ~70% |
+| Spacing | ~20% |
+| Quiet Zn | ~30% |
+| Bright | ~50% |
+| Type | 1D Vert |
+| Color | B/W |
+| Guard | On |
+| Invert | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Bypass mux** | A multiplexer that routes the original signal past all processing stages for instant A/B comparison. |
-| **Chrominance** | The color-difference components (U and V) of a YUV video signal, separate from luminance. |
-| **Guard bar** | A fixed-width reference bar at the edge of a barcode that marks where the data region begins or ends. |
-| **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color. |
-| **Quantization** | Reducing a continuous range of values to a finite set of discrete levels, here applied to luminance before bar rendering. |
-| **Quiet zone** | A mandatory blank margin adjacent to a barcode that prevents nearby visual elements from being misread as data. |
-| **UPC** | Universal Product Code; the most common one-dimensional barcode symbology, printed on retail packaging worldwide. |
-| **Wet/dry mix** | A crossfade between the processed (wet) and original (dry) signals, controlling effect intensity. |
+- **Guard Bar**: A fixed dark bar at the beginning or end of a barcode that marks the start or stop of the encoded data region
+
+- **Interpolator**: A hardware module that smoothly blends between two input values based on a mix coefficient, used here for the wet/dry crossfade
+
+- **Luminance**: The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color
+
+- **Quantization**: Mapping a continuous range of values to a smaller set of discrete steps, producing visible banding in gradients
+
+- **Quiet Zone**: The blank margin of white space surrounding a barcode, required so that scanners can distinguish the code from adjacent graphics
+
+- **UPC**: Universal Product Code; the standard one-dimensional barcode format used on retail products since 1974
+
+- **YUV**: A color encoding system that separates brightness (Y) from color information (U and V), used in broadcast video
+
 
 ---

@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 183
 slug: /instruments/videomancer/macrame
@@ -7,376 +7,404 @@ image: /img/instruments/videomancer/macrame/macrame_hero_s1.png
 description: "Fiber arts begin with repetition — a single knot tied again and again until a flat cord becomes a surface."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import macrame_control_panel from '/img/instruments/videomancer/macrame/macrame_control_panel.png';
-import macrame_source1_field from '/img/instruments/videomancer/macrame/macrame_source1_field.png';
-import macrame_source2_ballerina from '/img/instruments/videomancer/macrame/macrame_source2_ballerina.png';
-import macrame_source3_collage from '/img/instruments/videomancer/macrame/macrame_source3_collage.png';
-import macrame_source4_pattern from '/img/instruments/videomancer/macrame/macrame_source4_pattern.png';
-import macrame_source5_boy from '/img/instruments/videomancer/macrame/macrame_source5_boy.png';
-import macrame_source6_wood from '/img/instruments/videomancer/macrame/macrame_source6_wood.png';
-import macrame_hero_s1 from '/img/instruments/videomancer/macrame/macrame_hero_s1.png';
-import macrame_hero_s2 from '/img/instruments/videomancer/macrame/macrame_hero_s2.png';
-import macrame_hero_s3 from '/img/instruments/videomancer/macrame/macrame_hero_s3.png';
-import macrame_hero_s4 from '/img/instruments/videomancer/macrame/macrame_hero_s4.png';
-import macrame_hero_s5 from '/img/instruments/videomancer/macrame/macrame_hero_s5.png';
-import macrame_hero_s6 from '/img/instruments/videomancer/macrame/macrame_hero_s6.png';
-import macrame_ex1_s1 from '/img/instruments/videomancer/macrame/macrame_ex1_s1.png';
-import macrame_ex1_s2 from '/img/instruments/videomancer/macrame/macrame_ex1_s2.png';
-import macrame_ex1_s3 from '/img/instruments/videomancer/macrame/macrame_ex1_s3.png';
-import macrame_ex1_s4 from '/img/instruments/videomancer/macrame/macrame_ex1_s4.png';
-import macrame_ex1_s5 from '/img/instruments/videomancer/macrame/macrame_ex1_s5.png';
-import macrame_ex1_s6 from '/img/instruments/videomancer/macrame/macrame_ex1_s6.png';
-import macrame_ex2_s1 from '/img/instruments/videomancer/macrame/macrame_ex2_s1.png';
-import macrame_ex2_s2 from '/img/instruments/videomancer/macrame/macrame_ex2_s2.png';
-import macrame_ex2_s3 from '/img/instruments/videomancer/macrame/macrame_ex2_s3.png';
-import macrame_ex2_s4 from '/img/instruments/videomancer/macrame/macrame_ex2_s4.png';
-import macrame_ex2_s5 from '/img/instruments/videomancer/macrame/macrame_ex2_s5.png';
-import macrame_ex2_s6 from '/img/instruments/videomancer/macrame/macrame_ex2_s6.png';
-import macrame_ex3_s1 from '/img/instruments/videomancer/macrame/macrame_ex3_s1.png';
-import macrame_ex3_s2 from '/img/instruments/videomancer/macrame/macrame_ex3_s2.png';
-import macrame_ex3_s3 from '/img/instruments/videomancer/macrame/macrame_ex3_s3.png';
-import macrame_ex3_s4 from '/img/instruments/videomancer/macrame/macrame_ex3_s4.png';
-import macrame_ex3_s5 from '/img/instruments/videomancer/macrame/macrame_ex3_s5.png';
-import macrame_ex3_s6 from '/img/instruments/videomancer/macrame/macrame_ex3_s6.png';
-
-# Macrame
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Field", before: macrame_source1_field, after: macrame_hero_s1 },
-    { label: "Ballerina", before: macrame_source2_ballerina, after: macrame_hero_s2 },
-    { label: "Collage", before: macrame_source3_collage, after: macrame_hero_s3 },
-    { label: "Pattern", before: macrame_source4_pattern, after: macrame_hero_s4 },
-    { label: "Boy", before: macrame_source5_boy, after: macrame_hero_s5 },
-    { label: "Wood", before: macrame_source6_wood, after: macrame_hero_s6 },
-  ]}
-/>
-*Macrame overlaying a knotted diamond cord lattice with textured intersections across a video source.*
+![Macrame hero image](/img/instruments/videomancer/macrame/macrame_hero_s1.png)
+*Macrame weaving a luminous diamond lattice of knotted cords over a source image, with LFSR texture noise lending each strand an organic, handmade irregularity.*
 
 ---
 
 ## Overview
 
-Fiber arts begin with repetition — a single knot tied again and again until a flat cord becomes a surface. Macrame brings that principle to the pixel grid. The program generates a lattice of diagonal cord lines across the screen, placing thickened knot circles at every intersection, and composites the result over the input video. The pattern tiles seamlessly because its repeat distances are always powers of two, locking the lattice to the binary structure of the pixel coordinates.
+**Macrame** is a pattern overlay program that generates a repeating diamond lattice of diagonal cord lines with thickened knot points at every intersection. The lattice is drawn in real time on top of the incoming video, creating the appearance of a woven textile draped across the image. Cords can glow with their own brightness, tinted in warm cream tones, or borrow color from the source video beneath them. A pseudorandom noise generator adds subtle irregularity to every strand, so the result never looks perfectly mechanical.
 
-The name comes from the textile craft of the same name — decorative knotwork made by tying cords into geometric patterns rather than weaving or knitting them. Traditional macramé produces diamond, chevron, and spiral motifs from nothing but cord and repetition. This program translates those geometric rules into modular-arithmetic tests on horizontal and vertical pixel addresses.
+At gentle settings, Macrame applies a faint grid of luminous threads over the picture: more ornamental frame than processing effect. At aggressive settings, the lattice dominates the image: thick ropes laced with bright knots obscure most of the source material, transforming it into a woven surface. The balance between cord and source is always under your control.
 
-At low Cord Spacing values the lattice is dense, almost like a mesh screen overlaid on the video. At high values the diamonds open up into wide cells with prominent knot circles. The Brightness control sets the luminance level of the cord structure itself, while the Overlay toggle determines whether the cords add light to the source or replace it entirely.
+:::tip
+Macrame is a ***processing*** program. It expects a live video input and overlays its lattice pattern on top of that signal. Without an input, you'll see the lattice pattern against black.
+:::
+
+### What's In a Name?
+
+The name ***Macrame*** refers to the textile craft of knotting cords into decorative patterns. Traditional macramé produces diamond lattice structures through a series of half-hitch and square knots tied at regular intervals along hanging threads. The program generates exactly this geometry: two sets of diagonal lines crossing to form diamond cells, with round knot points swelling at each crossing. The word itself traces back through French and Arabic to a root meaning "striped cloth."
 
 ---
 
 ## Quick Start
 
-1. **Cell size jumps**: Cord Spacing steps through six discrete sizes. If you need a specific density, remember that the transitions happen at roughly 15%, 29%, 43%, 57%, 71% of the pot range.
-2. **Knot visibility**: Knots are brightest at the center and draw at 75% of the Brightness setting. If knots are too subtle, increase both Knot Size and Brightness together.
-3. **Dark backgrounds for additive**: Additive overlay is most visible against dark source material. Bright sources wash out the lattice. Use replace mode for consistent visibility.
+1. Turn **Cord Sp** (Knob 1) fully clockwise to set wide spacing, then turn **Bright** (Knob 5) to about 75%. A widely-spaced grid of luminous diagonal lines appears over your source video.
+2. Increase **Cord Thk** (Knob 3) clockwise. The thin diagonal lines thicken into visible strands.
+3. Turn **Knot Size** (Knob 2) clockwise. Bright circular knots swell at every intersection where two diagonals cross. You're now looking at the characteristic macramé diamond lattice.
+4. Sweep **Angle** (Knob 4) to skew the lattice diagonally. The whole pattern tilts as if you've pulled one corner of the textile.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Macrame loaded](/img/instruments/videomancer/macrame/macrame_control_panel.png)
+*Videomancer's front panel with Macrame active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Cord Sp
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Cord Sp** sets the spacing between diagonal cord lines by selecting one of six power-of-two repeat intervals: 8, 16, 32, 64, 128, or 256 pixels. At 0%, fully counterclockwise, the lattice repeats every 8 pixels: a dense weave of fine threads. As you turn clockwise through each threshold, the repeat interval doubles and the diamond cells grow larger. At 100%, the lattice repeats every 256 pixels, producing a sparse grid of widely-separated cords.
+
+:::note
+Because spacing is quantized to powers of two, the control clicks through six discrete steps rather than sweeping smoothly. This is a design choice: power-of-two masks allow the FPGA to test cord positions with simple bitwise logic, keeping resource usage low.
+:::
+
+---
+
+### Knob 2 — Knot Size
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Knot Size** controls the radius of the bright circles rendered at every lattice intersection: the points where two diagonal cords cross. Small values produce tight, jewel-like dots. Large values expand the knots into luminous discs that can overlap and merge into a continuous bright field. The knot radius is derived from the upper bits of the control value, mapping the full range to approximately 0–255 pixels of ***Manhattan distance***.
+
+:::tip
+At high values, knots overlap so much that the entire lattice becomes a continuous field of brightness. Pair this with the **Multiply** overlay mode (Switch 9) to create an unusual contrast mask.
+:::
+
+---
+
+### Knob 3 — Cord Thk
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Cord Thk** sets the thickness of each diagonal cord line. The control maps to a threshold value between 1 and 16 pixels. Any pixel whose distance from the nearest cord centre is less than this threshold renders as a cord. At minimum, cords are single-pixel hairlines. At maximum, they swell into wide ribbons that nearly fill the diamond cells.
+
+---
+
+### Knob 4 — Angle
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Angle** offsets the vertical coordinate used in the diagonal computation, effectively skewing the entire lattice. At the midpoint, the lattice is symmetric: cords run at 45° diagonals. Turning the knob shifts the vertical reference, tilting the diamond pattern as if you've pulled one corner of the weave. Combined with **Animate** (Switch 10), the angle offset scrolls the lattice diagonally across the frame.
+
+---
+
+### Knob 5 — Bright
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Bright** controls the luminance level of the cord and knot pattern. At 0%, cords are invisible. As you turn clockwise, the lattice brightens. In **Add** overlay mode, this brightness is added to the source signal, so high values make cords glow hot against the image. In **Multiply** mode, cords replace the source, so Bright determines the absolute luminance of the pattern.
+
+Knots render at 75% of the Bright value, with an additional pseudorandom noise texture layered on top. Cords render slightly dimmer: at roughly 75% of the knot brightness: with a subtler noise component.
+
+---
+
+### Knob 6 — Depth
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Depth** is mapped in the VHDL but does not currently modulate the pipeline stages. It is reserved for future use as a depth-shading control that would darken cords based on their distance from the nearest knot, creating a three-dimensional woven appearance.
+
+:::note
+In the current firmware version, adjusting Depth has no visible effect on the output. The parameter is present so presets remain forward-compatible when depth shading is implemented.
+:::
+
+---
+
+### Switch 7 — Pattern
+
+| Property | Value |
+|----------|-------|
+| Off | Diamond |
+| On | Chevron |
+| Default | Diamond |
+
+**Pattern** selects the lattice geometry. In the **Diamond** position, the program draws two independent sets of diagonal lines: one along the sum of horizontal and vertical coordinates, the other along the difference: forming a classic diamond grid. In the **Chevron** position, the pattern changes to an alternate coordinate mapping.
+
+---
+
+### Switch 8 — Color
+
+| Property | Value |
+|----------|-------|
+| Off | Cream |
+| On | Source |
+| Default | Cream |
+
+**Color** selects the tint of the cord and knot pattern. In the **Cream** position, cords are rendered with a warm, yellowish-brown chroma shift: U pulled below and V pushed above the neutral midpoint: evoking the color of natural hemp or cotton rope. In the **Source** position, cords and knots are rendered with neutral chroma (U and V at midpoint 512), producing a monochrome grayscale lattice.
+
+:::tip
+The Cream tint only appears when the lattice is visible. Background pixels (where no cord or knot is drawn) always pass the source video's color information, regardless of this switch.
+:::
+
+---
+
+### Switch 9 — Overlay
+
+| Property | Value |
+|----------|-------|
+| Off | Add |
+| On | Multiply |
+| Default | Add |
+
+**Overlay** selects how the generated cord pattern composites onto the source video. In the **Add** position, the cord's brightness is added to the source (clamped to the maximum of 1023). The chroma is blended equally between the source and the cord tint. In the **Multiply** position, the cord pattern replaces the source entirely wherever a cord or knot is drawn (source video shows only through the gaps between cords.)
+
+---
+
+### Switch 10 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Animate** enables a slow diagonal scroll of the entire lattice pattern. When set to **On**, a frame counter increments on every vertical sync pulse and offsets the horizontal coordinate. The lattice drifts diagonally across the frame at approximately one pixel per frame. When set to **Off**, the lattice is stationary and locked to the video raster.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the delayed input signal directly to the output, skipping all pattern generation and compositing. The sync delay pipeline still runs, so toggling Bypass produces a clean, glitch-free transition. Use it for instant A/B comparison between the raw input and the overlaid result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the unprocessed source (dry) and the fully composited output (wet) using three parallel ***interpolator*** instances: one per YUV channel. At 0%, only the dry signal passes through. At 100%, only the processed composite is visible. Intermediate positions blend the two proportionally, allowing you to dial in exactly how much lattice overlay you want.
 
 ---
 
 ## Background
 
-### Diagonal Lattice Geometry
+### Macramé craft and diamond lattice geometry
 
-The core of Macrame is the diagonal coordinate transform. Two new axes are derived from the pixel position: the *sum* axis (h + v) and the *difference* axis (h − v). Lines of constant sum run at −45° and lines of constant difference run at +45°. Testing whether the sum or difference, modulo a cell size, falls below a thickness threshold draws two sets of evenly spaced diagonal lines crossing the screen. Where both sets of lines overlap, a knot point appears. This is identical to the mathematical construction of a diamond lattice from two families of parallel diagonals.
+Macramé is one of the oldest textile techniques, predating the loom. It builds structure entirely from knots: no warp, no weft, no weaving shuttle. A series of cords hang from a mounting bar, and the artisan ties them together at regular intervals, creating a grid of diamond-shaped openings. The visual signature of macramé is that diamond lattice: two families of diagonal lines crossing in a regular pattern, with thickened points at every crossing where the knot sits.
 
-### Power-of-Two Tiling
+The program reproduces this geometry using modular arithmetic. Two diagonal coordinates are computed: the sum and difference of horizontal and vertical pixel positions. A bitmask selects the repeat interval (the "cell size"), and a thickness threshold determines how far from the cell boundary a pixel must sit to qualify as "on a cord." Where both diagonal sets register as "on cord," the pixel is at an intersection: a knot.
 
-Rather than dividing by an arbitrary repeat distance (which costs an FPGA divider), Macrame masks the diagonal coordinates with a bitmask to extract the fractional position within a repeating cell. The available cell sizes — 8, 16, 32, 64, 128, and 256 pixels — are all powers of two, so the modulus operation reduces to a bitwise AND. This makes the repeat perfectly seamless and costs zero DSP resources. The Cord Spacing pot selects which mask is active, stepping through the six sizes across its range.
+### LFSR texture noise
 
-### Manhattan Distance for Knot Detection
+A perfectly uniform digital lattice looks mechanical and synthetic. Real macramé cord has irregularities: slight variations in thickness, color, and twist from one segment to the next. The program injects ***pseudorandom noise*** from a 16-bit ***linear feedback shift register*** (LFSR) to break up the regularity.
 
-At each pixel, the program computes the distance to the nearest lattice intersection. True Euclidean distance would require a multiply and square-root, which are expensive on a small FPGA. Instead Macrame uses the Manhattan distance (|dx| + |dy|), which approximates a circle as a diamond shape. The Knot Size control sets the radius threshold: any pixel whose Manhattan distance from the nearest intersection falls below this value is drawn as part of the knot rather than the cord. The result is a slightly faceted circle that reads as round from normal viewing distance.
+The LFSR runs free at the pixel clock rate, producing a new 16-bit value every clock cycle. Six bits of this value are added to the cord brightness, creating pixel-by-pixel luminance variation along each strand. The noise is subtle: roughly 6% of the full brightness range: but enough to give the cords a textured, organic quality rather than a flat digital appearance.
 
-### LFSR Texture Noise
+### Overlay compositing
 
-Real cord is not perfectly uniform — fibers catch light unevenly, knots have visible texture, and natural dyes create subtle variation. Macrame adds a pseudo-random noise offset from a 16-bit linear feedback shift register to the brightness of every cord and knot pixel. The noise is small (6 bits, or about 6% of full scale) but enough to break the mechanical perfection of the digital lattice and give the cords an organic, tactile quality.
+The program offers two compositing strategies. ***Additive*** overlay takes the source video and adds the cord pattern's brightness on top, clamping at the maximum value of 1023. This makes cords appear to glow: they brighten whatever lies beneath them. In areas where no cord is drawn, the source is dimmed by 1/16th to create subtle contrast between the lattice foreground and the source background.
 
-### Overlay Compositing
-
-The program offers two compositing modes for combining the cord pattern with the input video. In additive mode, the cord brightness is added to the source — the lattice glows over the image, and black regions of the source show the cord pattern most clearly. In replace mode, cord pixels completely overwrite the source — the lattice becomes opaque, punching through the video wherever a cord or knot falls. Background pixels (where no cord is drawn) pass the source through with a very slight dimming to increase depth contrast.
+***Replace*** overlay substitutes the cord pattern directly for the source signal wherever a cord or knot is drawn. The source video only shows through the gaps in the lattice. This mode is more aggressive, turning the lattice into a hard mask over the image.
 
 
 ---
 
 ## Signal Flow
 
-Input Register → Cord Test → Cord → Overlay Blend + Clamp
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Parameter Pre-Registration
-│   ├─ Cord Spacing → bitmask select (8/16/32/64/128/256 px)
-│   ├─ Knot Size → knot radius (top 8 bits)
-│   ├─ Cord Thickness → line threshold (top 4 bits → 1..16)
-│   ├─ Angle → vertical offset for diagonal skew
-│   └─ Brightness → cord luminance level
-│
-├── Stage 1: Input Register + Diagonal Sums
-│   ├─ Latch Y/U/V input
-│   ├─ h_pos = h_count [+ frame_count if Animate]
-│   ├─ v_pos = v_count + angle_offset
-│   ├─ diag_sum  = h_pos + v_pos
-│   ├─ diag_diff = |h_pos − v_pos|
-│   └─ frac_sum/frac_diff = diag & space_mask
-│
-├── Stage 2: Cord Test + Knot Detection + Noise
-│   ├─ dist_a = min(frac_sum, cell_size − frac_sum)
-│   ├─ dist_b = min(frac_diff, cell_size − frac_diff)
-│   ├─ on_cord_a = dist_a < cord_thresh
-│   ├─ on_cord_b = dist_b < cord_thresh
-│   ├─ knot_dist = dist_a + dist_b
-│   ├─ is_knot = knot_dist < knot_radius
-│   └─ noise_val = LFSR[5:0]
-│
-├── Stage 3: Cord/Knot Color Compose + Depth Shading
-│   ├─ Knot: Y = bright×0.75 + noise, UV = neutral or warm tint
-│   ├─ Cord: Y = bright×0.75 + noise(÷4), UV = neutral or slight tint
-│   └─ Background: pass source Y/U/V
-│
-├── Stage 4: Overlay Blend + Clamp
-│   ├─ Additive: Y_out = Y_src + pattern_Y/2 (clamped)
-│   │   UV_out = avg(UV_src, UV_pattern)
-│   ├─ Replace: Y_out = pattern_Y, UV_out = pattern_UV
-│   └─ Background: Y_out = Y_src − Y_src/16
-│
-├── Interpolator (4 clocks)
-│   └─ Mix: lerp(dry, wet, mix_amount) per Y/U/V
-│
-└── Output Mux
-    └─ Bypass=On: pass delayed input; Bypass=Off: output mix result
-```
+The pipeline runs in four register stages plus a four-clock interpolator, totaling eight clocks of latency. Diagonal coordinates are computed in Stage 1 using the sum and absolute difference of the pixel position: these two values partition the screen into diamond-shaped cells. Stage 2 measures each pixel's distance from the nearest cell edge (for cord detection) and from the nearest cell corner (for knot detection). Both distance tests use simple comparisons against thresholds derived from the Knob 2 and Knob 3 parameter values.
 
-The diagonal coordinate transform is the architectural heart of the program. By computing h+v and |h−v| and masking to the cell size, two independent modular-distance tests generate intersecting diagonal line families without any division or trigonometry. The knot detection is a natural byproduct — it fires wherever both line tests report a small distance simultaneously, which geometrically corresponds to the lattice intersection points.
+The compositing path in Stage 4 is asymmetric: in Additive mode, the pattern's brightness is halved before being added to the source, which preserves headroom and prevents constant clipping. Background pixels (those not on any cord or knot) are dimmed by 1/16th: a subtle shading that creates depth contrast between the lattice foreground and the video behind it.
 
-The overlay stage's additive mode adds half the pattern brightness to the source, which means the cord structure is most visible against dark backgrounds and washes out against bright areas. Replace mode makes the lattice opaque regardless of source content. The slight dimming applied to background pixels (source minus source/16, roughly 6% darker) provides depth contrast that makes the cord structure appear to sit in front of the video.
-
----
-
-## Parameter Reference
-
-<img src={macrame_control_panel} alt="Videomancer front panel with Macrame loaded"/>
-*Videomancer's front panel with Macrame active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Cord Sp
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the repeat distance of the lattice by selecting one of six power-of-two cell sizes: 8, 16, 32, 64, 128, or 256 pixels. The pot range is divided into six equal bands. Small cell sizes create a fine, dense mesh; large cell sizes produce wide-open diamond shapes with prominent knot circles. Because the sizes are powers of two, transitions between bands are abrupt — you step from one grid density to the next rather than smoothly sweeping.
-
----
-
-#### Knob 2 — Knot Size
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Sets the radius of the knot circles at lattice intersections. The top 8 bits of the register are used directly as a pixel distance threshold, giving a range from very small dots (barely visible at 2 pixels) to large circles (up to 32 pixels radius, visually dominant). Larger knots overlap the cord lines and create a more solid, heavy appearance at the intersections. At zero, no knots are drawn and the output is pure cord lines.
-
----
-
-#### Knob 3 — Cord Thk
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the thickness of the cord lines. The top 4 bits of the register map to a threshold of 1 to 16 pixels. At minimum, the cords are hairline single-pixel diagonals. At maximum, each cord becomes a broad band 16 pixels wide. Thick cords with large knots create a heavy, woven appearance; thin cords with small knots produce a delicate filigree overlay.
-
----
-
-#### Knob 4 — Angle
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Tilts the lattice by adding a vertical offset derived from the bottom 8 bits of the register. At center position the lattice is symmetric, with diagonals at ±45°. Turning the knob skews the vertical component, making one family of diagonals steeper and the other shallower. The effect is subtle at small values and increasingly distorted as you approach the extremes, stretching the diamond shapes into parallelograms.
-
----
-
-#### Knob 5 — Bright
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At zero, the pattern is completely dark — invisible in additive mode, black lines in replace mode. At maximum, the cords are full brightness. Knots receive 75% of this brightness level plus noise; cord lines receive a slightly lower fraction. This control directly sets the visual weight of the textile overlay against the source video. Internally, sets the luminance level of the cord and knot pixels.
-
----
-
-#### Knob 6 — Depth
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Declared and mapped to the register but not referenced in the processing pipeline. Adjusting this control has no visible effect on the output. It is reserved for a future depth-shading feature that would darken cords based on their distance from the viewer or their position in the lattice cell.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Pattern** | Diamond | Chevron |
-| **8 — Color** | Cream | Source |
-| **9 — Overlay** | Add | Multiply |
-| **10 — Animate** | Off | On |
-| **11 — Bypass** | Off | On |
-
-Toggles 7 and 8 each use a single VHDL bit despite having four TOML labels. In practice they behave as binary switches — the first label maps to bit=0 and the remaining labels map to bit=1. Toggle 9 selects between additive and replace compositing. Toggle 10 enables frame-by-frame animation drift. Toggle 11 is a standard bypass.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Macrame-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::note
+The sync delay pipeline runs in parallel with the processing pipeline, ensuring that the delayed dry signal presented to the interpolator mix stage is perfectly time-aligned with the wet composite. This is what allows the Mix fader and Bypass switch to produce clean, glitch-free transitions.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises build from basic lattice construction to full textile overlay compositing. Each one highlights a different aspect of the cord geometry and its interaction with the source video.
+These exercises progress from a sparse luminous overlay to a dense, animated textile surface. Each one builds on the previous, engaging more of the parameter set.
+### Exercise 1: Luminous Diamond Grid
 
-### Exercise 1: Diamond Lattice Construction
+![Luminous Diamond Grid result](/img/instruments/videomancer/macrame/macrame_ex1_s1.png)
+*Luminous Diamond Grid — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Field", before: macrame_source1_field, after: macrame_ex1_s1 },
-    { label: "Ballerina", before: macrame_source2_ballerina, after: macrame_ex1_s2 },
-    { label: "Collage", before: macrame_source3_collage, after: macrame_ex1_s3 },
-    { label: "Pattern", before: macrame_source4_pattern, after: macrame_ex1_s4 },
-    { label: "Boy", before: macrame_source5_boy, after: macrame_ex1_s5 },
-    { label: "Wood", before: macrame_source6_wood, after: macrame_ex1_s6 },
-  ]}
-/>
-*Diamond Lattice Construction — simulated result across source images.*
-**Source**: A medium-contrast camera feed or recorded footage with recognizable subjects and some dark regions.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Understand how cord spacing, thickness, and knot size combine to form the basic lattice.
+#### Learning Outcomes
 
-1. **Open grid**: Set Cord Spacing to about 70% to select the 128-pixel cell size. The lattice will have widely spaced diagonals.
-2. **Thin cords**: Set Cord Thickness to about 20%. Hairline diagonal lines appear over the video.
-3. **Add knots**: Increase Knot Size from zero to about 40%. Bright dots appear at every intersection.
-4. **Thicken cords**: Increase Cord Thickness to about 60%. The cord lines widen and begin to merge with the knots.
-5. **Dense grid**: Lower Cord Spacing to about 20% to switch to a smaller cell size. The lattice becomes a fine mesh.
-6. **Full brightness**: Set Brightness to 80%. The lattice becomes a strong overlay.
+A classic diamond lattice overlay that floats like a luminous net over the source video.
 
-**Key concepts**: Power-of-two cell sizes create abrupt grid transitions, Manhattan distance knots are diamond-shaped up close, cord thickness and knot size are independent parameters
+#### Key Concepts
 
----
+- Cord spacing sets the repeat interval of the lattice
+- Cord thickness and knot size control line weight and intersection emphasis
+- Brightness determines how strongly the lattice glows over the source
 
-### Exercise 2: Colored Textile Overlay
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Field", before: macrame_source1_field, after: macrame_ex2_s1 },
-    { label: "Ballerina", before: macrame_source2_ballerina, after: macrame_ex2_s2 },
-    { label: "Collage", before: macrame_source3_collage, after: macrame_ex2_s3 },
-    { label: "Pattern", before: macrame_source4_pattern, after: macrame_ex2_s4 },
-    { label: "Boy", before: macrame_source5_boy, after: macrame_ex2_s5 },
-    { label: "Wood", before: macrame_source6_wood, after: macrame_ex2_s6 },
-  ]}
-/>
-*Colored Textile Overlay — simulated result across source images.*
-**Source**: High-contrast footage with dark backgrounds — stage performance, night scenes, or silhouettes.
+A live camera feed or recorded footage with moderate contrast and visible detail.
 
-**What You'll Create**: Explore color modes and overlay compositing against varied source brightness.
+#### Steps
 
-1. **Set medium lattice**: Cord Spacing ~50%, Knot Size ~50%, Cord Thickness ~40%, Brightness ~70%.
-2. **Additive over dark**: With Overlay set to Add, observe how the lattice glows brightly against dark areas of the source and washes out against bright areas.
-3. **Color tint**: Switch Color to the tinted mode (toggle high). The cords take on a warm cream-brown hue resembling natural hemp rope.
-4. **Replace mode**: Switch Overlay to Multiply (replace). The lattice now punches through the video as an opaque layer.
-5. **Angle tilt**: Sweep Angle from 0% to 100%. Watch the diamond shapes distort into parallelograms as the vertical skew increases.
-6. **Mix blend**: Lower Mix to about 50% to blend the lattice subtly with the source.
+1. **Wide spacing**: Turn **Cord Sp** (Knob 1) fully clockwise for 256-pixel repeat. A sparse grid of faint diagonal lines appears.
+2. **Visible cords**: Increase **Bright** (Knob 5) to about 80%. The diagonals glow distinctly.
+3. **Thicken the strands**: Turn **Cord Thk** (Knob 3) to about 40%. Thin hairlines become visible ribbons.
+4. **Reveal the knots**: Increase **Knot Size** (Knob 2) to about 40%. Bright knot circles swell at every intersection.
+5. **Tighten the weave**: Slowly turn Cord Sp counterclockwise, stepping through the six spacing levels. Watch the lattice compress from a sparse net to a dense textile.
 
-**Key concepts**: Additive compositing is source-dependent (bright sources hide the lattice), replace compositing is absolute, color tint adds chroma offset to the neutral cord brightness
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cord Sp | 100% |
+| Knot Size | 40% |
+| Cord Thk | 40% |
+| Angle | 50% |
+| Bright | 80% |
+| Depth | 50% |
+| Pattern | Diamond |
+| Color | Cream |
+| Overlay | Add |
+| Animate | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Animated Lattice Drift
+### Exercise 2: Animated Textile Drift
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Field", before: macrame_source1_field, after: macrame_ex3_s1 },
-    { label: "Ballerina", before: macrame_source2_ballerina, after: macrame_ex3_s2 },
-    { label: "Collage", before: macrame_source3_collage, after: macrame_ex3_s3 },
-    { label: "Pattern", before: macrame_source4_pattern, after: macrame_ex3_s4 },
-    { label: "Boy", before: macrame_source5_boy, after: macrame_ex3_s5 },
-    { label: "Wood", before: macrame_source6_wood, after: macrame_ex3_s6 },
-  ]}
-/>
-*Animated Lattice Drift — simulated result across source images.*
-**Source**: Slow-moving or static footage — landscapes, architecture, or a fixed camera feed.
+![Animated Textile Drift result](/img/instruments/videomancer/macrame/macrame_ex2_s1.png)
+*Animated Textile Drift — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Combine animation, fine lattice density, and strong overlay for an evolving textile texture.
+***A description of the exercise illustration.***
 
-1. **Fine lattice**: Set Cord Spacing to about 15% for the densest cell size. Cord Thickness ~30%, Knot Size ~30%.
-2. **Enable animation**: Switch Animate to On. The lattice begins drifting diagonally.
-3. **Brightness modulation**: Set Brightness to about 60% — moderate overlay intensity.
-4. **Replace mode**: Switch Overlay to Multiply. The lattice is opaque with the source visible in the gaps.
-5. **Color**: Switch to tinted mode for warm cord color.
-6. **Angle**: Set Angle to about 30% for a slight skew.
-7. **Observe**: Watch the drifting lattice interact with the static or slow-moving source. The fine grid creates a moire-like shimmer.
+#### Learning Outcomes
 
-**Key concepts**: Animation increments the horizontal offset once per frame, fine lattice creates moire interaction with video detail, replace mode makes the drift more visible than additive
+A slowly drifting woven curtain that slides diagonally across the source video.
+
+#### Key Concepts
+
+- Animation offsets the lattice by one pixel per frame
+- Angle skews the lattice diagonally
+- Mix crossfades between the raw source and the overlaid result
+
+#### Video Source
+
+Slow-moving footage (clouds, water, or ambient visuals with gentle motion.)
+
+#### Steps
+
+1. **Start from Exercise 1**: Keep the diamond grid visible with moderate spacing (Cord Sp ~60%) and thickness.
+2. **Enable animation**: Flip **Animate** (Switch 10) to **On**. The lattice begins drifting diagonally.
+3. **Skew the angle**: Sweep **Angle** (Knob 4) from one extreme to the other. The drift direction and lattice tilt change.
+4. **Blend it in**: Pull the **Mix** (Fader 12) down to about 50%. The lattice becomes semi-transparent, ghosting over the source.
+5. **Switch to Multiply**: Flip **Overlay** (Switch 9) to **Multiply**. The lattice now replaces the source rather than adding to it (the source shows only through the diamond gaps.)
+6. **Add color**: Flip **Color** (Switch 8) to **Cream**. The monochrome lattice takes on a warm, natural rope tone.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cord Sp | 60% |
+| Knot Size | 35% |
+| Cord Thk | 35% |
+| Angle | 30% |
+| Bright | 70% |
+| Depth | 50% |
+| Pattern | Diamond |
+| Color | Cream |
+| Overlay | Multiply |
+| Animate | On |
+| Bypass | Off |
+| Mix | 50% |
 
 ---
 
+### Exercise 3: Dense Woven Surface
 
-## Tips
+![Dense Woven Surface result](/img/instruments/videomancer/macrame/macrame_ex3_s1.png)
+*Dense Woven Surface — simulated result across source images.*
+#### Exercise Illustration
 
-- **Angle for asymmetry**: A small Angle offset breaks the rotational symmetry of the diamond lattice, creating parallelogram cells that feel more hand-crafted.
-- **Color tint is subtle**: The warm tint shifts chroma by only 20–40 counts on a 1024-count scale. It is most visible against neutral or cool-toned source material.
-- **Animation speed is fixed**: The drift is one pixel per frame regardless of any control setting. For slower drift, use the Mix control to blend less of the animated signal.
-- **Depth does nothing**: Pot 6 is reserved for future use. Do not expect any visual change from it.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A dense, opaque textile that almost completely obscures the source, revealing it only through tiny diamond-shaped windows.
+
+#### Key Concepts
+
+- Tight spacing and thick cords create a near-opaque woven texture
+- Knot size at maximum merges intersections into a continuous field
+- Overlay mode fundamentally changes the composite character
+
+#### Video Source
+
+High-contrast footage with strong shapes: silhouettes, architectural lines, or high-contrast graphics.
+
+#### Steps
+
+1. **Dense weave**: Set **Cord Sp** (Knob 1) to about 15% (16-pixel spacing). Set **Cord Thk** (Knob 3) to about 70%. The lattice becomes a dense mesh.
+2. **Big knots**: Turn **Knot Size** (Knob 2) to about 75%. Knots expand and merge, filling most of the diamond cells.
+3. **Full brightness**: Set **Bright** (Knob 5) to 100%. The textile blazes.
+4. **Replace mode**: Set **Overlay** (Switch 9) to **Multiply**. The source now peeks through only the tiny gaps not covered by cords or knots.
+5. **Source color**: Flip **Color** (Switch 8) to **Source** to see monochrome cords against the colored source in the gaps.
+6. **Animate and skew**: Enable **Animate** and sweep **Angle** while watching the dense weave crawl across the image.
+7. **Pull back**: Use the **Mix** fader to dial the opaque textile back to a subtle overlay.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cord Sp | 15% |
+| Knot Size | 75% |
+| Cord Thk | 70% |
+| Angle | 50% |
+| Bright | 100% |
+| Depth | 50% |
+| Pattern | Diamond |
+| Color | Source |
+| Overlay | Multiply |
+| Animate | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Chroma** | Color information in a video signal, encoded as U and V offsets from neutral gray in YUV color space. |
-| **Diagonal Sum / Difference** | h+v and |h−v| coordinate transforms that create ±45° line families across the pixel grid. |
-| **LFSR** | Linear Feedback Shift Register; a simple pseudo-random number generator used here for cord texture noise. |
-| **Luma** | Brightness component (Y) of a YUV video signal. |
-| **Manhattan Distance** | The sum of absolute coordinate differences (|dx|+|dy|), producing diamond-shaped distance contours instead of circles. |
-| **Power-of-Two** | Values like 8, 16, 32, 64, 128, 256 that allow modular arithmetic via bitwise AND instead of division. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage for brightness and contrast. |
+- **Additive Compositing**: A blending method that adds the brightness of an overlay pattern to the source signal, brightening wherever the overlay is present.
+
+- **Diamond Lattice**: A repeating geometric pattern formed by two sets of diagonal lines crossing at regular intervals, creating diamond-shaped cells.
+
+- **Interpolator**: A linear interpolation (lerp) circuit that crossfades between two input signals based on a blend factor.
+
+- **LFSR**: Linear Feedback Shift Register; a simple digital circuit that produces a repeating sequence of pseudorandom values from a shift register with XOR feedback taps.
+
+- **Manhattan Distance**: The sum of absolute horizontal and vertical distances between two points, measured along grid axes rather than in a straight line.
+
+- **Modular Arithmetic**: Arithmetic performed with a fixed modulus (here, the cell size), causing values to wrap around and repeat at regular intervals.
+
+- **Pseudorandom Noise**: A deterministic but statistically irregular sequence used to simulate randomness; produced here by an LFSR running at the pixel clock.
+
+- **Replace Compositing**: A blending method that substitutes the overlay pattern directly for the source signal, showing the source only through gaps in the pattern.
+
+- **YUV 4:4:4**: A video encoding format with one luma (Y) and two chroma (U, V) samples per pixel, each sampled at full resolution.
 
 ---

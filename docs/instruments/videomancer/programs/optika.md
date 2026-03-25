@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 209
 slug: /instruments/videomancer/optika
@@ -7,356 +7,421 @@ image: /img/instruments/videomancer/optika/optika_hero_s1.png
 description: "Before digital compositing, optical printers were the primary tool for combining multiple film elements into a single image."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import optika_control_panel from '/img/instruments/videomancer/optika/optika_control_panel.png';
-import optika_source1_cat from '/img/instruments/videomancer/optika/optika_source1_cat.png';
-import optika_source2_skull from '/img/instruments/videomancer/optika/optika_source2_skull.png';
-import optika_source3_collage from '/img/instruments/videomancer/optika/optika_source3_collage.png';
-import optika_source4_pattern from '/img/instruments/videomancer/optika/optika_source4_pattern.png';
-import optika_source5_girl from '/img/instruments/videomancer/optika/optika_source5_girl.png';
-import optika_source6_paint from '/img/instruments/videomancer/optika/optika_source6_paint.png';
-import optika_hero_s1 from '/img/instruments/videomancer/optika/optika_hero_s1.png';
-import optika_hero_s2 from '/img/instruments/videomancer/optika/optika_hero_s2.png';
-import optika_hero_s3 from '/img/instruments/videomancer/optika/optika_hero_s3.png';
-import optika_hero_s4 from '/img/instruments/videomancer/optika/optika_hero_s4.png';
-import optika_hero_s5 from '/img/instruments/videomancer/optika/optika_hero_s5.png';
-import optika_hero_s6 from '/img/instruments/videomancer/optika/optika_hero_s6.png';
-import optika_ex1_s1 from '/img/instruments/videomancer/optika/optika_ex1_s1.png';
-import optika_ex1_s2 from '/img/instruments/videomancer/optika/optika_ex1_s2.png';
-import optika_ex1_s3 from '/img/instruments/videomancer/optika/optika_ex1_s3.png';
-import optika_ex1_s4 from '/img/instruments/videomancer/optika/optika_ex1_s4.png';
-import optika_ex1_s5 from '/img/instruments/videomancer/optika/optika_ex1_s5.png';
-import optika_ex1_s6 from '/img/instruments/videomancer/optika/optika_ex1_s6.png';
-import optika_ex2_s1 from '/img/instruments/videomancer/optika/optika_ex2_s1.png';
-import optika_ex2_s2 from '/img/instruments/videomancer/optika/optika_ex2_s2.png';
-import optika_ex2_s3 from '/img/instruments/videomancer/optika/optika_ex2_s3.png';
-import optika_ex2_s4 from '/img/instruments/videomancer/optika/optika_ex2_s4.png';
-import optika_ex2_s5 from '/img/instruments/videomancer/optika/optika_ex2_s5.png';
-import optika_ex2_s6 from '/img/instruments/videomancer/optika/optika_ex2_s6.png';
-import optika_ex3_s1 from '/img/instruments/videomancer/optika/optika_ex3_s1.png';
-import optika_ex3_s2 from '/img/instruments/videomancer/optika/optika_ex3_s2.png';
-import optika_ex3_s3 from '/img/instruments/videomancer/optika/optika_ex3_s3.png';
-import optika_ex3_s4 from '/img/instruments/videomancer/optika/optika_ex3_s4.png';
-import optika_ex3_s5 from '/img/instruments/videomancer/optika/optika_ex3_s5.png';
-import optika_ex3_s6 from '/img/instruments/videomancer/optika/optika_ex3_s6.png';
-
-# Optika
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: optika_source1_cat, after: optika_hero_s1 },
-    { label: "Skull", before: optika_source2_skull, after: optika_hero_s2 },
-    { label: "Collage", before: optika_source3_collage, after: optika_hero_s3 },
-    { label: "Pattern", before: optika_source4_pattern, after: optika_hero_s4 },
-    { label: "Girl", before: optika_source5_girl, after: optika_hero_s5 },
-    { label: "Paint", before: optika_source6_paint, after: optika_hero_s6 },
-  ]}
-/>
-*Optika building up multi-exposure accumulation trails with printer light color balance and film halation bloom over a live video source.*
+![Optika hero image](/img/instruments/videomancer/optika/optika_hero_s1.png)
+*Optika layering multiple exposures of a dancer into a luminous composite, with printer light warmth and halation bloom bleeding through the brightest regions.*
 
 ---
 
 ## Overview
 
-Before digital compositing, optical printers were the primary tool for combining multiple film elements into a single image. A strip of developed negative was projected frame by frame onto unexposed raw stock, and by rewinding and re-exposing with different elements, multiple layers could be accumulated onto a single piece of film. Each additional pass added density — bright areas built up toward overexposure while dark areas remained transparent. The result was a photochemical double-exposure with a distinctive look: soft bloom around highlights, color shifts from printer light filters, and the characteristic additive density build-up of silver halide emulsion.
+Optika is an optical printer simulator that accumulates video frames into a ghostly, layered composite. Its core technique is ***multi-exposure accumulation***: on every captured frame, the live input is blended into a BRAM-based scanline buffer, building up density the way light exposes photographic film. Bright areas dominate the composite while darker elements fade, producing translucent overlapping imagery with an unmistakable photochemical quality.
 
-Optika recreates this process in real time using BRAM-based scanline accumulation. A per-pixel buffer stores an 8-bit luminance accumulator that blends live input with decaying previous values. Exposure amount controls how much new input is layered on each capture cycle, while fade rate controls how quickly old accumulation decays. The result is a temporal composite where moving objects leave luminous trails and static elements build up to saturation. Printer light simulation adds brightness offset and warm/cool color balance. A 4-tap moving-average bloom stage simulates the halation glow that occurs on overexposed film.
+A suite of cinematic controls surrounds the accumulation engine. **Fade Rate** controls how quickly old exposures decay, producing anything from crisp freeze-frames to long, vaporous trails. **Capture Rate** introduces frame-skipping: the digital equivalent of optical step-printing: so the buffer grabs every second, fourth, or sixty-fourth frame instead of every one. Printer light controls let you dial in overall brightness and shift the color balance from warm amber to cool blue, just like the light valves on a real optical printer. Finally, a film halation bloom adds a soft glow around bright highlights, simulating the way overexposed regions scatter light through the emulsion layers of celluloid film.
 
-The program can operate in additive mode (each frame adds to the accumulator) or replace mode (each frame overwrites). A frame-skip gate provides step-print speed control, and freeze and clear toggles give direct buffer manipulation. The bypass toggle is declared in the register map but not connected to the output mux — only the fader mix provides wet/dry control.
+:::tip
+Optika is inspired by the ***Acme-Dunn optical printer***, the machine that created the dissolves, double exposures, and traveling mattes in films from *Citizen Kane* to *2001: A Space Odyssey*. If you've ever seen a ghost appear through a double exposure, you've seen the technique that Optika recreates in real time.
+:::
+
+### What's In a Name?
+
+The name ***Optika*** comes from the Latin *opticus* ("of sight"), itself descended from the Greek *optikós*. It refers to the ***optical printer***, the mechanical-photochemical compositing tool that dominated visual effects from the silent era through the 1990s. The "-a" ending adds an Eastern European softness, evoking the handcrafted quality of early trick photography: and the alchemical feel of turning light into layered imagery.
 
 ---
 
 ## Quick Start
 
-1. **Bypass is broken — use the fader**: The Bypass toggle (Toggle 11) has no effect. Set the Mix fader to 0% for instant A/B comparison with the dry signal.
-2. **Clear before scene changes**: Use the momentary Clear Buffer toggle to reset accumulated content when switching input sources, otherwise the old scene will persist as ghost overlay.
-3. **Fade rate is the persistence knob**: Low fade = short trails (recent only). High fade = long trails (history accumulates). At 100%, nothing fades and the buffer accumulates indefinitely toward saturation.
+1. Send a video signal through Videomancer with **Optika** loaded. Set **Exposure** (Knob 1) to about 50% and **Fade Rate** (Knob 2) to roughly 75%. You should see a ghostly, persistent trail following any motion in the image (old frames linger and accumulate.)
+2. Slowly reduce **Fade Rate** toward 0%. The trails become longer and brighter as old exposures decay more slowly. Push it all the way down and the buffer never clears (every exposure is permanent.)
+3. Turn **Bloom Amt** (Knob 6) clockwise. A soft luminous glow appears around the brightest parts of the accumulated image, simulating the optical halation of overexposed film.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Optika loaded](/img/instruments/videomancer/optika/optika_control_panel.png)
+*Videomancer's front panel with Optika active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Exposure
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Exposure** controls how strongly each new frame of live video is blended into the accumulation buffer. At 0%, fully counterclockwise, no new input reaches the buffer: the composite is frozen in time, showing only whatever was previously accumulated. As Exposure increases, each captured frame contributes more intensity, building up brightness faster. At 100%, fully clockwise, each frame writes at full strength, quickly overwriting the buffer contents.
+
+In additive mode, the exposure value multiplies the input luma before it is added to the faded previous contents. The accumulator saturates at maximum brightness, so repeated full-strength exposures drive the image toward white (exactly like overexposing film.)
+
+---
+
+### Knob 2 — Fade Rate
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Fade Rate** controls how quickly old exposures decay between frames. At 100%, fully clockwise, the previous accumulation is retained at nearly full brightness: trails persist for a long time and the composite gets brighter with each exposure. At 0%, fully counterclockwise, the buffer is almost entirely cleared each frame, and only the current exposure is visible.
+
+:::note
+Fade Rate and **Exposure** work as a pair. High fade with low exposure produces long, subtle ghost trails. High fade with high exposure drives the composite toward a solid white field as brightness accumulates without decay. Low fade with moderate exposure produces a clean, single-layer composite with minimal trailing.
+:::
+
+---
+
+### Knob 3 — Capture Rate
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 64 |
+| Default | 1 |
+
+**Capture Rate** controls how often the accumulation buffer captures a new frame. At 1 (fully counterclockwise), every frame is captured. At higher values, the buffer skips frames: capturing one frame for every N that pass. At 64 (fully clockwise), the buffer only grabs one out of every sixty-four frames, creating a dramatic step-printed stroboscopic effect.
+
+This simulates ***optical step-printing***, the technique film editors used to create slow motion, fast motion, and freeze-frame effects by selectively re-photographing every second, third, or fourth frame. During the skipped frames, the buffer contents continue to fade according to the Fade Rate, so the gaps between captures are visible as a gradual dimming.
+
+:::tip
+Set Capture Rate to a moderate value (around 16 to 32) and watch how moving subjects appear as a series of discrete, evenly spaced phantom images: each one slightly faded. This is the classic step-print effect used in dream sequences and montages.
+:::
+
+---
+
+### Knob 4 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | -100.0% – 100.0% |
+| Default | 0.1% |
+
+**Brightness** adjusts the overall luminance of the composite with a signed offset, simulating the master brightness control on an optical printer's light valve assembly. At center (0%), the composite passes through at its natural brightness. Turning clockwise increases brightness; turning counterclockwise decreases it. The offset is applied after accumulation but before bloom.
+
+---
+
+### Knob 5 — Color Bal
+
+| Property | Value |
+|----------|-------|
+| Range | -100.0% – 100.0% |
+| Default | 0.1% |
+
+**Color Bal** shifts the overall color temperature of the composite. At center (0%), the color is neutral. Turning clockwise shifts the image warmer by boosting the V (red-difference) channel and reducing the U (blue-difference) channel. Turning counterclockwise shifts the image cooler by boosting U and reducing V.
+
+This simulates ***printer light color timing***, the process where a film lab technician adjusts red, green, and blue light valves to set the color cast of each printing pass. The warm-to-cool range covers the most common artistic adjustments: golden hour warmth at one extreme, moonlit blue at the other.
+
+---
+
+### Knob 6 — Bloom Amt
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Bloom Amt** controls the intensity of the film halation bloom effect. At 0%, fully counterclockwise, no bloom is applied. As the value increases, bright highlights in the accumulated image bleed outward in a soft luminous glow. At 100%, the bloom is at full intensity and bright regions spill dramatically into their surroundings.
+
+The bloom is implemented as a 4-tap horizontal moving average, gated so it only activates above a brightness threshold. This means dark and midtone areas pass through cleanly while only the bright peaks bloom: closely matching the behavior of real film halation, where scattered light only becomes visible around overexposed regions.
+
+:::note
+Bloom is applied *after* the printer light stage, so **Brightness** directly affects how much of the image exceeds the bloom threshold. Increasing Brightness pushes more of the composite over the edge, causing bloom to spread further.
+:::
+
+---
+
+### Switch 7 — Accum Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Additive |
+| On | Replace |
+| Default | Additive |
+
+**Accum Mode** selects between two fundamentally different compositing behaviors. In **Additive** mode (the default), each new exposure is added on top of the faded previous contents, saturating at maximum brightness. This produces the classic multi-exposure look where overlapping bright areas build up and dark areas remain transparent. In **Replace** mode, each captured frame overwrites the buffer entirely with the exposure-scaled input: no additive buildup occurs. Replace mode is useful for clean freeze-frame captures or for feeding the bloom and printer light stages without the layered accumulation aesthetic.
+
+---
+
+### Switch 8 — Clear Buf
+
+| Property | Value |
+|----------|-------|
+| Off | Normal |
+| On | Clear |
+| Default | Normal |
+
+**Clear Buf** is a momentary action control. When set to **Clear**, it writes zeros to the entire accumulation buffer, erasing all stored exposures. This provides an instant blank slate without needing to wait for the Fade Rate to decay the contents naturally. Set it back to **Normal** to resume accumulation.
+
+:::tip
+Use **Clear Buf** as a performance tool. Build up a rich, dense composite, then clear it at a dramatic moment to start fresh. The sudden transition from a complex layered image to a clean slate is visually striking.
+:::
+
+---
+
+### Switch 9 — Freeze
+
+| Property | Value |
+|----------|-------|
+| Off | Run |
+| On | Freeze |
+| Default | Run |
+
+**Freeze** pauses all buffer updates. When set to **Freeze**, the accumulation buffer holds its current contents indefinitely: no new frames are captured and no fading occurs. The frozen composite continues to pass through the printer light and bloom stages, so you can still adjust the color and glow of a held image. Set it back to **Run** to resume live accumulation.
+
+---
+
+### Switch 10 — Mono
+
+| Property | Value |
+|----------|-------|
+| Off | Color |
+| On | Mono |
+| Default | Color |
+
+**Mono** selects between color and monochrome operation. When set to **Color** (the default), the full YUV signal passes through the processing chain. When set to **Mono**, the output is rendered as a grayscale image. Monochrome mode evokes the look of black-and-white film stock exposed in an optical printer, stripping away color to emphasize the tonal qualities of the accumulated composite.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all Optika processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the accumulated composite.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input signal and the wet (processed) composite. At 0%, only the original input is heard. At 100% (the default), only the processed composite is output. Intermediate values blend the two, allowing you to layer the accumulated image over the live input at any desired opacity.
+
+:::tip
+Setting Mix to around 50% while the accumulation runs creates a compelling live-over-ghost effect: the present moment is crisp and fully saturated, with the accumulated trails shimmering transparently beneath it.
+:::
 
 ---
 
 ## Background
 
-### The Optical Printer
+### The optical printer
 
-The Acme-Dunn optical printer, developed in the 1940s, was the workhorse of Hollywood visual effects for half a century. It consisted of a projector head and a camera head precisely aligned so that one frame of existing film could be re-photographed onto new stock. By rewinding the raw stock and feeding different source elements, effects artists could create double exposures, dissolves, wipes, matte composites, and title overlays — all through photochemical additive exposure.
+The ***optical printer*** was the most important visual effects tool in cinema for seventy years. Invented in the 1920s and perfected by engineers like ***Linwood Dunn*** (whose Acme-Dunn printer created the effects for *Citizen Kane* and *King Kong*), it worked by projecting developed film through a lens system onto unexposed raw stock. By running the raw stock through the printer multiple times with different source footage threaded each pass, technicians could layer multiple images onto one frame: creating dissolves, double exposures, wipes, and traveling mattes.
 
-### Additive vs. Replace Accumulation
+The key insight that Optika recreates is ***additive exposure***: each pass through the printer adds light to the film. Bright areas accumulate density faster than dark areas. Overlapping transparencies layer like stained glass, with the brightest elements dominating. This is fundamentally different from digital compositing, where layers simply replace one another unless explicitly blended.
 
-In real optical printing, each exposure adds to the accumulated density on the film — light is additive. A highlight that appears in multiple passes builds up brighter and brighter, eventually saturating the emulsion. Optika's additive mode mimics this: the faded previous value plus the new exposure are summed, saturating at maximum. Replace mode instead overwrites the buffer with each new frame, creating a step-print effect without temporal build-up.
+### Scanline accumulation
 
-### Printer Light Color Timing
+Optika's accumulation buffer stores a single scanline of 8-bit luma values in block RAM. As each line of active video arrives, the buffer performs a ***read-modify-write*** operation on every pixel: it reads the previous accumulated value, fades it by the Fade Rate, adds the new exposure-scaled input, and writes the result back. A second BRAM stores the previous frame's line data, and the final accumulated value is the average of both: providing temporal smoothing that reduces flicker and dot crawl.
 
-Film color grading was originally done at the printing stage by adjusting the intensity of red, green, and blue light sources in the optical printer — hence "printer lights." Videomancer's Optika simplifies this to a single color balance axis: values below center shift the image toward warm (boosting V, reducing U), while values above center shift toward cool (boosting U, reducing V). The brightness control adds a signed offset to the accumulated luminance, simulating the overall printer light intensity.
+Because the accumulator operates on a per-scanline basis rather than a full-frame buffer, Optika achieves its multi-exposure effect with only two BRAM tiles instead of the hundreds that a full-frame store would require. The trade-off is that vertical persistence is achieved through the slow IIR decay of the Fade Rate rather than explicit inter-line compositing.
 
-### Film Halation and Bloom
+### Printer lights and photochemical color
 
-When bright light hits photographic film, it can scatter within the emulsion layers and reflect off the film base, creating a soft glow around overexposed areas. This "halation" effect is a signature characteristic of film exposure that is difficult to recreate digitally. Optika approximates it with a 4-tap horizontal moving average that is gated to activate only where the accumulated signal exceeds a brightness threshold. The bloom amount control scales the glow intensity.
+In a film lab, ***printer lights*** were calibrated light valves that controlled the intensity of red, green, and blue illumination during each printing pass. A lab technician: the ***color timer***: would adjust these values shot by shot to achieve the desired look, compensating for exposure variations on set and establishing the film's visual mood. Warm printer lights lent a golden, nostalgic tone; cool lights created a steely, moonlit atmosphere.
 
-### Temporal Persistence and Frame Skip
+Optika's Brightness and Color Balance controls simulate this process in the YUV domain. Brightness applies a DC offset to the luma channel, raising or lowering the overall exposure. Color Balance shifts the U and V chrominance channels in opposite directions, tilting the image along the warm-cool axis.
 
-Real step-printing involved advancing the raw stock while holding the source at a fixed frame, creating freeze-frame effects and speed ramps. Optika's capture rate control implements this: a frame counter skips N frames between captures, so the buffer only updates at intervals. Combined with the fade rate, this creates speed-ramped accumulation where the temporal decay continues even during skip frames.
+### Film halation and bloom
+
+***Halation*** is a photochemical artifact where overexposed regions of film scatter light through the emulsion layers, creating a luminous halo around bright highlights. It's most visible in night scenes where practical lights bleed into the surrounding darkness, or in high-contrast shots where specular reflections glow against dark backgrounds.
+
+Optika simulates halation with a 4-tap horizontal moving average of the Y channel, gated so that only pixels above a brightness threshold contribute to the bloom. The gated average is then scaled by the Bloom Amount and added back to the luma signal. This produces a soft horizontal smear around bright peaks without affecting the overall midtone structure of the image.
 
 
 ---
 
 ## Signal Flow
 
-Y Channel → UV Channels → Wet/Dry Mix → Exposure Gate → Sync
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4, 10-bit)
-│
-├── Y Channel ─────────────────────────────────────────────────
-│   │
-│   ├─ 1. Input Register        (10-bit → 8-bit: Y >> 2)
-│   ├─ 2. Accumulation          (BRAM read-modify-write)
-│   │      ├─ Clear: write zeros
-│   │      ├─ Freeze: write back unchanged
-│   │      ├─ Additive: faded_prev + scaled_input (saturate 255)
-│   │      └─ Replace: scaled_input only
-│   ├─ 3. Temporal Blend        (current + previous frame line, >> 1)
-│   ├─ 4. Printer Light         (brightness offset, ±128 range)
-│   ├─ 5. Bloom                 (4-tap MA, gated on bright pixels)
-│   └─ 6. Clamp                 (0..1023)
-│
-├── UV Channels ───────────────────────────────────────────────
-│   │
-│   ├─ 1. Input Register        (pipeline delay)
-│   ├─ 2–3. Pass-through delay  (4 pipeline stages)
-│   └─ 4. Color Balance         (warm ↔ cool shift: ±U, ∓V)
-│
-├── Wet/Dry Mix ───────────────────────────────────────────────
-│   └─ 3× interpolator_u       (source ↔ processed, fader controls mix)
-│
-├── Exposure Gate ─────────────────────────────────────────────
-│   └─ Frame skip counter       (capture every N frames per Capture Rate)
-│
-└── Sync ──────────────────────────────────────────────────────
-    └─ Delayed pass-through     (hsync, vsync, field, 8-clock pipeline)
-```
+The Y channel takes a distinctly different path from the U/V channels. Luma flows through the accumulation engine: exposure gating, BRAM read-modify-write, temporal blending, printer light, and bloom: a long, stateful pipeline that builds up over time. The chroma channels are *not* accumulated; they pass through a simple 4-stage register delay and receive only the Color Balance offset before joining luma at the mix stage.
 
-The pipeline's core is the BRAM-based scanline accumulator. On each active pixel clock, the accumulator reads the previous value from BRAM, applies fade (multiply by fade rate >> 2), adds the exposure-scaled input (multiply by exposure >> 2), and writes the result back — a classic read-modify-write cycle. The accumulator operates at 8-bit precision (the input Y is truncated from 10 to 8 bits), which creates a natural density ceiling matching the limited dynamic range of real photographic emulsion.
+This asymmetry is deliberate. The optical printer metaphor accumulates *density* (brightness) on the film stock, while color is determined by the printer light settings applied uniformly to the composite. The result is that motion trails appear as luminance ghosts rather than color smears, and the Color Balance control tints the entire composite uniformly rather than blending the hues of successive frames.
 
-A second BRAM stores the previous frame's scanline data for temporal blending. The current accumulated value is averaged with the previous frame's value, creating smoother persistence across frames. The bloom stage operates on the printer-light-adjusted result, adding a gated horizontal glow only where the accumulated brightness exceeds a threshold of approximately 384 (out of 1023). Chrominance passes through a 4-stage pipeline delay with color balance applied at stage 3 — the printer light shifts U and V in opposite directions to simulate warm/cool filter adjustments.
-
----
-
-## Parameter Reference
-
-<img src={optika_control_panel} alt="Videomancer front panel with Optika loaded"/>
-*Videomancer's front panel with Optika active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Exposure
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Controls the exposure amount — how strongly each new input frame contributes to the accumulation buffer. The upper 8 bits of the 10-bit register multiply the 8-bit input luminance. At zero, no new input reaches the buffer and only the decaying previous accumulation is visible. At maximum, each frame deposits a strong imprint that builds rapidly toward saturation. In additive mode, moderate exposure values allow many frames to layer before clipping; high values saturate quickly, producing hard silhouettes rather than soft ghosts.
-
----
-
-#### Knob 2 — Fade Rate
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
-
-Controls the fade rate — the decay factor applied to the accumulation buffer on each frame. The upper 8 bits multiply the previous accumulated value. At minimum the buffer fades immediately, showing only the most recent capture. At maximum the buffer retains accumulated density indefinitely, building up layer after layer without decay. At approximately 75% the fade time roughly matches a natural film exposure series, where each layer persists for several seconds before decaying.
-
----
-
-#### Knob 3 — Capture Rate
-| Property | Value |
-|----------|-------|
-| Range | 1 – 64 |
-| Default | 1 |
-
-Sets the capture rate — the number of frames to skip between buffer updates. The upper 6 bits of the register define a frame counter threshold (0–63). At zero, every frame is captured. At maximum, only every 64th frame is captured, creating a step-print effect where the buffer builds up from widely spaced temporal samples. During skip frames the buffer still applies fade decay, so the previously accumulated image continues to dim while waiting for the next capture.
-
----
-
-#### Knob 4 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | -100.0% – 100.0% |
-| Default | 0.1% |
-| Suffix | % |
-
-Printer light brightness offset. The 10-bit register is mapped to a signed value centered at 512 — values below center darken the accumulated image, values above center brighten it. The offset is halved (right-shifted by 1) before being added to the 8-bit expanded accumulator, providing ±128 levels of brightness adjustment. This simulates adjusting the intensity of the printer light source in an optical printer — a fundamental grading control that affects overall density without changing the exposure or fade dynamics.
-
----
-
-#### Knob 5 — Color Bal
-| Property | Value |
-|----------|-------|
-| Range | -100.0% – 100.0% |
-| Default | 0.1% |
-| Suffix | % |
-
-Color balance control simulating printer light filter adjustment. The 10-bit register is centered at 512: values below center warm the image by shifting UV toward red-amber (positive V offset, negative U offset), and values above center cool the image toward blue (positive U offset, negative V offset). The shift is right-shifted by 2 (divided by 4) before application, providing a subtle range of ±64 chrominance levels. The U and V channels shift in opposite directions, maintaining roughly constant saturation while rotating the color temperature.
-
----
-
-#### Knob 6 — Bloom Amt
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-Bloom amount — the intensity of the halation glow applied to bright accumulated areas. The bloom is computed as a 4-tap horizontal moving average of the printer-light-adjusted luminance, gated to activate only where the average exceeds a brightness threshold. The bloom amount register scales this glow before it is added to the output. At zero the bloom stage is effectively disabled. At maximum, bright accumulated areas spread a strong horizontal glow into adjacent pixels, simulating the soft halation halos visible on overexposed film.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Accum Mode** | Additive | Replace |
-| **8 — Clear Buf** | Normal | Clear |
-| **9 — Freeze** | Run | Freeze |
-| **10 — Mono** | Color | Mono |
-| **11 — Bypass** | Off | On |
-
-Five toggles (7–11) control accumulation mode, buffer management, temporal behavior, colorimetry, and bypass. Each operates independently. The Clear Buffer toggle is momentary — while active it continuously writes zeros to the accumulator BRAM, and when released the buffer begins accumulating fresh input. Note that the Bypass toggle (Toggle 11) is declared in the register map and assigned to an internal signal, but the bypass signal is never checked in the output path — the output always routes through the interpolator. Only the fader provides wet/dry control.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade. This register drives the interpolation parameter of all three interpolator_u instances. At 0 the output is pure dry (original input signal). At 1023 the output is pure wet (the accumulated, printer-light-graded, bloom-enhanced result). Intermediate values blend between the two. Because the bypass toggle is non-functional, this fader is the only control for comparing the processed signal to the original.
-
-
-
+:::note
+**Temporal blend** averages the current accumulation write with the previous frame's line buffer. This two-frame averaging smooths out flicker that would otherwise appear when the Fade Rate creates rapid brightness transitions between consecutive frames.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from basic temporal accumulation through printer light grading to full multi-exposure compositing with bloom. Each reveals a different aspect of Optika's optical printer simulation.
+These exercises progress from simple ghost trails to complex multi-exposure composites, exploring the techniques that optical printer operators used to create cinema's most iconic visual effects.
+### Exercise 1: Double-Exposure Phantoms
 
-### Exercise 1: Ghostly Trails
+![Double-Exposure Phantoms result](/img/instruments/videomancer/optika/optika_ex1_s1.png)
+*Double-Exposure Phantoms — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: optika_source1_cat, after: optika_ex1_s1 },
-    { label: "Skull", before: optika_source2_skull, after: optika_ex1_s2 },
-    { label: "Collage", before: optika_source3_collage, after: optika_ex1_s3 },
-    { label: "Pattern", before: optika_source4_pattern, after: optika_ex1_s4 },
-    { label: "Girl", before: optika_source5_girl, after: optika_ex1_s5 },
-    { label: "Paint", before: optika_source6_paint, after: optika_ex1_s6 },
-  ]}
-/>
-*Ghostly Trails — simulated result across source images.*
-**Source**: A live camera with slow hand movements, or recorded footage of a person walking across the frame.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Understand how exposure and fade interact to create temporal persistence trails.
+#### Learning Outcomes
 
-1. **Set exposure**: Turn Exposure to ~40%. A moderate amount of each frame is deposited into the buffer.
-2. **Set fade**: Turn Fade Rate to ~80%. Previous accumulation decays slowly, leaving visible trails behind moving objects.
-3. **Observe trails**: Move slowly in front of the camera. Ghost images of your previous positions persist for several seconds before fading.
-4. **Adjust decay**: Reduce Fade Rate to ~50%. Trails shorten — only the most recent positions are visible. Increase to ~95% and trails persist much longer.
-5. **Additive build-up**: With high fade rate, stay still for a few seconds. Your static image builds up toward maximum brightness as exposure adds frame after frame.
-6. **Clear and restart**: Activate Clear Buffer (Toggle 8) briefly, then release. The trails vanish and begin accumulating fresh.
+A ghostly double-exposure effect reminiscent of early trick photography, where a moving subject leaves luminous trails over a static background.
 
-**Key concepts**: Exposure controls input strength per frame, fade controls temporal decay, additive accumulation builds density toward saturation
+#### Key Concepts
 
----
+- Additive accumulation builds exposure like photographic film
+- Fade Rate controls trail persistence
+- Exposure balances new input against accumulated history
 
-### Exercise 2: Step-Print Speed Ramp
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: optika_source1_cat, after: optika_ex2_s1 },
-    { label: "Skull", before: optika_source2_skull, after: optika_ex2_s2 },
-    { label: "Collage", before: optika_source3_collage, after: optika_ex2_s3 },
-    { label: "Pattern", before: optika_source4_pattern, after: optika_ex2_s4 },
-    { label: "Girl", before: optika_source5_girl, after: optika_ex2_s5 },
-    { label: "Paint", before: optika_source6_paint, after: optika_ex2_s6 },
-  ]}
-/>
-*Step-Print Speed Ramp — simulated result across source images.*
-**Source**: A moving subject — spinning record, pendulum, or a hand waving rhythmically.
+A live camera feed with a subject moving against a relatively static background. A person walking or gesturing in front of a dark wall works beautifully.
 
-**What You'll Create**: Explore frame-skip capture rate and replace mode for step-print effects.
+#### Steps
 
-1. **Enable replace mode**: Set Accum Mode to Replace (Toggle 7 on). Each captured frame overwrites instead of accumulating.
-2. **Set capture rate**: Turn Capture Rate to ~30% (~20 frame skip). The buffer updates every 20 frames, creating a choppy slow-motion effect.
-3. **Observe step print**: Moving objects jump between positions. The motion becomes staccato rather than smooth.
-4. **Adjust speed**: Reduce Capture Rate toward 0 for smooth motion. Increase toward 100% for extreme freeze-frame jumps.
-5. **Switch to additive**: Disable replace mode (Toggle 7 off). Now each capture adds to the buffer instead of overwriting, creating multiple overlapping exposures of the same moving object.
-6. **Fade tuning**: With additive mode and high capture rate skip, adjust Fade Rate so that old exposures decay just before new ones arrive. This creates evenly-spaced temporal echoes.
+1. **Set the base**: Turn **Exposure** (Knob 1) to about 50% and **Fade Rate** (Knob 2) to roughly 80%. You should see persistent ghost trails following any motion.
+2. **Extend the trails**: Lower Fade Rate toward 60%. The phantoms linger longer, overlapping into a spectral procession.
+3. **Brighten the ghosts**: Increase **Brightness** (Knob 4) slightly clockwise from center. The accumulated phantoms gain luminance, standing out more dramatically against the background.
+4. **Add warmth**: Turn **Color Bal** (Knob 5) slightly clockwise to tint the composite in a nostalgic golden tone (like aged film stock.)
+5. **Toggle Freeze**: Flip **Freeze** (Switch 9) to **Freeze** while a complex set of trails is on screen. Admire the frozen composite, then flip back to **Run** to continue.
 
-**Key concepts**: Capture rate implements step-printing frame skip, replace mode overwrites instead of accumulating, fade continues during skip frames
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Exposure | ~50% |
+| Fade Rate | ~60% |
+| Capture Rate | 1 |
+| Brightness | ~10% |
+| Color Bal | ~15% |
+| Bloom Amt | 0% |
+| Accum Mode | Additive |
+| Clear Buf | Normal |
+| Freeze | Run |
+| Mono | Color |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Film Look Composite
+### Exercise 2: Step-Printed Stroboscope
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: optika_source1_cat, after: optika_ex3_s1 },
-    { label: "Skull", before: optika_source2_skull, after: optika_ex3_s2 },
-    { label: "Collage", before: optika_source3_collage, after: optika_ex3_s3 },
-    { label: "Pattern", before: optika_source4_pattern, after: optika_ex3_s4 },
-    { label: "Girl", before: optika_source5_girl, after: optika_ex3_s5 },
-    { label: "Paint", before: optika_source6_paint, after: optika_ex3_s6 },
-  ]}
-/>
-*Film Look Composite — simulated result across source images.*
-**Source**: High-contrast footage with bright highlights — candle flames, spotlights, or bright windows in dark rooms.
+![Step-Printed Stroboscope result](/img/instruments/videomancer/optika/optika_ex2_s1.png)
+*Step-Printed Stroboscope — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Combine accumulation, printer light grading, and halation bloom for a classic film optical-print look.
+***A description of the exercise illustration.***
 
-1. **Moderate accumulation**: Set Exposure ~30%, Fade Rate ~85%. Subtle temporal persistence without heavy ghosting.
-2. **Warm printer light**: Shift Color Balance below center (~35%). The image warms to a golden-amber tone, simulating tungsten printer lights.
-3. **Brightness offset**: Adjust Brightness slightly above center (~55%) to lift the shadows, simulating a print with higher base density.
-4. **Enable bloom**: Turn Bloom Amount to ~50%. Watch the glow appear around bright highlights — the halation halo spreads horizontally from overexposed areas.
-5. **Bloom sweep**: Increase Bloom Amount toward 100%. The glow intensifies, spreading further into the highlights. Find a natural-looking level around 40–60%.
-6. **Freeze and grade**: Activate Freeze (Toggle 9) to hold a frame, then adjust Color Balance and Brightness to grade the frozen composite without new input disturbing it.
+#### Learning Outcomes
 
-**Key concepts**: Printer light adjusts brightness offset and color temperature, bloom simulates film halation on bright areas, freeze holds the buffer for static grading
+A stroboscopic motion study where a moving subject is captured in discrete, evenly spaced phantom images: the optical step-print technique used for slow-motion montages and dream sequences.
+
+#### Key Concepts
+
+- Capture Rate skips frames for step-print speed ramping
+- High Capture Rate creates discrete phantom "stamps"
+- Bloom enhances bright peaks in the accumulated result
+
+#### Video Source
+
+A camera feed with pronounced, continuous movement (a spinning object, a hand waving, or footage of traffic.)
+
+#### Steps
+
+1. **Set moderate accumulation**: Set **Exposure** (Knob 1) to about 60% and **Fade Rate** (Knob 2) to about 75%.
+2. **Engage step-printing**: Turn **Capture Rate** (Knob 3) clockwise to about 16. Each captured frame appears as a distinct "stamp" with faded gaps between captures.
+3. **Increase capture interval**: Push Capture Rate higher toward 32 or 48. The stamps become sparser and the stroboscopic effect becomes more dramatic.
+4. **Add bloom**: Turn **Bloom Amt** (Knob 6) to about 50%. The brightest parts of each captured stamp glow with halation halos.
+5. **Try Replace mode**: Flip **Accum Mode** (Switch 7) to **Replace**. Instead of building up, each capture overwrites the buffer (producing a clean strobe with no additive buildup.)
+6. **Clear and restart**: Flip **Clear Buf** (Switch 8) to **Clear** briefly, then back to **Normal**. The slate is wiped and a fresh sequence of stamps begins.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Exposure | ~60% |
+| Fade Rate | ~75% |
+| Capture Rate | 16 |
+| Brightness | 0% |
+| Color Bal | 0% |
+| Bloom Amt | ~50% |
+| Accum Mode | Additive |
+| Clear Buf | Normal |
+| Freeze | Run |
+| Mono | Color |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Cinematic Film Print
 
-## Tips
+![Cinematic Film Print result](/img/instruments/videomancer/optika/optika_ex3_s1.png)
+*Cinematic Film Print — simulated result across source images.*
+#### Exercise Illustration
 
-- **Bloom requires bright accumulation**: The halation bloom only activates above a brightness threshold. Low exposure or rapid fade prevents the accumulator from reaching bloom territory.
-- **Freeze + grade**: Use freeze to lock a multi-exposure composite, then adjust printer light brightness and color balance to grade the frozen image at leisure.
-- **Step-print with additive**: Combining frame skip (high capture rate) with additive mode creates evenly-spaced temporal echoes — multiple exposures of a moving object at discrete time steps.
-- **Feedback amplifies accumulation**: Routing the output back to the input creates recursive multi-exposure build-up, rapidly saturating but producing extreme halation effects along the way.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A rich, cinematic composite that looks like it was printed on real film stock: warm-toned, softly blooming, with the accumulated image layered beneath the live feed.
+
+#### Key Concepts
+
+- Printer light controls shape the composite's mood
+- Color Balance simulates lab color timing
+- Bloom simulates photochemical halation
+- Mix blends live and composite for layered depth
+
+#### Video Source
+
+Footage with a mix of bright highlights and dark shadows: candlelit scenes, city lights at night, or any high-contrast material with specular reflections.
+
+#### Steps
+
+1. **Base accumulation**: Set **Exposure** (Knob 1) to about 40% and **Fade Rate** (Knob 2) to about 70%. A gentle, persistent composite builds up.
+2. **Warm it up**: Turn **Color Bal** (Knob 5) clockwise to about 25%. The composite takes on a warm, amber-tinted quality.
+3. **Increase brightness**: Turn **Brightness** (Knob 4) slightly clockwise to about 15%. The composite gains a lifted, exposed quality.
+4. **Engage bloom**: Turn **Bloom Amt** (Knob 6) to about 40%. Highlights begin to glow with soft halation halos (the hallmark of vintage cinematography.)
+5. **Layer over live**: Pull **Mix** (Fader 12) down to about 60%. The live input appears crisp on top while the warm, blooming composite shimmers transparently beneath.
+6. **Go monochrome**: Flip **Mono** (Switch 10) to **Mono**. The entire composite collapses to luminance only: evoking a vintage black-and-white film print with all the bloom and warmth intact as tonal qualities.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Exposure | ~40% |
+| Fade Rate | ~70% |
+| Capture Rate | 1 |
+| Brightness | ~15% |
+| Color Bal | ~25% |
+| Bloom Amt | ~40% |
+| Accum Mode | Additive |
+| Clear Buf | Normal |
+| Freeze | Run |
+| Mono | Color |
+| Bypass | Off |
+| Mix | ~60% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Accumulation Buffer** | A BRAM-based per-pixel storage array that retains and blends luminance values across multiple video frames. |
-| **Additive Exposure** | A blending mode where new input is summed with the existing buffer content, building up density with each frame. |
-| **Bloom** | A glow effect around bright areas simulating optical halation, implemented as a gated moving-average filter. |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator. |
-| **Emulsion** | The light-sensitive chemical layer on photographic film that records exposure through density changes. |
-| **Fade Rate** | The decay factor applied to the accumulation buffer per frame, controlling temporal persistence. |
-| **Halation** | Light scattering within photographic film causing a soft glow around bright areas; simulated by the bloom stage. |
-| **Optical Printer** | A mechanical device for re-photographing film elements to create composites, dissolves, and effects. |
-| **Printer Light** | The illumination source in an optical printer; adjusting its color temperature and intensity is the original form of film color grading. |
-| **Step-Print** | A printing technique where frames are skipped during exposure to create speed changes. |
+- **Accumulation**: The process of additively blending successive frames into a single composite, building up brightness where exposures overlap.
+
+- **Bloom**: A soft glow around bright highlights caused by light scattering through film emulsion layers; also called halation.
+
+- **Color Timing**: The process of adjusting the color balance of a film print by controlling the intensity of red, green, and blue printer lights.
+
+- **Double Exposure**: A photographic technique where two or more images are superimposed on the same frame of film by exposing it multiple times.
+
+- **Halation**: The scattering of light through the base and emulsion layers of photographic film, creating luminous halos around overexposed areas.
+
+- **IIR Decay**: Infinite impulse response decay; a feedback process where each new value is a weighted combination of the current input and the previous output, producing exponential fade-out.
+
+- **Optical Printer**: A mechanical-photochemical device that re-photographs film through a lens system, enabling compositing, speed changes, and visual effects.
+
+- **Printer Lights**: Calibrated light valves in an optical printer or film lab that control the intensity of red, green, and blue illumination during printing.
+
+- **Scanline Accumulator**: A BRAM-based buffer that stores and processes one horizontal line of video at a time, performing read-modify-write operations on each pixel.
+
+- **Step-Printing**: An optical printing technique where selected frames are skipped or repeated to create slow motion, fast motion, or stroboscopic effects.
 
 ---

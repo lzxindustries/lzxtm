@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 12
 slug: /instruments/videomancer/aurora
@@ -7,359 +7,437 @@ image: /img/instruments/videomancer/aurora/aurora_hero.png
 description: "In the early 1990s, the Amiga demoscene invented an effect called \"shadebobs\" — small sprites drawn additively into a framebuffer without ever clearing the screen."
 ---
 
-import aurora_hero from '/img/instruments/videomancer/aurora/aurora_hero.png';
-import aurora_animation from '/img/instruments/videomancer/aurora/aurora_animation.gif';
-import aurora_control_panel from '/img/instruments/videomancer/aurora/aurora_control_panel.png';
-import aurora_exercise1_result from '/img/instruments/videomancer/aurora/aurora_exercise1_result.gif';
-import aurora_exercise2_result from '/img/instruments/videomancer/aurora/aurora_exercise2_result.gif';
-import aurora_exercise3_result from '/img/instruments/videomancer/aurora/aurora_exercise3_result.gif';
-
-# Aurora
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={aurora_hero} alt="Aurora hero image"/>
-*Aurora painting luminous Lissajous trails in rainbow mode — overlapping orbits create prismatic interference patterns on a persistent framebuffer.*
-<img src={aurora_animation} alt="Aurora animated output"/>
-*Aurora output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Aurora hero image](/img/instruments/videomancer/aurora/aurora_hero_s1.png)
+*Aurora painting luminous Lissajous trails into a persistent framebuffer, with additive bob stamps fading into glowing orbital patterns.*
 
 ---
 
 ## Overview
 
-In the early 1990s, the Amiga demoscene invented an effect called "shadebobs" — small sprites drawn additively into a framebuffer without ever clearing the screen. As each bob traced its path, it left behind a trail of accumulated brightness, painting luminous interference patterns in a kind of long-exposure drawing with light. Aurora recreates this technique in real-time FPGA hardware.
+Aurora is a video synthesizer inspired by the iconic ***shadebob*** effect from the Amiga demoscene of the early 1990s. It draws soft, glowing shapes: called ***bobs***: that trace complex mathematical curves across a persistent canvas. Each bob stamps its gradient footprint additively into a framebuffer, building up brightness wherever its path overlaps. A slow, global fade dims the entire canvas between frames, so fresh strokes glow brightly while old ones dissolve into darkness. The result is an ever-evolving tapestry of luminous trails: aurora-like curtains, spirograph rosettes, and glowing orbital webs.
 
-The program maintains a persistent 40×32 pixel framebuffer stored in BRAM (stride 64, fitting in 4 BRAM tiles at 2,048 bytes). Two or four "bobs" — single-pixel stamps — move in Lissajous orbits across this canvas. Each frame, the bobs are additively stamped into the framebuffer (brightness values are added, saturating at maximum). A global fade gradually dims the entire canvas, creating a dynamic equilibrium where new strokes glow brightly while old ones decay to darkness. The framebuffer is read out during active video, upscaled to full resolution via nearest-neighbor (each framebuffer pixel covers a 32×32 block of output pixels), and colorized through one of four palette modes before mixing with the input video.
+Because Aurora is a ***synthesis*** program, it generates imagery from scratch rather than processing an incoming video signal. The input video is still available for mixing via the **Mix** fader and for seeding the framebuffer when **Video Seed** is enabled. Four color modes: Monochrome, Heat, Rainbow, and Duo-tone: transform the raw luminance trails into vivid, full-color compositions. The interplay between speed, pattern, fade rate, and color mode gives Aurora a vast palette of visual moods, from meditative, slow-burning nebulae to frantic, electric neon webs.
 
-The name *Aurora* refers to the aurora borealis — curtains of light that shimmer and shift across the polar sky. With the heat map or rainbow colorizer and a trefoil Lissajous pattern, the resemblance is unmistakable: luminous arcs of green and pink light glowing against darkness.
+:::tip
+Aurora is a ***generative*** program. It creates its own imagery: you don't need an input signal to see results. Just load the program and watch the trails appear.
+:::
+
+### What's In a Name?
+
+The name ***Aurora*** evokes the aurora borealis: shimmering curtains of light that ripple across the polar sky. Just as the northern lights are painted by charged particles tracing magnetic field lines, Aurora's bobs trace mathematical curves and paint luminous trails across the screen. The name also nods to the ancient Roman goddess of dawn, whose light gradually fills the sky: much like the way Aurora's framebuffer slowly fills with accumulated radiance.
 
 ---
 
 ## Quick Start
 
-1. **Aurora is a painting program**: Unlike most Videomancer programs that transform each frame independently, Aurora accumulates over time. Be patient — allow 30–60 seconds after each control change to see the full effect evolve.
-2. **Fade Rate is the memory control**: Zero fade = permanent long-exposure painting. Maximum fade = short comets. The middle range creates the most visually interesting dynamic equilibrium.
-3. **Pattern + Speed + Orbit Size define the drawing**: These three controls determine *what* is drawn. Intensity and Fade Rate determine *how* it looks. Color mode determines *what color* it is. Separate these mental models.
+1. Load **Aurora**. Two glowing dots immediately begin tracing smooth curves across a black canvas, leaving bright trails that slowly fade behind them. You're watching the default Lissajous pattern at moderate speed.
+2. Turn **Speed** (Knob 1) clockwise. The bobs accelerate, painting trails faster and filling the canvas more quickly. Turn it counterclockwise to slow them to a crawl.
+3. Turn **Fade Rate** (Knob 3) counterclockwise toward zero. The trails persist much longer, building up a dense, luminous web. Turn it clockwise for a faster fade that leaves only the most recent strokes visible.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Aurora loaded](/img/instruments/videomancer/aurora/aurora_control_panel.png)
+*Videomancer's front panel with Aurora active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 37.5% |
+
+**Speed** controls how fast the bobs travel along their orbital paths. At 0%, the bobs are nearly stationary, producing an almost frozen glow at their current positions. As Speed increases, the bobs trace their Lissajous curves more rapidly, sweeping across the canvas and painting trails at a faster rate. At 100%, the bobs move quickly enough that the trails become dense, continuous ribbons of light.
+
+Speed interacts closely with **Fade Rate** (Knob 3). Fast speed with slow fade produces a thick, saturated web of overlapping trails. Fast speed with fast fade creates crisp, animated streamers that chase across the screen.
+
+---
+
+### Knob 2 — Pattern
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 8 |
+| Default | 2 |
+
+**Pattern** selects one of eight ***Lissajous*** frequency-ratio presets that define the shape of the orbital path. Each preset pairs a horizontal frequency with a vertical frequency to produce a distinct curve:
+
+1. Circle or ellipse (1:1)
+2. Figure eight (1:2)
+3. Trefoil (2:3)
+4. Complex rosette (3:4)
+5. Five-petaled flower (3:5)
+6. Lemniscate variant (1:3)
+7. Complex, slow-repeating weave (5:7)
+8. Asymmetric loop (2:5)
+
+Lower presets produce simple, symmetrical curves. Higher presets produce increasingly intricate patterns with longer repeat cycles. The visual density of the trails grows with pattern complexity because the bob revisits different regions of the canvas before returning to its starting point.
+
+:::note
+The Pattern knob is quantized to 8 discrete steps. You'll feel it "click" between presets as you turn it.
+:::
+
+---
+
+### Knob 3 — Fade Rate
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 37.5% |
+
+**Fade Rate** controls how quickly the global fade dims the persistent framebuffer. At 0%, the fade is at its slowest: trails linger for a very long time, and the canvas gradually saturates to full brightness. As the value increases, each frame subtracts more luminance from every pixel, so trails disappear more quickly. At 100%, the fade is aggressive: only the very latest bob positions remain visible, producing a tight, comet-like streamer rather than a lingering web.
+
+The interplay between Fade Rate and **Speed** (Knob 1) determines the visual density of Aurora's output. Low fade rate with low speed creates a slowly building, meditative glow. High fade rate with high speed produces energetic, animated trails.
+
+:::tip
+A fade rate of zero does not freeze the image: the bobs continue stamping brightness. The canvas will eventually saturate to full white if the fade is too low relative to the speed and intensity.
+:::
+
+---
+
+### Knob 4 — Intensity
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Intensity** sets the brightness of each bob stamp. At 0%, the bobs deposit almost no light, and the canvas remains dark. As Intensity increases, each stamp adds more luminance to the framebuffer, causing trails to build up faster and glow more brightly. At 100%, even a single stamp can push pixels close to full brightness, creating bold, high-contrast trails.
+
+Intensity interacts with **Fade Rate** (Knob 3) to set the equilibrium brightness of the canvas. High intensity and low fade rate will saturate the framebuffer quickly; low intensity and high fade rate will keep the image dim and delicate.
+
+---
+
+### Knob 5 — Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0deg – 360deg |
+| Default | 0deg |
+
+**Hue** shifts the color tint applied to Aurora's luminance trails. The effect of this knob depends on the active color mode selected by the **Color Lo** and **Color Hi** toggles:
+
+- In **Mono** mode, Hue rotates the tint applied to the monochrome trails, sweeping through warm oranges, cool blues, magentas, and greens as you turn the knob from 0 to 360 degrees.
+- In **Rainbow** mode, Hue offsets the starting position of the rainbow palette, rotating which colors correspond to which brightness levels.
+- In **Heat** and **Duo-tone** modes, Hue has no visible effect (those palettes use fixed color mappings.)
+
+---
+
+### Knob 6 — Orbit Size
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Orbit Size** controls the amplitude of the Lissajous curves: how far the bobs swing from the center of the canvas. At 0%, the bobs barely move from the center, painting a tight, concentrated glow. As the value increases, the bobs swing wider, covering more of the screen. At 100%, the bobs reach the edges of the framebuffer, painting trails that span the full canvas.
+
+:::note
+Because the framebuffer operates at 1/16 resolution (120×68 pixels), the bob positions are clamped to stay within bounds. Very large orbit sizes may cause the bobs to cluster near the edges.
+:::
+
+---
+
+### Switch 7 — Color Lo
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Color Lo** is the low bit of the two-bit color mode selector. Together with **Color Hi** (Switch 8), it selects one of four color palettes. See the Toggle Group Notes below for the full mode table.
+
+---
+
+### Switch 8 — Color Hi
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Color Hi** is the high bit of the two-bit color mode selector. Together with **Color Lo** (Switch 7), it selects one of four color palettes. See the Toggle Group Notes below for the full mode table.
+
+---
+
+### Switch 9 — Bobs
+
+| Property | Value |
+|----------|-------|
+| Off | 2 Bobs |
+| On | 4 Bobs |
+| Default | 2 Bobs |
+
+**Bobs** selects the number of active shadebobs. Set to **2 Bobs**, two bobs trace the Lissajous curve with a 90-degree phase offset between them. Set to **4 Bobs**, four bobs are active, with phase offsets at 0°, 90°, 180°, and 270°. More bobs produce denser, more symmetrical patterns because the curve is traced from multiple starting positions simultaneously.
+
+---
+
+### Switch 10 — Video Seed
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Video Seed** controls whether the incoming video signal is used to seed the framebuffer. When set to **Off**, Aurora generates a purely synthetic image: the canvas starts black and is painted only by the bobs. When set to **On**, the input video contributes to the framebuffer content, allowing external imagery to blend with and influence the luminous trails.
+
+:::tip
+With **Video Seed** on, try feeding Aurora a slowly moving camera signal. The video content becomes a ghostly substrate that the bobs paint over, creating a layered composite of real-world imagery and synthetic geometry.
+:::
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Aurora synthesis. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and Aurora's output.
+
+---
+
+:::note Toggle Group Notes
+
+**Color Lo** (Switch 7) and **Color Hi** (Switch 8) form a two-bit binary selector that chooses Aurora's color palette. The four modes are:
+
+| Color Hi | Color Lo | Mode | Description |
+|----------|----------|------|-------------|
+| Off | Off | **Mono** | White trails tinted by the **Hue** knob. Clean, classic look. |
+| Off | On | **Heat** | Cool blue for dim pixels, green for mid-tones, warm red-orange for bright areas, and white at full intensity. Thermal camera aesthetic. |
+| On | Off | **Rainbow** | Luminance maps to a 16-color rainbow palette. The **Hue** knob rotates the palette offset. Psychedelic and colorful. |
+| On | On | **Duo-tone** | Pixels below half brightness get one color, pixels above get the complementary color. Bold, graphic two-color look. |
+
+:::tip
+Try switching color modes while the trails are already built up. The existing framebuffer data is instantly re-colorized: you don't need to wait for new trails to see the difference.
+:::
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the delayed input video (dry) and Aurora's synthesized output (wet). At 0%, only the input video is visible. At 100%, only Aurora's synthesis is visible. Intermediate values blend the two, allowing the Lissajous trails to overlay the source material at any opacity.
+
+:::tip
+**Mix** is powerful for live performance. Keep it at 50% to see both the camera feed and Aurora's trails simultaneously, creating a layered composite in real time.
+:::
 
 ---
 
 ## Background
 
-### What Are Shadebobs?
+### Shadebobs and the Amiga demoscene
 
-**Shadebobs** were an iconic effect invented on the Amiga home computer, popularized by demoscene groups like Sanity, Andromeda, and Scoopex in the early 1990s. The technique exploited the Amiga's planar graphics hardware, which could efficiently perform bitwise addition to a framebuffer. A small sprite (the "bob") is drawn at successive positions without clearing the screen. Each draw additively increases the brightness of the pixels it touches. As the bob traces complex mathematical curves, it paints elaborate luminous interference patterns that glow with accumulated light.
+The ***shadebob*** effect was born on the Commodore Amiga in the early 1990s, pioneered by demoscene groups like Sanity, Andromeda, and Scoopex. The Amiga's planar graphics hardware could efficiently perform bitwise addition to a framebuffer: an operation that was expensive on other platforms. A small, soft-edged sprite (the "bob") was drawn at successive positions without ever clearing the screen. Each draw ***additively*** increased the brightness of the pixels it touched.
 
-The visual result is ethereal: overlapping dots of light create webs, spirals, and curtain-like formations. The longer the effect runs, the richer and more complex the pattern becomes. The characteristic "smeared light" quality — where the bob builds up brightness at intersection points — is unlike any other visual effect.
+As the bob traced complex curves, it painted elaborate interference patterns that glowed with accumulated light. The visual effect was unlike anything else in the demoscene: ethereal curtains of luminance, spider-web geometries, and pulsing aurora-like ribbons. Aurora recreates this technique in hardware, using Videomancer's FPGA to maintain a persistent framebuffer and paint into it at video rate.
 
-### What Are Lissajous Curves?
+### Lissajous figures
 
-**Lissajous curves** (also called Bowditch curves) are the trajectories produced when two sinusoidal oscillations are combined along perpendicular axes:
+***Lissajous figures*** are the curves produced when two sinusoidal motions are combined at right angles. If the horizontal position follows $x = A \sin(f_x t)$ and the vertical position follows $y = B \sin(f_y t + \phi)$, the resulting path depends on the frequency ratio $f_x : f_y$. A 1:1 ratio produces circles or ellipses; 1:2 produces a figure eight; higher ratios produce increasingly complex rosettes and knots.
 
-$x(t) = A \sin(f_x t + \varphi_x)$
+Aurora's eight pattern presets correspond to eight frequency-ratio pairs. Each preset produces a distinct curve shape. Because the bobs trace these curves continuously and the framebuffer retains their history, the Lissajous figure gradually reveals itself as a luminous drawing (the mathematical beauty of harmonic motion made visible.)
 
-$y(t) = B \sin(f_y t + \varphi_y)$
+### Framebuffer persistence
 
-The shape of the curve depends on the frequency ratio $f_x : f_y$ and the phase relationship. At 1:1, the path is an ellipse (or circle with 90° phase offset). At 1:2, it traces a figure-8. At 2:3, a trefoil. Higher ratios produce increasingly complex rosettes. Aurora provides eight preset frequency ratios, each producing a distinct orbital pattern.
+Unlike most Videomancer programs, which process each pixel independently and statelessly, Aurora maintains a ***persistent framebuffer*** stored in the FPGA's block RAM. The framebuffer is a 120×68-pixel canvas (1/16 of the full video resolution) that is never cleared. Each frame, two operations happen in sequence: a global fade pass subtracts a small amount of brightness from every pixel, and then the bob stamps add brightness at the bob positions. This creates a dynamic equilibrium: trails fade at the rate set by **Fade Rate** while new strokes replenish brightness at the rate set by **Speed** and **Intensity**.
 
-### What Is a Persistent Framebuffer?
-
-Unlike most video effects programs on Videomancer — which process each frame independently — Aurora maintains **persistent state** between frames. The 40×32 framebuffer (8-bit luminance per pixel, power-of-2 stride of 64) stores the accumulated painting from all previous frames. New bob stamps are added. A fade pass subtracts a small amount from every pixel each frame. This creates a memory effect: the canvas remembers, and the bobs draw a continuous record of their motion.
-
-The fade rate controls how long that memory lasts. At zero fade, the canvas accumulates indefinitely until saturated — a permanent record. At maximum fade, trails vanish almost immediately, and only the bobs themselves are visible — bright heads with no tails. Between these extremes, you get trails of varying length, from long luminescent ribbons to short comet tails.
-
-### What Is Additive Compositing?
-
-When a bob stamps into the framebuffer, its brightness value is **added** to the existing pixel value (clamped to 255). This is fundamentally different from painting *over* pixels — it means overlapping bob paths create brighter intersections. Where two paths cross, the brightness is the sum of both contributions. This additive accumulation creates the luminous node structure characteristic of shadebobs: a web of bright intersection points connected by dimmer trail segments.
+The low resolution of the framebuffer is deliberate: it fits within two 4-Kbit BRAM tiles, keeping resource usage modest. The chunky, low-resolution aesthetic also contributes to Aurora's retro character, evoking the look of early home computers and arcade machines.
 
 
 ---
 
 ## Signal Flow
 
-```
-┌──────────────────────────────────────────────────────────────────┐
-│  Phase Increment (independent process, triggered at vsync)       │
-│     ├─ For each bob: phase_x += speed × preset.fx (or fixed)    │
-│     │                 phase_y += speed × preset.fy (or fixed)    │
-│     └─ 16-bit phase accumulators, wrapping                       │
-│           ◄── Speed (pot 1), Pattern (pot 2)                     │
-│                                                                  │
-│  Frame Update FSM (during vertical blanking)                     │
-│                                                                  │
-│  1. Bob Position Compute (BOB_COMPUTE → BOB_MULT → BOB_CLAMP)   │
-│     ├─ For each active bob:                                      │
-│     │   sine_x = quarter_wave_LUT(phase_x[bob](15:8))           │
-│     │   sine_y = quarter_wave_LUT(phase_y[bob](15:8))           │
-│     │   pos = FB_center + shift_right(sine(9:4) × amp(9:4), 2)  │
-│     └─ Clamp to 1..W−2 / 1..H−2                                │
-│           ◄── Orbit Size (pot 6), Bob Count (toggle 8)           │
-│                                                                  │
-│  2. Global Fade (FADE_RD / FADE_WR, 2-cycle read-modify-write)  │
-│     ├─ For each pixel in 40×32 FB (2048 addresses):              │
-│     │   fb[addr] = max(0, fb[addr] − fade_subtract)             │
-│     └─ fade_subtract = fade_rate(9:6) → 0..15 per frame         │
-│           ◄── Fade Rate (pot 3)                                  │
-│                                                                  │
-│  3. Bob Stamp (STAMP_RD / STAMP_WR, 1×1 additive)               │
-│     ├─ For each bob:                                             │
-│     │   brightness = intensity(9:2) → 8-bit                     │
-│     │   fb[addr] = min(255, fb[addr] + brightness)               │
-│     └─ Saturating 9-bit addition                                 │
-│           ◄── Intensity (pot 4), Bob Count (toggle 8)            │
-└──────────────────────────────────────────────────────────────────┘
+### Signal Flow Notes
 
-┌──────────────────────────────────────────────────────────────────┐
-│  Readout Pipeline (during active video)                          │
-│                                                                  │
-│  Stage 1: Address generation                                     │
-│     └─ fb_x = hcount(11:5), fb_y = vcount(10:5)  (÷32)         │
-│        clamped to FB_W−1 and FB_H−1                              │
-│        addr = fb_y × 64 + fb_x  (shift_left + OR)               │
-│                                                                  │
-│  Stage 2: BRAM read (1 clk latency)                              │
-│     └─ 8-bit luminance value                                     │
-│                                                                  │
-│  Stage 3a: Scale + pre-register                                  │
-│     └─ luma_10 = fb_byte & "00"  (8-bit → 10-bit, ×4)           │
-│                                                                  │
-│  Stage 3b: Colorize (from registered fb_byte and luma)           │
-│     ├─ Mono:    Y = luma, UV = pre-computed hue tint             │
-│     ├─ Heat:    Y = luma, UV = 4-band map via fb_byte(7:6)       │
-│     ├─ Rainbow: Y = luma, UV = 4-quadrant hue via                │
-│     │           fb_byte(7:6) + hue(9:8) → 2-bit index            │
-│     └─ Duo:     Y = luma, UV = 2-color split on fb_byte(7)      │
-│           ◄── Color Mode (toggle 7), Hue (pot 5)                 │
-│                                                                  │
-│  Stage 4: Brightness scaling (6×6 multiply)                      │
-│     └─ Y = (color_Y(9:4) × orbit_size(9:4)) >> 2                │
-│           ◄── Orbit Size (pot 6)                                 │
-│                                                                  │
-│  Stage 5: Output register                                        │
-│                                                                  │
-│  Stages 6–9: Interpolator (4 clk, per Y/U/V)                    │
-│     └─ Mix = lerp(input_delayed, processed, mix_amount)          │
-│           ◄── Mix (fader 12)                                     │
-└──────────────────────────────────────────────────────────────────┘
+Aurora's pipeline is divided into two time domains. The **frame-update domain** runs during the vertical blanking interval: the fade pass sweeps through all 8,160 framebuffer pixels, subtracting the fade amount, and then the stamp pass writes the bob kernel at each bob position. This happens once per frame. The **readout domain** runs during active video: pixel counters map each output pixel to a framebuffer address (dividing by 8 in each axis), the BRAM delivers the 8-bit luminance, the colorizer maps it to YUV based on the selected palette, and the interpolator mixes the result with the delayed input.
 
- Output = bypass ? input_delayed : mix_result
-           ◄── Bypass (toggle 11)
-```
+The two domains share the dual-port BRAM: port A handles the fade and stamp FSM, while port B handles active-video readout. This time-multiplexing is safe because the fade and stamp operations complete during blanking, before readout begins.
 
-Aurora is fundamentally different from Videomancer's signal-processing programs. Instead of transforming the input video frame-by-frame, it maintains an internal canvas (framebuffer) with persistent state across frames. The input video is only used in two ways: (1) Video Seed mode paints input luminance into the framebuffer, and (2) the Mix fader crossfades between the generated image and the delayed input. The frame update FSM (bob position compute → fade → stamp) runs during vertical blanking using 2-cycle read-modify-write through BRAM ports; the readout pipeline runs during active video, sharing the same BRAM read port via an address mux. Phase increments run in a separate process triggered at vsync, decoupled from the FSM to avoid adding carry chains to the critical path. The Orbit Size pot serves double duty: it controls the Lissajous amplitude during bob position computation and also scales the readout luminance in the brightness scaling stage.
+:::note
+Because the framebuffer resolution is 120×68, each "pixel" on screen is a block of roughly 16×16 output pixels. This gives Aurora its characteristic chunky, retro look.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={aurora_control_panel} alt="Videomancer front panel with Aurora loaded"/>
-*Videomancer's front panel with Aurora active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises explore Aurora's orbital painting from simple trails to complex layered compositions. Each exercise builds on the previous one, gradually engaging more controls.
+### Exercise 1: Luminous Trails
 
-### Rotary Potentiometers (Knobs 1–6)
+![Luminous Trails result](/img/instruments/videomancer/aurora/aurora_ex1_s1.png)
+*Luminous Trails — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Speed
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 37.5% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-At 0%, the bobs are frozen in place — they stamp the same position every frame, burning a bright static dot into the framebuffer. As you increase speed, the bobs trace their Lissajous paths faster. Very high speeds make the bobs race around their orbits so quickly that the trails blur together into continuous luminous bands. The speed pot scales phase increment per frame, so the relationship between Speed and visual velocity depends on the Pattern preset — complex presets with high frequency ratios produce faster apparent motion for the same Speed setting. Internally, controls the orbital velocity of the bobs.
+#### Learning Outcomes
 
----
+A glowing web of Lissajous trails that slowly builds on a black canvas, demonstrating the interplay between speed, fade, and intensity.
 
-#### Knob 2 — Pattern
-| Property | Value |
-|----------|-------|
-| Range | 1 – 8 |
-| Default | 2 |
+#### Key Concepts
 
-Selects one of eight Lissajous frequency ratio presets that determine the orbital pattern shape. This is a **stepped** control with 8 discrete positions:
+- Additive painting into a persistent framebuffer
+- Speed and fade rate create a dynamic equilibrium
+- Lissajous patterns produce complex curves from simple ratios
 
-| Step | Ratio (fx:fy) | Pattern |
-|------|---------------|---------|
-| 1 | 1:1 | Circle / ellipse |
-| 2 | 1:2 | Figure-8 |
-| 3 | 2:3 | Trefoil |
-| 4 | 3:4 | Complex rosette |
-| 5 | 3:5 | Five-petaled flower |
-| 6 | 1:3 | Lemniscate variant |
-| 7 | 5:7 | Complex, slow-repeat |
-| 8 | 2:5 | Asymmetric loop |
+#### Steps
 
-Each preset produces a fundamentally different painting pattern. Simple ratios (1:1, 1:2) produce clean, symmetric curves. Complex ratios (5:7, 2:5) produce intricate, dense patterns that fill more of the canvas before repeating.
+1. Load **Aurora** with default settings. Two bobs trace a simple curve, leaving fading trails.
+2. Turn **Fade Rate** (Knob 3) fully counterclockwise. The trails now persist almost indefinitely, and the canvas begins to fill with accumulated light.
+3. Slowly increase **Speed** (Knob 1) to about 75%. The bobs move faster, painting more of the curve per second.
+4. Turn **Pattern** (Knob 2) clockwise to preset 5 (five-petaled flower). Watch the trail pattern change from a simple loop to an intricate rosette.
+5. Adjust **Intensity** (Knob 4) to find the sweet spot where trails are bright but the canvas doesn't saturate to pure white.
 
----
+#### Settings
 
-#### Knob 3 — Fade Rate
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 37.5% |
-| Suffix | % |
-
-At 0%, no fade occurs and the canvas accumulates indefinitely until every pixel saturates at maximum brightness. This produces a permanent luminous record of every orbit the bobs have traced. At maximum, the fade is so aggressive that trails disappear almost immediately, leaving only the bright bob positions visible as moving dots. Internally, controls the global fade rate — how quickly the framebuffer dims between frames.
-
-The artistic sweet spot is in the middle range, where trails persist long enough to show the Lissajous curve structure but fade before the canvas saturates. The fade rate interacts strongly with Speed: fast bobs with slow fade create long flowing trails; slow bobs with fast fade create short bright arcs.
+| Control | Value |
+|---------|-------|
+| Speed | ~75% |
+| Pattern | 5 |
+| Fade Rate | 0% |
+| Intensity | ~60% |
+| Hue | 0 deg |
+| Orbit Size | ~75% |
+| Color Lo | Off |
+| Color Hi | Off |
+| Bobs | 2 Bobs |
+| Video Seed | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-#### Knob 4 — Intensity
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
+### Exercise 2: Color Palettes
 
-Controls the brightness of each 1×1 bob stamp — how much luminance is added per pixel per frame. The 10-bit register is scaled to 8-bit via `intensity(9:2)`, giving a brightness range of 0–255 per stamp. At low intensity, bobs produce faint traces that build up slowly through repeated passes. At high intensity, each stamp burns a bright mark into the framebuffer, creating vivid trails that saturate quickly.
+![Color Palettes result](/img/instruments/videomancer/aurora/aurora_ex2_s1.png)
+*Color Palettes — simulated result across source images.*
+#### Exercise Illustration
 
-The interaction with Fade Rate is important: high intensity with high fade produces bright but short trails (comets). High intensity with low fade produces trails that saturate quickly, filling the canvas with maximum brightness. Low intensity with low fade produces subtle, slowly accumulating patterns that take minutes to develop.
+***A description of the exercise illustration.***
 
----
+#### Learning Outcomes
 
-#### Knob 5 — Hue
-| Property | Value |
-|----------|-------|
-| Range | 0deg – 360deg |
-| Default | 0deg |
-| Suffix | deg |
+Compare all four color modes on a fully developed trail pattern, then use Hue to shift the palette.
 
-Controls the color tint applied to the framebuffer output. The hue value is pre-computed into UV offsets at vsync only (not per-pixel), keeping it off the readout pipeline critical path. The effect depends on the active Color Mode (Toggle 7):
+#### Key Concepts
 
-- **Mono mode**: The Hue pot sets the UV offset from neutral via a 4-quadrant computation, tinting the monochrome output. Sweep through warm amber, cool blue, green, magenta.
-- **Heat mode**: Hue has no direct effect — the 4-band thermal palette is fixed.
-- **Rainbow mode**: The upper 2 bits of the Hue pot (`hue(9:8)`) are added to the upper 2 bits of the framebuffer luminance (`fb_byte(7:6)`) to index a 4-entry computed color map. Different Hue positions shift which quadrant of colors appear at each luminance level.
-- **Duo mode**: Hue has no direct effect — the two-color pair is fixed (complementary cyan/warm tones split on `fb_byte(7)`).
+- Four color modes re-map luminance to different palettes
+- Hue rotation shifts tint in Mono and Rainbow modes
+- Existing framebuffer data is re-colorized instantly
 
----
+#### Steps
 
-#### Knob 6 — Orbit Size
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
+1. From Exercise 1, let the canvas build up a rich trail pattern at moderate fade and speed.
+2. Set **Color Lo** (Switch 7) to **On**, leaving **Color Hi** (Switch 8) at **Off**. The trails shift to a thermal heat-map palette: cool blue for dim areas, warm orange and red for bright areas.
+3. Now set **Color Hi** to **On** and **Color Lo** to **Off**. The trails become a rainbow spectrum, with luminance mapped to hue.
+4. While in Rainbow mode, slowly sweep **Hue** (Knob 5) from 0 to 360 degrees. The entire rainbow palette rotates, shifting which colors correspond to which brightness levels.
+5. Set both **Color Lo** and **Color Hi** to **On** for Duo-tone mode. The trails snap to a bold two-color graphic: dim areas in one color, bright areas in the complementary color.
+6. Return to **Mono** mode (both switches Off). Sweep **Hue** to tint the monochrome trails with warm or cool hues.
 
-Serves a dual role: it controls both the amplitude of the Lissajous orbits and the brightness of the readout image. For orbit amplitude, the upper 6 bits of the register (`orbit_size(9:4)`) are used as a 7-bit unsigned multiplier against the sine lookup result during bob position computation. At 0%, all bobs converge on the center of the 40×32 framebuffer. As you increase Orbit Size, the bobs sweep wider paths, clamped to a 1-pixel border. In the readout pipeline, Orbit Size is also the multiplier in the brightness scaling stage (`color_Y(9:4) × orbit_size(9:4)`), so turning it down dims both the orbit amplitude and the output image simultaneously.
+#### Settings
 
-Small orbit sizes create tight, dim patterns concentrated in the center of the screen. Large orbit sizes create sweeping, bright curves that fill the entire display.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Color** | Mono | Duo |
-| **8 — Bobs** | 2 Bobs | 4 Bobs |
-| **9 — Clear** | Off | On |
-| **10 — Video Seed** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggle switches control four independent binary options plus a combined 2-bit color mode selector. Toggle 7 is a 4-position selector (using 2 bits from `registers_in(6)(1:0)`) that dramatically changes the visual character. Toggles 8–11 are independent binary controls mapped to individual bits of register 6.
+| Control | Value |
+|---------|-------|
+| Speed | ~50% |
+| Pattern | 3 |
+| Fade Rate | ~25% |
+| Intensity | ~75% |
+| Hue | 180 deg |
+| Orbit Size | ~75% |
+| Color Lo | On |
+| Color Hi | Off |
+| Bobs | 2 Bobs |
+| Video Seed | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Linear Potentiometer (Fader 12)
+### Exercise 3: Four-Bob Symmetry and Video Seed
 
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
+![Four-Bob Symmetry and Video Seed result](/img/instruments/videomancer/aurora/aurora_ex3_s1.png)
+*Four-Bob Symmetry and Video Seed — simulated result across source images.*
+#### Exercise Illustration
 
-Wet/dry crossfade between the input video (delayed to match pipeline latency) and the Aurora output. At 0% (fully down), the output is pure input video — Aurora is inaudible. At 100% (fully up), the output is pure Aurora. Intermediate positions blend the two, allowing the aurora pattern to be superimposed over live video at any opacity. This is the primary creative control for compositing the generative pattern with external footage.
+***A description of the exercise illustration.***
 
+#### Learning Outcomes
 
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
+A four-bob symmetrical aurora overlaid on a live camera feed, with the input video seeding the framebuffer.
 
-Routes the unprocessed input signal directly to the output, bypassing all Aurora processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
+#### Key Concepts
 
-These exercises progress from basic trail painting to complex multi-bob compositions with colorization. Because Aurora is a generative program with persistent state, each exercise unfolds over time — allow 30–60 seconds after each parameter change to observe the full effect.
+- Four bobs create symmetrical patterns from phase-offset orbits
+- Video Seed blends external imagery into the persistent framebuffer
+- Mix fader composites synthesis over the camera feed
 
-### Exercise 1: Classic Shadebob Trails
+#### Video Source
 
-<img src={aurora_exercise1_result} alt="Classic Shadebob Trails result"/>
-*Classic Shadebob Trails — simulated result across source images.*
-**What You'll Create**: Learn how speed, fade, and intensity interact to control trail character.
+A live camera feed or recorded footage with slow, organic motion (clouds, water, or a lava lamp.)
 
-1. **Start clean**: Toggle Clear (Switch 9) to reset the framebuffer.
-2. **Set the orbit**: Choose Pattern preset 4 (rosette). Set Orbit Size to ~80%.
-3. **Fast speed**: Set Speed to ~80%. Watch two bobs race around the complex rosette path, painting bright trails across the canvas.
-4. **Minimal fade**: Set Fade Rate to ~6%. With almost no fade, trails accumulate permanently — the canvas fills with a luminous long-exposure record of every orbit pass.
-5. **Maximum intensity**: Set Intensity to 100%. Each 1×1 stamp burns a bright mark into the framebuffer, and intersection points where both bobs cross saturate to full brightness.
-6. **Warm tint**: Set Hue to ~15%. The mono trails pick up a subtle warm tone. Sweep Hue to shift the tint across the spectrum.
+#### Steps
 
-**Key concepts**: Persistent framebuffer accumulates over time, fade rate controls trail length, intensity controls brightness per stamp, near-zero fade creates permanent long-exposure painting, rosette creates dense self-intersecting patterns
+1. Set **Bobs** (Switch 9) to **4 Bobs**. The pattern immediately becomes denser and more symmetrical, with four bobs tracing the same curve at 90-degree offsets.
+2. Set **Pattern** (Knob 2) to preset 7 (complex weave, 5:7 ratio). The four bobs now trace an intricate, slowly repeating pattern.
+3. Enable **Video Seed** (Switch 10). The camera feed now contributes to the framebuffer content: you'll see ghostly impressions of the input video beneath the Lissajous trails.
+4. Lower **Mix** (Fader 12) to about 50%. The output blends Aurora's synthesis with the delayed input video, creating a layered composite.
+5. Set the color mode to **Rainbow** (Color Hi On, Color Lo Off) and sweep **Hue** (Knob 5) slowly. The synthetic trails and the seeded video content are both colorized through the same rainbow palette.
 
----
+#### Settings
 
-### Exercise 2: Rainbow Aurora
-
-<img src={aurora_exercise2_result} alt="Rainbow Aurora result"/>
-*Rainbow Aurora — simulated result across source images.*
-**What You'll Create**: Explore colorization modes and the interaction between pattern complexity and color mixing.
-
-1. **Clear and prepare**: Toggle Clear. Set Pattern to 5 (five-petal flower), Orbit Size to ~80%, Speed to ~60%.
-2. **Enable Rainbow**: Switch Color (Toggle 7) to Rainbow. The trails immediately display colored bands — the 4-quadrant colorizer maps luminance regions to distinct hues.
-3. **Four bobs**: Switch Bobs (Toggle 8) to 4 Bobs. The five-petal pattern with 4 bobs creates dense, overlapping floral structures.
-4. **Minimal fade**: Set Fade Rate to ~6% and Intensity to 100%. With near-permanent trails and maximum brightness, the canvas fills with vivid color bands.
-5. **Watch intersections**: Where trails overlap, the additive luminance pushes pixels across quadrant boundaries, shifting their color assignment.
-6. **Rotate the quadrants**: Sweep Hue (Knob 5). The 4-quadrant color assignment rotates — the same luminance bands map to different color regions.
-7. **Clear and observe**: Toggle Clear to restart. Watch the rainbow pattern build up from scratch.
-
-**Key concepts**: Rainbow mode maps luminance quadrants to distinct hues, overlapping trails shift quadrant boundaries through additive brightness, Hue rotates the 4-quadrant color assignment, 4 bobs and low fade create dense saturated patterns
+| Control | Value |
+|---------|-------|
+| Speed | ~60% |
+| Pattern | 7 |
+| Fade Rate | ~25% |
+| Intensity | ~60% |
+| Hue | 90 deg |
+| Orbit Size | ~60% |
+| Color Lo | Off |
+| Color Hi | On |
+| Bobs | 4 Bobs |
+| Video Seed | On |
+| Bypass | Off |
+| Mix | 50% |
 
 ---
-
-### Exercise 3: Video Seed Composition
-
-<img src={aurora_exercise3_result} alt="Video Seed Composition result"/>
-*Video Seed Composition — simulated result across source images.*
-**What You'll Create**: Combine live video seeding with generative bob painting.
-
-1. **Setup**: Set Mix to ~70% to blend Aurora over the input.
-2. **Enable Video Seed**: Switch Video Seed (Toggle 10) to On. The input video luminance now feeds into the framebuffer.
-3. **Add bobs**: Set moderate Speed (~35%), Pattern 2 (figure-8), Orbit Size ~60%.
-4. **Adjust fade**: Set Fade Rate to ~40%. The video image persists while bobs paint luminous figure-8 trails over it.
-5. **Rainbow on video**: Switch to Rainbow mode. The video-seeded luminance maps through the 4-quadrant colorizer, creating a false-color image with luminous bob trails woven through it.
-6. **Increase intensity**: Raise Intensity. The bobs burn through the video image, leaving bright paths that overpower the seeded content.
-7. **Clear and rebuild**: Toggle Clear to erase, then watch the video image re-seed while the bobs paint over it.
-
-**Key concepts**: Video Seed feeds input luminance into the persistent framebuffer, creating hybrid generative/live compositions.  Mix fader controls the blend ratio, colorizer applies to both seeded video and bob trails
-
----
-
-
-## Tips
-
-- **Clear is your eraser**: When you change Pattern or Orbit Size, toggle Clear to start fresh. Old trails from the previous pattern will otherwise persist until they fade naturally.
-- **Rainbow intersections create unique colors**: In Rainbow mode, overlapping trails shift luminance upward, which shifts the 2-bit quadrant index. Intersection points that cross luminance band boundaries display different color quadrants than surrounding trail segments.
-- **Video Seed creates hybrid compositions**: Enable Video Seed and set moderate Mix to superimpose luminous trails over live footage. The video image becomes a canvas that the bobs paint over.
-- **Feedback loops create aurora evolution**: Routing output back to input creates recursive accumulation. The aurora trails feed back into the framebuffer through Video Seed, creating self-reinforcing patterns that evolve unpredictably.
-- **Bypass for A/B comparison**: Switch 11 instantly shows the unprocessed input for comparison.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Additive compositing** | A blending mode where pixel brightness values are summed rather than overwritten, causing overlapping elements to appear brighter at intersection points. |
-| **Demo** | A computer art subculture focused on producing real-time audio-visual programs (demos) that showcase creative programming within hardware constraints. |
-| **Framebuffer** | A block of memory storing a complete image; Aurora's framebuffer persists across frames, accumulating luminance from bob stamps over time. |
-| **FSM** | Finite State Machine; the sequential control logic that coordinates bob position computation, global fade, and stamp operations during vertical blanking. |
-| **Lissajous curve** | A parametric curve traced by combining two perpendicular sinusoidal oscillations at different frequencies, defining each bob's orbital path. |
-| **Nearest-neighbour upscaling** | An image scaling method that assigns each output pixel the value of its closest source pixel, producing the blocky enlargement visible in Aurora's low-resolution framebuffer. |
-| **Phase accumulator** | A digital counter that increments by a fixed step each frame and wraps at overflow, controlling each bob's position along its Lissajous orbit. |
-| **Quarter-wave LUT** | A lookup table storing one quarter of a sine cycle; the full waveform is reconstructed through symmetry, saving FPGA memory. |
-| **Saturation** | The condition where a pixel value reaches its maximum (255 for 8-bit) and cannot increase further despite additional additive stamps. |
-| **Shadebobs** | An Amiga demoscene effect where small sprites are additively stamped into a persistent framebuffer without clearing, painting luminous trail patterns. |
-| **Vsync** | Vertical synchronisation; the timing pulse marking the start of each video frame, during which Aurora executes its frame update FSM. |
+- **Additive blending**: A compositing method where pixel brightness values are summed, causing overlapping regions to glow brighter. Aurora's bobs use additive blending to paint into the framebuffer.
+
+- **Bob**: A soft-edged graphic stamp: in Aurora, a 3×3 gradient kernel that is painted into the framebuffer at the bob's current position.
+
+- **BRAM**: Block RAM; dedicated memory blocks inside the FPGA used to store the persistent framebuffer.
+
+- **DDS**: Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator. Aurora uses DDS to produce the sinusoidal bob motions.
+
+- **Fade**: The per-frame subtraction applied to every pixel in the framebuffer, causing old trails to gradually dim toward black.
+
+- **Framebuffer**: A region of memory that stores a complete image. Aurora's framebuffer persists across frames, retaining the accumulated trail history.
+
+- **Lissajous figure**: A curve produced by combining two sinusoidal motions at right angles. The shape depends on the frequency ratio and phase offset.
+
+- **Orbit**: The path traced by a bob across the canvas, defined by Lissajous frequency ratios and amplitude.
+
+- **Shadebob**: A demoscene effect originating on the Amiga, where soft gradient sprites are additively composited into a persistent framebuffer to create luminous trail patterns.
+
+- **Synthesis program**: A Videomancer program that generates imagery from scratch, rather than processing an incoming video signal.
 
 ---

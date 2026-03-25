@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 40
 slug: /instruments/videomancer/cathode
@@ -7,365 +7,440 @@ image: /img/instruments/videomancer/cathode/cathode_hero_s1.png
 description: "Lightning is nature's most dramatic display of electrical energy — a branching, jagged path of ionized air that exists for less than a millisecond but burns into visual memory."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import cathode_control_panel from '/img/instruments/videomancer/cathode/cathode_control_panel.png';
-import cathode_source1_ballerina from '/img/instruments/videomancer/cathode/cathode_source1_ballerina.png';
-import cathode_source2_car from '/img/instruments/videomancer/cathode/cathode_source2_car.png';
-import cathode_source3_collage from '/img/instruments/videomancer/cathode/cathode_source3_collage.png';
-import cathode_source4_pattern from '/img/instruments/videomancer/cathode/cathode_source4_pattern.png';
-import cathode_source5_man from '/img/instruments/videomancer/cathode/cathode_source5_man.png';
-import cathode_source6_knit from '/img/instruments/videomancer/cathode/cathode_source6_knit.png';
-import cathode_hero_s1 from '/img/instruments/videomancer/cathode/cathode_hero_s1.png';
-import cathode_hero_s2 from '/img/instruments/videomancer/cathode/cathode_hero_s2.png';
-import cathode_hero_s3 from '/img/instruments/videomancer/cathode/cathode_hero_s3.png';
-import cathode_hero_s4 from '/img/instruments/videomancer/cathode/cathode_hero_s4.png';
-import cathode_hero_s5 from '/img/instruments/videomancer/cathode/cathode_hero_s5.png';
-import cathode_hero_s6 from '/img/instruments/videomancer/cathode/cathode_hero_s6.png';
-import cathode_ex1_s1 from '/img/instruments/videomancer/cathode/cathode_ex1_s1.png';
-import cathode_ex1_s2 from '/img/instruments/videomancer/cathode/cathode_ex1_s2.png';
-import cathode_ex1_s3 from '/img/instruments/videomancer/cathode/cathode_ex1_s3.png';
-import cathode_ex1_s4 from '/img/instruments/videomancer/cathode/cathode_ex1_s4.png';
-import cathode_ex1_s5 from '/img/instruments/videomancer/cathode/cathode_ex1_s5.png';
-import cathode_ex1_s6 from '/img/instruments/videomancer/cathode/cathode_ex1_s6.png';
-import cathode_ex2_s1 from '/img/instruments/videomancer/cathode/cathode_ex2_s1.png';
-import cathode_ex2_s2 from '/img/instruments/videomancer/cathode/cathode_ex2_s2.png';
-import cathode_ex2_s3 from '/img/instruments/videomancer/cathode/cathode_ex2_s3.png';
-import cathode_ex2_s4 from '/img/instruments/videomancer/cathode/cathode_ex2_s4.png';
-import cathode_ex2_s5 from '/img/instruments/videomancer/cathode/cathode_ex2_s5.png';
-import cathode_ex2_s6 from '/img/instruments/videomancer/cathode/cathode_ex2_s6.png';
-import cathode_ex3_s1 from '/img/instruments/videomancer/cathode/cathode_ex3_s1.png';
-import cathode_ex3_s2 from '/img/instruments/videomancer/cathode/cathode_ex3_s2.png';
-import cathode_ex3_s3 from '/img/instruments/videomancer/cathode/cathode_ex3_s3.png';
-import cathode_ex3_s4 from '/img/instruments/videomancer/cathode/cathode_ex3_s4.png';
-import cathode_ex3_s5 from '/img/instruments/videomancer/cathode/cathode_ex3_s5.png';
-import cathode_ex3_s6 from '/img/instruments/videomancer/cathode/cathode_ex3_s6.png';
-
-# Cathode
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Ballerina", before: cathode_source1_ballerina, after: cathode_hero_s1 },
-    { label: "Car", before: cathode_source2_car, after: cathode_hero_s2 },
-    { label: "Collage", before: cathode_source3_collage, after: cathode_hero_s3 },
-    { label: "Pattern", before: cathode_source4_pattern, after: cathode_hero_s4 },
-    { label: "Man", before: cathode_source5_man, after: cathode_hero_s5 },
-    { label: "Knit", before: cathode_source6_knit, after: cathode_hero_s6 },
-  ]}
-/>
-*Cathode striking a procedural lightning bolt across a nighttime cityscape, the electric-blue glow bleeding into the surrounding video.*
+![Cathode hero image](/img/instruments/videomancer/cathode/cathode_hero_s1.png)
+*Cathode generating forked lightning bolts with Gaussian glow over live video, additively composited in Electric Blue palette.*
 
 ---
 
 ## Overview
 
-Lightning is nature's most dramatic display of electrical energy — a branching, jagged path of ionized air that exists for less than a millisecond but burns into visual memory. Cathode recreates this phenomenon as a real-time procedural effect, generating bolt paths via random-walk displacement and compositing them over live video with Gaussian glow profiles and palette-selectable color tinting.
+Cathode is a procedural lightning bolt and electrical discharge generator. It draws jagged bolt paths across the screen using a random walk algorithm, surrounds them with a soft Gaussian glow, and composites the result additively over your input video. The effect ranges from subtle static sparks to dramatic, screen-spanning electrical arcs that flash, hold, and fade on their own schedule.
 
-The name references the *cathode* — the electrode from which electrons depart in a discharge tube. It is also a nod to the cathode ray tube, the display technology that defined analog video. The program draws a direct line to the NewTek NewTek's Forked Lightning and Jagged Lightning effects from the Organic Effects bank — staples of early 1990s church broadcasts, wedding videos, and sci-fi television. Where the Toaster played back pre-rendered frame sequences, Cathode synthesizes bolts procedurally every frame using a 16-bit Galois LFSR, midpoint displacement, and hardware-accelerated glow computation.
+The bolt path is generated fresh during each vertical blanking interval, written into a dedicated block of FPGA memory. During active video, every pixel on every scanline measures its distance from the bolt center and looks up a glow intensity from a precomputed curve. The result is a smooth, organic-looking discharge that follows a truly random path: no two bolts are ever the same. Four color palettes tint the glow from electric blue to purple, warm white, or green.
 
-At moderate settings, Cathode produces convincing electrical arcs that track across the frame. At extreme roughness and fork values, bolts shatter into fractal discharge trees. The four selectable color palettes — electric blue, purple, warm white, and green — cover the most common cinematic lightning styles, from realistic storm footage to sci-fi energy weapons.
+Cathode draws its creative inspiration from the NewTek Video Toaster's Forked Lightning and Jagged Lightning effects, reimagined for modern hardware with per-pixel glow, palette-tinted chroma, and real-time parameter control.
+
+### What's In a Name?
+
+The name ***Cathode*** refers to the ***cathode ray***: the beam of electrons fired from the back of a CRT television tube toward the phosphor screen. Lightning is nature's cathode ray: a massive electrical discharge arcing through the atmosphere. The name also evokes the warm, glowing aesthetic of ***cathode ray tubes*** themselves, connecting the digital lightning effect to video's analog past.
 
 ---
 
 ## Quick Start
 
-1. **Dark backgrounds show bolts best**: Additive compositing means the bolt can only brighten pixels. Dark scenes show the full glow dynamic range; bright scenes compress it.
-2. **Static mode for still captures**: Turn Animate off to get a persistent bolt that changes path every frame — useful for photographing or freeze-framing a specific bolt shape.
-3. **Roughness and Fork interact**: Roughness controls the baseline displacement magnitude, Fork controls how often that magnitude is doubled. Use moderate roughness with high fork for realistic branching, or high roughness with low fork for sweeping arcs.
+1. Set **Brightness** (Knob 6) to about 75%. A jagged bolt of light should appear superimposed over your input video, glowing in electric blue.
+2. Turn **Roughness** (Knob 1) clockwise. The bolt becomes more jagged and erratic, zig-zagging wildly across the screen.
+3. Increase **Fork** (Knob 2). Occasional sharp kinks appear along the bolt path (sudden directional changes that visually suggest branching.)
+4. Flip **Animate** (Switch 9) to **On** and adjust **Flash Rate** (Knob 4). The bolt now regenerates periodically, flashing bright and then fading away before a new bolt strikes.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Cathode loaded](/img/instruments/videomancer/cathode/cathode_control_panel.png)
+*Videomancer's front panel with Cathode active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Roughness
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Roughness** controls how jagged the bolt path is. At 0%, fully counterclockwise, the bolt is nearly a straight vertical line. As Roughness increases, each step of the random walk displaces further from the previous position, creating increasingly wild zig-zag patterns. At 100%, the bolt careens across the full width of the screen with dramatic, angular deviations.
+
+The roughness value scales the magnitude of a random displacement applied at each of the 128 path segments. Internally, an 8-bit signed random number from the ***LFSR*** is multiplied by the roughness scale factor, so low roughness keeps the bolt close to the target position while high roughness lets it wander freely.
+
+---
+
+### Knob 2 — Fork
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Fork** controls the probability of sudden, extra-large kinks in the bolt path. At 0%, the bolt follows a smooth random walk with uniform displacement. As Fork increases, the chance of a displacement being doubled at any given segment rises, creating sharp angular breaks that visually suggest branching or forking. At 100%, nearly every segment has an exaggerated kink, making the bolt extremely chaotic.
+
+:::tip
+**Fork** and **Roughness** are complementary. Roughness sets the baseline jaggedness, while Fork adds punctuated bursts of extra displacement on top. For realistic lightning, try moderate Roughness (~40%) with low Fork (~20%).
+:::
+
+---
+
+### Knob 3 — Glow Width
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 39.1% |
+
+**Glow Width** controls the radius of the Gaussian glow surrounding the bolt center. At 0%, the glow is very tight and narrow: the bolt appears as a thin, sharp line. As Glow Width increases, the glow spreads further from the bolt center, creating a soft, diffuse halo. At 100%, the glow is wide enough to illuminate a large portion of the screen around the bolt.
+
+The glow profile is stored as a 64-entry lookup table containing a precomputed Gaussian curve. Glow Width controls how many pixels of horizontal distance map across those 64 entries: narrow settings compress the entire curve into a few pixels, while wide settings stretch it across many.
+
+---
+
+### Knob 4 — Flash Rate
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 29.3% |
+
+**Flash Rate** controls how quickly new bolts are generated when **Animate** (Switch 9) is enabled. At 0%, bolts regenerate very slowly: the discharge lingers and fades for a long time before a new strike appears. At 100%, bolts regenerate rapidly, creating a near-continuous flickering barrage.
+
+After each new bolt is generated, it holds at full brightness for three frames, then fades exponentially: each frame, the intensity is halved. The Flash Rate timer determines how many frames pass before the next bolt replaces the fading one.
+
+:::note
+When **Animate** is set to **Off**, Flash Rate has no visible effect. The bolt regenerates every frame with no fade, so it updates continuously in response to parameter changes.
+:::
+
+---
+
+### Knob 5 — Target X
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Target X** controls the horizontal starting position of the bolt. At 0%, the bolt originates at the left edge of the screen. At 50%, the bolt starts at the center. At 100%, the bolt originates at the right edge. The first segment of the bolt path is always placed exactly at the Target X position; subsequent segments wander away from it according to Roughness and Fork.
+
+:::tip
+Sweep **Target X** slowly during a performance to animate the bolt's strike point across the screen. Combine with low **Roughness** for a controlled beam, or high **Roughness** for a bolt that wanders far from the starting position.
+:::
+
+---
+
+### Knob 6 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Brightness** controls the overall intensity of the bolt and its glow. At 0%, the bolt is invisible: its glow is scaled to zero. At 100%, the bolt is at maximum intensity, easily saturating the luma channel where it overlaps the glow center. The brightness value is multiplied against the glow profile after the Gaussian lookup, before compositing.
+
+Because the bolt is composited ***additively***: its brightness is added to the existing video: the result is always lighter than the input. Dark input areas show the bolt clearly, while bright input areas may clip to white where the bolt overlaps.
+
+---
+
+### Switch 7 — Palette A
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Palette A** is the low bit of the two-bit color palette selector. Together with **Palette B** (Switch 8), it selects one of four color tints applied to the bolt's glow. See the Toggle Group Notes below for the full palette table.
+
+---
+
+### Switch 8 — Palette B
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Palette B** is the high bit of the two-bit color palette selector. Together with **Palette A** (Switch 7), it selects one of four color tints. See the Toggle Group Notes below for the full palette table.
+
+---
+
+### Switch 9 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Animate** enables automatic bolt regeneration and fade behavior. When set to **On**, bolts are generated periodically according to **Flash Rate** (Knob 4), hold at full brightness for three frames, and then fade exponentially. When set to **Off**, the bolt is regenerated every single frame with no fade, creating a continuously-updating bolt that responds instantly to parameter changes. Static mode is useful for dialing in Roughness, Fork, and Glow Width without the bolt disappearing between flashes.
+
+---
+
+### Switch 10 — Direction
+
+| Property | Value |
+|----------|-------|
+| Off | Down |
+| On | Up |
+| Default | Down |
+
+**Direction** controls the orientation of the bolt. When set to **Down**, the bolt begins at the top of the screen and extends downward: the first BRAM entry corresponds to the top scanline. When set to **Up**, the address mapping is reversed: the bolt begins at the bottom and extends upward. The bolt path data itself does not change; only the read order is flipped.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the input video directly to the output, bypassing all Cathode processing. The sync delay pipeline still aligns timing so there is no glitch when toggling. Use Bypass for instant A/B comparison between the raw input and the composited result.
+
+---
+
+:::note Toggle Group Notes
+
+**Palette A** (Switch 7) and **Palette B** (Switch 8) combine to form a two-bit palette selector. The four palettes tint the bolt's glow by shifting the U and V chroma channels proportionally to the glow intensity:
+
+| Palette A | Palette B | Color | Chroma Behavior |
+|-----------|-----------|-------|-----------------|
+| Off | Off | Electric Blue | U shifts positive, V shifts negative |
+| On | Off | Purple | U shifts slightly positive, V shifts positive |
+| Off | On | Warm White | U shifts slightly negative, V shifts slightly positive |
+| On | On | Green | U shifts negative, V shifts slightly negative |
+
+The chroma shift is proportional to the glow value: brighter regions of the bolt receive more tint, while areas far from the bolt center remain unchanged. This creates a natural falloff where the color tint fades with the glow.
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Mix** controls the wet/dry balance between the original input video and the bolt-composited result. At 0%, fully down, the output is the unprocessed input: no bolt is visible. At 100%, fully up, the output is the fully composited result with the bolt and glow at the intensity set by **Brightness**. Intermediate values crossfade smoothly between the two.
+
+:::tip
+Use **Mix** at moderate values (40–60%) to create a subtle, ghostly lightning overlay that doesn't overpower the source material. At 100%, the bolt dominates the image, which is ideal for standalone synthesis effects.
+:::
 
 ---
 
 ## Background
 
-### What Is Midpoint Displacement?
+### Midpoint displacement and random walks
 
-Midpoint displacement is a fractal subdivision technique for generating irregular paths. Start with a straight line between two endpoints. Find the midpoint and displace it perpendicular to the line by a random amount. Repeat for each new sub-segment, reducing the displacement range at each level. The result is a jagged, natural-looking path — exactly the visual character of a lightning bolt. Cathode implements a simplified one-dimensional version: it walks sequentially from top to bottom (or bottom to top), accumulating random horizontal displacements at each entry. The Roughness control scales the magnitude of each displacement step, controlling how far the bolt wanders from a straight vertical line.
+Cathode generates bolt paths using a ***random walk***: a mathematical process where each step moves in a random direction from the previous position. The bolt starts at the **Target X** coordinate and walks downward (or upward) through 128 path segments, accumulating random displacements at each step. The result is a jagged, naturalistic path that mimics the fractal structure of real electrical discharges.
 
-### What Is a Galois LFSR?
+This technique is closely related to ***midpoint displacement***, the algorithm used in early computer graphics to generate lightning, mountains, and coastlines. The principle is the same: start with two endpoints, displace the midpoint by a random amount, then recursively subdivide. Cathode's random walk is a one-pass version: it walks from top to bottom in a single sweep, displacing each segment once.
 
-A **Linear Feedback Shift Register** (LFSR) is a shift register whose input bit is a function of its previous state. A Galois LFSR applies XOR taps at specific bit positions during the shift operation, producing a pseudo-random sequence that cycles through every non-zero state before repeating. Cathode uses a 16-bit Galois LFSR with tap mask `0xB400` and seed `0xACE1`. This generates the random displacement values that drive the bolt's random walk and the fork probability decisions. Because the LFSR is deterministic, the same seed always produces the same bolt — but the seed advances with every frame, so successive bolts trace different paths.
+Real lightning follows a similar process. The electrical leader propagates step by step from cloud to ground, each segment finding the path of least resistance through the atmosphere. The resulting path has a ***fractal*** quality: it looks similar at every scale, with smaller branches mirroring the shape of the main channel.
 
-### What Is Gaussian Glow?
+### Gaussian glow profiles
 
-A real lightning bolt is not a single-pixel-wide line. The ionized plasma channel emits light in all directions, and the surrounding air scatters it further. The result is a bright core that falls off smoothly with distance. Cathode models this with a **Gaussian glow profile** — a lookup table of 64 entries computed from the function $\text{gauss}(i) = 1023 \times e^{-(i/16)^2}$. For each pixel, the horizontal distance to the bolt path is computed, scaled by the Glow Width control, and used to index into this table. The result is a smooth, bell-curve-shaped brightness falloff that gives the bolt its characteristic soft halo.
+The glow surrounding the bolt uses a ***Gaussian function***: the familiar bell curve from statistics. The Gaussian's smooth, symmetric falloff creates a natural-looking radiance that peaks at the bolt center and tapers to zero. This is stored as a 64-entry lookup table precomputed from the formula $\text{glow}(i) = 1023 \cdot e^{-(i/16)^2}$.
 
-### What Is Additive Compositing?
+The Gaussian profile produces a softer, more realistic glow than a simple linear ramp. The center of the bolt appears bright and well-defined, while the edges dissolve gradually into the surrounding image. The **Glow Width** control stretches or compresses the distance-to-index mapping, effectively widening or narrowing the bell curve without changing its shape.
 
-Standard video compositing replaces pixels — the effect covers the background. **Additive compositing** adds the effect's pixel values to the background's pixel values, clamping at maximum brightness. This means the bolt can only make the image brighter, never darker. Dark areas of the source receive the full glow; bright areas saturate toward white. This is physically accurate for light-emitting phenomena like lightning, fire, and lens flares — they add luminance to whatever is behind them. Cathode applies additive compositing to the Y (luminance) channel and applies palette-dependent signed shifts to U and V (chrominance).
+### Additive compositing
 
-### What Is Flash-Hold-Fade?
+Cathode layers the bolt over the input video using ***additive compositing***: the bolt's brightness is added to the existing pixel values. This is the same blending mode used for lens flares, light beams, and particle effects in film and game engines. Additive compositing never darkens: it can only make pixels brighter or leave them unchanged.
 
-Real lightning appears as a sudden flash that lingers briefly then decays. Cathode's Animate mode reproduces this temporal envelope with a three-phase cycle: **flash** (instant full brightness when a new bolt is generated), **hold** (3 frames at full brightness to simulate the persistence of the main stroke), and **fade** (exponential decay via right-shift, halving brightness each frame until the bolt disappears). The Flash Rate control sets how quickly a new bolt is generated to restart the cycle. In static mode (Animate off), the bolt regenerates every frame at full brightness — useful for still-image captures and sustained glow effects.
+For the luma channel, the addition is saturating: values that would exceed the maximum (1023) are clamped to white. For the chroma channels, the palette tint is added with clamping to the valid range, ensuring no wraparound artifacts.
+
+:::note
+Because of additive compositing, the bolt is most visible over dark areas of the input. Over bright input, the bolt may be invisible because luma is already near maximum. Feed Cathode dark or moderately-lit footage for the most dramatic results.
+:::
+
+### Flash-hold-fade timing
+
+When **Animate** is enabled, each bolt follows a three-phase lifecycle: ***flash***, ***hold***, and ***fade***. The flash phase generates a new bolt path and displays it at full brightness. The hold phase maintains full brightness for three frames, giving the eye time to register the bolt. The fade phase applies ***exponential decay***: each frame, the intensity is halved by shifting the fade register right by one bit. This produces a rapid initial dimming that gradually slows, mimicking the afterglow of a real electrical discharge.
+
+The **Flash Rate** control sets the interval between flash events. At high rates, bolts overlap their fade tails, creating a continuous flickering storm. At low rates, each bolt fades nearly to black before the next one arrives, producing isolated, dramatic strikes.
 
 
 ---
 
 ## Signal Flow
 
-Bolt Path Generation → Flash Timer → Pipeline Stage 1: Input → ... → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Bolt Path Generation (vblank) ──────────────────────────────
-│   │
-│   ├─ 1. GEN_INIT       Target X → scale to [0,1279] → write entry 0
-│   ├─ 2. GEN_WALK        LFSR random walk (128 entries)
-│   │     └─ Roughness × signed(LFSR) → displacement
-│   │     └─ Fork kink:   if LFSR(15:6) < fork_chance → displacement ×2
-│   └─ 3. Store           128 × 11-bit X positions → BRAM
-│
-├── Flash Timer ────────────────────────────────────────────────
-│   └─ Animate mode: flash → hold(3) → exponential fade
-│   └─ Static mode:  regen every frame, full brightness
-│
-├── Pipeline Stage 1: Input Capture ────────────────────────────
-│   └─ Latch Y, U, V, sync
-│
-├── Pipeline Stage 2: Distance Calculation ─────────────────────
-│   └─ bolt_rd_addr = scanline(9:3) [Direction: normal or flipped]
-│   └─ pixel_dist = |h_count − bolt_x|
-│
-├── Pipeline Stage 3: Glow + Brightness + Fade ─────────────────
-│   └─ Glow Width → scale pixel_dist → index 64-entry Gaussian LUT
-│   └─ glow_raw × Brightness → bright_prod
-│   └─ bright_prod × bolt_fade → glow_val
-│
-├── Pipeline Stage 4: Palette Tint + Additive Composite ────────
-│   ├─ Y: add_y = in_y + glow_val (saturate at 1023)
-│   ├─ U: in_u + palette_u_shift(glow_val)
-│   └─ V: in_v + palette_v_shift(glow_val)
-│
-├── Output: Interpolator (wet/dry mix) ─────────────────────────
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ Pass-through (hsync, vsync, field, avid)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The bolt path and the video pipeline operate in two distinct phases. During ***vertical blanking***, the bolt generator runs its random walk state machine, writing 128 X-position entries into BRAM. During ***active video***, the pipeline reads from that same BRAM: one entry per band of eight scanlines: and computes per-pixel distance from the bolt center.
 
-The bolt path is generated entirely during the vertical blanking interval, filling a 128-entry BRAM with horizontal positions. During active video, the pipeline reads from this BRAM — each entry covers approximately 5.6 scan lines (720 ÷ 128 ≈ 5.6), so the bolt has a blocky, segmented quality at the vertical scale that reinforces the electrical discharge aesthetic. The glow computation uses a two-stage multiplication chain (glow × brightness, then × fade), which compresses the dynamic range through 10-bit truncation at each stage — this is why the fade appears to accelerate as it decays, mimicking the nonlinear cooling of a plasma channel.
+The key signal path for the glow is: distance → Gaussian LUT → brightness multiply → fade multiply → palette color shift → additive composite → Mix interpolator. Each multiply is a 10×10-bit product truncated to 10 bits, preserving the full dynamic range of the glow curve. The **Direction** toggle simply reverses the BRAM read address, flipping the bolt vertically without regenerating it.
 
----
-
-## Parameter Reference
-
-<img src={cathode_control_panel} alt="Videomancer front panel with Cathode loaded"/>
-*Videomancer's front panel with Cathode active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Roughness
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-At zero, the bolt traces a perfectly straight vertical line from its starting position. As Roughness increases, each step adds a larger horizontal displacement scaled by the LFSR's random output, producing increasingly jagged, erratic paths. Very high values cause the bolt to wander wildly across the full frame width. Internally, controls the magnitude of the random displacement applied at each step of the bolt path walk.
-
----
-
-#### Knob 2 — Fork
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-Sets the probability of a "fork kink" at each step of the bolt walk. When the LFSR's upper bits fall below the Fork threshold, the displacement for that step is doubled, creating a sharp directional change that visually suggests a branching fork. At zero, the bolt follows a smooth random walk. At high values, frequent kinks produce a shattered, branching discharge pattern. Note that this control modifies the *main* bolt path — there is no separate branch rendering, but the visual effect convincingly suggests forking due to the sudden directional changes.
-
----
-
-#### Knob 3 — Glow Width
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 39.1% |
-| Suffix | % |
-
-Controls the spatial extent of the Gaussian glow halo around the bolt core. The width register's upper bits select a scaling shift applied to the pixel distance before indexing the 64-entry glow lookup table: larger widths map the same physical distance to a smaller LUT index, extending the glow further from the bolt center. At low values, the bolt appears as a thin, sharp line. At high values, the glow spreads across a significant portion of the frame, creating a soft atmospheric discharge.
-
----
-
-#### Knob 4 — Flash Rate
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 29.3% |
-| Suffix | % |
-
-Sets the bolt regeneration speed in Animate mode. The flash timer counts down from a value derived from this register — lower values produce very slow regeneration with long fade tails, higher values produce rapid-fire flashing. In static mode (Animate toggle off), this control has no effect because the bolt regenerates every frame. The interaction between Flash Rate and the exponential fade creates the program's characteristic temporal rhythm.
-
----
-
-#### Knob 5 — Target X
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Positions the bolt's horizontal strike point. The register value is scaled from the 10-bit control domain to the 1280-pixel display domain (target + target>>2). This sets the starting X position written to BRAM entry 0 — the bolt's origin point. All subsequent random walk steps displace relative to this anchor. Centering the control places the bolt in the middle of the frame; sweeping it left and right moves the discharge across the image.
-
----
-
-#### Knob 6 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
-
-Scales the overall intensity of the bolt glow after the Gaussian lookup. This multiplier is applied before the fade stage, so it sets the peak brightness of the flash. At zero, the bolt is invisible. At maximum, even the outermost glow fringes are bright enough to saturate the additive composite. This control interacts directly with Glow Width — a narrow bolt with high brightness produces a hot, laser-like line, while a wide bolt with moderate brightness produces a diffuse atmospheric discharge.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Palette A** | Off | On |
-| **8 — Palette B** | Off | On |
-| **9 — Animate** | Off | On |
-| **10 — Direction** | Down | Up |
-| **11 — Bypass** | Off | On |
-
-Toggles 7 and 8 form a 2-bit color palette selector (00 = Electric Blue, 01 = Purple, 10 = Warm White, 11 = Green). Toggle 9 selects between static mode (regenerate every frame at full brightness) and animated flash-hold-fade mode. Toggle 10 flips the bolt's vertical orientation between top-to-bottom and bottom-to-top. Toggle 11 is a hard bypass. This group divides into three functional clusters: palette selection (7–8), temporal behavior (9), and spatial orientation (10).
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
-
-Wet/dry mix between the original input video and the bolt-composited output. At 0%, the output is pure input — no bolt visible. At 100%, the full additive composite is applied. Intermediate values blend linearly via the interpolator, allowing subtle bolt overlays that feel like background atmospheric events rather than dominant foreground effects.
-
-
-
+:::tip
+Because the bolt path is stored in BRAM and only regenerated during vblank, parameter changes to **Roughness**, **Fork**, and **Target X** take effect on the *next* bolt generation: not instantly. In static mode (Animate Off), this happens every frame. In animated mode, it happens at the next flash event.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from a basic vertical bolt to animated multi-palette discharges, building familiarity with the random walk, glow, and temporal controls.
+These exercises progress from a basic static bolt to animated lightning storms composited over live video. Each exercise explores a different facet of Cathode's controls.
+### Exercise 1: Your First Lightning Bolt
 
-### Exercise 1: Static Bolt Anatomy
+![Your First Lightning Bolt result](/img/instruments/videomancer/cathode/cathode_ex1_s1.png)
+*Your First Lightning Bolt — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Ballerina", before: cathode_source1_ballerina, after: cathode_ex1_s1 },
-    { label: "Car", before: cathode_source2_car, after: cathode_ex1_s2 },
-    { label: "Collage", before: cathode_source3_collage, after: cathode_ex1_s3 },
-    { label: "Pattern", before: cathode_source4_pattern, after: cathode_ex1_s4 },
-    { label: "Man", before: cathode_source5_man, after: cathode_ex1_s5 },
-    { label: "Knit", before: cathode_source6_knit, after: cathode_ex1_s6 },
-  ]}
-/>
-*Static Bolt Anatomy — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with a dark upper region (night sky, dark background).
+***A description of the exercise illustration.***
 
-**What You'll Create**: Understand the bolt path generation, glow profile, and additive compositing fundamentals.
+#### Learning Outcomes
 
-1. **Disable animation**: Set Animate (Toggle 9) to Off so the bolt is continuously visible.
-2. **Center the bolt**: Set Target X to 50%. A bolt appears in the center of the frame.
-3. **Observe roughness**: Slowly increase Roughness from 0%. At zero, the bolt is a straight vertical line. As roughness increases, the path becomes jagged and wandering.
-4. **Glow width**: Sweep Glow Width from minimum to maximum. Watch the bolt expand from a thin line to a broad atmospheric glow.
-5. **Brightness**: Increase Brightness to see how the glow saturates the additive composite in bright areas of the source.
-6. **Direction**: Toggle Direction (Toggle 10) between Down and Up. The bolt flips vertically.
+A single, well-defined static bolt positioned over your source video. You'll learn how Roughness and Glow Width shape the bolt's character.
 
-**Key concepts**: Random walk displacement creates bolt jaggedness, Gaussian glow profile controls spatial falloff, additive compositing only adds luminance, direction flips the BRAM read order
+#### Key Concepts
 
----
+- Random walk bolt generation
+- Roughness and glow width interaction
+- Target X positioning
 
-### Exercise 2: Flash-Hold-Fade Animation
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Ballerina", before: cathode_source1_ballerina, after: cathode_ex2_s1 },
-    { label: "Car", before: cathode_source2_car, after: cathode_ex2_s2 },
-    { label: "Collage", before: cathode_source3_collage, after: cathode_ex2_s3 },
-    { label: "Pattern", before: cathode_source4_pattern, after: cathode_ex2_s4 },
-    { label: "Man", before: cathode_source5_man, after: cathode_ex2_s5 },
-    { label: "Knit", before: cathode_source6_knit, after: cathode_ex2_s6 },
-  ]}
-/>
-*Flash-Hold-Fade Animation — simulated result across source images.*
-**Source**: Dark or moderately lit footage where the flash will be clearly visible.
+A dark or moderately-lit source: live camera in a dimly lit room, or footage of a night sky or dark landscape. Dark scenes show the additive bolt most clearly.
 
-**What You'll Create**: Explore the temporal envelope and how Flash Rate interacts with the fade curve.
+#### Steps
 
-1. **Enable animation**: Set Animate (Toggle 9) to On.
-2. **Slow flash**: Set Flash Rate low (~15%). Watch the bolt flash, hold briefly, then fade out slowly before the next strike.
-3. **Fast flash**: Increase Flash Rate to ~80%. Bolts fire in rapid succession with short fade tails, creating a strobing effect.
-4. **Moderate rate**: Settle at ~40%. Each bolt is individually readable — flash, hold, fade.
-5. **Fork interaction**: Increase Fork to ~60%. Each regenerated bolt has a different path, so the kink points shift with every strike.
-6. **Brightness fade**: Watch how the exponential fade makes the glow shrink inward — the fringes disappear first, then the core.
+1. Turn **Animate** (Switch 9) to **Off** so the bolt regenerates every frame and responds instantly to changes.
+2. Set **Brightness** (Knob 6) to about 75%. A bolt of light should appear over your input.
+3. Turn **Roughness** (Knob 1) slowly from 0% to 100%. Watch the bolt evolve from a nearly straight line to a wild zig-zag.
+4. Set Roughness to about 50%. Now sweep **Glow Width** (Knob 3) from low to high. The bolt transforms from a razor-thin line to a broad, diffuse wash of light.
+5. Sweep **Target X** (Knob 5) left and right. The bolt's origin slides across the screen.
 
-**Key concepts**: Flash-hold-fade creates a three-phase temporal envelope, exponential decay via bit-shift halving, each regeneration produces a new LFSR-driven path
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Roughness | ~50% |
+| Fork | 0% |
+| Glow Width | ~40% |
+| Flash Rate | ~30% |
+| Target X | ~50% |
+| Brightness | ~75% |
+| Palette A | Off |
+| Palette B | Off |
+| Animate | Off |
+| Direction | Down |
+| Bypass | Off |
+| Mix | ~75% |
 
 ---
 
-### Exercise 3: Palette Exploration
+### Exercise 2: Animated Lightning Storm
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Ballerina", before: cathode_source1_ballerina, after: cathode_ex3_s1 },
-    { label: "Car", before: cathode_source2_car, after: cathode_ex3_s2 },
-    { label: "Collage", before: cathode_source3_collage, after: cathode_ex3_s3 },
-    { label: "Pattern", before: cathode_source4_pattern, after: cathode_ex3_s4 },
-    { label: "Man", before: cathode_source5_man, after: cathode_ex3_s5 },
-    { label: "Knit", before: cathode_source6_knit, after: cathode_ex3_s6 },
-  ]}
-/>
-*Palette Exploration — simulated result across source images.*
-**Source**: Footage with visible color — skin tones, foliage, or color bars.
+![Animated Lightning Storm result](/img/instruments/videomancer/cathode/cathode_ex2_s1.png)
+*Animated Lightning Storm — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Compare all four color palettes and observe how chroma tinting interacts with saturated source material.
+***A description of the exercise illustration.***
 
-1. **Electric Blue (00)**: Both Palette toggles Off. Note the cool blue-white discharge typical of electrical arcs.
-2. **Purple (01)**: Toggle Palette A On. The bolt shifts to a purple/violet tint — both U and V shift positive.
-3. **Warm White (10)**: Toggle Palette A Off, Palette B On. Subtle amber warmth — the most naturalistic lightning.
-4. **Green (11)**: Both Palette toggles On. The bolt takes on a vivid green tint.
-5. **Color interaction**: With each palette, observe how the tint affects the source colors in the glow region — the chroma shifts are proportional to glow intensity, so only areas near the bolt are tinted.
-6. **Mix control**: Lower Mix to ~50%. The bolt becomes a subtle atmospheric element rather than a dominant overlay.
+#### Learning Outcomes
 
-**Key concepts**: Palette selection is a 2-bit code from toggles 7+8, chroma shift is proportional to glow intensity, additive luma is independent of palette, mix controls composite strength
+A repeating lightning storm with forked bolts that flash, hold, and fade over time.
+
+#### Key Concepts
+
+- Flash-hold-fade lifecycle
+- Fork creates visual branching
+- Direction reversal
+
+#### Video Source
+
+Footage of clouds, a dark cityscape, or any dramatic scene. Cloud footage works especially well (the bolts appear to strike from the clouds.)
+
+#### Steps
+
+1. Flip **Animate** (Switch 9) to **On**. The bolt now flashes periodically instead of regenerating every frame.
+2. Set **Flash Rate** (Knob 4) to about 40%. Bolts should appear every second or so, flash bright, then fade away.
+3. Increase **Fork** (Knob 2) to about 30%. Occasional sharp kinks appear along the bolt path, suggesting branching.
+4. Set **Roughness** (Knob 1) to about 40% for a naturalistic bolt shape.
+5. Toggle **Direction** (Switch 10) to **Up**. The bolt now originates at the bottom and extends upward (ground-to-cloud lightning.)
+6. Set **Mix** (Fader 12) to 100% for full intensity.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Roughness | ~40% |
+| Fork | ~30% |
+| Glow Width | ~40% |
+| Flash Rate | ~40% |
+| Target X | ~50% |
+| Brightness | ~75% |
+| Palette A | Off |
+| Palette B | Off |
+| Animate | On |
+| Direction | Up |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Color Palette Exploration
 
-## Tips
+![Color Palette Exploration result](/img/instruments/videomancer/cathode/cathode_ex3_s1.png)
+*Color Palette Exploration — simulated result across source images.*
+#### Exercise Illustration
 
-- **Glow Width and Brightness are complementary**: Wide glow with low brightness creates a diffuse atmospheric effect. Narrow glow with high brightness creates a hot, intense discharge. Adjust both together to control the bolt's visual weight.
-- **Palette tinting is glow-proportional**: The chroma shift only affects pixels within the glow radius, and it scales with glow intensity. This means the bolt core is heavily tinted while the fringes fade to neutral — a natural-looking color gradient.
-- **Feedback routing**: Routing Cathode's output back to its input creates accumulating glow fields — each frame adds to the previous discharge, building up dense lightning networks.
-- **Warm White for realism**: The Warm White palette (Palette B On, Palette A Off) produces the most naturalistic lightning because real lightning is approximately 6500K white with slight amber from atmospheric scattering.
-- **Mix for layering**: Use Mix at 30–50% to create subtle background electrical activity rather than a dominant foreground effect. This works well when combining with other Videomancer programs in a signal chain.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Explore all four color palettes and see how each interacts with your source video's existing colors.
+
+#### Key Concepts
+
+- Four color palettes tint the bolt via chroma shifts
+- Additive compositing interacts with source color
+- Mix blending creates layered effects
+
+#### Video Source
+
+Colorful footage with a mix of warm and cool tones: a garden, a city at sunset, or abstract color patterns from another Videomancer program.
+
+#### Steps
+
+1. Set **Roughness** to about 40%, **Fork** to about 25%, **Glow Width** to about 50%, and **Brightness** to about 75%.
+2. Start with both **Palette A** (Switch 7) and **Palette B** (Switch 8) set to **Off**. This is Electric Blue (the default. Observe the cool blue tint in the bolt's glow.)
+3. Flip **Palette A** to **On** (leaving Palette B Off). The bolt shifts to Purple (warmer and more saturated.)
+4. Flip **Palette A** back to **Off** and set **Palette B** to **On**. The bolt becomes Warm White (a nearly neutral glow with a subtle warm cast.)
+5. Set both **Palette A** and **Palette B** to **On**. The bolt turns Green (an eerie, unnatural discharge.)
+6. With each palette, sweep **Mix** (Fader 12) from 0% to 100% to see how the tint blends with the source colors at different intensities.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Roughness | ~40% |
+| Fork | ~25% |
+| Glow Width | ~50% |
+| Flash Rate | ~30% |
+| Target X | ~50% |
+| Brightness | ~75% |
+| Palette A | On |
+| Palette B | On |
+| Animate | On |
+| Direction | Down |
+| Bypass | Off |
+| Mix | ~75% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Additive compositing** | A blending method that adds the effect's pixel values to the background's values, clamping at maximum brightness so the effect can only brighten the image. |
-| **BRAM (Block RAM)** | Dedicated memory blocks embedded in the FPGA fabric, used here to store the 128-entry bolt path lookup table. |
-| **Flash-hold-fade** | A three-phase temporal envelope in which a bolt appears at full brightness (flash), persists for several frames (hold), then decays exponentially (fade). |
-| **Galois LFSR** | A variant of the Linear Feedback Shift Register that applies XOR taps during the shift operation, producing a deterministic pseudo-random bit sequence. |
-| **Gaussian glow** | A brightness falloff profile shaped by the Gaussian (bell curve) function, creating a smooth halo that tapers from a bright core to a dim fringe. |
-| **LFSR (Linear Feedback Shift Register)** | A shift register whose input bit is a function of its previous state, generating a pseudo-random sequence that cycles through all non-zero states. |
-| **Luminance** | The brightness component of a video signal, represented by the Y channel in YUV colour space. |
-| **LUT (Lookup Table)** | A pre-computed array of values indexed by an input, used here for the 64-entry Gaussian glow intensity profile. |
-| **Midpoint displacement** | A fractal subdivision technique that recursively displaces the midpoint of a line segment by a random amount, producing jagged natural-looking paths. |
-| **XOR (Exclusive-OR)** | A logic operation that returns true when exactly one of two inputs is true, used here for LFSR feedback taps and fork probability tests. |
+- **Additive Compositing**: A blending method where the effect's brightness is added to the underlying image, always making pixels brighter or leaving them unchanged.
+
+- **BRAM**: Block RAM; a dedicated memory resource on the FPGA used here to store the 128-entry bolt path between vertical blanking and active video.
+
+- **Exponential Decay**: A fade pattern where intensity is halved each frame, producing rapid initial dimming that slows over time.
+
+- **Fractal**: A geometric pattern that exhibits self-similarity at different scales; lightning bolts have fractal structure.
+
+- **Gaussian Function**: A bell-curve function used to compute the glow profile; it produces a smooth, symmetric falloff from bright center to dark edges.
+
+- **Glow Profile**: The brightness curve surrounding the bolt center, described by a Gaussian lookup table.
+
+- **LFSR**: Linear Feedback Shift Register; a hardware-efficient pseudorandom number generator that produces the random displacements for the bolt path.
+
+- **Midpoint Displacement**: A fractal algorithm that generates naturalistic forms by randomly displacing midpoints between endpoints; the conceptual basis for the bolt's random walk.
+
+- **Random Walk**: A mathematical process where each step moves in a random direction from the previous position, used here to generate the bolt path.
+
+- **Saturating Addition**: An addition operation that clamps the result to the maximum representable value instead of wrapping around.
+
+- **Vertical Blanking**: The interval between video frames when no active picture data is transmitted; the bolt generator runs during this period.
 
 ---

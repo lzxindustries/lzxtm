@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 288
 slug: /instruments/videomancer/stoa
@@ -7,374 +7,410 @@ image: /img/instruments/videomancer/stoa/stoa_hero_s1.png
 description: "The stoa was the defining architectural form of ancient Greece — a long covered walkway fronted by a row of columns."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import stoa_control_panel from '/img/instruments/videomancer/stoa/stoa_control_panel.png';
-import stoa_source1_runner from '/img/instruments/videomancer/stoa/stoa_source1_runner.png';
-import stoa_source2_skull from '/img/instruments/videomancer/stoa/stoa_source2_skull.png';
-import stoa_source3_collage from '/img/instruments/videomancer/stoa/stoa_source3_collage.png';
-import stoa_source4_pattern from '/img/instruments/videomancer/stoa/stoa_source4_pattern.png';
-import stoa_source5_girl from '/img/instruments/videomancer/stoa/stoa_source5_girl.png';
-import stoa_source6_knit from '/img/instruments/videomancer/stoa/stoa_source6_knit.png';
-import stoa_hero_s1 from '/img/instruments/videomancer/stoa/stoa_hero_s1.png';
-import stoa_hero_s2 from '/img/instruments/videomancer/stoa/stoa_hero_s2.png';
-import stoa_hero_s3 from '/img/instruments/videomancer/stoa/stoa_hero_s3.png';
-import stoa_hero_s4 from '/img/instruments/videomancer/stoa/stoa_hero_s4.png';
-import stoa_hero_s5 from '/img/instruments/videomancer/stoa/stoa_hero_s5.png';
-import stoa_hero_s6 from '/img/instruments/videomancer/stoa/stoa_hero_s6.png';
-import stoa_ex1_s1 from '/img/instruments/videomancer/stoa/stoa_ex1_s1.png';
-import stoa_ex1_s2 from '/img/instruments/videomancer/stoa/stoa_ex1_s2.png';
-import stoa_ex1_s3 from '/img/instruments/videomancer/stoa/stoa_ex1_s3.png';
-import stoa_ex1_s4 from '/img/instruments/videomancer/stoa/stoa_ex1_s4.png';
-import stoa_ex1_s5 from '/img/instruments/videomancer/stoa/stoa_ex1_s5.png';
-import stoa_ex1_s6 from '/img/instruments/videomancer/stoa/stoa_ex1_s6.png';
-import stoa_ex2_s1 from '/img/instruments/videomancer/stoa/stoa_ex2_s1.png';
-import stoa_ex2_s2 from '/img/instruments/videomancer/stoa/stoa_ex2_s2.png';
-import stoa_ex2_s3 from '/img/instruments/videomancer/stoa/stoa_ex2_s3.png';
-import stoa_ex2_s4 from '/img/instruments/videomancer/stoa/stoa_ex2_s4.png';
-import stoa_ex2_s5 from '/img/instruments/videomancer/stoa/stoa_ex2_s5.png';
-import stoa_ex2_s6 from '/img/instruments/videomancer/stoa/stoa_ex2_s6.png';
-import stoa_ex3_s1 from '/img/instruments/videomancer/stoa/stoa_ex3_s1.png';
-import stoa_ex3_s2 from '/img/instruments/videomancer/stoa/stoa_ex3_s2.png';
-import stoa_ex3_s3 from '/img/instruments/videomancer/stoa/stoa_ex3_s3.png';
-import stoa_ex3_s4 from '/img/instruments/videomancer/stoa/stoa_ex3_s4.png';
-import stoa_ex3_s5 from '/img/instruments/videomancer/stoa/stoa_ex3_s5.png';
-import stoa_ex3_s6 from '/img/instruments/videomancer/stoa/stoa_ex3_s6.png';
-
-# Stoa
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: stoa_source1_runner, after: stoa_hero_s1 },
-    { label: "Skull", before: stoa_source2_skull, after: stoa_hero_s2 },
-    { label: "Collage", before: stoa_source3_collage, after: stoa_hero_s3 },
-    { label: "Pattern", before: stoa_source4_pattern, after: stoa_hero_s4 },
-    { label: "Girl", before: stoa_source5_girl, after: stoa_hero_s5 },
-    { label: "Knit", before: stoa_source6_knit, after: stoa_hero_s6 },
-  ]}
-/>
-*Stoa transforming live video into a Doric colonnade with cosine-shaded fluting, arris ridges, and entablature patterning.*
+![Stoa hero image](/img/instruments/videomancer/stoa/stoa_hero_s1.png)
+*Stoa transforming a video source into a fluted colonnade of light and shadow, as if the image were carved into a Greek temple facade.*
 
 ---
 
 ## Overview
 
-The *stoa* was the defining architectural form of ancient Greece — a long covered walkway fronted by a row of columns. The Stoa of Attalos in Athens (c. 150 BC) and the Parthenon's Doric colonnade (c. 432 BC) remain among the most reproduced architectural images in Western culture. Their visual power comes not from color but from light — sunlight raking across the vertical concavities carved into each column shaft, called *flutes*, creating a repeating pattern of highlight and shadow that gives cylindrical stone the appearance of depth and mass.
+Stoa is a video processing program that carves the image into vertical strips resembling the fluted columns of a Greek Doric temple. Each strip is shaded with a cosine curve that darkens the edges and brightens the center, producing the concave cross-section of a classical column flute. Dark ***arris*** lines appear at the boundaries between flutes, and a controllable light angle shifts the cosine highlight across the surface, simulating sunlight raking across stone. The result is a striking three-dimensional illusion: the flat video appears to be projected onto the surface of a corrugated colonnade.
 
-Stoa divides the video frame into vertical strips representing column shafts and applies a cosine-based brightness curve across each strip, simulating the way directional light falls across fluted stone. A controllable light angle shifts the cosine phase, rotating the apparent illumination direction. Dark arris lines mark the sharp ridges between adjacent flutes. An entablature — the horizontal beam structure that sits atop the columns — can be rendered as an alternating triglyph-and-metope pattern in the upper portion of the frame. Capitals (the transitional elements between shaft and entablature) appear as a lighter band when enabled. Depth fade darkens columns toward the frame edges, suggesting a receding colonnade viewed in perspective.
+Beyond mere shading, Stoa can render an ***entablature***: a horizontal band of alternating triglyphs and metopes: across the top of the frame, capping the colonnade with architectural detail. A capital highlight zone can soften the transition between columns and entablature. Depth fading darkens columns toward the edges of the frame, suggesting a receding perspective. An optional stone color tint shifts the hue of the rendered surface from cool to warm, evoking different kinds of marble or limestone.
 
-The effect ranges from a subtle sculptural overlay that gives video the appearance of being projected onto carved stone, to a complete architectural abstraction where the original image is visible only as luminance modulation within the column structure. The stone surface color can be warmed or cooled to simulate different marble and limestone types.
+:::tip
+Start with the preset **Columnar Lgt** for a wide-column, high-contrast introduction to the effect. Then try **Architectural** for a fuller facade with entablature and capitals.
+:::
+
+### What's In a Name?
+
+A ***stoa*** was a covered walkway in ancient Greek architecture, defined by a long row of columns on one side. The most famous example is the Stoa of Attalos in the Athenian Agora (c. 150 BC), reconstructed in the 1950s. Looking through a colonnade of fluted Doric columns: each shaft carved with twenty shallow channels that catch the light differently as the sun moves: was one of the foundational visual experiences of the classical world. The Stoic school of philosophy takes its name from the Stoa Poikile ("Painted Porch") in Athens, where Zeno of Citium taught. Column fluting was not merely decorative; Vitruvius noted that the channels corrected the optical flattening of smooth cylinders in direct sunlight.
 
 ---
 
 ## Quick Start
 
-1. **Start with column width**: The column width defines the spatial rhythm of the entire effect. Choose it first based on how many columns you want visible in frame.
-2. **Moderate flute depth for realism**: Real stone fluting is subtle — keep Flute Depth around 30–50% for a naturalistic carved-stone look. Higher values produce dramatic but abstracted results.
-3. **Light Angle at 45° for drama**: Direct front-lighting (0°) is flat and symmetrical. Raking light at 30–60° creates the strongest sense of depth across the flutes.
+1. Set **Column W** (Knob 1) to a middle position. The video splits into several wide vertical strips, each shaded from bright center to dark edges (you can already see the fluting.)
+2. Turn **Flute Depth** (Knob 2) clockwise past the halfway mark. The contrast between the bright flute centers and dark troughs deepens dramatically, and the image takes on a corrugated, carved look.
+3. Slowly sweep **Light Angle** (Knob 3) through a full rotation. Watch the highlight shift across each flute, as if you were moving a spotlight around the colonnade.
+4. Raise **Entablatur** (Knob 5) from zero. A patterned horizontal band appears at the top of the frame, alternating between darker triglyphs and lighter metopes, completing the architectural illusion.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Stoa loaded](/img/instruments/videomancer/stoa/stoa_control_panel.png)
+*Videomancer's front panel with Stoa active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Column W
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 7 |
+| Default | 3 |
+
+**Column W** selects the pixel width of each column strip. The eight available settings range from narrow (40 pixels) to wide (240 pixels). At the narrowest setting the frame divides into many thin columns, producing a tight vertical rhythm like a dense colonnade. At the widest setting, each column occupies a large fraction of the screen and the concave shading becomes a broad, gentle curve.
+
+The column width also determines the scale of the entablature pattern and the capital zones (everything in the architecture scales together.)
+
+---
+
+### Knob 2 — Flute Depth
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Flute Depth** controls the amplitude of the cosine shading applied across each column strip. At 0%, all flutes are flat: the image passes through with no visible concavity. As you increase this control, the difference between the bright flute center and the dark flute edges grows. At 100%, the shading spans the full dynamic range: flute centers are nearly at full brightness and flute edges approach black. The cosine shape ensures the transition is always smooth, never harsh.
+
+:::note
+Because the fluting is applied as a brightness modulation on the input video, the actual contrast depends on the source material. A bright source produces vivid fluting; a dark source produces subtler grooves.
+:::
+
+---
+
+### Knob 3 — Light Angle
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 360° |
+| Default | 0° |
+
+**Light Angle** shifts the phase of the cosine shading function, moving the highlight position within each flute. At 0°, the highlight sits at the center of each flute, as if light were falling straight on. As you rotate the control, the highlight slides to one side, simulating raking light from the left or right. A full 360° sweep moves the highlight all the way across the flute and back to center.
+
+This control brings the colonnade to life. Sweeping it slowly mimics the passage of the sun across a temple facade over the course of a day.
+
+---
+
+### Knob 4 — Arris W
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 3 |
+| Default | 1 |
+
+**Arris W** sets the width of the dark arris lines at the boundaries between flutes. An ***arris*** is the sharp ridge where two adjacent concave channels meet on a column. In the Doric order, arrises are not rounded: they form crisp edges that cast thin shadow lines. The four available settings range from a single-pixel hairline to a four-pixel-wide shadow band. Wider arrises make the column divisions more prominent and graphic.
+
+---
+
+### Knob 5 — Entablatur
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Entablatur** controls the height of the entablature region at the top of the frame. At 0%, no entablature is drawn and the columns fill the entire frame. As you increase this control, a horizontal band of alternating triglyph and metope panels appears at the top. The triglyphs are rendered in a darker stone tone, and the metopes remain in the lighter column surface color. The pattern repeats at the same period as the column width, so the entablature aligns with the colonnade below it.
+
+:::tip
+In classical architecture, a ***triglyph*** is a rectangular panel with three vertical grooves, and a ***metope*** is the plain panel between two triglyphs. Together they form the frieze of the Doric order, sitting atop the columns.
+:::
+
+---
+
+### Knob 6 — Stone Color
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 360° |
+| Default | 0° |
+
+**Stone Color** shifts the hue of the rendered stone surface. At the center position, the surface is a warm neutral: a pale sandstone. Rotating counterclockwise pulls the color cooler (bluish-grey, like Pentelic marble), while rotating clockwise pushes it warmer (golden, like Naxian marble). This control offsets the U and V chroma channels of the stone in opposite directions, creating natural hue shifts without introducing artificial saturation.
+
+---
+
+### Switch 7 — Flute Count
+
+| Property | Value |
+|----------|-------|
+| Off | 20 Doric |
+| On | Fit Frame |
+| Default | Fit Frame |
+
+**Flute Count** selects between two fluting densities. When set to **20 Doric**, Stoa calculates flutes at the classical Doric standard of twenty channels per column: the count prescribed by Vitruvius. When set to **Fit Frame**, the count increases to twenty-four, which produces narrower, more closely spaced flutes within each column.
+
+:::note
+If your column width is narrow, the difference between 20-flute and 24-flute modes may be subtle, because individual flute widths become very small in both cases.
+:::
+
+---
+
+### Switch 8 — Light Anim
+
+| Property | Value |
+|----------|-------|
+| Off | Static |
+| On | Animated |
+| Default | Static |
+
+**Light Anim** enables an automated slow sweep of the light angle. When set to **Static**, the light position is controlled solely by the **Light Angle** knob. When set to **Animated**, a ***direct digital synthesizer*** (DDS) accumulator adds a small increment to the light phase on every video frame. The highlight drifts steadily across the flutes, creating the appearance of a moving sun. The **Light Angle** knob becomes a starting offset for the animation.
+
+---
+
+### Switch 9 — Capitals
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Capitals** enables a highlight zone between the entablature and the column shafts properly. When turned **On**, a 40-scanline band of brighter stone color appears just below the entablature region, representing the ***echinus*** and ***abacus*** of a Doric capital. This band is drawn in a lighter shade than the column body, providing a visual transition between the horizontal entablature and the vertical fluting.
+
+:::note
+Capitals are only visible when **Entablatur** (Knob 5) is set above zero, because they appear directly below the entablature zone. With the entablature at zero, the capital zone is pushed off the top of the frame.
+:::
+
+---
+
+### Switch 10 — Depth Fade
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Depth Fade** darkens columns closer to the left and right edges of the frame, suggesting a receding colonnade stretching into perspective. When set to **On**, luminance is reduced proportionally to the pixel's horizontal distance from the frame center. Columns at the center remain at full brightness while columns at the edges dim, as though the flanking columns are in shadow or receding into space.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input video directly to the output, skipping all Stoa processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw source and the colonnade effect.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** crossfades between the dry (original) video and the wet (processed) video at the output stage. At 0%, the output is entirely the unprocessed source. At 100%, the output is entirely the Stoa-processed colonnade. Intermediate values produce a transparent overlay, blending the architectural shading with the underlying image. Three independent interpolators handle Y, U, and V channels to maintain correct color balance at all mix positions.
+
+:::tip
+At moderate Mix values (30–60%), the fluting appears as a subtle texture overlaid on the source, like a column-shaped vignette. This is an excellent way to add depth and structure to live camera footage without obscuring the content.
+:::
 
 ---
 
 ## Background
 
-### Classical Column Orders
+### Doric fluting and the cosine profile
 
-Greek architecture recognized three major column orders — Doric, Ionic, and Corinthian — distinguished by their proportions, capitals, and fluting. Doric columns (the oldest and simplest) have 20 shallow flutes meeting at sharp edges called *arrises*. Ionic columns typically have 24 deeper flutes separated by flat bands called *fillets*. Stoa implements both flute counts (20 and 24) via the Flute Count toggle. The distinction is subtle but historically significant: Doric conveys strength and austerity; Ionic conveys grace and refinement.
+The concave cross-section of a Doric column flute is remarkably close to a cosine curve. Each of the twenty channels is a segment of a cylinder, so when lit from one side, the reflected brightness varies as a cosine function of the angle from the surface normal to the light direction. This relationship: brightness proportional to the cosine of the incidence angle: is known as ***Lambert's cosine law*** and applies to any ideal diffuse surface. Stoa exploits this physical fact directly: a 32-entry cosine lookup table, stored entirely in FPGA registers (no block RAM needed), provides the shading value for each horizontal pixel position within a flute.
 
-### Fluting and the Cosine Curve
+### Directional lighting in video synthesis
 
-A column flute is a concave channel carved vertically into the shaft. In cross-section, each flute approximates a half-circle or ellipse. When parallel light strikes the column at an angle, the illumination across each flute follows a cosine distribution — brightest where the surface faces the light, darkest where it faces away. Stoa stores a 32-entry cosine lookup table and maps each pixel's horizontal position within a flute to a table index, producing a smooth brightness modulation. The Light Angle control shifts the cosine phase, rotating the apparent direction of illumination across all flutes simultaneously.
+By shifting the phase of the cosine function, Stoa simulates the visual effect of moving a light source around a three-dimensional surface. In physical columns, as the sun moves across the sky, the highlight on each flute sweeps from one edge to the other. The columns appear to subtly change shape as different portions of each channel catch the light. Stoa's **Light Angle** control and **Light Anim** toggle recreate this phenomenon digitally. The animated mode uses a frame-rate DDS accumulator: a counter that advances by a fixed step each frame: to produce smooth, continuous motion.
 
-### Entablature and Architectural Elements
+### Architectural synthesis as video processing
 
-Above the columns, the entablature consists of the architrave (main beam), frieze, and cornice. The Doric frieze alternates between *triglyphs* (vertically grooved rectangular blocks) and *metopes* (smooth or sculpted panels between them). Stoa renders this as an alternating dark/light pattern in the top region of the frame, with the pattern width matched to the column width. Capitals — the transitional elements between shaft and entablature — appear as a lighter horizontal band of carved stone.
-
-### Depth and Perspective
-
-A colonnade viewed from one end recedes in perspective — each successive column appears smaller and darker. Stoa's Depth Fade toggle simulates this by linearly attenuating brightness from the center of the frame toward the edges. Columns near the center remain at full brightness; columns at the periphery darken as though farther from the viewer. This creates a spatial depth cue even in a flat 2D video signal.
-
-### Stone and Light in Video Art
-
-Architectural projection mapping — projecting video onto buildings — has become a major art form. Stoa inverts this concept: instead of projecting *onto* architecture, it projects architecture *into* the video signal. The stone color control tints the column surface warm (sandstone, terra cotta) or cool (marble, limestone), while the fluting pattern shapes the video content into something that reads as carved and illuminated stone.
+Stoa belongs to a tradition of using geometric patterns as video processing masks. Rather than generating imagery from scratch (synthesis) or simply adjusting brightness and contrast (color correction), it imposes an architectural structure: repeating columns, entablature patterns, arris lines: onto the input video. The video becomes the surface of the building. This is related to ***spatial modulation***, where a pattern is multiplied with the image to selectively reveal or suppress different regions.
 
 
 ---
 
 ## Signal Flow
 
-Strip Coordinates → Flute Shading → Compositing → Depth Fade + Stone Color
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Stage 1: Strip Coordinates ──────────────────────────────────
-│   │   h_count / col_width → column index
-│   │   h_count mod col_width → position within column
-│   │
-├── Stage 2: Flute Shading + Arris Detection ────────────────────
-│   │   position within flute → cosine LUT index
-│   │   + light angle offset (+ animation DDS)
-│   │   cosine value × flute depth → shade
-│   │   arris: pixels within arris_width of flute boundaries
-│   │
-├── Stage 3: Compositing + Entablature + Capitals ───────────────
-│   │   input Y − (1023 − shade) + stone_base_Y/2
-│   │   arris override → dark stone color
-│   │   entablature: triglyph/metope pattern (top region)
-│   │   capitals: light stone band (below entablature)
-│   │
-├── Stage 4: Depth Fade + Stone Color ───────────────────────────
-│   │   depth fade: linear attenuation from center
-│   │   stone hue offset → U ± offset/4, V ∓ offset/4
-│   │
-├── Interpolator Mix (4 clk each × 3 channels) ─────────────────
-│   │   crossfade dry/wet
-│   │
-├── Sync Delay (8 clocks) ──────────────────────────────────────
-│   │
-└── Bypass Mux ─────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The shading function in Stage 3 is not a simple multiply: it takes the input luminance, subtracts the inverse of the flute shade (creating the concave darkening), and then adds a stone-base brightness offset. This means that even without any input video, the colonnade has its own inherent brightness. The arris override replaces the entire pixel with a fixed dark stone color, functioning as a hard mask rather than a modulation.
 
-Input video luminance is the primary carrier: the fluting curve is *subtracted* from the input Y, so bright source regions show the fluting pattern most prominently while dark regions are pushed toward black. The stone base brightness (720/1023 ≈ 70%) is added back to lift the overall level. Chrominance is replaced entirely by stone surface colors — the input's hue and saturation are discarded in favor of the warm stone tint controlled by Stone Color. The entablature and capital regions override both luminance and chrominance with flat architectural colors, creating hard horizontal zones that break the columnar pattern.
+The entablature and capital zones are layered on top of the shading result in Stage 3 with priority: capitals override shading, and the entablature (triglyph/metope) overrides both. This means the triglyph pattern sits atop whatever columns are below it, which matches real architecture: the entablature is a horizontal band that bridges between columns.
 
----
-
-## Parameter Reference
-
-<img src={stoa_control_panel} alt="Videomancer front panel with Stoa loaded"/>
-*Videomancer's front panel with Stoa active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Column W
-| Property | Value |
-|----------|-------|
-| Range | 0 – 7 |
-| Default | 3 |
-
-Selects one of eight column widths ranging from 40 to 240 pixels. Narrow columns create a dense colonnade with many thin shafts; wide columns create a monumental, Parthenon-like appearance with fewer massive pillars. The number of flutes per column remains constant (20 or 24), so wider columns have proportionally wider individual flutes with more gradual cosine shading.
-
----
-
-#### Knob 2 — Flute Depth
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At zero, the columns appear smooth and unfluted (like pilasters). As depth increases, the brightness contrast between flute peaks (ridges) and troughs (valleys) grows, creating more dramatic light-and-shadow interplay. At maximum, the troughs are nearly black and the ridges are bright highlights. Internally, controls the depth of the fluting concavity — the amplitude of the cosine-based brightness modulation.
-
----
-
-#### Knob 3 — Light Angle
-| Property | Value |
-|----------|-------|
-| Range | 0° – 360° |
-| Default | 0° |
-| Suffix | ° |
-
-At 0°, light appears to come from directly in front of the column (symmetric highlighting). Rotating the angle shifts the highlight toward one side of each flute, simulating raking sunlight from the left or right. The full 360° range cycles through all lighting directions. Combined with Light Anim, this becomes the starting phase of the animated rotation. Internally, sets the directional light angle by offsetting the cosine lookup phase.
-
----
-
-#### Knob 4 — Arris W
-| Property | Value |
-|----------|-------|
-| Range | 0 – 3 |
-| Default | 1 |
-
-Selects the arris line width from 1 to 4 pixels. Arrises are the sharp ridges between adjacent flutes — the narrow edges where two concave surfaces meet. In real Doric columns, arrises catch the light as thin bright lines. In Stoa, they are rendered as dark shadow lines using the arris stone color (Y=200, near-black). Wider arris settings create bolder grid lines separating the flutes; narrower settings produce delicate ridge accents.
-
----
-
-#### Knob 5 — Entablatur
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
-
-At zero, no entablature is drawn. As the height increases, a horizontal zone of alternating triglyph (dark grooved) and metope (light smooth) blocks appears, sized to match the column width. This transforms the top of the video into an architectural frieze structure. The entablature height is specified directly in scanlines. Internally, controls the height of the entablature region at the top of the frame.
-
----
-
-#### Knob 6 — Stone Color
-| Property | Value |
-|----------|-------|
-| Range | 0° – 360° |
-| Default | 0° |
-| Suffix | ° |
-
-Tints the stone surface by applying a signed hue offset to the U and V channels. At 0°/360°, the stone retains its neutral warm tone (slight yellow-warm bias from the base UV constants). Rotating the control shifts the tint through blue-cool marbles, green-gray limestones, and red-warm terra cottas. The offset is applied as U + offset/4 and V − offset/4, creating complementary hue shifts.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Flute Count** | 20 Doric | Fit Frame |
-| **8 — Light Anim** | Static | Animated |
-| **9 — Capitals** | Off | On |
-| **10 — Depth Fade** | Off | On |
-| **11 — Bypass** | Off | On |
-
-Switches 7–11 control five independent options affecting the column geometry, animation, and architectural elements. Flute Count changes the number of flutes per column (20 vs 24). Light Anim enables continuous rotation of the light angle. Capitals and Depth Fade add spatial detail. Bypass is the standard signal passthrough.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Stoa processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
-
----
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Stoa-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::tip
+**Depth fade and Mix interact.** Because depth fade darkens edge columns before the wet/dry mix, a moderate Mix setting can restore brightness to the edges while keeping the center fully fluted. This creates a vignette-like focus effect.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from basic column shading through architectural composition to animated light effects. Each builds on the previous, gradually engaging more of the processing chain.
+These exercises explore Stoa from simple column shading to full architectural facade composition. Each builds on the previous, adding more architectural elements.
+### Exercise 1: Sunlit Colonnade
 
-### Exercise 1: Columnar Light Study
+![Sunlit Colonnade result](/img/instruments/videomancer/stoa/stoa_ex1_s1.png)
+*Sunlit Colonnade — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: stoa_source1_runner, after: stoa_ex1_s1 },
-    { label: "Skull", before: stoa_source2_skull, after: stoa_ex1_s2 },
-    { label: "Collage", before: stoa_source3_collage, after: stoa_ex1_s3 },
-    { label: "Pattern", before: stoa_source4_pattern, after: stoa_ex1_s4 },
-    { label: "Girl", before: stoa_source5_girl, after: stoa_ex1_s5 },
-    { label: "Knit", before: stoa_source6_knit, after: stoa_ex1_s6 },
-  ]}
-/>
-*Columnar Light Study — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with recognizable subjects and moderate contrast.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Explore how column width and flute depth shape the image, and how the light angle creates the illusion of three-dimensional stone.
+#### Learning Outcomes
 
-1. **Basic columns**: Set Column W to position 4 (~100 px wide). You should see the image divided into vertical strips with cosine-based brightness modulation.
-2. **Flute depth**: Sweep Flute Depth from 0% to 100%. Watch the columns transform from smooth pillars to deeply carved flutes with dramatic highlight/shadow contrast.
-3. **Light direction**: Slowly rotate Light Angle through 360°. The highlight slides across each flute, simulating rake lighting sweeping from one direction to another.
-4. **Column width**: Sweep Column W through all 8 positions. Narrow columns (40 px) create a dense colonnade; wide columns (240 px) create monumental pillars.
-5. **Arris lines**: Set Arris W to position 4. Bold dark lines now divide the flutes. Reduce to position 1 for delicate accents.
+A simple row of fluted columns with a sweeping spotlight, transforming the video source into a sunlit ancient colonnade.
 
-**Key concepts**: The cosine curve creates naturalistic flute shading, light angle shifts the cosine phase across all flutes simultaneously, arris lines mark the ridges between adjacent flutes
+#### Key Concepts
 
----
+- Cosine shading creates the illusion of carved stone
+- Light angle shifts the highlight within each flute
+- Arris lines divide flutes with sharp shadow edges
 
-### Exercise 2: Architectural Composition
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: stoa_source1_runner, after: stoa_ex2_s1 },
-    { label: "Skull", before: stoa_source2_skull, after: stoa_ex2_s2 },
-    { label: "Collage", before: stoa_source3_collage, after: stoa_ex2_s3 },
-    { label: "Pattern", before: stoa_source4_pattern, after: stoa_ex2_s4 },
-    { label: "Girl", before: stoa_source5_girl, after: stoa_ex2_s5 },
-    { label: "Knit", before: stoa_source6_knit, after: stoa_ex2_s6 },
-  ]}
-/>
-*Architectural Composition — simulated result across source images.*
-**Source**: Wide-angle footage of interiors or urban scenes with strong vertical lines.
+A live camera feed or recorded footage with moderate contrast and recognizable subjects.
 
-**What You'll Create**: Build a complete classical architectural scene using entablature, capitals, and depth fade.
+#### Steps
 
-1. **Set columns**: Column W at position 3 (~80 px), Flute Depth ~60%.
-2. **Add entablature**: Slowly increase Entablatur from 0%. A triglyph/metope pattern appears at the top of the frame, alternating dark and light blocks.
-3. **Enable capitals**: Toggle Capitals on. A bright horizontal band appears between the entablature and the column shafts.
-4. **Add depth**: Toggle Depth Fade on. Edge columns darken, creating a receding-colonnade perspective.
-5. **Stone warmth**: Rotate Stone Color to warm the stone to a sandstone/terra cotta tone, then cool it to a marble blue-gray.
-6. **Flute count**: Toggle Flute Count to see the difference between 20 and 24 flutes per column.
+1. Set **Column W** (Knob 1) to step 5 (about 120-pixel-wide columns). The video divides into broad vertical strips.
+2. Turn **Flute Depth** (Knob 2) to about 70%. Deep concave shadows appear within each strip.
+3. Slowly sweep **Light Angle** (Knob 3) through 360°. The bright highlight slides across each flute, and the shadows shift in response.
+4. Increase **Arris W** (Knob 4) to step 3. Bold arris lines appear at flute boundaries, making the column structure more graphic.
+5. Toggle **Light Anim** (Switch 8) to **Animated**. The highlight now drifts continuously (the sun is moving.)
 
-**Key concepts**: Entablature height controls the frieze zone, capitals add a transitional bright band, depth fade creates perspective by darkening edges, stone color tints the surface
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Column W | 4 (120 px) |
+| Flute Depth | 70% |
+| Light Angle | 90° |
+| Arris W | 2 (3 px) |
+| Entablatur | 0% |
+| Stone Color | 0° |
+| Flute Count | 20 Doric |
+| Light Anim | Animated |
+| Capitals | Off |
+| Depth Fade | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Animated Light Sweep
+### Exercise 2: Temple Facade
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: stoa_source1_runner, after: stoa_ex3_s1 },
-    { label: "Skull", before: stoa_source2_skull, after: stoa_ex3_s2 },
-    { label: "Collage", before: stoa_source3_collage, after: stoa_ex3_s3 },
-    { label: "Pattern", before: stoa_source4_pattern, after: stoa_ex3_s4 },
-    { label: "Girl", before: stoa_source5_girl, after: stoa_ex3_s5 },
-    { label: "Knit", before: stoa_source6_knit, after: stoa_ex3_s6 },
-  ]}
-/>
-*Animated Light Sweep — simulated result across source images.*
-**Source**: Any footage — abstract or representational. Static footage works well to isolate the light animation.
+![Temple Facade result](/img/instruments/videomancer/stoa/stoa_ex2_s1.png)
+*Temple Facade — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Experience the animated light rotation and explore how mix blending creates a sculptural overlay.
+***A description of the exercise illustration.***
 
-1. **Set up columns**: Column W at position 5 (~120 px), Flute Depth ~70%, Arris W at 1 (fine ridges).
-2. **Enable animation**: Toggle Light Anim to Animated. The highlight begins slowly sweeping across each flute in a continuous rotation.
-3. **Set starting angle**: Rotate Light Angle to set the initial illumination direction.
-4. **Full architecture**: Enable Entablatur (~15%), Capitals on, Depth Fade on. The entire scene becomes a slowly shifting colonnade.
-5. **Mix for overlay**: Lower Mix to ~60%. The original video becomes visible through the stone texture, creating a projection-mapped effect.
-6. **Mix near zero**: Lower Mix to ~10% for a very subtle architectural ghosting over the original footage.
+#### Learning Outcomes
 
-**Key concepts**: Light animation creates a continuous phase shift on the cosine LUT index, mix blending determines how strongly the stone effect overlays the source, static vs animated light creates fundamentally different visual experiences
+A complete Doric temple facade with columns, capitals, and entablature.
+
+#### Key Concepts
+
+- Entablature adds horizontal architectural structure
+- Capitals provide a transitional highlight zone
+- Stone color tinting evokes different types of marble
+
+#### Video Source
+
+Static or slow-moving footage with a dominant vertical composition, such as trees, buildings, or curtains.
+
+#### Steps
+
+1. Set **Column W** (Knob 1) to step 3 (about 80-pixel columns) for a proportioned colonnade.
+2. Set **Flute Depth** (Knob 2) to about 60%. The fluting is visible but not overpowering.
+3. Raise **Entablatur** (Knob 5) to about 25%. A horizontal band with alternating dark and light panels appears at the top of the frame.
+4. Toggle **Capitals** (Switch 9) to **On**. A bright highlight band appears just below the entablature (the column capitals.)
+5. Rotate **Stone Color** (Knob 6) to about 45°. The stone surface warms to a golden hue.
+6. Toggle **Depth Fade** (Switch 10) to **On**. The columns at the edges darken, giving the facade a sense of depth.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Column W | 2 (80 px) |
+| Flute Depth | 60% |
+| Light Angle | 45° |
+| Arris W | 1 (2 px) |
+| Entablatur | 25% |
+| Stone Color | 45° |
+| Flute Count | 20 Doric |
+| Light Anim | Static |
+| Capitals | On |
+| Depth Fade | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Ghostly Ruins
 
-## Tips
+![Ghostly Ruins result](/img/instruments/videomancer/stoa/stoa_ex3_s1.png)
+*Ghostly Ruins — simulated result across source images.*
+#### Exercise Illustration
 
-- **Entablature needs headroom**: The entablature renders in absolute scanlines from the top of frame. Leave enough column shaft below it for the fluting to be visible.
-- **Depth Fade with wide view**: Depth fade works best when the frame shows many columns — at least 4–6 — so the edge-to-center gradient is visible as a perspective cue.
-- **Mix at 40–60% for overlay**: Blend the architectural structure with the source video for a projection-mapping effect where the original content appears through the stone texture.
-- **Feedback for infinite colonnades**: Routing the output back to the input creates recursive column patterns — columns within columns, like looking down an infinite hall of pillars.
-- **Arris W at 1 for film, 3–4 for graphic**: Fine arris lines (1 px) look photographic. Bold arris lines (3–4 px) look like architectural drawings or engravings.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A translucent colonnade overlay that turns the source footage into a spectral view through ancient ruins.
+
+#### Key Concepts
+
+- Low Mix values blend the colonnade as a translucent overlay
+- Narrow columns create a dense, screen-like texture
+- Animated light on a transparent colonnade creates dreamy motion
+
+#### Video Source
+
+Footage of landscapes, clouds, or ocean waves: subjects that evoke open sky visible through broken architecture.
+
+#### Steps
+
+1. Set **Column W** (Knob 1) to step 2 (about 60-pixel columns) for a dense colonnade.
+2. Set **Flute Depth** (Knob 2) to about 40%. Moderate fluting (enough to see the carved shape but not black shadows.)
+3. Toggle **Flute Count** (Switch 7) to **Fit Frame** (24 flutes). The denser fluting creates a finer texture.
+4. Toggle **Light Anim** (Switch 8) to **Animated**. The highlight drifts across the ruins.
+5. Lower **Mix** (Fader 12) to about 40%. The colonnade becomes a translucent overlay (the source shows through the stone.)
+6. Raise **Entablatur** (Knob 5) to about 15%. A faint architectural cap appears at the top.
+7. Rotate **Stone Color** (Knob 6) to about 270° for a cool, bluish marble tone.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Column W | 1 (60 px) |
+| Flute Depth | 40% |
+| Light Angle | 0° |
+| Arris W | 0 (1 px) |
+| Entablatur | 15% |
+| Stone Color | 270° |
+| Flute Count | Fit Frame |
+| Light Anim | Animated |
+| Capitals | Off |
+| Depth Fade | Off |
+| Bypass | Off |
+| Mix | 40% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Arris** | The sharp edge or ridge formed where two flute concavities meet on a column shaft; rendered as a dark line in Stoa. |
-| **BT.601** | ITU-R Recommendation BT.601; the color matrix standard for standard-definition YUV encoding used throughout the Videomancer pipeline. |
-| **Capital** | The uppermost element of a column, transitioning between the shaft and the entablature; rendered as a bright horizontal band. |
-| **Colonnade** | A row of evenly spaced columns supporting a horizontal entablature; the defining element of a stoa. |
-| **Cosine LUT** | A 32-entry lookup table storing cosine values mapped to [0–1023]; used to compute the flute shading curve. |
-| **DDS** | Direct Digital Synthesis; a phase-accumulator technique used here to generate the animated light rotation at a constant rate per frame. |
-| **Doric** | The oldest and simplest of the three Greek column orders, characterized by 20 flutes with sharp arrises and no base. |
-| **Entablature** | The horizontal structure above the columns, consisting of architrave, frieze (with triglyphs and metopes), and cornice. |
-| **Flute** | A concave vertical channel carved into a column shaft; Stoa simulates flutes using a cosine brightness curve. |
-| **Ionic** | The second Greek column order, characterized by 24 flutes with flat fillets and scroll-shaped volute capitals. |
-| **Metope** | The smooth or sculpted panel between triglyphs in a Doric frieze. |
-| **Stoa** | A covered walkway or portico with a row of columns along its front, common in ancient Greek public architecture. |
-| **Triglyph** | A vertically grooved rectangular block in a Doric frieze, alternating with metopes. |
+- **Arris**: The sharp ridge formed where two adjacent concave flutes meet on a column; rendered as a dark line at flute boundaries.
+
+- **Capital**: The topmost element of a column, sitting between the shaft and the entablature; Stoa renders it as a bright highlight band.
+
+- **Cosine Shading**: A brightness modulation technique using a cosine function to simulate the light falloff across a curved surface.
+
+- **DDS (Direct Digital Synthesis)**: A technique for generating a waveform by accumulating a phase value at a fixed rate; used here for smooth light animation.
+
+- **Doric Order**: The oldest and most austere of the Greek architectural orders, characterized by columns with twenty shallow flutes and no base.
+
+- **Entablature**: The horizontal structure resting atop columns, divided into architrave, frieze (with triglyphs and metopes), and cornice.
+
+- **Fluting**: The shallow concave channels carved vertically into the shaft of a column, creating a play of light and shadow.
+
+- **Interpolator**: A hardware module that performs linear interpolation between two values; used here for the wet/dry crossfade.
+
+- **Lambert's Cosine Law**: The physical principle that brightness of a diffuse surface is proportional to the cosine of the angle between the surface normal and the light direction.
+
+- **Metope**: The plain panel between two triglyphs in a Doric frieze.
+
+- **Stoa**: A covered walkway with a colonnade on one side, the archetypal public space of ancient Greek cities.
+
+- **Triglyph**: A rectangular element of the Doric frieze with three vertical grooves, placed above each column and between metopes.
 
 ---

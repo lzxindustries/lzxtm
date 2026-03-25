@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 242
 slug: /instruments/videomancer/reagent
@@ -7,289 +7,407 @@ image: /img/instruments/videomancer/reagent/reagent_hero.png
 description: "Chemistry has a beautiful color language."
 ---
 
-import reagent_hero from '/img/instruments/videomancer/reagent/reagent_hero.png';
-import reagent_animation from '/img/instruments/videomancer/reagent/reagent_animation.gif';
-import reagent_control_panel from '/img/instruments/videomancer/reagent/reagent_control_panel.png';
-import reagent_exercise1_result from '/img/instruments/videomancer/reagent/reagent_exercise1_result.gif';
-import reagent_exercise2_result from '/img/instruments/videomancer/reagent/reagent_exercise2_result.gif';
-import reagent_exercise3_result from '/img/instruments/videomancer/reagent/reagent_exercise3_result.gif';
-
-# Reagent
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={reagent_hero} alt="Reagent hero image"/>
-*Reagent mapping input luminance to a pH-scale color gradient, tinting shadows in acid hues and highlights in base hues with smooth indicator transitions.*
-<img src={reagent_animation} alt="Reagent animated output"/>
-*Reagent output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Reagent hero image](/img/instruments/videomancer/reagent/reagent_hero_s1.png)
+*Reagent applying SNES-inspired dual-screen color math to live video, producing ghostly motion trails and time-shifted arithmetic blending.*
 
 ---
 
 ## Overview
 
-Chemistry has a beautiful color language. Litmus paper turns red in acid, blue in base, and stays a muted purple-gray in neutral solutions. Universal indicator goes further — it paints the entire pH scale in a smooth rainbow from red through orange, yellow, green, and blue. Reagent applies this metaphor to video: the brightness of each pixel becomes its pH value, and the program assigns colors along a configurable acid-to-base gradient.
+Reagent is a dual-screen arithmetic blending engine inspired by the Super Nintendo's S-PPU Color Math hardware. It splits your video into two paths: a "Main Screen" showing the current frame and a "Sub Screen" holding a time-delayed copy: then combines them per-component using one of four arithmetic modes: addition, subtraction, half-addition, or wrap-addition. The result is a family of effects ranging from ghostly translucent overlays to hard-edged shadow silhouettes to psychedelic modular color wrapping.
 
-The name references the chemical substances — reagents — that reveal the nature of a solution through color change. In Reagent's signal chain, the input video's luminance is the unknown solution, and the program's hue mapping is the indicator paper. Dark pixels map to the acid end of the scale, bright pixels map to the base end, and a configurable neutral zone in the middle can preserve the original color or show a distinct buffer-zone highlight.
+The Sub Screen is stored as a downsampled luminance thumbnail in a 4-frame ring buffer, then upsampled back to full resolution with nearest-neighbor interpolation. This produces the characteristic chunky, low-resolution artifacts of a retro console's secondary display layer. Chroma for the Sub Screen is borrowed from the current input with an optional hue rotation, so the delayed image can take on entirely new color character. A vertical Color Window can restrict blending to a band of the screen, leaving the rest untouched: just as the SNES PPU used window masking to create localized transparency for torchlight circles and spotlight effects.
 
-A minor implementation note: the Bypass toggle's condition is never met in the VHDL logic, so it does not function as a true bypass. Use the Mix fader at 0% to achieve a fully dry signal instead.
+:::tip
+***Color Math is a per-component operation.*** Unlike simple crossfading, Reagent's arithmetic modes treat each color channel independently. Addition saturates to white, subtraction clamps to black, half-addition averages, and wrap-addition overflows modularly (each creating a distinct visual vocabulary.)
+:::
+
+### What's In a Name?
+
+The name ***Reagent*** borrows from chemistry: a reagent is a substance added to a mixture to cause a reaction. Here, the Sub Screen is the reagent: a time-shifted ingredient introduced into the main signal to trigger a visual transformation. The arithmetic modes are the reactions: addition brightens, subtraction darkens, half-addition dilutes, and wrap-addition catalyzes unpredictable color overflow. The name also nods to the SNES RPG tradition, where reagents and potions fuel the magic systems that Color Math was originally designed to visualize.
 
 ---
 
 ## Quick Start
 
-1. **Bypass is broken — use Mix**: The Bypass toggle has no effect due to a dead code path. Use the Mix fader at 0% to see unprocessed input.
-2. **Complementary hues for maximum range**: Setting Acid Hue and Base Hue to opposite sides of the color wheel (e.g., red/cyan, blue/yellow) creates the widest visual gradient.
-3. **Buffer reveals contours**: The Buffer toggle turns Reagent into a tonal contour detector. Narrow the gap between pH Low and pH High, then enable Buffer to trace brightness boundaries.
+1. Set **Mix** (Fader 12) fully clockwise to hear the full wet signal. Turn **Delay** (Knob 2) clockwise to select a 1- or 2-frame delay. Move something in front of the camera: you should see a blocky, pixelated ghost trailing behind the live image.
+2. Sweep **Sub Hue** (Knob 1) slowly. The ghost's color shifts through the spectrum as the Sub Screen's chroma rotates independently of the main image.
+3. Toggle **Math A** (Switch 7) to **Sub**. The ghost becomes a dark silhouette: subtraction removes brightness where the delayed image overlaps the current frame.
+4. Toggle **Math B** (Switch 8) to **Half**. The image softens into a dreamy half-addition average, like a double exposure.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Reagent loaded](/img/instruments/videomancer/reagent/reagent_control_panel.png)
+*Videomancer's front panel with Reagent active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Sub Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 360° |
+| Default | 0° |
+
+**Sub Hue** rotates the hue of the Sub Screen's chroma channels. The Sub Screen borrows its color from the current input's U and V values, then applies a rotation through the full 360° color wheel. At 0°, fully counterclockwise, the Sub Screen's color matches the live input. As you turn the knob clockwise, colors shift through the spectrum: reds become greens, blues become oranges, and so on. At 360° (fully clockwise, which wraps back to 0°), the color has completed a full revolution and returns to its original hue.
+
+:::tip
+Because the Sub Screen's luminance comes from the delay buffer but its chroma comes from the *current* frame (with rotation applied), **Sub Hue** creates a split between brightness and color that can produce striking complementary-color ghost effects.
+:::
+
+---
+
+### Knob 2 — Delay
+
+| Property | Value |
+|----------|-------|
+| Range | 0frm – 3frm |
+| Default | 1frm |
+
+**Delay** selects how many frames old the Sub Screen image is, in four discrete steps: 0, 1, 2, or 3 frames. At 0 frames (fully counterclockwise), the Sub Screen is a downsampled copy of the current frame: no temporal offset, but the blocky thumbnail resolution is still visible. At 1 frame, you get a single-frame echo that accentuates motion blur. At 2 and 3 frames, the ghost falls further behind, creating a longer trail. Because the buffer stores only luminance at 32×24 resolution, the delay has a distinctly retro, low-resolution quality.
+
+---
+
+### Knob 3 — Main Brt
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Main Brt** controls the brightness gain applied to the Main Screen before it enters the Color Math engine. At 50% (the default midpoint), brightness passes through at unity. Turning counterclockwise toward 0% dims the main image to black. Turning clockwise toward 100% boosts the main image to full white. This gain directly affects the arithmetic: a brighter Main Screen produces brighter addition results and stronger subtraction from the Sub Screen.
+
+---
+
+### Knob 4 — Sub Brt
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Sub Brt** controls the brightness gain applied to the Sub Screen's luminance after it is read from the delay buffer and before it enters the Color Math engine. At 50% (the default midpoint), Sub Screen brightness is at unity. Turning counterclockwise dims the ghost toward invisibility. Turning clockwise overdrives the ghost, making it dominate the arithmetic blend. In subtract mode, a bright Sub Screen carves deeper shadows. In add mode, it pushes the result harder toward saturation.
+
+---
+
+### Knob 5 — Win Size
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Win Size** sets the vertical extent of the Color Window. At 100% (the default, fully clockwise), the window spans the entire screen height, so Color Math applies everywhere. As you turn counterclockwise, the window shrinks vertically, restricting the blended region to a narrower horizontal band. At 0%, the window is at its smallest. Areas outside the window show only the brightness-adjusted Main Screen, bypassing the Color Math engine entirely.
+
+:::note
+The Color Window is purely vertical: it creates horizontal bands across the screen. There is no horizontal window control. This mirrors the SNES PPU's window system, which defined rectangular screen regions for masking effects.
+:::
+
+---
+
+### Knob 6 — Win Pos
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Win Pos** sets the vertical center of the Color Window. At 50% (the default midpoint), the window is centered on the screen. Turning counterclockwise moves the window toward the top of the frame. Turning clockwise moves it toward the bottom. Combined with **Win Size**, you can position a band of Color Math blending anywhere on the screen while the rest remains unaffected.
+
+---
+
+### Switch 7 — Math A
+
+| Property | Value |
+|----------|-------|
+| Off | Add |
+| On | Sub |
+| Default | Add |
+
+**Math A** selects between addition and subtraction for the Color Math engine. With the switch set to **Add**, the Main Screen and Sub Screen values are summed per-component, saturating at maximum brightness (1023). With the switch set to **Sub**, the Sub Screen values are subtracted from the Main Screen, clamping at zero (black). Addition creates luminous, translucent overlays. Subtraction creates dark voids and shadow silhouettes where the two screens overlap.
+
+---
+
+### Switch 8 — Math B
+
+| Property | Value |
+|----------|-------|
+| Off | Full |
+| On | Half |
+| Default | Full |
+
+**Math B** selects between full-strength and half-strength arithmetic. With the switch set to **Full**, the arithmetic from **Math A** is applied at full scale. With the switch set to **Half**, the operation changes: in combination with **Add**, it becomes ***half-addition***: `(Main + Sub) / 2`: producing a true 50% transparency blend. In combination with **Sub**, it becomes ***wrap-addition***: modular overflow where the sum wraps around past 1023, creating psychedelic color banding and unpredictable hue shifts.
+
+---
+
+### Switch 9 — Sub Inv
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Sub Inv** inverts the Sub Screen's luminance and chroma before it enters the Color Math engine. With the switch set to **Off**, the Sub Screen passes through normally. With the switch set to **On**, all three channels (Y, U, V) are complemented: bright areas become dark, and colors shift to their complements. This effectively turns addition into a form of inverted subtraction and vice versa, letting you explore negative-image blending without changing the arithmetic mode.
+
+---
+
+### Switch 10 — Window
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Window** enables or disables the Color Window masking system. With the switch set to **Off** (the default), Color Math applies uniformly to the entire frame. With the switch set to **On**, the Color Math result is confined to the vertical band defined by **Win Size** and **Win Pos**; the region outside the window shows only the brightness-adjusted Main Screen. Use the window to localize the blending effect: spotlight circles, horizon-line splits, or moving bands of transparency.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Reagent processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the processed result.
+
+---
+
+:::note Toggle Group Notes
+
+**Math A** and **Math B** form a combined 2-bit mode selector that chooses between four distinct arithmetic operations:
+
+| Math A | Math B | Mode | Behavior |
+|--------|--------|------|----------|
+| Add | Full | Addition | `Main + Sub`, saturate at 1023 |
+| Sub | Full | Subtraction | `Main − Sub`, clamp at 0 |
+| Add | Half | Half-Addition | `(Main + Sub) / 2` |
+| Sub | Half | Wrap-Addition | `Main + Sub`, modular overflow (wraps past 1023) |
+
+Addition and subtraction are the classic SNES Color Math modes. Half-addition was the standard technique for translucent overlays in games like ***Chrono Trigger*** and ***EarthBound***. Wrap-addition has no SNES equivalent: it is a Videomancer extension that exploits modular arithmetic for abstract color effects.
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) signal and the wet (Color Math blended) signal. At 0%, fully down, only the original input is heard. At 100% (the default, fully up), only the blended result passes through. Intermediate values blend the two proportionally using linear interpolation. Use Mix for subtle ghost overlays at low wet values, or commit to the full effect at 100%.
 
 ---
 
 ## Background
 
-### pH and Indicator Chemistry
+### SNES Color Math
 
-The pH scale measures the acidity or alkalinity of a solution on a logarithmic scale from 0 (strong acid) to 14 (strong base), with 7 being neutral. **Indicators** are chemical substances that change color at specific pH values. Simple indicators like litmus produce a binary response — red or blue. Universal indicator uses a mixture of dyes to produce a continuous color gradient across the entire pH range: red, orange, yellow, green, blue, indigo, violet.
+The Super Nintendo's ***Picture Processing Unit*** (S-PPU) contained a hardware subsystem called ***Color Math*** that was unique among consoles of its era. The PPU maintained two independent rendering pipelines: the ***Main Screen*** and the ***Sub Screen***: each capable of displaying different combinations of background layers and sprites. After both screens were rendered, Color Math combined them per-pixel using simple arithmetic: addition, subtraction, or half-addition.
 
-Reagent abstracts this concept. The "pH" is the pixel's luminance (mapped to a continuous range), and the "indicator dyes" are user-selected hue values. The program doesn't simulate real chemistry — it borrows the visual language of color-as-measurement to create expressive tonal-to-chromatic mappings.
+This architecture was the engine behind some of the most memorable visual effects in 16-bit gaming. Translucent water surfaces in ***Donkey Kong Country***, the dream sequences in ***Chrono Trigger***, the psychedelic PSI attacks in ***EarthBound***, and the ghostly encounters in ***Final Fantasy VI*** all relied on Color Math. The ***Color Window*** system further refined these effects by restricting transparency to specific screen regions: torchlight circles in mine shafts, spotlight beams in boss battles, and fog banks that faded at their edges.
 
-### Luma-to-Color Mapping
+### Temporal Delay as Sub Screen
 
-The core technique behind Reagent is **pseudocolor mapping** — assigning false colors to a grayscale signal based on intensity. This technique is widely used in scientific imaging: thermal cameras map temperature to color (blue=cold, red=hot), medical imaging uses color lookup tables to highlight tissue density, and weather radar encodes precipitation intensity as a color gradient. Reagent applies the same principle to video, with the added artistic control of choosing the endpoint colors and transition style.
+In Reagent, the Sub Screen is not a separate rendering layer but a ***temporally delayed copy*** of the input signal. The delay buffer stores luminance-only thumbnails at 32×24 resolution: roughly matching the SNES's 256×224 output scaled down to fit within the iCE40's limited block RAM. When the delayed image is read back and upsampled to full resolution using ***nearest-neighbor interpolation***, the blocky pixel grid evokes the chunky aesthetic of a 16-bit console.
 
-### Hue Wheels and Color Selection
+The chroma channels for the Sub Screen are borrowed from the current frame's U and V values rather than being stored in the buffer. This is a practical concession to BRAM limitations, but it creates an interesting creative property: the Sub Screen always carries the *current* frame's color, recolored by the hue rotation control, while its luminance structure shows the *delayed* frame's spatial content.
 
-Reagent uses a 6-segment hue wheel to convert the Acid Hue and Base Hue register values into actual colors. The 10-bit register range (0–1023) is divided into six equal zones: red, yellow, green, cyan, blue, and magenta. Each zone transitions linearly to the next, creating a smooth color ring. The two hue controls independently select the color for the acid (low-luma) and base (high-luma) endpoints of the gradient.
+### Arithmetic Modes
 
-### Buffer Zones and Transition Regions
+The four arithmetic modes each produce a distinct visual character:
 
-In chemistry, a **buffer** is a solution that resists changes in pH — it stays near neutral even when acid or base is added. Reagent's buffer zone serves a similar visual function: it defines a transition region around the neutral midpoint where the color mapping changes behavior. When the Buffer toggle is active, pixels in the boundary region between acid and base zones receive a distinct visual treatment — highlighting the transition rather than smoothly interpolating through it.
-
-### Gradient vs Sharp Transitions
-
-The Gradient toggle controls whether color assignment changes smoothly or abruptly at pH boundaries. With gradient enabled, the color interpolates linearly between acid and base hues across the transition zone, like a universal indicator. With gradient disabled, the transition is a hard threshold — pixels snap to either the acid color or the base color with no intermediate values, like a litmus test that shows only red or blue.
+- **Addition** (saturate): brightens everything the two screens share. Overlapping bright areas clip to white, creating luminous halos and flare effects.
+- **Subtraction** (clamp): darkens where the Sub Screen has brightness. Moving objects leave dark shadow trails. Static areas cancel out.
+- **Half-addition** (average): a true 50/50 blend producing soft double-exposure effects. The gentlest mode.
+- **Wrap-addition** (modular): the sum wraps around past 1023, producing unpredictable hue and brightness shifts wherever the combined values overflow. This is Reagent's most abstract mode and has no SNES equivalent.
 
 
 ---
 
 ## Signal Flow
 
-Luma Extraction → Zone Classification → Hue Assignment → ... → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Luma Extraction ────────────────────────────────────────────
-│   └─ 1. Extract Y channel as "pH value"
-│
-├── Zone Classification ────────────────────────────────────────
-│   ├─ 2. Compare Y against pH Low threshold → acid zone
-│   ├─ 3. Compare Y against pH High threshold → base zone
-│   └─ 4. Between thresholds → neutral zone
-│
-├── Hue Assignment ─────────────────────────────────────────────
-│   ├─ 5. Acid zone: assign Acid Hue color (6-segment wheel)
-│   ├─ 6. Base zone: assign Base Hue color (6-segment wheel)
-│   ├─ 7. Neutral zone: gradient interpolation or passthrough
-│   └─ 8. Indicator mode: multi-color gradient vs 2-color snap
-│
-├── Modifiers ──────────────────────────────────────────────────
-│   ├─ 9. Buffer zone highlight (boundary region emphasis)
-│   ├─ 10. Invert: swap acid and base mapping
-│   └─ 11. Saturation scaling on output chroma
-│
-├── Compositing ────────────────────────────────────────────────
-│   └─ 12. Mix interpolator: wet/dry crossfade (3x interpolator_u)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ Pass-through (hsync, vsync, field, avid)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Dead — condition never met. Use Mix for dry signal.
-```
+Two key architectural details shape Reagent's behavior:
 
-The entire color mapping is computed per-pixel from the input luminance — no BRAMs or frame buffers are required. The 6-segment hue wheel converts the Acid Hue and Base Hue register values into YUV color components at full saturation. The Saturation control then scales the chroma amplitude. The neutral zone can either interpolate between the two endpoint colors (gradient mode) or pass through the original video color (non-gradient mode). The buffer zone is a secondary detection layer that highlights pixels near the acid-base boundary, making the transition region visually distinct.
+1. **Chroma sourcing**: The Sub Screen's luminance comes from the delay buffer (time-shifted) but its chroma comes from the *current* frame with optional hue rotation. This means the ghostly shapes carry delayed spatial structure but present-tense color: a split that becomes most visible when **Sub Hue** is offset from 0°.
 
----
+2. **Window bypass path**: When the Color Window is enabled, regions outside the window show the brightness-adjusted Main Screen, *not* the raw input. The Main Brt control still affects the entire frame. Only the Color Math blending is confined to the window region.
 
-## Parameter Reference
-
-<img src={reagent_control_panel} alt="Videomancer front panel with Reagent loaded"/>
-*Videomancer's front panel with Reagent active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Sub Hue
-| Property | Value |
-|----------|-------|
-| Range | 0° – 360° |
-| Default | 0° |
-| Suffix | ° |
-
-Sets the low pH threshold — the luminance level below which pixels are classified as "acid." Dark pixels with brightness below this threshold receive the Acid Hue color. Raising this control expands the acid zone, pushing the acid-base boundary higher into the midtones. At maximum, nearly the entire image is classified as acid. At minimum, only the very darkest pixels qualify.
-
----
-
-#### Knob 2 — Delay
-| Property | Value |
-|----------|-------|
-| Range | 0frm – 3frm |
-| Default | 1frm |
-| Suffix | frm |
-
-Sets the high pH threshold — the luminance level above which pixels are classified as "base." Bright pixels above this threshold receive the Base Hue color. Lowering this control expands the base zone downward. The gap between pH Low and pH High defines the neutral zone width. When pH Low exceeds pH High, the zones invert — there is no neutral zone, and the acid and base regions overlap, creating a hard binary split.
-
----
-
-#### Knob 3 — Main Brt
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Selects the color assigned to the acid zone (low-brightness pixels). The 10-bit register maps around a 6-segment hue wheel: red → yellow → green → cyan → blue → magenta. Sweeping this control rotates through the full color spectrum. The classic litmus association is red for acid, but any hue can be chosen.
-
----
-
-#### Knob 4 — Sub Brt
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Selects the color assigned to the base zone (high-brightness pixels). Same 6-segment hue wheel as Acid Hue. The classic association is blue for base. When Acid Hue and Base Hue are set to complementary colors (e.g., red and cyan), the gradient between them passes through neutral desaturation. When set to adjacent colors (e.g., red and yellow), the gradient stays vibrant throughout.
-
----
-
-#### Knob 5 — Win Size
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-At minimum, the transition between acid and base colors is abrupt — pixels snap directly from one zone to the other. At maximum, a wide band of neutral-zone pixels sits between the two colored regions, either interpolating smoothly (gradient mode) or preserving original colors. The Neutral control interacts with the Buffer toggle to determine how the boundary region is visualized. Internally, controls the width of the neutral zone between the acid and base boundaries.
-
----
-
-#### Knob 6 — Win Pos
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-At maximum, the acid and base hues are rendered at full saturation — vivid, pure colors. At minimum, the output is desaturated — the color mapping is still present but muted toward gray. Intermediate values produce pastel-like tints. This control affects only the U and V components; luminance is preserved. Internally, scales the chroma saturation of the output.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Math A** | Add | Sub |
-| **8 — Math B** | Full | Half |
-| **9 — Sub Inv** | Off | On |
-| **10 — Window** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles control four processing modes and a non-functional bypass. Gradient selects smooth versus sharp color transitions. Indicator chooses between multi-color gradient mapping and strict two-color litmus-style snapping. Buffer highlights the acid-base boundary region. Invert swaps which end of the luminance range receives which color. Bypass is non-functional due to a dead code path in the VHDL — use the Mix fader for dry signal.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Crossfades between the dry input video (0%) and the fully processed pH-color-mapped result (100%). Because the bypass toggle is non-functional, the Mix fader is the only way to preview the unprocessed input. At intermediate values, the color mapping appears as a tinted overlay on the source video. This also serves as a saturation-like control in practice — low mix values produce subtle tinting, high values produce full false-color.
-
-
-
+:::note
+The sync delay pipeline runs in parallel with the processing chain. The dry signal for the Mix stage comes from the *delayed* raw input, ensuring proper temporal alignment between the dry and wet paths regardless of processing latency.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from simple two-tone litmus coloring to complex multi-indicator gradients with buffer highlighting and zone manipulation.
+These exercises explore Reagent's modes progressively: from simple motion trails to localized window effects to abstract modular color wrapping.
+### Exercise 1: Motion Ghost Trails
 
-### Exercise 1: Litmus Paper
+![Motion Ghost Trails result](/img/instruments/videomancer/reagent/reagent_ex1_s1.png)
+*Motion Ghost Trails — simulated result across source images.*
+#### Exercise Illustration
 
-<img src={reagent_exercise1_result} alt="Litmus Paper result"/>
-*Litmus Paper — simulated result across source images.*
-**What You'll Create**: Learn the basic acid-base mapping: assign two colors to dark and bright regions of the image.
+***A description of the exercise illustration.***
 
-1. **Set acid red**: Turn Acid Hue to about 0% (red zone on the hue wheel).
-2. **Set base blue**: Turn Base Hue to about 67% (blue zone on the hue wheel).
-3. **Sharp threshold**: Turn Gradient off (Toggle 7 off). Turn Indicator off (Toggle 8 off).
-4. **Set boundaries**: Set pH Low to about 40% and pH High to about 60%. The image splits into red (dark) and blue (bright) zones with a narrow neutral band.
-5. **Sweep pH Low**: Watch the acid zone expand as you lower the threshold. Dark areas turn red, bright areas stay blue.
-6. **Full saturation**: Set Saturation to 100%. Turn Mix to 100%.
+#### Learning Outcomes
 
-**Key concepts**: Luma-to-zone classification, 6-segment hue wheel, sharp vs gradient transitions, pH Low and pH High define the zone boundaries
+A luminous motion trail that follows moving objects, producing a ghostly double-exposure effect.
 
----
+#### Key Concepts
 
-### Exercise 2: Universal Indicator
+- Temporal delay creates motion echoes
+- Addition mode brightens overlapping regions
+- The Sub Screen's low resolution creates characteristic blockiness
 
-<img src={reagent_exercise2_result} alt="Universal Indicator result"/>
-*Universal Indicator — simulated result across source images.*
-**What You'll Create**: Create a smooth multi-color gradient that maps the full brightness range to a rainbow of indicator colors.
+#### Steps
 
-1. **Enable gradient**: Toggle Gradient on (Toggle 7).
-2. **Enable indicator**: Toggle Indicator on (Toggle 8). The transition between acid and base now passes through intermediate hues.
-3. **Widen neutral zone**: Increase Neutral to about 60%. The gradient becomes broader and smoother.
-4. **Choose complementary endpoints**: Set Acid Hue to about 0% (red) and Base Hue to about 50% (cyan). The gradient passes through orange, yellow, and green.
-5. **Reduce saturation**: Lower Saturation to about 60% for a more subtle, pastel-like indicator strip.
-6. **Mix blend**: Set Mix to about 80% to let some source detail show through.
+1. Set **Delay** (Knob 2) to 1 frame. Move your hand or an object in front of the camera (a blocky, pixelated echo should trail behind.)
+2. Increase **Sub Brt** (Knob 4) to about 75%. The ghost brightens and becomes more visible.
+3. Sweep **Sub Hue** (Knob 1) to roughly 180°. The ghost takes on a complementary color to your input, creating a cyan-against-orange or magenta-against-green pairing.
+4. Set **Delay** to 3 frames. The echo falls further behind, stretching the trail.
+5. Toggle **Bypass** (Switch 11) on and off to compare the raw input against the ghostly version.
 
-**Key concepts**: Gradient interpolation, indicator mode multi-hue mapping, neutral zone width controls gradient smoothness, complementary hues create the widest color range
+#### Settings
 
----
-
-### Exercise 3: Contour Map
-
-<img src={reagent_exercise3_result} alt="Contour Map result"/>
-*Contour Map — simulated result across source images.*
-**What You'll Create**: Use buffer zone highlighting to reveal tonal contour lines, like elevation contours on a topographic map.
-
-1. **Set narrow boundaries**: pH Low ~35%, pH High ~65%. Keep Neutral at about 30%.
-2. **Enable gradient**: Toggle Gradient on.
-3. **Enable buffer**: Toggle Buffer on (Toggle 9). Bright lines appear at the boundaries between acid and base zones.
-4. **Sweep thresholds**: Move pH Low and pH High closer together. The contour lines tighten, tracing tonal boundaries in the source image.
-5. **Invert**: Toggle Invert on (Toggle 10). The acid-base colors swap, but the contour lines remain at the same brightness boundaries.
-6. **Subtle overlay**: Set Mix to about 60% to overlay the contour-highlighted result on the source.
-
-**Key concepts**: Buffer zone as contour highlighting, boundary detection through zone classification, invert swaps colors but not boundary positions
+| Control | Value |
+|---------|-------|
+| Sub Hue | 180° |
+| Delay | 3 frm |
+| Main Brt | 50.0% |
+| Sub Brt | 75.0% |
+| Win Size | 100.0% |
+| Win Pos | 50.0% |
+| Math A | Add |
+| Math B | Full |
+| Sub Inv | Off |
+| Window | Off |
+| Bypass | Off |
+| Mix | 100.0% |
 
 ---
 
+### Exercise 2: Shadow Silhouettes with Color Window
 
-## Tips
+![Shadow Silhouettes with Color Window result](/img/instruments/videomancer/reagent/reagent_ex2_s1.png)
+*Shadow Silhouettes with Color Window — simulated result across source images.*
+#### Exercise Illustration
 
-- **Indicator mode adds hue variety**: With Indicator on, the gradient passes through multiple intermediate hues instead of blending directly between two colors. This creates richer, more analytic-looking color maps.
-- **Saturation as a subtlety control**: Lower Saturation to create pastel tints instead of vivid false colors. This makes the pH mapping more tasteful as a creative overlay.
-- **Invert for creative reversal**: Toggle Invert to swap which tonal range gets which color without re-dialing the Acid and Base Hue knobs.
-- **Feedback loops**: Routing the output back to the input creates recursive color mapping — each pass recolors the already-tinted signal, building up layered hue gradients.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A moving band of shadow-trail effect sweeping across the screen, with the rest of the frame showing the clean main image.
+
+#### Key Concepts
+
+- Subtraction mode creates dark voids where the two screens overlap
+- The Color Window restricts blending to a vertical band
+- Win Pos and Win Size position the blending zone
+
+#### Steps
+
+1. Set **Math A** (Switch 7) to **Sub** and **Math B** (Switch 8) to **Full** for subtraction mode.
+2. Set **Delay** (Knob 2) to 2 frames and **Sub Brt** (Knob 4) to about 60%.
+3. Enable **Window** (Switch 10). The subtraction effect vanishes from most of the screen.
+4. Set **Win Size** (Knob 5) to about 40%. A horizontal band of shadow-trail appears.
+5. Slowly sweep **Win Pos** (Knob 6) from top to bottom. The shadow band slides across the frame like a scanner bar, revealing the subtraction effect only within the window.
+6. Enable **Sub Inv** (Switch 9). The shadow silhouette inverts: dark regions become bright and vice versa within the window.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Sub Hue | 0° |
+| Delay | 2 frm |
+| Main Brt | 50.0% |
+| Sub Brt | 60.0% |
+| Win Size | 40.0% |
+| Win Pos | 50.0% |
+| Math A | Sub |
+| Math B | Full |
+| Sub Inv | Off |
+| Window | On |
+| Bypass | Off |
+| Mix | 100.0% |
 
 ---
 
+### Exercise 3: Wrap-Addition Color Alchemy
+
+![Wrap-Addition Color Alchemy result](/img/instruments/videomancer/reagent/reagent_ex3_s1.png)
+*Wrap-Addition Color Alchemy — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Abstract, psychedelic color patterns where arithmetic overflow creates unpredictable hue shifts and banding.
+
+#### Key Concepts
+
+- Wrap-addition produces modular overflow (values past 1023 wrap back to 0)
+- Hue rotation on the Sub Screen creates complementary color interactions
+- Sub Inv combined with wrap mode produces chaotic color chemistry
+
+#### Steps
+
+1. Set **Math A** (Switch 7) to **Sub** and **Math B** (Switch 8) to **Half** for wrap-addition mode.
+2. Set **Main Brt** (Knob 3) and **Sub Brt** (Knob 4) both to about 75% to push combined values past the overflow threshold.
+3. Observe the output: bright areas in the source produce unexpected color shifts as channel values wrap around past 1023.
+4. Sweep **Sub Hue** (Knob 1) slowly through 360°. The wrap boundaries shift through the spectrum, creating constantly changing banding patterns.
+5. Enable **Sub Inv** (Switch 9). The inversion flips the Sub Screen's contribution, moving the overflow boundaries to different tonal regions of the image.
+6. Adjust **Mix** (Fader 12) to about 60% to blend the abstract wrap result with the clean input, softening the extremity.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Sub Hue | 120° |
+| Delay | 1 frm |
+| Main Brt | 75.0% |
+| Sub Brt | 75.0% |
+| Win Size | 100.0% |
+| Win Pos | 50.0% |
+| Math A | Sub |
+| Math B | Half |
+| Sub Inv | On |
+| Window | Off |
+| Bypass | Off |
+| Mix | 60.0% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Acid** | In Reagent's metaphor, the low-brightness end of the luminance range. Pixels darker than the pH Low threshold are classified as acid and receive the Acid Hue color. |
-| **Base** | The high-brightness end of the luminance range. Pixels brighter than the pH High threshold receive the Base Hue color. |
-| **Buffer Zone** | A transition region near the acid-base boundary where pixels receive distinct emphasis or highlighting, similar to a chemical buffer that resists pH change. |
-| **Hue Wheel** | A circular arrangement of colors divided into six segments (red, yellow, green, cyan, blue, magenta). The Acid Hue and Base Hue controls each select a position on this wheel. |
-| **Indicator** | A substance (or in Reagent's case, a color-mapping mode) that produces a multi-color response across a range of pH values, as opposed to a binary litmus-style response. |
-| **Litmus** | A simple binary indicator that turns red in acid and blue in base. Reagent's non-gradient mode approximates this behavior. |
-| **Neutral Zone** | The luminance range between pH Low and pH High where pixels are classified as neither acid nor base. |
-| **Pseudocolor** | False-color mapping that assigns colors to a grayscale signal based on intensity, used in thermal imaging, medical scans, and scientific visualization. |
+- **Block RAM (BRAM)**: Dedicated memory blocks inside the FPGA used for buffering video data; Reagent uses six tiles for its 4-frame delay buffer.
+
+- **Clamp**: Limiting a value to a minimum or maximum boundary; subtraction mode clamps results at zero (black) to prevent underflow.
+
+- **Color Math**: The SNES S-PPU's per-pixel arithmetic blending system that combines Main Screen and Sub Screen images using addition, subtraction, or averaging.
+
+- **Color Window**: A screen region mask that restricts Color Math to a defined area; in Reagent, a vertical band controlled by Win Size and Win Pos.
+
+- **Half-Addition**: An arithmetic mode that averages Main and Sub Screen values: `(Main + Sub) / 2`: producing 50% transparency blending.
+
+- **Hue Rotation**: Rotating the U and V chroma channels through the color wheel by a specified angle, changing the perceived color without altering brightness.
+
+- **Main Screen**: The current-frame video path in Reagent's dual-screen architecture, analogous to the SNES PPU's primary rendering pipeline.
+
+- **Nearest-Neighbor Interpolation**: An upsampling method that repeats pixel values rather than blending between them, producing sharp, blocky enlargements.
+
+- **Saturate**: Limiting a value at the maximum (1023) when addition would exceed it, preventing wraparound artifacts in standard add mode.
+
+- **Sub Screen**: The time-delayed secondary video path, stored as a low-resolution luminance thumbnail and combined with the Main Screen via Color Math.
+
+- **Wrap-Addition**: Modular arithmetic where values exceeding 1023 overflow back to 0, creating unpredictable color shifts at overflow boundaries.
 
 ---

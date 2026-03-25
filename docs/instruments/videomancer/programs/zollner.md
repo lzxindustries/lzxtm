@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 342
 slug: /instruments/videomancer/zollner
@@ -7,362 +7,421 @@ image: /img/instruments/videomancer/zollner/zollner_hero_s1.png
 description: "The Zöllner illusion is one of the oldest documented optical illusions — discovered in 1860 by astrophysicist Johann Karl Friedrich Zöllner when he noticed that parallel lines on a piece of fabric appeared to converge when crossed by short diagonal hash marks."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import zollner_control_panel from '/img/instruments/videomancer/zollner/zollner_control_panel.png';
-import zollner_source1_dog from '/img/instruments/videomancer/zollner/zollner_source1_dog.png';
-import zollner_source2_fruit from '/img/instruments/videomancer/zollner/zollner_source2_fruit.png';
-import zollner_source3_turtle from '/img/instruments/videomancer/zollner/zollner_source3_turtle.png';
-import zollner_source4_pattern from '/img/instruments/videomancer/zollner/zollner_source4_pattern.png';
-import zollner_source5_woman from '/img/instruments/videomancer/zollner/zollner_source5_woman.png';
-import zollner_source6_paint from '/img/instruments/videomancer/zollner/zollner_source6_paint.png';
-import zollner_hero_s1 from '/img/instruments/videomancer/zollner/zollner_hero_s1.png';
-import zollner_hero_s2 from '/img/instruments/videomancer/zollner/zollner_hero_s2.png';
-import zollner_hero_s3 from '/img/instruments/videomancer/zollner/zollner_hero_s3.png';
-import zollner_hero_s4 from '/img/instruments/videomancer/zollner/zollner_hero_s4.png';
-import zollner_hero_s5 from '/img/instruments/videomancer/zollner/zollner_hero_s5.png';
-import zollner_hero_s6 from '/img/instruments/videomancer/zollner/zollner_hero_s6.png';
-import zollner_ex1_s1 from '/img/instruments/videomancer/zollner/zollner_ex1_s1.png';
-import zollner_ex1_s2 from '/img/instruments/videomancer/zollner/zollner_ex1_s2.png';
-import zollner_ex1_s3 from '/img/instruments/videomancer/zollner/zollner_ex1_s3.png';
-import zollner_ex1_s4 from '/img/instruments/videomancer/zollner/zollner_ex1_s4.png';
-import zollner_ex1_s5 from '/img/instruments/videomancer/zollner/zollner_ex1_s5.png';
-import zollner_ex1_s6 from '/img/instruments/videomancer/zollner/zollner_ex1_s6.png';
-import zollner_ex2_s1 from '/img/instruments/videomancer/zollner/zollner_ex2_s1.png';
-import zollner_ex2_s2 from '/img/instruments/videomancer/zollner/zollner_ex2_s2.png';
-import zollner_ex2_s3 from '/img/instruments/videomancer/zollner/zollner_ex2_s3.png';
-import zollner_ex2_s4 from '/img/instruments/videomancer/zollner/zollner_ex2_s4.png';
-import zollner_ex2_s5 from '/img/instruments/videomancer/zollner/zollner_ex2_s5.png';
-import zollner_ex2_s6 from '/img/instruments/videomancer/zollner/zollner_ex2_s6.png';
-import zollner_ex3_s1 from '/img/instruments/videomancer/zollner/zollner_ex3_s1.png';
-import zollner_ex3_s2 from '/img/instruments/videomancer/zollner/zollner_ex3_s2.png';
-import zollner_ex3_s3 from '/img/instruments/videomancer/zollner/zollner_ex3_s3.png';
-import zollner_ex3_s4 from '/img/instruments/videomancer/zollner/zollner_ex3_s4.png';
-import zollner_ex3_s5 from '/img/instruments/videomancer/zollner/zollner_ex3_s5.png';
-import zollner_ex3_s6 from '/img/instruments/videomancer/zollner/zollner_ex3_s6.png';
-
-# Zollner
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: zollner_source1_dog, after: zollner_hero_s1 },
-    { label: "Fruit", before: zollner_source2_fruit, after: zollner_hero_s2 },
-    { label: "Turtle", before: zollner_source3_turtle, after: zollner_hero_s3 },
-    { label: "Pattern", before: zollner_source4_pattern, after: zollner_hero_s4 },
-    { label: "Woman", before: zollner_source5_woman, after: zollner_hero_s5 },
-    { label: "Paint", before: zollner_source6_paint, after: zollner_hero_s6 },
-  ]}
-/>
-*Zöllner pattern overlay in Café Wall mode with animated hatching, creating compelling motion illusions on live video.*
+![Zollner hero image](/img/instruments/videomancer/zollner/zollner_hero_s1.png)
+*Zollner overlaying alternating hatch-mark bands onto a video signal, bending straight lines into curves through the power of optical illusion.*
 
 ---
 
 ## Overview
 
-The Zöllner illusion is one of the oldest documented optical illusions — discovered in 1860 by astrophysicist Johann Karl Friedrich Zöllner when he noticed that parallel lines on a piece of fabric appeared to converge when crossed by short diagonal hash marks. The effect arises because the visual cortex misjudges the angles of the main lines due to contextual influence from the crossing hatches. Xero — wait — Zollner translates this phenomenon into a real-time video overlay.
+Zollner is a real-time optical illusion generator that overlays geometric patterns onto live video. Its core trick is deceptively simple: draw parallel bands across the screen and fill them with short, angled hatch marks that alternate direction from band to band. The result is the classic Zöllner illusion: objectively parallel lines that appear to converge, diverge, or wobble depending on the hatch angle. The effect is immediate and visceral, turning any video source into a perceptual puzzle.
 
-The program generates a pattern of alternating horizontal bands overlaid with diagonal hatch marks and composites it onto the incoming video. The hatch angle, spacing, length, and thickness are all adjustable, and four distinct pattern variants (Zöllner, Hering, Wundt, and Café Wall) offer different geometric illusion styles. Animation scrolls the hatch origin vertically, creating visible motion that intensifies the perceptual distortion.
+Beyond the classic Zöllner pattern, the program offers three additional illusion variants. The Hering illusion bends parallel lines outward from a central vanishing point, the Wundt illusion curves them inward, and the Café Wall illusion uses offset checkerboard tiles to make horizontal mortar lines appear sloped. Each variant exploits a different flaw in human spatial perception, and all four run in real time at video rate.
 
-The name directly references Johann Zöllner, whose 1860 paper "Über eine neue Art von Pseudoskopie" introduced this family of illusions to formal vision science.
+The overlay composites onto the input by darkening the video wherever the pattern is drawn. At low opacity the pattern is a subtle texture; at high opacity it dominates the frame. An optional animation mode scrolls the band structure vertically, creating a hypnotic rolling-shutter effect that continuously refreshes the illusion.
+
+:::tip
+Zollner is a ***processing*** program: it transforms an incoming video signal. Feed it something with strong horizontal or vertical lines and watch those lines appear to bend and twist under the illusion overlay.
+:::
+
+### What's In a Name?
+
+The ***Zöllner illusion*** was discovered in 1860 by the German astrophysicist Johann Karl Friedrich Zöllner. While examining a piece of fabric with an oblique line pattern, he noticed that parallel lines appeared to converge and diverge. He published his observation, and it became one of the most studied geometric optical illusions in perceptual psychology. The name ***Zollner*** (without the umlaut) is the program's nod to that original discovery: a fitting title for a tool that weaponizes human perception against itself.
 
 ---
 
 ## Quick Start
 
-1. **Illusion strength is angle-dependent**: The Zöllner illusion is strongest when hatch angles are 10°–30° from the band direction. Extreme angles (near 0° or 90°) weaken the effect.
-2. **Animation intensifies illusion**: Moving hatches create stronger perceptual distortion than static ones. Even slow animation (10–20%) noticeably enhances the Zöllner and Hering effects.
-3. **Band width sets illusion scale**: Narrow bands (8–16px) create fine illusions that work best at close viewing distance. Wide bands (48–64px) create bold patterns visible at any distance.
+1. Send a video signal into Videomancer and load the **Zollner** program. You'll see evenly spaced horizontal bands overlaid on your video, with short diagonal hatch marks inside each band.
+2. Turn **Hatch Ang** (Knob 2) slowly clockwise. Watch the hatch marks tilt to steeper angles: and notice how the horizontal band edges seem to tilt along with them, even though they haven't moved at all.
+3. Adjust **Band W** (Knob 1) to change the spacing between bands. Wider bands make the illusion more dramatic; narrower bands create a denser, more textured overlay.
+4. Increase **Opacity** (Knob 4) until the pattern is prominently visible against your video. Now flip the **Pattern** toggle (Switch 7) to **Café** to see the Café Wall illusion: the straight mortar lines between tiles appear to slope in alternating directions.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Zollner loaded](/img/instruments/videomancer/zollner/zollner_control_panel.png)
+*Videomancer's front panel with Zollner active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Band W
+
+| Property | Value |
+|----------|-------|
+| Range | 8 – 64 |
+| Default | 29 |
+
+**Band W** sets the width of each repeating band in the overlay pattern. The control steps through eight discrete sizes: 8, 12, 16, 20, 24, 32, 48, and 64 pixels. At the smallest setting the screen fills with many thin bands, producing a dense, fine-grained illusion. At the largest setting, a handful of wide bands stretch across the frame, giving the hatch marks more room to develop their diagonal sweep. Wider bands generally produce a stronger illusion because the eye has more space to misjudge the angle of the band edges.
+
+:::note
+Because **Band W** uses discrete steps rather than a smooth sweep, you'll hear (and see) the pattern jump between sizes as you turn the knob. This is by design: each step maps to a specific pixel count optimized for clean modular arithmetic in the FPGA.
+:::
+
+---
+
+### Knob 2 — Hatch Ang
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 90° |
+| Default | 45° |
+
+**Hatch Ang** controls the diagonal angle of the hatch marks within each band. At the center position (45°), the marks are tilted at a moderate angle. Turning fully counterclockwise flattens them to nearly horizontal; turning fully clockwise steepens them toward vertical. The illusion's strength depends heavily on this angle: moderate angles (around 20° to 40°) tend to produce the most convincing perceptual distortion, while very shallow or very steep angles weaken the effect.
+
+In the Zöllner and Café Wall modes, the hatch angle alternates direction between adjacent bands, which is the mechanism that creates the illusion of convergence and divergence. In the Hering and Wundt modes, the angle parameter instead controls how strongly the radial fan lines curve outward or inward from the screen center.
+
+---
+
+### Knob 3 — Hatch Sp
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Hatch Sp** controls the spacing between individual hatch marks along each band. At 0%, the marks are packed tightly together, creating a nearly solid diagonal fill. As the value increases, gaps open up between the marks, producing a dotted or dashed appearance. At 100%, the marks are widely separated. Tighter spacing creates a stronger illusion because the eye perceives a continuous diagonal line rather than individual marks.
+
+---
+
+### Knob 4 — Opacity
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Opacity** sets the strength of the overlay composite. The pattern darkens the video wherever a hatch mark or band edge is drawn. At 0%, no darkening occurs and the pattern is invisible. At 100%, the pattern area is driven to full black. Moderate values (around 50% to 75%) let the pattern sit visibly on top of the video while preserving the underlying image content.
+
+:::tip
+For a subtle, almost subliminal effect, keep **Opacity** low (around 20% to 30%). The illusion still works: parallel lines in the source video will appear to bend: but the overlay itself fades into the background.
+:::
+
+---
+
+### Knob 5 — Anim Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 37.5% |
+
+**Anim Speed** controls the rate of the vertical scroll animation when animation is enabled via the **Animate** toggle (Switch 9). At 0% the pattern is stationary. As the value increases, the entire band structure scrolls upward at increasing speed, continuously refreshing the illusion across the frame. The scroll advances once per video field, so the motion is inherently synchronized to the video refresh rate.
+
+When **Animate** is set to **Off**, this control has no effect.
+
+---
+
+### Knob 6 — Hatch Len
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Hatch Len** sets the ***duty cycle*** of each hatch mark: the proportion of each hatch period that is filled versus empty. At 0%, the marks are as short as possible (just a single pixel wide). At 100%, each mark fills its entire period, creating a continuous solid line with no gaps. This parameter interacts closely with **Hatch Sp** (Knob 3): spacing sets the period between marks, while length sets how much of that period is drawn.
+
+---
+
+### Switch 7 — Pattern
+
+| Property | Value |
+|----------|-------|
+| Off | Zöllner |
+| On | Café |
+| Default | Zöllner |
+
+**Pattern** selects the primary illusion variant. In the **Zöllner** position, the overlay draws parallel horizontal bands with alternating-angle hatch marks: the classic Zöllner illusion. Straight band edges appear to tilt and converge. In the **Café** position, the program switches to a different geometric arrangement.
+
+:::note
+The **Pattern** and **Hatch Style** toggles work together as a combined mode selector. See the Toggle Group Notes section below for the full four-mode breakdown.
+:::
+
+---
+
+### Switch 8 — Hatch Style
+
+| Property | Value |
+|----------|-------|
+| Off | Thin |
+| On | Thick |
+| Default | Thin |
+
+**Hatch Style** selects the secondary illusion variant. In the **Thin** position, the hatch geometry uses its default line weight. In the **Thick** position, the pattern changes to a different geometric variant.
+
+Because **Hatch Style** interacts with **Pattern** (Switch 7) to select among four illusion modes, its visual effect depends on the position of both toggles. See Toggle Group Notes below.
+
+---
+
+### Switch 9 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Animate** enables or disables the vertical scroll animation. When set to **On**, the band structure scrolls upward at the rate set by **Anim Speed** (Knob 5), creating a continuously rolling illusion. When set to **Off**, the pattern is locked to screen coordinates and remains stationary.
+
+---
+
+### Switch 10 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** reverses the overlay polarity. When set to **Off**, the hatch marks and band edges darken the video (the pattern is drawn as dark lines on lighter video). When set to **On**, the logic inverts: everything *outside* the pattern is darkened, leaving the hatch marks and band edges as bright windows into the original video. This effectively swaps figure and ground, creating a photographic-negative version of the illusion.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the input signal directly to the output, skipping all Zollner processing. The sync delay pipeline still maintains timing alignment, so toggling bypass produces no glitch. Use this for instant A/B comparison between the raw input and the processed result.
+
+---
+
+:::note Toggle Group Notes
+
+The **Pattern** (Switch 7) and **Hatch Style** (Switch 8) toggles form a combined two-bit mode selector, giving access to four distinct optical illusion variants:
+
+| Pattern | Hatch Style | Illusion Mode | Description |
+|---------|-------------|---------------|-------------|
+| Zöllner | Thin | **Zöllner** | Parallel horizontal bands with alternating-angle hatch marks. Band edges appear to converge and diverge. |
+| Café | Thin | **Hering** | Radial fan lines extending outward from the screen center. Parallel lines appear to bow outward. |
+| Zöllner | Thick | **Wundt** | Inverse radial fan lines curving inward toward the screen center. Parallel lines appear to bow inward. |
+| Café | Thick | **Café Wall** | Offset checkerboard tiles with thin mortar lines between them. The horizontal mortar lines appear to slope in alternating directions. |
+
+:::tip
+The Hering and Wundt illusions use a ***radial coordinate system*** centered at the middle of the screen. **Hatch Ang** controls the curvature of the fan lines rather than a simple diagonal slope. The Café Wall mode ignores hatch marks entirely and instead shifts alternating tile rows by half a band width to produce the characteristic staggered-brick pattern.
+:::
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input and the wet (Zollner-processed) output. At 0%, only the dry signal passes through, equivalent to a full bypass. At 100%, the fully processed output is heard. Intermediate values blend the two, softening the overlay effect. The crossfade uses three interpolator instances (one each for Y, U, and V) to produce a smooth, artifact-free transition.
 
 ---
 
 ## Background
 
-### The Zöllner Illusion
+### Geometric optical illusions
 
-Johann Zöllner's original observation was deceptively simple: parallel lines crossed by short oblique strokes appear to tilt — converging at one end and diverging at the other. The explanation lies in angle assimilation: the visual system biases the perceived orientation of the main lines toward the angle of the crossing hatches. The effect is strongest when the hatch angle is between 10° and 30° relative to the main lines, and weakens as the crossing angle approaches perpendicular.
+Geometric optical illusions exploit the way the human visual system interprets angles, lines, and spatial relationships. When short oblique lines cross longer parallel lines, the brain misjudges the orientation of the parallels: this is the Zöllner effect. The distortion arises not in the eye itself, but in the neural processing that estimates line orientation. Lateral inhibition between orientation-selective neurons in the visual cortex causes neighboring angles to repel each other perceptually, making parallel lines appear to tilt away from the crossing hatch marks.
 
-### Hering and Wundt Illusions
+The four illusions in this program: Zöllner, Hering, Wundt, and Café Wall: are all variations on this basic mechanism. They differ in geometry (parallel bands vs. radial fans vs. offset tiles) but share the same perceptual root: local angular context distorts the perceived orientation of longer structures.
 
-Ewald Hering and Wilhelm Wundt extended the Zöllner concept radially. In the Hering illusion, parallel lines appear to bow outward when superimposed on a starburst of lines radiating from a central point. The Wundt illusion inverts this: the same parallel lines appear to bow inward when the radiating lines converge toward the center. In Zollner's implementation, these modes compute hatch angle as a function of distance from the center of the frame — Hering uses the direct radial angle, Wundt inverts it.
+### Real-time overlay compositing
 
-### Café Wall Illusion
+Unlike synthesis programs that generate imagery from scratch, Zollner overlays a computed pattern onto an existing video signal. The overlay uses a simple multiplicative composite: where the pattern is "on," the video luminance is scaled down by an amount set by the **Opacity** control. Chrominance (U and V) passes through unchanged in the affected regions, so the overlay darkens without desaturating. This produces a shadow-like effect where the pattern appears stamped onto the video.
 
-Discovered in the tilework of a Bristol café in 1979 by Richard Gregory, the Café Wall illusion consists of alternating rows of dark and light tiles with the rows offset by half a tile width. Despite the rows being perfectly horizontal and parallel, they appear to converge and diverge. Zollner approximates this with a shifted checkerboard pattern that produces the same perceptual tilt.
+### Animation and temporal illusions
 
-### Illusions in Video Art
-
-Optical illusions have a long history in video art, from Bridget Riley's Op Art animations to Nam June Paik's explorations of perceptual interference. Overlaying geometric illusion patterns on live video creates a unique interaction: the brain simultaneously processes the realistic content and the illusory geometry, creating a perceptual tension that neither element would produce alone.
-
-### Band Structure and Hatch Geometry
-
-The underlying structure is a set of horizontal bands whose width is selectable from a lookup table: 8, 12, 16, 20, 24, 32, 48, or 64 pixels. Within each band, short diagonal lines (hatches) are drawn at a configurable angle, spacing, and length. In the classic Zöllner pattern, adjacent bands have opposite hatch angles, creating the convergence illusion. The pattern opacity controls how strongly the overlay blends with the underlying video.
+The scroll animation adds a temporal dimension to the illusion. As the band structure moves vertically across the frame, stationary features in the source video interact with the moving pattern to create ***moiré*** effects and apparent motion. Diagonal elements in the video appear to bend and flex as the hatch marks sweep past them. The animation rate is frame-locked (advancing once per vsync), ensuring smooth, jitter-free scrolling regardless of the video format.
 
 
 ---
 
 ## Signal Flow
 
-Input Register → Band Detection → Hatch Angle Computation → Hatch Pattern Generation → Opacity Composite
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4 30-bit)
-│
-├── Stage 1: Input Register + Animation Counter ───────
-│   ├─ y_in, u_in, v_in registered
-│   └─ anim_offset incremented by speed per field
-│
-├── Stage 2: Band Detection ───────────────────────────
-│   ├─ band_width from LUT: [8,12,16,20,24,32,48,64]
-│   ├─ band_index = v_counter / band_width
-│   ├─ in_band_pos = v_counter mod band_width
-│   └─ band_parity = band_index[0]
-│
-├── Stage 3: Hatch Angle Computation ──────────────────
-│   ├─ Zöllner: slope = ±(angle-512) per band parity
-│   ├─ Hering: slope from radial angle to center
-│   ├─ Wundt: inverted Hering slope
-│   └─ Café: shifted checkerboard (no slope)
-│
-├── Stage 4: Hatch Pattern Generation ─────────────────
-│   ├─ hatch_phase = (h + slope*v + anim) mod spacing
-│   ├─ on_hatch = hatch_phase < length
-│   │   (thick mode: hatch_phase < length*2)
-│   ├─ on_pattern = on_hatch AND in_band_check
-│   └─ pattern_y = on_pattern ? 0 : 1023
-│
-├── Stage 5: Opacity Composite ────────────────────────
-│   ├─ blended_y = y_in * (1023 - opacity) / 1024
-│   │              + pattern_y * opacity / 1024
-│   ├─ blended_u, blended_v (same formula)
-│   └─ invert option flips pattern_y
-│
-├── Mix (3× interpolator_u) ───────────────────────────
-│   └─ lerp(dry, wet, mix_amount)
-│
-└── Bypass → Output
-```
+The pipeline is eight clocks deep: four stages of pattern generation and compositing, followed by four clocks for the interpolator mix. The sync and data delay pipeline shifts the original input through an eight-stage register so that the dry signal arrives at the mix stage in perfect alignment with the processed signal.
 
-The hatch pattern is generated entirely in pixel-clock logic with no frame buffer — every pixel decision is made from the current h/v position, band index, and animation offset. This keeps resource usage minimal (~600 LUTs) but limits the pattern to line-oriented geometries. The Café Wall pattern is unique among the four modes because it uses a shifted checkerboard rather than angled hatching, but it still passes through the same opacity compositing stage.
+Two key interactions dominate the signal flow. First, the band parity signal from Stage 1 controls whether the hatch slope is added or subtracted in Stage 2 (for Zöllner mode), or whether the radial coordinate sign flips (for Hering/Wundt modes). This alternation is the entire mechanism of the illusion: without it, all bands would have identical hatching and no perceptual distortion would occur. Second, the opacity composite in Stage 3 is purely multiplicative on the Y channel; U and V pass through unmodified. This means the overlay darkens without shifting color, producing clean shadow-like marks rather than colored tints.
 
----
-
-## Parameter Reference
-
-<img src={zollner_control_panel} alt="Videomancer front panel with Zollner loaded"/>
-*Videomancer's front panel with Zollner active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Band W
-| Property | Value |
-|----------|-------|
-| Range | 8 – 64 |
-| Default | 29 |
-
-Controls the width of the horizontal bands. An 8-entry lookup table maps the 3-bit quantized input to pixel widths: 8, 12, 16, 20, 24, 32, 48, 64. Narrow bands (8 pixels) produce a dense, fine-lined pattern where the illusion is strong but individual hatches are hard to distinguish. Wide bands (64 pixels) create bold, architectural stripes with clearly visible diagonal lines.
-
----
-
-#### Knob 2 — Hatch Ang
-| Property | Value |
-|----------|-------|
-| Range | 0° – 90° |
-| Default | 45° |
-| Suffix | ° |
-
-Controls the angle of the hatch marks relative to horizontal. The parameter is centered at 512 (0°). Increasing values tilt the hatches clockwise; decreasing values tilt counter-clockwise. In Zöllner mode, alternate bands receive opposite angles. In Hering and Wundt modes, this parameter sets the base angle that is modulated by radial distance from center.
-
----
-
-#### Knob 3 — Hatch Sp
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Controls the spacing between adjacent hatch marks within each band. Lower values pack hatches closer together, creating a denser pattern. Higher values spread them apart, giving each hatch more visual weight. The spacing interacts with the hatch length — when spacing equals length, the pattern becomes a solid fill.
-
----
-
-#### Knob 4 — Opacity
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
-
-Controls how strongly the pattern overlay affects the underlying video. At 0% the pattern is invisible. At 100% the pattern completely replaces the video in the hatch regions. Intermediate values blend the pattern semi-transparently over the input. The opacity formula is: output = input × (1023 − opacity) / 1024 + pattern × opacity / 1024.
-
----
-
-#### Knob 5 — Anim Speed
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 37.5% |
-| Suffix | % |
-
-Controls the speed of the vertical animation scroll. When Animation is enabled (Toggle 9), this parameter determines how fast the hatch pattern shifts vertically. At 0% there is no movement. Higher values create faster scrolling, which intensifies the perceptual illusion by adding motion to the already-misleading geometry.
-
----
-
-#### Knob 6 — Hatch Len
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Controls the length of individual hatch marks. Short hatches (low values) create dashed, intermittent diagonal lines. Long hatches (high values) make the diagonals nearly continuous within each band. The Zöllner illusion is typically strongest with moderate-length hatches that are clearly diagonal but don't merge into continuous stripes.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Pattern** | Zöllner | Café |
-| **8 — Hatch Style** | Thin | Thick |
-| **9 — Animate** | Off | On |
-| **10 — Invert** | Off | On |
-| **11 — Bypass** | Off | On |
-
-Toggles 7 and 8 form a 2-bit pattern mode selector. Toggle 9 enables or disables animation. Toggle 10 inverts the pattern polarity. Toggle 11 (bit 5) controls bypass. The pattern and invert toggles combine to create 8 distinct visual configurations before considering the continuous knob parameters.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Crossfades between the dry input signal and the pattern-composited output. At 0% the output is the unprocessed input. At 100% the output is the full illusion overlay. Intermediate positions allow subtle pattern underlays that create subliminal perceptual interference.
-
-
-
+:::note
+The Café Wall mode bypasses the hatch-angle machinery entirely. Instead of computing diagonal slopes, it shifts the horizontal coordinate by half a band width on alternate bands, creating the offset-tile geometry characteristic of the Café Wall illusion.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises demonstrate the four illusion pattern modes and show how hatch geometry parameters interact to create different perceptual effects.
+These exercises progress from the classic Zöllner illusion through the four pattern modes, building up to animated compositions.
+### Exercise 1: The Classic Zöllner
 
-### Exercise 1: Classic Zöllner
+![The Classic Zöllner result](/img/instruments/videomancer/zollner/zollner_ex1_s1.png)
+*The Classic Zöllner — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: zollner_source1_dog, after: zollner_ex1_s1 },
-    { label: "Fruit", before: zollner_source2_fruit, after: zollner_ex1_s2 },
-    { label: "Turtle", before: zollner_source3_turtle, after: zollner_ex1_s3 },
-    { label: "Pattern", before: zollner_source4_pattern, after: zollner_ex1_s4 },
-    { label: "Woman", before: zollner_source5_woman, after: zollner_ex1_s5 },
-    { label: "Paint", before: zollner_source6_paint, after: zollner_ex1_s6 },
-  ]}
-/>
-*Classic Zöllner — simulated result across source images.*
-**Source**: A video feed with strong horizontal or vertical elements — architecture, bookshelves, or ruled paper.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Create the classic Zöllner illusion of converging parallel lines.
+#### Learning Outcomes
 
-1. **Set Zöllner mode**: Ensure both Pattern toggles are Off (00).
-2. **Band width**: Set Band W to ~30% for 16-pixel bands.
-3. **Hatch angle**: Set Hatch Ang to ~60%. The hatches tilt visibly from horizontal.
-4. **Moderate spacing**: Set Hatch Sp to ~50% for evenly spaced diagonals.
-5. **Opacity**: Set Opacity to ~60%. The pattern overlays clearly without hiding the video.
-6. **Static**: Keep Animate Off to see the static illusion clearly.
+A classic Zöllner illusion overlay where parallel horizontal bands appear to converge and diverge across your video.
 
-**Key concepts**: The Zöllner illusion works by angle assimilation — hatch angles bias perceived band orientation, adjacent bands with opposite hatches appear to converge/diverge
+#### Key Concepts
 
----
+- Alternating hatch angles create the perception of non-parallel lines
+- Hatch angle and band width control the illusion strength
+- Opacity controls how visibly the pattern sits on the video
 
-### Exercise 2: Animated Hering Curves
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: zollner_source1_dog, after: zollner_ex2_s1 },
-    { label: "Fruit", before: zollner_source2_fruit, after: zollner_ex2_s2 },
-    { label: "Turtle", before: zollner_source3_turtle, after: zollner_ex2_s3 },
-    { label: "Pattern", before: zollner_source4_pattern, after: zollner_ex2_s4 },
-    { label: "Woman", before: zollner_source5_woman, after: zollner_ex2_s5 },
-    { label: "Paint", before: zollner_source6_paint, after: zollner_ex2_s6 },
-  ]}
-/>
-*Animated Hering Curves — simulated result across source images.*
-**Source**: Video with straight lines — roads, building edges, or a calibration grid.
+A live camera feed or footage with strong horizontal lines: bookshelves, window blinds, or brick walls work especially well because the illusion bends them visually.
 
-**What You'll Create**: Demonstrate the Hering illusion with animated hatching.
+#### Steps
 
-1. **Hering mode**: Set Pattern high bit On, low bit Off (10 → Hering? Actually toggle_switch_7 On = high bit). With the 2-bit selector: 01 = Hering. Set Toggle 7 Off, Toggle 8 on... No — per the VHDL, pattern bits are from toggle 7 (high) and toggle 8 is hatch style. Let me re-check... Actually Toggle 7 is the pattern selector in a multi-toggle sense. Per the TOML, Toggle 7 has value_labels ["Zöllner", "Hering", "Wundt", "Café Wall"]. This is a 4-option parameter, likely using the same register with thresholds. Set it to position 2 (Hering).
-2. **Enable animation**: Toggle Animate On and set Anim Speed to ~40%.
-3. **Moderate angle**: Set Hatch Ang to ~55%. Radial hatches create a bulging effect.
-4. **Wide bands**: Set Band W to ~50% for clearly visible curvature.
-5. **Full opacity**: Set Opacity to ~80%. The pattern dominates the frame.
-6. **Observe**: Straight lines in the source video appear to bow outward from center.
+1. Load the **Zollner** program with all settings at default. You should see horizontal bands with angled hatch marks overlaid on the video.
+2. Turn **Hatch Ang** (Knob 2) until the hatch marks are at roughly a 30° angle. Look at the band edges: they should appear to tilt even though they're perfectly horizontal.
+3. Adjust **Band W** (Knob 1) to find the most convincing illusion. Wider bands (32 or 48 pixels) often produce the strongest effect.
+4. Increase **Opacity** (Knob 4) to about 75% so the pattern is clearly visible against the source video.
+5. Try different **Hatch Sp** (Knob 3) settings. Tighter spacing strengthens the illusion; wider spacing creates a more open, dotted pattern.
 
-**Key concepts**: Hering illusion uses radial angle from center — hatch slope varies across the frame, creating apparent curvature in straight lines
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Band W | 32 px |
+| Hatch Ang | ~30° |
+| Hatch Sp | 50.0% |
+| Opacity | 75.0% |
+| Anim Speed | 0.0% |
+| Hatch Len | 50.0% |
+| Pattern | Zöllner |
+| Hatch Style | Thin |
+| Animate | Off |
+| Invert | Off |
+| Bypass | Off |
+| Mix | 100.0% |
 
 ---
 
-### Exercise 3: Café Wall with Thick Lines
+### Exercise 2: Four Illusions Tour
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: zollner_source1_dog, after: zollner_ex3_s1 },
-    { label: "Fruit", before: zollner_source2_fruit, after: zollner_ex3_s2 },
-    { label: "Turtle", before: zollner_source3_turtle, after: zollner_ex3_s3 },
-    { label: "Pattern", before: zollner_source4_pattern, after: zollner_ex3_s4 },
-    { label: "Woman", before: zollner_source5_woman, after: zollner_ex3_s5 },
-    { label: "Paint", before: zollner_source6_paint, after: zollner_ex3_s6 },
-  ]}
-/>
-*Café Wall with Thick Lines — simulated result across source images.*
-**Source**: Any video — the Café Wall pattern is effective regardless of source content.
+![Four Illusions Tour result](/img/instruments/videomancer/zollner/zollner_ex2_s1.png)
+*Four Illusions Tour — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Create the Café Wall illusion with bold, visible tiles.
+***A description of the exercise illustration.***
 
-1. **Café Wall mode**: Set Pattern to Café Wall (position 4).
-2. **Thick style**: Toggle Hatch Style to Thick for bold tile boundaries.
-3. **Wide bands**: Set Band W to the maximum (~100%) for large 64-pixel tiles.
-4. **Spacing**: Adjust Hatch Sp to ~50% to set the tile width.
-5. **Partial opacity**: Set Opacity to ~50%. The checkerboard pattern is visible but doesn't obscure the video.
-6. **Invert**: Toggle Invert On to see white tiles on video instead of dark.
-7. **Animate**: Enable animation at slow speed (~20%) for a slow tile scroll.
+#### Learning Outcomes
 
-**Key concepts**: The Café Wall illusion uses shifted checkerboard rows to create apparent tilt in perfectly horizontal boundaries
+A guided tour through all four illusion modes: Zöllner, Hering, Wundt, and Café Wall: using the same source video for comparison.
+
+#### Key Concepts
+
+- Two toggles combine to select four illusion variants
+- Each variant exploits a different spatial-perception mechanism
+- The same hatch angle parameter has different visual meaning in each mode
+
+#### Video Source
+
+Footage with a grid pattern or geometric composition: tiled floors, graph paper, or a test pattern with parallel lines in both axes.
+
+#### Steps
+
+1. Start with **Pattern** = **Zöllner** and **Hatch Style** = **Thin** (both switches in their default position). This is the classic Zöllner mode. Set **Hatch Ang** to about 45° and **Opacity** to about 60%. Note how the horizontal band edges appear to tilt.
+2. Flip **Pattern** to **Café** while leaving **Hatch Style** on **Thin**. The pattern changes to the Hering illusion: radial fan lines curve outward from the center of the screen. Horizontal lines in the video appear to bow outward.
+3. Now flip **Hatch Style** to **Thick** while keeping **Pattern** on **Café**. This activates the Café Wall illusion: offset checkerboard tiles with mortar lines that appear to slope. Adjust **Band W** to a larger width (48 or 64) for the best effect.
+4. Finally, set **Pattern** back to **Zöllner** while leaving **Hatch Style** on **Thick**. This activates the Wundt illusion: the inverse of Hering, with fan lines curving inward. Horizontal lines bow inward rather than outward.
+5. Toggle **Invert** (Switch 10) in each mode. Notice how inverting swaps figure and ground, changing the character of each illusion.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Band W | 48 px |
+| Hatch Ang | 45° |
+| Hatch Sp | 50.0% |
+| Opacity | 60.0% |
+| Anim Speed | 0.0% |
+| Hatch Len | 50.0% |
+| Pattern | (varies) |
+| Hatch Style | (varies) |
+| Animate | Off |
+| Invert | Off |
+| Bypass | Off |
+| Mix | 100.0% |
 
 ---
 
+### Exercise 3: Animated Scroll
 
-## Tips
+![Animated Scroll result](/img/instruments/videomancer/zollner/zollner_ex3_s1.png)
+*Animated Scroll — simulated result across source images.*
+#### Exercise Illustration
 
-- **Café Wall needs wide bands**: The Café Wall illusion requires bands wide enough for the shifted checkerboard tiles to be individually visible. Use 32px or wider.
-- **Invert for dark sources**: When processing dark video, switch to inverted (bright) hatches to maintain pattern visibility.
-- **Opacity controls subtlety**: Low opacity (15–25%) creates subliminal pattern interference — viewers sense something is "off" without identifying the overlay. High opacity (70–100%) makes the illusion explicit and dramatic.
-- **Thick hatches for projection**: When the output will be displayed on a large screen or projected, thick hatch style ensures the lines remain visible at viewing distance.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A continuously scrolling illusion overlay that creates hypnotic moiré interactions with the source video.
+
+#### Key Concepts
+
+- Animation adds temporal interaction between the pattern and the video content
+- Scrolling hatch bands create moiré effects with stationary video features
+- Invert mode and animation combine for a stroboscopic quality
+
+#### Video Source
+
+High-contrast footage with repeating structures: fences, venetian blinds, striped fabric, or architectural patterns with strong vertical or horizontal lines.
+
+#### Steps
+
+1. Set **Pattern** to **Zöllner**, **Hatch Style** to **Thin**, and **Band W** to 24 pixels for a moderately dense pattern.
+2. Flip **Animate** (Switch 9) to **On**. Nothing moves yet because **Anim Speed** is at its default value.
+3. Increase **Anim Speed** (Knob 5) slowly. The band structure begins to scroll upward. As it moves, watch for ***moiré*** interference patterns where the scrolling hatch marks interact with stationary lines in the video.
+4. Set **Opacity** high (around 80%) and **Hatch Ang** to a moderate angle (30° to 40°). The scrolling diagonal marks should create strong visual beats against the source.
+5. Toggle **Invert** (Switch 10) to **On**. The moving pattern becomes a set of bright slits through a darkened frame, producing a stroboscopic scanning effect.
+6. Experiment with **Mix** (Fader 12) to blend the animated overlay with the dry signal at various strengths.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Band W | 24 px |
+| Hatch Ang | ~35° |
+| Hatch Sp | 40.0% |
+| Opacity | 80.0% |
+| Anim Speed | 40.0% |
+| Hatch Len | 50.0% |
+| Pattern | Zöllner |
+| Hatch Style | Thin |
+| Animate | On |
+| Invert | On |
+| Bypass | Off |
+| Mix | 100.0% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Angle Assimilation** | The perceptual phenomenon where nearby lines bias the perceived orientation of a target line toward their own angle. |
-| **Band** | A horizontal stripe region within which all hatches share the same angle; Zöllner patterns alternate hatch direction between adjacent bands. |
-| **Café Wall Illusion** | A geometric illusion where alternating rows of offset dark and light tiles create the appearance of non-parallel horizontal lines. |
-| **Checkerboard** | A pattern of alternating dark and light squares; the Café Wall variant shifts alternate rows by half a tile. |
-| **Hatch** | A short diagonal line segment drawn within a band; the primary element that creates perceptual angle distortion. |
-| **Hering Illusion** | An illusion where parallel straight lines appear to bow outward when superimposed on radially emanating lines. |
-| **LUT** | Look-Up Table; here used to map the 3-bit quantized band width parameter to one of 8 pixel widths. |
-| **Op Art** | Optical Art movement of the 1960s that exploited geometric patterns to create visual illusions of movement and depth. |
-| **Opacity** | The blending weight between the illusion pattern and the underlying video (0 = transparent, 1023 = opaque). |
-| **Wundt Illusion** | The inverse of the Hering illusion; parallel lines appear to bow inward when crossed by converging radial lines. |
-| **Zöllner Illusion** | The foundational optical illusion (1860) where parallel lines appear non-parallel due to crossing diagonal hatch marks. |
+- **Café Wall Illusion**: An optical illusion in which alternating rows of dark and light tiles, offset by half a tile width, make the horizontal mortar lines between rows appear to slope.
+
+- **Composite**: The process of combining two image layers: here, an overlay pattern and the input video: into a single output by multiplicative blending.
+
+- **Duty Cycle**: The fraction of a repeating period that is "on" versus "off"; in Zollner, it controls how much of each hatch period is filled by a visible mark.
+
+- **Hatch Mark**: A short diagonal line drawn within a band; the alternating direction of hatch marks across adjacent bands is the mechanism behind the Zöllner illusion.
+
+- **Hering Illusion**: An optical illusion in which two parallel straight lines appear to bow outward when overlaid with a pattern of radial lines emanating from a central point.
+
+- **Interpolator**: A hardware module that computes a weighted blend between two values; used here for the wet/dry mix crossfade.
+
+- **Moiré**: An interference pattern created when two regular patterns (such as scrolling hatch marks and stationary video lines) overlap at slightly different frequencies or angles.
+
+- **Opacity**: The strength of the overlay effect; higher opacity produces stronger darkening where the pattern is drawn.
+
+- **Wundt Illusion**: The inverse of the Hering illusion: parallel lines appear to bow inward when crossed by inward-curving radial lines.
+
+- **Zöllner Illusion**: A geometric optical illusion in which parallel lines appear tilted due to the influence of short crossing lines at alternating angles.
 
 ---

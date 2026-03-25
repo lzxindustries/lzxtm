@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 124
 slug: /instruments/videomancer/gauntlet
@@ -7,358 +7,405 @@ image: /img/instruments/videomancer/gauntlet/gauntlet_hero_s1.png
 description: "Every pixel of a video signal carries brightness and color — smooth gradients, soft shadows, gentle transitions."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import gauntlet_control_panel from '/img/instruments/videomancer/gauntlet/gauntlet_control_panel.png';
-import gauntlet_source1_parrot from '/img/instruments/videomancer/gauntlet/gauntlet_source1_parrot.png';
-import gauntlet_source2_skull from '/img/instruments/videomancer/gauntlet/gauntlet_source2_skull.png';
-import gauntlet_source3_collage from '/img/instruments/videomancer/gauntlet/gauntlet_source3_collage.png';
-import gauntlet_source4_pattern from '/img/instruments/videomancer/gauntlet/gauntlet_source4_pattern.png';
-import gauntlet_source5_woman from '/img/instruments/videomancer/gauntlet/gauntlet_source5_woman.png';
-import gauntlet_source6_paint from '/img/instruments/videomancer/gauntlet/gauntlet_source6_paint.png';
-import gauntlet_hero_s1 from '/img/instruments/videomancer/gauntlet/gauntlet_hero_s1.png';
-import gauntlet_hero_s2 from '/img/instruments/videomancer/gauntlet/gauntlet_hero_s2.png';
-import gauntlet_hero_s3 from '/img/instruments/videomancer/gauntlet/gauntlet_hero_s3.png';
-import gauntlet_hero_s4 from '/img/instruments/videomancer/gauntlet/gauntlet_hero_s4.png';
-import gauntlet_hero_s5 from '/img/instruments/videomancer/gauntlet/gauntlet_hero_s5.png';
-import gauntlet_hero_s6 from '/img/instruments/videomancer/gauntlet/gauntlet_hero_s6.png';
-import gauntlet_ex1_s1 from '/img/instruments/videomancer/gauntlet/gauntlet_ex1_s1.png';
-import gauntlet_ex1_s2 from '/img/instruments/videomancer/gauntlet/gauntlet_ex1_s2.png';
-import gauntlet_ex1_s3 from '/img/instruments/videomancer/gauntlet/gauntlet_ex1_s3.png';
-import gauntlet_ex1_s4 from '/img/instruments/videomancer/gauntlet/gauntlet_ex1_s4.png';
-import gauntlet_ex1_s5 from '/img/instruments/videomancer/gauntlet/gauntlet_ex1_s5.png';
-import gauntlet_ex1_s6 from '/img/instruments/videomancer/gauntlet/gauntlet_ex1_s6.png';
-import gauntlet_ex2_s1 from '/img/instruments/videomancer/gauntlet/gauntlet_ex2_s1.png';
-import gauntlet_ex2_s2 from '/img/instruments/videomancer/gauntlet/gauntlet_ex2_s2.png';
-import gauntlet_ex2_s3 from '/img/instruments/videomancer/gauntlet/gauntlet_ex2_s3.png';
-import gauntlet_ex2_s4 from '/img/instruments/videomancer/gauntlet/gauntlet_ex2_s4.png';
-import gauntlet_ex2_s5 from '/img/instruments/videomancer/gauntlet/gauntlet_ex2_s5.png';
-import gauntlet_ex2_s6 from '/img/instruments/videomancer/gauntlet/gauntlet_ex2_s6.png';
-import gauntlet_ex3_s1 from '/img/instruments/videomancer/gauntlet/gauntlet_ex3_s1.png';
-import gauntlet_ex3_s2 from '/img/instruments/videomancer/gauntlet/gauntlet_ex3_s2.png';
-import gauntlet_ex3_s3 from '/img/instruments/videomancer/gauntlet/gauntlet_ex3_s3.png';
-import gauntlet_ex3_s4 from '/img/instruments/videomancer/gauntlet/gauntlet_ex3_s4.png';
-import gauntlet_ex3_s5 from '/img/instruments/videomancer/gauntlet/gauntlet_ex3_s5.png';
-import gauntlet_ex3_s6 from '/img/instruments/videomancer/gauntlet/gauntlet_ex3_s6.png';
-
-# Gauntlet
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: gauntlet_source1_parrot, after: gauntlet_hero_s1 },
-    { label: "Skull", before: gauntlet_source2_skull, after: gauntlet_hero_s2 },
-    { label: "Collage", before: gauntlet_source3_collage, after: gauntlet_hero_s3 },
-    { label: "Pattern", before: gauntlet_source4_pattern, after: gauntlet_hero_s4 },
-    { label: "Woman", before: gauntlet_source5_woman, after: gauntlet_hero_s5 },
-    { label: "Paint", before: gauntlet_source6_paint, after: gauntlet_hero_s6 },
-  ]}
-/>
-*Gauntlet rendering phosphor beam traces from edge-detected video, casting green CRT glow across a high-contrast source image.*
+![Gauntlet hero image](/img/instruments/videomancer/gauntlet/gauntlet_hero_s1.png)
+*Gauntlet rendering a live camera feed as luminous green vector beam traces with phosphor persistence, evoking a 1980s arcade vector display.*
 
 ---
 
 ## Overview
 
-Every pixel of a video signal carries brightness and color — smooth gradients, soft shadows, gentle transitions. Gauntlet ignores all of that. It looks only at *edges* — the places where brightness or color changes rapidly from one pixel to the next. It detects those edges, traces them with luminous beams, and lets the beams persist as fading phosphor trails. The result looks like an oscilloscope display or a vector arcade monitor from the early 1980s: bright lines on a dark field, slowly fading as the image moves.
+Gauntlet transforms conventional raster video into a glowing vector display: a CRT beam trace rendering where only edges and transitions are visible, drawn with luminous beams that fade slowly over time. The effect recreates the look of classic vector arcade monitors like those in ***Asteroids***, ***Tempest***, and ***Battlezone***, where electron beams drew bright lines directly onto the phosphor screen rather than scanning in horizontal raster lines.
 
-The program chains seven processing stages together: input conditioning (with optional luminance inversion), horizontal gradient calculation across Y, U, and V channels, threshold-based edge detection with a 16-tap sliding window, distance-based glow rendering via exponential decay lookup tables, vertical phosphor persistence through a distributed RAM line buffer, colorization into one of eight phosphor palettes, and overlay compositing. The name *Gauntlet* evokes both the arcade cabinet era (the classic Atari dungeon crawler rendered on custom vector-like hardware) and the idea of "running the gauntlet" — every pixel in the source must pass through a chain of harsh tests before it emerges as a beam trace.
+The pipeline detects horizontal edges in the incoming video, renders each edge as a bright beam with an exponential glow falloff, applies vertical phosphor persistence through a BRAM-based IIR line buffer, and colorizes the result using one of eight selectable phosphor modes. The result can either replace the input video entirely for a pure vector look, or be additively composited over the dimmed original for a mixed vector-raster display.
 
-At conservative settings, Gauntlet produces subtle edge highlights that follow the contours of the source material. At extreme settings, it reduces video to pure line graphics — bright phosphor traces on black, with long vertical persistence tails that smear edges across the screen like the afterglow of a radar sweep.
+### What's In a Name?
+
+A ***gauntlet*** is an armored glove, a challenge, and the name of an iconic dungeon-crawling arcade game. Here it refers to the ordeal every video frame endures: stripped to its edges, redrawn as pure light, and left to fade on the screen. The name captures the adversarial nature of the processing: the image is broken apart, and only its strongest features survive as vector traces.
 
 ---
 
 ## Quick Start
 
-1. **Processing order**: Input → Invert → Gradient → Edge Detect → Glow → Persistence → Colorize → Overlay → Mix → Bypass. Each stage transforms the signal before the next one sees it. Glow happens *after* edge detection, so Beam Width doesn't affect which edges are found — only how far the glow spreads.
-2. **Gradient mode is the subtler option**: Binary mode produces uniform wireframe traces. Gradient mode preserves edge strength information, producing traces whose brightness varies with the sharpness of the boundary. For organic-looking CRT emulation, use Gradient mode.
-3. **Persistence writes to a line buffer, not a frame buffer**: Because the persistence RAM is only 2048 pixels wide (one scanline), the "memory" resets at each line start. Vertical persistence accumulates because successive scanlines write to the same horizontal positions, not because the FPGA stores an entire frame.
+1. Feed any video source into Videomancer with Gauntlet loaded. Glowing green lines appear wherever the image has strong horizontal edges.
+2. Turn **Sensitivity** (Knob 1) down to about 30% to reveal finer edges. Higher sensitivity means fewer edges (only the strongest transitions survive.)
+3. Increase **Persistence** (Knob 3) to about 70%. The beam traces now linger on screen, building up a persistent afterimage that fades slowly.
+4. Switch **Phosphor** (Switch 7) to Rainbow to see the beam traces rendered in scanline-varying color instead of monochrome green.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Gauntlet loaded](/img/instruments/videomancer/gauntlet/gauntlet_control_panel.png)
+*Videomancer's front panel with Gauntlet active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Sensitivity
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Sensitivity** controls the edge detection threshold. At low values, even subtle gradients in the source video produce visible beam traces, creating a dense field of glowing lines. As the value increases, only strong high-contrast transitions survive the threshold, resulting in fewer but more prominent traces. At 100%, only the most extreme brightness jumps produce any output.
+
+:::note
+Sensitivity works inversely to how you might expect: ***lower*** values reveal ***more*** edges. Think of it as a minimum contrast requirement: a low requirement means nearly everything qualifies.
+:::
+
+---
+
+### Knob 2 — Beam Width
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Beam Width** selects one of three glow falloff curves that determine how the beam light spreads horizontally from each detected edge. At low values (0–33%), the beam uses a ***narrow*** exponential decay that drops to zero within a few pixels: producing sharp, fine lines. At mid-range (34–66%), a ***medium*** curve creates broader, softer glows. At high values (67–100%), the ***wide*** curve spreads light across many pixels, producing large luminous halos around each edge.
+
+---
+
+### Knob 3 — Persistence
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Persistence** controls the vertical phosphor decay rate. At low values, the beam traces vanish within a single frame: each scanline sees only the current frame's edges. As persistence increases, the previous frame's beam intensity is decayed less aggressively before being compared against the new glow: at 25% the decay rate is 50% per frame; at 50% it drops to 25%; at 75%, only 12.5%; and at high persistence, just 6.25% per frame. This creates the slow, additive phosphor afterglow characteristic of long-persistence CRT phosphors.
+
+:::tip
+At very high persistence, moving subjects leave ghostly trails that build up over time. Try slowly panning a camera across a static scene for a "light painting" effect.
+:::
+
+---
+
+### Knob 4 — Intensity
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Intensity** scales the overall brightness of the beam output after persistence processing. At 0%, the beam is black regardless of edge detection. At full intensity, the brightest edges produce fully saturated phosphor color. The scaling is multiplicative: it amplifies or attenuates the entire beam signal before colorization.
+
+---
+
+### Knob 5 — Hue Offset
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0d – 360.0d |
+| Default | 0.0d |
+
+**Hue Offset** rotates the phosphor color around the color wheel. The effect varies depending on the selected phosphor mode. In monochrome modes (Green, Amber, White, etc.), this shifts the base hue. In Rainbow mode, it rotates the starting point of the scanline-varying hue cycle. The range covers a full 360° rotation.
+
+---
+
+### Knob 6 — Focus
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Focus** adjusts the edge detection signal processing. This parameter modifies the sensitivity threshold scaling, sharpening or softening the boundary between detected and undetected edges. Lower values produce a crisper, more binary distinction. Higher values allow more gradual transitions to pass through.
+
+---
+
+### Switch 7 — Phosphor
+
+| Property | Value |
+|----------|-------|
+| Off | Green |
+| On | Rainbow |
+| Default | Green |
+
+**Phosphor** selects the color palette for the beam rendering. The toggle cycles through eight modes encoded as a 3-bit value:
+
+- **Green** (000): Classic P1 phosphor, as seen on ***Battlezone*** and early vector monitors. Deep green with reduced chroma.
+- **Blue-Green** (001): P31 phosphor, the color of ***Tempest*** and ***Star Castle***. Cool cyan-green.
+- **Amber** (010): P22 amber phosphor, warm and vintage.
+- **RGB** (011): Derives color from the input video's chroma. The beam brightness comes from edge detection, but the hue is inherited from the original image.
+- **Cyan** (100): The blue-white of Cinematronics vector displays.
+- **White** (101): Pure achromatic beam, like a monochrome oscilloscope.
+- **Red** (110): Bright red beam on a dark background.
+- **Rainbow** (111): Hue varies with scanline position, creating a rainbow-striped vector display.
+
+---
+
+### Switch 8 — Edge Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Binary |
+| On | Gradient |
+| Default | Binary |
+
+**Edge Mode** switches between two edge rendering styles. In **Binary** mode, edges are either fully on or fully off: any gradient above the sensitivity threshold produces a full-brightness beam trace. In **Gradient** mode, the beam brightness is proportional to the gradient magnitude, so subtle edges produce dim traces and strong edges produce bright ones. Gradient mode creates a more nuanced, photographic rendering where the beam varies in intensity across the image.
+
+---
+
+### Switch 9 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** flips the input luminance before edge detection. With inversion **Off**, the video is processed as-is. With inversion **On**, the Y channel is bitwise inverted before processing, which swaps which edges are detected: dark-to-light transitions become light-to-dark and vice versa. On most source material this produces a similar but subtly different edge map.
+
+---
+
+### Switch 10 — Over Video
+
+| Property | Value |
+|----------|-------|
+| Off | Replace |
+| On | Overlay |
+| Default | Replace |
+
+**Over Video** controls how the beam traces composite against the background. In **Replace** mode, the output is purely the vector beam rendering: the original video is discarded. In **Overlay** mode, the beam traces are additively composited over the original video, which is dimmed to 25% brightness. This lets the source content show through behind the glowing vector lines.
+
+:::tip
+Overlay mode works well for live performance where the audience needs to see both the subject and the vector interpretation. The dimmed background provides context while the bright beams draw the eye.
+:::
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Gauntlet processing. The sync delay pipeline still aligns timing. Use Bypass for instant A/B comparison.
+
+---
+
+:::note Toggle Group Notes
+
+When using the TOML's `steps_8` control mode, all three low bits of the toggle register are used together as a single 3-bit selector. The `control_mode = "steps_8"` is misleading in the TOML: the hardware presents this as a two-position toggle (Green/Rainbow) but the VHDL reads a 3-bit value. On hardware, Switch 7 selects between the first (Green, 000) and last (Rainbow, 111) phosphor modes; intermediate modes are accessible via MIDI or preset recall.
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) signal and the wet (Gauntlet-processed) signal. At 0%, only the original video is output. At 100%, only the vector beam rendering passes through. Intermediate values blend the two, which can create a subtle edge-enhancement effect at low mix percentages.
 
 ---
 
 ## Background
 
-### What Is Edge Detection?
+### Vector CRT displays
 
-**Edge detection** is the process of identifying pixels where the signal value changes abruptly. In analog video engineering, this was accomplished with differentiation circuits — high-pass filters that responded to rapid transitions and ignored flat regions. Gauntlet implements a discrete horizontal difference: for each pixel it computes the absolute difference between the current and previous pixel values. The Y (luminance) channel is weighted double because brightness edges are perceptually dominant. U and V channel differences are added on top, so color boundaries also trigger detection even when brightness is constant.
+Early video arcade games used ***vector displays***, sometimes called XY monitors, where the electron beam was steered to draw lines directly on the phosphor screen rather than scanning in horizontal raster lines. This produced sharp, bright lines with smooth geometry, but no filled areas or photographic images. Games like ***Asteroids*** (1979), ***Tempest*** (1981), and ***Star Wars*** (1983) used vector monitors for their visually distinctive wireframe graphics. The bright, persistent glow of phosphor traces against a dark background became an iconic visual style.
 
-### What Is a Sliding Window?
+### Edge detection and beam rendering
 
-A **sliding window** is a fixed-length view that moves through a data stream one sample at a time. Gauntlet maintains a 16-element shift register that tracks whether each of the last 16 pixels contained an edge. When rendering glow for the current pixel, it scans this window with a **priority encoder** to find the nearest detected edge. The closer the nearest edge, the brighter the glow. This creates the characteristic beam trace appearance — a bright center line with exponentially decaying wings to either side, like the phosphor trail of an electron beam.
+Gauntlet performs horizontal edge detection by computing the absolute difference between adjacent pixels: `|Y(x) - Y(x-1)| × 2 + |U(x) - U(x-1)| + |V(x) - V(x-1)|`. The Y (luminance) channel is weighted double relative to the chroma channels, reflecting the human eye's greater sensitivity to brightness changes. Pixels where this weighted gradient exceeds the sensitivity threshold are flagged as edges and entered into a 16-tap shift register, which tracks the positions of the nearest recent edges for the glow falloff computation.
 
-### What Is Phosphor Persistence?
+### Phosphor persistence
 
-In a cathode ray tube, the screen coating (the **phosphor**) continues to glow after the electron beam moves on. Different phosphor compounds have different decay rates and colors — P1 (green, medium persistence), P31 (blue-green, fast), P22 (amber, slow). Gauntlet simulates this by maintaining a 2048-pixel line buffer in distributed RAM. Each scanline, the buffer stores the peak glow value — the maximum of the new beam brightness and the decayed value from the previous scan. The Persistence control selects one of four decay rates, ranging from 50% per frame (fast fade, crisp traces) to 6.25% per frame (slow fade, long trails).
-
-### What Are Phosphor Color Modes?
-
-Real CRT monitors had fixed phosphor colors determined by the chemical coating. Gauntlet provides eight selectable color modes that map beam intensity to YUV color: **Green** (classic Battlezone / artillery simulation), **Blue-Green** (Tempest / P31), **Amber** (terminal / P22), **RGB** (derives color from the original input chroma), **Cyan** (Cinematronics vector games), **White** (monochrome oscilloscope), **Red** (radar display), and **Rainbow** (scanline-dependent hue rotation for a psychedelic multicolor beam). Each mode creates a distinct visual identity and emotional tone.
-
-### What Is Overlay Compositing?
-
-When displaying vector beam traces, you have two choices: **replace** the input entirely (black screen with bright lines) or **overlay** the beams on top of a dimmed version of the original. Gauntlet's overlay mode uses additive compositing — the beam intensity is added to the input (dimmed to 25% brightness). This lets the viewer see the original image content underneath the traced edges, creating a hybrid between the source footage and its edge-detected skeleton.
+Real vector CRT monitors use long-persistence phosphors: chemical coatings that continue to glow for hundreds of milliseconds after the electron beam has moved on. This persistence is what makes vector graphics visible: the beam draws each frame in sequence, and the phosphor afterglow bridges the gap until the beam returns. Gauntlet simulates this with a BRAM-based ***IIR line buffer*** that stores the previous frame's beam intensity for each horizontal pixel position. Each new frame, the stored value is decayed by a configurable amount and compared against the new beam glow: the brighter of the two survives. This "max of new and decayed" approach mimics the way phosphor brightness builds up when the beam revisits the same position.
 
 
 ---
 
 ## Signal Flow
 
-Y Channel → U/V Channels → Mix → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 1. Input Register           (capture + optional bitwise invert)
-│   ├─ 2. Gradient                  (|Y(x)-Y(x-1)|×2 + |U| + |V|, saturated)
-│   ├─ 3. Edge Detect              (threshold / gradient mode + 16-tap SR)
-│   ├─ 4. Glow Render              (nearest-edge priority encoder + LUT)
-│   ├─ 5. Persistence              (IIR line buffer: max(glow, decayed prev))
-│   ├─ 6. Colorize                 (intensity × phosphor YUV table)
-│   └─ 7. Overlay Composite        (additive over dimmed input, or replace)
-│
-├── U/V Channels ───────────────────────────────────────────────
-│   │
-│   ├─ 1. Input Register           (capture, no invert)
-│   ├─ 2. Gradient Feed            (|U|, |V| contribute to edge gradient)
-│   ├─ 6. Colorize                 (phosphor table sets U/V; RGB mode
-│   │                               uses original input chroma instead)
-│   └─ 7. Overlay Composite        (beam chroma output)
-│
-├── Mix ────────────────────────────────────────────────────────
-│   └─ 8–11. Interpolator ×3       (wet/dry crossfade, 4 clocks)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ 11-clock delay pipeline     (hsync, vsync, field aligned)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The gradient calculation weights luminance double relative to chroma (`|ΔY|×2 + |ΔU| + |ΔV|`), which means the edge detector is primarily driven by brightness transitions. Color-only edges (same brightness, different hue) produce a weaker gradient signal and need lower sensitivity thresholds to trigger.
 
-The gradient calculation in Stage 2 is a weighted three-channel sum: the Y-channel difference is counted twice, then the U and V differences are added, giving a composite edge strength that fires on both brightness and color transitions. This feeds a single edge detection path — Gauntlet does not detect edges independently per channel.
+The 16-tap edge shift register is the core of the beam glow system. As each new pixel is processed, the shift register records whether an edge was detected at that position. The nearest-edge priority encoder scans the register to find the closest edge, and the glow LUT translates that distance into a brightness value. This creates a horizontal "halo" of light spreading outward from each edge, with brightness falling off exponentially: exactly how a defocused electron beam spreads on a phosphor screen.
 
-Two key interactions define the program's character: (1) the 16-tap sliding window in Stage 3–4 creates a *spatial* glow halo around every detected edge, whose width is controlled by the Beam Width parameter selecting between narrow, medium, and wide exponential decay profiles; (2) the persistence IIR in Stage 5 creates *temporal* persistence, smearing beam traces vertically as successive scanlines write into and decay from the line buffer. The combination produces the distinctive CRT vector monitor look — bright traced edges with glowing tails.
+:::warning
+The persistence line buffer stores values per horizontal pixel position, not per 2D screen position. This means vertical movement creates trails, but horizontal movement does not persist: the persistence operates vertically across successive scanlines at the same X position.
+:::
 
-**Note on unused parameters**: The current VHDL implementation declares `s_hue_offset` (Knob 5) and `s_focus` (Knob 6) as register-mapped signals, but neither is referenced in the processing pipeline. Hue Offset and Focus are reserved for future firmware revisions. Adjusting these knobs currently has no visible effect.
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={gauntlet_control_panel} alt="Videomancer front panel with Gauntlet loaded"/>
-*Videomancer's front panel with Gauntlet active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Sensitivity
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-At low values, even subtle brightness changes trigger edges — the display fills with traces from noise and gentle gradients. At high values, only sharp, high-contrast boundaries register, producing sparse, clean line graphics. The threshold acts as a gate: in Binary mode, any gradient above it fires at full brightness; in Gradient mode, it sets the floor below which edges are suppressed while passing through the magnitude of stronger edges proportionally. Internally, controls the edge detection threshold.
-
----
-
-#### Knob 2 — Beam Width
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Selects the glow falloff curve applied to detected edges. The VHDL provides three hardcoded exponential decay lookup tables — narrow, medium, and wide — selected by threshold divisions of the register value. Narrow glow produces tight, wire-thin beam traces with rapid falloff (full brightness only at the edge pixel itself). Wide glow spreads the beam energy across many pixels, creating broad, soft halos around each edge. The transition between the three LUTs is discrete, not continuous.
-
----
-
-#### Knob 3 — Persistence
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-Controls the vertical phosphor decay rate. The VHDL implements four discrete decay rates selected by register value ranges: 50% decay per frame (fast — crisp traces with no visible trail), 25%, 12.5%, and 6.25% (slow — edges leave long-lasting vertical smears as subsequent scanlines accumulate decayed glow). High persistence values make the display look like a long-persistence CRT where moving edges leave glowing afterimages.
-
----
-
-#### Knob 4 — Intensity
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
-
-Scales the overall beam brightness after the persistence stage. The VHDL multiplies the persisted glow value by the Intensity register, saturating at 1023. Low intensity produces dim, barely visible traces; high intensity produces searing bright beams that saturate the phosphor color table. Intensity interacts with persistence — high persistence accumulates glow over many frames, and high intensity amplifies that accumulated brightness.
-
----
-
-#### Knob 5 — Hue Offset
-| Property | Value |
-|----------|-------|
-| Range | 0.0d – 360.0d |
-| Default | 0.0d |
-| Suffix | d |
-
-Labeled "Hue Offset" in the TOML metadata, this parameter is mapped to `registers_in(4)` but is not currently referenced in the processing pipeline. The signal `s_hue_offset` is declared and assigned but unused in the colorization stage. This control is reserved for a future firmware revision that may add per-pixel hue rotation to the phosphor color output. Adjusting this knob has no visible effect in the current implementation.
-
----
-
-#### Knob 6 — Focus
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Labeled "Focus" in the TOML metadata, this parameter is mapped to `registers_in(5)` but is not currently referenced in the edge detection pipeline. The VHDL comment suggests it was intended to scale the sensitivity threshold, but the implementation uses Sensitivity directly (`v_threshold := s_sensitivity`). This control is reserved for a future firmware revision. Adjusting this knob has no visible effect in the current implementation.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Phosphor** | Green | Rainbow |
-| **8 — Edge Mode** | Binary | Gradient |
-| **9 — Invert** | Off | On |
-| **10 — Over Video** | Replace | Overlay |
-| **11 — Bypass** | Off | On |
-
-Switches 7–11 are packed into a single register (`registers_in(6)`) using the standard Videomancer toggle ABI, but with an important overlap. The Phosphor selector (Switch 7) uses bits 2:0 as a 3-bit value selecting one of eight color modes. Edge Mode (Switch 8) reads bit 1, and Invert (Switch 9) reads bit 2 — these *overlap* with the phosphor selection bits. Changing Edge Mode or Invert simultaneously modifies the effective phosphor color. Over Video (Switch 10, bit 3) and Bypass (Switch 11, bit 4) are independent and do not overlap.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Controls the wet/dry mix between the processed beam output and the delayed original input via three `interpolator_u` instances (one per YUV channel). At maximum, the output is fully processed beam traces. As the fader decreases, the original input is progressively blended in, eventually reaching the unprocessed source. This is distinct from Bypass (which is an instant switch) — the Mix fader creates a continuous crossfade between the two signals.
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Gauntlet processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises progress from basic edge detection to full CRT vector display emulation. Each builds on the previous, adding more processing stages.
-
+These exercises progress from basic edge detection through to a full vector CRT simulation with persistence and color.
 ### Exercise 1: Basic Edge Detection
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: gauntlet_source1_parrot, after: gauntlet_ex1_s1 },
-    { label: "Skull", before: gauntlet_source2_skull, after: gauntlet_ex1_s2 },
-    { label: "Collage", before: gauntlet_source3_collage, after: gauntlet_ex1_s3 },
-    { label: "Pattern", before: gauntlet_source4_pattern, after: gauntlet_ex1_s4 },
-    { label: "Woman", before: gauntlet_source5_woman, after: gauntlet_ex1_s5 },
-    { label: "Paint", before: gauntlet_source6_paint, after: gauntlet_ex1_s6 },
-  ]}
-/>
+![Basic Edge Detection result](/img/instruments/videomancer/gauntlet/gauntlet_ex1_s1.png)
 *Basic Edge Detection — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with high-contrast edges — architectural details, text on screen, or a geometric test pattern.
+#### Exercise Illustration
 
-**What You'll Create**: Learn how the edge detector and glow renderer interact to produce beam traces.
+***A description of the exercise illustration.***
 
-1. **See the edges**: With default settings, observe the green beam traces outlining high-contrast boundaries in the source.
-2. **Adjust threshold**: Turn Sensitivity counter-clockwise to increase the threshold. Watch as fainter edges disappear, leaving only the strongest boundaries.
-3. **Lower threshold**: Turn Sensitivity clockwise to reduce the threshold. The display fills with traces from subtle gradients and noise.
-4. **Change glow width**: Sweep Beam Width from minimum to maximum. Watch the beam traces change from tight wireframe lines to broad, soft halos.
-5. **Try Gradient mode**: Toggle Edge Mode to Gradient. The beam brightness now tracks edge sharpness — strong edges glow brightly, soft edges are dim.
+#### Learning Outcomes
 
-**Key concepts**: Edge detection as horizontal gradient, threshold gating, binary vs gradient edge modes, glow LUT selection
+A clean vector-line rendering of a live camera feed, showing bright white edges on a black background.
 
----
+#### Key Concepts
 
-### Exercise 2: Phosphor Persistence and Color
+- Horizontal gradient detection reveals edges as bright lines
+- Sensitivity controls which edges are visible
+- Binary vs. Gradient mode changes the rendering character
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: gauntlet_source1_parrot, after: gauntlet_ex2_s1 },
-    { label: "Skull", before: gauntlet_source2_skull, after: gauntlet_ex2_s2 },
-    { label: "Collage", before: gauntlet_source3_collage, after: gauntlet_ex2_s3 },
-    { label: "Pattern", before: gauntlet_source4_pattern, after: gauntlet_ex2_s4 },
-    { label: "Woman", before: gauntlet_source5_woman, after: gauntlet_ex2_s5 },
-    { label: "Paint", before: gauntlet_source6_paint, after: gauntlet_ex2_s6 },
-  ]}
-/>
-*Phosphor Persistence and Color — simulated result across source images.*
-**Source**: Footage with moderate motion — a slowly panning camera, waving hand, or scrolling graphics.
+#### Video Source
 
-**What You'll Create**: Explore how vertical persistence and phosphor color create the CRT display aesthetic.
+A scene with strong geometric features: architectural elements, text, or household objects with clear edges.
 
-1. **Set up traces**: Establish visible edge traces with Sensitivity ~50%, Beam Width ~50%, Intensity ~75%.
-2. **Increase persistence**: Turn Persistence clockwise past the midpoint. Watch edges leave glowing vertical trails as successive scanlines accumulate decayed glow.
-3. **Maximum persistence**: Turn Persistence fully clockwise. Edges smear into long, ghostly streaks that fade slowly — the classic long-persistence CRT look.
-4. **Cycle phosphor colors**: Step through the eight phosphor modes. Observe how Green, Amber, and Cyan each evoke a different era and type of CRT monitor.
-5. **Try RGB mode**: Select the RGB phosphor. The beams now inherit color from the original video — edge traces are colored according to the source material rather than a fixed palette.
-6. **Enable overlay**: Toggle Over Video to Overlay. The source image appears dimly beneath the beams, providing context for the traced edges.
+#### Steps
 
-**Key concepts**: IIR persistence via line buffer, phosphor decay rates, phosphor color palettes, overlay compositing
+1. Set **Phosphor** (Switch 7) to Green and **Edge Mode** (Switch 8) to Binary.
+2. Set **Sensitivity** (Knob 1) to ~40%. Strong edges appear as bright green lines.
+3. Set **Intensity** (Knob 4) to ~80% and **Persistence** (Knob 3) to 0%.
+4. Switch **Edge Mode** to Gradient. Notice how the beam brightness now varies with edge strength (subtle gradients produce dim traces.)
+5. Lower **Sensitivity** to ~20% to reveal more detail.
 
----
+#### Settings
 
-### Exercise 3: Full Vector Display
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: gauntlet_source1_parrot, after: gauntlet_ex3_s1 },
-    { label: "Skull", before: gauntlet_source2_skull, after: gauntlet_ex3_s2 },
-    { label: "Collage", before: gauntlet_source3_collage, after: gauntlet_ex3_s3 },
-    { label: "Pattern", before: gauntlet_source4_pattern, after: gauntlet_ex3_s4 },
-    { label: "Woman", before: gauntlet_source5_woman, after: gauntlet_ex3_s5 },
-    { label: "Paint", before: gauntlet_source6_paint, after: gauntlet_ex3_s6 },
-  ]}
-/>
-*Full Vector Display — simulated result across source images.*
-**Source**: Any high-contrast footage — music videos, motion graphics, or documentary footage with strong visual compositions.
-
-**What You'll Create**: Combine all processing stages to create a complete CRT vector display emulation.
-
-1. **Low threshold, wide glow**: Set Sensitivity ~30%, Beam Width to maximum. This produces broad, luminous beam traces that capture most edges.
-2. **High persistence**: Set Persistence above 75%. Moving edges leave long phosphor trails.
-3. **High intensity**: Increase Intensity to ~90%. The beams burn bright, saturating the phosphor color.
-4. **Invert the source**: Toggle Invert to On. The underlying tonal relationships change, which affects how overlay compositing looks but not the edges themselves.
-5. **Rainbow mode**: Select Rainbow phosphor. The hue shifts per scanline, creating multicolor banded beam traces — a psychedelic CRT effect.
-6. **Mix for ghosting**: Lower the Mix fader to ~70%. The original input bleeds through behind the beam display, creating a hybrid double-exposure effect.
-7. **Animate**: Move the source material and watch the persistence trails evolve — the display comes alive as traces form, decay, and reform.
-
-**Key concepts**: Full processing chain interaction, persistence trails with moving sources, rainbow scanline colorization, wet/dry mix as creative tool
+| Control | Value |
+|---------|-------|
+| Sensitivity | ~40% (step 2) / ~20% (step 5) |
+| Beam Width | ~50% |
+| Persistence | ~0% |
+| Intensity | ~80% |
+| Hue Offset | 0° |
+| Focus | ~50% |
+| Phosphor | Green |
+| Edge Mode | Binary (step 2) / Gradient (step 4) |
+| Invert | Off |
+| Over Video | Replace |
+| Bypass | Off |
+| Mix | ~100% |
 
 ---
 
+### Exercise 2: Phosphor Persistence CRT
 
-## Tips
+![Phosphor Persistence CRT result](/img/instruments/videomancer/gauntlet/gauntlet_ex2_s1.png)
+*Phosphor Persistence CRT — simulated result across source images.*
+#### Exercise Illustration
 
-- **Toggle bit overlap is by design**: Edge Mode and Invert share register bits with the Phosphor selector. Changing either toggle also changes the effective phosphor color. Treat all three as a combined control — the program has 32 effective color/mode combinations from those three switches.
-- **Two unused knobs**: Hue Offset (Knob 5) and Focus (Knob 6) are declared in the VHDL but not referenced in the processing pipeline. They are placeholders for future firmware features.
-- **Feedback loops**: Routing Gauntlet's output back to its input creates recursive edge detection — the program detects edges in its own beam traces, producing fractal-like line structures that evolve with each pass.
-- **Bypass for A/B comparison**: Switch 11 instantly shows the unprocessed signal. Use it to compare the original footage against the vector display rendering.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A glowing vector display with phosphor trails, where moving objects leave persistent afterimages (as if drawn on a long-persistence oscilloscope.)
+
+#### Key Concepts
+
+- Persistence creates temporal afterglow across frames
+- Decay rate determines how long traces linger
+- The IIR line buffer accumulates brightness over time
+
+#### Video Source
+
+A slowly moving subject: a hand, a pendulum, or a face turning slowly: for visible phosphor trails.
+
+#### Steps
+
+1. From the Exercise 1 setup, increase **Persistence** (Knob 3) to ~70%.
+2. Move your subject slowly. Bright trails follow the edges, fading gradually.
+3. Increase **Beam Width** (Knob 2) to ~80% for wider, softer glow halos.
+4. Set **Intensity** (Knob 4) to ~90%. The beam traces become brilliant against the persistence tail.
+5. Try **Over Video** (Switch 10) on Overlay to see the ghostly original image behind the vector traces.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Sensitivity | ~30% |
+| Beam Width | ~80% |
+| Persistence | ~70% |
+| Intensity | ~90% |
+| Hue Offset | 0° |
+| Focus | ~50% |
+| Phosphor | Green |
+| Edge Mode | Gradient |
+| Invert | Off |
+| Over Video | Replace (step 1) / Overlay (step 5) |
+| Bypass | Off |
+| Mix | ~100% |
 
 ---
 
+### Exercise 3: Rainbow Arcade Machine
+
+![Rainbow Arcade Machine result](/img/instruments/videomancer/gauntlet/gauntlet_ex3_s1.png)
+*Rainbow Arcade Machine — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A polychromatic vector CRT display where beam traces shift through rainbow colors, composited over the dimmed original video (a psychedelic arcade monitor from an alternate timeline.)
+
+#### Key Concepts
+
+- Rainbow mode varies hue with scanline position
+- Overlay compositing layers beam traces over dimmed video
+- Combining all processing stages creates a complete CRT simulation
+
+#### Video Source
+
+High-contrast footage with mixed motion and static elements: a performer against a patterned background, or geometric video art.
+
+#### Steps
+
+1. Set **Phosphor** (Switch 7) to Rainbow. The beam traces now cycle through the color wheel.
+2. Enable **Over Video** (Switch 10) for Overlay. The original video shows through at 25% behind the vector beams.
+3. Set **Persistence** to ~80%, **Beam Width** to ~60%, **Intensity** to ~85%.
+4. Set **Edge Mode** to Gradient for variable-brightness beams.
+5. Turn **Hue Offset** (Knob 5) to rotate the starting hue of the rainbow pattern.
+6. Enable **Invert** (Switch 9). The edge map flips, revealing a different set of beam traces from the same source.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Sensitivity | ~35% |
+| Beam Width | ~60% |
+| Persistence | ~80% |
+| Intensity | ~85% |
+| Hue Offset | ~120° |
+| Focus | ~50% |
+| Phosphor | Rainbow |
+| Edge Mode | Gradient |
+| Invert | On |
+| Over Video | Overlay |
+| Bypass | Off |
+| Mix | ~100% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **CRT** | Cathode Ray Tube; a vacuum tube display that produces images by scanning an electron beam across a phosphor-coated screen. |
-| **Distributed RAM** | Small RAM blocks synthesized from the FPGA's lookup tables, used here for the 2048×10-bit persistence line buffer. |
-| **Edge Detection** | The process of identifying pixels where signal values change abruptly, implemented here as a horizontal absolute difference weighted across Y, U, and V channels. |
-| **Glow LUT** | A lookup table mapping distance-from-edge to brightness using exponential decay curves. Three LUTs provide narrow, medium, and wide beam profiles. |
-| **IIR** | Infinite Impulse Response; a filter topology where the output depends on both the current input and previous outputs. Used in the persistence stage as `max(new, decayed_old)`. |
-| **Phosphor** | The luminescent coating on a CRT screen that glows when struck by the electron beam. Different phosphor types (P1, P22, P31) have different colors and decay rates. |
-| **Priority Encoder** | A circuit that scans a set of bits and returns the position of the first (nearest) active bit. Used here to find the closest edge in the 16-tap shift register. |
-| **Shift Register** | A chain of flip-flops where data shifts one position per clock cycle. The 16-tap edge shift register provides spatial memory of recent edge positions. |
+- **BRAM**: Block RAM; dedicated memory blocks within the iCE40 FPGA, used here for the persistence line buffer.
+
+- **Edge Detection**: The process of identifying pixels where brightness or color changes abruptly, indicating a boundary between regions.
+
+- **Glow Falloff**: The exponential decay of beam brightness with distance from a detected edge, simulating the spread of light from a defocused electron beam.
+
+- **IIR**: Infinite Impulse Response; a feedback filter where the output depends on both current input and previous output, used here for phosphor persistence.
+
+- **Persistence**: The tendency of CRT phosphors to continue glowing after the electron beam has moved on, creating a temporal afterimage.
+
+- **Phosphor**: A chemical coating on the inside of a CRT screen that glows when struck by an electron beam. Different phosphor compounds produce different colors and decay rates.
+
+- **Priority Encoder**: A combinational logic circuit that finds the position of the first active bit in a binary vector (used here to find the nearest detected edge.)
+
+- **Raster Display**: A CRT that scans the electron beam in horizontal lines from top to bottom, filling the screen with a grid of pixels. Contrasted with vector displays.
+
+- **Shift Register**: A chain of flip-flops that passes data from one to the next on each clock cycle, creating a sliding window of historical values.
+
+- **Vector Display**: A CRT display where the electron beam is steered to draw lines directly, rather than scanning in raster lines.
 
 ---

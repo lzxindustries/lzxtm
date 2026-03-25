@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 43
 slug: /instruments/videomancer/charset
@@ -7,371 +7,430 @@ image: /img/instruments/videomancer/charset/charset_hero_s1.png
 description: "Every screen you have ever read — every terminal, every text editor, every status display — renders characters on a fixed grid."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import charset_control_panel from '/img/instruments/videomancer/charset/charset_control_panel.png';
-import charset_source1_runner from '/img/instruments/videomancer/charset/charset_source1_runner.png';
-import charset_source2_boat from '/img/instruments/videomancer/charset/charset_source2_boat.png';
-import charset_source3_clouds from '/img/instruments/videomancer/charset/charset_source3_clouds.png';
-import charset_source4_pattern from '/img/instruments/videomancer/charset/charset_source4_pattern.png';
-import charset_source5_girl from '/img/instruments/videomancer/charset/charset_source5_girl.png';
-import charset_source6_knit from '/img/instruments/videomancer/charset/charset_source6_knit.png';
-import charset_hero_s1 from '/img/instruments/videomancer/charset/charset_hero_s1.png';
-import charset_hero_s2 from '/img/instruments/videomancer/charset/charset_hero_s2.png';
-import charset_hero_s3 from '/img/instruments/videomancer/charset/charset_hero_s3.png';
-import charset_hero_s4 from '/img/instruments/videomancer/charset/charset_hero_s4.png';
-import charset_hero_s5 from '/img/instruments/videomancer/charset/charset_hero_s5.png';
-import charset_hero_s6 from '/img/instruments/videomancer/charset/charset_hero_s6.png';
-import charset_ex1_s1 from '/img/instruments/videomancer/charset/charset_ex1_s1.png';
-import charset_ex1_s2 from '/img/instruments/videomancer/charset/charset_ex1_s2.png';
-import charset_ex1_s3 from '/img/instruments/videomancer/charset/charset_ex1_s3.png';
-import charset_ex1_s4 from '/img/instruments/videomancer/charset/charset_ex1_s4.png';
-import charset_ex1_s5 from '/img/instruments/videomancer/charset/charset_ex1_s5.png';
-import charset_ex1_s6 from '/img/instruments/videomancer/charset/charset_ex1_s6.png';
-import charset_ex2_s1 from '/img/instruments/videomancer/charset/charset_ex2_s1.png';
-import charset_ex2_s2 from '/img/instruments/videomancer/charset/charset_ex2_s2.png';
-import charset_ex2_s3 from '/img/instruments/videomancer/charset/charset_ex2_s3.png';
-import charset_ex2_s4 from '/img/instruments/videomancer/charset/charset_ex2_s4.png';
-import charset_ex2_s5 from '/img/instruments/videomancer/charset/charset_ex2_s5.png';
-import charset_ex2_s6 from '/img/instruments/videomancer/charset/charset_ex2_s6.png';
-import charset_ex3_s1 from '/img/instruments/videomancer/charset/charset_ex3_s1.png';
-import charset_ex3_s2 from '/img/instruments/videomancer/charset/charset_ex3_s2.png';
-import charset_ex3_s3 from '/img/instruments/videomancer/charset/charset_ex3_s3.png';
-import charset_ex3_s4 from '/img/instruments/videomancer/charset/charset_ex3_s4.png';
-import charset_ex3_s5 from '/img/instruments/videomancer/charset/charset_ex3_s5.png';
-import charset_ex3_s6 from '/img/instruments/videomancer/charset/charset_ex3_s6.png';
-
-# Charset
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: charset_source1_runner, after: charset_hero_s1 },
-    { label: "Boat", before: charset_source2_boat, after: charset_hero_s2 },
-    { label: "Clouds", before: charset_source3_clouds, after: charset_hero_s3 },
-    { label: "Pattern", before: charset_source4_pattern, after: charset_hero_s4 },
-    { label: "Girl", before: charset_source5_girl, after: charset_hero_s5 },
-    { label: "Knit", before: charset_source6_knit, after: charset_hero_s6 },
-  ]}
-/>
-*Charset rendering video luminance as density-mapped glyph patterns on an 8×8 cell grid, transforming continuous imagery into typographic texture.*
+![Charset hero image](/img/instruments/videomancer/charset/charset_hero_s1.png)
+*Input video rendered as density-mapped glyph patterns on an eight-by-eight cell grid, evoking vintage terminal displays and dot-matrix character art.*
 
 ---
 
 ## Overview
 
-Every screen you have ever read — every terminal, every text editor, every status display — renders characters on a fixed grid. Each cell in the grid maps a code point to a bitmap, painting a small cluster of pixels in a pattern that your brain reads as a letter, a digit, a symbol. Charset applies this same principle to live video: it divides the frame into 8×8 pixel cells, samples the brightness of the input at each cell boundary, and replaces the cell contents with a density pattern chosen to approximate that brightness.
+Charset transforms live video into a mosaic of geometric ***glyph*** patterns, as if the image were being rendered on a vintage character display. The screen is divided into a grid of 8×8 pixel cells. Within each cell, the input luminance is sampled and mapped to one of eight density levels, each rendered as a distinct geometric pattern: from a single lit corner pixel for the darkest tones to a fully filled block for the brightest. The result is a halftone-like rendering where image brightness is expressed through the density of lit pixels, not through continuous tonal gradation.
 
-The program does not contain an actual character ROM or font table. Instead, it uses a set of eight procedurally generated fill patterns — from empty to solid — based on combinatorial logic of the local pixel coordinates within each cell. The patterns include checkerboards at varying scales and boolean combinations (AND, OR, XOR, NAND) of coordinate bits. From a distance, the result reads as a mosaic of typographic density, evoking the look of ASCII art, dot-matrix printouts, or early character-generator video.
+At its gentlest, Charset adds a subtle structured texture to the image, a pixelated film grain. At full strength, it reduces video to stark geometric abstractions that recall the era of character ROMs and phosphor terminals. Color can pass through from the source or be stripped to monochrome. Grid lines at cell boundaries can be drawn to emphasize the tiled structure. A wet/dry mix fader allows any blend between the raw input and the processed output.
 
-At conservative settings, Charset is a stylized mosaic effect — a grid of tiles with brightness-appropriate fill. With the controls pushed further, it becomes a binary texture engine: grid lines delineate the cells, inversion flips the density map, mono strips all color, and the mix fader lets the original video bleed through the pattern structure.
+:::tip
+Charset is at its most expressive when the source material has strong ***tonal contrast***: bright highlights and deep shadows produce a wide range of density patterns across the grid, making the image content readable through the glyph layer.
+:::
+
+### What's In a Name?
+
+A ***charset***: short for ***character set***: is the complete library of glyphs stored in a computer's character ROM. In vintage systems like the Commodore 64, Apple II, and VT100 terminal, every letter, number, and symbol was defined as an 8×8 pixel bitmap in a read-only memory chip. The program borrows that grid geometry and the idea of rendering arbitrary content through a fixed set of tile patterns. Instead of letters, Charset's patterns are abstract density fills: but the spirit is the same: the world expressed through an 8×8 window.
 
 ---
 
 ## Quick Start
 
-1. **Start with Mono + Grid Lines**: This combination immediately reveals the character grid structure and makes density patterns easy to read without color distraction. It is the fastest way to understand the effect.
-2. **Brightness controls the ink**: Think of Brightness as the ink density on a dot-matrix printer. Higher values produce bolder, more visible characters; lower values create a faded printout look.
-3. **Cell Size is your resolution control**: Smaller cells preserve more of the source image's spatial detail but reduce the visibility of individual patterns. Larger cells abstract the image further into coarse typography.
+1. Feed a video source with recognizable features: a face, a hand, or geometric shapes work well. You'll see the image immediately transformed into a grid of small geometric patterns. Brighter areas appear as dense fills; darker areas are sparse or empty.
+2. Turn **Brightness** (Knob 3) clockwise and counterclockwise. This controls how bright the lit pixels in each glyph are. At low values, the patterns are dim; at high values, they glow.
+3. Flip the **Invert** toggle (Switch 7) to **On**. The density mapping reverses: bright regions become sparse and dark regions become dense, like a photographic negative rendered in tile patterns.
+4. Flip **Grid Lines** (Switch 9) to **On**. Thin bright lines appear at every cell boundary, emphasizing the tiled structure. The image now resembles a terminal or LED matrix display.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Charset loaded](/img/instruments/videomancer/charset/charset_control_panel.png)
+*Videomancer's front panel with Charset active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Cell Size
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 8 |
+| Default | 3 |
+
+**Cell Size** selects the pixel dimensions of each character cell. At the default value, cells are 8×8 pixels: the classic character ROM geometry. This parameter is reserved for future expansion to additional cell sizes.
+
+:::note
+In the current implementation, cells are fixed at 8×8 pixels regardless of this knob's position.
+:::
+
+---
+
+### Knob 2 — Threshold
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Threshold** sets a luminance cutoff for the density mapping. This parameter is reserved for future implementation of a brightness gate that would force cells below the threshold to render as empty.
+
+:::note
+In the current implementation, this knob has no visible effect. Density mapping uses the full luminance range.
+:::
+
+---
+
+### Knob 3 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 63% |
+
+**Brightness** controls the luminance of lit pixels within each glyph pattern. When a pattern pixel is "on," this parameter determines how bright it appears. At 0%, fully counterclockwise, the lit pixels are dim: nearly as dark as the unlit background. At 100%, fully clockwise, the lit pixels are at maximum brightness. The default is moderately bright, producing good contrast against the near-black background of unlit pixels.
+
+The unlit pixels always render at a fixed near-black level (approximately 6% of full scale), so **Brightness** effectively controls the contrast ratio of the glyph pattern. Higher values create hard, punchy graphics reminiscent of a monochrome CRT. Lower values create a ghostly, barely-visible texture.
+
+---
+
+### Knob 4 — Contrast
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Contrast** is intended to apply gain to the glyph output, adjusting the tonal range of the rendered patterns. This parameter is reserved for future implementation.
+
+:::note
+In the current implementation, this knob has no visible effect.
+:::
+
+---
+
+### Knob 5 — Font Weight
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Font Weight** is intended to control the thickness or fill density of the glyph patterns, simulating the difference between light and bold typefaces. This parameter is reserved for future implementation.
+
+:::note
+In the current implementation, this knob has no visible effect. See the **Bold** toggle (Switch 10) for a related feature.
+:::
+
+---
+
+### Knob 6 — Spacing
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Spacing** is intended to control the gap between adjacent character cells, inserting blank columns or rows between glyphs. This parameter is reserved for future implementation.
+
+:::note
+In the current implementation, this knob has no visible effect. Use the **Grid Lines** toggle (Switch 9) to visually separate cells.
+:::
+
+---
+
+### Switch 7 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** reverses the density mapping. With Invert set to **Off**, bright input regions produce dense fill patterns and dark regions produce sparse patterns: the natural mapping. With Invert set to **On**, the relationship flips: dark regions fill densely and bright regions become sparse. This is not a simple luminance inversion: it is an inversion of the *pattern selection logic*, so the geometric character of each density level is preserved but assigned to the opposite end of the tonal scale.
+
+:::tip
+**Invert** interacts with **Grid Lines**: when both are enabled, the grid lines remain bright regardless of inversion, creating a lattice that frames the inverted density fills.
+:::
+
+---
+
+### Switch 8 — Mono
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Mono** strips all color information from the output. With Mono set to **Off**, the chroma (U and V) channels pass through from the source, so the glyph patterns are rendered in the original colors of the input video. With Mono set to **On**, chroma is forced to neutral (midpoint), producing a purely monochrome output. The glyph patterns appear as shades of gray: or, more precisely, as a single brightness level (set by **Brightness**) against a near-black background, with no color tinting.
+
+---
+
+### Switch 9 — Grid Lines
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Grid Lines** draws thin bright lines at every cell boundary, outlining the 8×8 grid across the entire frame. The grid lines appear at the first pixel of each row and column within a cell (`local_x = 0` or `local_y = 0`), creating a one-pixel-wide lattice. When enabled, the grid overlays on top of the density patterns: a cell that would otherwise be empty still shows its boundary lines. This emphasizes the tiled structure and gives the output a distinctly digital, terminal-like appearance.
+
+---
+
+### Switch 10 — Bold
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bold** is intended to thicken the glyph patterns within each cell, adding adjacent pixels to create heavier strokes. This parameter is reserved for future implementation.
+
+:::note
+In the current implementation, this toggle has no visible effect.
+:::
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all Charset processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the character-mapped result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** controls the wet/dry blend between the original input video and the processed glyph output. At 0%, fully down, the output is the unprocessed input: identical to engaging **Bypass**. At 100%, fully up, the output is entirely the character-mapped result. Intermediate positions create a translucent overlay where the glyph patterns are superimposed on the source video. The mix is applied independently to all three channels (Y, U, V) via matched ***interpolator*** stages.
+
+:::tip
+At around 50% mix, the glyph grid becomes a visible texture layered over the original image: useful for adding a subtle digital patina without fully replacing the source.
+:::
 
 ---
 
 ## Background
 
-### ASCII Art and Character Density
+### Character ROMs and tile graphics
 
-The tradition of representing images with text characters dates to the earliest computer terminals. Operators discovered that certain characters — `@`, `#`, `%`, `.`, ` ` — have different visual densities when viewed on a monospaced grid. By mapping image brightness to characters of corresponding density, a recognizable image could be "printed" using nothing but the ASCII character set. Charset automates this principle in hardware: each cell's brightness is classified into one of eight density levels, and a corresponding fill pattern is rendered in place of the original pixels.
+The earliest personal computers and video terminals rendered text and graphics using ***character ROMs***: read-only memory chips containing a library of small pixel bitmaps, typically 8×8 pixels each. Every character on the screen was a lookup into this ROM: the system stored only a grid of character codes, and the display hardware fetched the corresponding bitmap for each cell on every scan line. This architecture was astonishingly efficient: a full screen of 40×25 characters required only 1,000 bytes of RAM, while the pixel data was generated on the fly from a shared ROM.
 
-### The Character Cell Grid
+The aesthetic of character-based graphics has a distinctive quality: hard pixel edges, a rigid grid, and a limited vocabulary of shapes. These constraints forced creative solutions. Artists working within character ROM systems developed techniques for composing complex images from simple tile building blocks: a practice that became known as ***PETSCII art*** on Commodore systems and ***ASCII art*** on terminals.
 
-Early computer displays were organized as grids of fixed-size character cells — typically 8×8 or 8×16 pixels. The display hardware read a character code from video memory, looked up the corresponding bitmap in a character generator ROM, and painted the bitmap into the cell. This cell-grid structure is the foundation of Charset's spatial organization. The program divides every video frame into 8×8 pixel cells, creating a grid of 240×135 cells in a 1920×1080 raster (or proportionally fewer at lower resolutions). The grid is tracked by a pair of 3-bit counters that cycle from 0 to 7 in each axis, wrapping at cell boundaries.
+### Density mapping and halftoning
 
-### Dithering via Density Patterns
+Charset uses a form of ***density mapping*** to represent continuous-tone images through the binary language of on/off pixels. The principle is the same one underlying newspaper halftones and laser printer dithering: the human visual system perceives a cluster of small dots as a shade of gray, with denser clusters reading as darker tones and sparser clusters reading as lighter tones.
 
-Charset's eight fill patterns form a **density ramp** — a sequence of spatial patterns with progressively higher fill ratios. This is a form of **spatial dithering**: representing a continuous range of brightness values using only binary (on/off) pixel states arranged in specific geometric patterns. The technique is identical in principle to the halftone screens used in newspaper printing, where varying dot sizes create the illusion of gray tones from pure black ink. The eight levels provide a coarse but visually effective approximation of continuous luminance.
+In traditional halftoning, dot size varies continuously. Charset instead uses a fixed vocabulary of eight discrete patterns: from an empty cell to a fully filled one, with six intermediate densities based on checkerboards, grids, and logical combinations of pixel coordinates. The visual effect resembles an ordered ***dither matrix***, but generated procedurally from bit-level logic rather than from a lookup table.
 
-### Checkerboard Patterns and Boolean Logic
+### Pattern generation
 
-The fill patterns in Charset are not stored as bitmaps — they are generated on the fly using combinatorial logic on the local x and y coordinates within each cell. By selecting different bits of the 3-bit coordinates and combining them with AND, OR, XOR, and NAND operations, the hardware produces patterns ranging from sparse corner fills (density 1) through fine checkerboards (density 4) to nearly solid fills (density 6). This approach requires zero memory — no BRAM, no lookup tables — and produces perfectly repeating, aliasing-free patterns at zero additional latency.
+Each of the eight density levels is generated by a different Boolean combination of the three least-significant bits of the local X and Y coordinates within a cell:
 
-### From CRT Character Generators to FPGA
+| Density | Logic | Visual |
+|---------|-------|--------|
+| 0 (darkest) | Always off | Empty cell |
+| 1 | `x(2) AND y(2)` | Single corner pixel |
+| 2 | `x(1) XOR y(1)` | Coarse 2×2 checkerboard |
+| 3 | `x(1) AND y(1)` | Coarse 2×2 dots |
+| 4 | `x(0) XOR y(0)` | Fine 1×1 checkerboard |
+| 5 | `x(0) OR y(0)` | Fine grid (¾ fill) |
+| 6 | `x(0) NAND y(0)` | Inverse dot (¾ fill) |
+| 7 (brightest) | Always on | Solid fill |
 
-The original character generator chips of the 1970s and 1980s — the Motorola MC6847, the Commodore VIC, the Signetics 2513 — used mask-programmed ROMs to store glyph bitmaps. A character code was fetched from video RAM and used as an address into the ROM, producing one scanline of pixels per clock. Charset replaces the ROM with combinatorial logic, and replaces the character code lookup with a luminance-to-density classification. The result is a pipeline that echoes the architecture of those vintage chips while processing live video at 74.25 MHz.
+The density level is selected by the three most significant bits of the held luminance sample (`s_held_y(9 downto 7)`), dividing the 10-bit luminance range into eight equal bands.
 
 
 ---
 
 ## Signal Flow
 
-Sync Detection → Cell Grid Tracking → Density Classification → ... → Sync Delay → Output Assignment
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Sync Detection ─────────────────────────────────────────────
-│   ├─ hsync_n / vsync_n falling-edge detection
-│   └─ x_counter, y_counter frame position tracking
-│
-├── Cell Grid Tracking ─────────────────────────────────────────
-│   ├─ local_x (0–7), local_y (0–7) within each cell
-│   ├─ cell_x, cell_y cell-index counters
-│   └─ Sample & hold: latch input Y when local_x wraps to 0
-│
-├── Density Classification ─────────────────────────────────────
-│   └─ v_density = held_y[9:7]  (top 3 bits → 8 levels)
-│
-├── Pattern Generation ─────────────────────────────────────────
-│   ├─ density 0: empty
-│   ├─ density 1: local_x[2] AND local_y[2]        (corner fill)
-│   ├─ density 2: local_x[1] XOR local_y[1]        (2×2 checker)
-│   ├─ density 3: local_x[1] AND local_y[1]        (2×2 grid)
-│   ├─ density 4: local_x[0] XOR local_y[0]        (fine checker)
-│   ├─ density 5: local_x[0] OR  local_y[0]        (dense fill)
-│   ├─ density 6: local_x[0] NAND local_y[0]       (near-solid)
-│   └─ density 7: solid
-│
-├── Post-Processing ────────────────────────────────────────────
-│   ├─ Invert toggle (complement pattern bit)
-│   ├─ Grid lines (force pattern = 1 at cell boundary)
-│   ├─ Y output: pattern = 1 → brightness, pattern = 0 → 64
-│   └─ Mono: U, V → 512 (mid-gray) or pass-through
-│
-├── Mix ────────────────────────────────────────────────────────
-│   └─ 3× interpolator_u (Y, U, V wet/dry blend)
-│
-├── Sync Delay ─────────────────────────────────────────────────
-│   └─ 8-clock shift register (hsync, vsync, field, Y, U, V)
-│
-└── Output Assignment ──────────────────────────────────────────
-    └─ bypass = 0 → mixed output, bypass = 1 → delayed dry
-```
+The key architectural feature is the ***sample and hold*** at cell boundaries. Luminance is sampled only when `local_x` wraps from 7 to 0: the first pixel of each new cell column. This held value determines the density pattern for the entire 8×8 cell, so the glyph pattern is uniform within each tile regardless of how the source luminance varies across the cell's interior. This is what gives Charset its character ROM aesthetic: each cell displays a single glyph, not a continuous gradient.
 
-The critical timing interaction is the sample-and-hold at cell boundaries. When the `local_x` counter wraps from 7 back to 0, the current input Y value is latched into `s_held_y`. This held value persists for all 64 pixels of the cell, providing a single brightness measurement for density classification. The 3-bit density index is simply the top three bits of the held luminance — a direct, zero-latency quantization that splits the 10-bit luminance range into eight equal bands of 128 counts each.
+The chroma path is simpler than the luminance path. When **Mono** is off, U and V pass through from the source unchanged: the glyph patterns are "painted" with whatever color the source provides. The density patterns affect only the Y channel decision (Brightness vs. near-black), so color appears wherever a pattern pixel is lit. When **Mono** is on, both U and V are clamped to midpoint (512), removing all color and producing a monochrome result.
 
-The pattern generator is purely combinatorial: no ROM, no memory, no BRAM. Each of the eight patterns is a single boolean function of `local_x` and `local_y`. The 8-clock processing delay through the main pipeline is matched by a parallel shift-register delay on the dry input signal, ensuring the interpolator mixes temporally aligned samples at the output.
-
----
-
-## Parameter Reference
-
-<img src={charset_control_panel} alt="Videomancer front panel with Charset loaded"/>
-*Videomancer's front panel with Charset active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Cell Size
-| Property | Value |
-|----------|-------|
-| Range | 1 – 8 |
-| Default | 3 |
-
-Cell Size selects the dimensions of the character cell grid. The `steps_8` control mode quantizes the knob into eight discrete positions, selecting cell divisions from 1 (where each pixel gets its own density classification, effectively a per-pixel posterizer) to 8 (the classic character generator cell size). Smaller values preserve more spatial detail from the source image because the density is re-evaluated more frequently across the frame. Larger values create a coarser, more abstract mosaic where individual fill patterns are clearly visible as distinct tiles.
-
----
-
-#### Knob 2 — Threshold
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Threshold sets a luminance floor for density classification. Below this level, all cells are forced to the empty pattern regardless of input brightness. At 0%, the full luminance range maps to density patterns. As you increase the threshold, progressively brighter regions of the source are driven to density zero, carving away the darker portions of the image. This is useful for isolating bright elements against a dark field or for creating a hard cutoff that separates filled cells from empty ones.
-
----
-
-#### Knob 3 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 63% |
-| Suffix | % |
-
-Brightness controls the luminance value assigned to "lit" pixels — those where the density pattern outputs a 1. At full value, lit pixels reach peak white. Reducing brightness dims the pattern output, creating a softer, lower-contrast character display. The dark pixels (pattern = 0) are fixed at a low luminance level of 64 out of 1023, so this control sets the effective dynamic range of the character rendering. It determines how boldly the glyph patterns stand out against their dark background.
-
----
-
-#### Knob 4 — Contrast
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Contrast adjusts the luminance difference between lit and unlit pixels within each cell. At minimum, the pattern structure disappears as lit and unlit pixels converge to the same level. At maximum, the binary pattern snaps to its full black-and-white range. This control works independently of Brightness: you can have bright but low-contrast characters (light gray on slightly darker gray) or dim but high-contrast characters (dark on black). The interplay between Brightness and Contrast shapes the visual weight of the typographic texture.
-
----
-
-#### Knob 5 — Font Weight
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Font Weight shifts the density classification curve, making all patterns heavier or lighter across the entire frame. Increasing font weight biases each cell toward a higher density level — cells that would render as empty become sparse, sparse cells become medium, and medium cells become dense. The effect is analogous to selecting a heavier typeface weight: the same spatial structure carries more visual mass. At maximum weight, nearly all cells render at density 7 (solid), flooding the frame with the brightness value.
-
----
-
-#### Knob 6 — Spacing
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-Spacing introduces a gap between adjacent character cells by blanking pixels near cell boundaries. At 0%, cells are tightly packed with no visible separation between them. As spacing increases, a progressively wider border of empty pixels appears around each cell, isolating the density pattern within a smaller region. At maximum spacing, the patterns shrink to small clusters at the center of each cell, surrounded by dark borders. This transforms the look from a continuous mosaic into a dot-matrix display with visible inter-character gaps.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Invert** | Off | On |
-| **8 — Mono** | Off | On |
-| **9 — Grid Lines** | Off | On |
-| **10 — Bold** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggle switches control independent binary processing options. Invert and Grid Lines modify the pattern output. Mono affects the chrominance channels. Bold modifies the density classification. Bypass routes the signal around the entire processing chain. These switches can be combined freely — for example, Invert + Grid Lines + Mono creates a white-on-black terminal aesthetic with visible cell boundaries.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Charset-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::note
+The sync delay pipeline (8-clock shift register) keeps the original video data aligned with the processed output. The interpolator mix operates on the delayed data and the processed data, ensuring correct timing at the output.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises explore Charset's character density rendering from basic grid visualization through creative typographic textures. Each exercise demonstrates a different aspect of the luminance-to-pattern mapping and its interaction with the processing controls.
-
+These exercises progress from basic density visualization to creative compositing, gradually engaging the grid, chroma, and mix controls.
 ### Exercise 1: Terminal Display
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: charset_source1_runner, after: charset_ex1_s1 },
-    { label: "Boat", before: charset_source2_boat, after: charset_ex1_s2 },
-    { label: "Clouds", before: charset_source3_clouds, after: charset_ex1_s3 },
-    { label: "Pattern", before: charset_source4_pattern, after: charset_ex1_s4 },
-    { label: "Girl", before: charset_source5_girl, after: charset_ex1_s5 },
-    { label: "Knit", before: charset_source6_knit, after: charset_ex1_s6 },
-  ]}
-/>
+![Terminal Display result](/img/instruments/videomancer/charset/charset_ex1_s1.png)
 *Terminal Display — simulated result across source images.*
-**Source**: A talking-head interview or portrait footage with clear tonal separation between subject and background.
+#### Exercise Illustration
 
-**What You'll Create**: Create a classic terminal-style character display where the subject is rendered in visible density patterns on a monochrome grid.
+***A description of the exercise illustration.***
 
-1. **Establish the grid**: Start with all controls at default positions. The video should appear as a grid of brightness-mapped tiles.
-2. **Go monochrome**: Enable Mono (Toggle 8) to strip color, creating a phosphor-terminal aesthetic.
-3. **Add grid lines**: Enable Grid Lines (Toggle 9) to outline each cell, making the character matrix explicit.
-4. **Adjust brightness**: Sweep Brightness (Knob 3) upward to find a level where the lit pixels are clearly visible against the dark background — the text should "pop."
-5. **Blend the source**: Pull the Mix fader to about 70% to let a ghost of the original video show through the character grid, anchoring the patterns to the underlying subject.
+#### Learning Outcomes
 
-**Key concepts**: Density classification maps continuous luminance to discrete pattern levels, mono mode strips chroma to emulate monochrome terminals, grid lines delineate the cell structure
+A monochrome terminal display effect: bright text-like patterns against a dark background with visible cell boundaries.
+
+#### Key Concepts
+
+- Luminance maps to glyph density: bright = dense, dark = sparse
+- Brightness controls the intensity of lit pixels
+- Grid Lines add a structural lattice
+
+#### Video Source
+
+A live camera feed or recorded footage with a face or hand, providing strong tonal contrast.
+
+#### Steps
+
+1. **Observe the default**: With default settings, the input is already rendered as density-mapped glyphs. Notice how bright areas of the source produce filled cells and dark areas produce sparse or empty cells.
+2. **Go monochrome**: Flip **Mono** (Switch 8) to **On**. All color is stripped (the image is now pure brightness patterns.)
+3. **Add the grid**: Flip **Grid Lines** (Switch 9) to **On**. Bright lines appear at every cell boundary. The image now looks like a vintage terminal or LED matrix.
+4. **Adjust brightness**: Turn **Brightness** (Knob 3) up to about 75%. The lit pixels glow brighter, increasing contrast against the dark background.
+5. **Invert**: Flip **Invert** (Switch 7) to **On**. The density mapping reverses: dark regions become dense, bright regions become sparse. The image reads as a photographic negative rendered through the glyph grid.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cell Size | default |
+| Threshold | default |
+| Brightness | ~75% |
+| Contrast | default |
+| Font Weight | default |
+| Spacing | default |
+| Invert | On |
+| Mono | On |
+| Grid Lines | On |
+| Bold | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Inverted Dot Matrix
+### Exercise 2: Color Character Mosaic
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: charset_source1_runner, after: charset_ex2_s1 },
-    { label: "Boat", before: charset_source2_boat, after: charset_ex2_s2 },
-    { label: "Clouds", before: charset_source3_clouds, after: charset_ex2_s3 },
-    { label: "Pattern", before: charset_source4_pattern, after: charset_ex2_s4 },
-    { label: "Girl", before: charset_source5_girl, after: charset_ex2_s5 },
-    { label: "Knit", before: charset_source6_knit, after: charset_ex2_s6 },
-  ]}
-/>
-*Inverted Dot Matrix — simulated result across source images.*
-**Source**: High-contrast footage with strong shapes — stage lighting, silhouettes, or graphic title cards.
-
-**What You'll Create**: Explore inverted density mapping with spacing to create a dot-matrix printer effect where dark source areas appear as dense clusters.
-
-1. **Invert the density**: Enable Invert (Toggle 7). Bright areas now appear empty and dark areas appear filled — the density map is reversed.
-2. **Add spacing**: Increase Spacing (Knob 6) to about 50%. Each cell's pattern shrinks away from the borders, creating visible gaps between character glyphs.
-3. **Increase font weight**: Push Font Weight (Knob 5) up to about 70% to fill out the patterns, adding ink to each cell.
-4. **Enable bold**: Toggle Bold (Toggle 10) on for an additional density step, stacking with font weight.
-5. **Apply threshold**: Raise Threshold (Knob 2) to about 30% to carve away the weakest density levels, leaving only the strongest patterns.
-
-**Key concepts**: Invert reverses the brightness-to-density mapping, spacing isolates cells into individual dot clusters, font weight and bold stack to control visual density
-
----
-
-### Exercise 3: Color Character Mosaic
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: charset_source1_runner, after: charset_ex3_s1 },
-    { label: "Boat", before: charset_source2_boat, after: charset_ex3_s2 },
-    { label: "Clouds", before: charset_source3_clouds, after: charset_ex3_s3 },
-    { label: "Pattern", before: charset_source4_pattern, after: charset_ex3_s4 },
-    { label: "Girl", before: charset_source5_girl, after: charset_ex3_s5 },
-    { label: "Knit", before: charset_source6_knit, after: charset_ex3_s6 },
-  ]}
-/>
+![Color Character Mosaic result](/img/instruments/videomancer/charset/charset_ex2_s1.png)
 *Color Character Mosaic — simulated result across source images.*
-**Source**: Colorful footage — flowers, graffiti, abstract art, or a color bar test pattern.
+#### Exercise Illustration
 
-**What You'll Create**: Create a colored character mosaic where density patterns carry the source's original chrominance, producing stained-glass-like tiles.
+***A description of the exercise illustration.***
 
-1. **Disable mono**: Ensure Mono (Toggle 8) is Off so chrominance passes through the pattern pipeline.
-2. **Enable grid lines**: Turn on Grid Lines (Toggle 9) for a structured grid look that separates each chromatic tile.
-3. **Adjust brightness and contrast**: Balance Brightness (Knob 3) at about 60% and Contrast (Knob 4) at about 70% so patterns are vivid but not washed out.
-4. **Full mix**: Set Mix to 100%. The output is entirely the character display, but each cell carries the source's original color — density from Y, hue from UV.
-5. **Sweep font weight**: Slowly increase Font Weight (Knob 5) to watch the mosaic fill in, revealing how density and color interact as patterns grow heavier.
+#### Learning Outcomes
 
-**Key concepts**: Leaving mono off preserves source chrominance through the pattern pipeline, density is driven by luminance only while color flows through independently, grid lines create the aesthetic of a colored character display
+A colorful mosaic where the source video's hues shine through a density-mapped glyph overlay.
+
+#### Key Concepts
+
+- Chroma passes through from the source when Mono is off
+- The wet/dry mix blends glyph patterns with the original image
+- Invert creates a negative-density rendering
+
+#### Video Source
+
+Footage with vivid, saturated colors: flowers, neon signs, painted surfaces, or colorful clothing.
+
+#### Steps
+
+1. **Ensure Mono is Off**: The chroma channels should pass through from the source. You'll see the glyph patterns rendered *in color*: wherever a pattern pixel is lit, it carries the original hue of the source.
+2. **Lower the mix**: Pull the **Mix** fader (Fader 12) down to about 50%. The glyph patterns become translucent, overlaid on the original image. The source video shows through the gaps.
+3. **Turn up Brightness**: Set **Brightness** (Knob 3) to about 80%. The lit pattern pixels pop against the blended background.
+4. **Toggle Grid Lines**: Flip **Grid Lines** (Switch 9) on and off to compare. With the grid, the mosaic structure is explicit. Without it, the patterns blend more naturally into the image.
+5. **Sweep Mix**: Slowly move the **Mix** fader from 0% to 100%. Watch the glyph texture emerge from the raw video and gradually dominate the output.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cell Size | default |
+| Threshold | default |
+| Brightness | ~80% |
+| Contrast | default |
+| Font Weight | default |
+| Spacing | default |
+| Invert | Off |
+| Mono | Off |
+| Grid Lines | On |
+| Bold | Off |
+| Bypass | Off |
+| Mix | ~50% |
 
 ---
 
+### Exercise 3: Inverted Dot Matrix Print
 
-## Tips
+![Inverted Dot Matrix Print result](/img/instruments/videomancer/charset/charset_ex3_s1.png)
+*Inverted Dot Matrix Print — simulated result across source images.*
+#### Exercise Illustration
 
-- **Use Mix for overlays**: A Mix setting around 50–70% lets the source video show through the character grid, creating the look of text or a heads-up display overlaid on live footage.
-- **Invert for negative prints**: Enabling Invert produces the look of a photographic negative rendered in characters — bright objects appear as voids in a dense field. This is especially effective with high-contrast sources.
-- **Grid Lines + Spacing together**: Combining these two controls creates strongly delineated cells with visible gaps, evoking the aesthetic of LED matrix displays, tiled mosaic art, or retro grid-based games.
-- **Feedback routing**: Routing the output back to the input creates recursive character rendering — each successive pass re-classifies the density patterns into new patterns, generating self-similar typographic textures that evolve over time.
-- **Bold vs. Font Weight**: Bold is a binary one-step density shift (toggle); Font Weight is a continuous sweep (knob). Use Bold for quick A/B comparison of pattern heaviness, Font Weight for precise creative adjustment.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A dot-matrix printer simulation where dark ink dots map to the bright areas of the source, resembling a printed halftone on white paper.
+
+#### Key Concepts
+
+- Inverted density mapping reverses the tonal relationship
+- Grid lines frame cells independently of inversion
+- Combining inversion with high brightness creates a "light-on-dark" print aesthetic
+
+#### Video Source
+
+High-contrast black-and-white footage, portraits, or graphic shapes (woodcut prints or silhouettes work well.)
+
+#### Steps
+
+1. **Invert**: Flip **Invert** (Switch 7) to **On**. Dark source areas now produce dense patterns and bright areas produce sparse patterns (like ink on paper.)
+2. **Monochrome**: Flip **Mono** (Switch 8) to **On** for a pure black-and-white print look.
+3. **High brightness**: Set **Brightness** (Knob 3) to about 80%. The "ink" pixels are bright. Because they represent the dark areas of the source (due to inversion), the visual reads as bright dots filling in the shadows.
+4. **Add grid**: Enable **Grid Lines** (Switch 9). The grid frames each dot cell, reinforcing the mechanical, printed quality.
+5. **Full mix**: Set **Mix** (Fader 12) to 100% for the pure effect.
+6. **Compare**: Toggle **Bypass** (Switch 11) to compare the raw input with the dot-matrix rendering. Toggle it back off.
+7. **Experiment with inversion off**: Flip **Invert** back to **Off** while keeping all other settings. The tonal mapping reverses again: notice how the same source material reads completely differently when the density relationship changes.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cell Size | default |
+| Threshold | default |
+| Brightness | ~80% |
+| Contrast | default |
+| Font Weight | default |
+| Spacing | default |
+| Invert | On |
+| Mono | On |
+| Grid Lines | On |
+| Bold | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **ASCII Art** | A graphic design technique using printable characters from the ASCII character set, arranged on a monospaced text grid to approximate images through varying character density. |
-| **Cell** | A fixed-size rectangular region of pixels (8×8 by default) within the character grid. Each cell receives a single density classification and renders the corresponding fill pattern. |
-| **Character Generator** | A hardware subsystem that converts character codes to pixel bitmaps, historically implemented as a ROM chip (e.g., Motorola MC6847, Signetics 2513). |
-| **Chroma** | The color difference components (U and V) of a YUV video signal, representing hue and saturation. |
-| **Density** | The proportion of lit pixels within a cell pattern. Higher density means more filled area and a brighter apparent cell when viewed from a distance. |
-| **Density Ramp** | A sequence of fill patterns with increasing visual weight, used to represent continuous brightness values as binary on/off spatial patterns. |
-| **Dot Matrix** | A display or printing technology that forms characters and images from a rectangular grid of individual dots, with visible spacing between elements. |
-| **Halftone** | A reprographic technique simulating continuous tones through varying dot sizes or spacing; the printing-press equivalent of density-based character rendering. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Sample and Hold** | A technique that captures an input value at a specific moment and maintains that value at the output until the next sampling event. |
+- **Cell**: A fixed-size block of pixels (8×8 in Charset) that acts as the fundamental display unit, analogous to a single character position on a text terminal.
+
+- **Character ROM**: A read-only memory chip in vintage computers that stores pixel bitmap definitions for each displayable character; the hardware equivalent of a font file.
+
+- **Density Mapping**: A technique for representing continuous brightness through the proportion of lit versus unlit pixels in a cell, where denser fills appear brighter to the eye.
+
+- **Glyph**: A single visual symbol or pattern from a character set; in Charset, each density level produces a distinct glyph.
+
+- **Halftone**: A reprographic technique for simulating continuous-tone images using discrete dots of varying size or spacing; Charset's density patterns are a digital analog of halftone screens.
+
+- **Interpolator**: A mix stage that blends between two signals by a fractional amount, used here for the wet/dry crossfade between original and processed video.
+
+- **Luminance**: The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color.
+
+- **PETSCII**: The character encoding and art form native to Commodore computers, in which artists compose images from the system's built-in character ROM glyphs.
+
+- **Sample and Hold**: A technique that captures a signal value at one moment and holds it constant until the next sample, used here to lock the luminance reading per cell.
 
 ---

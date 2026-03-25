@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 319
 slug: /instruments/videomancer/vectorscope
@@ -7,353 +7,420 @@ image: /img/instruments/videomancer/vectorscope/vectorscope_hero_s1.png
 description: "Vectorscope implements a real-time chrominance analysis display, plotting each pixel's U and V color coordinates as a dot on a two-dimensional grid."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import vectorscope_control_panel from '/img/instruments/videomancer/vectorscope/vectorscope_control_panel.png';
-import vectorscope_source1_car from '/img/instruments/videomancer/vectorscope/vectorscope_source1_car.png';
-import vectorscope_source2_boat from '/img/instruments/videomancer/vectorscope/vectorscope_source2_boat.png';
-import vectorscope_source3_collage from '/img/instruments/videomancer/vectorscope/vectorscope_source3_collage.png';
-import vectorscope_source4_pattern from '/img/instruments/videomancer/vectorscope/vectorscope_source4_pattern.png';
-import vectorscope_source5_girl from '/img/instruments/videomancer/vectorscope/vectorscope_source5_girl.png';
-import vectorscope_source6_paint from '/img/instruments/videomancer/vectorscope/vectorscope_source6_paint.png';
-import vectorscope_hero_s1 from '/img/instruments/videomancer/vectorscope/vectorscope_hero_s1.png';
-import vectorscope_hero_s2 from '/img/instruments/videomancer/vectorscope/vectorscope_hero_s2.png';
-import vectorscope_hero_s3 from '/img/instruments/videomancer/vectorscope/vectorscope_hero_s3.png';
-import vectorscope_hero_s4 from '/img/instruments/videomancer/vectorscope/vectorscope_hero_s4.png';
-import vectorscope_hero_s5 from '/img/instruments/videomancer/vectorscope/vectorscope_hero_s5.png';
-import vectorscope_hero_s6 from '/img/instruments/videomancer/vectorscope/vectorscope_hero_s6.png';
-import vectorscope_ex1_s1 from '/img/instruments/videomancer/vectorscope/vectorscope_ex1_s1.png';
-import vectorscope_ex1_s2 from '/img/instruments/videomancer/vectorscope/vectorscope_ex1_s2.png';
-import vectorscope_ex1_s3 from '/img/instruments/videomancer/vectorscope/vectorscope_ex1_s3.png';
-import vectorscope_ex1_s4 from '/img/instruments/videomancer/vectorscope/vectorscope_ex1_s4.png';
-import vectorscope_ex1_s5 from '/img/instruments/videomancer/vectorscope/vectorscope_ex1_s5.png';
-import vectorscope_ex1_s6 from '/img/instruments/videomancer/vectorscope/vectorscope_ex1_s6.png';
-import vectorscope_ex2_s1 from '/img/instruments/videomancer/vectorscope/vectorscope_ex2_s1.png';
-import vectorscope_ex2_s2 from '/img/instruments/videomancer/vectorscope/vectorscope_ex2_s2.png';
-import vectorscope_ex2_s3 from '/img/instruments/videomancer/vectorscope/vectorscope_ex2_s3.png';
-import vectorscope_ex2_s4 from '/img/instruments/videomancer/vectorscope/vectorscope_ex2_s4.png';
-import vectorscope_ex2_s5 from '/img/instruments/videomancer/vectorscope/vectorscope_ex2_s5.png';
-import vectorscope_ex2_s6 from '/img/instruments/videomancer/vectorscope/vectorscope_ex2_s6.png';
-import vectorscope_ex3_s1 from '/img/instruments/videomancer/vectorscope/vectorscope_ex3_s1.png';
-import vectorscope_ex3_s2 from '/img/instruments/videomancer/vectorscope/vectorscope_ex3_s2.png';
-import vectorscope_ex3_s3 from '/img/instruments/videomancer/vectorscope/vectorscope_ex3_s3.png';
-import vectorscope_ex3_s4 from '/img/instruments/videomancer/vectorscope/vectorscope_ex3_s4.png';
-import vectorscope_ex3_s5 from '/img/instruments/videomancer/vectorscope/vectorscope_ex3_s5.png';
-import vectorscope_ex3_s6 from '/img/instruments/videomancer/vectorscope/vectorscope_ex3_s6.png';
-
-# Vectorscope
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: vectorscope_source1_car, after: vectorscope_hero_s1 },
-    { label: "Boat", before: vectorscope_source2_boat, after: vectorscope_hero_s2 },
-    { label: "Collage", before: vectorscope_source3_collage, after: vectorscope_hero_s3 },
-    { label: "Pattern", before: vectorscope_source4_pattern, after: vectorscope_hero_s4 },
-    { label: "Girl", before: vectorscope_source5_girl, after: vectorscope_hero_s5 },
-    { label: "Paint", before: vectorscope_source6_paint, after: vectorscope_hero_s6 },
-  ]}
-/>
-*Vectorscope rendering a real-time UV chrominance scatter plot on screen — a phosphor-glow display showing the color distribution of the input video as a two-dimensional dot cloud.*
+![Vectorscope hero image](/img/instruments/videomancer/vectorscope/vectorscope_hero_s1.png)
+*A broadcast vectorscope glowing to life in phosphor green, painting the chrominance anatomy of every frame as a constellation of luminous dots.*
 
 ---
 
 ## Overview
 
-**Vectorscope** implements a real-time chrominance analysis display, plotting each pixel's U and V color coordinates as a dot on a two-dimensional grid. The result is the classic **vectorscope** — one of the standard measurement instruments in broadcast video engineering. Color-saturated content produces dots far from center; neutral content clusters around the origin. The spatial distribution of dots reveals the color balance, gamut utilization, and saturation characteristics of the input signal at a glance.
+Vectorscope is a real-time chrominance analysis display that transforms Videomancer into a piece of broadcast test equipment. It plots the color content of every incoming video frame as a scatter of luminous dots on a two-dimensional grid, where horizontal position represents the blue-difference axis and vertical position represents the red-difference axis. Areas of the image that share similar hues cluster together on the display; saturated colors push dots outward from the center, while neutral tones converge at the crosshair. The result is a living, breathing map of color activity, rendered in glowing phosphor tones.
 
-The implementation uses a 64×64×8-bit dual-port BRAM accumulator. During active video, each pixel's U and V values are quantized to 6 bits and used as a 2D address to increment the corresponding cell (saturating at 255). During vertical blanking, a decay sweep subtracts from all cells, implementing the phosphor persistence characteristic of analog vectorscope CRT displays. A second BRAM port reads the accumulator during rendering to draw the scope display at a fixed position on screen. The Intensity control scales the dot brightness, and four phosphor color options (Green, Amber, Blue, White) set the display colorimetry.
+At its heart, Vectorscope maintains a 64×64 accumulation grid stored in block RAM. Each incoming pixel's chrominance values select a cell in the grid, and that cell's brightness is incremented: the more pixels that share the same color, the brighter the dot glows. Between frames, every cell decays according to the **Persist** parameter, creating the warm, fading afterglow of a phosphor display. The scope occupies a 64-pixel square region centered on screen, with an optional crosshair ***graticule*** and a choice of four phosphor colors.
 
-Vectorscope is in the **Analysis** category — a measurement and visualization tool rather than an effect.
+:::tip
+Vectorscope can serve double duty. Use it as a diagnostic tool to monitor color balance and saturation in a live signal chain, or crank up the persistence and intensity to create an abstract light painting from your video's color content.
+:::
+
+### What's In a Name?
+
+A ***vectorscope*** is a standard piece of broadcast test equipment dating to the early days of color television. The name comes from the fact that a color signal can be represented as a two-dimensional ***vector***: its angle indicates hue and its length indicates saturation. The word ***scope***, from the Greek *skopein* (to look at), ties it to the family of oscilloscopes, waveform monitors, and other instruments that make invisible electrical signals visible. Videomancer's Vectorscope brings this broadcast engineering heritage onto the hardware as both a faithful analysis tool and a creative phosphor display.
 
 ---
 
 ## Quick Start
 
-1. **Green for broadcast**: Green phosphor is the standard for professional vectorscope monitoring. Use it for technical accuracy checks.
-2. **Persistence for music**: High persistence creates a glowing trace that builds up during a performance — excellent for visual art.
-3. **Over Video for grading**: Overlay the scope on your video to simultaneously evaluate composition and color balance.
+1. Connect a color video source: color bars, a camera feed, or any material with visible hue variation. The small scope display appears in the center of the screen, showing a scatter plot of colored dots.
+2. Increase **Persist** (Knob 2) to about 75%. Watch how the dots leave glowing trails as colors shift, mimicking the warm decay of a CRT phosphor.
+3. Increase **Intensity** (Knob 1) to brighten the dots. The scatter plot becomes more vivid, and even faint chrominance activity becomes visible.
+4. Set **I/Q Mode** (Switch 10) to **On** to overlay the scope on top of the source video. The scope sits in the center, and the original footage fills the rest of the screen.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Vectorscope loaded](/img/instruments/videomancer/vectorscope/vectorscope_control_panel.png)
+*Videomancer's front panel with Vectorscope active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Intensity
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Intensity** scales the brightness of each dot in the scatter plot. At low values, only the most frequently-hit cells glow visibly: rare colors vanish into darkness. As Intensity is increased, even single-pixel color events become luminous. At maximum, the entire accumulation grid burns hot and the display blooms with light. This parameter multiplies the raw accumulator value before it reaches the screen, acting as a brightness gain for the scope display alone.
+
+---
+
+### Knob 2 — Persist
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 75% |
+
+**Persist** controls the temporal decay rate of the phosphor simulation. At minimum, dots vanish almost instantly: each cell drains to black within one or two frames, and the display shows only the current frame's color content. As you increase Persist, cells decay more slowly, leaving luminous trails that linger across many frames. At maximum, the display approaches infinite persistence: once a cell is lit, it stays lit until new data replaces it. Long persistence transforms the scatter plot into a cumulative light painting of all the chrominance that has passed through the signal.
+
+:::tip
+High persistence is the key to the "phosphor art" look. Set Persist above 90% and slowly pan a camera across colorful objects: the scope accumulates a luminous record of every hue that appeared.
+:::
+
+---
+
+### Knob 3 — Gain
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Gain** is reserved for future use and has no visible effect in the current firmware version.
+
+---
+
+### Knob 4 — Grat Opac
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Grat Opac** sets the brightness of the ***graticule*** crosshair overlay. At zero, the crosshair lines are invisible even when the graticule is enabled. Increasing this control makes the horizontal and vertical reference lines progressively brighter, helping you gauge where colors fall relative to the center of the chrominance space. The crosshair marks the neutral point: the position where U and V are both at their midpoint, corresponding to pure gray with no color.
+
+:::note
+The graticule must be enabled using **Over Video** (Switch 9) to be visible. Grat Opac controls brightness only; it does not toggle the crosshair on or off.
+:::
+
+---
+
+### Knob 5 — Hue Shift
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 360° |
+| Default | 0° |
+
+**Hue Shift** is reserved for future use and has no visible effect in the current firmware version.
+
+---
+
+### Knob 6 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Brightness** is reserved for future use and has no visible effect in the current firmware version.
+
+---
+
+### Switch 7 — Phosphor
+
+| Property | Value |
+|----------|-------|
+| Off | Green |
+| On | White |
+| Default | Green |
+
+**Phosphor** selects the phosphor color for the vectorscope display. This control works together with **Graticule** (Switch 8) to form a four-color selection system. See the Toggle Group Notes below for the complete color table. With both switches in their default positions, the display glows classic green: the color most associated with broadcast oscilloscopes and CRT phosphor screens.
+
+---
+
+### Switch 8 — Graticule
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Graticule** combines with **Phosphor** (Switch 7) to select the phosphor color. Despite its label, this toggle does not independently control the graticule overlay. See the Toggle Group Notes below for the complete color table. In its default position (**On**), Switch 8 contributes the high bit of the two-bit phosphor selector.
+
+---
+
+### Switch 9 — Over Video
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Over Video** enables or disables the crosshair ***graticule*** overlay on the vectorscope display. When set to **On**, a horizontal and vertical reference line intersect at the center of the scope, marking the neutral chrominance point. When set to **Off**, the crosshair is hidden and only the scatter dots appear. Despite its label, this toggle controls the graticule visibility, not the video overlay.
+
+---
+
+### Switch 10 — I/Q Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**I/Q Mode** controls whether the source video is visible in the area surrounding the scope. When set to **On**, the original video signal fills the region outside the 64-pixel scope window, letting you see the analyzed image alongside its chrominance map. When set to **Off**, the area outside the scope is black. Despite its label, this toggle controls the video overlay feature.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all vectorscope rendering. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the scope display and the raw input.
+
+---
+
+:::note Toggle Group Notes
+
+**Phosphor** (Switch 7) and **Graticule** (Switch 8) combine to form a two-bit phosphor color selector. Their on-screen labels do not fully describe this combined behavior. The four color options are:
+
+| Phosphor (Sw 7) | Graticule (Sw 8) | Display Color |
+|:---:|:---:|:---:|
+| Green | Off | Green |
+| White | Off | Amber |
+| Green | On | Blue |
+| White | On | White |
+
+- **Green** is the classic oscilloscope phosphor (the most recognizable scope aesthetic.)
+- **Amber** evokes the warm glow of vintage CRT terminals.
+- **Blue** recalls cool-toned laboratory displays and modern digital instruments.
+- **White** provides a neutral, monochrome scope display.
+
+The phosphor color affects only the scope dots and graticule crosshair. It does not alter the source video visible through the **I/Q Mode** overlay.
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** crossfades between the original input video and the vectorscope output. At 0%, the output is the unprocessed source video: the scope is not visible. At 100%, the output is the full vectorscope render (scope region plus the surrounding area, which is either black or the source video depending on **I/Q Mode**). Intermediate values blend the scope and source smoothly, creating a translucent vectorscope overlay.
 
 ---
 
 ## Background
 
-### What Is a Vectorscope?
+### The broadcast vectorscope
 
-A **vectorscope** is a specialized oscilloscope display used in video engineering to visualize the chrominance content of a signal. The horizontal axis represents the U (blue-difference) component and the vertical axis represents V (red-difference). A color bar test signal produces six dots at specific angles and radii corresponding to the primary and secondary colors. Live video produces a cloud of dots whose shape and position indicate the overall color balance. Vectorscopes are essential for color grading, white balance verification, and ensuring signals comply with broadcast transmission limits.
+The vectorscope has been an essential piece of broadcast engineering equipment since the adoption of color television in the 1950s. In the analog world, a vectorscope modulates a CRT electron beam so that the X and Y deflection plates are driven by the two ***chrominance*** components of the video signal. The resulting display is a circular scatter plot where the angle of each dot from the center encodes its hue and the distance from the center encodes its saturation. Engineers use the vectorscope to verify that skin tones fall along the correct line, that color bars hit their target positions, and that a signal's chrominance is properly balanced before transmission.
 
-### What Is a Phosphor Display?
+Videomancer's Vectorscope recreates this instrument digitally, replacing the CRT's analog deflection with a dual-port BRAM accumulation grid and replacing the phosphor's physical afterglow with an IIR decay algorithm. The result is functionally identical to a hardware vectorscope, rendered in real time alongside the video signal.
 
-Classic analog vectorscopes used CRT (cathode ray tube) displays where the electron beam traces dots on a phosphor-coated screen. Each hit excites the phosphor, which glows and then slowly fades — this **persistence** creates a visible trace of recent data. Vectorscope simulates this with a decaying accumulator: cells are incremented by incoming pixels and decremented during blanking, so frequently-hit regions glow brightly while rarely-hit regions dim over time. The decay rate is controlled by the Persist knob.
+### UV color space
 
-### What Is a Graticule?
+The vectorscope plots color in ***UV space***, the two chrominance components of the YUV color model. U encodes the blue-difference axis: ranging from orange on the left to blue on the right: while V encodes the red-difference axis: ranging from cyan at the bottom to red at the top. The center of the plot represents zero chrominance: pure gray, with neither warm nor cool tint.
 
-A **graticule** is the calibration overlay drawn on top of the vectorscope display — typically a crosshair at the center (representing zero chrominance / neutral gray) and optional circles at standard saturation levels. The crosshair helps identify whether the signal's color balance is centered (neutral white point) or shifted toward a particular hue. Vectorscope draws a crosshair at the midpoint of the 64×64 grid.
+On a standard broadcast vectorscope, reference marks at specific angles correspond to the six primary and secondary bars of a color bar pattern: red, magenta, blue, cyan, green, and yellow. Though Videomancer's Vectorscope renders a simplified crosshair rather than full burst-phase target marks, the spatial distribution of dots follows the same UV geometry. Feeding color bars into the program produces six distinct clusters arranged around the neutral center (the classic vectorscope fingerprint.)
 
-### What Is Over Video?
+### Phosphor persistence and IIR decay
 
-In broadcast monitoring, vectorscopes typically occupy their own dedicated display. Vectorscope's **Over Video** mode overlays the scope display directly on top of the input video at a fixed position, allowing simultaneous monitoring of the picture and its color analysis. When Over Video is disabled, the scope is rendered on a black background.
+The warm, fading glow of an oscilloscope display is called ***phosphor persistence***. On a real CRT, a thin layer of phosphorescent material on the screen continues to emit light for a brief period after the electron beam moves on. Videomancer's Vectorscope simulates this effect with an ***infinite impulse response*** (IIR) decay filter applied to every cell of the accumulation grid during each vertical blanking interval.
+
+Each frame, the engine scans all 4,096 cells of the 64×64 grid and subtracts a small amount from each cell's stored value. The subtraction amount is derived from the **Persist** parameter: high persistence means a tiny subtraction per frame (slow fade), while low persistence means a large subtraction (fast fade). If the subtracted result would go below zero, the cell is clamped to zero. New pixel hits increment the cell, while the decay simultaneously drains it: the balance between accumulation and decay creates the characteristic phosphor trail.
 
 
 ---
 
 ## Signal Flow
 
-Accumulator Engine → Renderer → Output → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Accumulator Engine (Port A) ────────────────────────────────
-│   ├─ 1. Quantize U → 6 bits  (upper 6 bits of 10-bit U)
-│   ├─ 2. Quantize V → 6 bits  (upper 6 bits of 10-bit V)
-│   ├─ 3. Address = {V[5:0], U[5:0]}  (4096 cells)
-│   ├─ 4. Read current cell value
-│   ├─ 5. Increment (saturate at 255)
-│   ├─ 6. Write back
-│   └─ 7. Decay sweep (vsync): subtract persistence delta from all cells
-│
-├── Renderer (Port B) ──────────────────────────────────────────
-│   ├─ 1. Scope region: 64×64 pixels at (328, 88)
-│   ├─ 2. Read accumulator at (scope_x, scope_y)
-│   ├─ 3. Dot brightness = cell_value × Intensity
-│   ├─ 4. Apply phosphor color (Green/Amber/Blue/White UV values)
-│   ├─ 5. Graticule crosshair at center (32, 32)
-│   └─ 6. Over Video: show input outside scope region
-│
-├── Output ─────────────────────────────────────────────────────
-│   ├─ Inside scope: dot Y + phosphor UV
-│   ├─ Outside scope: input (Over Video) or black
-│   └─ Bypass mux
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ Pass-through with 4-clock delay
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+Two parallel data paths drive the vectorscope:
 
-The dual-port BRAM is the key architectural element. Port A handles both accumulation (during active video) and decay (during vertical blanking) — these are time-multiplexed, never simultaneous. Port B handles the display readout, which occurs continuously during the renderer's active region. The accumulator operates at pixel clock rate: for each input pixel, it reads the cell at [V_quant][U_quant], increments it, and writes back. During the ~30-line vertical blanking interval, a sweep reads and decrements each of the 4096 cells by the persistence-derived delta. The renderer maps the 64×64 scope grid to a fixed screen position and converts cell values to brightness via the Intensity multiplier.
+1. **Accumulation engine** (Port A of dual-port BRAM): During active video, each pixel's U and V chrominance values are quantized to 6-bit indices (bits 9 down to 4) and used to address a cell in the 64×64 grid. The cell value is incremented, saturating at 255. During vertical blanking, the engine scans all 4,096 cells and subtracts a decay amount derived from **Persist**. This read-modify-write pipeline runs with 1-clock latency: the read result is available one cycle after the address is presented, and the incremented value is written back in the following cycle.
+
+2. **Scope renderer** (Port B of dual-port BRAM): A position tracker counts X and Y coordinates from sync edges. When the current pixel falls within the 64-pixel scope region, the renderer reads the corresponding accumulator cell, scales it by **Intensity**, optionally overwrites it with the **Grat Opac** value for crosshair pixels, and assigns a phosphor tint color to the UV channels. Outside the scope region, the renderer either passes the source video (if **I/Q Mode** is on) or outputs black.
+
+:::note
+The accumulation engine and renderer share the BRAM through a true dual-port architecture: Port A writes and reads for accumulation and decay, while Port B reads independently for display. This allows both operations to proceed simultaneously without contention.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={vectorscope_control_panel} alt="Videomancer front panel with Vectorscope loaded"/>
-*Videomancer's front panel with Vectorscope active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises progress from basic scope reading to creative phosphor effects. Each exercise uses the vectorscope both as an analysis tool and a visual instrument.
+### Exercise 1: Reading Color Bars
 
-### Rotary Potentiometers (Knobs 1–6)
+![Reading Color Bars result](/img/instruments/videomancer/vectorscope/vectorscope_ex1_s1.png)
+*Reading Color Bars — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Intensity
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-At minimum, even heavily populated cells appear dim. At maximum, a single hit is bright. Higher intensity makes sparse signals visible but can over-expose dense color clusters. This is analogous to the beam intensity control on a CRT vectorscope. Internally, controls the display brightness scaling — the multiplier applied to each cell's accumulated value before rendering as luminance.
+#### Learning Outcomes
 
----
+Learn to read a vectorscope display by analyzing a standard color bar test pattern.
 
-#### Knob 2 — Persist
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 75% |
-| Suffix | % |
+#### Key Concepts
 
-At minimum, dots fade almost instantly (only the current frame's data is visible). At maximum, dots persist for many frames, building up a bright, slowly evolving trace. Higher persistence reveals the full color range of time-varying content but can obscure transient color events. The decay amount is subtracted from all 4096 cells during each vertical blanking interval. Internally, controls the phosphor persistence — how slowly accumulated dots decay.
+- UV scatter plots map chrominance to spatial position
+- Saturated colors push dots outward from center
+- The graticule crosshair marks the neutral point
 
----
+#### Video Source
 
-#### Knob 3 — Gain
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+SMPTE color bars or any color bar generator signal.
 
-Reserved for future use (Gain). Currently has no effect on the output. May be connected to an input amplitude pre-scaler in a future revision.
+#### Steps
 
----
+1. **Start clean**: Ensure **Bypass** (Switch 11) is **Off** and **Mix** (Fader 12) is at 100%. The scope display should be visible in the center of the screen.
+2. **Enable graticule**: Set **Over Video** (Switch 9) to **On** to show the crosshair. Increase **Grat Opac** (Knob 4) until the crosshair is clearly visible.
+3. **Observe the pattern**: With color bars feeding in, you should see six distinct clusters of dots arranged around the center: one for each bar color (red, green, blue, cyan, magenta, yellow). White and black bars produce dots at or near the center crosshair.
+4. **Adjust persistence**: Sweep **Persist** (Knob 2) from low to high. At low persistence, the dots are crisp but flickery. At high persistence, the dots blur into soft halos.
+5. **Change phosphor color**: Flip **Phosphor** (Switch 7) and **Graticule** (Switch 8) to cycle through Green, Amber, Blue, and White phosphor tints. Notice how each tint changes the character of the display without altering the dot positions.
 
-#### Knob 4 — Grat Opac
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
+#### Settings
 
-At minimum, the crosshair is invisible. At maximum, the crosshair lines are drawn at full brightness. The graticule is rendered only within the scope region and overlays the dot display. Internally, controls the graticule overlay opacity.
-
----
-
-#### Knob 5 — Hue Shift
-| Property | Value |
-|----------|-------|
-| Range | 0° – 360° |
-| Default | 0° |
-| Suffix | ° |
-
-Reserved for future use. Currently has no effect on the output.
+| Control | Value |
+|---------|-------|
+| Intensity | 50% |
+| Persist | 50% |
+| Gain | 0% |
+| Grat Opac | 50% |
+| Hue Shift | 0° |
+| Brightness | 0% |
+| Phosphor | Green |
+| Graticule | Off |
+| Over Video | On |
+| I/Q Mode | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-#### Knob 6 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+### Exercise 2: Phosphor Light Painting
 
-Adds a DC brightness offset to the rendered scope display. At center (50%), no shift. Above center lifts the overall scope brightness; below center darkens it. This is useful for matching the scope visibility against the Over Video background.
+![Phosphor Light Painting result](/img/instruments/videomancer/vectorscope/vectorscope_ex2_s1.png)
+*Phosphor Light Painting — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-### Toggle Switches (Switches 7–11)
+#### Learning Outcomes
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Phosphor** | Green | White |
-| **8 — Graticule** | Off | On |
-| **9 — Over Video** | Off | On |
-| **10 — I/Q Mode** | Off | On |
-| **11 — Bypass** | Off | On |
+Use high persistence to create abstract phosphor light paintings from moving footage.
 
-Switches 7–8 select the phosphor color and graticule visibility. Switch 9 controls Over Video. Two switches (7) are combined for the 4-way phosphor selection. Switches 10–11 are unused and bypass, respectively.
+#### Key Concepts
 
----
+- High persistence accumulates chrominance history across many frames
+- Intensity controls how visible rare color events are
+- The scope becomes a time-lapse of color activity
 
-### Linear Potentiometer (Fader 12)
+#### Video Source
 
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
+A live camera feed pointed at colorful subjects: paint swatches, fabric, holiday lights, or slowly moving objects with varied hues.
 
-Controls the wet/dry mix between the vectorscope display and the original input via the hardware interpolator. At 100%, the full vectorscope rendering is shown. Lowering the fader blends the vectorscope display with the input.
+#### Steps
 
+1. **Set high persistence**: Turn **Persist** (Knob 2) to about 90%. Dots will linger for many seconds after appearing, building on each other.
+2. **Boost intensity**: Set **Intensity** (Knob 1) to about 80%. Even brief color events leave visible traces in the accumulation grid.
+3. **Overlay on video**: Set **I/Q Mode** (Switch 10) to **On** to see the source video surrounding the scope. This helps you understand what real-world color is producing each cluster of dots.
+4. **Sweep the camera**: Slowly pan across your colorful subjects. Watch the scope accumulate a luminous map of every hue that enters the frame. Saturated objects leave bright trails extending from the center; muted tones cluster tightly around the crosshair.
+5. **White phosphor**: Set **Phosphor** (Switch 7) to **White** and **Graticule** (Switch 8) to **On** for a clean, monochrome display that emphasizes the dot pattern over the tint.
 
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
+#### Settings
 
-Routes the unprocessed input signal directly to the output, bypassing all Vectorscope processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises demonstrate the vectorscope as a color analysis instrument and explore its display options for creative and technical use.
-
-### Exercise 1: Color Bar Analysis
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: vectorscope_source1_car, after: vectorscope_ex1_s1 },
-    { label: "Boat", before: vectorscope_source2_boat, after: vectorscope_ex1_s2 },
-    { label: "Collage", before: vectorscope_source3_collage, after: vectorscope_ex1_s3 },
-    { label: "Pattern", before: vectorscope_source4_pattern, after: vectorscope_ex1_s4 },
-    { label: "Girl", before: vectorscope_source5_girl, after: vectorscope_ex1_s5 },
-    { label: "Paint", before: vectorscope_source6_paint, after: vectorscope_ex1_s6 },
-  ]}
-/>
-*Color Bar Analysis — simulated result across source images.*
-**Source**: Color bar test pattern (SMPTE or EBU bars) — the standard calibration signal for vectorscope setup.
-
-**What You'll Create**: Verify that the vectorscope correctly displays the 6 primary/secondary color positions.
-
-1. **Feed bars**: Connect a color bar test pattern generator.
-2. **Persistence**: Set Persist to ~40%. Dots accumulate clearly without excessive smearing.
-3. **Intensity**: Set Intensity to ~60%. Bright enough to see all bar positions.
-4. **Graticule**: Enable Graticule (Switch 8). The center crosshair marks neutral.
-5. **Identify dots**: Six clusters of dots should appear at the standard vectorscope positions — corresponding to red, green, blue, cyan, magenta, and yellow.
-6. **Center check**: The gray/white portions of the bars should cluster tightly at the center crosshair (neutral chrominance).
-
-**Key concepts**: Color bars produce 6 dot clusters at known UV positions, neutral gray maps to center, scope is a UV scatter plot
+| Control | Value |
+|---------|-------|
+| Intensity | ~80% |
+| Persist | ~90% |
+| Gain | 0% |
+| Grat Opac | 25% |
+| Hue Shift | 0° |
+| Brightness | 0% |
+| Phosphor | White |
+| Graticule | On |
+| Over Video | On |
+| I/Q Mode | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Live Video Color Monitor
+### Exercise 3: Scope as Broadcast Monitor
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: vectorscope_source1_car, after: vectorscope_ex2_s1 },
-    { label: "Boat", before: vectorscope_source2_boat, after: vectorscope_ex2_s2 },
-    { label: "Collage", before: vectorscope_source3_collage, after: vectorscope_ex2_s3 },
-    { label: "Pattern", before: vectorscope_source4_pattern, after: vectorscope_ex2_s4 },
-    { label: "Girl", before: vectorscope_source5_girl, after: vectorscope_ex2_s5 },
-    { label: "Paint", before: vectorscope_source6_paint, after: vectorscope_ex2_s6 },
-  ]}
-/>
-*Live Video Color Monitor — simulated result across source images.*
-**Source**: Camera feed of a colorful scene (flowers, fabrics, art — saturated colors).
+![Scope as Broadcast Monitor result](/img/instruments/videomancer/vectorscope/vectorscope_ex3_s1.png)
+*Scope as Broadcast Monitor — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Use the vectorscope as a real-time color balance monitor overlaid on the live picture.
+***A description of the exercise illustration.***
 
-1. **Over Video**: Enable Over Video (Switch 9). The scope appears as an overlay window.
-2. **Persistence**: Set Persist to ~60%. The trace shows the overall color distribution across several frames.
-3. **Color balance**: Observe the dot cloud position. A well-balanced scene clusters around center; a color cast shifts the cloud off-center.
-4. **Saturation**: Highly saturated content produces dots far from center. Desaturated content clusters tightly near the middle.
-5. **Switch phosphor**: Try Amber (warmer) or Blue (cooler) phosphor — which is most readable against your video content?
-6. **Intensity**: Adjust Intensity to keep the scope visible without overwhelming the underlying video.
+#### Learning Outcomes
 
-**Key concepts**: Over Video enables simultaneous content and analysis monitoring, dot cloud position reveals color balance, spread reveals saturation range
+Combine the vectorscope overlay with the source video to create a broadcast-style monitoring view.
 
----
+#### Key Concepts
 
-### Exercise 3: Phosphor Art (Creative Use)
+- Mix blends the scope output with the source at any ratio
+- I/Q Mode places the source behind the scope region
+- The scope becomes a picture-in-picture chrominance monitor
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: vectorscope_source1_car, after: vectorscope_ex3_s1 },
-    { label: "Boat", before: vectorscope_source2_boat, after: vectorscope_ex3_s2 },
-    { label: "Collage", before: vectorscope_source3_collage, after: vectorscope_ex3_s3 },
-    { label: "Pattern", before: vectorscope_source4_pattern, after: vectorscope_ex3_s4 },
-    { label: "Girl", before: vectorscope_source5_girl, after: vectorscope_ex3_s5 },
-    { label: "Paint", before: vectorscope_source6_paint, after: vectorscope_ex3_s6 },
-  ]}
-/>
-*Phosphor Art (Creative Use) — simulated result across source images.*
-**Source**: Any dynamic video — music performance, abstract visuals, or oscillating patterns.
+#### Video Source
 
-**What You'll Create**: Use the vectorscope display itself as a creative visual element rather than a technical instrument.
+Any live video feed: camera, media player, or a video synthesizer upstream in the chain.
 
-1. **High persistence**: Set Persist to ~90%. Dots accumulate heavily, creating bright persistent trails.
-2. **Maximum intensity**: Set Intensity to 100%. Every dot is bright.
-3. **Amber phosphor**: Select Amber for a warm, retro oscilloscope glow.
-4. **No Over Video**: Disable Over Video. The display is pure scope-on-black.
-5. **Dynamic input**: Feed rapidly changing video. The dot cloud dances and traces out color space trajectories.
-6. **Graticule crosshair**: Enable Graticule with high opacity — the crosshair becomes a structural element in the composition.
-7. **Adjust brightness**: Use Brightness to lift the scope glow for a dreamy, analog-instrument aesthetic.
+#### Steps
 
-**Key concepts**: High persistence + intensity creates a glowing trace art, phosphor colors set the mood, dynamic input produces animated dot clouds, scope as visual element rather than instrument
+1. **Enable overlay**: Set **I/Q Mode** (Switch 10) to **On** so the source video surrounds the scope window.
+2. **Enable graticule**: Set **Over Video** (Switch 9) to **On** and **Grat Opac** (Knob 4) to about 30%. A faint crosshair marks the neutral point.
+3. **Moderate persistence**: Set **Persist** (Knob 2) to about 60% for a responsive but smooth display.
+4. **Reduce mix**: Pull **Mix** (Fader 12) down to about 70%. The scope region becomes slightly translucent, and you can see the source video ghosting through the scatter plot.
+5. **Amber phosphor**: Set **Phosphor** (Switch 7) to **White** and **Graticule** (Switch 8) to **Off** for warm amber tones that contrast nicely with most video content.
+6. **Observe**: As your source material changes, the vectorscope responds in real time. Watch how saturated scenes push dots outward and low-saturation scenes keep dots clustered at the center.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Intensity | 60% |
+| Persist | ~60% |
+| Gain | 0% |
+| Grat Opac | ~30% |
+| Hue Shift | 0° |
+| Brightness | 0% |
+| Phosphor | White |
+| Graticule | Off |
+| Over Video | On |
+| I/Q Mode | On |
+| Bypass | Off |
+| Mix | ~70% |
 
 ---
-
-
-## Tips
-
-- **Graticule identifies shifts**: The crosshair marks neutral — if your dot cloud is consistently off-center, your white balance needs correction.
-- **Chain with Whitebal**: Use Vectorscope to monitor color corrections applied by Whitebal — watch the dot cloud shift as you adjust Color Temp and Tint.
-- **Low intensity for reading**: When using the scope as a technical tool, moderate intensity prevents over-saturation of the display.
-- **Amber for atmosphere**: Amber phosphor evokes vintage analog test equipment — beautiful for retro-futuristic displays.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Accumulator** | A dual-port BRAM array that counts how many pixels in the current frame map to each UV quantization cell, building up the scatter-plot density. |
-| **Chrominance** | The color information in a YUV signal, represented by U (blue-difference) and V (red-difference) components. |
-| **CRT** | Cathode Ray Tube; the display technology used in classic analog vectorscopes, where an electron beam traces dots on a phosphor screen. |
-| **Decay Sweep** | A per-frame operation during vertical blanking that subtracts a persistence-derived amount from all accumulator cells, simulating phosphor fade. |
-| **Dual-Port BRAM** | Block RAM with two independent access ports, allowing simultaneous read/write operations. Vectorscope uses port A for accumulation and port B for display readout. |
-| **Graticule** | The calibration overlay (crosshair) drawn on the vectorscope display to mark the neutral chrominance point and other reference positions. |
-| **Phosphor** | The luminescent coating on a CRT screen that glows when struck by an electron beam. Different phosphor compounds produce different colors (P1=green, P43=yellow-green, etc.). |
-| **Scatter Plot** | A display showing individual data points as dots in a two-dimensional coordinate space, here U vs V. |
-| **Vectorscope** | A specialized oscilloscope display for visualizing the chrominance content of a video signal as a UV scatter plot. |
+- **Accumulator**: A memory cell that sums pixel hits over time, producing a brightness count proportional to how many pixels share the same chrominance coordinates.
+
+- **Chrominance**: The color portion of a video signal, separate from brightness. In YUV encoding, chrominance is carried by the U and V components.
+
+- **Dual-Port BRAM**: Block RAM configured with two independent access ports, allowing simultaneous read and write operations from different parts of the circuit.
+
+- **Graticule**: A reference grid or crosshair overlaid on a test instrument display, used for alignment and measurement.
+
+- **IIR (Infinite Impulse Response)**: A type of digital filter whose output depends on both current input and previous output values. Here it models the gradual decay of phosphor glow.
+
+- **Phosphor**: A substance that emits light after being excited by an electron beam. On CRT displays, different phosphor compounds produce green, amber, blue, or white glows.
+
+- **Saturation**: The intensity or purity of a color. High saturation means vivid color; low saturation means washed-out or gray.
+
+- **Scatter Plot**: A two-dimensional chart where each data point is placed according to two independent values (here, U and V chrominance.)
+
+- **UV Space**: The two-dimensional chrominance plane of the YUV color model, where U encodes the blue-difference axis and V encodes the red-difference axis.
+
+- **Vectorscope**: A broadcast test instrument that displays the chrominance content of a video signal as a polar or Cartesian scatter plot.
+
+- **Vertical Blanking**: The interval between video fields when no active picture content is transmitted; used here to perform the phosphor decay pass across all 4,096 accumulator cells.
 
 ---

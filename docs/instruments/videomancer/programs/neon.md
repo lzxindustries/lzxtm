@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 204
 slug: /instruments/videomancer/neon
@@ -7,348 +7,406 @@ image: /img/instruments/videomancer/neon/neon_hero_s1.png
 description: "Every city at dusk has them — glass tubes bent into letters and shapes, filled with ionized gas, glowing with saturated color against dark storefronts."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import neon_control_panel from '/img/instruments/videomancer/neon/neon_control_panel.png';
-import neon_source1_car from '/img/instruments/videomancer/neon/neon_source1_car.png';
-import neon_source2_sunset from '/img/instruments/videomancer/neon/neon_source2_sunset.png';
-import neon_source3_turtle from '/img/instruments/videomancer/neon/neon_source3_turtle.png';
-import neon_source4_pattern from '/img/instruments/videomancer/neon/neon_source4_pattern.png';
-import neon_source5_woman from '/img/instruments/videomancer/neon/neon_source5_woman.png';
-import neon_source6_paint from '/img/instruments/videomancer/neon/neon_source6_paint.png';
-import neon_hero_s1 from '/img/instruments/videomancer/neon/neon_hero_s1.png';
-import neon_hero_s2 from '/img/instruments/videomancer/neon/neon_hero_s2.png';
-import neon_hero_s3 from '/img/instruments/videomancer/neon/neon_hero_s3.png';
-import neon_hero_s4 from '/img/instruments/videomancer/neon/neon_hero_s4.png';
-import neon_hero_s5 from '/img/instruments/videomancer/neon/neon_hero_s5.png';
-import neon_hero_s6 from '/img/instruments/videomancer/neon/neon_hero_s6.png';
-import neon_ex1_s1 from '/img/instruments/videomancer/neon/neon_ex1_s1.png';
-import neon_ex1_s2 from '/img/instruments/videomancer/neon/neon_ex1_s2.png';
-import neon_ex1_s3 from '/img/instruments/videomancer/neon/neon_ex1_s3.png';
-import neon_ex1_s4 from '/img/instruments/videomancer/neon/neon_ex1_s4.png';
-import neon_ex1_s5 from '/img/instruments/videomancer/neon/neon_ex1_s5.png';
-import neon_ex1_s6 from '/img/instruments/videomancer/neon/neon_ex1_s6.png';
-import neon_ex2_s1 from '/img/instruments/videomancer/neon/neon_ex2_s1.png';
-import neon_ex2_s2 from '/img/instruments/videomancer/neon/neon_ex2_s2.png';
-import neon_ex2_s3 from '/img/instruments/videomancer/neon/neon_ex2_s3.png';
-import neon_ex2_s4 from '/img/instruments/videomancer/neon/neon_ex2_s4.png';
-import neon_ex2_s5 from '/img/instruments/videomancer/neon/neon_ex2_s5.png';
-import neon_ex2_s6 from '/img/instruments/videomancer/neon/neon_ex2_s6.png';
-import neon_ex3_s1 from '/img/instruments/videomancer/neon/neon_ex3_s1.png';
-import neon_ex3_s2 from '/img/instruments/videomancer/neon/neon_ex3_s2.png';
-import neon_ex3_s3 from '/img/instruments/videomancer/neon/neon_ex3_s3.png';
-import neon_ex3_s4 from '/img/instruments/videomancer/neon/neon_ex3_s4.png';
-import neon_ex3_s5 from '/img/instruments/videomancer/neon/neon_ex3_s5.png';
-import neon_ex3_s6 from '/img/instruments/videomancer/neon/neon_ex3_s6.png';
-
-# Neon
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: neon_source1_car, after: neon_hero_s1 },
-    { label: "Sunset", before: neon_source2_sunset, after: neon_hero_s2 },
-    { label: "Turtle", before: neon_source3_turtle, after: neon_hero_s3 },
-    { label: "Pattern", before: neon_source4_pattern, after: neon_hero_s4 },
-    { label: "Woman", before: neon_source5_woman, after: neon_hero_s5 },
-    { label: "Paint", before: neon_source6_paint, after: neon_hero_s6 },
-  ]}
-/>
-*Neon rendering luminous colored edge halos over a darkened background, transforming video contours into glowing tube outlines.*
+![Neon hero image](/img/instruments/videomancer/neon/neon_hero_s1.png)
+*Neon rendering luminous colored edge halos over a dark background, transforming ordinary video into glowing signage.*
 
 ---
 
 ## Overview
 
-Every city at dusk has them — glass tubes bent into letters and shapes, filled with ionized gas, glowing with saturated color against dark storefronts. Neon recreates this aesthetic electronically. It detects horizontal luminance edges in the incoming video, gates them through a configurable threshold, spreads the detected edges into soft glowing halos via a horizontal IIR low-pass filter, and tints the halos with a selectable hue from a 6-sector piecewise color wheel. The original video can serve as a dimmed background behind the glow, or the background can be dropped to near-black for a pure neon-on-dark look.
+**Neon** is an edge-detection effect that isolates the contours in your video and redraws them as glowing colored tubes on a dark field: like a neon sign traced from a live camera feed. It works by sensing horizontal brightness changes, gating them through a threshold, and feeding the result into a horizontal bloom filter that spreads light outward from each edge. The core of each tube is driven to peak white, while the surrounding halo is tinted with a configurable color. The background can be solid black or a dimmed version of the original video, simulating a sign mounted on a dark wall.
 
-The name is literal — the program turns video contours into neon tubes. The edge detector is a first-order horizontal difference (|current pixel − previous pixel|), not a full Sobel kernel, so it responds primarily to vertical structures in the image where horizontal brightness transitions are sharpest. The IIR glow filter operates entirely within each scan line, producing a rightward bloom that decays exponentially from each detected edge. Where edges are dense, the glow fields overlap additively and the composite can saturate to full brightness.
+At subtle settings, Neon adds luminous edge accents to an otherwise recognizable image. At extreme settings, the original picture dissolves entirely into a constellation of colored light tubes floating in darkness. The effect responds in real time to motion and brightness changes in your source, so the glowing contours dance and shimmer as the video content moves.
 
-The hue wheel divides the 360° color circle into six piecewise sectors, each mapping a portion of the Hue pot range to specific U and V offsets around the 512 midpoint. At maximum saturation, these offsets reach ±256 counts, producing vivid spectral colors. A Color toggle switches between this fixed hue and the source video's own chrominance, letting the glow inherit the color of the edge that produced it.
+:::tip
+Neon works best with source material that has strong, well-defined shapes: faces, hands, text, architecture. Soft gradients produce delicate wisps; hard edges produce bold tubes.
+:::
+
+### What's In a Name?
+
+The name ***Neon*** refers directly to neon signage: those luminous glass tubes filled with gas that glow when electrified. Real neon signs are handmade: a craftsperson bends glass tubing to trace the outline of a shape, and the gas inside produces a characteristic colored glow with a bright core and a soft halo that fades into darkness. This program recreates that look electronically, tracing the edges of live video and rendering them with the same core-plus-halo structure.
 
 ---
 
 ## Quick Start
 
-1. **Start with high-contrast sources**: The first-order gradient detector responds to horizontal brightness transitions. Sharp vertical edges in the source produce the brightest glow; soft gradients and horizontal structures produce little or nothing.
-2. **Use Hard edge mode for the classic neon look**: Hard threshold creates uniform-intensity tubes that closely mimic real neon signage. Soft mode is better for revealing textural detail.
-3. **Glow Size shift is coarse**: There are only 4 settings (shift 1–4), each doubling or halving the bloom width. Fine-tune the apparent glow width by adjusting Bright and Threshold instead.
+1. Feed a source with clear shapes: a face, a hand, or some text. At default settings you should see colored edges glowing against a dark background.
+2. Turn **Threshold** (Knob 1) counterclockwise to reveal more edges, or clockwise to isolate only the strongest contours. This controls how much brightness contrast is required before an edge "lights up."
+3. Sweep **Glow Size** (Knob 2) clockwise. The halos widen, bleeding light further from each edge. The tubes grow fat and smoky.
+4. Rotate **Hue** (Knob 4) through the full 360° range and watch the tube color cycle through the spectrum (red, yellow, green, cyan, blue, magenta, and back to red.)
+
+---
+
+## Parameters
+
+![Videomancer front panel with Neon loaded](/img/instruments/videomancer/neon/neon_control_panel.png)
+*Videomancer's front panel with Neon active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Threshold
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 38% |
+
+**Threshold** sets the minimum brightness difference required for a pixel to register as an edge. At 0%, fully counterclockwise, even the faintest luminance gradients produce glow, filling the screen with soft light. As you increase the value, weaker edges are suppressed and only strong contours remain. At 100%, only the sharpest transitions survive (bold outlines on an otherwise dark canvas.)
+
+:::note
+Threshold interacts with the **Edge** toggle (Switch 9). In **Soft** mode, edges above the threshold retain their relative magnitude: a strong edge glows brighter than a weak one. In **Hard** mode, any edge above the threshold is slammed to maximum intensity, producing uniform tube brightness.
+:::
+
+---
+
+### Knob 2 — Glow Size
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Glow Size** controls the width of the luminous halo surrounding each edge. Internally, this parameter adjusts the decay rate of a horizontal ***infinite impulse response*** (IIR) filter. At low values the filter decays quickly, producing tight, crisp tubes. As you increase Glow Size, the filter decays more slowly and light bleeds further from each edge, creating wide, diffuse halos. At maximum, the glow spreads broadly across the screen, and individual edges begin to merge into overlapping pools of light.
+
+:::tip
+Because the IIR filter is purely horizontal, the glow spreads left and right but not vertically. Vertical edges produce the widest visible halos, while horizontal edges produce only a thin bright line. Feed a test pattern with lines at different angles to see this directional behavior.
+:::
+
+---
+
+### Knob 3 — Bright
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 75% |
+
+**Bright** scales the peak intensity of the glow. At 0%, the glow is invisible: edges are detected but produce no light. As you turn the knob clockwise, the tubes grow brighter. At high values, the core of each tube overdrives to peak white, creating the characteristic "overexposed center" look of real neon. The halo surrounding the core is tinted by the **Hue** and **Saturate** controls.
+
+---
+
+### Knob 4 — Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0deg – 360deg |
+| Default | 120deg |
+
+**Hue** selects the color of the neon glow by rotating through a six-sector color wheel. The full 360° sweep cycles through red, yellow, green, cyan, blue, and magenta. The color is applied to the halo surrounding each edge: the core of the tube tends toward white regardless of hue, just as the hottest part of a real neon tube washes out to white.
+
+This control has no effect when the **Color** toggle (Switch 7) is set to **Source**, because in that mode the glow takes its color from the original video rather than from the fixed hue wheel.
+
+---
+
+### Knob 5 — Saturate
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 75% |
+
+**Saturate** controls how vivid the glow color is. At 0%, the glow is monochrome white: no color tinting is applied. As you increase the value, the halo takes on the hue selected by Knob 4. At maximum, the color is fully saturated. Moderate values produce pastel tints; high values produce intense, candy-colored tubes.
+
+Like **Hue**, this control has no effect when the **Color** toggle is set to **Source**.
+
+---
+
+### Knob 6 — Bg Level
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 6% |
+
+**Bg Level** controls the brightness of the background behind the neon tubes. At 0%, the background is completely black. As you increase the value, the background lightens. The behavior depends on the **Bg Style** toggle (Switch 8):
+
+- In **Black** mode, the background is a uniform dark field. **Bg Level** adds a small amount of flat gray (like adjusting the ambient light in a dark room.)
+- In **Dim Vid** mode, the background is a dimmed version of the original video. **Bg Level** controls the dimming intensity, from fully black (0%) to a recognizable but subdued version of the source (higher values).
+
+---
+
+### Switch 7 — Color
+
+| Property | Value |
+|----------|-------|
+| Off | Fixed |
+| On | Source |
+| Default | Fixed |
+
+**Color** selects the source of the glow tint. In the **Fixed** position, the glow color is determined by the **Hue** and **Saturate** knobs, producing a uniform tube color across the entire image. In the **Source** position, each pixel's glow takes its color from the original video's chrominance channels: edges glow in the colors of whatever they're outlining. A red object produces red tubes; a blue object produces blue tubes.
+
+:::tip
+**Source** mode creates a stained-glass look where the neon outlines inherit the palette of the original scene. Try it with colorful footage: the result resembles a luminous line drawing colored with the source material.
+:::
+
+---
+
+### Switch 8 — Bg Style
+
+| Property | Value |
+|----------|-------|
+| Off | Black |
+| On | Dim Vid |
+| Default | Black |
+
+**Bg Style** selects what fills the space behind the neon tubes. In the **Black** position, the background is a uniform dark field: the classic neon-sign-on-black look. In the **Dim Vid** position, the background is a dimmed and desaturated version of the original video, letting you see the source content behind the glowing edges. Use **Bg Level** (Knob 6) to control how much of the background is visible.
+
+---
+
+### Switch 9 — Edge
+
+| Property | Value |
+|----------|-------|
+| Off | Soft |
+| On | Hard |
+| Default | Soft |
+
+**Edge** selects between two threshold behaviors. In the **Soft** position, edges above the threshold retain their original magnitude: strong edges glow brighter than weak ones, producing a natural, graded look. In the **Hard** position, any edge above the threshold is driven to full intensity, producing uniform tube brightness regardless of the original edge strength. Hard mode creates bold, uniform outlines reminiscent of cartoon cel shading.
+
+---
+
+### Switch 10 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** reverses the final luminance after compositing. With Invert **Off**, glowing tubes are bright on a dark background: the standard neon look. With Invert **On**, the image is complemented: tubes become dark outlines on a bright field. The effect resembles an X-ray or photographic negative of the neon sign.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Neon processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the processed result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input and the wet (neon-processed) output. At 0%, you hear: er, see: only the original video. At 100%, you see only the neon effect. Intermediate values blend the two, letting you dial in a subtle glow overlay on top of the source image. This is useful for adding luminous accents without completely replacing the original picture.
 
 ---
 
 ## Background
 
-### First-Order Horizontal Gradient
+### Edge detection
 
-The simplest edge detector computes the absolute difference between adjacent pixels. In Neon, this is the horizontal gradient: |Y[x] − Y[x−1]|. Unlike a Sobel kernel that needs line buffers and 3×3 convolution, the first-order difference requires only a single register to hold the previous pixel value, making it extremely resource-efficient. The tradeoff is that it only detects horizontal transitions — vertical edges in the image. This directional bias is part of the neon aesthetic: horizontal structures in the source produce no glow, while vertical contours light up brightly.
+***Edge detection*** is a fundamental image analysis technique that identifies locations in a picture where brightness changes sharply. Edges correspond to the boundaries between objects, shadows, textures, and other visual features. Neon uses the simplest form: a ***first-order horizontal difference***. For each pixel, it subtracts the previous pixel's brightness from the current pixel's brightness and takes the absolute value. A large difference means a strong edge; a small difference means a smooth gradient.
 
-### IIR Glow Spread
+This horizontal-only approach means Neon is sensitive to vertical edges (where brightness changes from left to right) and insensitive to purely horizontal edges (where brightness changes from top to bottom). In practice, most natural imagery contains edges at many angles, so the effect is convincing: but you'll notice that perfectly horizontal stripes produce no glow at all.
 
-An Infinite Impulse Response filter with a single feedback tap creates the glow halo. Each clock cycle, the accumulator decays toward zero by subtracting a right-shifted copy of itself, then adds a right-shifted copy of the thresholded edge signal. The shift amount controls the time constant: shift 1 produces wide, slowly decaying glow (the accumulator retains 50% per sample); shift 4 produces narrow, rapidly decaying glow (retains 93.75% subtracted). Because the filter runs left-to-right along each scan line, the glow always extends to the right of each detected edge, creating the asymmetric bloom characteristic of real CRT phosphor persistence.
+### IIR glow filter
 
-### Piecewise Hue Mapping
+The glow surrounding each edge is produced by a horizontal ***infinite impulse response*** (IIR) filter: also called a ***leaky integrator*** or ***exponential moving average***. The filter maintains a running value that rises when it encounters an edge and decays exponentially between edges. The decay rate is controlled by the **Glow Size** knob: a slow decay produces wide halos, and a fast decay produces tight tubes.
 
-Rather than storing a full sine/cosine table, Neon divides the hue circle into 6 sectors using the top 3 bits of the Hue pot value (clamped to 0–5). Each sector assigns fixed U and V offset polarities from the saturation control: sector 0 is pure red (V+), sector 1 is yellow-magenta (U−, V+ half), sector 2 is cyan-blue (U− half, V−), and so on around the wheel. The result is a coarse but effective color selector that covers the primary and secondary hues with zero multiplier usage.
+Mathematically, each pixel's glow value is: `glow = prev - (prev >> shift) + (edge >> shift)`, where `shift` ranges from 1 (widest) to 4 (narrowest). This is a classic single-pole low-pass filter implemented entirely in integer arithmetic with bit shifts: no multipliers required for this stage. The result is a bloom that trails to the right of each edge and, because the next scanline feeds its own IIR instance, each line glows independently.
 
-### Additive Compositing
+### Hue mapping
 
-The final image is formed by adding the glow luminance to the background luminance, with saturation clamping at 1023. This additive model means glow always brightens the output — it never subtracts from the background. Where multiple edge halos overlap, their luminances sum, creating bright hotspots at edge intersections. The chrominance channel switches abruptly between tube color and background color based on a glow threshold of 64 counts, producing a hard color boundary around each glow halo.
+Neon maps the **Hue** knob to a six-sector piecewise approximation of a color wheel. The 10-bit hue value is divided into six equal sectors, and each sector defines a pair of UV offsets from neutral gray (512, 512). The **Saturate** knob scales the magnitude of those offsets: at zero saturation, UV stays at neutral and the glow is white; at full saturation, UV swings to the edge of the color gamut.
 
-### Background Dimming
-
-The background path offers two modes. In black mode, the background is simply the Bg Level pot value divided by 8, producing a near-black floor with neutral chrominance (U=V=512). In dim video mode, the source luminance is multiplied by the Bg Level pot and divided by 1024, producing a darkened but recognizable version of the input video with its original color intact. The dim video mode is particularly effective for the neon aesthetic — glowing edges floating over a barely visible scene.
+The six sectors roughly correspond to: red → yellow-green → cyan → blue → magenta → orange. The transitions between sectors are stepped rather than smoothly interpolated, so you may notice slight color jumps as you sweep the Hue knob. This is a deliberate design choice that keeps the FPGA resource usage low while providing a usable palette of neon colors.
 
 
 ---
 
 ## Signal Flow
 
-Y Channel → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel ─────────────────────────────────────────────────
-│   │
-│   ├─ 1. Input Register         (latch Y, U, V; store Y_prev)
-│   │     Horizontal gradient:  |Y[x] − Y[x−1]|
-│   ├─ 2. Threshold Gate         (soft: max(0, mag−thresh); hard: mag>thresh ? 1023 : 0)
-│   │     IIR Glow:  acc = acc − (acc >> shift) + (edge >> shift)
-│   ├─ 3. Glow Brightness        (glow_y = glow_val × bright >> 10, clamp 1023)
-│   │     Hue Decode:  6-sector hue pot → (U_off, V_off)
-│   ├─ 4. Color Select           (fixed hue UV or source UV)
-│   │     Background Prepare     (black: bg_level/8; dim: Y × bg_level >> 10)
-│   ├─ 5. Composite              (bg_y + tube_y, clamp 1023)
-│   │     Invert:  1023 − result
-│   │     UV Select:  glow > 64 → tube UV, else bg UV
-│   └─ 6–9. Interpolator Mix     (4 clocks, dry/wet crossfade)
-│
-├── Sync Signals ──────────────────────────────────────────────
-│   └─ 9-stage delay pipeline (hsync, vsync, field, Y/U/V for bypass)
-│
-└── Bypass ────────────────────────────────────────────────────
-    └─ Select delayed original or mixed signal via bypass toggle
-```
+The Y channel carries the edge detection and glow logic. The first-order difference operates on adjacent pixels within a single scan line: it's a purely horizontal gradient detector. The IIR glow filter is also horizontal, maintaining one running accumulator per line (reset implicitly at blanking). This means the glow has a directional bias: it trails to the right of each edge because the filter processes pixels left to right.
 
-The entire glow effect is produced within a single scan line — there are no line buffers or vertical processing. This means the gradient detector only responds to horizontal brightness transitions (producing glow on vertical image structures). The IIR filter's rightward-only decay creates an asymmetric halo: the left edge of a bright object gets a clean onset while the right side trails off exponentially. The decay rate, controlled by the Glow Size shift amount, determines how far the glow extends before it falls below the visibility threshold.
+The UV channels follow a separate path. Instead of detecting edges in color, Neon applies a fixed color (from the hue wheel) or the source video's own chrominance to the glow. A threshold of 64 on the glow magnitude determines which UV source appears at each pixel: where glow is visible, the tube's color dominates; where glow is faint, the background's color shows through. This creates a clean separation between the luminous tube regions and the dark background.
 
-The chrominance crossover at glow level 64 is an important design detail. Rather than smoothly blending tube and background colors (which would require additional multipliers), the VHDL uses a hard threshold: pixels with glow above 64 receive the tube's hue; pixels below receive the background's color. This creates a visible color boundary that reinforces the neon-tube illusion — real neon tubes have a sharp color edge where the glow fades to darkness.
-
----
-
-## Parameter Reference
-
-<img src={neon_control_panel} alt="Videomancer front panel with Neon loaded"/>
-*Videomancer's front panel with Neon active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Threshold
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 38% |
-| Suffix | % |
-
-Threshold sets the minimum horizontal gradient magnitude required to trigger glow. In soft mode, the threshold is subtracted from the edge magnitude (clamping at zero), so edges just above threshold produce faint glow and strong edges produce bright glow. In hard mode, any edge above threshold produces maximum glow (1023) while edges below produce nothing. Low threshold values make the detector sensitive to subtle textures and noise; high values restrict glow to only the strongest contours in the image.
-
----
-
-#### Knob 2 — Glow Size
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Glow Size controls the horizontal spread of the IIR glow filter by selecting the right-shift amount applied to both the decay and input terms. High pot values select shift 1 (wide glow extending many pixels right of each edge); low pot values select shift 4 (narrow glow that decays within a few pixels). The mapping uses four threshold bands at 256-count intervals. Because the IIR operates per-scanline, this parameter only affects horizontal spread — vertical extent is always a single pixel.
-
----
-
-#### Knob 3 — Bright
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 75% |
-| Suffix | % |
-
-Bright scales the glow luminance via a 10-bit multiply: glow_y = glow_val × bright >> 10. At zero, the glow is invisible regardless of edge detection. At maximum (1023), the glow reaches nearly the full detected magnitude. This control sets the peak intensity of the neon tubes — how bright they appear above the background. Because the composite is additive, high brightness values can push areas with overlapping glow to full white (1023).
-
----
-
-#### Knob 4 — Hue
-| Property | Value |
-|----------|-------|
-| Range | 0deg – 360deg |
-| Default | 120deg |
-| Suffix | deg |
-
-Hue selects the glow color from the 6-sector piecewise hue wheel. The top 3 bits of the pot value (clamped to 0–5) index a case statement that generates U and V offsets from the Saturate pot value. Sector 0 produces red-orange, sector 1 yellow-magenta, sector 2 cyan, sector 3 blue-green, sector 4 magenta-pink, and sector 5 warm red. Sweeping the pot traverses the full color circle in six discrete steps.
-
----
-
-#### Knob 5 — Saturate
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 75% |
-| Suffix | % |
-
-Saturate controls the amplitude of the hue-derived U and V chrominance offsets. The 10-bit pot value is right-shifted by 1 to produce a half-range scaling factor. Each hue sector applies this factor as positive or negative offsets to the U=512 and V=512 midpoints. At zero, both offsets are zero and the glow is achromatic (white). At maximum, the offsets reach ±512 counts (clamped), producing fully saturated spectral color. This lets you create either white neon tubes or richly colored ones.
-
----
-
-#### Knob 6 — Bg Level
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 6% |
-| Suffix | % |
-
-Bg Level controls the background brightness in both modes. In black background mode, the pot value is right-shifted by 3, producing a dim floor between 0 and 127 counts with neutral (gray) chrominance. In dim video mode, the pot value multiplies the source luminance (Y × bg_level >> 10), scaling the background from completely black (pot at 0) to nearly full brightness (pot at 1023). This controls how visible the source scene is behind the neon glow.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Color** | Fixed | Source |
-| **8 — Bg Style** | Black | Dim Vid |
-| **9 — Edge** | Soft | Hard |
-| **10 — Invert** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles control independent aspects of the neon rendering. Color selects between the hue-pot-driven tube color and the source video's own chrominance. Bg Style chooses the background treatment. Edge switches the threshold gate between soft (proportional) and hard (binary) response. Invert flips the final luminance. Bypass routes the delayed original signal directly to the output.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Mix controls the interpolator crossfade between the dry (original) and wet (processed) signals. At 0, the output is entirely the original video. At 1023, the output is entirely the neon-processed signal. The interpolator operates independently on all three YUV channels with 4-clock latency.
-
-
-
+:::note
+The glow-to-UV threshold is fixed at 64 (out of 1023) in the VHDL. This is not user-adjustable: it's tuned internally to prevent color fringing in the transition zone between glow and background.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises build from basic edge glow through color and background styling to full neon-sign compositions, progressively engaging the IIR spread, hue mapping, and composite controls.
+These exercises progress from basic edge extraction to full neon sign composition, each building on the techniques of the previous one.
+### Exercise 1: Basic Neon Edges
 
-### Exercise 1: Basic Neon Tubes
+![Basic Neon Edges result](/img/instruments/videomancer/neon/neon_ex1_s1.png)
+*Basic Neon Edges — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: neon_source1_car, after: neon_ex1_s1 },
-    { label: "Sunset", before: neon_source2_sunset, after: neon_ex1_s2 },
-    { label: "Turtle", before: neon_source3_turtle, after: neon_ex1_s3 },
-    { label: "Pattern", before: neon_source4_pattern, after: neon_ex1_s4 },
-    { label: "Woman", before: neon_source5_woman, after: neon_ex1_s5 },
-    { label: "Paint", before: neon_source6_paint, after: neon_ex1_s6 },
-  ]}
-/>
-*Basic Neon Tubes — simulated result across source images.*
-**Source**: A high-contrast graphic or text overlay — sharp black-on-white lettering, geometric shapes, or a title card with clean vertical edges.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Produce clean, bright neon tube outlines from hard-edged source material, learning how Threshold and Glow Size interact to shape the halo.
+#### Learning Outcomes
 
-1. Start with default settings. Observe faint glow on edges of the source.
-2. Lower Threshold to ~20% to detect more edges. Glow becomes more pervasive.
-3. Set Edge to Hard. Observe how all edges become uniform-intensity tubes.
-4. Increase Glow Size to ~75%. The halos spread further right from each edge.
-5. Increase Bright to full. The tubes become intensely luminous.
-6. Sweep Hue slowly through its range. Watch the tube color cycle through six sectors.
+Isolate the strongest edges from a video source and render them as glowing tubes on a black background.
 
-**Key concepts**: First-order horizontal gradient detects vertical structures, hard threshold creates uniform tubes, IIR shift controls bloom width, 6-sector hue wheel
+#### Key Concepts
 
----
+- Horizontal edge detection via first-order difference
+- Threshold controls edge sensitivity
+- Glow Size controls halo width
 
-### Exercise 2: Neon Sign on a Dark Scene
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: neon_source1_car, after: neon_ex2_s1 },
-    { label: "Sunset", before: neon_source2_sunset, after: neon_ex2_s2 },
-    { label: "Turtle", before: neon_source3_turtle, after: neon_ex2_s3 },
-    { label: "Pattern", before: neon_source4_pattern, after: neon_ex2_s4 },
-    { label: "Woman", before: neon_source5_woman, after: neon_ex2_s5 },
-    { label: "Paint", before: neon_source6_paint, after: neon_ex2_s6 },
-  ]}
-/>
-*Neon Sign on a Dark Scene — simulated result across source images.*
-**Source**: A moderately detailed camera feed — a face, a room interior, or an outdoor scene with varied luminance.
+A live camera feed or recorded footage with clear shapes: faces, hands, text, or architectural features with strong contrast.
 
-**What You'll Create**: Create the classic neon-sign-over-dark-wall look by combining dim video background with colored edge glow.
+#### Steps
 
-1. Set Bg Style to Dim Vid. The source video appears behind the glow.
-2. Lower Bg Level to ~10%. The background dims to barely visible.
-3. Set Threshold to ~40% to limit glow to the strongest contours.
-4. Use soft Edge mode — edges glow proportionally to their strength.
-5. Set Hue to a warm color (sector 0 or 5) and Saturate to ~75%.
-6. Adjust Glow Size to taste. Wider glow creates a more atmospheric haze.
+1. **Reveal edges**: Start with **Threshold** (Knob 1) at its default. You should see colored glow lines tracing the strongest contours.
+2. **Lower threshold**: Turn Threshold counterclockwise to 20%. More edges appear (finer details and weaker gradients begin to glow.)
+3. **Widen glow**: Increase **Glow Size** (Knob 2) to about 75%. The halos widen dramatically, bleeding light across the screen.
+4. **Max brightness**: Turn **Bright** (Knob 3) fully clockwise. The tube cores overdrive to white while the halos remain tinted.
+5. **Hard edges**: Flip the **Edge** toggle (Switch 9) to **Hard**. All visible edges now glow at uniform intensity (the image looks like a neon line drawing.)
 
-**Key concepts**: Dim video background preserves scene context, soft threshold reveals edge hierarchy, additive composite brightens over the dimmed background
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Threshold | ~20% |
+| Glow Size | ~75% |
+| Bright | 100% |
+| Hue | 120° |
+| Saturate | ~75% |
+| Bg Level | 0% |
+| Color | Fixed |
+| Bg Style | Black |
+| Edge | Hard |
+| Invert | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Source-Colored Glow with Invert
+### Exercise 2: Neon Sign on a Dark Wall
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: neon_source1_car, after: neon_ex3_s1 },
-    { label: "Sunset", before: neon_source2_sunset, after: neon_ex3_s2 },
-    { label: "Turtle", before: neon_source3_turtle, after: neon_ex3_s3 },
-    { label: "Pattern", before: neon_source4_pattern, after: neon_ex3_s4 },
-    { label: "Woman", before: neon_source5_woman, after: neon_ex3_s5 },
-    { label: "Paint", before: neon_source6_paint, after: neon_ex3_s6 },
-  ]}
-/>
-*Source-Colored Glow with Invert — simulated result across source images.*
-**Source**: A colorful, high-contrast feed — flowers, graffiti, a colorful textile, or a saturated video clip.
+![Neon Sign on a Dark Wall result](/img/instruments/videomancer/neon/neon_ex2_s1.png)
+*Neon Sign on a Dark Wall — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Use source-colored glow and invert to create an x-ray or blueprint negative of the scene's color edges.
+***A description of the exercise illustration.***
 
-1. Set Color to Source. The glow now inherits the chrominance of the source pixel at each edge.
-2. Set Threshold low (~15%) and Edge to Soft for maximum edge detail.
-3. Enable Invert. The bright glow inverts to dark lines on a bright background.
-4. Set Bg Style to Dim Vid and Bg Level to ~80%. The inverted result shows bright background with dark edge traces.
-5. Lower Mix to ~60% to blend with the original, creating a partially processed look.
-6. Compare with Invert off — observe the complementary color relationships.
+#### Learning Outcomes
 
-**Key concepts**: Source color mode preserves original chrominance in glow, invert flips luminance polarity, mix blending creates partial effect
+Compose a neon sign effect where glowing edges float over a dimmed version of the original video (like a sign mounted on a dark storefront.)
+
+#### Key Concepts
+
+- Background modes: black vs. dimmed source video
+- Color source: fixed hue vs. source chrominance
+- Background level interaction with background style
+
+#### Video Source
+
+Footage with recognizable subjects and moderate color (a street scene, a portrait, or a still life.)
+
+#### Steps
+
+1. **Set the sign**: Start with the settings from Exercise 1. You should have bright neon edges on black.
+2. **Reveal the wall**: Flip **Bg Style** (Switch 8) to **Dim Vid**. The original video appears behind the glow, heavily dimmed.
+3. **Brighten the wall**: Increase **Bg Level** (Knob 6) until the background is faintly visible (around 50–60%. The neon tubes should still dominate.)
+4. **Source colors**: Flip **Color** (Switch 7) to **Source**. Each tube now glows in the color of the object it's outlining. Faces glow warm; sky glows blue.
+5. **Soften**: Flip **Edge** (Switch 9) back to **Soft**. Stronger edges glow brighter than weak ones, creating a more naturalistic depth illusion.
+6. **Blend**: Pull the **Mix** fader (Fader 12) down to about 70%. The neon effect blends with the dry signal, adding glow accents on top of the original image.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Threshold | ~20% |
+| Glow Size | ~50% |
+| Bright | ~75% |
+| Hue | 0° |
+| Saturate | ~75% |
+| Bg Level | ~55% |
+| Color | Source |
+| Bg Style | Dim Vid |
+| Edge | Soft |
+| Invert | Off |
+| Bypass | Off |
+| Mix | ~70% |
 
 ---
 
+### Exercise 3: Inverted X-Ray Glow
 
-## Tips
+![Inverted X-Ray Glow result](/img/instruments/videomancer/neon/neon_ex3_s1.png)
+*Inverted X-Ray Glow — simulated result across source images.*
+#### Exercise Illustration
 
-- **Bg Level in black mode stays dim**: The pot value is divided by 8 in black mode, so even at full the background only reaches ~127 counts. For a brighter background, switch to Dim Vid mode.
-- **Source color mode ignores Hue and Saturate**: When Color is set to Source, the tube U/V come directly from the input — the Hue and Saturate pots do nothing. Adjust them only in Fixed mode.
-- **IIR glow resets at line boundaries**: The glow accumulator is per-scan-line with no vertical carry, so the glow effect is purely horizontal. This creates scan-line-independent results with no frame-to-frame memory.
-- **Invert creates blueprint effects**: Combining invert with dim video background and source color produces dark edge traces on a bright field — an aesthetic closer to architectural blueprints than neon signs.
-- **Layer after threshold programs**: Running Neon after a hard-keyer or posterizer program produces exceptionally clean neon tubes because the input already has strong, well-defined edges.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Create an inverted neon effect where dark contour lines carve into a bright field (like an X-ray or photographic negative of a neon sign.)
+
+#### Key Concepts
+
+- Invert transforms bright-on-dark to dark-on-bright
+- Combining invert with dim video background creates ethereal negatives
+- Mix blending creates layered compositions
+
+#### Video Source
+
+High-contrast footage works best: black-and-white graphics, strong silhouettes, or text on a plain background.
+
+#### Steps
+
+1. **Start from defaults**: Set all controls to their default positions.
+2. **Strong glow**: Set **Glow Size** (Knob 2) to about 70% and **Bright** (Knob 3) to maximum. Bold, fat tubes.
+3. **Invert**: Flip the **Invert** toggle (Switch 10) to **On**. The image flips (dark tubes on a bright, washed-out field.)
+4. **Add background**: Set **Bg Style** (Switch 8) to **Dim Vid** and raise **Bg Level** (Knob 6) to about 40%. The inverted tubes now carve dark channels through a ghostly image of the source.
+5. **Color**: Choose a cool hue: try around 200° (cyan-blue). With inversion, the tint appears in the bright field rather than in the tubes.
+6. **Hard edges**: Flip **Edge** (Switch 9) to **Hard** for uniform contour width. The result looks like an etched plate or X-ray negative.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Threshold | ~38% |
+| Glow Size | ~70% |
+| Bright | 100% |
+| Hue | ~200° |
+| Saturate | ~75% |
+| Bg Level | ~40% |
+| Color | Fixed |
+| Bg Style | Dim Vid |
+| Edge | Hard |
+| Invert | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Additive Composite** | Pixel combination by summing luminance values, with clamping at maximum (1023) to prevent overflow. |
-| **BT.601** | ITU-R BT.601 standard defining the YUV color encoding used in the Videomancer video pipeline. |
-| **Chrominance** | The color difference components (U and V) of a YUV signal, encoding hue and saturation around the (512, 512) neutral midpoint. |
-| **First-Order Difference** | Edge detection by computing |pixel[x] − pixel[x−1]|, the simplest discrete derivative. |
-| **IIR** | Infinite Impulse Response; a feedback filter whose output depends on both the current input and its own previous output, creating exponentially decaying response. |
-| **Luminance** | The brightness component (Y) of a YUV signal, range 0–1023 in 10-bit representation. |
-| **Piecewise Hue Mapping** | Dividing the 360° color circle into discrete sectors, each with fixed U/V offset directions, rather than computing continuous trigonometric functions. |
+- **Edge Detection**: Identifying locations in an image where brightness changes sharply, corresponding to boundaries between objects or textures.
+
+- **First-Order Difference**: The simplest gradient measure: the absolute value of the difference between two adjacent pixel values.
+
+- **Halo**: The soft luminous glow surrounding the bright core of a neon tube, produced by the IIR bloom filter.
+
+- **Hue**: The angular position on a color wheel, measured in degrees. 0° is red, 120° is green, 240° is blue.
+
+- **IIR Filter**: Infinite Impulse Response filter: a feedback-based filter whose output depends on both the current input and previous outputs, producing exponentially decaying tails.
+
+- **Leaky Integrator**: A type of IIR filter that accumulates input over time while losing a fraction of its stored value each clock cycle, creating a bloom or decay effect.
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color.
+
+- **Neon**: A noble gas that glows orange-red when electrified in a glass tube; by extension, any gas-discharge signage using colored tubes.
+
+- **Saturation**: The intensity or purity of a color. Zero saturation is gray; full saturation is the most vivid version of a hue.
+
+- **Threshold**: A cutoff value below which a signal is suppressed. In Neon, it determines the minimum edge strength required to produce glow.
 
 ---

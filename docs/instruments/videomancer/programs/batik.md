@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 15
 slug: /instruments/videomancer/batik
@@ -7,371 +7,422 @@ image: /img/instruments/videomancer/batik/batik_hero_s1.png
 description: "Batik simulates the centuries-old Indonesian wax-resist textile dyeing technique in the video domain."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import batik_control_panel from '/img/instruments/videomancer/batik/batik_control_panel.png';
-import batik_source1_house from '/img/instruments/videomancer/batik/batik_source1_house.png';
-import batik_source2_parrot from '/img/instruments/videomancer/batik/batik_source2_parrot.png';
-import batik_source3_clouds from '/img/instruments/videomancer/batik/batik_source3_clouds.png';
-import batik_source4_pattern from '/img/instruments/videomancer/batik/batik_source4_pattern.png';
-import batik_source5_man from '/img/instruments/videomancer/batik/batik_source5_man.png';
-import batik_source6_berries from '/img/instruments/videomancer/batik/batik_source6_berries.png';
-import batik_hero_s1 from '/img/instruments/videomancer/batik/batik_hero_s1.png';
-import batik_hero_s2 from '/img/instruments/videomancer/batik/batik_hero_s2.png';
-import batik_hero_s3 from '/img/instruments/videomancer/batik/batik_hero_s3.png';
-import batik_hero_s4 from '/img/instruments/videomancer/batik/batik_hero_s4.png';
-import batik_hero_s5 from '/img/instruments/videomancer/batik/batik_hero_s5.png';
-import batik_hero_s6 from '/img/instruments/videomancer/batik/batik_hero_s6.png';
-import batik_ex1_s1 from '/img/instruments/videomancer/batik/batik_ex1_s1.png';
-import batik_ex1_s2 from '/img/instruments/videomancer/batik/batik_ex1_s2.png';
-import batik_ex1_s3 from '/img/instruments/videomancer/batik/batik_ex1_s3.png';
-import batik_ex1_s4 from '/img/instruments/videomancer/batik/batik_ex1_s4.png';
-import batik_ex1_s5 from '/img/instruments/videomancer/batik/batik_ex1_s5.png';
-import batik_ex1_s6 from '/img/instruments/videomancer/batik/batik_ex1_s6.png';
-import batik_ex2_s1 from '/img/instruments/videomancer/batik/batik_ex2_s1.png';
-import batik_ex2_s2 from '/img/instruments/videomancer/batik/batik_ex2_s2.png';
-import batik_ex2_s3 from '/img/instruments/videomancer/batik/batik_ex2_s3.png';
-import batik_ex2_s4 from '/img/instruments/videomancer/batik/batik_ex2_s4.png';
-import batik_ex2_s5 from '/img/instruments/videomancer/batik/batik_ex2_s5.png';
-import batik_ex2_s6 from '/img/instruments/videomancer/batik/batik_ex2_s6.png';
-import batik_ex3_s1 from '/img/instruments/videomancer/batik/batik_ex3_s1.png';
-import batik_ex3_s2 from '/img/instruments/videomancer/batik/batik_ex3_s2.png';
-import batik_ex3_s3 from '/img/instruments/videomancer/batik/batik_ex3_s3.png';
-import batik_ex3_s4 from '/img/instruments/videomancer/batik/batik_ex3_s4.png';
-import batik_ex3_s5 from '/img/instruments/videomancer/batik/batik_ex3_s5.png';
-import batik_ex3_s6 from '/img/instruments/videomancer/batik/batik_ex3_s6.png';
-
-# Batik
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: batik_source1_house, after: batik_hero_s1 },
-    { label: "Parrot", before: batik_source2_parrot, after: batik_hero_s2 },
-    { label: "Clouds", before: batik_source3_clouds, after: batik_hero_s3 },
-    { label: "Pattern", before: batik_source4_pattern, after: batik_hero_s4 },
-    { label: "Man", before: batik_source5_man, after: batik_hero_s5 },
-    { label: "Berries", before: batik_source6_berries, after: batik_hero_s6 },
-  ]}
-/>
-*Wax-resist crackle veins fracture a portrait into dye-limited Voronoi cells, echoing the layered resist-and-dye process of Javanese batik cloth.*
+![Batik hero image](/img/instruments/videomancer/batik/batik_hero_s1.png)
+*Batik overlaying LFSR-seeded crackle veins and dye palette quantization onto source video, simulating traditional wax-resist textile patterning.*
 
 ---
 
 ## Overview
 
-Batik simulates the centuries-old Indonesian wax-resist textile dyeing technique in the video domain. The program generates a crackle vein network — dark boundary lines that recall the characteristic cracks formed when molten wax dries and fractures on cloth — and overlays it on a palette-quantised version of the input video. The result resembles hand-dyed fabric where each region between wax cracks holds a limited range of dye colours.
+Batik transforms live video into a digital simulation of ***batik***, the ancient Indonesian textile art of wax-resist dyeing. A network of dark crackle veins: the cracks that form in cooled wax: overlays the image, while the remaining areas are palette-quantized to resemble the flat, banded tones of dye-soaked cloth. The result looks as if your video were printed onto handmade fabric.
 
-The crackle pattern is produced by a pseudo-Voronoi cell algorithm seeded from a free-running LFSR. For every pixel, the hardware divides the frame into coarse rectangular regions and hashes the region coordinates to create a pseudo-random cell centre. Chebyshev distance to the nearest cell boundary determines whether a pixel falls on a dark vein or inside a cell body. Cell bodies receive palette-quantised luma (reducing brightness to 2–64 discrete levels like limited dye baths) and hue-rotated chroma to simulate indigo, ochre, or earth-tone palettes.
+The crackle pattern is generated by dividing the screen into a grid of ***Voronoi-like cells***. Each cell has a pseudo-random center point seeded by a 16-bit linear feedback shift register (LFSR). Pixels near the boundaries between cells are classified as veins and darkened, while pixels near cell centers keep their quantized color. Separately, a hue rotation stage shifts the chroma channels to simulate different dye palettes: indigo, ochre, rust, or earth tones. The two systems work together: the crackle network provides structure, and the dye palette provides color.
 
-The name references *batik tulis*, the hand-drawn Javanese method where artisans apply hot wax with a copper stylus called a *canting*, dip the cloth in dye, then crack and re-wax in successive layers. Batik's digital version compresses this multi-step resist-dye-crack cycle into a single real-time video pass.
+:::tip
+The interplay between **Crackle** and **Wax Amt** is the heart of Batik. Crackle controls how visible the vein network is; Wax Amt controls how dark the veins become. Push both to extremes for bold, graphic textile patterns, or keep them subtle for a gentle aged-fabric look.
+:::
+
+### What's In a Name?
+
+***Batik*** is a traditional textile art originating in Java, Indonesia. Artisans apply hot wax to cloth in intricate patterns. Where wax covers the fabric, dye cannot reach. As the wax cools and cracks, thin lines of dye seep through the fractures, creating the distinctive dark vein patterns called ***crackle***. This program simulates that process digitally: pixels are classified as either waxed (protected) or cracked (darkened), and the remaining image is quantized into flat dye-like tones.
 
 ---
 
 ## Quick Start
 
-1. **Dense for close-ups, Sparse for wide shots**: Fine crackle works best when the subject fills the frame; large cells suit wide compositions where the vein pattern reads as architectural structure.
-2. **Dye Depth and Palette together set the aesthetic**: Low Dye Depth with a warm Palette creates a two-tone sepia batik; high Dye Depth with a cool Palette gives detailed indigo cloth.
-3. **Use Crackle as a presence control**: Set Wax Amt for the desired vein darkness, then use Crackle to fade the overlay in and out without changing the vein geometry.
+1. Turn **Crackle** (Knob 6) up to about 75%. A network of dark veins appears over the video. You are seeing the wax cracks.
+2. Sweep **Cell Size** (Knob 1) through its range. The vein pattern becomes coarser or finer (like changing the scale of the fabric weave.)
+3. Lower **Dye Depth** (Knob 3) to about 30%. The image's brightness flattens into a small number of distinct tonal bands, resembling the limited palette of natural dyes.
+4. Rotate **Palette** (Knob 4) to shift the color of the dye. Watch the image cycle through earth tones, blues, and warm palettes.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Batik loaded](/img/instruments/videomancer/batik/batik_control_panel.png)
+*Videomancer's front panel with Batik active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Cell Size
+
+| Property | Value |
+|----------|-------|
+| Range | 4 – 64 |
+| Default | 27 |
+
+**Cell Size** controls the scale of the Voronoi cell grid that generates the crackle pattern. At the minimum setting, cells are the smallest available size within the current mode: producing a fine, dense lattice of cracks. As you turn the knob clockwise, cells grow larger, and veins become more widely spaced. At the maximum, cells are large and the crackle pattern is coarse, with wide open areas between veins.
+
+Cell Size works in stepped increments, selecting between three discrete cell widths. The actual pixel dimensions depend on the **Dye Mode** toggle: in Natural mode the cells range from 32 to 128 pixels; in Dark mode they range from 8 to 32 pixels.
+
+:::note
+Because Cell Size uses stepped quantization, you will feel it click between three distinct scales rather than sweep smoothly. This is intentional: it mirrors the discrete nature of wax application in real batik, where the artist chooses a tool width.
+:::
+
+---
+
+### Knob 2 — Vein Width
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 37.5% |
+
+**Vein Width** controls the thickness of the dark crackle veins. At 0%, veins are hair-thin and barely visible. As you increase Vein Width, more pixels near the cell boundaries are classified as veins, and the dark lines grow broader. At 100%, the veins are thick and consume a large portion of each cell, leaving only small bright islands of color at the cell centers.
+
+Vein Width interacts with **Cell Size**: wide veins on small cells can fill entire cells with darkness, while wide veins on large cells leave substantial protected areas in the center.
+
+---
+
+### Knob 3 — Dye Depth
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Dye Depth** controls how many discrete brightness levels the image is quantized into: simulating the limited palette of natural dyes. At 0%, the image is reduced to just two levels: near-black and near-white, producing extreme banding. As you increase Dye Depth, more tonal steps appear. At 100%, quantization is very subtle (64 levels), and the image retains most of its original tonal gradation.
+
+:::tip
+Low Dye Depth settings combined with high **Crackle** create the most authentically textile-like results. Real batik fabric can only hold a handful of dye colors, so limiting the palette reinforces the material illusion.
+:::
+
+---
+
+### Knob 4 — Palette
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 8 |
+| Default | 1 |
+
+**Palette** rotates the hue of the entire image by shifting the U and V chroma channels in opposite directions. At the lowest setting, the hue shift is maximally negative, producing cool blue-shifted tones reminiscent of indigo. At the midpoint, there is no shift: colors pass through unchanged. At the highest setting, the shift is maximally positive, producing warm earth tones.
+
+Palette works in stepped increments, selecting from eight discrete hue positions. Think of each step as a different vat of dye: indigo, teal, natural, amber, rust, ochre, sienna, and umber.
+
+---
+
+### Knob 5 — Wax Amt
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Wax Amt** controls how dark the crackle veins become. At 0%, veins are barely darker than the surrounding quantized image: a faint tracery. As Wax Amt increases, the veins pull further toward black. At 100%, veins are completely black regardless of the source brightness.
+
+In the batik metaphor, this is the depth of the wax cracks. Shallow cracks let some dye penetrate but not much; deep cracks allow the dye to fully saturate the fabric into darkness.
+
+---
+
+### Knob 6 — Crackle
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Crackle** controls the overall visibility of the vein overlay by scaling the opacity of the darkening effect. At 0%, the crackle veins are completely invisible: the output is just the palette-quantized image. As Crackle increases, the veins become progressively more prominent. At 100%, the full vein darkening is applied.
+
+Crackle and **Wax Amt** work as a pair: Wax Amt sets *how dark* veins can get, and Crackle sets *how much* of that darkness is actually applied.
+
+:::tip
+For a gentle aged-linen look, keep Crackle around 30% and Wax Amt around 50%. For bold graphic prints, push both past 80%.
+:::
+
+---
+
+### Switch 7 — Dye Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Natural |
+| On | Dark |
+| Default | Natural |
+
+**Dye Mode** selects between two cell size ranges for the crackle pattern. In **Natural** mode, the Voronoi cells are larger (32 to 128 pixels wide), producing a loose, organic crackle reminiscent of naturally cooled wax on fine cloth. In **Dark** mode, cells are much smaller (8 to 32 pixels wide), creating a dense, tight crackle like aggressively handled wax that has fractured into many small pieces.
+
+Dark mode produces more veins per unit area, so the overall image appears darker (hence the name.)
+
+---
+
+### Switch 8 — Wax Show
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Wax Show** switches the output to monochrome. When set to **Off**, the hue-rotated chroma channels pass through to the output, preserving color. When set to **On**, the U and V channels are replaced with neutral gray, stripping all color from the image. The result shows only the luminance pattern: quantized brightness bands overlaid with dark veins.
+
+:::note
+Wax Show is useful for isolating the crackle structure. Without color, you can clearly see the Voronoi cell boundaries and the palette quantization steps.
+:::
+
+---
+
+### Switch 9 — Video Dye
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Video Dye** enables animation of the crackle pattern. When set to **Off**, the vein network is static: the same spatial pattern repeats identically every frame. When set to **On**, a frame counter is mixed into the LFSR hash seed, causing the Voronoi cell centers to shift every frame. The crackle network slowly evolves, producing a shimmering, living texture as if the wax is continually cracking and reforming.
+
+:::warning
+Animated crackle can be visually busy. For calmer results, keep **Cell Size** large and **Vein Width** narrow while Video Dye is enabled.
+:::
+
+---
+
+### Switch 10 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Animate** inverts the crackle vein pattern. When set to **Off**, pixels near cell boundaries are classified as veins (dark lines on lighter backgrounds). When set to **On**, the classification flips: cell centers become dark, and the boundary regions become light. The result is a reversal of figure and ground: isolated bright islands surrounded by dark fields rather than a dark web on a bright surface.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Batik processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the processed result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input and the wet (fully processed) Batik output. At 0%, the output is entirely dry: identical to the original input. At 100%, the output is entirely wet: the full crackle-and-dye effect. Intermediate values blend the two, allowing subtle textile textures to be layered over the source without fully replacing it.
 
 ---
 
 ## Background
 
-### What Is Batik?
+### Batik as a Textile Art
 
-Batik is a textile dyeing technique originating in Java, Indonesia, where hot wax is applied to fabric as a resist before immersion in dye. Areas covered by wax remain undyed. The wax inevitably cracks, allowing thin lines of dye to seep through — these "crackle" veins are the hallmark of authentic batik. The process is repeated with different wax patterns and dye colours to build up complex multi-layered designs. UNESCO recognised Indonesian batik as an Intangible Cultural Heritage of Humanity in 2009.
+Traditional batik is one of the world's oldest textile dyeing techniques. Artisans in Java, Indonesia, apply molten wax to white cloth using a copper stamp (called a ***cap***) or a pen-like tool (called a ***canting***). The wax-coated areas resist dye absorption. After dyeing, the wax is removed to reveal the pattern. Multiple rounds of waxing and dyeing build up complex, multicolored designs.
 
-### Voronoi Cells and Distance Fields
+The distinctive ***crackle*** pattern occurs because cooled wax is brittle. When the fabric is handled, the wax fractures into a network of fine lines. Dye seeps through these cracks, staining thin veins into the cloth. In traditional batik, crackle is sometimes considered an imperfection, but it has become one of the art form's most recognizable features.
 
-A Voronoi diagram partitions a plane into regions based on proximity to a set of seed points — every point in a region is closer to its seed than to any other. The boundaries between regions form a network of edges. Batik approximates this by dividing the frame into coarse grid regions, hashing the coordinates to generate a pseudo-random "seed" position within each cell, then computing the Chebyshev distance (maximum of horizontal and vertical displacement) from each pixel to its cell boundary. Pixels near a boundary fall on a vein; pixels deep inside a cell receive the dyed colour.
+### Voronoi Cells and Crackle Synthesis
 
-### Palette Quantisation
+The program generates its crackle pattern using a computational structure inspired by ***Voronoi tessellation***. In a Voronoi diagram, a set of seed points divides a plane into regions: every point in a region is closer to its seed than to any other. The boundaries between regions form a network of edges (and these edges are what Batik uses as crackle veins.)
 
-Traditional batik fabric typically uses only a few dye colours per layer — sometimes as few as two (indigo and white) in the simplest *batik cap* stamps. The program mimics this constraint by reducing the 10-bit luma channel to a small number of discrete levels via bit-shifting. At the lowest setting, only 2 brightness levels survive; at the highest, 64 levels preserve most of the original tonal detail. This staircase effect creates the flat colour fields characteristic of dyed cloth.
+Rather than computing a true Voronoi diagram (which would be prohibitively expensive in real-time on an iCE40 FPGA), the program uses a simplified approach. The screen is divided into a coarse grid. Within each grid cell, a pseudo-random offset is generated from a 16-bit LFSR hash, producing a fake "seed point." The ***Chebyshev distance*** (the maximum of horizontal and vertical distance) from each pixel to the nearest seed determines whether that pixel is a vein. Pixels far from the seed: near the cell boundary: are classified as veins and darkened.
 
-### Hue Rotation as Dye Palette
+:::note
+The Chebyshev distance metric produces angular, blocky cell shapes rather than the smooth organic curves of true Voronoi tessellation. This gives Batik's crackle a distinctive rectilinear character (more like cracked ceramic glaze than cracked wax.)
+:::
 
-Rather than replacing colours entirely, the hue rotation stage shifts the U and V chroma channels by an offset derived from the Palette knob. This rotates the original image's colour wheel, transforming naturalistic colours into the earthy indigos, ochres, and greens typical of traditional batik cloth. The rotation is additive on U and subtractive on V (or vice versa), maintaining colour saturation while changing hue.
+### Palette Quantization and Dye Simulation
 
-### LFSR-Based Procedural Noise
+The program's luma quantization stage simulates the limited palette of natural dyes. Real batik fabrics typically use only a handful of colors per dyeing pass. The **Dye Depth** control reduces the image's brightness to between 2 and 64 discrete levels, creating the flat, banded tonal regions characteristic of dyed cloth.
 
-The crackle pattern's randomness comes from a 16-bit linear feedback shift register (LFSR) running continuously at the pixel clock. The LFSR's current state is XORed with the current grid region's coordinates to produce a unique hash per cell. When animation is enabled, the frame counter is mixed into the hash as well, causing the cell pattern to evolve every frame. The result is a deterministic but visually random texture that tiles seamlessly across the frame.
+The hue rotation stage (**Palette**) shifts the chroma channels to simulate different dye baths. Because the shift is applied as a signed offset to U (added) and V (subtracted), rotating through the range cycles through complementary color pairs: cool indigos, neutral tones, and warm earth palettes.
 
 
 ---
 
 ## Signal Flow
 
-```
-                                  ┌──────────────┐
-data_in ─────────────────────────►│ Input Reg     │
-                                  │ + Position    │
-                                  │   Counters    │
-                                  └──────┬────────┘
-                                         │ Stage 1
-                                         ▼
-                               ┌─────────────────────┐
-                               │ Cell Hash (LFSR XOR  │
-                               │  region coords) +    │
-                               │  Chebyshev Distance  │
-                               │  → Vein Test         │
-                               └──────────┬──────────┘
-                                          │ Stage 2
-                                          ▼
-                               ┌─────────────────────┐
-                               │ Luma Quantise        │
-                               │ (shift-reduce 2–64   │
-                               │  levels) + Vein Dark │
-                               └──────────┬──────────┘
-                                          │ Stage 3
-                                          ▼
-                               ┌─────────────────────┐
-                               │ Hue Rotation (U/V    │
-                               │ offset by Palette)   │
-                               │ + Vein Diff          │
-                               └──────────┬──────────┘
-                                          │ Stage 4
-                                          ▼
-                               ┌─────────────────────┐
-                               │ Opacity Multiply     │
-                               │ (Wax Amt × vein      │
-                               │  difference)         │
-                               └──────────┬──────────┘
-                                          │ Stage 5
-                                          ▼
-                               ┌─────────────────────┐
-                               │ Vein Subtract +      │
-                               │ Clamp + Mono Mode    │
-                               └──────────┬──────────┘
-                                          │ Stage 6
-                                          ▼
-data_in ──► [sync delay] ──► dry ──► Interpolator ◄── wet
-                                       (4 clk)
-                                          │
-                                          ▼
-                                      data_out
-```
+### Signal Flow Notes
 
-The pipeline splits into two parallel paths after input: the processing path computes the crackle overlay and palette quantisation, while the sync delay path preserves the original data for the final wet/dry mix. The cell hash in Stage 2 is the critical creative step — it converts deterministic pixel coordinates into a pseudo-random cell boundary distance that drives the entire vein pattern. Stages 3 through 6 progressively shape how those veins appear: quantized colour in the cell bodies, hue-shifted chroma for dye palette simulation, and opacity-controlled darkening along the crack boundaries.
+The two most important interactions in the pipeline are the crackle generation path and the dye compositing path.
 
-The Mono mode switch bypasses hue rotation entirely, forcing U and V to neutral 512 — this produces the monochrome indigo-and-white look of traditional *batik tulis* in its simplest form.
+The crackle path spans Stages 1 and 2. Pixel positions are divided into coarse regions whose size is set by **Cell Size** and **Dye Mode**. An LFSR-derived hash places a pseudo-random "seed point" inside each region. The Chebyshev distance from the current pixel to that seed determines whether the pixel is classified as a vein. This classification is a single bit: vein or not: carried through the remaining stages.
+
+The dye compositing path spans Stages 3 through 6. Luma is first quantized into a reduced number of levels (**Dye Depth**). Then a darkness target is computed from the original luma and **Wax Amt**: the difference between the quantized value and the darkness target determines how much to subtract from vein pixels. **Crackle** scales this subtraction by an opacity factor. The result is that vein pixels are selectively darkened while non-vein pixels keep their quantized brightness. Chroma is independently rotated by **Palette** and optionally desaturated by **Wax Show**.
+
+:::tip
+Because quantization happens *before* vein compositing, the dark veins cut through flat tonal bands rather than through smooth gradients. This reinforces the textile look: the crackle lines separate discrete dye colors, just as they do in real batik.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={batik_control_panel} alt="Videomancer front panel with Batik loaded"/>
-*Videomancer's front panel with Batik active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises progress from basic crackle textures to full batik textile simulation, gradually engaging more of the processing chain.
+### Exercise 1: Crackle Web
 
-### Rotary Potentiometers (Knobs 1–6)
+![Crackle Web result](/img/instruments/videomancer/batik/batik_ex1_s1.png)
+*Crackle Web — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Cell Size
-| Property | Value |
-|----------|-------|
-| Range | 4 – 64 |
-| Default | 27 |
+***A description of the exercise illustration.***
 
-Controls the spatial scale of the Voronoi cell grid. The pot value is mapped through a threshold decoder that selects one of three cell sizes, with the Dense/Sparse toggle determining the range. In Dense mode, cells range from 8 to 32 pixels; in Sparse mode, from 32 to 128 pixels. Smaller cells create a fine, intricate crackle network reminiscent of aged wax; larger cells produce bold, architectural vein patterns. At the smallest sizes the pattern becomes a dense mesh of dark lines with tiny colour patches between them.
+#### Learning Outcomes
 
----
+A bold crackle-vein overlay on source video, revealing the Voronoi cell structure.
 
-#### Knob 2 — Vein Width
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 37.5% |
-| Suffix | % |
+#### Key Concepts
 
-Sets the width of the dark crackle veins. The pot value is scaled to an 8-bit threshold that determines how close to a cell boundary a pixel must be before it is classified as a vein pixel. At minimum, only the thinnest hairline cracks appear — a subtle texture overlay. At maximum, veins grow wide enough to dominate the image, leaving only small islands of dyed colour. Mid-range settings around 40% produce the most natural-looking crackle patterns reminiscent of actual wax fractures.
+- Voronoi-like cell boundaries produce dark vein networks
+- Cell Size and Vein Width control the geometry of the crackle
+- Wax Amt and Crackle control vein darkness and visibility
 
----
+#### Video Source
 
-#### Knob 3 — Dye Depth
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
+A live camera feed or recorded footage with recognizable faces or objects.
 
-Controls the luma quantisation depth, simulating the limited number of dye colours available in a traditional batik process. The pot maps to six discrete quantisation levels: 2, 4, 8, 16, 32, or 64 brightness steps. At the lowest setting (2 levels), the image becomes a stark two-tone design; at the highest (64 levels), colour transitions remain fairly smooth. The quantisation is applied via shift-right then shift-left, which truncates the least-significant bits and creates the characteristic flat colour banding of dyed fabric.
+#### Steps
 
----
+1. **Reveal the veins**: Turn **Crackle** (Knob 6) to about 80% and **Wax Amt** (Knob 5) to about 70%. A dark web of lines appears over the image.
+2. **Scale the pattern**: Sweep **Cell Size** (Knob 1) through its three steps. Watch the crackle snap between fine, medium, and coarse scales.
+3. **Thicken the cracks**: Increase **Vein Width** (Knob 2) past 60%. The dark veins widen, consuming more of the image.
+4. **Switch density**: Flip **Dye Mode** (Switch 7) to **Dark**. The cell sizes jump to a much smaller range (the crackle becomes dramatically finer and denser.)
+5. **Invert the pattern**: Flip **Animate** (Switch 10) to **On**. Bright veins on dark fields (the figure-ground relationship reverses entirely.)
 
-#### Knob 4 — Palette
-| Property | Value |
-|----------|-------|
-| Range | 1 – 8 |
-| Default | 1 |
+#### Settings
 
-Rotates the chroma hue by adding a signed offset to U and subtracting it from V. At the center position (512), no rotation occurs and original colours are preserved. Turning counter-clockwise shifts toward cool indigo and blue tones; turning clockwise shifts toward warm ochre and brown tones. The eight steps on this knob give you eight distinct dye palettes, each evoking a different regional batik tradition — Javanese indigo, Balinese earth tones, or Pekalongan coastal colours.
-
----
-
-#### Knob 5 — Wax Amt
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Controls the darkness of the crackle veins. The hardware computes a brightness target by multiplying the source luma by `(1023 - darkness) / 1024`. At minimum (0%), veins are jet black regardless of the underlying image. At maximum, veins are barely darker than the surrounding dyed area. This parameter interacts with Crackle (Pot 6): Wax Amt sets the *difference* between vein and non-vein pixels, while Crackle controls how much of that difference actually appears in the final composite via opacity multiplication.
+| Control | Value |
+|---------|-------|
+| Cell Size | 64 (max) |
+| Vein Width | 60.0% |
+| Dye Depth | 100.0% |
+| Palette | 4 |
+| Wax Amt | 70.0% |
+| Crackle | 80.0% |
+| Dye Mode | Natural |
+| Wax Show | Off |
+| Video Dye | Off |
+| Animate | Off |
+| Bypass | Off |
+| Mix | 100.0% |
 
 ---
 
-#### Knob 6 — Crackle
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
+### Exercise 2: Dyed Cloth
 
-Scales the vein darkening effect via an opacity multiplication stage. The computed vein brightness reduction is multiplied by this value before being subtracted from the quantised luma. At 0%, even pixels classified as veins receive no darkening — the crackle pattern is invisible. At 100%, the full computed reduction is applied. This works as a "presence" control for the crackle texture, letting you dial in anything from a barely-visible surface grain to bold, high-contrast fracture lines.
+![Dyed Cloth result](/img/instruments/videomancer/batik/batik_ex2_s1.png)
+*Dyed Cloth — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-### Toggle Switches (Switches 7–11)
+#### Learning Outcomes
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Dye Mode** | Natural | Dark |
-| **8 — Wax Show** | Off | On |
-| **9 — Video Dye** | Off | On |
-| **10 — Animate** | Off | On |
-| **11 — Bypass** | Off | On |
+A batik fabric simulation with limited dye tones and colored crackle.
 
-The five toggles control independent aspects of the batik simulation. Toggle 7 selects Dense or Sparse cell grids, fundamentally changing the crackle scale. Toggle 8 switches between full-colour and monochrome (desaturated) output. Toggle 9 enables frame-by-frame animation of the crackle pattern. Toggle 10 inverts the vein/cell classification so that cell interiors become dark and vein boundaries become bright. Toggle 11 bypasses all processing.
+#### Key Concepts
 
----
+- Palette quantization simulates limited dye colors
+- Hue rotation selects the dye palette
+- Monochrome mode isolates the crackle structure
 
-### Linear Potentiometer (Fader 12)
+#### Video Source
 
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
+Footage with varied tonal range (landscapes, still lifes, or colorful scenes.)
 
-Crossfades between the dry (original) and wet (processed) signal at the output stage using three parallel interpolators. At 0% the output is the unmodified input; at 100% the output is fully processed batik. Intermediate values blend the crackle overlay with the source, useful for creating subtle textile texture overlays on live video.
+#### Steps
 
+1. **Limit the palette**: Lower **Dye Depth** (Knob 3) to about 25%. The image's brightness collapses into broad, flat bands (like cloth dipped in only a few colors of dye.)
+2. **Choose a dye**: Sweep **Palette** (Knob 4) through its eight positions. Watch the image shift from cool indigo through neutral tones to warm ambers. Settle on a palette you like.
+3. **Add crackle**: Set **Crackle** (Knob 6) to about 60% and **Wax Amt** (Knob 5) to about 50%. The vein network cuts through the flat dye bands.
+4. **Strip the color**: Flip **Wax Show** (Switch 8) to **On**. The image becomes monochrome: you can see the pure crackle-on-quantized-luma structure without color distraction.
+5. **Restore color**: Flip **Wax Show** back to **Off** and compare. The color palette returns, now clearly sitting in distinct quantized bands separated by dark veins.
 
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
+#### Settings
 
-Routes the unprocessed input signal directly to the output, bypassing all Batik processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises progress from basic crackle generation to full batik simulation with palette control and animation.
-
-### Exercise 1: Simple Crackle Overlay
-
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: batik_source1_house, after: batik_ex1_s1 },
-    { label: "Parrot", before: batik_source2_parrot, after: batik_ex1_s2 },
-    { label: "Clouds", before: batik_source3_clouds, after: batik_ex1_s3 },
-    { label: "Pattern", before: batik_source4_pattern, after: batik_ex1_s4 },
-    { label: "Man", before: batik_source5_man, after: batik_ex1_s5 },
-    { label: "Berries", before: batik_source6_berries, after: batik_ex1_s6 },
-  ]}
-/>
-*Simple Crackle Overlay — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with recognizable subjects.
-
-**What You'll Create**: Understand how Voronoi cell geometry creates a crackle vein pattern and how vein parameters control its appearance.
-
-1. **Base crackle**: Set Cell Size to the middle position, Vein Width to about 40%, and Crackle to 80%. A visible crackle network should appear over the source video.
-2. **Cell size**: Sweep Cell Size from minimum to maximum. Watch the veins go from a dense mesh to a wide geometric grid.
-3. **Vein width**: With Cell Size at a moderate setting, increase Vein Width. The dark lines grow thicker until they dominate most of the frame.
-4. **Darkness**: Reduce Wax Amt to 30%. The veins become faint, barely-visible hairlines. Return to 80% for bold cracks.
-5. **Opacity**: Now sweep Crackle. At 0% the veins vanish entirely even though they're being computed; at 100% the full darkening is applied.
-6. **Invert**: Toggle Animate off, then enable Invert. The crackle network becomes a bright wireframe on a darkened field.
-
-**Key concepts**: Cell size sets the grid scale, Vein Width sets the boundary thickness, Wax Amt and Crackle together control vein visibility, Invert flips the vein/cell relationship
+| Control | Value |
+|---------|-------|
+| Cell Size | 32 |
+| Vein Width | 40.0% |
+| Dye Depth | 25.0% |
+| Palette | 6 |
+| Wax Amt | 50.0% |
+| Crackle | 60.0% |
+| Dye Mode | Natural |
+| Wax Show | Off |
+| Video Dye | Off |
+| Animate | Off |
+| Bypass | Off |
+| Mix | 100.0% |
 
 ---
 
-### Exercise 2: Dye Palette Exploration
+### Exercise 3: Living Fabric
 
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: batik_source1_house, after: batik_ex2_s1 },
-    { label: "Parrot", before: batik_source2_parrot, after: batik_ex2_s2 },
-    { label: "Clouds", before: batik_source3_clouds, after: batik_ex2_s3 },
-    { label: "Pattern", before: batik_source4_pattern, after: batik_ex2_s4 },
-    { label: "Man", before: batik_source5_man, after: batik_ex2_s5 },
-    { label: "Berries", before: batik_source6_berries, after: batik_ex2_s6 },
-  ]}
-/>
-*Dye Palette Exploration — simulated result across source images.*
-**Source**: Footage with varied colours — flowers, fabrics, or colourful scenery.
+![Living Fabric result](/img/instruments/videomancer/batik/batik_ex3_s1.png)
+*Living Fabric — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore palette quantisation and hue rotation for traditional dye effects.
+***A description of the exercise illustration.***
 
-1. **Reduce dye levels**: Set Dye Depth low (around 20%). Watch the image snap to just a few brightness levels, like a two-colour dye bath.
-2. **Increase gradually**: Sweep Dye Depth upward. More tonal steps appear, from stark two-tone through 4, 8, 16, 32, to nearly full-range at 64 levels.
-3. **Rotate palette**: With Dye Depth at about 40% (8 levels), sweep the Palette knob. Watch the colours shift through indigo, ochre, green, and magenta ranges.
-4. **Monochrome**: Enable Wax Show (Toggle 8). All colour drops out, leaving only quantised luminance — a monochrome batik.
-5. **Combine with crackle**: Return to colour mode and set moderate crackle (Vein Width ~35%, Crackle ~70%). The crackle veins now overlay the dye-limited palette.
+#### Learning Outcomes
 
-**Key concepts**: Dye Depth controls quantisation levels, Palette rotates the colour wheel to simulate different dye traditions, monochrome mode removes chroma for single-dye effects
+An animated batik texture where the crackle shifts and shimmers as if the fabric were alive.
 
----
+#### Key Concepts
 
-### Exercise 3: Animated Textile
+- Animation evolves the crackle pattern frame by frame
+- Dense mode creates fine-grained textile textures
+- Mix blends the textile effect with clean source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: batik_source1_house, after: batik_ex3_s1 },
-    { label: "Parrot", before: batik_source2_parrot, after: batik_ex3_s2 },
-    { label: "Clouds", before: batik_source3_clouds, after: batik_ex3_s3 },
-    { label: "Pattern", before: batik_source4_pattern, after: batik_ex3_s4 },
-    { label: "Man", before: batik_source5_man, after: batik_ex3_s5 },
-    { label: "Berries", before: batik_source6_berries, after: batik_ex3_s6 },
-  ]}
-/>
-*Animated Textile — simulated result across source images.*
-**Source**: Slow-moving footage or a static scene.
+#### Video Source
 
-**What You'll Create**: Create a living textile effect using crackle animation and full batik processing.
+Slow-moving footage: clouds, water, or gentle camera pans: to complement the evolving pattern.
 
-1. **Set base look**: Cell Size ~50%, Vein Width ~30%, Dye Depth ~50%, Palette ~25%, Wax Amt ~70%, Crackle ~80%.
-2. **Enable animation**: Toggle Animate on. The crackle pattern shifts every frame, creating a shimmering organic texture.
-3. **Dense mode**: Switch to Dense crackle via Dye Mode toggle. The fine mesh shimmer creates a living-fabric aesthetic.
-4. **Mix for subtlety**: Reduce Mix to about 60%. The batik texture now blends gently with the source, creating a translucent textile overlay.
-5. **Invert for glow**: Enable Invert. The animated crackle becomes a pulsing neon wireframe over the darkened source.
-6. **Explore density**: Toggle Dense/Sparse while animation runs. Dense creates rapid, fine-grained shimmer; Sparse creates slow, architectural movement.
+#### Steps
 
-**Key concepts**: Animation XORs the frame counter into the hash seed, producing per-frame variation, Mix blending creates textile overlay effects, Dense vs Sparse changes the temporal character of animation
+1. **Set the weave**: Switch **Dye Mode** (Switch 7) to **Dark** for dense, fine cells. Set **Cell Size** (Knob 1) to medium.
+2. **Color the dye**: Lower **Dye Depth** (Knob 3) to about 40% for visible quantization. Set **Palette** (Knob 4) to a warm position (around step 6).
+3. **Add texture**: Set **Crackle** (Knob 6) to about 55% and **Wax Amt** (Knob 5) to about 45%.
+4. **Animate**: Flip **Video Dye** (Switch 9) to **On**. The crackle pattern begins evolving: cell centers shift each frame, making the vein network shimmer.
+5. **Thin the veins**: Pull **Vein Width** (Knob 2) down to about 25% so the animated crackle is delicate rather than overwhelming.
+6. **Blend**: Lower **Mix** (Fader 12) to about 60%. The clean source bleeds through the textile texture, creating a translucent fabric overlay.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cell Size | 16 |
+| Vein Width | 25.0% |
+| Dye Depth | 40.0% |
+| Palette | 6 |
+| Wax Amt | 45.0% |
+| Crackle | 55.0% |
+| Dye Mode | Dark |
+| Wax Show | Off |
+| Video Dye | On |
+| Animate | Off |
+| Bypass | Off |
+| Mix | 60.0% |
 
 ---
-
-
-## Tips
-
-- **Animation + feedback loops**: Route the output back to the input while Animate is on for evolving, self-referencing batik patterns.
-- **Monochrome + low Dye Depth = woodblock print**: Enabling Mono with only 2–4 quantisation levels produces a stark black-and-white graphic reminiscent of Japanese woodblock prints.
-- **Mix for overlay compositing**: Set Mix to 30–50% to blend the batik texture gently over source video, creating a translucent textile filter effect.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Chebyshev distance** | A distance metric where the distance between two points is the greater of their horizontal and vertical separations; used here for cell boundary detection. |
-| **Chrominance** | The color-difference components (U and V) of a YUV video signal, separate from luminance. |
-| **Crackle** | The network of fine lines in traditional batik cloth caused by dye seeping through cracks in the wax resist layer. |
-| **Hue rotation** | Shifting U and V chroma values by a signed offset to change perceived color without altering brightness or saturation. |
-| **LFSR** | Linear Feedback Shift Register; a shift register whose input is a linear function of its previous state, producing a deterministic pseudo-random bit sequence. |
-| **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color. |
-| **Palette quantisation** | Reducing a full-range luminance signal to a small number of discrete levels, simulating the limited dye colours of textile printing. |
-| **Voronoi diagram** | A spatial partition where each region contains all points closer to one seed than to any other, producing a network of cell boundaries. |
-| **Wax resist** | A dyeing technique where areas coated with wax repel dye, preserving the original fabric colour beneath. |
-| **XOR** | Exclusive OR; a bitwise logic operation that outputs 1 when its two inputs differ, used here to mix the frame counter into the hash seed. |
+- **Batik**: An Indonesian textile art in which wax resist is applied to fabric before dyeing; areas under wax remain undyed, and cracks in the wax produce characteristic dark vein patterns.
+
+- **Chebyshev Distance**: A distance metric defined as the maximum of horizontal and vertical displacement; produces angular, block-shaped regions rather than smooth curves.
+
+- **Crackle**: The network of fine dark lines formed when cooled wax fractures and dye seeps through the cracks; the signature visual feature of batik textiles.
+
+- **Interpolator**: A hardware module that blends two values by a fractional amount; used here for the wet/dry mix crossfade.
+
+- **LFSR**: Linear feedback shift register; a simple circuit that generates a repeating sequence of pseudo-random numbers, used here to seed crackle cell positions.
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness.
+
+- **Posterization**: Reducing the number of distinct tonal levels in an image, creating flat areas separated by hard edges; called "palette quantization" in the batik metaphor.
+
+- **Voronoi Tessellation**: A mathematical partition of a plane into regions based on proximity to seed points; cell boundaries form a natural-looking network of edges.
+
+- **Wax Resist**: A dyeing technique in which wax is applied to fabric to prevent dye absorption in the covered areas; the foundational principle of batik.
 
 ---

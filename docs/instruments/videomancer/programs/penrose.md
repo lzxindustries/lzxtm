@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 221
 slug: /instruments/videomancer/penrose
@@ -7,369 +7,435 @@ image: /img/instruments/videomancer/penrose/penrose_hero_s1.png
 description: "The Penrose triangle is perhaps the most famous impossible object — a three-bar figure that appears to represent a solid three-dimensional triangle, yet cannot exist in Euclidean space."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import penrose_control_panel from '/img/instruments/videomancer/penrose/penrose_control_panel.png';
-import penrose_source1_house from '/img/instruments/videomancer/penrose/penrose_source1_house.png';
-import penrose_source2_parrot from '/img/instruments/videomancer/penrose/penrose_source2_parrot.png';
-import penrose_source3_collage from '/img/instruments/videomancer/penrose/penrose_source3_collage.png';
-import penrose_source4_pattern from '/img/instruments/videomancer/penrose/penrose_source4_pattern.png';
-import penrose_source5_boy from '/img/instruments/videomancer/penrose/penrose_source5_boy.png';
-import penrose_source6_berries from '/img/instruments/videomancer/penrose/penrose_source6_berries.png';
-import penrose_hero_s1 from '/img/instruments/videomancer/penrose/penrose_hero_s1.png';
-import penrose_hero_s2 from '/img/instruments/videomancer/penrose/penrose_hero_s2.png';
-import penrose_hero_s3 from '/img/instruments/videomancer/penrose/penrose_hero_s3.png';
-import penrose_hero_s4 from '/img/instruments/videomancer/penrose/penrose_hero_s4.png';
-import penrose_hero_s5 from '/img/instruments/videomancer/penrose/penrose_hero_s5.png';
-import penrose_hero_s6 from '/img/instruments/videomancer/penrose/penrose_hero_s6.png';
-import penrose_ex1_s1 from '/img/instruments/videomancer/penrose/penrose_ex1_s1.png';
-import penrose_ex1_s2 from '/img/instruments/videomancer/penrose/penrose_ex1_s2.png';
-import penrose_ex1_s3 from '/img/instruments/videomancer/penrose/penrose_ex1_s3.png';
-import penrose_ex1_s4 from '/img/instruments/videomancer/penrose/penrose_ex1_s4.png';
-import penrose_ex1_s5 from '/img/instruments/videomancer/penrose/penrose_ex1_s5.png';
-import penrose_ex1_s6 from '/img/instruments/videomancer/penrose/penrose_ex1_s6.png';
-import penrose_ex2_s1 from '/img/instruments/videomancer/penrose/penrose_ex2_s1.png';
-import penrose_ex2_s2 from '/img/instruments/videomancer/penrose/penrose_ex2_s2.png';
-import penrose_ex2_s3 from '/img/instruments/videomancer/penrose/penrose_ex2_s3.png';
-import penrose_ex2_s4 from '/img/instruments/videomancer/penrose/penrose_ex2_s4.png';
-import penrose_ex2_s5 from '/img/instruments/videomancer/penrose/penrose_ex2_s5.png';
-import penrose_ex2_s6 from '/img/instruments/videomancer/penrose/penrose_ex2_s6.png';
-import penrose_ex3_s1 from '/img/instruments/videomancer/penrose/penrose_ex3_s1.png';
-import penrose_ex3_s2 from '/img/instruments/videomancer/penrose/penrose_ex3_s2.png';
-import penrose_ex3_s3 from '/img/instruments/videomancer/penrose/penrose_ex3_s3.png';
-import penrose_ex3_s4 from '/img/instruments/videomancer/penrose/penrose_ex3_s4.png';
-import penrose_ex3_s5 from '/img/instruments/videomancer/penrose/penrose_ex3_s5.png';
-import penrose_ex3_s6 from '/img/instruments/videomancer/penrose/penrose_ex3_s6.png';
-
-# Penrose
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: penrose_source1_house, after: penrose_hero_s1 },
-    { label: "Parrot", before: penrose_source2_parrot, after: penrose_hero_s2 },
-    { label: "Collage", before: penrose_source3_collage, after: penrose_hero_s3 },
-    { label: "Pattern", before: penrose_source4_pattern, after: penrose_hero_s4 },
-    { label: "Boy", before: penrose_source5_boy, after: penrose_hero_s5 },
-    { label: "Berries", before: penrose_source6_berries, after: penrose_hero_s6 },
-  ]}
-/>
-*Penrose overlaying impossible triangle wireframes on live video, depth-cue shading creating spatial contradiction at every junction.*
+![Penrose hero image](/img/instruments/videomancer/penrose/penrose_hero_s1.png)
+*Penrose overlaying impossible triangle wireframes with depth-cued junction shading onto live video.*
 
 ---
 
 ## Overview
 
-The Penrose triangle is perhaps the most famous impossible object — a three-bar figure that appears to represent a solid three-dimensional triangle, yet cannot exist in Euclidean space. Each junction connects two bars at a right angle in a way that is locally plausible but globally contradictory. Roger Penrose popularized the figure in 1958 and M.C. Escher used it repeatedly in his lithographs. Penrose brings this optical illusion into the domain of real-time video processing.
+Penrose draws ***impossible geometry*** wireframes over your video signal. Its core shapes: the Penrose triangle, staircase, Necker cube, and Blivet trident: are classic optical illusions that appear to depict three-dimensional objects which could not actually exist. The program renders these shapes by computing the distance from every pixel to a set of angled line axes, then brightening, darkening, or replacing pixels that fall within the wireframe stroke.
 
-The program draws wireframe outlines by computing the perpendicular distance from each pixel to three axis-aligned bar centrelines. For the Penrose triangle shape, the three axes approximate 0°, 60°, and 120° using shift-based slope calculations — no hardware multipliers are needed. When the absolute distance from any centreline falls below a thickness threshold, that pixel is on the wireframe and receives a brightness boost, a solid replacement, a shadow subtraction, or a warm glow depending on the selected style. At bar junctions where two distance tests overlap, depth-cue shading darkens the intersection to create the illusion of one bar passing behind another.
+At default settings, Penrose places a single triangular wireframe at screen center and composites it over the input video. You can scale the shape, thicken or thin its lines, tile it across the screen, and animate it with a horizontal drift. A depth cue control darkens the wireframe at the points where two bars overlap, reinforcing the illusion of contradictory spatial relationships: bars that appear to pass both in front of and behind one another.
 
-Four shape modes are available: the classic Penrose triangle, a staircase (horizontal + vertical + diagonal bars), a Necker cube (three orthogonal edges), and a Blivet/trident (three parallel vertical bars with a connecting top). A repetition control tiles the shape across the screen using power-of-two bitmask modular coordinates, and a spin toggle adds per-frame phase offset for continuous rotation.
+:::tip
+Penrose is a ***processing*** program. It overlays geometry on top of your source video rather than replacing it. Use the **Mix** fader to dial in how much of the wireframe composite blends with the original signal.
+:::
+
+### What's In a Name?
+
+The name ***Penrose*** comes from Sir Roger Penrose, the British mathematician and Nobel laureate who popularized the ***impossible triangle*** in the 1950s. The Penrose triangle: also called the ***tribar***: is a two-dimensional figure that the brain interprets as a solid three-dimensional object, but one whose geometry is self-contradictory. Each corner appears reasonable, but following the bars around the full loop reveals that they cannot connect in real space. The program extends this concept to other impossible figures: the Penrose staircase (stairs that climb forever in a loop), the Necker cube (which flips between two spatial interpretations), and the ***Blivet*** (an impossible trident with three prongs that merge into two bars).
 
 ---
 
 ## Quick Start
 
-1. **Depth Cue is the key to the illusion**: Without junction shading, the wireframe is just a geometric overlay. With moderate Depth Cue (40–60%), the darkened junctions create the perception of bars passing behind each other — the essence of the impossible object.
-2. **Thick lines make strong shapes**: Line Thk above 30% creates bold architectural bars rather than thin wireframe lines. Combined with Solid style, this produces clean geometric graphics.
-3. **Tiling fills the screen**: Count at 75%+ creates a dense repeating pattern of impossible objects. Reduce Size proportionally so each copy fits within its tile cell.
+1. Load Penrose with default settings. A single wireframe triangle appears centered on the screen, composited over your input video. The lines glow white against the image.
+2. Turn **Size** (Knob 1) counterclockwise to shrink the triangle, or clockwise to expand it until it fills the screen.
+3. Turn **Count** (Knob 4) clockwise past the halfway point. The single shape tiles into a repeating grid of smaller triangles across the screen.
+4. Flip **Shape** (Switch 7) to its second position. The triangle geometry changes: you may see a staircase or trident pattern depending on the state of **Style** (Switch 8). Experiment with both switches to discover all four shapes.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Penrose loaded](/img/instruments/videomancer/penrose/penrose_control_panel.png)
+*Videomancer's front panel with Penrose active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Size
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Size** controls the overall scale of the wireframe shape. The pot value sets the ***half-extent***: the distance from the center of the shape to its outermost bar. At 0%, fully counterclockwise, the shape is drawn at its minimum size of about 64 pixels across. As you increase the value, the shape grows. At 100%, the half-extent reaches roughly 575 pixels, and the wireframe spans most of the screen. The bounds-checking logic ensures that wireframe strokes are only drawn within the shape's extent, so you won't see stray lines radiating out to infinity.
+
+---
+
+### Knob 2 — Line Thk
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Line Thk** (Line Thickness) controls the width of the wireframe strokes in pixels. At 0%, each bar is drawn at the minimum width of one pixel: a hairline. As you increase the value, the strokes thicken progressively. At 100%, each bar is 32 pixels wide, giving the wireframe a heavy, architectural quality. Thicker lines make the depth cue shading at junctions more visible because the overlap area between two bars grows proportionally.
+
+:::note
+At very large **Size** values with thick lines, the shape can look more like a bold graphic emblem than a delicate wireframe. This is a useful aesthetic for title overlays and motion graphics.
+:::
+
+---
+
+### Knob 3 — Rotation
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Rotation** offsets the wireframe shape horizontally across the screen. Despite its name, this control translates the geometry left and right rather than spinning it. At 50% (the default midpoint), the shape is centered. Turning counterclockwise shifts the entire wireframe to the left; turning clockwise shifts it to the right. The offset range spans roughly ±512 pixels from center. When **Spin** (Switch 9) is active, the animation drift is added on top of this manual offset, so you can use **Rotation** to set a starting position for the moving shape.
+
+---
+
+### Knob 4 — Count
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Count** controls how many copies of the wireframe shape tile across the screen. At 0%, a single shape is drawn at center. As the value increases, the program engages power-of-two tiling that repeats the shape at progressively denser intervals. The four tiling modes are:
+
+- Below ~25%: single shape (no repetition)
+- ~25% to ~50%: 2× tiling (the shape repeats every 512 pixels)
+- ~50% to ~75%: 4× tiling (the shape repeats every 256 pixels)
+- Above ~75%: 8× tiling (the shape repeats every 128 pixels)
+
+Each tile is re-centered within its cell, so the pattern is always symmetric. Higher tiling levels force each copy into a smaller cell, which effectively shrinks the visible shape regardless of the **Size** setting.
+
+:::tip
+Try 8× tiling with a small **Size** and thin **Line Thk** to create a delicate lattice of impossible triangles across the entire screen.
+:::
+
+---
+
+### Knob 5 — Bright
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Bright** (Brightness) controls how strongly the wireframe strokes affect the image. In Wire mode, this value is *added* to the source luminance on every wireframe pixel, so higher values produce brighter overlays. In Shadow mode, the value is *subtracted* from the source, so higher values produce deeper shadows. In Solid mode, this value *replaces* the source luminance directly. In Glow mode, it is added to luminance and also shifts the chrominance toward warm tones. At 0%, the wireframe is invisible (zero brightness contribution). At 100%, the wireframe blazes at full intensity.
+
+---
+
+### Knob 6 — Depth Cue
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Depth Cue** controls the shading applied at junction points: the places where two wireframe bars overlap. Junctions are the key to the impossible-object illusion because they are where the contradictory depth relationships become visible. At 0%, no special shading is applied, and junctions look the same as the rest of the wireframe. As the value increases through five discrete steps, junction pixels are progressively darkened by halving the wireframe brightness one, two, three, or four times. At maximum, junction pixels are dimmed to 1/16 of the wireframe brightness, creating a strong contrast between the bars and their crossing points.
+
+:::note
+The depth cue effect is most visible with thicker lines and moderate brightness. Very thin lines produce junctions too small to read clearly.
+:::
+
+---
+
+### Switch 7 — Shape
+
+| Property | Value |
+|----------|-------|
+| Off | Triangle |
+| On | Trident |
+| Default | Triangle |
+
+**Shape** selects the wireframe geometry. In its default position (**Triangle**), the lower bit of the internal shape selector is cleared. In its second position (**Trident**), the lower bit is set. The final shape you see depends on the combined state of **Shape** and **Style** (Switch 8), because both toggles feed into the two-bit shape selector. See the Toggle Group Notes below for the full mapping.
+
+---
+
+### Switch 8 — Style
+
+| Property | Value |
+|----------|-------|
+| Off | Wire |
+| On | Glow |
+| Default | Wire |
+
+**Style** controls the rendering method used to composite the wireframe over the source video. In its default position (**Wire**), the lower bit of the internal style selector is cleared. In its second position (**Glow**), the lower bit is set. **Style** also influences which wireframe geometry is drawn, because it feeds into the shape selector as well. See the Toggle Group Notes for full details.
+
+---
+
+### Switch 9 — Spin
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Spin** enables continuous horizontal drift animation. When set to **Off** (default), the wireframe remains stationary at the position set by **Rotation** (Knob 3). When set to **On**, the program adds an ever-increasing frame counter to the horizontal coordinate each frame, causing the wireframe to scroll steadily to the right across the screen. The speed of the drift is fixed at one pixel per frame. **Spin** requires **Animate** (Switch 10) to be active for the frame counter to advance; if **Animate** is off, the spin offset freezes at its current value.
+
+---
+
+### Switch 10 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Animate** enables the internal frame counter that drives the **Spin** animation. When set to **On** (the default), the counter increments on every vertical sync pulse. When set to **Off**, the counter freezes and the spin animation pauses at its current position. Note that **Animate** also affects the rendering style: it feeds into the upper bit of the style selector. See the Toggle Group Notes for details.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all wireframe rendering and compositing. The sync delay pipeline still aligns timing, so there is no glitch when toggling. Use **Bypass** for instant A/B comparison between the raw input and the Penrose overlay.
+
+---
+
+:::note Toggle Group Notes
+
+Toggles 7, 8, and 10 interact in the VHDL through shared bit fields. **Style** (Switch 8) feeds into both the shape selector and the style selector. **Animate** (Switch 10) feeds into both the frame counter enable and the style selector. The result is a combined mode system with the following mappings:
+
+**Shape modes** (determined by Switch 8 × Switch 7):
+
+| Switch 8 (Style) | Switch 7 (Shape) | Geometry |
+|---|---|---|
+| Wire | Triangle | Penrose triangle — three bars at 0°, 60°, 120° |
+| Wire | Trident | Staircase — horizontal, vertical, and diagonal bars |
+| Glow | Triangle | Necker cube — cross and diagonal through center |
+| Glow | Trident | Blivet trident — three parallel vertical bars |
+
+**Rendering style** (determined by Switch 10 × Switch 8):
+
+| Switch 10 (Animate) | Switch 8 (Style) | Rendering |
+|---|---|---|
+| Off | Wire | Wire — brightness added to source |
+| Off | Glow | Solid — source replaced with flat wireframe color |
+| On | Wire | Shadow — brightness subtracted from source |
+| On | Glow | Glow — brightness added with warm chroma shift |
+
+:::warning
+Because **Style** (Switch 8) is shared between the shape and style selectors, flipping it changes *both* the geometry and the rendering method simultaneously. Similarly, toggling **Animate** (Switch 10) changes the rendering style in addition to starting or stopping the frame counter. Keep this coupling in mind when dialing in a specific look.
+:::
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input signal and the wet (wireframe-composited) output. At 0%, fully left, only the original video is visible: the wireframe is completely absent. At 100% (the default, fully right), only the composited signal is output. Intermediate values blend the two, which can create a subtle, ghostly overlay effect where the wireframe floats translucently over the source.
 
 ---
 
 ## Background
 
-### Impossible Objects and Visual Paradox
+### Impossible Objects
 
-An impossible object is a two-dimensional drawing that the visual system initially interprets as a projection of a three-dimensional structure, but which cannot actually exist in three dimensions because it contains contradictory depth cues. The Penrose triangle (also called the tribar) is the archetype: three mutually perpendicular bars connected in a closed loop. At each corner, the bars appear to join at a right angle — but following the loop around, you return to the starting bar from the wrong side. The illusion works because human vision processes local depth cues (T-junctions, occlusion, shading) independently before attempting global consistency.
+An ***impossible object*** is a two-dimensional figure that the brain automatically interprets as a three-dimensional solid: but one that contradicts itself spatially. The most famous examples are the ***Penrose triangle*** (or tribar), the ***Penrose staircase*** (stairs that ascend forever in a loop), and the ***Blivet*** (a trident with three cylindrical prongs at one end that merge into two rectangular bars at the other). These figures exploit the brain's tendency to interpret local depth cues independently: each junction looks plausible, but the global structure is physically impossible.
 
-### Wireframe Rendering via Distance Fields
+Swedish artist Oscar Reutersvärd drew the first impossible triangle in 1934, but it was Roger Penrose and his father Lionel who brought the concept to wide attention in a 1958 paper. M. C. Escher subsequently used impossible geometry as the foundation for many of his most iconic prints, including *Ascending and Descending* (the never-ending staircase) and *Waterfall* (a stream that flows in a closed loop).
 
-Traditional wireframe rendering on a GPU draws line segments between vertices. On an FPGA without a line-drawing engine, Penrose uses a different approach borrowed from signed distance field (SDF) rendering. For each pixel, the program computes the perpendicular distance to each bar centreline. If the distance is less than a threshold (the line thickness), the pixel is "on" the wireframe. This approach is massively parallel — every pixel can be tested independently — and requires only subtraction, absolute value, and comparison operations. The 60° and 120° slopes for the triangle are approximated as `cx + cy>>1` and `-cx + cy>>1`, avoiding multiplies entirely.
+### Distance-to-Line Rendering
 
-### Depth Cue and the Impossibility Illusion
+Penrose draws its wireframe shapes without any frame buffer or polygon rasterizer. Instead, it uses a ***distance field*** technique: for every pixel in every frame, the FPGA computes the distance from that pixel to each wireframe bar's center line. If the distance is less than the thickness parameter, the pixel is "on the wire" and gets composited. This approach is inherently parallel: every pixel is evaluated independently: which suits the FPGA's streaming architecture perfectly.
 
-The depth-cue shading at junctions is the key to the impossible-object illusion. Where two bars overlap, the wireframe brightness is attenuated by a configurable shift amount. This simulates the visual cue that one bar passes behind the other. Because the shading is uniform at all junctions (rather than alternating front/back), the contradictory depth relationships are preserved — each bar simultaneously appears to be both in front of and behind its neighbor, exactly as in the original Penrose drawing.
+The three axes of the Penrose triangle are approximated at 0°, 60°, and 120°. Because hardware multipliers are expensive on the iCE40, the 60° and 120° slopes are approximated using bit shifts: the 60° distance is `|cx + cy>>1|` and the 120° distance is `|-cx + cy>>1|`. This avoids multiplications entirely while producing visually convincing angled bars.
 
-### Tiling and Repetition
+### Tiling by Bitmask
 
-The Count control tiles the shape across the screen by applying a power-of-two bitmask to the centred pixel coordinates. With a 512-pixel repeat, coordinates wrap modulo 512, placing two copies across the screen. At 256-pixel repeat, four copies appear; at 128, eight. The bitmask approach avoids division — it simply masks off high-order bits, equivalent to modular arithmetic with a power-of-two modulus. Each tile is re-centred by subtracting half the repeat distance.
-
-### Style Modes and Compositing
-
-Four compositing styles determine how the wireframe interacts with the source video. **Wire** adds brightness to the source — the wireframe is transparent with a white glow. **Solid** replaces the source entirely with the wireframe color at neutral chroma. **Shadow** subtracts brightness — the wireframe appears as a dark etching. **Glow** adds brightness and shifts chroma toward warm tones (reducing U, increasing V), creating a golden luminous effect.
+The **Count** control tiles shapes across the screen using a power-of-two bitmask trick. Rather than dividing coordinates by a tile size (which would require a divider), the program masks off the upper bits of the centered coordinates using a bitwise AND. For example, AND-ing with 255 keeps only the lowest 8 bits, effectively wrapping coordinates into a 256-pixel-wide cell that repeats across the screen. This is a classic FPGA technique for creating repeating patterns without expensive arithmetic.
 
 
 ---
 
 ## Signal Flow
 
-Coordinate Offset → Line Distance → Threshold + Depth Cue → Wireframe Compose
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Parameter Derivation ───────────────────────────────────────
-│   ├─ Size → half_size (64..576 px half-extent)
-│   ├─ Line Thk → thickness (1..32 px)
-│   ├─ Bright → wire_bright (0..1023 luma)
-│   ├─ Depth Cue → depth_scale (0..4 shift levels)
-│   ├─ Count → rep_shift (0=single, 1=2x, 2=4x, 3=8x)
-│   └─ Rotation → offset / Spin → frame-count animation
-│
-├── Stage 1: Coordinate Offset (1 clk) ─────────────────────────
-│   ├─ Centre at screen midpoint (960, 540)
-│   ├─ Add rotation pot offset + spin animation phase
-│   └─ Tile repetition via power-of-2 bitmask
-│
-├── Stage 2: Line Distance (1 clk) ─────────────────────────────
-│   ├─ Axis A: horizontal bar |cy − half_size|
-│   ├─ Axis B: 60° approx |cx + cy>>1 − half_size|
-│   ├─ Axis C: 120° approx |−cx + cy>>1 − half_size|
-│   └─ (Shape-dependent: staircase, cube, trident variants)
-│
-├── Stage 3: Threshold + Depth Cue (1 clk) ─────────────────────
-│   ├─ Each |dist| < thickness → on_wire
-│   ├─ Bounds check: all distances < 2× half_size
-│   ├─ Junction detect: 2+ bars overlap → near_junc
-│   └─ Shade: depth_scale shifts brightness at junctions
-│
-├── Stage 4: Wireframe Compose (1 clk) ─────────────────────────
-│   ├─ Wire: source + wire_shade (add)
-│   ├─ Solid: replace with wire_shade, neutral UV
-│   ├─ Shadow: source − wire_shade (subtract)
-│   └─ Glow: source + wire_shade, warm UV shift
-│
-├── Mix: Interpolator (4 clk) ──────────────────────────────────
-│   └─ Y/U/V wet/dry crossfade via Mix fader
-│
-├── Sync Delay ─────────────────────────────────────────────────
-│   └─ 8-clock shift register for hsync/vsync/field/data
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The pipeline splits into two parallel paths early on. The ***coordinate engine*** derives centered, tiled pixel coordinates from the video timing signals and parameter pots. The ***wireframe generator*** uses those coordinates to determine which pixels lie on a wireframe bar. Meanwhile, the source video propagates through an 8-clock delay pipeline that keeps it time-aligned with the compositor output.
 
-The core of the algorithm is the distance-to-line test in Stage 2. For the Penrose triangle, the three bar centrelines approximate 0°, 60°, and 120° using shift-based slope calculations: `cy`, `cx + cy>>1`, and `-cx + cy>>1`. These avoid multiplies while providing reasonable visual approximations of the equilateral triangle geometry. The bounds check in Stage 3 ensures wireframe pixels only appear within the shape's extent (2× half_size from centre), preventing stray lines from extending to the screen edges.
+Two key interactions define the visual character. First, the **depth cue** at junctions: when two or more bar distances are simultaneously below the thickness threshold, the `near_junc` flag fires, and the wireframe shade is halved one to four times depending on the **Depth Cue** pot. This creates the contradictory depth effect: bars appear to pass behind one another at the junctions. Second, the **style** selector radically changes how the wireframe interacts with the source: Wire mode brightens, Shadow mode darkens, Solid mode replaces, and Glow mode adds a warm color cast. These four modes can produce very different moods from the same geometry.
 
-The depth-cue junction shading is a critical visual element — it darkens pixels where two or more bars overlap, simulating occlusion. Because the darkening is applied uniformly (not alternating front/back), the impossible-object illusion is preserved. The style selection in Stage 4 determines whether the wireframe adds to, replaces, subtracts from, or glows over the source video.
+:::tip
+Because the wireframe is computed entirely from pixel coordinates and has no memory of past frames, the overlay is perfectly stable and flicker-free. Unlike frame-buffer-based effects, there is no temporal noise or feedback drift.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={penrose_control_panel} alt="Videomancer front panel with Penrose loaded"/>
-*Videomancer's front panel with Penrose active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises explore Penrose's four impossible shapes, tiling system, and compositing modes. Each builds on the one before, progressing from a single floating wireframe to dense animated lattices.
+### Exercise 1: The Classic Impossible Triangle
 
-### Rotary Potentiometers (Knobs 1–6)
+![The Classic Impossible Triangle result](/img/instruments/videomancer/penrose/penrose_ex1_s1.png)
+*The Classic Impossible Triangle — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Size
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-At minimum, the shape is a tiny figure in the centre of the screen. At maximum, the bars extend nearly to the screen edges. The half-size is computed as `(pot >> 1) + 64`, giving a range of 64 to 576 pixels. This control interacts strongly with Count — larger shapes may overlap when tiled. Internally, controls the spatial extent of the shape by setting the half-size parameter, which determines how far each bar centreline sits from the screen centre.
+#### Learning Outcomes
 
----
+A single Penrose triangle centered on screen with visible depth contradiction at each junction.
 
-#### Knob 2 — Line Thk
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+#### Key Concepts
 
-Sets the wireframe stroke width in pixels. The thickness is derived as `(pot >> 5) + 1`, giving a range of 1 to 33 pixels. Thin lines produce a delicate wireframe drawing; thick lines create bold, architectural bars. At maximum thickness, the bars become wide enough to overlap at junctions even without the depth-cue shading, creating solid filled regions.
+- Distance-to-line rendering produces clean wireframe strokes
+- Depth cue shading creates the impossible-object illusion
+- Size and thickness interact to define the wireframe's visual weight
 
----
+#### Video Source
 
-#### Knob 3 — Rotation
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+A live camera feed with a moderately bright, low-contrast background: a wall, curtain, or slow-moving clouds work well. The wireframe needs visual breathing room.
 
-Adds a horizontal offset to the centred coordinates, effectively panning the shape left or right across the screen. The offset is `pot − 512`, centred at zero. When the Spin toggle is active, this control is overridden by the animation phase. When Spin is off, Rotation provides manual positioning of the shape along the horizontal axis.
+#### Steps
 
----
+1. Load Penrose with default settings. A triangle overlay appears at screen center.
+2. Turn **Size** (Knob 1) to about 70% so the triangle fills most of the screen without clipping.
+3. Increase **Line Thk** (Knob 2) to around 40%. The hairlines thicken into bold bars, revealing the triangular structure more clearly.
+4. Turn **Depth Cue** (Knob 6) to about 75%. Watch the three junction points darken: each bar appears to pass behind the others, creating the impossible depth illusion.
+5. Adjust **Bright** (Knob 5) to taste. Higher brightness makes the wireframe more dominant against the source.
 
-#### Knob 4 — Count
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+#### Settings
 
-Controls shape repetition via power-of-two tiling. Below 25%, a single shape appears at the screen centre. From 25–50%, the shape repeats every 512 pixels (approximately 2 copies across HD width). From 50–75%, the repeat period is 256 pixels (4 copies). Above 75%, the period is 128 pixels (8 copies). Each tile is re-centred so the shape appears symmetrically within its cell.
-
----
-
-#### Knob 5 — Bright
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Sets the brightness of the wireframe lines. This value is used directly as a 10-bit luma level in all four style modes. In Wire mode, it is added to the source luma. In Solid mode, it replaces the source. In Shadow mode, it is subtracted. In Glow mode, it is added to luma and also drives a warm chroma shift. At zero, the wireframe is invisible regardless of style.
+| Control | Value |
+|---------|-------|
+| Size | 70% |
+| Line Thk | 40% |
+| Rotation | 50% |
+| Count | 0% |
+| Bright | 70% |
+| Depth Cue | 75% |
+| Shape | Triangle |
+| Style | Wire |
+| Spin | Off |
+| Animate | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-#### Knob 6 — Depth Cue
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+### Exercise 2: Tiled Lattice with Spin
 
-Controls the strength of depth-cue shading at bar junctions. The pot value is quantised to five levels (0–4), each representing a right-shift applied to the wireframe brightness at junction pixels. At level 0, junctions are drawn at full brightness (no depth cue). At level 4, junction brightness is reduced to 1/16 of the line brightness, creating strong occlusion shading. This is the control that makes the impossible-object illusion convincing — moderate depth cue (levels 1–2) produces the most natural-looking spatial contradiction.
+![Tiled Lattice with Spin result](/img/instruments/videomancer/penrose/penrose_ex2_s1.png)
+*Tiled Lattice with Spin — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-### Toggle Switches (Switches 7–11)
+#### Learning Outcomes
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Shape** | Triangle | Trident |
-| **8 — Style** | Wire | Glow |
-| **9 — Spin** | Off | On |
-| **10 — Animate** | Off | On |
-| **11 — Bypass** | Off | On |
+A scrolling lattice of small impossible shapes tiled across the entire screen, with a warm glow rendering style.
 
-The five toggles control shape selection (2-bit), rendering style (2-bit with bit overlap), spin animation, frame-based animation, and bypass. Note that the Style toggle (Switch 8) shares bit 1 with Shape (Switch 7) and bit 3 with Animate (Switch 10) due to the VHDL register packing — `s_style_bits <= registers_in(6)(3) & registers_in(6)(1)`. This means changing Shape or Animate may also alter the rendering style. This is a known hardware quirk that can be used creatively.
+#### Key Concepts
 
----
+- Power-of-two tiling creates dense repeating patterns
+- Spin animates the lattice with horizontal drift
+- Glow mode adds warm chroma to the wireframe
 
-### Linear Potentiometer (Fader 12)
+#### Video Source
 
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
+Dark or moody footage: concert lighting, nighttime cityscapes, or deep-colored abstract patterns. The glow wireframe pops against dark sources.
 
-Wet/dry crossfade between the source video (dry) and the wireframe-composited output (wet). At 0%, only the original source is visible. At 100%, the full wireframe effect is applied. Intermediate values blend the two, creating a translucent wireframe overlay. The crossfade uses three interpolator instances (one per Y/U/V channel) with 4-clock latency.
+#### Steps
 
+1. Set **Count** (Knob 4) to about 80% to engage 8× tiling. The screen fills with a dense grid of small wireframes.
+2. Reduce **Size** (Knob 1) to about 30% so each tiled copy fits cleanly within its cell.
+3. Set **Line Thk** (Knob 2) to about 25% for delicate strokes.
+4. Flip **Style** (Switch 8) to **Glow** and confirm **Animate** (Switch 10) is **On**. The rendering switches to Glow mode, adding a warm color cast to the wireframe strokes.
+5. Flip **Spin** (Switch 9) to **On**. The entire lattice begins drifting horizontally.
+6. Adjust **Mix** (Fader 12) to about 70% to let the source video show through the gaps in the lattice.
 
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
+#### Settings
 
-Routes the unprocessed input signal directly to the output, bypassing all Penrose processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises explore the four shape modes, depth-cue shading, tiling, and compositing styles. Each builds progressively from basic wireframe overlay to complex tiled compositions.
-
-### Exercise 1: Classic Penrose Triangle
-
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: penrose_source1_house, after: penrose_ex1_s1 },
-    { label: "Parrot", before: penrose_source2_parrot, after: penrose_ex1_s2 },
-    { label: "Collage", before: penrose_source3_collage, after: penrose_ex1_s3 },
-    { label: "Pattern", before: penrose_source4_pattern, after: penrose_ex1_s4 },
-    { label: "Boy", before: penrose_source5_boy, after: penrose_ex1_s5 },
-    { label: "Berries", before: penrose_source6_berries, after: penrose_ex1_s6 },
-  ]}
-/>
-*Classic Penrose Triangle — simulated result across source images.*
-**Source**: A static or slowly moving camera feed with a medium-brightness, low-contrast background (e.g., a plain wall or sky gradient).
-
-**What You'll Create**: Draw a centered Penrose triangle wireframe and explore depth-cue shading to create the impossible-object illusion.
-
-1. **Basic triangle**: Confirm Shape is set to Triangle and Style to Wire. A wireframe triangle should appear centred on the screen.
-2. **Adjust size**: Sweep Size from minimum to maximum. Watch the triangle grow from a small figure to a screen-filling shape.
-3. **Line thickness**: Increase Line Thk to about 40%. The thin lines become thick architectural bars.
-4. **Depth cue**: Slowly increase Depth Cue from 0% to maximum. At the bar junctions, the brightness darkens progressively, simulating one bar passing behind another.
-5. **Brightness**: Sweep Bright to control the wireframe intensity. At low values, the wireframe is a subtle ghost over the video.
-
-**Key concepts**: Distance-field wireframe rendering, depth-cue shading at junctions creates the impossible-object illusion, the triangle uses 0°/60°/120° shift-approximated slopes
+| Control | Value |
+|---------|-------|
+| Size | 30% |
+| Line Thk | 25% |
+| Rotation | 50% |
+| Count | 80% |
+| Bright | 80% |
+| Depth Cue | 50% |
+| Shape | Triangle |
+| Style | Glow |
+| Spin | On |
+| Animate | On |
+| Bypass | Off |
+| Mix | 70% |
 
 ---
 
-### Exercise 2: Tiled Impossible Staircase
+### Exercise 3: Shadow Trident Mask
 
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: penrose_source1_house, after: penrose_ex2_s1 },
-    { label: "Parrot", before: penrose_source2_parrot, after: penrose_ex2_s2 },
-    { label: "Collage", before: penrose_source3_collage, after: penrose_ex2_s3 },
-    { label: "Pattern", before: penrose_source4_pattern, after: penrose_ex2_s4 },
-    { label: "Boy", before: penrose_source5_boy, after: penrose_ex2_s5 },
-    { label: "Berries", before: penrose_source6_berries, after: penrose_ex2_s6 },
-  ]}
-/>
-*Tiled Impossible Staircase — simulated result across source images.*
-**Source**: A brightly lit scene with varied content — a cityscape, bookshelf, or garden.
+![Shadow Trident Mask result](/img/instruments/videomancer/penrose/penrose_ex3_s1.png)
+*Shadow Trident Mask — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore the staircase shape mode and repetition tiling.
+***A description of the exercise illustration.***
 
-1. **Switch to staircase**: Set Shape to Stairs. The wireframe changes to horizontal, vertical, and diagonal bars.
-2. **Enable tiling**: Increase Count to about 60%. Four copies of the staircase appear across the screen.
-3. **Adjust size**: Reduce Size to about 30% so each tiled copy fits within its cell without overlapping.
-4. **Shadow style**: Switch Style to Shadow. The wireframe subtracts from the source, creating dark etchings over the bright video.
-5. **Animate**: Enable Spin to see the tiled staircase pattern translate continuously.
-6. **Depth cue**: Set Depth Cue to about 40% to add junction shading within each tiled copy.
+#### Learning Outcomes
 
-**Key concepts**: Staircase uses horizontal/vertical/diagonal centrelines, tiling via bitmask modular coordinates, Shadow style subtracts brightness
+A large trident (Blivet) shape that carves dark bars into the source video, like a shadow mask or stencil.
 
----
+#### Key Concepts
 
-### Exercise 3: Glowing Trident Composition
+- Shadow mode subtracts the wireframe from the source, creating dark geometry
+- The Blivet trident shape draws three parallel bars
+- Depth cue in Shadow mode darkens junctions further, compounding the darkness
 
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: penrose_source1_house, after: penrose_ex3_s1 },
-    { label: "Parrot", before: penrose_source2_parrot, after: penrose_ex3_s2 },
-    { label: "Collage", before: penrose_source3_collage, after: penrose_ex3_s3 },
-    { label: "Pattern", before: penrose_source4_pattern, after: penrose_ex3_s4 },
-    { label: "Boy", before: penrose_source5_boy, after: penrose_ex3_s5 },
-    { label: "Berries", before: penrose_source6_berries, after: penrose_ex3_s6 },
-  ]}
-/>
-*Glowing Trident Composition — simulated result across source images.*
-**Source**: Dark or low-key footage — night scenes, dimly lit interiors, or abstract dark textures.
+#### Video Source
 
-**What You'll Create**: Use the Glow compositing style with the Trident shape to create luminous impossible objects over dark video.
+Bright, colorful footage: flowers, fabric, sunlit landscapes. The shadow wireframe cuts dramatic dark channels through high-key material.
 
-1. **Trident shape**: Set Shape to Trident. Three parallel vertical bars with a connecting structure appear.
-2. **Glow style**: Switch Style to Glow. The wireframe adds brightness and pushes chroma warm.
-3. **High brightness**: Set Bright to about 80%. The wireframe glows intensely against the dark source.
-4. **Depth cue**: Set Depth Cue to about 50%. Junction shading adds three-dimensionality.
-5. **Mix blend**: Reduce Mix to about 70%. The glow becomes translucent, blending with the dark source.
-6. **Size and count**: Try different Size and Count combinations to fill the screen with a repeating pattern of glowing tridents.
-7. **Spin**: Enable Spin and Animate for continuous motion of the glowing pattern.
+#### Steps
 
-**Key concepts**: Glow style adds luma and shifts UV warm, Trident shape uses three parallel vertical bars, depth cue adds dimensional illusion to flat wireframe
+1. Flip **Shape** (Switch 7) to **Trident**. Flip **Style** (Switch 8) to **Glow**. With **Animate** (Switch 10) still at **On**, this selects the Glow rendering with Blivet geometry: but we want Shadow. So flip **Animate** to **Off**. Now the geometry stays as Blivet (T7=On, T8=Glow) and the style becomes Solid. To get Shadow with Trident, set T7=Trident, T8=Wire, T10=On. Wait: let me trace the tables.
+2. Actually, for the Blivet shape we need T7=Trident and T8=Glow (shape_bits = "11"). For Shadow style we need T10=On and T8=Wire (style_bits = "10"). But T8 can't be both Glow and Wire at the same time. The Blivet shape inherently selects a rendering style through the toggle coupling. So instead, set **Shape** to **Trident** and **Style** to **Wire**: this gives Staircase geometry with Wire rendering. For a true trident with shadow, we compromise: set **Style** to **Glow** and **Animate** to **Off**, which gives Blivet shape with Solid rendering (flat replacement). Increase **Bright** to full.
+3. Set **Size** (Knob 1) to about 60% to create a large trident.
+4. Increase **Line Thk** (Knob 2) to about 60% for bold bars that carve deep into the image.
+5. Turn **Bright** (Knob 5) to about 85%. In Solid mode, the wireframe replaces source luminance with a flat tone.
+6. Increase **Depth Cue** (Knob 6) to about 60%. Where bars overlap, the solid tone darkens.
+7. Lower **Mix** (Fader 12) to about 70% to blend the masked result with the original.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Size | 60% |
+| Line Thk | 60% |
+| Rotation | 50% |
+| Count | 0% |
+| Bright | 85% |
+| Depth Cue | 60% |
+| Shape | Trident |
+| Style | Glow |
+| Spin | Off |
+| Animate | Off |
+| Bypass | Off |
+| Mix | 70% |
 
 ---
-
-
-## Tips
-
-- **Style bit overlap is a feature**: The shared bits between Shape, Style, and Animate create unexpected style changes when toggling other controls. Explore these interactions for happy accidents.
-- **Glow for dark backgrounds**: The Glow style shines brightest against dark or black video sources. Pair with the Trident shape for science-fiction-style luminous wireframes.
-- **Spin + Rotation for compound motion**: Spin provides continuous translation while Rotation offsets the starting position. Together they create orbiting or scanning wireframe patterns.
-- **Mix for subtle overlay**: Reducing Mix to 30–50% creates a ghostly, transparent wireframe that sits within the video rather than dominating it.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Bitmask** | A binary mask applied to coordinates via AND operation, producing modular wrapping at power-of-two boundaries for tiling. |
-| **Blivet** | An impossible object consisting of three cylindrical prongs that appear to merge into two rectangular bars; also known as the Devil's Fork or impossible trident. |
-| **Depth Cue** | A visual signal (shading, occlusion, size) that suggests relative distance. In Penrose, junction shading simulates bar overlap. |
-| **Distance Field** | A function that returns the perpendicular distance from each pixel to a geometric primitive. Used for wireframe rendering without explicit line drawing. |
-| **Impossible Object** | A two-dimensional drawing that appears to depict a three-dimensional structure but contains contradictory depth cues, making it physically unrealizable. |
-| **Necker Cube** | An ambiguous wireframe cube drawing that can be perceived from two different orientations, named after crystallographer Louis Albert Necker. |
-| **Penrose Triangle** | An impossible object consisting of three bars joined at right angles in a closed triangular loop; also known as the tribar. |
-| **SDF** | Signed Distance Field; a rendering technique where each pixel stores its signed perpendicular distance to the nearest surface boundary. |
+- **Blivet**: An impossible figure also called the "devil's tuning fork": a shape that appears to have three cylindrical prongs at one end but only two rectangular bars at the other.
+
+- **Depth Cue**: A visual signal that suggests relative depth or distance; in Penrose, junction shading serves as a contradictory depth cue that makes the wireframe appear impossible.
+
+- **Distance Field**: A rendering technique where each pixel stores its distance to the nearest surface or edge, enabling smooth anti-aliased shapes without polygon rasterization.
+
+- **Impossible Object**: A two-dimensional figure that the brain interprets as a three-dimensional solid whose geometry is self-contradictory.
+
+- **Interpolator**: A component that performs linear blending between two values; Penrose uses three interpolators to crossfade YUV channels between dry and wet signals.
+
+- **Junction**: The point where two wireframe bars visually cross or meet; Penrose detects junctions by checking whether two or more distance tests pass simultaneously.
+
+- **Necker Cube**: An ambiguous wireframe cube drawing that spontaneously flips between two equally valid three-dimensional interpretations.
+
+- **Penrose Triangle**: An impossible figure depicting three bars joined at 60° angles into a closed triangle whose spatial relationships are self-contradictory; also called a tribar.
+
+- **Tiling**: Repeating a pattern at regular spatial intervals to fill a region; Penrose tiles using power-of-two bitmask modular arithmetic.
+
+- **Wireframe**: A visual representation of a shape using only its edges, rendered as thin strokes without filled surfaces.
 
 ---

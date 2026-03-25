@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 93
 slug: /instruments/videomancer/dragon
@@ -7,308 +7,384 @@ image: /img/instruments/videomancer/dragon/dragon_hero.png
 description: "In 1966, NASA physicist John Heighway discovered a curve by repeatedly folding a strip of paper in half and unfolding it so that each crease opens to a right angle."
 ---
 
-import dragon_hero from '/img/instruments/videomancer/dragon/dragon_hero.png';
-import dragon_animation from '/img/instruments/videomancer/dragon/dragon_animation.gif';
-import dragon_control_panel from '/img/instruments/videomancer/dragon/dragon_control_panel.png';
-import dragon_exercise1_result from '/img/instruments/videomancer/dragon/dragon_exercise1_result.gif';
-import dragon_exercise2_result from '/img/instruments/videomancer/dragon/dragon_exercise2_result.gif';
-import dragon_exercise3_result from '/img/instruments/videomancer/dragon/dragon_exercise3_result.gif';
-
-# Dragon
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={dragon_hero} alt="Dragon hero image"/>
-*Dragon projecting a luminous fractal labyrinth of XOR-folded coordinates, each iteration depth revealing a deeper layer of self-similar geometry.*
-<img src={dragon_animation} alt="Dragon animated output"/>
-*Dragon output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Dragon hero image](/img/instruments/videomancer/dragon/dragon_hero_s1.png)
+*Dragon conjuring a self-similar fractal mosaic of XOR-folded geometry across the screen in vivid, position-derived color.*
 
 ---
 
 ## Overview
 
-In 1966, NASA physicist John Heighway discovered a curve by repeatedly folding a strip of paper in half and unfolding it so that each crease opens to a right angle. The resulting shape — the Heighway dragon — is a space-filling fractal that tiles the plane without gaps or overlaps, its boundary an infinitely complex coastline that never quite touches itself. Every magnification reveals the same folding pattern: a dragon eating its own tail.
+**Dragon** is a real-time fractal synthesis program that generates intricate, self-similar patterns across the entire video frame. Its core engine hashes each pixel's spatial coordinates through a series of ***XOR folds***: bitwise exclusive-or operations that collapse position data into a fractal tiling. The result is a dense geometric tapestry whose complexity and structure you control with a single knob. At low iteration depths, Dragon produces bold, blocky checker-like regions. At high depths, it reveals delicate, branching filigree reminiscent of the mathematical dragon curve.
 
-Dragon renders this folding geometry in real time by replacing the sequential paper-fold construction with a parallel position hash. For every pixel on screen, the program takes the centered coordinates, quantizes them to a coarse grid, concatenates the bits, and applies a sequence of XOR folds — each fold analogous to one iteration of the paper-folding process. The Iteration knob controls how many folds are applied, progressively refining the boundary between foreground and background. At low iterations the pattern is a simple checkerboard; at high iterations it fractures into the characteristic dragon curve silhouette, its edges bristling with the recursive zigzag of self-similar refolds.
+Dragon's chromatic mode paints the fractal with hues derived from each pixel's position hash, producing a stained-glass mosaic of shifting color. Mirror mode injects an additional fold that creates bilateral symmetry, doubling the pattern into a kaleidoscopic reflection. Because the entire pattern is generated spatially: no video input required: Dragon excels as a stand-alone visual source for live performance, layering, or keying with other Videomancer programs.
 
-Color cycling derives hue directly from the hash bits themselves, so regions at different spatial frequencies receive different chrominance — a built-in spectral decomposition of the fractal structure. The Animation toggle advances a frame counter that shifts the hash seed, causing the pattern to crawl and morph continuously as if the paper were being re-folded in a different direction each frame. Mirror mode XORs an additional hash bit into the pattern, breaking the bilateral symmetry and producing denser, more chaotic tilings.
+:::tip
+Dragon is a ***synthesis*** program. It generates imagery from scratch. No video input is needed, though input video can be blended in using the **Brightness** fader.
+:::
+
+### What's In a Name?
+
+The name **Dragon** refers to the ***dragon curve***, a famous fractal discovered by physicist John Heighway in the 1960s. The dragon curve can be produced by repeatedly folding a strip of paper in half and then unfolding it so each fold stands at a right angle. Mathematically, the fold direction at each step is determined by examining specific bits of the step index: precisely the kind of bit-manipulation this program performs. Like the mythological creature, the pattern is elaborate and seemingly chaotic, yet governed by simple, elegant rules.
 
 ---
 
 ## Quick Start
 
-1. **Start with low iteration, then climb**: Begin at Iteration step 1 to understand the base diagonal grid, then increase one step at a time. Each step adds one level of fractal folding — watching the progression builds intuition for how XOR hashing generates self-similar structure.
-2. **Color Cycle reveals spatial structure**: The hash-derived chrominance is not decorative — it encodes the spatial position within the fractal tiling. Regions with similar color share similar hash-bit configurations, making Color Cycle a diagnostic tool for understanding the pattern's topology.
-3. **Rotation at 45° is a sweet spot**: Because the XOR fold creates primary structure along the diagonal, rotating by 45° aligns this structure with the horizontal, producing a dramatically different visual texture from the same parameters. Try comparing 0° and 45° at each iteration depth.
+1. With default settings, you'll see a colorful fractal pattern covering the screen. The colors shift across the surface because **Color Cycle** (Switch 8) is on by default.
+2. Turn **Iteration** (Knob 5) slowly. At low values, the pattern is coarse: large regions of solid color. As you increase it, finer and finer fractal detail emerges, as if you're zooming into the dragon's scales.
+3. Sweep **Position X** (Knob 3) and **Position Y** (Knob 4) to slide the entire fractal pattern across the screen. The pattern tiles infinitely, so new structure scrolls in from the edges.
+4. Flip **Mirror** (Switch 10) on. The pattern doubles into a symmetric reflection (a dragon gazing at its own twin.)
+
+---
+
+## Parameters
+
+![Videomancer front panel with Dragon loaded](/img/instruments/videomancer/dragon/dragon_control_panel.png)
+*Videomancer's front panel with Dragon active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Scale
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Scale** is reserved for a future update. In the current version of Dragon, adjusting this knob does not change the output. It is mapped to the hardware register and ready for use when additional scaling logic is added to the fractal engine.
+
+---
+
+### Knob 2 — Rotation
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 360° |
+| Default | 0° |
+
+**Rotation** is reserved for a future update. In the current version, adjusting this knob does not change the output. It is mapped to the hardware register and ready for use when angular rotation of the fractal pattern is implemented.
+
+---
+
+### Knob 3 — Position X
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Position X** slides the fractal pattern horizontally across the screen. At the default center position, the hash origin sits near the middle of the frame. Turning the knob counterclockwise shifts the pattern to the right; turning it clockwise shifts the pattern to the left. Because the fractal tiles infinitely in all directions, you never run out of pattern: new structure continuously scrolls into view. Position X pairs naturally with **Position Y** (Knob 4) for two-axis panning.
+
+---
+
+### Knob 4 — Position Y
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Position Y** slides the fractal pattern vertically. At the default center position, the hash origin sits near the vertical midpoint. Turning the knob shifts the pattern up or down. Combined with **Position X** (Knob 3), you can navigate freely through the infinite fractal plane, discovering new regions of the pattern.
+
+---
+
+### Knob 5 — Iteration
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 16 |
+| Default | 9 |
+
+**Iteration** controls the depth of the XOR-fold operation that generates the fractal. This knob selects one of sixteen discrete steps. At low values, only one or two folds are applied, producing large, blocky regions of alternating pattern. As you increase the iteration depth, additional folds subdivide the pattern into progressively finer structure. At maximum, the fractal reveals its full complexity: a dense, branching network of self-similar tiles. This is Dragon's primary creative control.
+
+:::tip
+***Iteration is Dragon's signature control.*** It's the difference between a bold geometric grid and an intricate fractal web. Sweep it slowly to watch the pattern unfold level by level.
+:::
+
+---
+
+### Knob 6 — Line Width
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 8 |
+| Default | 3 |
+
+**Line Width** is reserved for a future update. In the current version, adjusting this knob does not change the output. It is mapped to the hardware register and ready for use when variable-width fractal rendering is added.
+
+---
+
+### Switch 7 — Fill
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Fill** is reserved for a future update. In the current version, toggling this switch does not change the output. It is mapped to the hardware register for future use.
+
+---
+
+### Switch 8 — Color Cycle
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Color Cycle** enables position-derived coloring of the fractal pattern. When set to **On** (the default), each lit pixel receives hue values extracted from the position hash. The U and V chrominance channels are set from different bit slices of the hash, producing a mosaic of shifting color that varies across the surface. When set to **Off**, the fractal is rendered in monochrome: lit pixels are a uniform neutral gray at the brightness level set by **Brightness** (Fader 12), and dark pixels remain near-black.
+
+:::note
+Because color is derived from the position hash, the hue at any given screen location is deterministic. Moving the pattern with **Position X** or **Position Y** changes which colors are visible, but the color at a given fractal coordinate is always the same.
+:::
+
+---
+
+### Switch 9 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Animate** enables a per-frame counter that increments on every vertical sync pulse. In the current version of Dragon, the animation counter is internal and reserved for future use: the visible pattern does not change between frames. The fractal remains static regardless of this toggle's position.
+
+---
+
+### Switch 10 — Mirror
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Mirror** introduces an additional XOR fold into the pattern hash, combining a third bit of the hash with the base pattern. The result is a symmetry transformation: regions that were uniform split into mirrored pairs, and the overall pattern takes on bilateral symmetry. Enable Mirror to double the visual complexity and create kaleidoscopic reflections within the fractal.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input video directly to the output, bypassing all Dragon processing. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the fractal output and whatever signal is patched into the input.
+
+---
+
+### Fader 12 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 75% |
+
+**Brightness** controls two things simultaneously. First, it sets the luminance of the lit pixels in the fractal pattern: higher values produce a brighter pattern against the near-black background. Second, it controls the wet/dry mix between the generated fractal and any video present at the input. At 0%, the output is pure input video (if any). At 100%, the output is the full-brightness fractal with no input bleed. At intermediate values, the fractal is superimposed over the input at reduced intensity, creating a translucent overlay.
+
+:::tip
+Because Brightness controls both intensity and mix, pulling the fader down doesn't just dim the fractal: it also fades in the input video underneath. This makes it easy to blend Dragon's patterns over a live camera feed or another program's output.
+:::
 
 ---
 
 ## Background
 
-### The Heighway Dragon Curve
+### The dragon curve
 
-The Heighway dragon is constructed by a simple recursive rule: take a line segment, replace it with two segments joined at a right angle, and repeat. After *n* iterations, the curve has $2^n$ segments and begins to fill a region of the plane with a fractal boundary of Hausdorff dimension 2. The remarkable property of the dragon is that it tiles the plane — four copies rotated by 90° about a common vertex fill the plane completely with no overlap. This tiling property means the dragon curve's interior and exterior have the same combinatorial complexity, making it an ideal candidate for a binary foreground/background pattern: every pixel either belongs to the dragon or does not, and the boundary between the two is infinitely detailed.
+The ***dragon curve*** is one of the most elegant fractals in mathematics. It was discovered in the 1960s by NASA physicist John Heighway, who noticed the pattern that emerges when you fold a strip of paper in half repeatedly and then unfold it so each crease stands at a right angle. The resulting shape: also called the ***Heighway dragon***: is a space-filling curve: given enough folds, it tiles the plane completely without gaps or overlaps.
 
-### Paper Folding and Bit Sequences
+What makes the dragon curve special is how the fold direction at each step is determined. If you number each fold starting from one, you can figure out whether to fold left or right by examining specific bits of that number. This is the connection to digital logic: the dragon curve is, at its heart, a ***bit-manipulation*** problem. Each level of iteration adds one more bit of information, doubling the curve's complexity.
 
-The most intuitive construction of the dragon curve is paper folding. Fold a strip of paper in half *n* times (always in the same direction), then unfold so each crease opens to 90°. The sequence of left and right turns along the unfolded strip determines the dragon curve. Crucially, this turn sequence has an elegant binary representation: the turn at step $k$ is determined by the bit above the lowest set bit of $k$. If that bit is 1, turn right; if 0, turn left. This connection between the fractal geometry and the binary representation of integers is what allows the Heighway dragon to be computed by pure bit manipulation — no trigonometry, no floating-point arithmetic, no recursive subdivision — just shifts, masks, and XOR operations on the step index.
+### XOR folding
 
-### Self-Similarity and Iterated Function Systems
+Dragon's pattern engine uses the ***exclusive-or*** (XOR) operation to create fractal structure from pixel coordinates. XOR is a fundamental digital logic operation: it outputs one when its two inputs differ and zero when they match. When applied to shifted copies of a number, XOR produces self-similar patterns: each level of shifting introduces a new scale of detail that echoes the previous one.
 
-The dragon curve is a fixed point of an Iterated Function System (IFS) — a pair of affine contractions whose repeated application converges to the fractal attractor. Each contraction scales by $1/\sqrt{2}$ and rotates by ±45°, mapping the entire curve onto its left or right half. This self-similarity means that any sub-region of the dragon, when magnified by $\sqrt{2}$ and rotated, looks identical to the whole. In the pixel domain, the XOR-fold hash exploits this self-similarity directly: each additional XOR shift corresponds to one level of the IFS hierarchy, mixing information from successively finer spatial scales into the pattern decision at each pixel.
+The program constructs a 16-bit hash from each pixel's horizontal and vertical position, then folds that hash against a shifted copy of itself. The **Iteration** knob controls how far the second copy is shifted before the XOR, directly setting the depth of fractal detail. This is a computationally elegant approach: the entire fractal is generated with just a few XOR and shift operations per pixel, requiring no memory buffers, no look-up tables, and no complex arithmetic.
 
-### Bit Manipulation for Fractal Generation
+### Self-similarity
 
-Traditional fractal renderers — Mandelbrot sets, Julia sets, L-system turtles — rely on iterative computation per pixel or sequential path tracing. Both are expensive in hardware. The XOR-fold technique sidesteps iteration entirely by encoding the fractal structure into a hash function applied to the pixel coordinates. The key operation is `hash ^= hash >> k`, which folds the upper bits of the coordinate representation down onto the lower bits, creating interference patterns between spatial scales separated by a factor of $2^k$. The number of fold operations (controlled by the Iteration parameter) determines how many scales contribute to the final pattern. One fold produces a simple diagonal; two folds produce a Sierpinski-like checkerboard; five or more folds produce recognizable dragon curve boundaries. The entire computation fits in a single clock cycle with no BRAM, no DSP blocks, and roughly 400 logic cells.
+***Self-similarity*** is the defining property of fractals. A self-similar object looks the same: or statistically similar: at every scale of magnification. The dragon curve exhibits this property: any section of the curve, when magnified, reveals the same branching structure as the whole.
 
-### Fractal Art and Video Synthesis
-
-Fractal imagery has been central to computational art since Benoit Mandelbrot's visualizations in the 1980s. The ability to generate infinitely detailed patterns from compact mathematical descriptions resonates with the video synthesizer tradition of deriving complex imagery from minimal signal generators. Dragon connects these traditions: it uses a technique rooted in 1960s recreational mathematics (paper folding) implemented with 1990s FPGA logic (XOR hashing) to produce imagery that evokes both the mathematical sublime of fractal geometry and the analog warmth of modular video synthesis. The color cycling mode further bridges these worlds, deriving chrominance from the same hash bits that determine geometry — a single computation producing both structure and palette.
+In Dragon, self-similarity appears as you sweep the **Iteration** knob: each additional fold level adds detail that echoes the coarser pattern already visible. The coarse structure doesn't change: it gains finer ornamentation. This is a hallmark of ***iterated function systems*** (IFS), a class of fractals where the whole is built from smaller copies of itself.
 
 
 ---
 
 ## Signal Flow
 
-Clock 0: Register Decode → Clock 1: Timing Detection → Clock 2: Centered → ... → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Synthesis Output (YUV 4:4:4)
-│
-├── Clock 0: Register Decode ───────────────────────────────────
-│   ├─ scale = registers_in(0)
-│   ├─ rotation = registers_in(1)
-│   ├─ position_x = registers_in(2)
-│   ├─ position_y = registers_in(3)
-│   ├─ iteration = registers_in(4)
-│   ├─ line_width = registers_in(5)
-│   ├─ toggles: fill(6.0), color_cycle(6.1),
-│   │           animate(6.2), mirror(6.3), bypass(6.4)
-│   └─ brightness = registers_in(7)
-│
-├── Clock 1: Timing Detection ─────────────────────────────────
-│   ├─ hsync_fall / vsync_fall edge detect
-│   ├─ x_counter++, y_counter++ (pixel/line position)
-│   └─ frame_counter++ on vsync_fall (if animate on)
-│
-├── Clock 2: Centered Coordinates ──────────────────────────────
-│   ├─ cx = x_counter − position_x  (signed 13-bit)
-│   └─ cy = y_counter − position_y  (signed 13-bit)
-│
-├── Clock 3: Position Hash + XOR Folding ───────────────────────
-│   ├─ hash = cx[11:4] & cy[11:4]        (16-bit concat)
-│   ├─ hash ^= hash >> 1                 (first fold)
-│   └─ hash ^= hash >> (iteration[9:7]+1) (depth fold, shift 1–8)
-│
-├── Clock 4: Pattern Extraction ────────────────────────────────
-│   ├─ pattern = hash[0] XOR hash[1]
-│   └─ if mirror: pattern ^= hash[2]
-│
-├── Clock 5: Color Assignment ─────────────────────────────────
-│   ├─ pattern=1, color_cycle on:
-│   │     Y = brightness,  U = hash[9:2],  V = hash[7:0]
-│   ├─ pattern=1, color_cycle off:
-│   │     Y = brightness,  U = 512,  V = 512
-│   └─ pattern=0:
-│         Y = 64,  U = 512,  V = 512
-│
-├── Clocks 4–7: Interpolator (wet/dry) ────────────────────────
-│   └─ lerp(delayed_input, processed, mix_t)  ×3 channels
-│
-├── Sync Signals ──────────────────────────────────────────────
-│   └─ 8-stage delay pipeline (hsync, vsync, field, Y, U, V)
-│
-└── Bypass ────────────────────────────────────────────────────
-    └─ Select delayed input or interpolated output
-```
+The fractal engine is purely combinational within a single clock cycle: pixel coordinates are centered, hashed, folded, and mapped to color in one pipeline stage. The resulting fractal YUV values are then blended with the ***delayed*** input video through three `interpolator_u` instances, which contribute four additional clock cycles each.
 
-The core algorithm occupies just three clock cycles — coordinate centering, XOR-fold hashing, and pattern extraction — yet produces fractal complexity comparable to iterative renderers that consume hundreds of cycles per pixel. The critical operation is the double XOR fold in Clock 3: the first fold (`hash ^= hash >> 1`) creates the fundamental diagonal structure by mixing adjacent coordinate bits, while the second fold (`hash ^= hash >> shift`) introduces the self-similar recursion by interfering bits separated by a distance controlled by the Iteration parameter. Increasing the shift distance brings coarser spatial scales into the pattern decision, deepening the fractal boundary. The entire hash computation requires no BRAM and no DSP multiplier blocks — only combinational logic (XOR gates and barrel shifters), making this one of the most resource-efficient fractal generators possible on the iCE40 platform.
+The critical interaction is the dual role of **Brightness** (Fader 12). The same register value simultaneously sets the luminance of lit fractal pixels *and* the interpolation coefficient for the wet/dry mix. When Brightness is high, the fractal is both bright and dominant over the input. When Brightness is low, the fractal dims *and* the input shows through. This coupling is intentional: it provides a single-fader "presence" control for the fractal.
+
+:::note
+The input data delay pipeline (8 clocks) aligns the passthrough video with the fractal + interpolator output. This ensures glitch-free bypass switching and clean blending.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={dragon_control_panel} alt="Videomancer front panel with Dragon loaded"/>
-*Videomancer's front panel with Dragon active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises explore Dragon's fractal engine from basic pattern generation through chromatic variations to overlay blending. Each exercise builds on the previous one.
+### Exercise 1: Fractal Depth
 
-### Rotary Potentiometers (Knobs 1–6)
+![Fractal Depth result](/img/instruments/videomancer/dragon/dragon_ex1_s1.png)
+*Fractal Depth — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Scale
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-Controls the spatial zoom level of the fractal pattern. At the default center position, the pattern displays at its native resolution — one hash cell per 16-pixel block (the quantization step from the `cx[11:4]` bit extraction). Reducing Scale zooms out, revealing more of the fractal tiling and producing a finer, more densely packed pattern. Increasing Scale zooms in, magnifying individual hash cells and exposing the sharp binary boundaries between foreground and background regions. At extreme zoom levels, the underlying grid structure becomes visible as the pattern resolves into blocky squares — the quantization artifacts of the coordinate-to-hash conversion.
+#### Learning Outcomes
 
----
+Explore the full range of Dragon's fractal complexity by sweeping the Iteration control.
 
-#### Knob 2 — Rotation
-| Property | Value |
-|----------|-------|
-| Range | 0° – 360° |
-| Default | 0° |
-| Suffix | ° |
+#### Key Concepts
 
-Rotates the entire fractal pattern around the position center. At 0° the dragon curve aligns with the screen axes, its primary folds running horizontally and vertically. As Rotation advances, the pattern pivots smoothly, revealing different cross-sections of the XOR hash field. At 45° the diagonal structure created by the first XOR fold becomes aligned with the screen horizontal, producing a dramatically different visual texture. Full 360° rotation cycles through all orientations, with the pattern repeating exactly at 90° intervals due to the square symmetry of the coordinate grid.
+- Iteration depth controls fractal complexity
+- Position knobs pan through an infinite fractal plane
+- The pattern is generated mathematically (no video input needed)
 
----
+#### Steps
 
-#### Knob 3 — Position X
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+1. **Start simple**: Turn **Iteration** (Knob 5) to its lowest setting. You see a pattern of large, boldly colored blocks filling the screen.
+2. **Build complexity**: Slowly increase Iteration. With each step, finer detail emerges within the existing blocks. The coarse structure persists while new subdivisions appear.
+3. **Full depth**: Set Iteration to its maximum. The screen fills with dense, intricate fractal geometry.
+4. **Navigate**: Sweep **Position X** (Knob 3) and **Position Y** (Knob 4) to pan across the fractal plane. Note how the pattern tiles seamlessly (new structure scrolls in from every edge.)
+5. **Monochrome view**: Flip **Color Cycle** (Switch 8) to **Off**. The same fractal geometry is now rendered in grayscale, making the self-similar structure easier to see.
 
-Shifts the center of the fractal pattern horizontally. At the default center position, the hash origin aligns with the middle of the screen. Moving Position X leftward or rightward pans the pattern across the frame, revealing different regions of the infinite fractal tiling. Because the XOR hash is computed on centered coordinates, the position offset effectively translates through a fixed mathematical space — the pattern itself does not change, only which portion of it is visible. This makes Position X and Position Y together function as a viewport control over an infinitely extending fractal plane.
+#### Settings
 
----
-
-#### Knob 4 — Position Y
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Shifts the center of the fractal pattern vertically. Operates identically to Position X but along the vertical axis. Combined with Position X, these two knobs allow navigation through the full 2D fractal field. At default center values, the pattern is symmetric about the screen center. Detuning both positions from center reveals asymmetric regions of the tiling where the dragon curve boundary passes through different phases of its self-similar structure.
+| Control | Value |
+|---------|-------|
+| Scale | ~50% |
+| Rotation | 0° |
+| Position X | ~50% |
+| Position Y | ~50% |
+| Iteration | 16 |
+| Line Width | 1 |
+| Fill | Off |
+| Color Cycle | Off |
+| Animate | Off |
+| Mirror | Off |
+| Bypass | Off |
+| Brightness | ~75% |
 
 ---
 
-#### Knob 5 — Iteration
-| Property | Value |
-|----------|-------|
-| Range | 1 – 16 |
-| Default | 9 |
+### Exercise 2: Chromatic Dragon
 
-Controls the depth of XOR folding in the hash computation. The Iteration register's upper three bits select a shift distance from 1 to 8, determining how many spatial octaves contribute to the fractal pattern. At the minimum setting (shift=1), the pattern is a simple diagonal checkerboard — only adjacent bits interfere. Each additional iteration brings a coarser spatial scale into the fold, deepening the boundary complexity. By shift 4–5, the characteristic dragon curve silhouette emerges clearly, with recursive zigzag edges separating foreground from background. At maximum depth (shift=8), the pattern incorporates the broadest spatial structure, producing the finest fractal detail at the cost of visual density — the foreground/background ratio approaches 50/50 as more scales contribute equally to the pattern decision.
+![Chromatic Dragon result](/img/instruments/videomancer/dragon/dragon_ex2_s1.png)
+*Chromatic Dragon — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-#### Knob 6 — Line Width
-| Property | Value |
-|----------|-------|
-| Range | 1 – 8 |
-| Default | 3 |
+#### Learning Outcomes
 
-Adjusts the apparent thickness of the fractal boundary by controlling how many hash-derived bits participate in the pattern test. At the narrowest setting, only the basic two-bit XOR pattern determines foreground membership, producing thin, sharply defined fractal edges. Increasing Line Width progressively includes adjacent hash bits in the pattern decision, broadening the transition zone between foreground and background regions. At wide settings, the fractal boundary thickens into bold graphic strokes, and the self-similar detail is smoothed into broader regions of solid color. This control interacts with Iteration — high iteration with narrow width produces the finest filigree, while low iteration with wide width produces bold geometric blocks.
+Build a vivid, symmetrical stained-glass fractal.
 
----
+#### Key Concepts
 
-### Toggle Switches (Switches 7–11)
+- Color Cycle derives hue from the position hash
+- Mirror creates bilateral symmetry via an additional XOR fold
+- Brightness controls both intensity and presence
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Fill** | Off | On |
-| **8 — Color Cycle** | Off | On |
-| **9 — Animate** | Off | On |
-| **10 — Mirror** | Off | On |
-| **11 — Bypass** | Off | On |
+#### Steps
 
-The five toggles configure distinct aspects of the fractal engine's output. Fill (7) controls whether the interior of the fractal regions is rendered as solid or hollow. Color Cycle (8) determines whether the UV chrominance channels derive from the hash bits — producing a spatially-varying color field — or remain at neutral gray for monochrome output. Animate (9) advances the frame counter on each vertical sync, causing the hash seed to shift and the pattern to evolve over time. Mirror (10) XORs an additional hash bit into the pattern decision, breaking the bilateral symmetry of the standard dragon fold and producing denser, more chaotic tilings. Bypass (11) routes the input signal directly to the output, skipping all fractal generation. These toggles interact multiplicatively — enabling all four active modes simultaneously produces animated, colored, asymmetric, filled fractal fields with maximum visual complexity.
+1. **Enable color**: Ensure **Color Cycle** (Switch 8) is set to **On**. The fractal fills with shifting hues derived from each pixel's position.
+2. **Add symmetry**: Flip **Mirror** (Switch 10) to **On**. The pattern doubles into a symmetric reflection, creating a kaleidoscopic effect.
+3. **Set depth**: Adjust **Iteration** (Knob 5) to a moderate value: around step 10–12. This provides enough detail to see the fractal branching without overwhelming density.
+4. **Brighten**: Push **Brightness** (Fader 12) to about 60%. The colors pop against the near-black background.
+5. **Explore position**: Pan with **Position X** and **Position Y** to find a region where the mirrored pattern forms an interesting composition. Some positions create butterfly-like shapes; others form crystalline lattices.
 
----
+#### Settings
 
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 75% |
-| Suffix | % |
-
-Controls the luminance intensity of foreground (pattern=1) pixels. At 100%, foreground pixels are rendered at full white (Y=1023); at 0%, they dim to black, effectively erasing the pattern. The background (pattern=0) is always rendered at a fixed dark level (Y=64). At the default 75% setting, the contrast between foreground and background is strong but not clipped — suitable for both standalone display and downstream processing. Reducing Brightness below 50% produces a subtler pattern that can be overlaid on other video signals without overwhelming them. When Color Cycle is active, Brightness affects only the Y channel — the chromatic content from the hash bits is independent, so reducing Brightness desaturates the pattern toward dark color rather than gray.
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Dragon processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises explore the dragon fractal from simple static geometry through chromatic animation to complex mirrored compositions, progressively engaging more of the parameter space.
-
-### Exercise 1: Fractal Depth Discovery
-
-<img src={dragon_exercise1_result} alt="Fractal Depth Discovery result"/>
-*Fractal Depth Discovery — simulated result across source images.*
-**What You'll Create**: Explore how the Iteration parameter transforms a simple checkerboard into the classic dragon curve silhouette, understanding the relationship between XOR fold depth and fractal complexity.
-
-1. **Start minimal**: Set Iteration to its lowest step (1). The screen shows a simple diagonal checkerboard — the result of a single-bit XOR fold with minimal spatial mixing.
-2. **Increase iteration depth**: Slowly advance Iteration through each step. Watch the checkerboard edges begin to fracture and fold — the diagonal lines develop recursive zigzag indentations at each new depth level.
-3. **Reach the dragon**: By step 8–10, the characteristic dragon curve boundary is clearly visible — a densely folded coastline separating foreground from background regions.
-4. **Adjust Scale**: Zoom in to examine the fractal boundary at high magnification, then zoom out to see the overall tiling structure.
-5. **Center the view**: Use Position X and Position Y to navigate to a region where the dragon curve boundary passes through the center of the screen.
-6. **Compare with Fill**: Toggle Fill On and Off to see how the interior solid fill changes the visual character at different iteration depths.
-
-**Key concepts**: XOR fold depth controls fractal complexity, each iteration brings a coarser spatial scale into the pattern, the dragon curve boundary emerges at moderate iteration counts, Scale reveals different structural levels of the hash
+| Control | Value |
+|---------|-------|
+| Scale | ~50% |
+| Rotation | 0° |
+| Position X | ~50% |
+| Position Y | ~50% |
+| Iteration | 12 |
+| Line Width | 1 |
+| Fill | Off |
+| Color Cycle | On |
+| Animate | Off |
+| Mirror | On |
+| Bypass | Off |
+| Brightness | ~60% |
 
 ---
 
-### Exercise 2: Chromatic Dragon Flight
+### Exercise 3: Fractal Overlay
 
-<img src={dragon_exercise2_result} alt="Chromatic Dragon Flight result"/>
-*Chromatic Dragon Flight — simulated result across source images.*
-**What You'll Create**: Combine color cycling with animation to produce a continuously evolving, spectrally rich fractal landscape that reveals the spatial structure of the hash function through color.
+![Fractal Overlay result](/img/instruments/videomancer/dragon/dragon_ex3_s1.png)
+*Fractal Overlay — simulated result across source images.*
+#### Exercise Illustration
 
-1. **Enable color**: Toggle Color Cycle On. The monochrome dragon pattern blooms into bands of hue — each region of the fractal field receives its color from the local hash bits.
-2. **Start animation**: Toggle Animate On. The pattern begins crawling and morphing, the colors shifting as the frame counter modifies the hash seed.
-3. **Set moderate iteration**: Set Iteration to step 6–8 for a pattern with clear fractal structure but enough spatial variation to show the color banding.
-4. **Rotate slowly**: Sweep Rotation from 0° to 180°. The color bands rotate with the pattern, but because they derive from the hash bits (which depend on the absolute coordinate grid), the color distribution shifts relative to the fractal boundary as the pattern rotates.
-5. **Adjust Brightness**: Pull Brightness to ~60% for a rich, saturated color field where the pattern is visible without being blindingly bright.
-6. **Zoom to color detail**: Increase Scale to zoom into a region where the color transitions between hash cells are visible — the color changes abruptly at each 16-pixel block boundary, creating a stained-glass effect.
+***A description of the exercise illustration.***
 
-**Key concepts**: Hash-derived chrominance creates spatially varying color, animation shifts the hash seed over time producing morphing patterns, rotation reveals different cross-sections of the color field, Brightness controls intensity without affecting chrominance
+#### Learning Outcomes
+
+Blend Dragon's fractal pattern over an input video signal to create a translucent geometric overlay.
+
+#### Key Concepts
+
+- Brightness controls the wet/dry mix between fractal and input video
+- The interpolator blends all three channels (Y, U, V) simultaneously
+- Dragon works as a texture overlay when blended with another source
+
+#### Steps
+
+1. **Connect input**: Patch a video source into Videomancer's input (a live camera, another program, or recorded footage.)
+2. **Full fractal**: Set **Brightness** (Fader 12) to maximum. You see only the fractal pattern.
+3. **Fade in the source**: Slowly pull **Brightness** down. As the value decreases, two things happen simultaneously: the fractal dims *and* the input video fades in underneath. At about 40–50%, you get a translucent overlay where both layers are clearly visible.
+4. **Tune the pattern**: Adjust **Iteration** (Knob 5) to control how dense the overlay grid is. Lower iterations create bold geometric frames; higher iterations create a fine mesh.
+5. **Color blend**: With **Color Cycle** on, the fractal's position-derived hues tint the underlying video. Toggle it off for a monochrome mesh that preserves the source colors.
+6. **A/B compare**: Flip **Bypass** (Switch 11) to see the clean input, then back to see the overlay. This confirms the blend level.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Scale | ~50% |
+| Rotation | 0° |
+| Position X | ~50% |
+| Position Y | ~50% |
+| Iteration | 8 |
+| Line Width | 1 |
+| Fill | Off |
+| Color Cycle | On |
+| Animate | Off |
+| Mirror | Off |
+| Bypass | Off |
+| Brightness | ~45% |
 
 ---
-
-### Exercise 3: Mirrored Kaleidoscope
-
-<img src={dragon_exercise3_result} alt="Mirrored Kaleidoscope result"/>
-*Mirrored Kaleidoscope — simulated result across source images.*
-**What You'll Create**: Use Mirror mode with animation and color cycling to produce a densely textured, asymmetric fractal field that evokes kaleidoscopic glass patterns.
-
-1. **Enable Mirror**: Toggle Mirror On. The pattern immediately becomes denser and more chaotic as the third hash bit disrupts the bilateral symmetry of the standard dragon fold.
-2. **Maximum iteration**: Set Iteration to step 14–16. At this depth, the mirrored pattern is extremely fine-grained, approaching a noise-like texture with fractal micro-structure.
-3. **Enable everything**: Ensure Color Cycle, Animate, and Fill are all On. The screen becomes a churning field of colored fractal noise, continuously morphing.
-4. **Navigate the field**: Use Position X and Position Y to pan through the infinite fractal plane. Different regions have subtly different local structure due to the coordinate-dependent hash.
-5. **Reduce Brightness for ambience**: Pull Brightness to ~40% for a dark, gem-like appearance where colors glow against a near-black background.
-6. **Zoom out**: Reduce Scale to see the large-scale tiling structure emerge from the noise — at sufficient zoom, the self-similar repetition of the hash pattern becomes visible as a meta-grid overlaying the fractal texture.
-
-**Key concepts**: Mirror mode breaks symmetry via additional hash bit, high iteration + mirror produces noise-like fractal texture, Fill mode solidifies the interior regions, full parameter engagement creates maximum visual complexity
-
----
-
-
-## Tips
-
-- **Mirror mode for density**: When the basic dragon pattern feels too sparse or regular, engage Mirror to add a third spatial frequency. The resulting pattern is always denser and more turbulent than the non-mirrored version, useful for textured backgrounds or noise-like overlays.
-- **Brightness controls contrast ratio**: The foreground-to-background contrast is determined by the ratio between Brightness (foreground Y) and the fixed background level (Y=64). At Brightness=75%, the ratio is about 12:1. Reducing Brightness to 25% drops the ratio to about 4:1, producing a subtler pattern suitable for layering.
-- **Animate + slow parameter sweeps**: With Animate On, slowly sweeping Iteration or Scale produces compound motion — the pattern morphs due to animation while simultaneously reconfiguring due to the parameter change. This creates organic, unpredictable visual evolution.
-- **Use as a modulation source**: Dragon's high-contrast binary output makes it an excellent modulation source for downstream video effects. Route it into a keyer, multiplier, or feedback loop to impose fractal geometry onto any video signal.
-- **Position for asymmetric compositions**: The default centered position produces a symmetric pattern. Offsetting Position X and Y breaks this symmetry, placing the densest fractal boundary off-center for more dynamic compositions.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Affine contraction** | A geometric transformation that combines scaling, rotation, and translation, used to define the self-similar pieces of an IFS fractal. |
-| **DDS** | Direct Digital Synthesis; the technique of generating periodic signals using a phase accumulator, used here to advance the animation frame counter. |
-| **Dragon curve** | A space-filling fractal discovered by John Heighway, constructed by repeated paper folding or equivalently by bit manipulation of integer step indices. |
-| **Fractal dimension** | A measure of geometric complexity; the Heighway dragon has a boundary dimension of 2, meaning its edge is as complex as a filled region. |
-| **Hash function** | A deterministic mapping from input values to pseudo-random output values; the XOR-fold position hash maps (x,y) coordinates to a binary pattern. |
-| **Hausdorff dimension** | The mathematical formalization of fractal dimension, measuring how a set's detail scales with magnification. |
-| **IFS** | Iterated Function System; a collection of contraction mappings whose repeated application converges to a fractal attractor. |
-| **Self-similarity** | The property of looking identical at every scale of magnification, the defining characteristic of fractal geometry. |
-| **Space-filling curve** | A continuous curve that passes through every point in a 2D region; the Heighway dragon fills a compact region of the plane. |
-| **XOR fold** | The operation `hash ^= hash >> k`, which mixes bits separated by k positions to create self-similar interference patterns in the hash output. |
+- **Dragon Curve**: A fractal discovered by John Heighway, produced by repeatedly folding a strip of paper in half and unfolding at right angles; also called the Heighway dragon.
+
+- **Fractal**: A geometric shape exhibiting self-similarity: the same structural pattern appears at every scale of magnification.
+
+- **Hash**: A mathematical function that converts input data (here, pixel coordinates) into a fixed-size numerical fingerprint used to generate patterns.
+
+- **Interpolator**: A hardware module that smoothly blends between two values based on a third control value; used here for wet/dry mixing.
+
+- **Iteration**: One pass of a repeated mathematical operation; each additional iteration adds a finer level of detail to the fractal.
+
+- **Self-Similarity**: The property of looking the same at different scales; the defining characteristic of fractal geometry.
+
+- **Synthesis**: A program type that generates imagery from scratch without requiring a video input signal.
+
+- **XOR (Exclusive-Or)**: A digital logic operation that outputs one when its two inputs differ and zero when they match; the core operation in Dragon's pattern engine.
+
+- **YUV**: A color encoding that separates brightness (Y) from color information (U and V), used in video signal processing.
 
 ---

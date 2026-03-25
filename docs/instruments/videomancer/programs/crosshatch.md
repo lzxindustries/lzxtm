@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 70
 slug: /instruments/videomancer/crosshatch
@@ -7,357 +7,397 @@ image: /img/instruments/videomancer/crosshatch/crosshatch_hero_s1.png
 description: "Every illustrator and printmaker who has worked without continuous tone knows the challenge: reproduce the full range of light and shadow using only marks and blank surface."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import crosshatch_control_panel from '/img/instruments/videomancer/crosshatch/crosshatch_control_panel.png';
-import crosshatch_source1_castle from '/img/instruments/videomancer/crosshatch/crosshatch_source1_castle.png';
-import crosshatch_source2_ballerina from '/img/instruments/videomancer/crosshatch/crosshatch_source2_ballerina.png';
-import crosshatch_source3_turtle from '/img/instruments/videomancer/crosshatch/crosshatch_source3_turtle.png';
-import crosshatch_source4_pattern from '/img/instruments/videomancer/crosshatch/crosshatch_source4_pattern.png';
-import crosshatch_source5_man from '/img/instruments/videomancer/crosshatch/crosshatch_source5_man.png';
-import crosshatch_source6_paint from '/img/instruments/videomancer/crosshatch/crosshatch_source6_paint.png';
-import crosshatch_hero_s1 from '/img/instruments/videomancer/crosshatch/crosshatch_hero_s1.png';
-import crosshatch_hero_s2 from '/img/instruments/videomancer/crosshatch/crosshatch_hero_s2.png';
-import crosshatch_hero_s3 from '/img/instruments/videomancer/crosshatch/crosshatch_hero_s3.png';
-import crosshatch_hero_s4 from '/img/instruments/videomancer/crosshatch/crosshatch_hero_s4.png';
-import crosshatch_hero_s5 from '/img/instruments/videomancer/crosshatch/crosshatch_hero_s5.png';
-import crosshatch_hero_s6 from '/img/instruments/videomancer/crosshatch/crosshatch_hero_s6.png';
-import crosshatch_ex1_s1 from '/img/instruments/videomancer/crosshatch/crosshatch_ex1_s1.png';
-import crosshatch_ex1_s2 from '/img/instruments/videomancer/crosshatch/crosshatch_ex1_s2.png';
-import crosshatch_ex1_s3 from '/img/instruments/videomancer/crosshatch/crosshatch_ex1_s3.png';
-import crosshatch_ex1_s4 from '/img/instruments/videomancer/crosshatch/crosshatch_ex1_s4.png';
-import crosshatch_ex1_s5 from '/img/instruments/videomancer/crosshatch/crosshatch_ex1_s5.png';
-import crosshatch_ex1_s6 from '/img/instruments/videomancer/crosshatch/crosshatch_ex1_s6.png';
-import crosshatch_ex2_s1 from '/img/instruments/videomancer/crosshatch/crosshatch_ex2_s1.png';
-import crosshatch_ex2_s2 from '/img/instruments/videomancer/crosshatch/crosshatch_ex2_s2.png';
-import crosshatch_ex2_s3 from '/img/instruments/videomancer/crosshatch/crosshatch_ex2_s3.png';
-import crosshatch_ex2_s4 from '/img/instruments/videomancer/crosshatch/crosshatch_ex2_s4.png';
-import crosshatch_ex2_s5 from '/img/instruments/videomancer/crosshatch/crosshatch_ex2_s5.png';
-import crosshatch_ex2_s6 from '/img/instruments/videomancer/crosshatch/crosshatch_ex2_s6.png';
-import crosshatch_ex3_s1 from '/img/instruments/videomancer/crosshatch/crosshatch_ex3_s1.png';
-import crosshatch_ex3_s2 from '/img/instruments/videomancer/crosshatch/crosshatch_ex3_s2.png';
-import crosshatch_ex3_s3 from '/img/instruments/videomancer/crosshatch/crosshatch_ex3_s3.png';
-import crosshatch_ex3_s4 from '/img/instruments/videomancer/crosshatch/crosshatch_ex3_s4.png';
-import crosshatch_ex3_s5 from '/img/instruments/videomancer/crosshatch/crosshatch_ex3_s5.png';
-import crosshatch_ex3_s6 from '/img/instruments/videomancer/crosshatch/crosshatch_ex3_s6.png';
-
-# Crosshatch
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Castle", before: crosshatch_source1_castle, after: crosshatch_hero_s1 },
-    { label: "Ballerina", before: crosshatch_source2_ballerina, after: crosshatch_hero_s2 },
-    { label: "Turtle", before: crosshatch_source3_turtle, after: crosshatch_hero_s3 },
-    { label: "Pattern", before: crosshatch_source4_pattern, after: crosshatch_hero_s4 },
-    { label: "Man", before: crosshatch_source5_man, after: crosshatch_hero_s5 },
-    { label: "Paint", before: crosshatch_source6_paint, after: crosshatch_hero_s6 },
-  ]}
-/>
-*Crosshatch rendering diagonal ink strokes at variable density across a luminance-graded portrait, emulating copperplate engraving.*
+![Crosshatch hero image](/img/instruments/videomancer/crosshatch/crosshatch_hero_s1.png)
+*Crosshatch overlaying intersecting diagonal and perpendicular stroke layers on a tinted wash, blended with the input video for a hand-drawn ink-on-paper effect.*
 
 ---
 
 ## Overview
 
-Every illustrator and printmaker who has worked without continuous tone knows the challenge: reproduce the full range of light and shadow using only marks and blank surface. The traditional answer is hatching — parallel strokes laid at regular intervals whose spacing encodes brightness. Where highlights fall, the surface stays bare; where shadows deepen, strokes pile up in multiple crossing layers until the ink fills most of the area. Crosshatch converts a live video signal into this graphic language in real time.
+**Crosshatch** turns your video into an ink drawing. It renders a pattern of evenly spaced lines: diagonal, horizontal, and vertical: over a colored background, then blends the result with your original video signal. The line spacing, thickness, brightness, and direction are all independently adjustable, giving you full control over every aspect of the hatching pattern. Think of it as a digital engraving press running in real time on live video.
 
-The program generates up to four independent layers of lines — 45° diagonal, 135° diagonal, horizontal, and vertical — and composites them over a user-configurable flat "paper" wash. Each line layer is produced entirely by bitmask logic applied to pixel position counters: a pixel lies on a hatch line whenever the bitwise AND of its counter value with a spacing mask equals zero. No division, no modulus, no multiplication — just combinational AND gates operating at full clock rate. The spacing mask is a power-of-two function of the Stroke W knob, and the thickness mask zeroes progressively more low-order bits as Line Width increases, widening every stroke in lockstep.
+At subtle settings, Crosshatch adds a delicate web of fine lines over the image, like a pencil sketch drawn on translucent vellum laid over the screen. At extreme settings, it replaces the video entirely with a bold geometric grid of stark lines on a colored field: pure constructivist graphics generated from nothing but pixel-position arithmetic. Between these extremes lies a rich territory of pen-and-ink illustration, copperplate engraving, and technical drawing aesthetics. Use the **Mix** fader to dial in exactly how much of the original video shows through the hatch.
 
-After compositing, the hatch pattern is blended with the original video through three parallel interpolators controlled by the Mix fader, producing anything from a subtle textured overlay to a full ink-on-paper replacement of the source image.
+:::tip
+The classic cross-hatch look comes from combining the **Style** and **Cross** switches together. Set both to their active positions and the diamond grid appears (then use **Mix** to overlay it on your source video.)
+:::
+
+### What's In a Name?
+
+***Cross-hatching*** is one of the oldest shading techniques in drawing and printmaking. An artist lays down a first set of parallel lines and then draws a second set crossing at an angle. Where the lines overlap, tonality deepens. Closely spaced strokes appear dark; widely spaced strokes appear light. Renaissance engravers like Albrecht Dürer mastered this technique to render astonishing depth and detail using nothing but intersecting lines on metal plates. Videomancer's **Crosshatch** brings the technique into the electronic domain, generating its line patterns in real time from bitwise arithmetic on pixel counters.
 
 ---
 
 ## Quick Start
 
-1. **Start with Pen + Single**: The simplest configuration — one family of diagonal strokes. Add complexity (Cross, Engrave, Etch) only after you understand the base spacing and density controls.
-2. **Spacing before width**: Adjust Stroke W first to set the overall line pitch, then use Density to darken or lighten the strokes. These two controls together determine the perceived gray level.
-3. **Sepia ink recipe**: Ink Tint ≈ 30°, Paper Tint ≈ 50°, Density ≈ 20%. This combination closely resembles aged copperplate prints.
+1. Set **Style** (Switch 7) to **Etch** and **Cross** (Switch 8) to **Cross**. A diamond grid of intersecting diagonal lines fills the screen instantly.
+2. Turn **Stroke W** (Knob 1) counterclockwise to tighten the spacing. The diamond pattern becomes finer and denser as the hatching period shrinks.
+3. Lower **Mix** (Fader 12) to about halfway. The original video reappears through the gaps in the hatch lines, giving your image a hand-sketched quality (ink strokes laid over living video.)
+
+---
+
+## Parameters
+
+![Videomancer front panel with Crosshatch loaded](/img/instruments/videomancer/crosshatch/crosshatch_control_panel.png)
+*Videomancer's front panel with Crosshatch active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Stroke W
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Stroke W** controls the spacing period of the hatch lines. At minimum, lines are packed tightly together with a period of just eight pixels, creating a dense weave of fine strokes. As you turn the knob clockwise, the period doubles in discrete steps: 16, 32, 64, 128, and finally 256 pixels: spreading the lines farther apart. At maximum, the hatch pattern becomes a sparse grid of widely separated strokes with large open areas between them.
+
+:::note
+The spacing steps in powers of two, so the visual jumps between levels become more dramatic as the knob increases. Fine control over line density is concentrated in the lower range of the knob.
+:::
+
+---
+
+### Knob 2 — Density
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Density** controls the brightness of the hatch lines themselves. At minimum, the lines are black: dense, dark ink strokes that stand out sharply against a lighter background. At maximum, the lines are white, reading as bright marks or highlights. At the midpoint, the lines are neutral gray. The hatch lines are always achromatic regardless of the background color settings, so this control adjusts only their luminance.
+
+---
+
+### Knob 3 — Angle
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 90° |
+| Default | 45° |
+
+**Angle** controls the brightness of the background fill: the "paper" behind the hatch lines. At minimum, the background is black, and the lines float on darkness. At maximum, the background is fully bright. Combined with the line brightness set by **Density** (Knob 2), you can create dark lines on a bright field (the classic ink-on-paper look), bright lines on a dark field (a chalkboard sketch), or any combination. This control works together with **Levels** (Knob 4) and **Ink Tint** (Knob 5) to define the full color of the background.
+
+---
+
+### Knob 4 — Levels
+
+| Property | Value |
+|----------|-------|
+| Range | 2 – 8 |
+| Default | 5 |
+
+**Levels** adjusts the blue-difference chroma axis of the background color. At one extreme, the background shifts toward blue. At the other, it shifts toward yellow. At the middle step, the background chroma is roughly neutral on this axis. This control combines with **Ink Tint** (Knob 5) to set the overall hue and saturation of the paper behind the hatch lines.
+
+---
+
+### Knob 5 — Ink Tint
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 360° |
+| Default | 0° |
+
+**Ink Tint** adjusts the red-difference chroma axis of the background color. Combined with **Levels** (Knob 4), these two controls together set the hue and saturation of the paper. **Angle** (Knob 3) sets the paper brightness, while Levels and Ink Tint define its two chroma components. For a neutral gray background, set both chroma controls near their center positions.
+
+:::tip
+To create a warm parchment background, set **Angle** to a medium-high value, then nudge **Levels** and **Ink Tint** slightly off center. Small deviations from neutral produce convincing tinted paper. Large offsets produce vivid, poster-like color fields.
+:::
+
+---
+
+### Knob 6 — Paper Tint
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 360° |
+| Default | 0° |
+
+**Paper Tint** controls the thickness of the hatch lines. At minimum, each hatch line is a crisp single-pixel stroke: the thinnest possible mark. As you increase this control, the lines become progressively thicker in discrete steps: first two pixels wide, then four, then eight. Thicker lines fill more of the frame, creating a heavier, bolder hatching pattern. At maximum, the thick bands can dominate the visual field, leaving only narrow slivers of background color visible.
+
+---
+
+### Switch 7 — Style
+
+| Property | Value |
+|----------|-------|
+| Off | Pen |
+| On | Etch |
+| Default | Pen |
+
+**Style** selects between two stroke modes. In the **Pen** position, 45° diagonal lines are disabled, producing a cleaner composition limited to horizontal and vertical strokes (if those directions are enabled by other switches). In the **Etch** position, 45° diagonal lines are activated, adding the characteristic angled scratches of an etching or engraving. Combining Etch with the **Cross** switch (Switch 8) creates classical cross-hatching with two intersecting diagonal directions.
+
+---
+
+### Switch 8 — Cross
+
+| Property | Value |
+|----------|-------|
+| Off | Single |
+| On | Cross |
+| Default | Single |
+
+**Cross** controls whether a second set of diagonal lines crosses the first. In the **Single** position, only the primary 45° direction is available (when **Style** is set to Etch). In the **Cross** position, a second set of 135° diagonal lines is added perpendicular to the first, forming an intersecting diamond pattern. This is the core of the cross-hatching effect (a single set of parallels becomes a woven lattice.)
+
+---
+
+### Switch 9 — Color Ink
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Color Ink** enables horizontal lines in the hatch pattern. When set to **Off**, no horizontal strokes appear. When set to **On**, horizontal lines are rendered at the same spacing and thickness as all other active line directions. Adding horizontal strokes increases the density and visual weight of the overall pattern. Combined with vertical lines (via **Invert**, Switch 10), you get a rectilinear grid on top of any active diagonal hatching.
+
+---
+
+### Switch 10 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** enables vertical lines in the hatch pattern. When set to **Off**, no vertical strokes appear. When set to **On**, vertical lines are rendered alongside any other active directions. Combining vertical with horizontal lines creates a rectangular grid. Adding diagonals on top of that produces a dense multi-directional mesh where lines cross at four different angles.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all hatch rendering and mixing. The sync delay pipeline still aligns timing, so there is no glitch when toggling. Use Bypass for instant A/B comparison between the raw video and the hatched result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the original video and the hatch composite. At minimum, the output is the unaltered source video: no hatching is visible. At maximum, the output is entirely the hatch pattern on its tinted background, with no source video showing through. At intermediate values, the hatch lines overlay the video with varying degrees of transparency, creating the effect of a drawing on translucent paper laid over a moving image.
+
+:::tip
+Try setting **Mix** to roughly 50% with dark hatch lines and a transparent background (**Angle** at minimum). The dark strokes appear to be drawn directly onto the video, with no visible "paper" between them.
+:::
 
 ---
 
 ## Background
 
-### A Brief History of Cross-Hatching
+### Cross-hatching in art
 
-Cross-hatching is among the oldest techniques in Western graphic art. Albrecht Dürer perfected it in the late fifteenth century for woodcuts and copper engravings, building tone through carefully angled parallel cuts. Rembrandt used it extensively in etching, varying stroke density and angle across a single plate to achieve extraordinary tonal range. The technique transfers naturally to pen-and-ink illustration, where an artist controls shade by choosing how many stroke layers to overlap: a single set of parallel lines for light tone, two crossing sets for mid-tone, three or four for deep shadow.
+Cross-hatching has been a fundamental drawing and printmaking technique since the Renaissance. Engravers like Albrecht Dürer and Rembrandt incised parallel lines into metal plates with a ***burin***, a sharp cutting tool. Ink settles into the grooves during printing: a first layer of lines provides a base tone, and a second layer drawn at an angle deepens the shadows. Additional layers at different angles create progressively darker areas. The result is shading built entirely from line work, with no continuous tones or washes.
 
-### Line-Based Shading in Print
+In traditional hatching, the artist controls perceived brightness by varying line spacing and thickness: closely packed, thick lines appear dark, while widely spaced, thin lines appear light. Crosshatch brings this principle into the electronic video domain, generating its intersecting line patterns in real time on every frame.
 
-In commercial print, line-based shading remained dominant until photographic halftone screens replaced it in the late nineteenth century. Engraved banknotes, steel engravings, and hand-ruled maps all rely on the principle that evenly spaced lines of uniform width create a perceived gray whose darkness depends solely on the ratio of ink area to paper area. Crosshatch applies this principle at video rate: the spacing parameter controls the line pitch, the width parameter controls the stroke thickness, and the combination determines the effective ink coverage.
+### Power-of-two bitmask detection
 
-### Bitmask Geometry
+Crosshatch generates its line patterns without any division or modulus operations: an important consideration on the iCE40 FPGA, which has no hardware divider. Instead, it uses ***bitmask AND*** operations on pixel-position counters.
 
-The VHDL implementation avoids modular arithmetic entirely. A line appears wherever the result of counter AND mask is zero. For a mask of 7 (binary 0000_0111), every eighth pixel sits on a line. For a mask of 31 (binary 0001_1111), every thirty-second pixel qualifies. Diagonal lines emerge from the same test applied to (h_count + v_count) for 45° or (h_count − v_count) for 135°. The thickness mask then broadens each hit by ignoring additional low-order bits, effectively allowing neighboring pixels to also pass the gate. This all-combinational approach uses approximately 700 LUTs and zero BRAM.
+Each pixel position is tracked by a binary counter. To place lines at regular intervals, the program applies a bit mask and checks whether the result is zero. A mask of 7 (binary 00000111) catches every eighth pixel: any position whose lowest three bits are all zero falls on a line. A mask of 15 catches every sixteenth position, 31 catches every thirty-second, and so on doubling up to 255 for every 256th pixel. This power-of-two trick replaces a costly modulus operator with a single AND gate (a fraction of the logic.)
 
-### Wash and Ink
+Line thickness is controlled by a second mask that ignores additional low bits. With the thickness mask set to 254 (binary 11111110), the lowest bit is disregarded, so both even and odd pixel positions near a line boundary match: effectively doubling the line width. Each additional ignored bit doubles the width again.
 
-Traditional printmaking separates ink from paper. The artist chooses an ink color and a paper stock — the strokes are ink, the gaps are paper. Crosshatch models this with independent wash controls (Y, U, V for the background) and a line brightness parameter for the stroke color. The Ink Tint and Paper Tint hue rotations extend this metaphor into chromatic territory: warm sepia ink on cold blue-gray paper, or vice versa.
+### Diagonal lines on a pixel grid
 
-### The Mix Interpolator
+Detecting diagonal lines on a rectangular pixel grid requires an elegant mathematical trick. A 45° diagonal connects all pixels where the horizontal position plus the vertical position equals a constant: if you step one pixel right and one pixel down, the sum stays the same. By applying the spacing bitmask to the sum (h_count + v_count), the program detects pixels lying along 45° stripes without calculating a slope or running a line-drawing algorithm.
 
-Three parallel instances of `interpolator_u` perform the wet/dry crossfade. Each interpolator computes `a + (b − a) × t` in four pipelined clocks, where `a` is the delayed source, `b` is the composited hatch image, and `t` is the Mix fader value. At t = 0 the output is pure source; at t = 1023 the output is pure hatch. Intermediate values produce a superimposition of strokes over the original video.
+For 135° lines, the program uses the difference (h_count − v_count) instead of the sum. Horizontal lines test the vertical counter alone, and vertical lines test the horizontal counter alone. All four directions share the same spacing and thickness masks, so the entire multi-directional pattern stays uniform.
+
+### Interpolation and wet/dry mixing
+
+The final stage of the Crosshatch pipeline blends the hatch composite with the original video using three ***interpolator*** modules: one for each of the Y, U, and V channels. Each interpolator performs a linear crossfade: output = A + (B − A) × t, where A is the delayed original pixel, B is the hatch composite pixel, and t is the **Mix** fader value. At t = 0, the output equals the original video. At t = maximum, the output equals the hatch composite. Values in between produce a proportional blend, letting the artist lay the hatch pattern over the source at any opacity.
 
 
 ---
 
 ## Signal Flow
 
-Counter Sums → Hatch Detection → Colour Composite
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Timing Generator ─────────────────────────────────────────
-│   └─ edge_detector → video_timing_generator → h_count, v_count
-│
-├── Stage 1: Counter Sums ────────────────────────────────────
-│   ├─ sum_45  = h_count + v_count   (diagonal 45°)
-│   └─ diff_135 = h_count − v_count  (diagonal 135°)
-│
-├── Stage 2: Hatch Detection (bitmask AND) ───────────────────
-│   ├─ on_diag45  = ((sum_45 AND hatch_mask) AND thick_mask) == 0
-│   ├─ on_diag135 = ((diff_135 AND hatch_mask) AND thick_mask) == 0
-│   ├─ on_horiz   = ((v_count AND hatch_mask) AND thick_mask) == 0
-│   ├─ on_vert    = ((h_count AND hatch_mask) AND thick_mask) == 0
-│   └─ on_any_hatch = diag45 OR diag135 OR horiz OR vert
-│
-├── Stage 3: Colour Composite ───────────────────────────────
-│   ├─ if on_any_hatch → (line_bright, 512, 512)
-│   └─ else            → (wash_y, wash_u, wash_v)
-│
-├── Stages 4–7: Interpolator Mix (4 clocks) ─────────────────
-│   ├─ mix_y = lerp(source_y, comp_y, mix_amount)
-│   ├─ mix_u = lerp(source_u, comp_u, mix_amount)
-│   └─ mix_v = lerp(source_v, comp_v, mix_amount)
-│
-├── Sync Delay Pipeline (8 clocks) ──────────────────────────
-│   └─ hsync_n, vsync_n, field_n, Y, U, V delayed to match
-│
-└── Bypass Mux ──────────────────────────────────────────────
-    └─ bypass=0 → mixed output | bypass=1 → delayed source
-```
+The pipeline runs in four processing stages plus four interpolator clocks, totaling eight cycles of latency. All sync signals and the original YUV data are delayed through a matching eight-stage shift register to maintain alignment at the output.
 
-The critical design insight is that all line detection happens in a single combinational step per clock: the bitmask AND simultaneously tests spacing and thickness without any sequential counters or comparators beyond the position counters themselves. The hatch mask converts the Stroke W knob into a power-of-two spacing (8, 16, 32, 64, 128, or 256 pixels), and the thickness mask widens each line by clearing 0, 1, 2, or 3 low-order bits. Four enable flags (one per line direction from toggles 7–10) gate each detection result independently. The composition stage then selects either the ink color (line brightness on Y, neutral on U/V) or the wash color for every pixel, and the downstream interpolator blends this against the time-aligned source.
+The hatch detection is entirely ***position-based***: it depends only on pixel coordinates, not on the input video content. The input video enters the pipeline solely through the interpolator mix stage, where it is crossfaded with the hatch composite. This means the hatch pattern is geometrically identical regardless of the source video; only the degree of overlay changes with the **Mix** fader.
 
----
-
-## Parameter Reference
-
-<img src={crosshatch_control_panel} alt="Videomancer front panel with Crosshatch loaded"/>
-*Videomancer's front panel with Crosshatch active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Stroke W
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At low values the mask is narrow (period of 8 pixels) — lines are densely packed, producing dark fields of closely spaced strokes. As the knob increases, the mask widens through 16, 32, 64, 128, and 256 pixel periods, spreading the lines further apart and letting more of the background wash show through. This is the primary "density" control in the traditional hatching sense: tight spacing for shadow, wide spacing for highlight. Internally, controls the spatial period of all hatch lines.
-
----
-
-#### Knob 2 — Density
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At 0% the stroke luma is black, creating maximum contrast against a bright wash. At 100% the stroke luma matches full white, which against a dark wash creates bright lines on a dark field — an inversion of the traditional ink-on-paper relationship. Mid values produce soft gray strokes useful for pencil-like effects. Internally, sets the overall density of the line pattern by adjusting the brightness of the hatch strokes relative to the wash background.
-
----
-
-#### Knob 3 — Angle
-| Property | Value |
-|----------|-------|
-| Range | 0° – 90° |
-| Default | 45° |
-| Suffix | ° |
-
-Rotates the hatch angle smoothly from 0° to 90°. At 0° the active diagonal is flat (effectively horizontal); at 45° it crosses the frame at a true 45° diagonal; at 90° it reaches vertical orientation. The angle applies to the primary detected stroke direction and interacts with the Cross toggle — when Cross mode is active, the perpendicular set of strokes rotates symmetrically. This gives continuous control over the stroke geometry from horizontal bands to diagonal lattices to vertical columns.
-
----
-
-#### Knob 4 — Levels
-| Property | Value |
-|----------|-------|
-| Range | 2 – 8 |
-| Default | 5 |
-
-Selects the number of luminance quantization levels used to map input brightness to hatching density. At the minimum setting (2 levels), the image divides into pure highlight and pure shadow — a stark two-tone rendering. At the maximum (8 levels), a smoother staircase of hatch densities reproduces a wider tonal range. Higher level counts approach continuous tone; lower counts create bold graphic contrasts reminiscent of woodblock printing.
-
----
-
-#### Knob 5 — Ink Tint
-| Property | Value |
-|----------|-------|
-| Range | 0° – 360° |
-| Default | 0° |
-| Suffix | ° |
-
-Applies a hue rotation to the ink (stroke) color. At 0° the strokes are neutral (achromatic). Rotating through 360° cycles the ink tint through the full color wheel — warm amber at 30°, red at 0°/360°, teal at 180°. This allows emulation of sepia ink, blue ballpoint, red sanguine crayon, or any other chromatic ink color while the paper tint remains independent.
-
----
-
-#### Knob 6 — Paper Tint
-| Property | Value |
-|----------|-------|
-| Range | 0° – 360° |
-| Default | 0° |
-| Suffix | ° |
-
-Applies a hue rotation to the paper (wash background) color, independently of the ink tint. Combining a warm ink tint with a cool paper tint recreates the look of toned printmaking paper. Setting both tints to the same hue but different saturations creates subtle monochromatic studies. At 0° the wash is neutral gray, controlled solely by the Wash Y/U/V parameters.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Style** | Pen | Etch |
-| **8 — Cross** | Single | Cross |
-| **9 — Color Ink** | Off | On |
-| **10 — Invert** | Off | On |
-| **11 — Bypass** | Off | On |
-
-Toggles 7 and 8 control the stroke geometry (line direction selection and crossing). Toggle 9 enables chromatic ink derived from the source video rather than the flat ink tint. Toggle 10 inverts the luminance-to-density mapping. Toggle 11 is the standard bypass. Together they determine the visual style: single-direction pen lines, crossed engraving patterns, color-keyed strokes, or inverted negative etchings.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Controls the wet/dry crossfade between the original video and the crosshatch composite. At 0% the output is pure source video with no hatching visible. At 100% the output is entirely the ink-and-paper composite. Intermediate positions superimpose the hatch pattern over the source with adjustable opacity, allowing subtle textured overlays where the original image remains recognizable beneath the strokes.
-
-
-
+:::note
+Hatch lines always use neutral chroma (U = 512, V = 512), so the lines themselves are always achromatic: gray, black, or white depending on the **Density** setting, but never colored. Color appears only in the background fill, controlled by **Levels** and **Ink Tint**. The **Color Ink** switch adds horizontal lines to the pattern; it does not add color to the lines.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from simple parallel strokes to full multi-layer crosshatched renderings with chromatic ink, exploring how spacing, width, angle, and style interact. Each exercise uses a different source type to demonstrate a distinct hatching technique.
+These exercises progress from a simple diagonal pattern to a full multi-directional overlay, building your understanding of how line directions, spacing, thickness, and background color interact with one another and with the source video.
+### Exercise 1: Diamond Grid
 
-### Exercise 1: Pen Sketch
+![Diamond Grid result](/img/instruments/videomancer/crosshatch/crosshatch_ex1_s1.png)
+*Diamond Grid — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Castle", before: crosshatch_source1_castle, after: crosshatch_ex1_s1 },
-    { label: "Ballerina", before: crosshatch_source2_ballerina, after: crosshatch_ex1_s2 },
-    { label: "Turtle", before: crosshatch_source3_turtle, after: crosshatch_ex1_s3 },
-    { label: "Pattern", before: crosshatch_source4_pattern, after: crosshatch_ex1_s4 },
-    { label: "Man", before: crosshatch_source5_man, after: crosshatch_ex1_s5 },
-    { label: "Paint", before: crosshatch_source6_paint, after: crosshatch_ex1_s6 },
-  ]}
-/>
-*Pen Sketch — simulated result across source images.*
-**Source**: A head-and-shoulders portrait or bust shot with directional lighting creating clear highlight and shadow regions.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Create a clean pen-and-ink sketch with a single family of diagonal strokes varying in density from highlight to shadow.
+#### Learning Outcomes
 
-1. **Set stroke direction**: Select Style → Pen (Toggle 7). Confirm Cross → Single (Toggle 8).
-2. **Adjust spacing**: Turn Stroke W to approximately 40%. Lines should be clearly separated.
-3. **Set density**: Turn Density to approximately 30% for dark stroke lines.
-4. **Angle the strokes**: Set Angle to approximately 45° for classic diagonal hatching.
-5. **Full mix**: Set Mix to 100% to see the pure hatched rendering.
-6. **Adjust levels**: Sweep the Levels knob to see how the tonal staircase affects the distribution of stroke densities across the face.
+A classic diamond cross-hatch overlay with dark strokes on a bright field, blended at half intensity over a live video source.
 
-**Key concepts**: Single-direction hatching controls tone through spacing alone, the Levels parameter quantizes the luminance-to-density mapping, Pen style uses diagonal strokes only
+#### Key Concepts
+
+- Two diagonal directions combine to form a diamond cross-hatch pattern
+- Stroke spacing controls overall pattern density
+- The Mix fader blends the hatch overlay with live video
+
+#### Video Source
+
+A camera feed or recorded footage with recognizable subjects and a range of tones (faces, architecture, or natural scenes work well.)
+
+#### Steps
+
+1. **Enable diagonals**: Set **Style** (Switch 7) to **Etch** and **Cross** (Switch 8) to **Cross**. A diamond grid of intersecting diagonal lines fills the screen.
+2. **Darken the strokes**: Turn **Density** (Knob 2) fully counterclockwise. The lines become black, reading as ink strokes.
+3. **Brighten the paper**: Turn **Angle** (Knob 3) clockwise to about 70°. The background lightens, producing dark lines on a bright field (a classic pen-on-paper look.)
+4. **Tighten the spacing**: Turn **Stroke W** (Knob 1) counterclockwise to roughly 25%. The diamond pattern becomes finer as the line period decreases.
+5. **Blend with video**: Lower **Mix** (Fader 12) to about 50%. The original video shows through the hatch pattern. The image looks as though a crosshatch drawing has been laid over the screen on translucent paper.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Stroke W | ~25% |
+| Density | 0% |
+| Angle | ~70° |
+| Levels | 4 |
+| Ink Tint | ~180° |
+| Paper Tint | 0° |
+| Style | Etch |
+| Cross | Cross |
+| Color Ink | Off |
+| Invert | Off |
+| Bypass | Off |
+| Mix | ~50% |
 
 ---
 
 ### Exercise 2: Copperplate Engraving
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Castle", before: crosshatch_source1_castle, after: crosshatch_ex2_s1 },
-    { label: "Ballerina", before: crosshatch_source2_ballerina, after: crosshatch_ex2_s2 },
-    { label: "Turtle", before: crosshatch_source3_turtle, after: crosshatch_ex2_s3 },
-    { label: "Pattern", before: crosshatch_source4_pattern, after: crosshatch_ex2_s4 },
-    { label: "Man", before: crosshatch_source5_man, after: crosshatch_ex2_s5 },
-    { label: "Paint", before: crosshatch_source6_paint, after: crosshatch_ex2_s6 },
-  ]}
-/>
+![Copperplate Engraving result](/img/instruments/videomancer/crosshatch/crosshatch_ex2_s1.png)
 *Copperplate Engraving — simulated result across source images.*
-**Source**: Architectural footage or a still life with clear geometric forms and strong contrast.
+#### Exercise Illustration
 
-**What You'll Create**: Build a multi-layer crosshatched rendering that emulates copperplate engraving with warm sepia ink on ivory paper.
+***A description of the exercise illustration.***
 
-1. **Set style**: Select Style → Engrave (Toggle 7). Set Cross → Cross (Toggle 8).
-2. **Tighten spacing**: Turn Stroke W to approximately 25% for closer line pitch.
-3. **Darken strokes**: Set Density to approximately 15% for deep ink lines.
-4. **Set angle**: Adjust Angle to approximately 30° for a slightly tilted lattice.
-5. **Tint the ink**: Rotate Ink Tint to approximately 30° for a warm sepia tone.
-6. **Tint the paper**: Rotate Paper Tint to approximately 50° for an ivory/cream background.
-7. **Increase levels**: Set Levels to 6 for a smoother tonal gradation across the architecture.
+#### Learning Outcomes
 
-**Key concepts**: Cross mode doubles line density by adding a perpendicular stroke family, Engrave style activates all four line directions for maximum tonal coverage, Ink Tint and Paper Tint separate the color of marks from the color of ground
+A dense copperplate-style engraving with slightly thickened strokes on warm-tinted paper, overlaying the source video.
 
----
+#### Key Concepts
 
-### Exercise 3: Color-Keyed Etch
+- Adding horizontal and vertical lines increases pattern density
+- Line thickness controls the visual weight of the hatching
+- Tinted backgrounds create the illusion of aged paper or hand-toned prints
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Castle", before: crosshatch_source1_castle, after: crosshatch_ex3_s1 },
-    { label: "Ballerina", before: crosshatch_source2_ballerina, after: crosshatch_ex3_s2 },
-    { label: "Turtle", before: crosshatch_source3_turtle, after: crosshatch_ex3_s3 },
-    { label: "Pattern", before: crosshatch_source4_pattern, after: crosshatch_ex3_s4 },
-    { label: "Man", before: crosshatch_source5_man, after: crosshatch_ex3_s5 },
-    { label: "Paint", before: crosshatch_source6_paint, after: crosshatch_ex3_s6 },
-  ]}
-/>
-*Color-Keyed Etch — simulated result across source images.*
-**Source**: Colorful footage — flowers, painted walls, neon signage, or a color bar test pattern.
+#### Video Source
 
-**What You'll Create**: Create a color etching where the stroke color is derived from the source video's chrominance, producing hand-tinted crosshatch artwork.
+Footage with strong contrast and clear outlines. Portraits and architectural subjects produce especially convincing engraving-style results.
 
-1. **Set style**: Select Style → Etch (Toggle 7). Set Cross → Cross (Toggle 8).
-2. **Medium spacing**: Turn Stroke W to approximately 35%.
-3. **Set density**: Turn Density to approximately 20%.
-4. **Enable Color Ink**: Toggle Color Ink → On (Toggle 9). The strokes now carry the source's hue.
-5. **Set angle**: Adjust Angle to approximately 60° for a steep lattice.
-6. **Partial mix**: Set Mix to approximately 70% to let some source detail show through the hatching.
-7. **Experiment with inversion**: Toggle Invert → On (Toggle 10) to see color strokes in the highlight regions instead of the shadow regions.
+#### Steps
 
-**Key concepts**: Color Ink mode replaces the flat ink tint with per-pixel chrominance from the source video, partial Mix values create a superimposition effect where source detail is visible beneath the strokes, Invert reverses the luminance-to-density mapping
+1. **Full hatching**: Enable all four line directions: **Style** to **Etch**, **Cross** to **Cross**, **Color Ink** (Switch 9) to **On**, and **Invert** (Switch 10) to **On**. The screen fills with a tight mesh of diagonal, horizontal, and vertical lines.
+2. **Fine spacing, heavier stroke**: Set **Stroke W** (Knob 1) low for close spacing. Increase **Paper Tint** (Knob 6) to about 100° to thicken the lines slightly. The mesh becomes visually heavier.
+3. **Dark ink**: Turn **Density** (Knob 2) low for dark strokes against the background.
+4. **Warm paper**: Set **Angle** (Knob 3) to about 55° for a medium background brightness. Nudge **Levels** (Knob 4) and **Ink Tint** (Knob 5) slightly off center to tint the background a warm tone (aim for a soft parchment color.)
+5. **Dominant overlay**: Set **Mix** (Fader 12) to about 70%. The hatch dominates, but the video content is still visible beneath, showing through the gaps in the mesh.
 
----
+#### Settings
 
-
-## Tips
-
-- **Color Ink for watercolor effect**: Toggle Color Ink On and set Mix to 60–80%. The source's color bleeds through the hatching, creating a hand-tinted illustration look.
-- **Feedback loops**: Route the crosshatched output back to the input for recursive hatching — strokes on strokes, building up layered graphic textures.
-- **Invert for white ink**: Toggle Invert On with a dark wash to simulate white ink or chalk on dark paper.
-- **Levels as a tonal compressor**: Low Levels values (2–3) flatten the image to stark light-and-dark zones. High values (6–8) preserve subtle gradation. Use low values for bold graphic impact.
-- **Mix for texture overlays**: At 20–40% Mix, the hatching acts as a subtle texture layer over otherwise clean video — useful for adding an analog print feel to digital sources.
+| Control | Value |
+|---------|-------|
+| Stroke W | ~15% |
+| Density | ~10% |
+| Angle | ~55° |
+| Levels | 6 |
+| Ink Tint | ~200° |
+| Paper Tint | ~100° |
+| Style | Etch |
+| Cross | Cross |
+| Color Ink | On |
+| Invert | On |
+| Bypass | Off |
+| Mix | ~70% |
 
 ---
 
+### Exercise 3: Bold Constructivist Grid
+
+![Bold Constructivist Grid result](/img/instruments/videomancer/crosshatch/crosshatch_ex3_s1.png)
+*Bold Constructivist Grid — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A bold, heavy grid of thick perpendicular bars on a vivid colored background: pure geometric abstraction that reveals the source video when you lower the fader.
+
+#### Key Concepts
+
+- Horizontal and vertical lines without diagonals create a rectilinear grid
+- Thick lines and wide spacing form bold geometric blocks
+- At full Mix, the hatch pattern replaces the video entirely (then lower Mix to frame the source inside the grid)
+
+#### Video Source
+
+Any video input. At full Mix the source is not visible; it appears only when you lower the fader in the final step.
+
+#### Steps
+
+1. **Perpendicular grid**: Set **Style** (Switch 7) to **Pen** and **Cross** (Switch 8) to **Single** to disable diagonals. Enable **Color Ink** (Switch 9) and **Invert** (Switch 10) for horizontal and vertical lines only.
+2. **Maximum thickness**: Turn **Paper Tint** (Knob 6) fully clockwise. The lines become thick bars that dominate the frame.
+3. **Wide spacing**: Set **Stroke W** (Knob 1) to about 60%. The thick bars separate into a visible grid with colored background rectangles between them.
+4. **Bright lines, colored ground**: Turn **Density** (Knob 2) to maximum for white lines. Set **Angle** (Knob 3) low for a dark background. Push **Levels** (Knob 4) and **Ink Tint** (Knob 5) to strong off-center positions for a vivid background color.
+5. **Full replacement**: Set **Mix** (Fader 12) to 100%. The output is entirely the generated grid pattern (no source video.)
+6. **Reveal the source**: Slowly lower **Mix**. The video reappears inside the colored rectangles, framed by the white grid lines like a stained-glass window.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Stroke W | ~60% |
+| Density | 100% |
+| Angle | ~10° |
+| Levels | 2 |
+| Ink Tint | ~270° |
+| Paper Tint | ~350° |
+| Style | Pen |
+| Cross | Single |
+| Color Ink | On |
+| Invert | On |
+| Bypass | Off |
+| Mix | 100% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Bitmask** | A binary pattern used with AND logic to test specific bit positions in a counter; in Crosshatch, determines whether a pixel lies on a hatch line. |
-| **Chroma** | The color information in a video signal, encoded as U (Cb) and V (Cr) in YUV color space. |
-| **Copperplate** | An engraving technique where lines are incised into a copper plate; Crosshatch's Engrave style emulates this multi-directional line pattern. |
-| **Cross-Hatching** | A shading technique using two or more sets of intersecting parallel lines to build tone. Denser overlap produces darker values. |
-| **Hatching** | A shading technique using parallel lines at regular spacing; a single family of strokes without crossing. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
-| **LUT** | Look-Up Table; the fundamental logic element in an FPGA, used for combinational functions. |
-| **Power-of-Two** | A spacing value that is a power of 2 (8, 16, 32, …), enabling detection via bitmask AND rather than division. |
-| **Wash** | The background color that appears between hatch strokes; analogous to paper color in printmaking. |
+- **Bitmask**: A binary number used to select or ignore specific bits in another number; Crosshatch uses bitmasks to detect line positions without division
+
+- **Chroma**: The color information in a video signal, encoded as U and V components in YUV color space
+
+- **Cross-hatching**: A drawing and printmaking technique where intersecting sets of parallel lines create the illusion of shading and tone
+
+- **Interpolator**: A module that blends two values by a fractional amount, used here for the wet/dry mix between the hatch pattern and the original video
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness
+
+- **Pipeline**: A chain of processing stages where data moves forward one stage per clock cycle; Crosshatch has an eight-stage pipeline
+
+- **Power of two**: A number produced by multiplying 2 by itself repeatedly (2, 4, 8, 16, 32...); used for efficient bitmask-based line spacing
 
 ---

@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 4
 slug: /instruments/videomancer/amoeba
@@ -7,346 +7,388 @@ image: /img/instruments/videomancer/amoeba/amoeba_hero.png
 description: "Amoeba is a metaball isosurface engine."
 ---
 
-import amoeba_hero from '/img/instruments/videomancer/amoeba/amoeba_hero.png';
-import amoeba_animation from '/img/instruments/videomancer/amoeba/amoeba_animation.gif';
-import amoeba_control_panel from '/img/instruments/videomancer/amoeba/amoeba_control_panel.png';
-import amoeba_exercise1_result from '/img/instruments/videomancer/amoeba/amoeba_exercise1_result.gif';
-import amoeba_exercise2_result from '/img/instruments/videomancer/amoeba/amoeba_exercise2_result.gif';
-import amoeba_exercise3_result from '/img/instruments/videomancer/amoeba/amoeba_exercise3_result.gif';
-
-# Amoeba
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={amoeba_hero} alt="Amoeba hero image"/>
-*Amoeba rendering two Lissajous-orbit metaballs in rainbow mode — the blobs merge and split organically as their orbits intersect, with bright skin outlines tracing the isosurface boundary.*
-<img src={amoeba_animation} alt="Amoeba animated output"/>
-*Amoeba output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Amoeba hero image](/img/instruments/videomancer/amoeba/amoeba_hero_s1.png)
+*Amoeba generating four luminous metaball blobs that orbit, merge, and split in organic Lissajous patterns against a black field.*
 
 ---
 
 ## Overview
 
-Amoeba is a metaball isosurface engine. Up to two animated blobs orbit the screen center on independent Lissajous curves, and for every pixel the program computes the cumulative field potential — the sum of inverse-square distance contributions from each active blob center. The resulting scalar field is classified into three zones: inside (field above threshold), skin (field within a configurable band below threshold), and outside (field below the skin boundary). Each zone is colored differently, producing the characteristic metaball visual: discrete circles that smoothly merge into organic shapes as they approach one another.
+Amoeba is a real-time ***metaball*** synthesizer. It projects up to four glowing blobs onto the screen, each following its own ***Lissajous*** orbit: a smooth, looping path created by combining sine and cosine waves at different frequencies. Where blobs approach one another, their fields combine and their boundaries merge, producing the soft, organic fusion characteristic of metaball graphics. The effect resembles lava lamps, cell division, and living organisms.
 
-The name *Amoeba* describes the visual result exactly. A single-celled amoeba has no fixed shape — its membrane deforms and extends pseudopods as internal forces push it outward. Metaballs behave the same way: when two blob fields overlap, the isosurface between them bulges outward and merges, creating a bridge that looks like a cell dividing in reverse. Reduce the threshold and the blobs separate into independent circles; increase it and they fuse into a single amorphous mass.
+At its simplest, Amoeba places a single bright circle on screen. Add more blobs and they begin to interact: two blobs flowing toward each other stretch and merge into one shape, then pinch and split apart again. The animation is continuous, self-evolving, and endlessly varied. Adjusting the threshold and skin width controls changes the apparent size of the shapes and the sharpness of their edges.
 
-At conservative settings — a single blob, slow speed, wide skin — the screen shows a cleanly defined circle gliding across the frame. At extreme settings — two blobs, high speed, narrow skin, rainbow colour, outline enabled — the metaball boundaries trace rapidly evolving organic contours in vivid colour against a black background, creating complex abstract patterns reminiscent of lava-lamp fluid dynamics or microscope footage of living cells.
+Amoeba can also key incoming video through its blob shapes using the **Source** toggle, letting you composite live footage inside the organic forms. Combined with the **Rainbow** color mode and **Hue Shift** control, the metaballs become vivid, chromatic organisms drifting across the frame.
+
+:::tip
+Amoeba is a ***synthesis*** program: it generates its own imagery without requiring a video input. Patch it at the beginning of your signal chain as a source, or layer it over existing footage using the **Mix** fader.
+:::
+
+### What's In a Name?
+
+An ***amoeba*** is a single-celled organism that moves by extending and retracting pseudopods: temporary, bloblike projections of its body. The name captures both the organic visual quality of the metaball shapes and their tendency to merge, divide, and flow like living cells under a microscope.
 
 ---
 
 ## Quick Start
 
-1. **Blob Size and Threshold are the primary shape controls**: Blob Size determines the field radius, Threshold determines where the boundary is drawn. A large blob size with a low threshold produces well-separated circles. A large blob size with a high threshold produces merged amorphous shapes.
-2. **Speed = 0 freezes the animation**: Set Speed to 0% to stop all blob motion and use the static metaball pattern as a fixed overlay.
-3. **Outline + Hollow = vector graphics**: This combination strips the metaballs down to pure contour lines on black — clean line art that traces the isosurface boundary.
+1. Set **Count** (Knob 6) fully clockwise to activate all four blobs. You should see four bright shapes orbiting the screen along overlapping curved paths.
+2. Turn **Blob Size** (Knob 1) clockwise to about 60%. The shapes expand and begin merging where their orbits intersect (watch the boundaries stretch and fuse.)
+3. Adjust **Threshold** (Knob 2) to control how much of each blob's field is visible. Lower values reveal larger, softer shapes; higher values shrink them to tight cores.
+4. Enable **Rainbow** color by flipping the **Color** toggle (Switch 8) to **Rainbow**, then rotate **Hue Shift** (Knob 5) to explore the chromatic palette.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Amoeba loaded](/img/instruments/videomancer/amoeba/amoeba_control_panel.png)
+*Videomancer's front panel with Amoeba active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Blob Size
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Blob Size** controls two things simultaneously: the amplitude of each blob's orbital path and the strength of its field contribution. At 0%, the blobs are tiny points clustered near the center of the screen with minimal orbits. As the value increases, the blobs travel wider paths and project stronger fields, growing larger and more likely to merge with one another. At 100%, the blobs sweep across most of the frame and their fields extend far from center, producing large, luminous shapes that overlap frequently.
+
+:::note
+Because **Blob Size** controls both the orbit radius and the field strength, increasing it doesn't just make the shapes bigger: it also changes the character of the animation. Larger blobs spend more time in overlap, so the metaball merging effect becomes more prominent.
+:::
+
+---
+
+### Knob 2 — Threshold
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 39% |
+
+**Threshold** sets the ***isosurface*** level: the boundary between "inside" and "outside" the metaball field. Every pixel on screen has a field value computed from its distance to each blob center. Pixels whose combined field exceeds the threshold are classified as inside; those below it are outside. At 0%, the threshold is very low and nearly the entire screen is filled with metaball interior. As the value increases, the visible shapes shrink until only the pixel positions closest to a blob center remain lit. At 100%, only extremely strong field values survive, producing small, tight dots.
+
+---
+
+### Knob 3 — Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Speed** controls how quickly the blob phase accumulators advance, determining the rate of animation. At 0%, the blobs are nearly frozen in place. As the value increases, the orbits accelerate. At 100%, the blobs move rapidly, creating fast-flowing organic motion. Because each blob has a different frequency ratio for its X and Y axes, changing the speed doesn't simply make everything move faster: it also shifts the relative timing of the merge-and-split patterns.
+
+:::tip
+Very low **Speed** values are useful for slow, meditative compositions. At moderate values, the merging and splitting happens at a pace that is easy to follow visually. High values create rapid, pulsating animation.
+:::
+
+---
+
+### Knob 4 — Skin Width
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 29% |
+
+**Skin Width** determines the thickness of the transition zone between the inside and outside of each metaball shape. This zone: the ***skin***: is the bright edge region where the field value is close to the threshold. At 0%, the skin is infinitely thin: the boundary between blob and background is a hard, sharp edge. As the value increases, the transition zone widens, producing a soft, glowing halo around each shape. At 100%, the skin zone is at its widest, creating broad gradients at the edges.
+
+When **Outline** mode is enabled (Switch 10), only the skin zone is bright and the interior goes dark, making skin width directly control the thickness of the outline stroke.
+
+---
+
+### Knob 5 — Hue Shift
+
+| Property | Value |
+|----------|-------|
+| Range | 0d – 360d |
+| Default | 0d |
+
+**Hue Shift** rotates the color of the metaballs when **Color** (Switch 8) is set to **Rainbow**. At 0 degrees, the rainbow coloring uses its default palette derived from the field strength. Rotating the knob shifts the hue through a full 360-degree cycle, sliding the color spectrum across the shapes. In **Mono** mode, this control has no visible effect.
+
+---
+
+### Knob 6 — Count
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 4 |
+| Default | 3 |
+
+**Count** selects how many blobs are active, from one to four. At the lowest setting, a single blob appears: useful for studying one shape in isolation. At two, the blobs begin to interact, merging and splitting as their orbits cross. Three and four blobs create increasingly complex patterns as multiple shapes overlap simultaneously.
+
+:::note
+Each blob follows a unique Lissajous path determined by fixed frequency ratios. Blob 1 orbits at a 1:2 ratio (X to Y), blob 2 at 3:1, blob 3 at 2:5, and blob 4 at 5:3. These ratios ensure that the blobs never simply chase each other in identical circles (their paths weave in and out of alignment over time.)
+:::
+
+---
+
+### Switch 7 — Fill Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Solid |
+| On | Hollow |
+| Default | Solid |
+
+**Fill Mode** determines what appears inside the metaball boundary. In **Solid** mode, the interior is filled with brightness proportional to the field strength (or with the incoming video signal if **Source** is set to **Video**). The brightest areas are at the blob centers, fading toward the edges. In **Hollow** mode, the interior is black: only the skin zone (the edge transition) is visible. Hollow mode is especially striking when combined with **Outline** (Switch 10), producing bright rings that merge and separate.
+
+---
+
+### Switch 8 — Color
+
+| Property | Value |
+|----------|-------|
+| Off | Mono |
+| On | Rainbow |
+| Default | Mono |
+
+**Color** switches between monochrome and rainbow rendering. In **Mono** mode, the metaballs are rendered as achromatic (grayscale) shapes: luminance only, with neutral chroma. In **Rainbow** mode, the U and V chroma channels are modulated by the field strength, producing colors that shift from cool to warm across the interior of each shape. The exact palette depends on the **Hue Shift** (Knob 5) setting.
+
+---
+
+### Switch 9 — Source
+
+| Property | Value |
+|----------|-------|
+| Off | Synth |
+| On | Video |
+| Default | Synth |
+
+**Source** selects whether the interior of each metaball is self-generated or sampled from the video input. In **Synth** mode, interior brightness comes from the computed field value: the blobs glow with their own internally generated luminance. In **Video** mode, the incoming video signal's luminance is used instead, effectively keying the video through the metaball shapes. The metaballs become windows into whatever is patched at the video input.
+
+:::tip
+Use **Video** mode to composite live footage inside the organic blobs. The metaball shapes act as a dynamic, animated ***matte***: the video is visible only where the field exceeds the threshold.
+:::
+
+---
+
+### Switch 10 — Outline
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Outline** controls whether the skin zone is rendered as a bright boundary line. When **Off**, the skin zone displays a gradient proportional to the field strength. When **On**, the skin zone is rendered at maximum brightness (white in Mono mode, or colored in Rainbow mode), creating a crisp outline around each shape. Combined with **Hollow** fill mode (Switch 7), this produces glowing rings.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, disabling all Amoeba synthesis. The sync delay pipeline still aligns timing. Use Bypass for instant A/B comparison.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** crossfades between the original input video (fully counter-clockwise) and the Amoeba output (fully clockwise). At 0%, you see only the unprocessed input. At 100%, you see only the metaball synthesis. Intermediate values blend the two, allowing you to superimpose the metaball shapes over incoming footage at any desired opacity.
 
 ---
 
 ## Background
 
-### What Are Metaballs?
+### Metaballs
 
-**Metaballs** are a technique from computer graphics for modeling soft, organic shapes. Each metaball is defined by a center point and a field function — typically an inverse-square or inverse-power-of-distance function that produces a large value near the center and falls off rapidly with distance. At any point in space, the total field is the sum of contributions from all nearby metaballs. An isosurface is drawn at a chosen threshold value: points where the total field exceeds the threshold are "inside" the surface, and points where it falls below are "outside."
+***Metaballs*** are a computer graphics technique invented by Jim Blinn in 1982. Each metaball is a point in space that projects a field: a mathematical function that diminishes with distance. The classic field function is ***inverse-square***: the field strength is proportional to 1/d², where d is the distance from the center. At any point on screen, the total field is the sum of contributions from all nearby metaballs.
 
-The defining characteristic of metaballs is their merging behaviour. When two metaballs are far apart, each produces an independent circular (or spherical, in 3D) isosurface. As they approach each other, the overlapping fields add together, causing the isosurface to bulge outward between them. At a critical proximity, the two surfaces bridge and merge into a single continuous shape. This produces the smooth, fluid merging and splitting that makes metaballs look organic rather than geometric.
+An ***isosurface*** is the set of all points where the total field equals a chosen threshold. In 2D, this produces smooth contour lines; in 3D, it produces blobby surfaces. When two metaballs are far apart, their isosurfaces are two separate circles. As they approach each other, their fields combine and the isosurfaces merge into a single, peanut-shaped form. This smooth blending is the defining visual characteristic of metaballs (there are no hard corners or seams, just organic flow.)
 
-In this program, the field function is implemented as a 32-entry lookup table mapping $d_{scaled}^2$ (the scaled squared distance from pixel to blob center) to a 10-bit field contribution. The LUT is initialized as $f(i) = \min(2048 / (i + 1), 1023)$, which approximates an inverse-square falloff with saturation near the center.
+### Lissajous curves
 
-### What Are Lissajous Curves?
+Each blob's center position is computed from a ***Lissajous curve***: a parametric path where the X coordinate follows a sine function and the Y coordinate follows another sine function at a different frequency. The ratio of the two frequencies determines the shape of the path: a 1:1 ratio traces an ellipse, a 1:2 ratio traces a figure-eight, a 3:2 ratio traces a more complex pretzel-like loop, and so on. The four blobs in Amoeba use the ratios 1:2, 3:1, 2:5, and 5:3 for their X-to-Y frequency relationships, producing four distinct looping paths that overlap in complex, evolving patterns.
 
-A **Lissajous curve** is the path traced by a point whose X and Y coordinates oscillate sinusoidally at different frequencies. If the X frequency is $f_x$ and the Y frequency is $f_y$, the resulting path depends on the frequency ratio $f_x : f_y$. A 1:1 ratio produces an ellipse (or circle, or line, depending on phase). A 1:2 ratio produces a figure-eight. Other ratios produce more complex curves — the higher the ratio integers, the more intricate the path.
+### Inverse-square fields
 
-In this program, each of the two blobs has a fixed frequency ratio that determines its orbital path:
-
-| Blob | X freq | Y freq | Ratio | Path character |
-|------|--------|--------|-------|---------------|
-| 0 | 1 | 2 | 1:2 | Figure-eight |
-| 1 | 3 | 1 | 3:1 | Three-lobed horizontal |
-
-The speed parameter controls the phase increment per frame, applied to both blobs simultaneously. Because each blob's X and Y phase accumulators are multiplied by different frequency constants, the two blobs evolve along different paths at the same base rate, creating organic and unpredictable merge/split patterns when the orbits bring their centers close together.
-
-### What Is Isosurface Classification?
-
-In a scalar field, an **isosurface** is the set of all points where the field has a particular value. For 2D metaballs, this is more precisely an isoline — a contour line at the threshold level. Points are classified into three zones:
-
-- **Inside**: field value ≥ threshold. These points are within the metaball body.
-- **Skin**: field value between (threshold − skin_width) and threshold. These points form a band around the isosurface boundary.
-- **Outside**: field value < (threshold − skin_width). These points are in empty space.
-
-The skin zone is what gives metaballs their visible boundary. Without it, there is only a binary inside/outside distinction. By controlling the skin width, the user adjusts how wide the transition band is around the metaball surface — a wide skin produces soft, glowing edges; a narrow skin produces sharp contour lines.
-
-### What Is the Inverse-Square Field Function?
-
-The **inverse-square law** describes quantities that decrease with the square of the distance from a source — gravity, electric field strength, and light intensity all follow this relationship. For metaballs, the field function $f(r) = k / r^2$ produces a strong contribution near the blob center that falls off rapidly with distance. This gives each blob a well-defined "zone of influence" that extends only a few multiples of its effective radius.
-
-The program implements this function as a precomputed lookup table indexed by the scaled squared distance. The squared distance is computed directly from the pixel-to-center offsets (avoiding the need for a square root), shifted right by a configurable amount based on the Blob Size parameter. Larger blob sizes shift less (producing a wider field), smaller sizes shift more (concentrating the field close to the center).
+Amoeba computes each blob's field contribution using a 256-entry lookup table that maps distance-squared to a 10-bit field value. The formula is approximately 16384 / (d² + 1), clamped to the 10-bit range. This produces a steep falloff: the field is strongest at the center and drops off rapidly, reaching negligible levels within a few dozen pixels. When multiple blobs contribute to the same pixel, their field values are summed: this additive combination is what allows the isosurface to bulge outward and merge between adjacent blobs.
 
 
 ---
 
 ## Signal Flow
 
-```
-┌──────────────────────────────────────────────────────────────────┐
-│  Vblank Computation (blob center update)                         │
-│                                                                  │
-│  1. Phase Accumulator Update                                     │
-│     ├─ For each blob: phase_x += speed × freq_x                 │
-│     ├─ For each blob: phase_y += speed × freq_y                 │
-│     └─ 16-bit wrapping → smooth continuous orbits                │
-│           ◄── Speed (pot 3)                                      │
-│                                                                  │
-│  2. Blob Center Computation (5 phases per blob, sequential)      │
-│     ├─ Phase 0: Sine X lookup → register                        │
-│     ├─ Phase 1: Multiply X → register; Sine Y lookup → register │
-│     ├─ Phase 2: cx = mult_x >> 4 + 640; Multiply Y → register   │
-│     ├─ Phase 3: cy = mult_y >> 4 + 360                            │
-│     └─ Phase 4: Advance to next blob or finish                  │
-│           ◄── Blob Size (pot 1), Count (pot 6)                   │
-└──────────────────────────────────────────────────────────────────┘
+### Signal Flow Notes
 
-┌──────────────────────────────────────────────────────────────────┐
-│  Active Video Pipeline (15 clocks total)                         │
-│                                                                  │
-│  Input Video (YUV 4:4:4 30-bit)                                  │
-│  │                                                               │
-│  ├─ Stage A (1 clk): Subtract + absolute value                   │
-│  │   └─ dx[i] = |h_count - cx[i]|, dy[i] = |v_count - cy[i]|   │
-│  │       (both blobs in parallel, truncated to 6 bits via >>5)   │
-│  │                                                               │
-│  ├─ Stage B (1 clk): Square multiply (6×6)                       │
-│  │   └─ dx_sq[i] = dx[i]², dy_sq[i] = dy[i]²                   │
-│  │       (both blobs in parallel)                                │
-│  │                                                               │
-│  ├─ Stage C1 (1 clk): Sum                                        │
-│  │   └─ dist[i] = dx_sq[i] + dy_sq[i]                           │
-│  │       (both blobs in parallel)                                │
-│  │                                                               │
-│  ├─ Stage C2 (1 clk): Dynamic shift + clamp                      │
-│  │   ├─ index[i] = dist[i] >> blob_size[9:7]                    │
-│  │   └─ clamp index to [0, 31]                                  │
-│  │         ◄── Blob Size (pot 1)                                 │
-│  │                                                               │
-│  ├─ Stage D (1 clk): 1/d² LUT lookup                             │
-│  │   └─ contrib[i] = C_INV_SQ[index[i]]  (32:1 mux)            │
-│  │                                                               │
-│  ├─ Stage E1 (1 clk): Accumulate + normalize                     │
-│  │   ├─ field = Σ contrib[i] for active blobs                   │
-│  │   └─ field_norm = clamp(field, 0, 1023)                      │
-│  │                                                               │
-│  ├─ Stage E1b (1 clk): Classification                            │
-│  │   └─ Classify: inside/skin/outside vs threshold               │
-│  │         ◄── Threshold (pot 2), Skin Width (pot 4)             │
-│  │                                                               │
-│  ├─ Stage E2 (1 clk): Color mapping                              │
-│  │   └─ Map zone + parameters → Y/U/V                           │
-│  │         ◄── Hue Shift (pot 5), Fill Mode (toggle 7),          │
-│  │             Color (toggle 8), Source (toggle 9),              │
-│  │             Outline (toggle 10)                               │
-│  │                                                               │
-│  ├── Interpolator (4 clocks per Y/U/V)                           │
-│  │   └─ Mix = lerp(input_delayed, generated, mix_amount)         │
-│  │         ◄── Mix (fader 12)                                    │
-│  │                                                               │
-│  └── Pipeline overhead (3 clocks)                                │
-│                                                                  │
-│  Bypass: select delayed input or mix result                      │
-│           ◄── Bypass (toggle 11)                                 │
-└──────────────────────────────────────────────────────────────────┘
-```
+The pipeline is divided into two phases. During ***vertical blanking***, the four blob center positions are updated. The phase accumulators advance by a speed-scaled increment multiplied by each blob's fixed frequency ratio, and the sin/cos LUT converts each phase into a screen coordinate centered around (640, 360). This computation is sequential: one blob at a time across four clock cycles: because it shares a single sin/cos LUT instance.
 
-The processing divides cleanly into two phases. During vertical blanking, a sequential state machine cycles through both blobs (5 clock phases each) to compute their center positions using the quarter-wave sine LUT — this requires 10 clocks total, well within the blanking interval. During active video, the per-pixel field evaluation pipeline runs at full pixel rate, computing both blob contributions in parallel across eight pipeline stages (A, B, C1, C2, D, E1, E1b, E2).
+During ***active video***, the per-pixel pipeline runs in three stages. Stage 1 computes the squared distance from the current pixel to each of the four blob centers in parallel. Stage 2 scales each distance by the blob size parameter, looks up the inverse-square contribution from the BRAM LUT, sums all active blobs' contributions, and classifies the pixel. Stage 3 generates the output color based on the fill mode, color mode, source, and outline settings. The final interpolator crossfades between the delayed input video and the generated color.
 
-The field evaluation achieves full parallelism by maintaining two independent signal paths through Stages A–D. Each path computes the absolute offset, squares it, shifts it based on Blob Size, and performs the LUT lookup independently. Only in Stage E1 do the two contributions converge into a single accumulated field value for classification.
-
-The 1/d² LUT provides a critical optimization: instead of performing a division per blob per pixel (which would be prohibitively expensive in the iCE40), the squared distance is used directly as an index into a precomputed 32-entry table. The Blob Size parameter's upper 3 bits control how many bits of right-shift are applied before the LUT lookup, effectively scaling the field radius without changing the LUT contents.
-
----
-
-## Parameter Reference
-
-<img src={amoeba_control_panel} alt="Videomancer front panel with Amoeba loaded"/>
-*Videomancer's front panel with Amoeba active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Blob Size
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At low values, the field evaluation right-shift is large, concentrating each blob's field contribution into a small area around its center — the blobs appear as small circles and must approach very closely before their fields overlap enough to merge. At high values, the field extends much farther from each center, producing larger circles that merge at greater separation distances. The orbit amplitude also scales with this parameter — larger blobs swing across a wider area of the frame, smaller blobs orbit near the center. The upper 3 bits of the register select the distance shift (0–7), providing 8 discrete size steps within the continuous pot range. Internally, controls the spatial extent of each blob's field and the amplitude of its orbital path simultaneously.
-
----
-
-#### Knob 2 — Threshold
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 39% |
-| Suffix | % |
-
-At low threshold values, only pixels very close to a blob center reach the threshold — the visible shapes are small, tightly defined circles. At high threshold values, the field needs less contribution to qualify as "inside," so the shapes appear larger and merge at greater distances. The threshold interacts directly with Blob Size: a large blob size with a low threshold produces defined circles, while a large blob size with a high threshold produces a single amorphous merged mass. The threshold value is compared against the 12-bit accumulated field total from all active blobs. Internally, sets the isosurface threshold that defines the inside/skin/outside classification boundary.
-
----
-
-#### Knob 3 — Speed
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-At 0%, the blobs are frozen in position — their phase accumulators do not increment, and the metaball pattern is static. As speed increases, the Lissajous orbits evolve more rapidly. At maximum, the blobs trace their orbital paths quickly, creating rapid merge/split activity. Because each blob has a different Lissajous frequency ratio, the same speed value produces different apparent velocities — blob 0 (1:2 ratio) traces a figure-eight in the time blob 1 (3:1 ratio) traces a three-lobed horizontal path. Internally, controls the rate at which both blob phase accumulators advance per frame.
-
----
-
-#### Knob 4 — Skin Width
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 29% |
-| Suffix | % |
-
-At 0%, the skin band has zero width — there is only inside and outside, with no visible edge transition. As skin width increases, a wider band of pixels is classified as "skin" rather than "outside," producing a broader visible edge around each metaball. With outline enabled, the skin zone renders as a bright contour line; without outline, it renders at the raw field-normalized brightness, creating a soft glow around the shape boundary. The skin width value is right-shifted by 2 bits before being subtracted from the threshold. Internally, controls the width of the skin classification band below the isosurface threshold.
-
----
-
-#### Knob 5 — Hue Shift
-| Property | Value |
-|----------|-------|
-| Range | 0d – 360d |
-| Default | 0d |
-| Suffix | d |
-
-Rotates the chroma components of the generated output. At 0°, the hue-shifted U and V values are at their neutral position. Rotating through 360° cycles through the colour spectrum. This parameter only has visible effect when Color is set to Rainbow — in Mono mode, all generated chroma is at midpoint regardless of hue shift. In Rainbow mode, the hue shift offsets the base U/V mapping derived from the field value, and when Outline is enabled, the skin zone uses the hue shift directly as its U value with the inverse as V, producing a coloured contour line.
-
----
-
-#### Knob 6 — Count
-| Property | Value |
-|----------|-------|
-| Range | 1 – 4 |
-| Default | 3 |
-
-Selects how many blobs are active in the field computation: 1 or 2. The control operates in boolean mode — below the midpoint selects one blob, above selects two. With one blob, the output is a single circle (or circle with skin) orbiting the center on a figure-eight path. With two, merge/split events occur when the two orbital paths bring the blobs close together, creating the characteristic metaball merging behaviour.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Fill Mode** | Solid | Hollow |
-| **8 — Color** | Mono | Rainbow |
-| **9 — Source** | Synth | Video |
-| **10 — Outline** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggle switches control **independent binary options** with no combined selector logic. Fill Mode, Color, Source, and Outline interact to create a wide range of visual styles — solid monochrome fills, hollow outlines, rainbow-tinted interiors, video-keyed shapes, and coloured contour lines. Bypass routes the delayed input directly to output.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Wet/dry crossfade between the original input video (delayed to match the 15-clock processing pipeline) and the metaball-generated output. At 0%, the output is pure unprocessed input — no metaballs are visible. At 100%, the output is the fully generated metaball scene. Intermediate positions blend the two, allowing the metaball shapes to be superimposed over the source footage at any opacity. In Video source mode, this creates a partial keying effect where the metaball boundaries are visible but semi-transparent.
-
-
-
+:::note
+The blob size parameter does double duty. It controls the orbit amplitude during vblank center computation (via bit-shifting the sin output) *and* the field falloff steepness during per-pixel evaluation (via the distance-to-LUT-index shift amount). This coupling is intentional (larger orbits naturally produce larger blobs.)
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from a single stationary blob through multi-blob merging dynamics to full-featured video-keyed metaball compositions.
+These exercises progress from a single static blob to complex multi-blob synthesis with color and video keying.
+### Exercise 1: Single Blob Exploration
 
-### Exercise 1: Single Blob Anatomy
+![Single Blob Exploration result](/img/instruments/videomancer/amoeba/amoeba_ex1_s1.png)
+*Single Blob Exploration — simulated result across source images.*
+#### Exercise Illustration
 
-<img src={amoeba_exercise1_result} alt="Single Blob Anatomy result"/>
-*Single Blob Anatomy — simulated result across source images.*
-**What You'll Create**: Understand the three-zone classification system (inside/skin/outside) and how threshold and skin width define the metaball boundary.
+***A description of the exercise illustration.***
 
-1. **Single blob**: Set Count (Knob 6) to 1. Set Speed (Knob 3) to ~10% (slow drift). Set Mix at 100%, Bypass off.
-2. **Large blob**: Set Blob Size (Knob 1) to ~60%. A single circle drifts slowly on a figure-eight path.
-3. **Observe threshold effect**: Start with Threshold (Knob 2) at ~20%. The visible circle is small. Slowly increase threshold — the circle grows as more pixels exceed the threshold level. At maximum, nearly the entire screen is "inside."
-4. **Observe skin width**: Set Threshold to ~40%. Set Skin Width (Knob 4) to ~10%. A thin band of intermediate brightness surrounds the solid interior. Increase Skin Width to ~80% — the band widens into a broad gradient halo.
-5. **Enable outline**: Toggle Outline (Toggle 10) on. The skin band becomes a bright white contour line. A narrow skin width produces a sharp outline; a wide skin width produces a thick glowing border.
-6. **Hollow mode**: Toggle Fill Mode (Toggle 7) to Hollow. The interior becomes black. Only the skin zone (the outline contour) is visible — a clean bright ring tracing the isosurface.
-7. **Freeze and examine**: Set Speed to 0%. The blob stops. Examine the zones at leisure.
+#### Learning Outcomes
 
-**Key concepts**: Isosurface threshold defines shape size, skin width defines edge band, outline converts gradient to bright contour, hollow removes interior fill, zones are inside/skin/outside
+A single glowing orb, experimenting with its shape, edges, and color.
 
----
+#### Key Concepts
 
-### Exercise 2: Splitting and Merging
+- Metaball field strength falls off with distance
+- Threshold controls the visible boundary
+- Skin width creates a soft edge transition
 
-<img src={amoeba_exercise2_result} alt="Splitting and Merging result"/>
-*Splitting and Merging — simulated result across source images.*
-**What You'll Create**: Observe metaball merging and splitting behaviour with two blobs, and understand how the isosurface boundary deforms as the blobs approach and separate.
+#### Steps
 
-1. **Two blobs**: Set Count (Knob 6) to 2. Set Speed to ~35%, Blob Size to ~55%, Threshold to ~35%. Enable Outline (Toggle 10) so the isosurface boundary is clearly visible.
-2. **Watch for merge events**: The two blobs orbit on different Lissajous paths (blob 0 traces a figure-eight, blob 1 a three-lobed curve). When their paths bring them close together, the outlines bulge outward toward each other and eventually bridge into a single continuous contour.
-3. **Observe the split**: As the blobs separate, the bridge between them narrows into a thin neck. The neck pinches and snaps apart, restoring two independent circles. This merge-split cycle repeats every time the orbits cross.
-4. **Increase threshold**: Raise Threshold to ~55%. The blobs merge at greater distances — the combined field exceeds the threshold even when the centers are far apart. The shapes stay merged for longer portions of the orbit.
-5. **Decrease threshold**: Lower Threshold to ~20%. The blobs must be nearly overlapping before their fields combine enough to merge. They appear as independent circles most of the time.
-6. **Rainbow colour**: Switch Color (Toggle 8) to Rainbow and set Hue Shift (Knob 5) to ~60°. The field gradient becomes visible as a warm colour ramp inside each blob — during merges, the colour gradients blend where the fields overlap, revealing how the two contributions combine.
+1. Set **Count** (Knob 6) to its lowest position (1 blob). A single bright circle appears on screen.
+2. Increase **Blob Size** (Knob 1) to about 60%. The shape grows larger and begins to drift along its Lissajous orbit.
+3. Lower **Speed** (Knob 3) to about 10% so the motion is slow enough to study.
+4. Sweep **Threshold** (Knob 2) slowly from low to high. At low values, the shape is large and soft; at high values, it shrinks to a tight bright dot. Find a middle setting where the boundary is clearly defined.
+5. Now increase **Skin Width** (Knob 4) from 0% upward. Watch the edge of the blob develop a soft halo that broadens as you turn.
+6. Enable **Outline** (Switch 10). The interior darkens and only the skin zone glows, producing a bright ring.
 
-**Key concepts**: Metaball merging from overlapping inverse-square fields, isosurface boundary deformation during approach, threshold controls merge distance, outline makes boundary shape changes clearly visible
+#### Settings
 
----
-
-### Exercise 3: Hollow Rainbow Contours
-
-<img src={amoeba_exercise3_result} alt="Hollow Rainbow Contours result"/>
-*Hollow Rainbow Contours — simulated result across source images.*
-**What You'll Create**: Create pure vector-style contour line graphics using hollow fill mode with rainbow colour, producing bright organic outlines on a black background.
-
-1. **Hollow outline setup**: Set Fill Mode (Toggle 7) to Hollow and enable Outline (Toggle 10). The blob interiors are black — only the skin-zone contour lines are visible.
-2. **Configure shapes**: Count to 2, Blob Size to ~55%, Threshold to ~35%, Speed to ~20%, Skin Width to ~30%.
-3. **Rainbow contours**: Switch Color (Toggle 8) to Rainbow. Set Hue Shift (Knob 5) to ~270°. The contour lines are now rendered in cool purple-blue tones that shift with the field gradient.
-4. **Observe contour merging**: Watch as the two hollow outlines drift on their Lissajous paths. When they approach, their contours bulge and connect — but the interior remains black, so only the merged boundary line is visible. This produces clean topological transitions.
-5. **Rotate hue**: Slowly rotate Hue Shift through 360°. The contour colour cycles through the full spectrum while the geometry stays constant — the line art changes palette without changing shape.
-6. **Widen skin**: Increase Skin Width to ~60%. The contour lines thicken into broad glowing bands, creating a neon-tube aesthetic. Decrease to ~10% for razor-thin lines.
-7. **Compare with solid**: Switch Fill Mode back to Solid to see the filled version of the same shapes. The hollow contour mode strips away the interior, leaving only the boundary — useful for overlaying on other video content via mix.
-
-**Key concepts**: Hollow mode for pure contour graphics, rainbow colour maps field gradient to hue, skin width controls line thickness, outline converts gradient band to bright contour, hue shift rotates colour palette
+| Control | Value |
+|---------|-------|
+| Blob Size | 60% |
+| Threshold | 40% |
+| Speed | 10% |
+| Skin Width | 30% |
+| Hue Shift | 0 d |
+| Count | 1 |
+| Fill Mode | Solid |
+| Color | Mono |
+| Source | Synth |
+| Outline | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 2: Merging Metaballs
 
-## Tips
+![Merging Metaballs result](/img/instruments/videomancer/amoeba/amoeba_ex2_s1.png)
+*Merging Metaballs — simulated result across source images.*
+#### Exercise Illustration
 
-- **Video source turns metaballs into dynamic masks**: In Video mode, the blob shapes become windows into the input signal. Two blobs reveal different parts of the frame simultaneously.
-- **Skin Width controls edge character**: Narrow skin = sharp boundaries. Wide skin = soft glowing edges. At zero skin width, there is no visible transition zone.
-- **Rainbow mode reveals field topology**: In Rainbow mode, the chroma is driven by the field value, so you can see the field strength gradient even within the "inside" zone — useful for understanding how the fields of different blobs combine.
-- **Count toggles between solo and duo**: With one blob, the output is a clean orbiting circle. With two, merge/split events add organic complexity as the Lissajous paths cross.
-- **Feedback loops create fractal-like patterns**: Routing the output back to the input seed causes the metaball shapes to feed into themselves, creating recursive patterns especially visible in Video source mode.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Two to four blobs that merge and divide in flowing organic patterns.
+
+#### Key Concepts
+
+- Metaball fields are additive (overlapping blobs merge)
+- Lissajous frequency ratios create varied orbit shapes
+- Speed affects the timing of merge and split events
+
+#### Steps
+
+1. Set **Count** (Knob 6) to 2. Two blobs appear, each on its own orbital path.
+2. Set **Blob Size** (Knob 1) to about 55% and **Threshold** (Knob 2) to about 40%. The two shapes should be large enough to overlap periodically.
+3. Watch the blobs merge as they approach each other: notice the smooth, stretchy bridge that forms between them. As they separate, the bridge pinches and the shapes split apart.
+4. Increase **Count** to 3, then 4. The interactions multiply: three-way and four-way merges produce complex, amorphous shapes.
+5. Switch **Color** (Switch 8) to **Rainbow** and rotate **Hue Shift** (Knob 5) slowly through 360 degrees. The blobs take on vivid hues that shift across the spectrum.
+6. Increase **Speed** (Knob 3) to about 50% for faster, more dynamic merging. Then try very high speeds for rapid pulsation.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Blob Size | 55% |
+| Threshold | 40% |
+| Speed | 50% |
+| Skin Width | 30% |
+| Hue Shift | 170 d |
+| Count | 4 |
+| Fill Mode | Solid |
+| Color | Rainbow |
+| Source | Synth |
+| Outline | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Video Keying Through Metaballs
+
+![Video Keying Through Metaballs result](/img/instruments/videomancer/amoeba/amoeba_ex3_s1.png)
+*Video Keying Through Metaballs — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Live video revealed through animated metaball windows, layered over incoming footage.
+
+#### Key Concepts
+
+- Metaball shapes can act as a dynamic matte for video
+- Mix fader blends synthesis with live input
+- Hollow and outline modes change the compositing character
+
+#### Steps
+
+1. Patch a video source into the Videomancer input. Set **Source** (Switch 9) to **Video**. The metaball interiors now show the video feed instead of self-generated luminance.
+2. Set **Count** (Knob 6) to 3 or 4, **Blob Size** (Knob 1) to about 50%, and **Threshold** (Knob 2) to about 40%.
+3. Watch the video appear only inside the metaball shapes. The organic, merging boundaries frame the footage dynamically.
+4. Switch **Fill Mode** (Switch 7) to **Hollow**. Now only the skin edge is visible: the video disappears from the interior, leaving glowing outlines.
+5. Set **Mix** (Fader 12) to about 50%. The metaball shapes blend with the unprocessed input, creating a translucent overlay effect.
+6. Enable **Outline** (Switch 10) and set **Color** to **Rainbow**. The outlines become vivid colored rings drifting over the video.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Blob Size | 50% |
+| Threshold | 40% |
+| Speed | 25% |
+| Skin Width | 40% |
+| Hue Shift | 200 d |
+| Count | 3 |
+| Fill Mode | Solid |
+| Color | Rainbow |
+| Source | Video |
+| Outline | On |
+| Bypass | Off |
+| Mix | 50% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Chroma** | The colour components (U and V) of a YUV video signal, encoding hue and saturation independently of brightness. |
-| **Inverse-Square Law** | A mathematical relationship where a quantity decreases proportionally to the square of the distance from a source; used here for the metaball field function. |
-| **Isosurface** | The set of all points in a scalar field where the field equals a chosen threshold value; in 2D this is an isoline (contour) dividing inside from outside. |
-| **Lissajous Curve** | A parametric path traced when X and Y coordinates oscillate sinusoidally at different frequencies; the frequency ratio determines the curve's shape (figure-eight, three-lobed, etc.). |
-| **LUT (Lookup Table)** | A precomputed array that maps an input index to an output value, replacing expensive runtime computation with a single memory read. |
-| **Metaball** | A computer-graphics technique for rendering soft organic shapes by summing inverse-distance field contributions from point sources and drawing an isosurface at a chosen threshold. |
-| **Phase Accumulator** | A register that increments by a fixed step each frame, wrapping at overflow to produce a continuously advancing angle for sine-wave orbit generation. |
-| **Scalar Field** | A function that assigns a single numeric value to every point in a 2D space; in Amoeba, the field value at each pixel is the sum of all active blob contributions. |
-| **Skin Zone** | The classification band between the isosurface threshold and the outer boundary, rendered as a visible edge or contour around each metaball. |
+- **Inverse-Square Falloff**: A mathematical relationship where a quantity diminishes proportionally to the square of the distance; used here to compute each blob's field contribution.
+
+- **Isosurface**: The set of all points where a scalar field equals a given threshold value; in 2D, this produces a contour line (the metaball boundary.)
+
+- **Lissajous Curve**: A parametric path created by combining sinusoidal motions on two axes at different frequencies; the characteristic figure-eight and pretzel-shaped orbits.
+
+- **Matte**: A mask that determines which pixels are visible and which are transparent; Amoeba's metaball shapes can serve as a dynamic, animated matte for video keying.
+
+- **Metaball**: A computer graphics technique where point sources project scalar fields that combine additively, producing smooth, bloblike shapes that merge organically.
+
+- **Phase Accumulator**: A counter that advances by a fixed increment each frame, wrapping around to produce a repeating cycle; drives the Lissajous animation.
+
+- **Scalar Field**: A function that assigns a single numeric value to every point in space; here, the field diminishes with distance from each blob center.
+
+- **Skin Zone**: The transition region between the metaball interior and exterior where the field value is close to the threshold; rendered as a gradient or outline.
 
 ---

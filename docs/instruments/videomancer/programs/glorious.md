@@ -14,7 +14,7 @@ description: "Glorious recreates the look of Technicolor Process 4 — the three
 
 ## Overview
 
-**Glorious** is a three-strip Technicolor dye transfer simulation. It models the complete Technicolor Process 4 imbibition pipeline, where a camera splits light through a prism into three separate film strips — red, green, and blue — then recombines them through a dye transfer printing process. The result is the saturated, slightly imperfect color palette that defined Hollywood's golden age.
+**Glorious** is a three-strip Technicolor dye transfer simulation. It models the complete Technicolor Process 4 imbibition pipeline, where a camera splits light through a prism into three separate film strips: red, green, and blue: then recombines them through a dye transfer printing process. The result is the saturated, slightly imperfect color palette that defined Hollywood's golden age.
 
 Glorious works by converting the input YUV video into RGB, applying independent film response curves to each color channel, introducing controllable registration misalignment between the dye layers, blending inter-channel contamination, and re-encoding back to YUV. The pipeline recreates not just the color science of Technicolor, but its physical imperfections: the fringe halos where strips don't align, the dye bleed where one layer contaminates another, and the way shadows compress and highlights roll off according to the ***Hurter–Driffield*** (H&D) density curve of photographic film.
 
@@ -22,7 +22,7 @@ At gentle settings, Glorious adds a warm filmic color shift. At extreme settings
 
 ### What's In a Name?
 
-The name ***Glorious*** is borrowed from the term ***Glorious Technicolor***, the marketing tagline used in classic Hollywood film titles. It's a celebration of the era when color itself was the spectacle — when audiences gasped at ruby reds and emerald greens that seemed impossibly vivid compared to the black-and-white films they replaced.
+The name ***Glorious*** is borrowed from the term ***Glorious Technicolor***, the marketing tagline used in classic Hollywood film titles. It's a celebration of the era when color itself was the spectacle: when audiences gasped at ruby reds and emerald greens that seemed impossibly vivid compared to the black-and-white films they replaced.
 
 ---
 
@@ -47,7 +47,7 @@ The name ***Glorious*** is borrowed from the term ***Glorious Technicolor***, th
 | Range | 0.0% – 200.0% |
 | Default | 100.1% |
 
-**Red Exp** controls the exposure of the red film strip, simulating the ***printer light*** intensity used when exposing the red separation negative. At 0%, the red channel is nearly black — no light reaches the red strip. At the default 100%, the red strip receives nominal exposure. Increasing beyond 100% overexposes the red channel, brightening reds and warming the overall image.
+**Red Exp** controls the exposure of the red film strip, simulating the ***printer light*** intensity used when exposing the red separation negative. At 0%, the red channel is nearly black: no light reaches the red strip. At the default 100%, the red strip receives nominal exposure. Increasing beyond 100% overexposes the red channel, brightening reds and warming the overall image.
 
 The green channel's exposure is automatically derived as the average of **Red Exp** and **Blue Exp**, keeping the green record centered between the two outer strips.
 
@@ -75,7 +75,7 @@ In real Technicolor printing, the lab technician adjusted each printer light ind
 | Range | 0.0% – 100.0% |
 | Default | 50.0% |
 
-**Contrast** adjusts the steepness of the H&D film response curve applied to all three channels. At 0%, the curve has a very short straight section — shadows and highlights compress heavily, producing a soft, flat image. At 100%, the straight section extends across nearly the full range, producing a contrasty, punchy result with minimal toe and shoulder compression.
+**Contrast** adjusts the steepness of the H&D film response curve applied to all three channels. At 0%, the curve has a very short straight section: shadows and highlights compress heavily, producing a soft, flat image. At 100%, the straight section extends across nearly the full range, producing a contrasty, punchy result with minimal toe and shoulder compression.
 
 :::tip
 The H&D curve is a ***piecewise S-curve***: the toe compresses shadows (half gain), the straight section passes values unchanged, and the shoulder compresses highlights (one-eighth gain). Contrast controls how much of the input range falls into the straight section.
@@ -154,7 +154,7 @@ The bleed matrix is asymmetric by design. Each channel receives its immediate ne
 | On | Mono |
 | Default | Color |
 
-**Mono Sep** selects between full-color output and a single-channel ***green record*** separation. In the **Color** position, the complete three-strip RGB-to-YUV re-encode runs normally. In the **Mono** position, only the green channel is used as luminance and the chrominance is zeroed, producing a monochrome image that shows the green separation record — the strip that carried the most luminance detail in the original Technicolor process.
+**Mono Sep** selects between full-color output and a single-channel ***green record*** separation. In the **Color** position, the complete three-strip RGB-to-YUV re-encode runs normally. In the **Mono** position, only the green channel is used as luminance and the chrominance is zeroed, producing a monochrome image that shows the green separation record: the strip that carried the most luminance detail in the original Technicolor process.
 
 ---
 
@@ -201,7 +201,7 @@ The bleed matrix is asymmetric by design. Each channel receives its immediate ne
 
 ### Three-Strip Technicolor
 
-***Technicolor Process 4***, introduced in 1932, used a beam-splitting prism inside the camera to expose three separate black-and-white film strips through red, green, and blue filters simultaneously. After development, each strip became a separation negative capturing one-third of the visible spectrum. Positive prints were made by transferring precise amounts of cyan, magenta, and yellow dye from gelatin matrices — one per strip — onto a single blank film in a process called ***imbibition***. The result was exceptionally saturated, stable color with a distinctive palette that digital color grading still tries to emulate.
+***Technicolor Process 4***, introduced in 1932, used a beam-splitting prism inside the camera to expose three separate black-and-white film strips through red, green, and blue filters simultaneously. After development, each strip became a separation negative capturing one-third of the visible spectrum. Positive prints were made by transferring precise amounts of cyan, magenta, and yellow dye from gelatin matrices: one per strip: onto a single blank film in a process called ***imbibition***. The result was exceptionally saturated, stable color with a distinctive palette that digital color grading still tries to emulate.
 
 ### The H&D Curve
 
@@ -209,56 +209,18 @@ Every photographic emulsion has a characteristic response to light, described by
 
 ### Dye Misregistration
 
-Because Technicolor's three dye layers were physically stacked during imbibition, even slight mechanical misalignment produced colored fringe at high-contrast boundaries. A dark edge against a bright background would show thin halos of red on one side and blue on the other, with the green layer as the reference. Glorious recreates this with a pair of shift register delay lines — one for red, one for blue — that offset each channel by a configurable number of pixels relative to the green record.
+Because Technicolor's three dye layers were physically stacked during imbibition, even slight mechanical misalignment produced colored fringe at high-contrast boundaries. A dark edge against a bright background would show thin halos of red on one side and blue on the other, with the green layer as the reference. Glorious recreates this with a pair of shift register delay lines: one for red, one for blue: that offset each channel by a configurable number of pixels relative to the green record.
 
-### Signal Flow
 
-```
-Input Video (YUV 4:4:4 30-bit)
-│
-├── Stage 1 (a/b/c): YUV → RGB ─────────────────────────────────
-│   └─ UV sign conversion → matrix multiply → sum + clamp
-│
-├── Stage 2 (a/b): Strip Exposure ───────────────────────────────
-│   └─ Per-channel gain (R×RedExp, G×avg(R,B), B×BlueExp) → clamp
-│
-├── Stage 3: H&D Film Response Curve ───────────────────────────
-│   └─ Piecewise S-curve: toe(½ gain + lift) / straight / shoulder(⅛ gain)
-│
-├── Stage 4: Dye Registration Fringe ───────────────────────────
-│   └─ R shift-register forward, B shift-register backward, G undelayed
-│
-├── Stage 5 (a/b): Matrix Bleed + Film Fade ────────────────────
-│   └─ Inter-channel contamination → sum + clamp
-│   └─ Film Fade: halve R channel (aged magenta loss)
-│
-├── Stage 6: Y Computation ─────────────────────────────────────
-│   └─ Y ≈ R/4 + 5G/8 + B/8 (shift-add approximation)
-│   └─ Mono Sep: use G directly as Y
-│
-├── Stage 7 (a/b): UV Computation ──────────────────────────────
-│   └─ RGB → UV matrix products → combine
-│   └─ Mono Sep: zero UV
-│
-├── Stage 8: Saturation Boost ──────────────────────────────────
-│   └─ UV × saturation gain → offset to unsigned → clamp
-│
-├── Stage 9: Negative + Dry/Wet Mix ────────────────────────────
-│   └─ Optional inversion (1023−value) on wet signal
-│   └─ 4-bit alpha crossfade: dry + (wet − dry) × mix
-│
-├── Sync Delay ─────────────────────────────────────────────────
-│   └─ 14-stage shift register (hsync, vsync, field, Y, U, V)
-│
-└── IO Alignment (2 stages) ────────────────────────────────────
-    └─ Total: 14 processing + 2 IO = 16 clocks (÷4 aligned)
-```
+---
+
+## Signal Flow
 
 ### Signal Flow Notes
 
 The pipeline decomposes input YUV into RGB for per-channel film simulation, then re-encodes back to YUV for output. This round-trip is essential because the Technicolor process operates on separated color channels, not luminance and chrominance.
 
-Two key interactions shape the result. First, the **green channel exposure is always the average** of red and blue exposure — you can't control it independently. This mirrors the role of the green record as the principal luminance carrier in Technicolor: it was always printed at a calibrated exposure relative to the other two strips. Second, **fringe is applied after the H&D curve**, meaning the nonlinear film response shapes the color values before the shift registers introduce misalignment. The halos inherit the compressed tonal response, which is why they appear soft and filmic rather than harsh.
+Two key interactions shape the result. First, the **green channel exposure is always the average** of red and blue exposure: you can't control it independently. This mirrors the role of the green record as the principal luminance carrier in Technicolor: it was always printed at a calibrated exposure relative to the other two strips. Second, **fringe is applied after the H&D curve**, meaning the nonlinear film response shapes the color values before the shift registers introduce misalignment. The halos inherit the compressed tonal response, which is why they appear soft and filmic rather than harsh.
 
 :::tip
 **Film Fade** is applied during the matrix bleed stage: it halves the red channel after contamination. This means bleed from red into green and blue is calculated at full strength, but the red channel itself fades. The result is a warm cyan-green shift that matches real aged-print behavior.
@@ -274,13 +236,25 @@ These exercises progress from basic exposure balance through full vintage film d
 
 ![Printer Light Balancing result](/img/instruments/videomancer/glorious/glorious_ex1_s1.png)
 *Printer Light Balancing — simulated result across source images.*
-**Key Concepts**: - Each knob controls one film strip's printer light intensity
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Learn how per-channel exposure controls shape the Technicolor color palette.
+
+#### Key Concepts
+
+- Each knob controls one film strip's printer light intensity
 - Green exposure is automatically derived from the average of red and blue
 - The H&D curve shapes all three channels identically by default
 
-**What You'll Create**: Learn how per-channel exposure controls shape the Technicolor color palette.
+#### Video Source
 
-**Source**: A colorful, well-lit scene with recognizable warm and cool tones — a face with a blue sky, or fruit on a table.
+A colorful, well-lit scene with recognizable warm and cool tones (a face with a blue sky, or fruit on a table.)
+
+#### Steps
 
 1. **Default warmth**: Leave all controls at defaults. Observe the subtle warm shift from the default H&D curve and saturation boost.
 2. **Kill the reds**: Turn **Red Exp** (Knob 1) fully counterclockwise. Reds vanish, leaving a cool cyan-blue image.
@@ -288,7 +262,7 @@ These exercises progress from basic exposure balance through full vintage film d
 4. **Balanced underexposure**: Set both Red Exp and Blue Exp to about 75%. Notice how the balanced underexposure darkens the image and compresses tones through the H&D toe.
 5. **Restore punch**: Increase **Contrast** (Knob 3) to about 80%. The straight section of the H&D curve extends, restoring punch to the underexposed image.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -311,13 +285,25 @@ These exercises progress from basic exposure balance through full vintage film d
 
 ![Chromatic Fringe and Bleed result](/img/instruments/videomancer/glorious/glorious_ex2_s1.png)
 *Chromatic Fringe and Bleed — simulated result across source images.*
-**Key Concepts**: - Fringe shifts red and blue channels in opposite directions relative to green
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Explore dye registration misalignment and inter-channel contamination.
+
+#### Key Concepts
+
+- Fringe shifts red and blue channels in opposite directions relative to green
 - Matrix bleed simulates dye contamination between adjacent strips
 - The Era toggle halves fringe for single-strip mode
 
-**What You'll Create**: Explore dye registration misalignment and inter-channel contamination.
+#### Video Source
 
-**Source**: High-contrast footage with strong edges — text on a white background, silhouettes, or architectural details.
+High-contrast footage with strong edges: text on a white background, silhouettes, or architectural details.
+
+#### Steps
 
 1. **Introduce fringe**: Set **Fringe** (Knob 4) to step 4. Chromatic halos appear at every strong edge: red on one side, blue on the other.
 2. **Halve the offset**: Toggle **Era** (Switch 7) to **1-Strip**. The fringe halves, producing subtler halos.
@@ -325,7 +311,7 @@ These exercises progress from basic exposure balance through full vintage film d
 4. **Maximum separation**: Set Fringe to step 7. The maximum offset produces wide, painterly color separation.
 5. **Green record only**: Enable **Mono Sep** (Switch 9) to **Mono**. The image collapses to a monochrome green separation record, but the fringe is still visible as brightness shifts.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -348,22 +334,34 @@ These exercises progress from basic exposure balance through full vintage film d
 
 ![Aged Vintage Print result](/img/instruments/videomancer/glorious/glorious_ex3_s1.png)
 *Aged Vintage Print — simulated result across source images.*
-**Key Concepts**: - Film Fade simulates magenta dye loss by halving the red channel
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Combine film fade, toe lift, and saturation to create a degraded vintage print look.
+
+#### Key Concepts
+
+- Film Fade simulates magenta dye loss by halving the red channel
 - Toe Lift raises shadow density, preventing pure black
 - Negative inverts the wet signal before the mix crossfade
 
-**What You'll Create**: Combine film fade, toe lift, and saturation to create a degraded vintage print look.
+#### Video Source
 
-**Source**: Any footage with a mix of shadows and highlights — a sunset, a dimly lit room, or a performer under stage lights.
+Any footage with a mix of shadows and highlights: a sunset, a dimly lit room, or a performer under stage lights.
+
+#### Steps
 
 1. **Fade the dyes**: Enable **Film Fade** (Switch 10) to **Aged**. The image shifts toward cyan-green as the red channel fades, simulating a decades-old print.
-2. **Lift the shadows**: Enable **Toe Lift** (Switch 8) to **Lifted**. Shadows rise slightly — the deepest blacks become a foggy dark gray, like a print with base density fog.
+2. **Lift the shadows**: Enable **Toe Lift** (Switch 8) to **Lifted**. Shadows rise slightly: the deepest blacks become a foggy dark gray, like a print with base density fog.
 3. **Flatten the curve**: Reduce **Contrast** (Knob 3) to about 30%. The H&D curve flattens, compressing the tonal range into a soft, low-contrast image.
 4. **Muddy the colors**: Increase **Matrix Bleed** (Knob 6) to about 40%. The faded dyes bleed into each other, further muddying the color purity.
 5. **Registration slip**: Add moderate **Fringe** (Knob 4) at step 2–3. The slight misregistration completes the degraded vintage look.
 6. **Cross-process blend**: Toggle **Negative** (Switch 11) to **On** and adjust **Mix** (Fader 12) to about 60%. The blended negative creates an ethereal, cross-processed film effect.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|

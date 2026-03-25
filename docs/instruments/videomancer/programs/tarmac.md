@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 297
 slug: /instruments/videomancer/tarmac
@@ -7,292 +7,364 @@ image: /img/instruments/videomancer/tarmac/tarmac_hero.png
 description: "The Super Nintendo's Mode 7 background layer was a hardware trick that changed everything."
 ---
 
-import tarmac_hero from '/img/instruments/videomancer/tarmac/tarmac_hero.png';
-import tarmac_animation from '/img/instruments/videomancer/tarmac/tarmac_animation.gif';
-import tarmac_control_panel from '/img/instruments/videomancer/tarmac/tarmac_control_panel.png';
-import tarmac_exercise1_result from '/img/instruments/videomancer/tarmac/tarmac_exercise1_result.gif';
-import tarmac_exercise2_result from '/img/instruments/videomancer/tarmac/tarmac_exercise2_result.gif';
-import tarmac_exercise3_result from '/img/instruments/videomancer/tarmac/tarmac_exercise3_result.gif';
-
-# Tarmac
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={tarmac_hero} alt="Tarmac hero image"/>
-*Tarmac applying SNES Mode 7 affine transformation with per-scanline perspective to create a pseudo-3D ground plane from a tiled video texture.*
-<img src={tarmac_animation} alt="Tarmac animated output"/>
-*Tarmac output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Tarmac hero image](/img/instruments/videomancer/tarmac/tarmac_hero_s1.png)
+*A floor of pixelated video tiles spirals away into infinity, rotating and pulsing with a retro console ground-plane perspective*
 
 ---
 
 ## Overview
 
-The Super Nintendo's Mode 7 background layer was a hardware trick that changed everything. By applying a per-scanline affine transformation — rotation, scaling, and translation — to a flat texture map, it simulated a 3D ground plane stretching toward a vanishing point on the horizon. F-Zero, Mario Kart, Pilotwings — an entire generation of games was built on this single technique. Tarmac brings that same transformation to live video.
+**Tarmac** recreates the SNES PPU ***Mode 7*** affine transform inside the FPGA, capturing your input video into a sixty-four-by-sixty-four tile buffer and playing it back through a rotating, zooming, tiling matrix. The captured image repeats infinitely in every direction like a seamless wallpaper: rotate it and the tiled pattern spirals hypnotically; zoom in and individual pixels bloom into blocky mosaics; zoom out and the repeating grid shrinks toward a vanishing point. Two DDS oscillators animate the rotation angle and scale independently, creating endlessly evolving motion from a still input.
 
-Tarmac captures a 64×64 downsampled tile from the input video and replays it through an affine matrix with per-scanline perspective scaling. Below the horizon line, the tile stretches toward the viewer with foreshortening that increases with distance. Above the horizon, an optional sky gradient fills the frame. The name evokes both the road surface seen in racing games and the tarmac runway stretching to the vanishing point — the quintessential Mode 7 image.
+The effect is deliberately lo-fi: downsampling the input to sixty-four pixels on a side produces the characteristically chunky look of 16-bit console pseudo-3D. Combined with the Mix fader, Tarmac can overlay its transformed texture on the dry input, creating double-exposure composites where the original image floats beneath its own spinning, zoomed reflection.
 
-At conservative settings, Tarmac creates gentle perspective warps and subtle texture scrolling. At extreme settings, the ground plane spins, zooms, and scrolls simultaneously while the tile repeats in a dizzying infinite floor. Combining rotation with scroll offset and scale produces hypnotic, ever-changing geometric kaleidoscopes that transform any source material into a retro-futuristic landscape.
+### What's In a Name?
+
+***Tarmac*** is the paved surface of a road or runway: the ground beneath your wheels. The name evokes the racing-game ground planes of *F-Zero* and *Super Mario Kart*, where SNES Mode 7 transformed flat textures into convincing pseudo-3D surfaces that rushed toward the horizon. In Videomancer, the highway is whatever video signal you feed in.
 
 ---
 
 ## Quick Start
 
-1. **Start with Repeat mode**: Infinite tiling is the classic Mode 7 look and reveals the affine transform's full character. Switch to Clamp only when you want the single-tile flyover aesthetic with stretched borders.
-2. **Use Grid for calibration**: The grid overlay shows exactly how the affine transform distorts space. It is invaluable for setting up perspective depth and understanding how rotation warps the coordinate system before committing to a final texture.
-3. **Combine Scroll X and Scroll Y for navigation**: Sweeping both scroll controls simultaneously simulates flying over the ground plane. Add slight rotation for cornering and you have the basic F-Zero control scheme.
+1. Patch a video source: camera, pattern generator, or media player: into the Videomancer input. Without input the tile buffer captures only black.
+2. Set **Bypass** to Off and push **Mix** fully clockwise. You'll see a coarse, pixelated version of your input tiled across the screen.
+3. Turn **Rot Speed** a few clicks clockwise. The tiled image begins spinning smoothly, repeating in every direction.
+4. Increase **Base Scale** to zoom in on the tile pattern, or decrease it to shrink the tiles and reveal more repetitions.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Tarmac loaded](/img/instruments/videomancer/tarmac/tarmac_control_panel.png)
+*Videomancer's front panel with Tarmac active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Rot Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 12.5% |
+
+**Rot Speed** controls how quickly the affine-transformed image rotates, measured in phase-accumulator increments per frame. At zero the image is stationary. Turning clockwise increases the rotational velocity: the tiled video spins faster and faster until tiny adjustments create rapid whirling. The rotation advances smoothly via a sixteen-bit DDS accumulator, so even at low values the motion is continuous and jitter-free.
+
+:::tip
+Very small values of **Rot Speed** (just a few clicks off zero) produce a slow, meditative spin that's ideal for ambient performance backdrops.
+:::
+
+---
+
+### Knob 2 — Zoom Depth
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Zoom Depth** sets the amplitude of the scale oscillation. At zero the zoom level stays fixed at whatever **Base Scale** is set to. Turning clockwise makes the image pulse in and out: the tiles grow and shrink rhythmically as a sine wave modulates the scale coefficient. Higher values produce more dramatic zoom pulsing, while moderate settings add subtle breathing to the rotation.
+
+---
+
+### Knob 3 — Perspective
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Perspective** is mapped in the parameter configuration but has no visible effect in the current FPGA implementation. The control is reserved for a future update that would add per-scanline scale modulation for pseudo-3D ground-plane effects.
+
+---
+
+### Knob 4 — Base Scale
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Base Scale** sets the overall zoom level of the affine transform. At the lowest values the captured image is zoomed in tightly, revealing individual pixels as large squares. At the midpoint the tile roughly fills the screen at one-to-one mapping. Turning further increases the zoom-out level, shrinking each tile repetition and revealing more of the infinite tiled grid. The minimum scale is clamped so the image never collapses to a single pixel.
+
+---
+
+### Knob 5 — Zoom Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 12.5% |
+
+**Zoom Speed** controls the oscillation rate of the scale animation. At zero the zoom depth (if any) is frozen at its initial phase. Turning clockwise speeds up the sine-wave modulation that drives the zoom pulsing, creating faster in-and-out breathing. Combined with rotation, this produces a spiraling, pulsating tunnel effect.
+
+---
+
+### Knob 6 — Center Y
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Center Y** positions the vertical center of rotation. At the midpoint the rotation axis is centered vertically on screen. Turning the knob moves the center up or down, causing the image to orbit around an off-center point. This shifts the visual balance of the spinning tiles: low center values pull the vortex toward the top of the frame, and high values push it toward the bottom.
+
+---
+
+### Switch 7 — Rot Dir
+
+| Property | Value |
+|----------|-------|
+| Off | CW |
+| On | CCW |
+| Default | CW |
+
+**Rot Dir** selects the rotation direction. At CW the image rotates clockwise; at CCW it rotates counterclockwise. Flipping this toggle mid-performance reverses the spinning instantly, creating a satisfying visual snap as the tile pattern switches direction.
+
+---
+
+### Switch 8 — Shear
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Shear** is mapped in the parameter configuration but has no visible effect in the current FPGA implementation. The control is reserved for a future update that would add a horizontal shearing component to the affine matrix.
+
+---
+
+### Switch 9 — Wrap Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Wrap |
+| On | Clamp |
+| Default | Wrap |
+
+**Wrap Mode** is mapped in the parameter configuration but has no visible effect in the current FPGA implementation. The tile buffer always wraps via natural 6-bit address truncation: coordinates modulo sixty-four: so the tiled pattern repeats infinitely in every direction.
+
+---
+
+### Switch 10 — Persp Hold
+
+| Property | Value |
+|----------|-------|
+| Off | Center |
+| On | Bottom |
+| Default | Center |
+
+**Persp Hold** is mapped in the parameter configuration but has no visible effect in the current FPGA implementation. The control is reserved for a future update that would shift the perspective reference point between center and bottom screen positions.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** switches the output between the processed effect and the unmodified input. When On, the input signal passes through unchanged regardless of the Mix position.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 100 |
+| Default | 100 |
+
+**Mix** crossfades between the dry input and the affine-transformed output. At minimum you see only the input; at maximum you see only the rotated, zoomed tile pattern. Intermediate positions create a double-exposure composite where the original video shows through the spinning tiles.
 
 ---
 
 ## Background
 
-### The SNES Mode 7 Hardware
+### SNES Mode 7
 
-The Super Nintendo's Picture Processing Unit (PPU) included a special background mode called Mode 7 that could apply a 2×2 affine transformation matrix to an entire background layer. The matrix supported rotation, scaling, and shearing — everything needed to simulate a textured ground plane receding into the distance. The trick was computing different matrix coefficients for each scanline: near the bottom of the screen (close to the viewer), the texture was large and detailed; near the horizon, it compressed to a vanishing point. This per-scanline variation created convincing pseudo-3D perspective from a purely 2D texture lookup.
+The Super Nintendo Entertainment System's PPU (Picture Processing Unit) included a hardware mode called ***Mode 7*** that applied a 2×2 affine transformation matrix to a background layer. By rotating and scaling a flat texture plane and varying the scale per scanline, games like *F-Zero*, *Super Mario Kart*, and *Pilotwings* created the illusion of three-dimensional ground planes rushing toward the player. Tarmac recreates this transformation in Videomancer's iCE40 FPGA, applying the same mathematics to live video captured into a tile buffer.
 
-### Affine Transformation Matrices
+### The Affine Transform
 
-An affine transformation maps source coordinates (u, v) to screen coordinates (x, y) through a 2×2 matrix plus translation:
+The core of the effect is a standard 2D affine matrix:
 
-    u = A · (x − cx) + B · (y − cy) + sx
-    v = C · (x − cx) + D · (y − cy) + sy
+```
+tx = M7A × (sx − cx) + M7B × (sy − cy) + cx
+ty = M7C × (sx − cx) + M7D × (sy − cy) + cy
+```
 
-For pure rotation by angle θ with uniform scale s: A = cos(θ)·s, B = sin(θ)·s, C = −sin(θ)·s, D = cos(θ)·s. For Mode 7 perspective, s varies per scanline — small near the horizon (distant), large at the bottom of the screen (close). This progressive scaling is what creates the illusion of depth.
-
-### Tile Buffering and Texture Mapping
-
-Tarmac captures the input video into a 64×64×30-bit tile buffer stored in FPGA block RAM. The downsampling takes every ~30th pixel horizontally (~1920/64) and every ~16th line vertically (~1080/64) to fill the tile. This captured tile becomes the "texture" that the Mode 7 transform maps onto the ground plane. Because the tile is small (64×64) relative to the output (1920×1080), the affine transform magnifies it substantially, creating the characteristic blocky, pixel-art aesthetic of the SNES era. In repeat mode, the tile seamlessly tiles across the infinite ground plane.
+Where `M7A = cos(θ) × scale`, `M7B = sin(θ) × scale`, `M7C = −sin(θ) × scale`, `M7D = cos(θ) × scale`, and `(cx, cy)` is the rotation center. For efficiency, the per-pixel computation reduces to two additions: after computing the start coordinates for each scanline, the transform walks across pixels by simply adding M7A to tx and M7C to ty (avoiding per-pixel multiplication entirely.)
 
 ### Quarter-Wave Sine LUT
 
-Rotation requires sine and cosine values. Rather than implementing CORDIC or polynomial approximation, Tarmac stores a 64-entry quarter-wave sine lookup table. Full 360° coverage is achieved through quadrant mirroring and sign flipping — the same technique used in the original SNES PPU. This approach trades 64 words of storage for a rotation computation that completes in a single clock cycle.
+A sixty-four-entry quarter-wave sine lookup table provides the cosine and sine values for the rotation matrix. The full 360-degree range is reconstructed using quadrant folding: the table stores only the first quadrant (0°–90°), and the lookup function flips and negates the index and result for the remaining three quadrants. Cosine is computed as sine of the phase plus 256 (a quarter-cycle offset). This compact approach requires just sixty-four ten-bit entries: small enough to infer into FPGA logic without a dedicated BRAM block.
 
-### Per-Pixel Incremental Walk
+### Tile Buffer Capture
 
-After computing the starting texture coordinates for the left edge of each scanline using the full affine equation, Tarmac advances across the row by simply adding the matrix column coefficients (A and C) to the accumulators for each new pixel. This reduces the per-pixel cost from four multiplications to two additions — the same optimization that made Mode 7 feasible in 1990s hardware running at 3.58 MHz. The per-pixel walk adds M7A to the horizontal accumulator and M7C to the vertical accumulator, producing correct affine mapping for the entire row from a single row-init multiplication.
+The input video is downsampled into a sixty-four-by-sixty-four tile buffer by skipping pixels horizontally (every ~30th pixel) and lines vertically (every ~16th line). The buffer stores thirty bits per entry (ten bits each for Y, U, and V), requiring approximately four BRAM tiles. Because the capture rate is much lower than the pixel clock, the buffer represents a coarse snapshot of the input: fine detail is lost, replaced by the chunky pixel-art aesthetic characteristic of Mode 7 rendering.
 
 
 ---
 
 ## Signal Flow
 
-Tile Capture → Mode 7 Render Engine → Invert → Mix → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Tile Capture ─────────────────────────────────────────────
-│   │
-│   └─ Downsample input to 64×64×30-bit BRAM tile buffer
-│      (horizontal skip ≈ 30, vertical skip ≈ 16)
-│
-├── Mode 7 Render Engine ─────────────────────────────────────
-│   │
-│   ├─ 1. DDS Phase Accumulators (rotation angle, scale oscillation)
-│   ├─ 2. Sine/Cosine LUT Lookup (64-entry quarter-wave)
-│   ├─ 3. Matrix Coefficient Compute (A=cos·s, B=sin·s, C=−sin·s, D=cos·s)
-│   ├─ 4. Per-Scanline Row Init (starting tx, ty from center offset)
-│   ├─ 5. Per-Pixel Accumulator Walk (tx += A, ty += C)
-│   ├─ 6. Tile Address Compute (wrap mod 64 or clamp 0–63)
-│   ├─ 7. Tile Buffer Read (30-bit packed YUV from BRAM)
-│   │
-│   ├─ Sky Gradient (optional: above horizon line)
-│   └─ Grid Overlay (optional: XOR at tile boundaries)
-│
-├── Invert (optional) ────────────────────────────────────────
-│
-├── Mix ──────────────────────────────────────────────────────
-│   └─ Interpolator: dry (original) ↔ wet (Mode 7 render)
-│
-├── Sync Signals ─────────────────────────────────────────────
-│   └─ 8-clock delay shift registers (hsync, vsync, field)
-│
-└── Bypass ───────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The system operates on two timescales. Per-frame processing (at vsync) advances the DDS accumulators for rotation and zoom, looks up sine and cosine values, and computes the four matrix coefficients. Per-pixel processing (at the full pixel clock) initializes the affine walk at the start of each scanline and then increments the texture coordinates by the column deltas M7A and M7C for every active pixel: reducing the transform to just two additions per pixel after the row setup.
 
-Two important interactions define Tarmac's character. First, the **tile capture and render phases overlap**: the tile buffer stores data from the current frame while simultaneously being read by the affine engine. Since the FPGA runs at pixel clock speed, reads and writes interleave naturally — write during the active video region of the captured tile area, read during the render pass for the output. Second, the **per-scanline perspective variation** is what separates Tarmac from a simple 2D rotation: by scaling the matrix coefficients differently for each horizontal line, distant parts of the ground plane compress toward the horizon while near parts expand, creating the iconic Mode 7 depth illusion.
+The tile buffer is written during active video by downsampling the input and read during the next frame's display by using the affine-transformed coordinates as the buffer address. Because the buffer address is naturally truncated to six bits (modulo 64), the tile pattern repeats infinitely in every direction without explicit wrap logic.
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={tarmac_control_panel} alt="Videomancer front panel with Tarmac loaded"/>
-*Videomancer's front panel with Tarmac active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+Below are three exercises exploring Tarmac's affine transform capabilities. Patch a video source into the input before beginning (without input the tile buffer captures only black.)
+### Exercise 1: Spinning Gallery
 
-### Rotary Potentiometers (Knobs 1–6)
+![Spinning Gallery result](/img/instruments/videomancer/tarmac/tarmac_ex1_s1.png)
+*Spinning Gallery — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Rot Speed
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 12.5% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-At 0%, the horizon sits at the top of the frame and the entire output is ground plane. As the control increases, the horizon drops, allocating more of the upper frame to sky (if enabled) and compressing the ground plane into fewer scanlines at the bottom. The horizon position also defines the vanishing point where the converging perspective lines meet. Internally, controls the vertical position of the horizon line.
+#### Learning Outcomes
 
----
+A slowly spinning mosaic of your input video, tiled across the screen in an endless rotating lattice.
 
-#### Knob 2 — Zoom Depth
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
+#### Key Concepts
 
-At low values, the ground plane appears relatively flat with minimal depth illusion — the tile texture maintains roughly uniform scale across the frame. As you increase tilt, the scale differential between near and far scanlines increases dramatically, creating steeper perspective. At maximum, the ground rushes from near at the bottom of the frame to a tight vanishing point at the horizon. Internally, controls the intensity of the perspective foreshortening.
+Basic rotation, tile repetition, DDS-based animation
 
----
+#### Steps
 
-#### Knob 3 — Perspective
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
+1. Patch a camera or media player into the input. Dial in the settings below.
+2. You should see a coarse, pixelated version of your input tiled across the screen and slowly rotating.
+3. Increase **Rot Speed** slightly: watch the rotation pick up speed. Each tile of your input image spins in unison, creating a kaleidoscopic pattern.
+4. Adjust **Base Scale** to zoom in (see fewer, larger tiles) or zoom out (see many tiny repetitions of the captured texture).
+5. Try **Rot Dir** at CCW, then flip back to CW (the image snaps to the opposite spin direction.)
 
-Horizontal scroll offset for the ground plane texture. At 50%, the texture is centered. Sweeping this control slides the texture left and right across the ground plane. Combined with rotation, scroll creates the illusion of driving or flying over the texture surface — the same effect as directional movement in F-Zero or lateral turning in Mario Kart.
+#### Settings
 
----
-
-#### Knob 4 — Base Scale
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Vertical scroll offset for the ground plane texture. Works identically to Scroll X but in the forward and backward direction of the ground plane. Increasing Scroll Y appears to move the viewpoint forward over the texture surface. Combined with Scroll X, you can navigate freely across the tiled pattern in two dimensions.
+| Control | Value |
+|---------|-------|
+| Rot Speed | 15% |
+| Zoom Depth | 0% |
+| Perspective | 0% |
+| Base Scale | 50% |
+| Zoom Speed | 0% |
+| Center Y | 50% |
+| Rot Dir | CW |
+| Shear | Off |
+| Wrap Mode | Wrap |
+| Persp Hold | Center |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-#### Knob 5 — Zoom Speed
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 12.5% |
-| Suffix | % |
+### Exercise 2: Breathing Zoom
 
-Overall zoom level of the ground plane texture. At 50%, the texture displays at 1:1 relative to the tile capture resolution. Turning counter-clockwise zooms in, magnifying the 64×64 tile and revealing individual pixel blocks as large colored rectangles. Turning clockwise zooms out, showing more repetitions of the tile (in repeat mode) or more of the clamped edge (in clamp mode). Scale interacts multiplicatively with perspective — at high zoom combined with high tilt, the near-to-far transition is extreme.
+![Breathing Zoom result](/img/instruments/videomancer/tarmac/tarmac_ex2_s1.png)
+*Breathing Zoom — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-#### Knob 6 — Center Y
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
+#### Learning Outcomes
 
-Rotation angle of the ground plane, mapped through a 64-entry sine lookup table to produce continuous 360° rotation. At 0°, the tile aligns with the screen axes. The rotation pivots around the center point defined by the horizon position and screen center. Combined with perspective, rotation creates the distinctive Mode 7 spinning ground plane familiar from SNES games.
+A pulsing, breathing rotation where the tile pattern expands and contracts rhythmically while spinning.
 
----
+#### Key Concepts
 
-### Toggle Switches (Switches 7–11)
+Scale oscillation, zoom pulsing, combined rotation and zoom
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Rot Dir** | CW | CCW |
-| **8 — Shear** | Off | On |
-| **9 — Wrap Mode** | Wrap | Clamp |
-| **10 — Persp Hold** | Center | Bottom |
-| **11 — Bypass** | Off | On |
+#### Steps
 
-The five toggle switches control rendering modes that change the visual character of the output. Tile mode determines whether the 64×64 texture wraps infinitely or stops at its edges. Grid adds structural reference lines at tile boundaries. Sky fills the area above the horizon with a synthetic gradient. Invert reverses the luminance of the entire rendered output. Bypass provides instant A/B comparison.
+1. Start from the settings below (moderate rotation with zoom pulsing enabled.)
+2. Watch the tile pattern: it should be spinning slowly while simultaneously expanding and contracting in a smooth sine wave.
+3. Increase **Zoom Depth** to exaggerate the pulsing. At high values the tiles grow very large at the peak, then shrink to reveal many repetitions at the trough.
+4. Adjust **Zoom Speed** to change the breathing rate. Faster speeds create a frantic pumping; slower speeds produce a gentle, hypnotic swell.
+5. Set **Mix** to about 70% to see the dry input showing through the pulsing tiles (a layered double-exposure effect.)
 
----
+#### Settings
 
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0 – 100 |
-| Default | 100 |
-
-Crossfade between the dry (original) and wet (Mode 7 rendered) signals. At 0%, the output is pure input video. At 100%, the output is pure Mode 7 ground plane with optional sky. Intermediate values blend the two proportionally, which can create ghostly overlay effects where the original video shows through the perspective-transformed texture.
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Tarmac processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises build from basic perspective rendering to complex animated ground plane compositions, progressively engaging more of Tarmac's Mode 7 controls.
-
-### Exercise 1: First Ground Plane
-
-<img src={tarmac_exercise1_result} alt="First Ground Plane result"/>
-*First Ground Plane — simulated result across source images.*
-**What You'll Create**: Create the basic Mode 7 perspective ground plane and understand the horizon, tilt, and scale interaction.
-
-1. **Set the horizon**: Turn Horizon to ~25%. The ground plane fills the lower three-quarters of the frame.
-2. **Add perspective**: Increase Tilt to ~60%. Watch the perspective deepen — the texture now recedes convincingly from near to far.
-3. **Enable tiling**: Set Tile to Repeat so the texture tiles across the infinite floor.
-4. **Adjust zoom**: Slowly sweep Scale. Note how higher scale reveals more tile repetitions while lower scale magnifies the pixel structure of the 64×64 capture.
-5. **Enable Grid**: Turn Grid On to visualize how the grid lines converge toward the horizon — a structural reference for the perspective mapping.
-
-**Key concepts**: Horizon position sets the vanishing point, tilt controls perspective depth, scale controls magnification, repeat mode enables infinite floor, grid overlay reveals the transform geometry
+| Control | Value |
+|---------|-------|
+| Rot Speed | 10% |
+| Zoom Depth | 40% |
+| Perspective | 0% |
+| Base Scale | 50% |
+| Zoom Speed | 20% |
+| Center Y | 50% |
+| Rot Dir | CW |
+| Shear | Off |
+| Wrap Mode | Wrap |
+| Persp Hold | Center |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Spinning Floor
+### Exercise 3: Vortex Tunnel
 
-<img src={tarmac_exercise2_result} alt="Spinning Floor result"/>
-*Spinning Floor — simulated result across source images.*
-**What You'll Create**: Add rotation to the ground plane for the classic Mode 7 spinning effect.
+![Vortex Tunnel result](/img/instruments/videomancer/tarmac/tarmac_ex3_s1.png)
+*Vortex Tunnel — simulated result across source images.*
+#### Exercise Illustration
 
-1. **Start with the ground plane** from Exercise 1 (Horizon ~25%, Tilt ~60%, Repeat mode).
-2. **Engage rotation**: Slowly sweep Rotation through its full range. Watch the ground plane rotate around the center point.
-3. **Observe at 45°**: Stop at 45° and observe how the grid lines now run diagonally across the perspective plane.
-4. **Try different scales**: Adjust Scale while rotated — small scale creates a zoomed view of a single tile; large scale shows many repeating tiles spiraling away toward the horizon.
-5. **Complete the scene**: Enable Sky to see the full ground-plus-sky composition while rotating.
+***A description of the exercise illustration.***
 
-**Key concepts**: Rotation pivots around the center point defined by the horizon, affine transforms preserve straight lines and parallel relationships, rotation combined with perspective creates the F-Zero racing effect
+#### Learning Outcomes
+
+A spiraling tunnel effect where the rotation center is offset and fast zoom pulsing creates the illusion of zooming into an infinite fractal of your own video.
+
+#### Key Concepts
+
+Off-center rotation, rapid zoom, psychedelic compositing
+
+#### Steps
+
+1. Dial in the settings below. The rotation center is pulled toward the top of the frame.
+2. Notice how the spinning pattern orbits around the off-center point, creating an asymmetric spiral.
+3. Push **Rot Speed** higher: the vortex accelerates. The tiled input becomes a blur of repeating textures.
+4. Set **Mix** to 50%. The dry input shows through the middle of the spiral, creating a portal-like composite.
+5. Try feeding a high-contrast source (bold graphics or stark lighting) to maximize the visual impact of the tiled repetition.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Rot Speed | 40% |
+| Zoom Depth | 50% |
+| Perspective | 0% |
+| Base Scale | 40% |
+| Zoom Speed | 30% |
+| Center Y | 25% |
+| Rot Dir | CCW |
+| Shear | Off |
+| Wrap Mode | Wrap |
+| Persp Hold | Center |
+| Bypass | Off |
+| Mix | 80% |
 
 ---
-
-### Exercise 3: Racing Game Composite
-
-<img src={tarmac_exercise3_result} alt="Racing Game Composite result"/>
-*Racing Game Composite — simulated result across source images.*
-**What You'll Create**: Combine scrolling and rotation to simulate forward movement across the ground plane, then overlay it on the original video.
-
-1. **Set up the ground plane**: Horizon ~30%, Tilt ~70%, Repeat, Sky On.
-2. **Scroll forward**: Slowly increase Scroll Y while Rotation is at 0°. The texture appears to scroll toward you — forward movement over the ground.
-3. **Add steering**: While Scroll Y is advancing, add slight Rotation. The floor pivots as if cornering on a racetrack.
-4. **Lateral movement**: Adjust Scroll X simultaneously to create turning combined with forward motion.
-5. **Try Clamp mode**: Switch Tile to Clamp to see how the edge stretching looks for a single-texture flyover without tiling.
-6. **Transparent overlay**: Lower Mix to ~50% to overlay the Mode 7 ground on top of the original video as a semi-transparent layer.
-
-**Key concepts**: Combining scroll axes simulates free navigation over the texture, clamp mode creates single-texture flyovers, mix enables transparent overlay compositing of the ground plane onto the source video
-
----
-
-
-## Tips
-
-- **Low tilt for planimetric views**: Near-zero tilt produces a flat top-down view of the tile, similar to a 2D rotation without perspective. This is useful for kaleidoscope-like effects with repeated tiles.
-- **High tilt + low horizon for drama**: Pushing tilt toward maximum while setting the horizon low creates extreme foreshortening — the texture rushes from the bottom of the frame to a tight vanishing point.
-- **Mix for overlay compositing**: Setting Mix to 50% blends the Mode 7 ground plane transparently over the original video, creating surreal double-exposure effects where the source shows through the perspective-mapped floor.
-- **Scale and tile capture interact**: The tile is captured at 64×64 regardless of scale. Zooming out reveals the blocky pixel structure of the low-resolution tile, which is part of the retro aesthetic and a feature, not a bug.
-- **Feedback loops**: Routing the output back to the input creates recursive tile captures — each frame's ground plane becomes the next frame's tile texture, producing self-referencing fractal floor patterns that evolve over time.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Affine Transform** | A geometric transformation preserving parallel lines, defined by a 2×2 matrix plus translation; encompasses rotation, scaling, shearing, and translation. |
-| **DDS** | Direct Digital Synthesis; a phase-accumulator technique for generating continuous rotation and oscillation from a fixed-rate increment counter. |
-| **Foreshortening** | Perspective compression where objects farther from the viewer appear shorter, narrower, and closer together. |
-| **Mode 7** | A background rendering mode in the Super Nintendo PPU that applies per-scanline affine transformations to a tiled texture for pseudo-3D ground plane effects. |
-| **Per-Scanline Perspective** | Varying the affine matrix scaling coefficient for each horizontal line to simulate depth — the central technique behind Mode 7's 3D illusion. |
-| **Quarter-Wave Sine LUT** | A lookup table storing one quarter of a sine wave; full 360° sine and cosine coverage is achieved through quadrant mirroring and sign flipping. |
-| **Tile Buffer** | A small (64×64 pixels, 30-bit packed YUV) memory region storing a downsampled snapshot of the input video, used as the texture source for Mode 7 rendering. |
+- **Affine transform**: A geometric transformation that preserves parallel lines: rotation, scaling, shearing, and translation applied via a 2×2 matrix plus a translation vector.
+
+- **DDS**: Direct digital synthesis: a phase-accumulator technique that produces smooth periodic motion from a counter that wraps at a configurable rate.
+
+- **Downsampling**: Reducing the resolution of a signal by taking every Nth sample, here capturing every ~30th pixel and every ~16th line to fill the 64×64 tile buffer.
+
+- **Fixed-point arithmetic**: Numbers stored as integers with an implicit fractional part: here the affine accumulators use 12.10 format (twelve integer bits, ten fractional bits).
+
+- **Mode 7**: A video mode on the Super Nintendo that applied a per-scanline affine transform to a background layer, enabling pseudo-3D effects in games like *F-Zero* and *Super Mario Kart*.
+
+- **Phase accumulator**: A counter that wraps at its maximum value, producing a sawtooth ramp whose frequency is set by the increment per step (the core of DDS.)
+
+- **Quarter-wave LUT**: A lookup table storing only the first 90° of a sine wave; the remaining 270° are reconstructed by folding and negating, reducing storage by 75%.
+
+- **Tile buffer**: The 64×64 pixel memory that stores a downsampled snapshot of the input video; readings beyond the buffer size wrap modulo 64, creating seamless infinite tiling.
 
 ---

@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 170
 slug: /instruments/videomancer/lichen
@@ -7,289 +7,387 @@ image: /img/instruments/videomancer/lichen/lichen_hero.png
 description: "Lichen is a synthesis program that grows circular patches from random positions on a blank canvas, frame by frame."
 ---
 
-import lichen_hero from '/img/instruments/videomancer/lichen/lichen_hero.png';
-import lichen_animation from '/img/instruments/videomancer/lichen/lichen_animation.gif';
-import lichen_control_panel from '/img/instruments/videomancer/lichen/lichen_control_panel.png';
-import lichen_exercise1_result from '/img/instruments/videomancer/lichen/lichen_exercise1_result.gif';
-import lichen_exercise2_result from '/img/instruments/videomancer/lichen/lichen_exercise2_result.gif';
-import lichen_exercise3_result from '/img/instruments/videomancer/lichen/lichen_exercise3_result.gif';
-
-# Lichen
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={lichen_hero} alt="Lichen hero image"/>
-*Lichen growing irregular organic patches across a black field, their crusty edges and overlapping tints recalling colonies spreading across stone.*
-<img src={lichen_animation} alt="Lichen animated output"/>
-*Lichen output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Lichen hero image](/img/instruments/videomancer/lichen/lichen_hero_s1.png)
+*Slowly expanding lichen colonies encrust the screen with tinted patches whose irregular, LFSR-broken edges creep outward frame by frame.*
 
 ---
 
 ## Overview
 
-Lichen is a synthesis program that grows circular patches from random positions on a blank canvas, frame by frame. Each patch expands outward at a controllable rate, and a 16-bit LFSR noise source breaks the smooth Manhattan-distance contour of each patch into ragged, organic edges — emulating the irregular boundary of a real lichen colony encrusting a rock face. The name refers directly to the organism: a symbiotic composite of fungi and algae that colonises surfaces in slow, crusty, spreading formations.
+**Lichen** is an organic synthesis program that generates slowly spreading patches of color across the video frame. Four independent colonies start from seed points and grow outward over time, tinting everything they touch toward muted green or warm amber hues. Where colonies meet and overlap, the image darkens further, building up layers of visual depth the way real lichen thickens as it ages.
 
-Four patches can be active simultaneously, each with its own centre position seeded from the LFSR at reset. When patches overlap, their tinting darkens cumulatively — a single overlap dims the output slightly, while four overlapping patches produce deep, dark regions. The patch colour shifts between a cool green and a warm amber depending on a toggle, evoking different species of biological lichen. Boundary pixels receive a subtle luma highlight, giving the effect of ridged, textured edges.
+The program creates its signature crusty texture by using a ***linear feedback shift register*** (LFSR) to break up what would otherwise be smooth, diamond-shaped patch contours. The noise fragments the boundaries into irregular, organic profiles that look remarkably like the ragged margins of a real crustal colony. The result is a slowly evolving generative pattern that colonizes the screen over many seconds, eventually covering the entire image in overlapping tinted growth.
 
-At low growth rates and small spreads, Lichen produces compact, slowly evolving spots of color on a dark field. At high growth rates and maximum spread, the patches quickly flood the frame, merging into large overlapping tinted zones. The Edge Irregularity control determines how much the LFSR noise disrupts the diamond-shaped boundary — at zero, patches are clean diamonds; at maximum, they become rough, ragged shapes that change every pixel.
+:::note
+Because Lichen is a ***synthesis*** program, the generated patch pattern is overlaid onto whatever input signal is present. You can use it as a standalone color generator by feeding black, or as a tinting overlay on live video.
+:::
+
+### What's In a Name?
+
+***Lichen*** are composite organisms formed by a symbiotic partnership between a fungus and a photosynthetic alga or cyanobacterium. They colonize exposed surfaces: rocks, bark, concrete: spreading outward as irregular, crusty patches over months and years. The program's four expanding colonies mimic this patient botanical conquest. The patches grow as ***encrusting thalli***, the flat vegetative bodies that adhere tightly to stone, and the irregular edge patterns produced by LFSR noise replicate the ragged, fractal margins of a living lichen specimen.
 
 ---
 
 ## Quick Start
 
-1. **Reset is your friend**: When patches grow stale or the composition feels crowded, toggling the Reset switch (labelled "Merge") restarts all patches from new random positions instantly.
-2. **Start slow**: Growth Rate at 10–20% lets you watch the boundary evolve pixel by pixel — essential for understanding how edge noise interacts with the expanding radius.
-3. **Boundary width shapes the texture**: A narrow boundary width produces crisp, well-defined patch edges. A wide boundary produces diffuse, moss-like transitions. The visual difference is dramatic.
+1. On startup, **Lichen** seeds four patch centers across the frame. Watch as small diamond-shaped colonies begin to grow outward, tinting pixels toward soft green.
+2. Turn **Grow Rat** (Knob 1) clockwise to speed up the expansion. The colonies race toward the edges of the screen.
+3. Increase **Edge Irr** (Knob 3) to break up the smooth diamond contours into jagged, organic edges (this is where the lichen texture comes alive.)
+4. Flip **Species** (Switch 7) from **Crust** to **Map** to double the number of active patches from two to four, filling the frame with overlapping colonies.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Lichen loaded](/img/instruments/videomancer/lichen/lichen_control_panel.png)
+*Videomancer's front panel with Lichen active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Grow Rat
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Grow Rat** controls how many pixels each colony's radius increases per video frame. At low values the patches expand slowly, giving you time to watch individual boundary details form. At high values the colonies race outward, covering the screen in seconds.
+
+:::tip
+If you want to observe the edge texture in detail, keep Grow Rat low and watch the boundary evolve frame by frame. Speed it up once you've dialed in the noise and color settings you want.
+:::
+
+---
+
+### Knob 2 — Patches
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Patches** sets the maximum radius each colony can reach before it stops growing. Small values produce compact islands of lichen that never quite cover the frame. Large values allow colonies to expand until they overlap heavily, eventually tinting every pixel on screen. Think of this as the "real estate" available to each colony: it does not change the number of patches, only how far each one can spread.
+
+---
+
+### Knob 3 — Edge Irr
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Edge Irr** (Edge Irregularity) adjusts how much the LFSR noise breaks up the patch boundaries. At minimum, edges are smooth geometric diamonds defined by the ***Manhattan distance*** metric. As you increase this control, more LFSR bits pass through the noise mask, creating increasingly ragged, crusty contours. At maximum, the boundaries become deeply irregular, with tendrils and inlets that look convincingly organic.
+
+:::note
+The irregularity is applied every clock cycle, so the edge texture varies spatially across the frame. Two adjacent boundary pixels may be classified differently, producing the fine-grained crustiness that defines the lichen aesthetic.
+:::
+
+---
+
+### Knob 4 — Bnd Width
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Bnd Width** governs the color tinting intensity applied to pixels inside a colony. At low values the tint is subtle: a gentle wash of green or amber barely visible over the source image. As you increase this control, the chroma shift becomes more saturated and the luma darkening more pronounced. Where multiple colonies overlap, the darkening compounds: a pixel inside two overlapping patches is noticeably darker than one inside a single patch, and four-way intersections are darkest of all.
+
+---
+
+### Knob 5 — Color Var
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Color Var** sets the width of the transition zone at each colony's edge. A narrow zone creates sharp, well-defined borders between colonized and uncolonized areas. A wider zone creates a graduated fringe where LFSR noise has more room to sculpt irregular edges, and boundary pixels receive a subtle luma highlight that emphasizes the colony margins.
+
+:::tip
+**Color Var** and **Edge Irr** work together. Edge Irr determines ***how rough*** the boundary is, while Color Var determines ***how wide*** the boundary region is. Try a narrow Color Var with high Edge Irr for tight, jagged edges, or a wide Color Var with moderate Edge Irr for soft, fuzzy fringes.
+:::
+
+---
+
+### Knob 6 — Texture
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Texture** is reserved for future expansion and has no visible effect in the current version. Adjusting this control does not alter the output.
+
+---
+
+### Switch 7 — Species
+
+| Property | Value |
+|----------|-------|
+| Off | Crust |
+| On | Map |
+| Default | Crust |
+
+**Species** selects the number of active colonies. In the **Crust** position, two patches grow outward from seed points on the left and right sides of the frame. In the **Map** position, all four patches are active, filling the screen with more overlapping colonies and richer layered darkening.
+
+:::tip
+Start with **Crust** (two patches) to study individual colony behavior, then switch to **Map** (four patches) for denser compositions.
+:::
+
+---
+
+### Switch 8 — Surface
+
+| Property | Value |
+|----------|-------|
+| Off | Rock |
+| On | Glass |
+| Default | Rock |
+
+**Surface** selects the lichen color family. In the **Rock** position, colonies tint toward a cool green: the hue of crustose lichen on granite. In the **Glass** position, colonies shift to a warm amber, evoking the golden-orange tones of foliose lichen on sun-exposed surfaces.
+
+---
+
+### Switch 9 — Merge
+
+| Property | Value |
+|----------|-------|
+| Off | Border |
+| On | Blend |
+| Default | Border |
+
+**Merge** triggers a colony reset. Flipping this switch from **Border** to **Blend** immediately re-seeds all four colony positions using LFSR-derived coordinates. Radii reset to one pixel and the expansion begins again from new locations. Flip it back and then forward again to scatter the colonies once more.
+
+:::warning
+Resetting colonies is a one-shot event triggered by the toggle transition. Once the colonies begin growing from their new positions, the switch must be returned to **Border** and then flipped back to **Blend** to trigger another reset.
+:::
+
+---
+
+### Switch 10 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Animate** is reserved for future expansion and has no visible effect in the current version.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Lichen processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the original input and the lichen-tinted composite. At minimum, the output is the unmodified input: no lichen tinting is visible. At maximum, the output is the fully processed colony overlay. Intermediate positions blend the two, allowing you to dial in the exact overlay intensity independently of the **Bnd Width** tinting control.
 
 ---
 
 ## Background
 
-### What Is Manhattan Distance?
+### Lichen biology and visual analogy
 
-The Manhattan distance between two points is the sum of the absolute differences of their coordinates: $|x_1 - x_2| + |y_1 - y_2|$. Unlike Euclidean distance (which produces circular contours), Manhattan distance produces diamond-shaped contours centred on the origin. This is the metric Lichen uses to determine whether a pixel is inside or outside each patch. The diamond shape is a natural consequence of the discrete, axis-aligned nature of digital pixel grids — and on an FPGA, Manhattan distance is trivially cheap compared to the multiplications required for Euclidean distance.
+Real-world ***lichen*** are among the slowest-spreading visible organisms on Earth. A crustal colony might grow only a few millimeters per year, yet over decades it paints boulders and tombstones with vivid patches of chartreuse, rust, and silver. The program borrows three properties from actual lichen growth: expansion from point sources, irregular boundary morphology, and color tinting that intensifies in older, thicker regions (modeled here by overlap darkening).
 
-### LFSR Edge Noise
+### Manhattan distance
 
-A 16-bit Linear Feedback Shift Register produces a pseudo-random bit sequence that repeats every $2^{16} - 1 = 65535$ clocks. Lichen uses this LFSR output as a per-pixel noise source. Near the boundary of each patch, the LFSR bits are XORed with the inside/outside comparison, randomly flipping some boundary pixels from inside to outside (or vice versa). The Edge Irregularity control acts as an AND mask on the LFSR output, governing how many noise bits participate. At zero, the mask zeros out all noise, leaving clean diamond boundaries. At maximum, all noise bits contribute, producing the most ragged edges.
+The program uses ***Manhattan distance*** (also called ***taxicab distance*** or ***L1 norm***) to determine whether a pixel falls inside a patch. Instead of the familiar circular Euclidean distance $\sqrt{dx^2 + dy^2}$, Manhattan distance is simply $|dx| + |dy|$. The resulting contours are diamond-shaped rather than circular, which is computationally inexpensive on an FPGA: it requires only addition and absolute difference, with no multipliers or square roots. The LFSR noise then roughens these diamonds into organic shapes.
 
-### Patch Growth and Frame Accumulation
+### LFSR edge noise
 
-Lichen is a frame-stateful program: each patch's radius is stored as a 12-bit register that persists across frames and increments on every vertical sync pulse. Growth rate is derived from the pot value as $1 + \text{pot}>>7$, giving a range of 1 to 8 pixels per frame. The maximum radius is similarly derived as $32 + \text{pot}>>1$, clamping growth so patches cannot exceed the specified spread. This stateful, incrementally evolving behaviour is what makes Lichen a *synthesis* program — it generates imagery from internal state rather than transforming an input signal.
+A 16-bit ***linear feedback shift register*** (LFSR) produces a continuous stream of pseudo-random bits synchronized to the pixel clock. Near each colony boundary, these noise bits are AND-masked with the **Edge Irr** parameter and compared against the boundary width to decide whether a given pixel flips from inside to outside (or vice versa). The effect is that some boundary pixels are randomly reclassified, creating the signature crusty, ragged edges. Just outside the radius, a secondary fringe check can pull stray pixels inward, producing irregular tendrils and peninsulas.
 
-### Overlapping Tint Accumulation
+### Overlap and tinting
 
-When a pixel falls inside multiple patches simultaneously, Lichen counts the number of overlaps (1 through 4) and applies increasing darkening to the luma channel. A single overlap shifts the chroma gently toward the target lichen colour and dims the luma slightly. Four overlapping patches apply the full tint strength and strong darkening. This additive overlap model creates natural-looking density variations as patches meet and merge, similar to how real lichen colonies darken and thicken where they grow into one another.
-
-### Colour Tinting in YUV
-
-The tinting stage shifts the U and V chroma channels toward a target colour — green (U≈420, V≈480) or amber (U≈440, V≈580) — while dimming the Y channel. The shift is proportional to the Tint Strength parameter, which selects one of four shift amounts (6.25%, 12.5%, 25%, or 50% of the way toward the target). Working in YUV allows the program to separate the colour shift (UV) from the darkening (Y), tinting without destroying the underlying luminance structure of the synthesized patches.
+When a pixel sits inside one or more colonies, the program applies two modifications. First, ***chroma tinting*** shifts the U and V channels partway toward a target color: cool green (U ≈ 420, V ≈ 480) or warm amber (U ≈ 440, V ≈ 580): with the shift magnitude controlled by **Bnd Width**. Second, ***luma darkening*** reduces brightness in proportion to the overlap count: one colony produces a subtle dim, two a moderate dim, three a heavier dim, and four the strongest darkening. Boundary pixels receive a small luma boost (+32) that acts as a rim highlight, keeping colony edges visible even under heavy tinting.
 
 
 ---
 
 ## Signal Flow
 
-Input Register → Manhattan Distance → Edge Noise → Colour Tinting
+### Signal Flow Notes
 
-```
-Video Timing Generator
-│
-├── Pixel Counters (h_count, v_count) ────────────────────────
-│               │
-│   ┌───────────┴──────────────────────────┐
-│   │    Patch State (4× centre + radius)  │
-│   │    Updated per vsync (growth/reset)  │
-│   └────────────┬─────────────────────────┘
-│                │
-├── Stage 1: Input Register + Parameter Latch ────────────────
-│   (data_in → s_y/u/v_st1)
-│
-├── Stage 2: Manhattan Distance (4 patches) ──────────────────
-│   |h - cx(i)| + |v - cy(i)| → s_man_dist(0..3)
-│
-├── Stage 3: Edge Noise + Hit Classify + Overlap Count ───────
-│   LFSR(16) → noise_mask AND → XOR boundary test
-│   Count inside patches → s_overlap_cnt (0..4)
-│   Detect boundary → s_on_boundary
-│
-├── Stage 4: Colour Tinting + Composite ──────────────────────
-│   Y: darken by overlap_cnt × tint_strength
-│   U,V: shift toward target colour (green/amber)
-│   Boundary highlight: +32 luma at edges
-│   Outside patches: black (synthesis source = 0)
-│
-├── Interpolator (4 clks): wet/dry mix ───────────────────────
-│   lerp(black_source, tinted_output, mix_amount)
-│
-└── Output (bypass mux) ──────────────────────────────────────
-```
+The pipeline divides into two time scales. At the ***frame level***, colony positions are seeded once on the first frame after power-up (or after a **Merge** reset), and radii grow by a fixed increment each vsync. At the ***pixel level***, each clock cycle independently classifies the current pixel against all four patches, computes overlap depth, and applies tinting.
 
-The critical interaction is between the LFSR noise and the boundary comparison in stage 3. When a pixel lies near the edge of a patch (within the boundary range), the LFSR bits are XORed with distance comparisons to probabilistically flip the inside/outside decision. Pixels well inside the patch are always classified as inside regardless of noise. Pixels just outside the radius can also be pulled inward when specific LFSR conditions are met, creating an asymmetric boundary that extends slightly beyond the mathematical radius. The overlap count feeds directly into stage 4's darkening logic, where multiple patches compound their tint effect.
-
----
-
-## Parameter Reference
-
-<img src={lichen_control_panel} alt="Videomancer front panel with Lichen loaded"/>
-*Videomancer's front panel with Lichen active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Grow Rat
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the frame-by-frame growth increment of all patches. The VHDL maps this as $1 + \text{pot}>>7$, giving a range of 1 to 8 pixels per frame. At minimum, patches expand one pixel per frame — slow, deliberate colonisation. At maximum, patches visibly leap outward, flooding the screen in seconds. Because growth is applied at each vsync, the visual rate depends on the frame rate — 60 fps makes growth twice as fast as 30 fps. After patches reach the maximum radius (set by Knob 2), this control has no further effect until a reset.
-
----
-
-#### Knob 2 — Patches
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Sets the maximum radius that any patch can reach before growth stops. The VHDL derivation is $32 + \text{pot}>>1$, producing a range from 32 to roughly 543 pixels. At minimum, patches remain small isolated spots. At maximum, a single patch can span nearly a third of the 1920-pixel frame width. This control interacts directly with Growth Rate — faster growth reaches the limit sooner, but the final coverage is determined by Spread alone.
-
----
-
-#### Knob 3 — Edge Irr
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the amount of LFSR noise applied to the patch boundaries. The pot value is used as a bitwise AND mask on the 12-bit noise extracted from the LFSR. At zero, the mask suppresses all noise, producing clean diamond-shaped patches. At maximum, all noise bits pass through, creating heavily irregular, crusty boundaries that change every pixel. Intermediate values produce partially noisy edges — some sections of the boundary are smooth, others jagged.
-
----
-
-#### Knob 4 — Bnd Width
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Despite its TOML label "Bnd Width," this register actually controls the colour tinting strength applied to pixels inside patches. The VHDL signal `s_tint_strength` selects one of four levels of chroma shift toward the target lichen colour (6.25%, 12.5%, 25%, or 50%). Higher values push inside-patch pixels more aggressively toward pure green or amber, while lower values produce a subtle, barely perceptible colour wash. This control also scales the luma darkening applied by the overlap count — higher tint strength means stronger dimming in overlap regions.
-
----
-
-#### Knob 5 — Color Var
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Despite its TOML label "Color Var," this register controls the boundary transition width in pixels. The VHDL derives this as $4 + \text{pot}>>6$, giving a range of approximately 4 to 19 pixels. The boundary width determines how wide the zone is around each patch's mathematical radius where LFSR noise can flip the inside/outside classification. A narrow boundary produces sharp-edged patches with noise only right at the edge. A wide boundary creates a broad, fuzzy transition zone where the patch dissolves into ragged tendrils.
-
----
-
-#### Knob 6 — Texture
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Despite its TOML label "Texture," this register is mapped to `s_mix_pot` in the VHDL — the interpolator wet/dry blend amount for the secondary mix stage. In practice, this provides an additional mix control that modulates the effect intensity alongside the main Mix fader (Knob 12). Setting this to zero suppresses the lichen effect through the secondary mix path; setting it to maximum passes the full synthesized output.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Species** | Crust | Map |
-| **8 — Surface** | Rock | Glass |
-| **9 — Merge** | Border | Blend |
-| **10 — Animate** | Off | On |
-| **11 — Bypass** | Off | On |
-
-Toggles 7 and 8 each use only the lowest bit of their respective 10-bit registers, despite the TOML defining four value labels for each. The VHDL uses `registers_in(6)(0)` and `registers_in(6)(1)` as single-bit selectors. Toggle 9 is labelled "Merge" in the TOML but actually triggers a reset of all patch positions on its rising edge — not a merge operation. Toggle 10 ("Animate") is completely unused in the VHDL; the register bit is read but never connected to any logic.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Master wet/dry crossfade. At 0%, the output is entirely the delayed dry input (typically black for a synthesis program). At 100%, the output is the fully synthesized lichen texture. Intermediate values blend the two, allowing the lichen patches to be subtly composited atop any incoming video signal. The interpolation is linear across all three YUV channels simultaneously.
-
-
-
+Two interactions are worth noting. First, because the LFSR runs continuously at the pixel clock, its noise pattern is ***spatially varying***: every pixel gets a different noise sample, creating fine-grained edge texture rather than uniform randomness. Second, the overlap count drives a stepped darkening schedule that produces subtle relief shading: the flat interior of a single colony is lighter than the intersection of two colonies, which in turn is lighter than a three-way or four-way overlap. The thin rim highlight at each boundary reinforces this stratified appearance, much like the pale margin visible at the edge of a crustose lichen in nature.
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises explore Lichen as a slowly evolving synthesis source, progressing from basic patch growth through edge texturing to full multi-patch layered compositions with colour tinting.
+These exercises explore colony growth, edge shaping, and color layering. Each builds on the previous, introducing more controls and more complex patch interactions.
+### Exercise 1: Colony Expansion
 
-### Exercise 1: First Colonies
+![Colony Expansion result](/img/instruments/videomancer/lichen/lichen_ex1_s1.png)
+*Colony Expansion — simulated result across source images.*
+#### Exercise Illustration
 
-<img src={lichen_exercise1_result} alt="First Colonies result"/>
-*First Colonies — simulated result across source images.*
-**What You'll Create**: Observe basic patch growth, understand growth rate and spread limits.
+***A description of the exercise illustration.***
 
-1. Set Growth Rate (Knob 1) to about 30% for slow, observable expansion.
-2. Set Spread (Knob 2) to about 40% so patches stop at a moderate size.
-3. Set Edge Irregularity (Knob 3) to 0% — clean diamond patches.
-4. Watch the patches emerge and grow from their starting positions.
-5. Toggle Species (Switch 7) to switch between 2 and 4 patches.
-6. When patches reach their maximum radius, toggle Reset (Switch 9) to restart from new positions.
-7. Increase Growth Rate to 80% and observe how quickly the patches flood.
+#### Learning Outcomes
 
-**Key concepts**: Manhattan distance produces diamond shapes, growth is per-frame and frame-rate dependent, spread sets the ceiling
+Watch two colonies grow from seed points and observe how growth rate and maximum size interact to set the pace and extent of colonization.
 
----
+#### Key Concepts
 
-### Exercise 2: Organic Boundaries
+- Patches grow outward from seed points each frame
+- Manhattan distance creates diamond-shaped contours
+- Growth rate and maximum radius are independent controls
 
-<img src={lichen_exercise2_result} alt="Organic Boundaries result"/>
-*Organic Boundaries — simulated result across source images.*
-**What You'll Create**: Use LFSR noise to break diamond patches into organic, lichen-like shapes.
+#### Steps
 
-1. Start with the Exercise 1 settings, but set Growth Rate to ~20% for slow observation.
-2. Slowly increase Edge Irregularity (Knob 3) from 0% to 100%. Watch the clean diamond edges dissolve into ragged, crusty contours.
-3. Adjust Boundary Width (Knob 5 — labelled "Color Var") to widen or narrow the noisy transition zone.
-4. Set Boundary Width to minimum (~0%) — noise is confined to a thin ring at the patch edge.
-5. Set Boundary Width to maximum (~100%) — the entire patch interior becomes partially affected by noise.
-6. Toggle Reset (Switch 9) several times to observe different random boundary patterns at different positions.
+1. Start with default settings. Two small diamond-shaped colonies appear near the center-left and center-right of the frame.
+2. Slowly increase **Grow Rat** (Knob 1) and watch the colonies expand outward. Note the diamond shape of the contours (this is the Manhattan distance at work.)
+3. Set **Patches** (Knob 2) to a low value. The colonies stop growing once they reach a small maximum radius. The frame remains mostly uncovered.
+4. Increase **Patches** toward maximum. The radius ceiling lifts and the colonies expand until they overlap at the center of the frame.
+5. Toggle **Bypass** (Switch 11) to compare the lichen overlay with the clean input signal.
 
-**Key concepts**: LFSR noise creates pseudo-random pixel-level variation, AND masking controls noise density, boundary width sets the spatial extent of the noisy zone
+#### Settings
 
----
-
-### Exercise 3: Overlapping Colonies
-
-<img src={lichen_exercise3_result} alt="Overlapping Colonies result"/>
-*Overlapping Colonies — simulated result across source images.*
-**What You'll Create**: Explore tinting, overlap darkening, and colour modes with maximum patch count.
-
-1. Enable all 4 patches (Switch 7 on).
-2. Set Spread (Knob 2) to ~80% so patches grow large enough to overlap.
-3. Set Growth Rate (Knob 1) to ~40% — moderate speed.
-4. Increase Tint Strength (Knob 4 — labelled "Bnd Width") to ~80%. Observe the colour shift in inside-patch pixels.
-5. Toggle Surface (Switch 8) between green and amber colours. Note how the tint target changes.
-6. Watch the overlap regions darken as patches meet. With 4 overlapping patches, the luma drops significantly.
-7. Use Mix (Knob 12) at ~60% to blend the lichen texture over an incoming video source.
-8. Use Reset (Switch 9) to restart — observe how different starting positions create different overlap patterns.
-
-**Key concepts**: Overlap count drives cumulative darkening, tint strength controls both chroma shift and luma dimming, colour mode selects green vs amber target
+| Control | Value |
+|---------|-------|
+| Grow Rat | ~50% |
+| Patches | ~80% |
+| Edge Irr | 0% |
+| Bnd Width | ~50% |
+| Color Var | ~50% |
+| Texture | 50% |
+| Species | Crust |
+| Surface | Rock |
+| Merge | Border |
+| Animate | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 2: Crusty Edges
 
-## Tips
+![Crusty Edges result](/img/instruments/videomancer/lichen/lichen_ex2_s1.png)
+*Crusty Edges — simulated result across source images.*
+#### Exercise Illustration
 
-- **Overlap creates depth**: With 4 patches and high spread, the darkened overlap regions create a sense of layered density. Adjust Tint Strength to control how extreme the darkening is.
-- **Green vs amber**: The two colour modes are not simply palette swaps — they target different U/V coordinates, producing distinct colour relationships against various backgrounds.
-- **Mix for compositing**: Because Lichen is a synthesis source, the Mix fader controls how much of the generated texture appears in the final output. At partial mix values, lichen patches float over whatever video is passing through the input.
-- **Frame rate matters**: Growth rate is per-frame, so the visual speed of patch expansion is directly proportional to the video standard's frame rate.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Transform smooth diamond patches into irregular, crusty lichen colonies with visible edge detail and layered overlap darkening.
+
+#### Key Concepts
+
+- LFSR noise breaks diamond contours into organic edges
+- Boundary width controls the transition zone thickness
+- Boundary pixels receive a luma highlight as a rim accent
+
+#### Steps
+
+1. Set **Edge Irr** (Knob 3) to maximum. The diamond edges shatter into jagged, organic contours.
+2. Reduce **Edge Irr** to about 30% for a more subtle effect. Notice how different noise mask values produce different spatial frequencies of edge detail.
+3. Increase **Color Var** (Knob 5) to widen the boundary transition zone. The crusty fringe region becomes broader, with more pixels participating in the irregular edge.
+4. Lower **Color Var** to minimum. The boundary tightens to a razor-thin ring of irregularity.
+5. Bring **Bnd Width** (Knob 4) to maximum. The tinting inside each colony deepens (overlapping areas become noticeably darker.)
+6. Flip **Species** (Switch 7) to **Map** to add two more colonies. The additional overlaps create a richer layered pattern with deeper darkening at intersections.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Grow Rat | ~30% |
+| Patches | ~70% |
+| Edge Irr | ~60% |
+| Bnd Width | ~80% |
+| Color Var | ~60% |
+| Texture | 50% |
+| Species | Map |
+| Surface | Rock |
+| Merge | Border |
+| Animate | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Amber Territories
+
+![Amber Territories result](/img/instruments/videomancer/lichen/lichen_ex3_s1.png)
+*Amber Territories — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A slowly emerging landscape of warm amber territories with irregular borders, using Merge resets to compose the most pleasing colony arrangement.
+
+#### Key Concepts
+
+- Merge reset scatters colonies to new LFSR-derived positions
+- Color mode shifts the entire palette from green to amber
+- Mix crossfade controls overall overlay intensity
+
+#### Steps
+
+1. Flip **Surface** (Switch 8) to **Glass**. The colony color shifts from cool green to warm amber.
+2. Set **Bnd Width** (Knob 4) to about 70%. The amber tint is visible but not overwhelming.
+3. Flip **Merge** (Switch 9) from **Border** to **Blend**. All colonies reset to new LFSR-derived positions and start growing again from radius one.
+4. If you don't like the layout, flip **Merge** back to **Border** and then to **Blend** again. Each reset produces a different colony arrangement.
+5. Once the colonies have grown, pull **Mix** (Fader 12) to about 60%. The amber overlay becomes translucent, letting the input signal show through underneath.
+6. Experiment with **Grow Rat** and **Patches** to control how quickly the territories fill in and how large they ultimately get.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Grow Rat | ~40% |
+| Patches | ~60% |
+| Edge Irr | ~50% |
+| Bnd Width | ~70% |
+| Color Var | ~50% |
+| Texture | 50% |
+| Species | Map |
+| Surface | Glass |
+| Merge | Blend |
+| Animate | On |
+| Bypass | Off |
+| Mix | ~60% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Chroma** | The colour component of a video signal, encoded as U (Cb) and V (Cr) in YUV colour space. |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms from a phase accumulator. |
-| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, producing a pseudo-random bit sequence. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
-| **Manhattan Distance** | The sum of horizontal and vertical distances between two points, $|x_1-x_2|+|y_1-y_2|$, producing diamond-shaped contours. |
-| **Synthesis** | Generation of video imagery from internal state and parameters, without requiring an input video source. |
+- **Encrusting**: A growth form that adheres tightly to a surface, spreading outward as a flat, irregular patch.
+
+- **LFSR (Linear Feedback Shift Register)**: A shift register whose input bit is a function of its previous state, producing a repeating sequence of pseudo-random values.
+
+- **Manhattan Distance**: The distance between two points measured by summing their absolute coordinate differences: |dx| + |dy|. Produces diamond-shaped contours.
+
+- **Overlap Count**: The number of colony patches that simultaneously cover a given pixel, used to determine the depth of luma darkening.
+
+- **Patch**: A region of the frame associated with one lichen colony, defined by a center point and a growing radius.
+
+- **Seed Point**: The initial center coordinates from which a lichen colony begins expanding.
+
+- **Synthesis Program**: A Videomancer program that generates visual patterns algorithmically rather than transforming an input signal.
+
+- **Thallus**: The vegetative body of a lichen organism, used here as a metaphor for an individual growing patch colony.
+
+- **Tinting**: Shifting pixel color values toward a target hue and reducing luminance, simulating the appearance of a colored overlay.
 
 ---

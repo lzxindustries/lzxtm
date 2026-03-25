@@ -14,9 +14,9 @@ description: "Every classic computer had a fixed palette — a small set of colo
 
 ## Overview
 
-**Stipple** is a retro palette quantizer that maps incoming video to the exact color palettes of eight classic computing platforms. It reduces the full-color video stream to a handful of carefully chosen colors — four shades of green for the Game Boy, stark black and white for the original Macintosh, or the rich sixteen-color palettes of the NES, C64, and Amiga. The magic is in the ***dithering***: an ordered pattern of dots that tricks the eye into perceiving more colors than actually exist.
+**Stipple** is a retro palette quantizer that maps incoming video to the exact color palettes of eight classic computing platforms. It reduces the full-color video stream to a handful of carefully chosen colors: four shades of green for the Game Boy, stark black and white for the original Macintosh, or the rich sixteen-color palettes of the NES, C64, and Amiga. The magic is in the ***dithering***: an ordered pattern of dots that tricks the eye into perceiving more colors than actually exist.
 
-Stipple chains brightness and contrast adjustment, Bayer or noise dithering, palette quantization, saturation control, pixel doubling, and scanline emulation into a single pipeline. At minimum settings, Stipple can apply a subtle palette restriction. At maximum, it transforms video into something that looks like it was rendered on vintage hardware — chunky pixels, limited colors, and the unmistakable stipple patterns of early computer graphics.
+Stipple chains brightness and contrast adjustment, Bayer or noise dithering, palette quantization, saturation control, pixel doubling, and scanline emulation into a single pipeline. At minimum settings, Stipple can apply a subtle palette restriction. At maximum, it transforms video into something that looks like it was rendered on vintage hardware: chunky pixels, limited colors, and the unmistakable stipple patterns of early computer graphics.
 
 :::tip
 ***Dithering is the heart of Stipple.*** Without it, palette quantization produces harsh color banding. With it, the eye blends neighboring pixels into intermediate shades, conjuring colors the palette doesn't actually contain.
@@ -24,13 +24,13 @@ Stipple chains brightness and contrast adjustment, Bayer or noise dithering, pal
 
 ### What's In a Name?
 
-The name ***Stipple*** refers to the drawing technique of creating tonal gradations using patterns of small dots. In digital graphics, stippling is synonymous with ***ordered dithering*** — the technique at the core of this program. Classic platforms like the Game Boy and Macintosh relied heavily on stipple patterns to simulate shading with their severely limited color palettes.
+The name ***Stipple*** refers to the drawing technique of creating tonal gradations using patterns of small dots. In digital graphics, stippling is synonymous with ***ordered dithering***: the technique at the core of this program. Classic platforms like the Game Boy and Macintosh relied heavily on stipple patterns to simulate shading with their severely limited color palettes.
 
 ---
 
 ## Quick Start
 
-1. Turn **Palette** (Knob 1) to select a platform. Start with the **Game Boy** palette (position 0) — its four green shades make dithering patterns easy to see.
+1. Turn **Palette** (Knob 1) to select a platform. Start with the **Game Boy** palette (position 0) (its four green shades make dithering patterns easy to see.)
 2. Set **Dither Size** (Knob 2) to its maximum. The ordered dot pattern appears across the image, breaking smooth gradients into a grid of stippled points.
 3. Increase **Dither Amt** (Knob 3) to strengthen the dithering. The stipple pattern becomes more prominent and the transitions between palette colors soften.
 4. Enable **Scanlines** (Switch 8) and **Pixel Dbl** (Switch 7) for the full retro CRT look. The image now resembles output from a vintage television.
@@ -54,7 +54,7 @@ The name ***Stipple*** refers to the drawing technique of creating tonal gradati
 Palettes with fewer native colors repeat entries to fill all sixteen slots. The Game Boy's four shades each repeat four times; the Macintosh's two colors each repeat eight times.
 
 :::note
-Smaller palettes produce stronger quantization artifacts, which makes dithering more visually important. The Macintosh palette — pure black and white — benefits the most from ordered dithering.
+Smaller palettes produce stronger quantization artifacts, which makes dithering more visually important. The Macintosh palette: pure black and white: benefits the most from ordered dithering.
 :::
 
 ---
@@ -182,7 +182,7 @@ On monochrome palettes like the Macintosh (black and white) and Game Boy (shades
 | On | On |
 | Default | Off |
 
-**Dith Phase** shifts the Bayer dither matrix diagonally by XOR-ing the matrix address with a constant. This offsets the stipple pattern by several pixels in both axes, producing a different spatial arrangement of the same dither thresholds. The visual effect is subtle — the dot pattern shifts position without changing its overall character. When using Noise mode, this toggle has no effect because the LFSR output is not address-based.
+**Dith Phase** shifts the Bayer dither matrix diagonally by XOR-ing the matrix address with a constant. This offsets the stipple pattern by several pixels in both axes, producing a different spatial arrangement of the same dither thresholds. The visual effect is subtle: the dot pattern shifts position without changing its overall character. When using Noise mode, this toggle has no effect because the LFSR output is not address-based.
 
 ---
 
@@ -201,52 +201,28 @@ On monochrome palettes like the Macintosh (black and white) and Game Boy (shades
 
 ### Palette quantization
 
-***Palette quantization*** is the process of mapping a full-range image to a fixed set of colors. Early computers had no choice — hardware constraints limited them to a tiny color palette. The Game Boy's screen could display exactly four shades of green. The Commodore 64 had sixteen fixed colors. Artists working within these limits developed visual languages built on careful color choice and clever dithering.
+***Palette quantization*** is the process of mapping a full-range image to a fixed set of colors. Early computers had no choice: hardware constraints limited them to a tiny color palette. The Game Boy's screen could display exactly four shades of green. The Commodore 64 had sixteen fixed colors. Artists working within these limits developed visual languages built on careful color choice and clever dithering.
 
-Stipple stores all eight palettes as 128 constant RGB entries (8 platforms × 16 colors each), pre-converted to YUV at synthesis time using BT.601 coefficients. The input luminance, after contrast and brightness adjustment, is quantized to a 4-bit index (0–15) that addresses the selected palette's color table. The result is a direct color lookup — no interpolation, no blending, just a hard snap to the nearest palette entry.
+Stipple stores all eight palettes as 128 constant RGB entries (8 platforms × 16 colors each), pre-converted to YUV at synthesis time using BT.601 coefficients. The input luminance, after contrast and brightness adjustment, is quantized to a 4-bit index (0–15) that addresses the selected palette's color table. The result is a direct color lookup: no interpolation, no blending, just a hard snap to the nearest palette entry.
 
 ### Ordered dithering
 
-- **Ordered dithering*** uses a repeating threshold matrix — typically a ***Bayer matrix**: to distribute quantization error spatially. Each pixel position in the matrix has a different threshold. When a pixel's value falls near a quantization boundary, the local threshold determines which side it lands on. The result is a structured stipple pattern where dots cluster into regular geometric arrangements.
+- **Ordered dithering*** uses a repeating threshold matrix: typically a ***Bayer matrix**: to distribute quantization error spatially. Each pixel position in the matrix has a different threshold. When a pixel's value falls near a quantization boundary, the local threshold determines which side it lands on. The result is a structured stipple pattern where dots cluster into regular geometric arrangements.
 
-The 8×8 Bayer matrix provides 64 distinct threshold levels — 64 different transition points between any two palette colors — yielding much smoother apparent gradients than the palette's actual color count would suggest. Smaller matrices (2×2 or 4×4) have fewer thresholds and produce coarser patterns.
+The 8×8 Bayer matrix provides 64 distinct threshold levels: 64 different transition points between any two palette colors: yielding much smoother apparent gradients than the palette's actual color count would suggest. Smaller matrices (2×2 or 4×4) have fewer thresholds and produce coarser patterns.
 
 ### Retro display emulation
 
 Stipple's pixel doubling and scanline features reproduce the visual characteristics of vintage CRT displays. ***Pixel doubling*** halves the effective horizontal resolution by holding each palette output for two consecutive pixels, mimicking the chunky rectangular pixels of low-resolution display modes. ***Scanline emulation*** darkens every other line to 50% brightness, recreating the visible horizontal gaps between raster lines on a CRT. Together, these two features transform the clean, sharp digital output into something that evokes the warm, textured look of old televisions and monitors.
 
-### Signal Flow
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 1a. Contrast Scaling      (shift-add multiply, top 3 bits)
-│   ├─ 1b. Brightness Offset     (DC add + clamp)
-│   ├─ 1b. Invert                (optional 1023 − Y)
-│   ├─ 2a. Dither Value Lookup   (Bayer matrix or LFSR noise)
-│   ├─ 2b. Dither Offset         (shift-add: (bayer−32) × amt)
-│   ├─ 2c. Dither + Quantize     (Y + offset → 4-bit index)
-│   ├─ 3a. Palette ROM Lookup    (index → YUV from platform palette)
-│   ├─ 3b. Saturation Scaling    (U/V scale: 0%/50%/100%/150%)
-│   └─ 4.  Pixel Dbl + Scanlines (hold-2 + line darkening)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ 12-clock delay pipeline (hsync, vsync, field, Y/U/V dry)
-│
-├── Mix ────────────────────────────────────────────────────────
-│   └─ Interpolator ×3 (Y/U/V wet↔dry crossfade, 4 clocks)
-│
-├── IO Align ───────────────────────────────────────────────────
-│   └─ 4-stage register chain (total: 12 + 4 = 16 clocks)
-│
-└── Output (YUV 4:4:4)
-```
+---
+
+## Signal Flow
 
 ### Signal Flow Notes
 
-The pipeline runs entirely on the luminance channel until palette lookup. Input Y is contrast-scaled and brightness-offset in two pipelined stages, then optionally inverted. The adjusted Y value enters the dither-and-quantize section, where a Bayer matrix value (or LFSR noise) is scaled by the dither amount and added as an offset before the value is divided into a 4-bit palette index. That index addresses one of the eight platform color tables, producing a full YUV triplet from the palette ROM. The U and V channels of the *input* video are never used — all output color comes from the palette.
+The pipeline runs entirely on the luminance channel until palette lookup. Input Y is contrast-scaled and brightness-offset in two pipelined stages, then optionally inverted. The adjusted Y value enters the dither-and-quantize section, where a Bayer matrix value (or LFSR noise) is scaled by the dither amount and added as an offset before the value is divided into a 4-bit palette index. That index addresses one of the eight platform color tables, producing a full YUV triplet from the palette ROM. The U and V channels of the *input* video are never used (all output color comes from the palette.)
 
 :::tip
 **All output color comes from the palette.** The input's chroma channels are ignored entirely. Only the input luminance determines which palette color is selected for each pixel.
@@ -262,13 +238,25 @@ These exercises explore palette selection, dithering techniques, and display emu
 
 ![Game Boy Photography result](/img/instruments/videomancer/stipple/stipple_ex1_s1.png)
 *Game Boy Photography — simulated result across source images.*
-**Key Concepts**: - Palette selection constrains the output to a fixed set of colors
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Create a convincing Game Boy camera aesthetic using the four-shade green palette with ordered dithering.
+
+#### Key Concepts
+
+- Palette selection constrains the output to a fixed set of colors
 - Dither size and amount control the stipple pattern's fineness and strength
 - Brightness shifts which palette shades dominate the image
 
-**What You'll Create**: Create a convincing Game Boy camera aesthetic using the four-shade green palette with ordered dithering.
+#### Video Source
 
-**Source**: A portrait or close-up with varied lighting — faces work especially well for the Game Boy camera look.
+A portrait or close-up with varied lighting (faces work especially well for the Game Boy camera look.)
+
+#### Steps
 
 1. **Select palette**: Set **Palette** (Knob 1) to position 0 (Game Boy). The image snaps to four shades of green.
 2. **Enable dithering**: Turn **Dither Size** (Knob 2) to maximum (8×8). Turn **Dither Amt** (Knob 3) to about 60%. A stipple pattern appears, smoothing the transitions between the four shades.
@@ -276,7 +264,7 @@ These exercises explore palette selection, dithering techniques, and display emu
 4. **Add display effects**: Enable **Pixel Dbl** (Switch 7) and **Scanlines** (Switch 8). The image now resembles a Game Boy screen viewed through a magnifying glass.
 5. **Compare**: Use the **Mix** fader (Fader 12) to blend between the original and processed image.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -299,22 +287,34 @@ These exercises explore palette selection, dithering techniques, and display emu
 
 ![Macintosh Halftone result](/img/instruments/videomancer/stipple/stipple_ex2_s1.png)
 *Macintosh Halftone — simulated result across source images.*
-**Key Concepts**: - Smaller palettes benefit most from dithering
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Use dithering to create the maximum number of apparent shades from only two colors.
+
+#### Key Concepts
+
+- Smaller palettes benefit most from dithering
 - Dither size determines how many apparent gray levels are possible
 - Noise versus Bayer dithering produces drastically different textures
 
-**What You'll Create**: Use dithering to create the maximum number of apparent shades from only two colors.
+#### Video Source
 
-**Source**: A grayscale image or footage of an evenly lit scene with smooth tonal gradations (skies, fabric, gradients).
+A grayscale image or footage of an evenly lit scene with smooth tonal gradations (skies, fabric, gradients).
+
+#### Steps
 
 1. **Select palette**: Set **Palette** (Knob 1) to position 2 (Macintosh). The image becomes pure black and white with no intermediate tones.
 2. **Start small**: Set **Dither Size** (Knob 2) to the 2×2 position. A coarse checkerboard pattern introduces one apparent gray level between black and white.
 3. **Increase resolution**: Step through **Dither Size** positions. At 4×4, more intermediate tones appear. At 8×8, the stipple pattern becomes fine enough to suggest smooth gradients.
 4. **Dither strength**: Sweep **Dither Amt** (Knob 3) from 0 to 100%. At low amounts, the pattern barely appears. At high amounts, it dominates the image.
-5. **Switch algorithms**: Toggle **Dither Mode** (Switch 9) from Bayer to Noise. The geometric stipple grid transforms into a random grain. Compare the two — ordered dithering is structured and mechanical; noise dithering is organic and film-like.
+5. **Switch algorithms**: Toggle **Dither Mode** (Switch 9) from Bayer to Noise. The geometric stipple grid transforms into a random grain. Compare the two: ordered dithering is structured and mechanical; noise dithering is organic and film-like.
 6. **Contrast**: Increase **Contrast** (Knob 5) to push more pixels toward pure black or white, reducing the dithered mid-tone area.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -337,13 +337,25 @@ These exercises explore palette selection, dithering techniques, and display emu
 
 ![CRT Television Emulation result](/img/instruments/videomancer/stipple/stipple_ex3_s1.png)
 *CRT Television Emulation — simulated result across source images.*
-**Key Concepts**: - Pixel doubling and scanlines together simulate low-resolution CRT output
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Combine palette quantization with display emulation for a full retro broadcast look.
+
+#### Key Concepts
+
+- Pixel doubling and scanlines together simulate low-resolution CRT output
 - Saturation control adjusts the vividness of palette colors beyond their historical values
 - Mix allows blending the retro effect for subtlety
 
-**What You'll Create**: Combine palette quantization with display emulation for a full retro broadcast look.
+#### Video Source
 
-**Source**: Footage with bold colors and motion — cartoons, music performances, or colorful abstract video work well.
+Footage with bold colors and motion: cartoons, music performances, or colorful abstract video work well.
+
+#### Steps
 
 1. **Select palette**: Set **Palette** (Knob 1) to position 6 (Amiga OCS) for a rich 16-color palette.
 2. **Enable dithering**: Set **Dither Size** to 4×4 and **Dither Amt** to about 50%.
@@ -351,9 +363,9 @@ These exercises explore palette selection, dithering techniques, and display emu
 4. **Display emulation**: Enable both **Pixel Dbl** (Switch 7) and **Scanlines** (Switch 8).
 5. **Fine tune**: Adjust **Contrast** (Knob 5) to about 65% for punchy, saturated blocks. Adjust **Brightness** (Knob 4) to taste.
 6. **Blend**: Pull the **Mix** fader (Fader 12) to about 70% to let some of the original image bleed through the palette restriction. The result is a subtle retro color cast rather than hard quantization.
-7. **Invert**: Toggle **Invert** (Switch 10) to produce a negative-image version through the Amiga palette — an effect that has no historical equivalent.
+7. **Invert**: Toggle **Invert** (Switch 10) to produce a negative-image version through the Amiga palette (an effect that has no historical equivalent.)
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|

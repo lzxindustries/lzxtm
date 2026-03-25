@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 61
 slug: /instruments/videomancer/combing
@@ -7,350 +7,386 @@ image: /img/instruments/videomancer/combing/combing_hero_s1.png
 description: "Before the world went progressive, all television was interlaced."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import combing_control_panel from '/img/instruments/videomancer/combing/combing_control_panel.png';
-import combing_source1_fruit from '/img/instruments/videomancer/combing/combing_source1_fruit.png';
-import combing_source2_field from '/img/instruments/videomancer/combing/combing_source2_field.png';
-import combing_source3_clouds from '/img/instruments/videomancer/combing/combing_source3_clouds.png';
-import combing_source4_pattern from '/img/instruments/videomancer/combing/combing_source4_pattern.png';
-import combing_source5_boy from '/img/instruments/videomancer/combing/combing_source5_boy.png';
-import combing_source6_berries from '/img/instruments/videomancer/combing/combing_source6_berries.png';
-import combing_hero_s1 from '/img/instruments/videomancer/combing/combing_hero_s1.png';
-import combing_hero_s2 from '/img/instruments/videomancer/combing/combing_hero_s2.png';
-import combing_hero_s3 from '/img/instruments/videomancer/combing/combing_hero_s3.png';
-import combing_hero_s4 from '/img/instruments/videomancer/combing/combing_hero_s4.png';
-import combing_hero_s5 from '/img/instruments/videomancer/combing/combing_hero_s5.png';
-import combing_hero_s6 from '/img/instruments/videomancer/combing/combing_hero_s6.png';
-import combing_ex1_s1 from '/img/instruments/videomancer/combing/combing_ex1_s1.png';
-import combing_ex1_s2 from '/img/instruments/videomancer/combing/combing_ex1_s2.png';
-import combing_ex1_s3 from '/img/instruments/videomancer/combing/combing_ex1_s3.png';
-import combing_ex1_s4 from '/img/instruments/videomancer/combing/combing_ex1_s4.png';
-import combing_ex1_s5 from '/img/instruments/videomancer/combing/combing_ex1_s5.png';
-import combing_ex1_s6 from '/img/instruments/videomancer/combing/combing_ex1_s6.png';
-import combing_ex2_s1 from '/img/instruments/videomancer/combing/combing_ex2_s1.png';
-import combing_ex2_s2 from '/img/instruments/videomancer/combing/combing_ex2_s2.png';
-import combing_ex2_s3 from '/img/instruments/videomancer/combing/combing_ex2_s3.png';
-import combing_ex2_s4 from '/img/instruments/videomancer/combing/combing_ex2_s4.png';
-import combing_ex2_s5 from '/img/instruments/videomancer/combing/combing_ex2_s5.png';
-import combing_ex2_s6 from '/img/instruments/videomancer/combing/combing_ex2_s6.png';
-import combing_ex3_s1 from '/img/instruments/videomancer/combing/combing_ex3_s1.png';
-import combing_ex3_s2 from '/img/instruments/videomancer/combing/combing_ex3_s2.png';
-import combing_ex3_s3 from '/img/instruments/videomancer/combing/combing_ex3_s3.png';
-import combing_ex3_s4 from '/img/instruments/videomancer/combing/combing_ex3_s4.png';
-import combing_ex3_s5 from '/img/instruments/videomancer/combing/combing_ex3_s5.png';
-import combing_ex3_s6 from '/img/instruments/videomancer/combing/combing_ex3_s6.png';
-
-# Combing
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: combing_source1_fruit, after: combing_hero_s1 },
-    { label: "Field", before: combing_source2_field, after: combing_hero_s2 },
-    { label: "Clouds", before: combing_source3_clouds, after: combing_hero_s3 },
-    { label: "Pattern", before: combing_source4_pattern, after: combing_hero_s4 },
-    { label: "Boy", before: combing_source5_boy, after: combing_hero_s5 },
-    { label: "Berries", before: combing_source6_berries, after: combing_hero_s6 },
-  ]}
-/>
-*Combing applying alternating-scanline interlace artifacts and checkerboard patterning to create structured temporal interference in the video signal.*
+![Combing hero image](/img/instruments/videomancer/combing/combing_hero_s1.png)
+*Combing applying interlace comb-teeth artifacts to a live video source, rendering alternating scanlines as shimmering striped fringes along motion edges.*
 
 ---
 
 ## Overview
 
-Before the world went progressive, all television was *interlaced*. Each frame was split into two fields — one containing the odd-numbered scanlines, the other the even — transmitted in alternation at 50 or 60 fields per second. When an interlaced signal is displayed on a progressive monitor without proper deinterlacing, the two fields become visible simultaneously, creating a characteristic **comb** pattern along the edges of moving objects. Horizontal lines of the current field alternate with lines from the previous field, producing a set of teeth along every motion boundary.
+**Combing** recreates the visual artifact that occurs when interlaced video is displayed on a progressive monitor without deinterlacing. In the real world, this effect appears as a series of fine horizontal teeth along the edges of moving objects: each pair of adjacent lines shows data from a different moment in time, and the mismatch creates a distinctive fringe. Combing takes this broadcast-era glitch and turns it into a controllable visual tool: every other scanline is replaced with data from the previous line, producing the characteristic sawtooth edges that television engineers once struggled to eliminate.
 
-Combing recreates this artifact synthetically. It operates three line-delay buffers (one per Y, U, V channel), each storing a full 1024-pixel scanline. The program alternates between the live input and the delayed scanline on consecutive lines, creating a one-line temporal offset that mimics comb artifacts. The alternation pattern can be driven by a configurable line offset, animated over time, or switched to a two-dimensional checkerboard mode that creates a grid-like interference pattern across both axes.
+At subtle settings, the comb teeth are delicate, appearing only where motion creates a difference between adjacent lines. Cranked up, Combing transforms the entire image into a bold striped pattern, alternating between the current picture and its one-line-delayed ghost. A checkerboard mode toggles per-pixel in addition to per-line, dissolving the image into a fine grid. With animation enabled, the comb pattern shifts each frame, creating a shimmering, flickering texture that evokes the look of unstable analog video.
 
-The Blend control crossfades between the live and delayed signals, allowing the comb teeth to range from hard binary alternation to soft, ghostly interlace shimmer. Combined with contrast and brightness processing, Combing can simulate everything from subtle broadcast interlace artifacts to aggressive pattern-based video decomposition.
+:::tip
+Combing is most visible when there is ***motion*** in the source video. With a still image, the current and previous scanlines are identical, so no comb teeth appear. Feed it a moving camera or animated source for the full effect.
+:::
+
+### What's In a Name?
+
+The name directly references ***combing artifacts***, the horizontal fringe pattern that appears when interlaced video fields are displayed simultaneously on a progressive screen. The alternating lines look like the teeth of a comb: hence the name. In broadcast television, combing is considered a defect, something to be eliminated by proper deinterlacing. Videomancer's **Combing** program flips that relationship: the artifact is no longer a mistake but an instrument, conjuring the spectral shimmer of old analog signals on command.
 
 ---
 
 ## Quick Start
 
-1. **Subtle shimmer**: Low Comb Depth (~20%) with Blend at ~50% creates a barely perceptible interlace shimmer that adds analog broadcast character without obvious artifacts.
-2. **Checkerboard for texture**: Checkerboard mode at moderate depth creates a fine mesh overlay that interacts beautifully with source detail.
-3. **Animation for life**: Enable Animate to prevent the comb pattern from looking static and digital. The continuous drift adds natural temporal variation.
+1. Feed a video signal with visible movement. **Comb Depth** (Knob 1) starts at maximum: every other scan line is replaced with data from the previous line, creating visible comb teeth along motion edges.
+2. Flip **Pattern** (Switch 8) to **Checker**. The alternating pattern now toggles per-pixel as well as per-line, breaking the image into a fine checkerboard of live and delayed pixels.
+3. Turn on **Animate** (Switch 9). The comb pattern shifts by one line each frame, creating a shimmering, flickering texture across the image.
+4. Sweep **Line Offset** (Knob 3) to shift the vertical phase of the comb pattern. The stripe grid slides up and down the screen as you turn.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Combing loaded](/img/instruments/videomancer/combing/combing_control_panel.png)
+*Videomancer's front panel with Combing active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Comb Depth
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Comb Depth** controls the strength of the alternate-line replacement. At its minimum, selected lines pass live data through unchanged: no visible combing occurs. As the value increases, selected lines blend progressively more of the delayed scanline data into the output. At maximum (the default), selected lines display 100% of the previous scanline's data, creating full-strength comb teeth wherever the image differs between adjacent lines.
+
+---
+
+### Knob 2 — Blend
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Blend** softens the transition between live and delayed scan lines. At its minimum (the default), the comb pattern is a hard, binary alternation: each line is either fully live or fully delayed. As Blend increases, neighboring lines receive a partial cross-fade of live and delayed data, smoothing the sharp comb teeth into a gentler vertical gradient. At maximum, the distinction between live and delayed lines dissolves into a uniform average.
+
+---
+
+### Knob 3 — Line Offset
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Line Offset** shifts the vertical phase of the comb pattern. At minimum, the pattern begins at the first line of the frame. As Line Offset increases, the odd/even assignment of lines shifts downward, changing which lines display live data and which display delayed data. This creates a scrolling effect as you sweep the knob.
+
+:::tip
+Combine **Line Offset** with **Animate** for emergent visual effects. Animation shifts the pattern by one line per frame; Line Offset adds a fixed displacement on top. Together they create patterns that drift and shimmer in complex ways.
+:::
+
+---
+
+### Knob 4 — Contrast
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Contrast** adjusts the tonal range of the processed output. At the default center position, contrast is at unity: the signal passes through without gain alteration. Turning counterclockwise compresses the tonal range toward mid-gray, flattening the image. Turning clockwise expands the tonal range, increasing the separation between bright and dark areas and making comb teeth more visually prominent against the background.
+
+---
+
+### Knob 5 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Brightness** shifts the overall luminance of the processed output. At the default center position, no shift occurs. Turning counterclockwise darkens the image; turning clockwise brightens it. Brightness is applied to both live and delayed lines equally, shifting the entire image up or down the tonal scale without changing the comb pattern itself.
+
+---
+
+### Knob 6 — Fade
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Fade** attenuates the overall brightness of the output. At maximum (the default), the image passes through at full intensity. As Fade decreases, the output dims uniformly toward black. Fade operates independently of **Contrast** and **Brightness**, providing a simple master dimmer for the result.
+
+---
+
+### Switch 7 — Field
+
+| Property | Value |
+|----------|-------|
+| Off | Odd |
+| On | Even |
+| Default | Odd |
+
+**Field** selects which set of scan lines is treated as the delayed field. When set to **Odd**, odd-numbered lines display delayed data and even lines pass live data through. Flipping to **Even** reverses this assignment. The visual effect is a one-line vertical shift of the entire comb pattern (the same stripes, just moved up or down by a single line.)
+
+---
+
+### Switch 8 — Pattern
+
+| Property | Value |
+|----------|-------|
+| Off | Lines |
+| On | Checker |
+| Default | Lines |
+
+**Pattern** selects between two comb modes. In **Lines** mode, the alternation is strictly by scan line: each line is either fully live or fully delayed. In **Checker** mode, the alternation also toggles per-pixel along each line, creating a fine ***checkerboard*** pattern where adjacent pixels within the same line can differ. Checkerboard mode produces a denser, more textured artifact compared to the broad horizontal stripes of Lines mode.
+
+---
+
+### Switch 9 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Animate** enables per-frame animation of the comb pattern. When **Off**, the pattern is static: each line is consistently assigned to live or delayed data from frame to frame. When set to **On**, the pattern shifts by one line each frame, causing the comb teeth to scroll vertically through the image. The animation cycles every 256 frames.
+
+:::note
+Animation is most visible in **Lines** mode. In **Checker** mode, the per-frame shift creates a rapid flickering that can appear as a uniform shimmer rather than a discernible scroll.
+:::
+
+---
+
+### Switch 10 — Invert Y
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert Y** applies a bitwise complement to the luminance channel before comb processing. When **Off**, the Y channel passes to the comb decision stage unchanged. When set to **On**, every luminance value is inverted: bright becomes dark and dark becomes bright. This inversion happens ***before*** the line buffers, so the delayed scanline data stored in block RAM also reflects the inverted luminance.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all Combing processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the combed result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** blends between the dry (unprocessed) signal and the wet (combed) signal. At minimum, the output is 100% dry: you see the original input with no combing visible. At maximum (the default), the output is 100% wet: you see the full comb effect. Intermediate positions produce a transparent overlap of the original and processed images, useful for dialing in subtle combing textures.
 
 ---
 
 ## Background
 
-### What Is Interlace Combing?
+### Interlaced video
 
-Interlace was the dominant television scanning format for over 60 years. Each frame was split into two **fields** — odd lines first, even lines next — each captured at a slightly different moment in time. When a scene contains motion, the two fields show the moving object at different positions. Displaying both fields simultaneously (progressive playback) produces a characteristic **comb** artifact: along the edges of moving objects, alternating scanlines show different positions, creating a tooth-like pattern. Combing simulates this artifact by alternating between the current input and a one-line-delayed version, reproducing the temporal displacement of interlaced fields.
+Before the age of flat screens and digital displays, all television was ***interlaced***. Each frame was split into two ***fields***: one containing the odd-numbered scan lines, the other containing the even-numbered lines. The fields were transmitted and displayed in rapid alternation: 60 fields per second in NTSC, 50 in PAL: but each complete frame only appeared 30 or 25 times per second. This halved the bandwidth required to transmit smooth motion, because the human eye is more sensitive to flicker than to fine spatial detail. It was one of the most elegant engineering compromises in the history of broadcasting.
 
-### What Is Checkerboard Patterning?
+### Comb artifacts
 
-While interlace combing creates horizontal line-by-line alternation, **checkerboard** patterning extends the alternation to both dimensions — every other pixel on every other line comes from the delayed signal. The result is a fine grid where live and delayed pixels alternate in both the horizontal and vertical directions. This pattern appears in various digital video pathologies, including certain types of chroma subsampling artifacts and dithered rendering. Combing implements this by XORing the line-parity signal with a per-pixel toggle, creating the characteristic two-dimensional alternation.
+When interlaced footage is displayed on a ***progressive*** monitor: one that draws every line in each frame: both fields must be shown simultaneously. If the image is perfectly still, the two fields mesh seamlessly. But if the subject has moved between fields, the odd and even lines no longer align. The result is a series of fine horizontal fringes along motion edges that look like the teeth of a comb. Broadcast engineers call this a ***combing artifact***, and it's one of the defining visual signatures of improperly deinterlaced video.
 
-### What Is a Line Buffer?
+Videomancer's Combing program recreates this effect digitally. Instead of storing two temporal fields, it uses a one-line delay buffer: the previous scanline's data is stored in ***block RAM*** and read back as the current scanline arrives. On alternating lines, the delayed data replaces (or blends with) the live data, producing the characteristic comb teeth wherever the image differs from one line to the next.
 
-A **line buffer** is a block of memory that stores one complete scanline of video data. By writing pixels into the buffer as they arrive and reading them out one line later, the buffer creates a one-scanline delay — the fundamental building block of vertical filtering and interlace simulation. Combing uses three 1024×10-bit line buffers (one per YUV channel), implemented in FPGA block RAM, providing exactly one scanline of delay for each color component independently.
+### Line buffers
+
+The heart of the Combing program is a set of three ***line buffers***: one for each of the Y, U, and V video channels. Each buffer is a block RAM inside the FPGA, holding up to 1,024 pixels of 10-bit data. As each scanline arrives, its pixel values are written into the buffer. At the same horizontal position, the buffer provides the data from the previous scanline. This one-line delay is what makes the comb pattern possible: selected lines can substitute "old" pixel data while non-selected lines display the live input. The write and read happen simultaneously, one clock cycle apart, so the previous line's data is always available in time for the current pixel decision.
 
 
 ---
 
 ## Signal Flow
 
-Y/U/V Channels → Y Post-Processing → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y/U/V Channels ─────────────────────────────────────────────
-│   │
-│   ├─ 1. Line Buffer Write     (store current pixel to BRAM)
-│   ├─ 2. Line Buffer Read      (retrieve previous-line pixel)
-│   ├─ 3. Phase Computation     (line_count + offset + animation)
-│   ├─ 4. Pattern Selection     (Lines: line parity; Checker: XOR pixel parity)
-│   ├─ 5. Mux: Live / Delayed   (select based on pattern phase)
-│   └─ 6. Blend                 (crossfade between live and muxed)
-│
-├── Y Post-Processing ──────────────────────────────────────────
-│   │
-│   ├─ 7. Contrast             (gain around midpoint)
-│   ├─ 8. Brightness           (DC offset)
-│   └─ 9. Fade                 (final output level)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ Pass-through (hsync, vsync, field, avid)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The core interaction is between the line buffers and the comb pattern decision. At each pixel clock, the FPGA writes the current input to block RAM and reads the value stored there from the previous scanline. The pattern decision then selects: per-line, or per-pixel in checkerboard mode: whether that pixel should show the live input or a weighted blend of delayed and live data controlled by **Comb Depth**.
 
-The key interaction is between the phase computation and the pattern mode. In Lines mode, the alternation pattern depends only on the vertical scanline count plus an offset — creating purely horizontal comb artifacts. In Checkerboard mode, the pixel position is XORed with the line parity, creating a two-dimensional grid. The Blend control then determines how strongly the delayed signal replaces the live signal: at 0%, the output is entirely live (no combing visible); at 100%, the alternation is a hard binary switch between live and delayed pixels. Animation adds a time-varying offset to the phase, causing the comb pattern to drift vertically over time.
+The comb pattern is position-dependent: the current line number (offset by **Line Offset** and optionally incremented by the frame counter) determines the line phase. In checkerboard mode, the horizontal pixel position also contributes, creating a two-dimensional alternation. The original video data is separately piped through a six-clock shift register to align with the processing pipeline, and this delayed copy serves as the dry input to the final wet/dry interpolator mix. All three channels (Y, U, V) pass through identical comb processing: the only channel-specific operation is **Invert Y**, which inverts luminance before combing without affecting chrominance.
 
----
-
-## Parameter Reference
-
-<img src={combing_control_panel} alt="Videomancer front panel with Combing loaded"/>
-*Videomancer's front panel with Combing active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Comb Depth
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-At 0%, the live and delayed signals contribute equally to every pixel — no visible combing. As Comb Depth increases, the alternation between live and delayed becomes more pronounced. At 100%, the full delayed signal replaces the live signal on alternate lines (or pixels in checkerboard mode), creating the maximum comb artifact. This control determines the visibility and intensity of the interlace simulation. Internally, controls the strength of the comb pattern.
-
----
-
-#### Knob 2 — Blend
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
-
-Crossfades between the combed output and the original live input. At 0%, the output is entirely the original signal regardless of Comb Depth. At 100%, the full combed signal passes through. Intermediate values create a ghost-like blend where the comb pattern is visible but semi-transparent. This control is useful for dialing in subtle interlace shimmer without committing to full binary alternation.
-
----
-
-#### Knob 3 — Line Offset
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
-
-Shifts the phase of the comb pattern vertically. Increasing the Line Offset moves the alternation boundary — lines that were showing live signal switch to delayed, and vice versa. At 0%, even lines show live and odd lines show delayed. Sweeping this control provides continuous vertical scrolling of the comb pattern. In checkerboard mode, the offset shifts the grid pattern vertically.
-
----
-
-#### Knob 4 — Contrast
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Applies gain around the midpoint (512) to the luminance channel after combing. Values above center increase contrast, pushing bright pixels brighter and dark pixels darker. Values below center reduce contrast, compressing the tonal range toward mid-gray. The contrast is applied after the comb processing, so it affects the already-combed signal.
-
----
-
-#### Knob 5 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Adds a DC offset to the luminance channel after contrast processing. Controls the overall brightness of the output. At center position, no offset is applied. Above center brightens, below center darkens.
-
----
-
-#### Knob 6 — Fade
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-At 100%, the processed signal passes at full level. At 0%, the output fades to black. Acts as a master output level control applied after all comb processing, contrast, and brightness adjustments. Internally, controls the final output amplitude.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Field** | Odd | Even |
-| **8 — Pattern** | Lines | Checker |
-| **9 — Animate** | Off | On |
-| **10 — Invert Y** | Off | On |
-| **11 — Bypass** | Off | On |
-
-Switches 7–11 control five independent parameters. Field selects the starting field polarity. Pattern chooses between line-based and checkerboard alternation. Animate adds temporal evolution to the comb pattern. Invert Y provides a luminance polarity reversal. Bypass enables instant comparison.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Combing processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
-
----
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Combing-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::tip
+**Processing order matters.** Y inversion happens *before* the line buffer write, so delayed data in the BRAMs is already inverted when Invert Y is active. Toggling Invert Y mid-stream causes a one-line transition artifact as the buffer flushes old data.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from basic interlace simulation to creative pattern-based video decomposition using the comb filter and its modifiers.
+These exercises progress from basic line combing to complex animated textures. Each builds on the previous, gradually engaging more of the comb pattern engine.
+### Exercise 1: Classic Comb Teeth
 
-### Exercise 1: Broadcast Interlace Simulation
+![Classic Comb Teeth result](/img/instruments/videomancer/combing/combing_ex1_s1.png)
+*Classic Comb Teeth — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: combing_source1_fruit, after: combing_ex1_s1 },
-    { label: "Field", before: combing_source2_field, after: combing_ex1_s2 },
-    { label: "Clouds", before: combing_source3_clouds, after: combing_ex1_s3 },
-    { label: "Pattern", before: combing_source4_pattern, after: combing_ex1_s4 },
-    { label: "Boy", before: combing_source5_boy, after: combing_ex1_s5 },
-    { label: "Berries", before: combing_source6_berries, after: combing_ex1_s6 },
-  ]}
-/>
-*Broadcast Interlace Simulation — simulated result across source images.*
-**Source**: Video footage with moderate motion — a person walking, traffic, or a slowly panning camera.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Recreate the characteristic comb artifacts of improperly deinterlaced broadcast video.
+#### Learning Outcomes
 
-1. **Basic combing**: Set Comb Depth to ~80% and Blend to ~100%. The output shows alternating scanlines from the current and previous field — the classic comb pattern is visible along motion boundaries.
-2. **Field polarity**: Toggle the Field switch. Notice the comb pattern shifts by one line — odd vs. even field dominance.
-3. **Reduce blend**: Lower Blend to ~50%. The comb teeth become ghostly and semi-transparent rather than hard binary alternation.
-4. **Line offset sweep**: Slowly sweep Line Offset. The comb pattern scrolls vertically, simulating field-alignment drift.
-5. **Natural combing**: Set Comb Depth ~40%, Blend ~60% for a subtle interlace shimmer like a poorly calibrated TV monitor.
+Recreate the classic interlace combing artifact: fine horizontal fringes along motion edges.
 
-**Key concepts**: Interlace combing is caused by temporal offset between odd and even fields, comb depth controls the field separation, blend controls the mixing ratio
+#### Key Concepts
 
----
+- Combing replaces alternating scanlines with previous-line data
+- Comb Depth controls the strength of the replacement
+- The effect is most visible on moving subjects
 
-### Exercise 2: Checkerboard Decomposition
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: combing_source1_fruit, after: combing_ex2_s1 },
-    { label: "Field", before: combing_source2_field, after: combing_ex2_s2 },
-    { label: "Clouds", before: combing_source3_clouds, after: combing_ex2_s3 },
-    { label: "Pattern", before: combing_source4_pattern, after: combing_ex2_s4 },
-    { label: "Boy", before: combing_source5_boy, after: combing_ex2_s5 },
-    { label: "Berries", before: combing_source6_berries, after: combing_ex2_s6 },
-  ]}
-/>
-*Checkerboard Decomposition — simulated result across source images.*
-**Source**: A still image or slow-moving footage with fine detail — text, geometric patterns, or fabric textures.
+A live camera feed with a slowly moving subject (a hand waving, a person walking, or a swinging pendulum.)
 
-**What You'll Create**: Explore the two-dimensional checkerboard pattern and its visual effects.
+#### Steps
 
-1. **Switch to checkerboard**: Enable Checkerboard mode (Switch 8). The alternation pattern changes from horizontal stripes to a fine grid.
-2. **Full depth**: Set Comb Depth to 100%. Every other pixel on every other line shows the delayed signal, creating a checkerboard mosaic.
-3. **Contrast enhancement**: Increase Contrast to ~70%. The checkerboard pattern becomes more defined as the tonal difference between live and delayed pixels is amplified.
-4. **Animate**: Enable Animate (Switch 9). The checkerboard pattern begins to crawl, creating a shimmering mesh effect.
-5. **Fade sculpting**: Lower Fade to ~60% and observe how the pattern darkens into a structured vignette.
+1. **Full combing**: With **Comb Depth** (Knob 1) at maximum, observe the comb teeth along edges where the subject is moving. Still areas of the frame appear clean.
+2. **Reduce depth**: Slowly turn Comb Depth counterclockwise. The teeth grow fainter as less delayed data is mixed in. At minimum, the comb effect disappears entirely.
+3. **Flip field**: Toggle **Field** (Switch 7) from **Odd** to **Even**. The stripe pattern shifts by one line (lines that were live become delayed, and vice versa.)
+4. **Shift phase**: Sweep **Line Offset** (Knob 3) from minimum to maximum. The entire comb pattern slides vertically through the screen.
 
-**Key concepts**: Checkerboard extends alternation to both axes, animation creates temporal shimmer, contrast amplifies the pattern visibility
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Comb Depth | 100% |
+| Blend | 0% |
+| Line Offset | 0% |
+| Contrast | ~50% |
+| Brightness | ~50% |
+| Fade | 100% |
+| Field | Odd |
+| Pattern | Lines |
+| Animate | Off |
+| Invert Y | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Animated Drift and Pattern Blending
+### Exercise 2: Checkerboard Shimmer
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: combing_source1_fruit, after: combing_ex3_s1 },
-    { label: "Field", before: combing_source2_field, after: combing_ex3_s2 },
-    { label: "Clouds", before: combing_source3_clouds, after: combing_ex3_s3 },
-    { label: "Pattern", before: combing_source4_pattern, after: combing_ex3_s4 },
-    { label: "Boy", before: combing_source5_boy, after: combing_ex3_s5 },
-    { label: "Berries", before: combing_source6_berries, after: combing_ex3_s6 },
-  ]}
-/>
-*Animated Drift and Pattern Blending — simulated result across source images.*
-**Source**: Any footage — the effect is primarily pattern-driven rather than content-dependent.
+![Checkerboard Shimmer result](/img/instruments/videomancer/combing/combing_ex2_s1.png)
+*Checkerboard Shimmer — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Combine animation, blending, and contrast for evolving pattern-based video textures.
+***A description of the exercise illustration.***
 
-1. **Moderate combing**: Set Comb Depth ~60%, Blend ~70%.
-2. **Animate**: Enable Animation (Switch 9). The comb pattern scrolls vertically, creating a rolling shutter-like drift.
-3. **Line offset**: Set Line Offset to ~40%. This adds a static offset to the animated pattern, shifting the starting position of the drift.
-4. **Contrast and brightness**: Increase Contrast to ~75%, set Brightness to ~40% for a darker, more contrasty look.
-5. **Invert Y**: Toggle Invert Y (Switch 10). The negative image reveals the comb pattern structure differently — dark teeth become bright.
-6. **Pattern comparison**: Quickly switch between Lines and Checkerboard modes to compare the two-pattern character in motion.
+#### Learning Outcomes
 
-**Key concepts**: Animation adds temporal evolution to static patterns, contrast shapes the visual weight of the comb teeth, inversion reveals complementary pattern structure
+Transform the source video into an animated checkerboard texture by combining per-pixel alternation with per-frame animation.
+
+#### Key Concepts
+
+- Checker mode alternates per-pixel in addition to per-line
+- Animation shifts the pattern every frame
+- Y inversion changes the contrast of the comb effect
+
+#### Video Source
+
+A video source with strong color contrasts and slow movement: close-up of colorful objects, fruit, or an abstract pattern.
+
+#### Steps
+
+1. **Enable checkerboard**: Set **Pattern** (Switch 8) to **Checker**. The comb effect now alternates per-pixel along each line, breaking the image into a fine grid of live and delayed pixels.
+2. **Animate the grid**: Turn on **Animate** (Switch 9). The checkerboard pattern shifts each frame, creating a shimmering, vibrating texture across the entire image.
+3. **Invert luminance**: Toggle **Invert Y** (Switch 10) to **On**. Brightness values flip before entering the comb engine, changing the contrast relationship between live and delayed pixels.
+4. **Half-strength mix**: Pull **Mix** (Fader 12) back to about 60%. The checkerboard texture becomes semi-transparent, letting the original image show through underneath.
+5. **Offset**: Sweep **Line Offset** (Knob 3) to about 50%. The checkerboard grid shifts vertically, changing which pixels are live and which are delayed.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Comb Depth | 100% |
+| Blend | 0% |
+| Line Offset | ~50% |
+| Contrast | ~50% |
+| Brightness | ~50% |
+| Fade | 100% |
+| Field | Odd |
+| Pattern | Checker |
+| Animate | On |
+| Invert Y | On |
+| Bypass | Off |
+| Mix | ~60% |
 
 ---
 
+### Exercise 3: Drifting Interference
 
-## Tips
+![Drifting Interference result](/img/instruments/videomancer/combing/combing_ex3_s1.png)
+*Drifting Interference — simulated result across source images.*
+#### Exercise Illustration
 
-- **Contrast shapes teeth**: Increasing contrast after combing amplifies the tonal difference between live and delayed lines, making the comb teeth sharper and more visible.
-- **Fade for vignette**: Use the Fade control to darken the combed output, creating a processed-looking signal that sits well in a mix.
-- **Feedback loops**: Route the output back to the input. The one-line delay creates recursive vertical shifting that builds complex stripe patterns over successive passes.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Produce a drifting interference pattern using partial comb depth, animation, and reduced mix (a vintage video texture that hums gently across the frame.)
+
+#### Key Concepts
+
+- Partial Comb Depth produces translucent comb teeth
+- Combining Line Offset with Animate produces drifting, organic textures
+- The wet/dry mix allows subtle layered blending of the effect
+
+#### Video Source
+
+Any video footage. High-detail material like landscapes, architecture, or close-up textures works especially well.
+
+#### Steps
+
+1. **Moderate depth**: Set **Comb Depth** (Knob 1) to about 60%. The comb teeth are present but not fully opaque (you can still see through them to the live data underneath.)
+2. **Set offset**: Turn **Line Offset** (Knob 3) to about 40%. The comb pattern shifts vertically, creating a misalignment between the comb grid and the video content.
+3. **Animate**: Enable **Animate** (Switch 9). The pattern now drifts steadily through the image at one line per frame.
+4. **Invert luminance**: Toggle **Invert Y** (Switch 10) to **On**. The tonal inversion interacts with the partial comb depth, creating a ghostly negative-image texture on selected lines.
+5. **Soften the blend**: Pull **Mix** (Fader 12) back to about 80%. The overall effect softens into a subtle, translucent texture (a vintage video haze layered over the source.)
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Comb Depth | ~60% |
+| Blend | ~70% |
+| Line Offset | ~40% |
+| Contrast | ~50% |
+| Brightness | ~40% |
+| Fade | ~60% |
+| Field | Odd |
+| Pattern | Lines |
+| Animate | On |
+| Invert Y | On |
+| Bypass | Off |
+| Mix | ~80% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Comb Artifact** | A visual defect in interlaced video where alternating scanlines show temporal offset, creating tooth-like edges along motion boundaries. |
-| **Field** | One half of an interlaced video frame, containing either all odd-numbered or all even-numbered scanlines. |
-| **Interlace** | A scanning method where each frame is divided into two fields (odd and even lines), transmitted in alternation. |
-| **Line Buffer** | A memory block storing one complete scanline, creating a one-line delay for vertical filtering operations. |
-| **Progressive** | A scanning method where all lines of a frame are captured and displayed in sequential order, without field splitting. |
+- **Block RAM (BRAM)**: A dedicated memory block inside the FPGA used for storing scanline data at high speed, without consuming general-purpose logic cells
+
+- **Checkerboard**: A two-dimensional alternation pattern where adjacent pixels differ both horizontally and vertically, like the squares of a chessboard
+
+- **Comb Artifact**: A visual distortion that appears when interlaced video fields are displayed simultaneously on a progressive monitor, creating horizontal fringe patterns along moving edges
+
+- **Field**: One half of an interlaced video frame, containing either the odd-numbered or even-numbered scan lines
+
+- **Interlacing**: A video display technique that splits each frame into two interleaved fields, transmitting odd and even lines separately to reduce bandwidth
+
+- **Line Buffer**: A block RAM that stores one complete scanline of video data, allowing the program to compare or combine the current line with the previous one
+
+- **Pipeline**: A series of sequential processing stages inside the FPGA where data passes from one stage to the next on each clock cycle
+
+- **Progressive**: A video display method that draws every scan line in sequence from top to bottom, as opposed to interlacing
+
+- **Scan Line**: A single horizontal row of pixels in a video frame
 
 ---

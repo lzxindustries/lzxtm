@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 128
 slug: /instruments/videomancer/geode
@@ -7,294 +7,417 @@ image: /img/instruments/videomancer/geode/geode_hero.png
 description: "Geode draws regular polygons on screen — triangles, squares, pentagons, hexagons, heptagons, and octagons — using a real-time half-plane rasterizer built entirely in FPGA logic."
 ---
 
-import geode_hero from '/img/instruments/videomancer/geode/geode_hero.png';
-import geode_animation from '/img/instruments/videomancer/geode/geode_animation.gif';
-import geode_control_panel from '/img/instruments/videomancer/geode/geode_control_panel.png';
-import geode_exercise1_result from '/img/instruments/videomancer/geode/geode_exercise1_result.gif';
-import geode_exercise2_result from '/img/instruments/videomancer/geode/geode_exercise2_result.gif';
-import geode_exercise3_result from '/img/instruments/videomancer/geode/geode_exercise3_result.gif';
-
-# Geode
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={geode_hero} alt="Geode hero image"/>
-*Geode rendering a morphing hexagonal polygon with edge glow and dual counter-rotating interference.*
-<img src={geode_animation} alt="Geode animated output"/>
-*Geode output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Geode hero image](/img/instruments/videomancer/geode/geode_hero_s1.png)
+*Geode rendering a luminous rotating hexagon with radial vertex morph animation against a black void.*
 
 ---
 
 ## Overview
 
-Geode draws regular polygons on screen — triangles, squares, pentagons, hexagons, heptagons, and octagons — using a real-time half-plane rasterizer built entirely in FPGA logic. Each polygon is defined by its vertex positions, computed from a sin/cos lookup table, and tested pixel by pixel using incremental edge functions. The result is a geometrically precise shape that can rotate continuously, morph its vertices with a radial wobble, glow at its edges, and fill with either a solid hue-cycled color or the live video input.
+**Geode** is a polygon shape synthesizer that draws glowing geometric figures directly on the video output. It renders convex polygons with three to six sides: triangles, squares, pentagons, and hexagons: centered on screen and rotating continuously. Vertices are placed on a circle using a sine/cosine lookup table, and the polygon's shape can be animated with a radial morph oscillation that pushes vertices in and out, creating a pulsing, organic quality.
 
-The name *Geode* comes from the geological formation — a hollow rock whose interior is lined with crystal facets. Like a geode cracked open to reveal its geometry, this program exposes the pure polygonal scaffolding that underlies so much of computer graphics. The vertex count control selects how many facets the crystal has.
+The program computes everything from scratch. No input video is required, though input video can be used as a fill texture inside the polygon or as a visible background behind it. Geode belongs to the ***synthesis*** family of programs: it generates its own imagery rather than transforming an existing signal.
 
-At conservative settings — a static hexagon with subtle edge glow on a black background — Geode produces clean geometric overlays suitable for titling or framing. At extreme settings — a dual morphing triangle with video fill, rotating at full speed over a video background — it becomes a kaleidoscopic compositing engine where the polygon acts as an animated shaped window into the source material.
+At its simplest, Geode draws a still white polygon on black. At its most complex, it produces slowly morphing kaleidoscopic crystal shapes filled with live video, hovering over a secondary video background (a clean geometric window into another world.)
+
+:::tip
+Because Geode is a synthesizer, it produces output even with no video input connected. Patch it at the end of your signal chain to composite polygon shapes over other effects, or use it standalone for pure geometric animation.
+:::
+
+### What's In a Name?
+
+A ***geode*** is a hollow rock whose rough, unremarkable exterior conceals a cavity lined with crystals. The name reflects the program's nature: simple polygon geometry on the outside, but with faceted complexity revealed through morph animation and hue shifting. Like cracking open a stone to find amethyst formations inside, turning Geode's controls reveals hidden geometries within basic shapes.
 
 ---
 
 ## Quick Start
 
-1. **Sides are discrete steps**: Unlike most Videomancer knobs, the Sides control has only six positions (3–8). You will feel distinct transitions — there are no fractional side counts.
-2. **Edge Glow is the signature effect**: The luminous edge falloff is what gives Geode its distinctive look. Even at low values it adds depth; at high values it produces neon-wireframe graphics.
-3. **Video fill creates shaped windows**: Set Fill Src to Video and Background to Black to use the polygon as an animated viewport — a geometric mask that reveals the live input within the polygon and hides it outside.
+1. Turn **Sides** (Knob 1) fully clockwise to select a hexagon. A bright white hexagonal shape appears centered on a black background.
+2. Increase **Size** (Knob 2) to fill more of the screen. The polygon expands outward from the center.
+3. Turn **Rotation** (Knob 3) clockwise. The hexagon begins to spin, its speed increasing with the knob position.
+4. Increase **Morph** (Knob 4). The vertices begin pulsing inward and outward at different rates, turning the rigid hexagon into a breathing, organic crystal shape.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Geode loaded](/img/instruments/videomancer/geode/geode_control_panel.png)
+*Videomancer's front panel with Geode active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Sides
+
+| Property | Value |
+|----------|-------|
+| Range | 3 – 8 |
+| Default | 6 |
+
+**Sides** selects the number of vertices in the polygon. The knob sweeps across four discrete positions, producing a triangle (three sides), a square (four sides), a pentagon (five sides), and a hexagon (six sides). Turning the knob counterclockwise selects fewer sides; turning it clockwise selects more. The default position (center) produces a pentagon.
+
+The number of sides determines the overall character of the shape. Triangles have an aggressive, angular quality. Squares feel stable and architectural. Pentagons and hexagons become more circular and crystalline, especially when morph animation is active.
+
+:::note
+The hardware display shows a range of 3 to 8, but the FPGA architecture implements four distinct polygon types (3, 4, 5, and 6 sides). Display values above 6 produce a hexagon.
+:::
+
+---
+
+### Knob 2 — Size
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Size** controls the radius of the polygon, determining how large the shape appears on screen. At 0%, the polygon collapses to a point at the center. At the default (50%), a medium-sized polygon is drawn. At 100%, the polygon extends to fill most of the frame.
+
+:::note
+At large sizes, the polygon's edges may extend beyond the visible frame. This is normal: the polygon is mathematically clipped to the active video area by the scanline span computation.
+:::
+
+---
+
+### Knob 3 — Rotation
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Rotation** sets the speed of continuous rotation animation. At 0% (fully counterclockwise and the default), the polygon is stationary. Increasing the value causes the polygon to spin faster. The rotation is driven by a ***direct digital synthesis*** accumulator that adds the knob value to a phase register on each frame, so the motion is smooth and continuous regardless of video format.
+
+Even a small amount of rotation brings the shape to life, especially when combined with **Morph** animation.
+
+---
+
+### Knob 4 — Morph
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Morph** controls the amplitude of a radial oscillation applied independently to each vertex. At 0% (the default), all vertices sit at the same distance from the center, and the polygon is perfectly regular. As the value increases, vertices begin pulsing inward and outward at different phases, distorting the polygon into star-like, flower-like, or amoebic forms.
+
+The morph animation uses a ***triangle wave*** at a fixed internal rate. Each vertex oscillates at a different phase offset (evenly spaced around the polygon), creating a mesmerizing ripple effect around the perimeter. Higher **Morph** values produce more dramatic deformation, while lower values create subtle breathing.
+
+:::tip
+Combine high **Morph** with a triangle (**Sides** fully counterclockwise) for a three-pointed star effect. With a hexagon and moderate morph, the shape resembles a rotating crystal or snowflake.
+:::
+
+---
+
+### Knob 5 — Edge Glow
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Edge Glow** controls the width of a luminance highlight along the polygon's edges. At 0%, no edge highlight is drawn: the shape has hard boundaries. Increasing the value widens the glow band around the perimeter, creating a soft neon-like outline effect. The default is approximately 25%.
+
+:::note
+This parameter is mapped to the FPGA registers but is reserved for a future implementation of edge proximity distance computation. In the current version, the polygon renders with hard edges regardless of this control's position.
+:::
+
+---
+
+### Knob 6 — Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Hue** selects the color of the polygon's solid fill. The control sweeps through four color zones. In the first quarter (0 to 25%), the polygon is filled with pure white: no chroma. In the second quarter (25 to 50%), a warm tint is applied: blue-difference increases and red-difference decreases. In the third quarter (50 to 75%), a cool tint is applied: blue-difference decreases and red-difference increases. In the final quarter (75 to 100%), a golden amber tone is produced by boosting both chroma components. The default is center (50%).
+
+**Hue** has no effect when **Fill Src** (Switch 7) is set to **Video**, because the fill color is taken directly from the input video stream in that mode.
+
+---
+
+### Switch 7 — Fill Src
+
+| Property | Value |
+|----------|-------|
+| Off | Color |
+| On | Video |
+| Default | Color |
+
+**Fill Src** selects the source for the polygon's interior color. When set to **Color** (the default), the polygon is filled with a solid color determined by the **Hue** knob. When set to **Video**, the polygon is filled with the input video signal, creating a shaped window through which the video is visible.
+
+---
+
+### Switch 8 — Draw Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Filled |
+| On | Edge |
+| Default | Filled |
+
+**Draw Mode** selects how the polygon is rendered. When set to **Filled** (the default), the entire interior of the polygon is drawn. When set to **Edge**, only the outline of the polygon is visible.
+
+:::note
+This parameter is mapped to the FPGA registers but is reserved for a future implementation of edge-only rendering. In the current version, the polygon is always rendered as a filled shape regardless of this switch position.
+:::
+
+---
+
+### Switch 9 — Double
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Double** enables a second polygon that rotates in the opposite direction from the primary shape. When set to **Off** (the default), only one polygon is drawn. When set to **On**, a second counter-rotating polygon of the same size and vertex count overlaps the first, creating interference patterns and symmetrical compositions.
+
+:::note
+This parameter is mapped to the FPGA registers but is reserved for a future implementation of dual-polygon rendering. In the current version, only a single polygon is drawn regardless of this switch position.
+:::
+
+---
+
+### Switch 10 — Background
+
+| Property | Value |
+|----------|-------|
+| Off | Black |
+| On | Video |
+| Default | Black |
+
+**Background** selects what is drawn behind the polygon. When set to **Black** (the default), the area outside the polygon is filled with black (Y=0, U=512, V=512). When set to **Video**, the input video signal is displayed behind the polygon, allowing the geometric shape to be composited over live footage.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the input signal directly to the output, bypassing all Geode rendering. The sync delay pipeline still aligns timing signals, so there is no glitch when toggling. Use Bypass for instant A/B comparison between the raw input and the generated polygon output.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the unprocessed input (dry) and the Geode output (wet). At 0%, the output is entirely the dry input signal. At 100% (the default), the output is entirely the generated polygon image. Intermediate positions blend the two together, useful for ghostly overlay effects where the polygon fades in and out of the source material.
 
 ---
 
 ## Background
 
-### What Is Half-Plane Rasterization?
+### Polygon rasterization on a scanline renderer
 
-Determining whether a pixel lies inside a convex polygon is one of the fundamental problems in computer graphics. The **half-plane method** solves it by treating each edge of the polygon as a dividing line that splits the plane into two halves. A pixel is inside the polygon if and only if it lies on the correct side of *every* edge simultaneously. For each edge, the test reduces to evaluating a linear function $e = \Delta x \cdot (P_y - A_y) - \Delta y \cdot (P_x - A_x)$, where $A$ is a vertex and $(\Delta x, \Delta y)$ is the edge direction. If $e \geq 0$ for all edges (assuming consistent winding), the pixel is inside. Geode evaluates up to eight edge functions in parallel, one per polygon side.
+Traditional computer graphics draws polygons by filling triangles with a ***rasterizer*** that works in two-dimensional framebuffer space. Geode takes a different approach suited to real-time video hardware: it evaluates polygon containment per scanline, computing the left and right boundaries of the polygon on each horizontal line and filling the span in between. This technique is called ***scanline rendering*** and was one of the earliest practical methods for drawing filled shapes in computer graphics.
 
-### Why Incremental Evaluation?
+For each scanline, Geode clips the polygon to a horizontal slice at that line's Y coordinate. It walks each edge of the polygon, finds where the edge crosses the current scanline using iterative binary division, and narrows a span window from both sides. During active video, each pixel is tested against this span: a simple range check that determines whether the pixel falls inside or outside the polygon.
 
-Evaluating the edge function from scratch for every pixel would require a multiply per edge per pixel — far too expensive at video rates. Instead, Geode exploits the fact that along a horizontal scanline, only the $x$-coordinate changes. The edge function increment per pixel is simply $-\Delta y$, a constant for each edge. At the start of each scanline, the edge function is initialized with one multiply per edge (during horizontal blanking), and then each pixel requires only an addition per edge. This **incremental evaluation** reduces the per-pixel cost from a multiply to an add, enabling real-time rasterization of complex polygons at 74.25 MHz.
+### Sin/cos lookup and DDS animation
 
-### Sin/Cos Lookup for Vertex Positioning
+Geode places polygon vertices on a circle using a 1024-entry ***sine/cosine lookup table*** stored in FPGA logic fabric as combinational ROM. The table accepts a 10-bit angle (0 to 1023, representing 0° to 360°) and returns both sine and cosine as signed 10-bit values. Vertex positions are computed by multiplying the cosine and sine of each vertex's angle by the polygon radius, then adding the screen center offset.
 
-Geode places its polygon vertices on a circle centered on screen. The position of each vertex is determined by a **sin/cos lookup table** (`sin_cos_full_lut_10x10`) that maps a 10-bit angle (0–1023, representing 0°–360°) to signed 10-bit sine and cosine values. The angle for each vertex is the base rotation angle plus the vertex index times the angle step (1024 divided by the number of sides). This lookup is purely combinational — no BRAM, just fabric LUTs configured as ROM — keeping resource usage minimal.
+The rotation animation uses a ***direct digital synthesis*** (DDS) accumulator: a 20-bit register that adds the **Rotation** knob value on every vertical sync pulse. The accumulator's upper 10 bits become the base angle for vertex placement. Because the accumulator wraps naturally at its word width, rotation is seamless and continuous. The speed is proportional to the knob value, and at zero the polygon is stationary.
 
-### Radial Morph and DDS Animation
+### Morph animation
 
-The polygon's rotation is driven by a **direct digital synthesis (DDS)** phase accumulator. Each frame, the accumulator adds the Rotation register value. The upper 10 bits of the 20-bit accumulator become the base rotation angle, so higher register values produce faster rotation. The morph effect adds a per-vertex radial oscillation: each vertex's radius is modulated by a triangle wave whose phase depends on both a global morph accumulator and the vertex index. This creates a pulsing, breathing deformation where vertices move inward and outward at slightly different rates.
+The morph effect applies a per-vertex radial oscillation. Each vertex has a different phase offset (spaced evenly by 171 angle units, approximately 60° per vertex), and the oscillation is driven by a separate 20-bit accumulator that increments by 37 counts per frame. This slow, fixed-rate accumulator means the morph animation runs at a constant speed regardless of the **Morph** knob: the knob controls only the *amplitude* of the oscillation, not the speed.
 
-### Edge Glow and Distance Fields
+Within the vertex computation pipeline, the morph offset is computed as a triangle wave from the morph accumulator, then multiplied by the **Morph** amplitude and added to the base polygon radius. Any negative result is clamped to zero. The result is that each vertex independently breathes in and out, distorting the regular polygon into fluid, organic forms.
 
-The minimum value among all edge functions at any pixel is a measure of that pixel's distance from the nearest polygon edge (in the edge-function metric, not Euclidean distance). Geode uses this minimum distance to generate an **edge glow** — a brightness falloff that is brightest right at the edge and fades to zero at a user-controlled width. In edge-only draw mode, the polygon interior is invisible and only the glowing outline remains, producing neon-like wireframe graphics.
+### Vertex computation pipeline
+
+Vertex positions are recomputed once per frame during the vertical blanking interval. The computation runs as a five-phase state machine, processing one vertex every five clock cycles:
+
+1. **Phase 0**: Compute the vertex's angle (base rotation + index × angular step) and the morph triangle wave offset. Set the sin/cos LUT address.
+2. **Phase 1**: Multiply the morph offset by the morph amplitude (registered product).
+3. **Phase 2**: Compute the effective radius (base size + scaled morph product, clamped to non-negative). Register the sin/cos LUT outputs.
+4. **Phase 3**: Multiply cosine and sine by the effective radius (two parallel multiplications).
+5. **Phase 4**: Shift and add the products to the screen center coordinates. Store the vertex position and advance to the next vertex.
 
 
 ---
 
 ## Signal Flow
 
-VBlank: Vertex → Per-Scanline: Edge Setup → Per-Pixel: Rasterization → ... → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Parameter Registers
-│
-├── VBlank: Vertex Computation ──────────────────────────────────
-│   │
-│   ├─ 1. Angle Calculation       (base rotation + vertex_index × step)
-│   ├─ 2. Sin/Cos Lookup          (combinational LUT, 10-bit angle → sin/cos)
-│   ├─ 3. Vertex Position         (center + radius × sin/cos, with morph wobble)
-│   └─ 4. Repeat for N vertices   (sequential state machine, one vertex per cycle)
-│
-├── Per-Scanline: Edge Setup ────────────────────────────────────
-│   │
-│   └─ 5. Edge Function Init      (one multiply per edge at scanline start)
-│
-├── Per-Pixel: Rasterization ────────────────────────────────────
-│   │
-│   ├─ 6. Edge Increment          (add per-pixel delta to all edge functions)
-│   ├─ 7. Inside/Outside Test     (all edges ≥ 0 → inside polygon)
-│   ├─ 8. Edge Glow               (min edge distance → brightness falloff)
-│   ├─ 9. Color Fill              (solid hue-mapped or video passthrough)
-│   └─ 10. Background Compose     (black or video behind polygon)
-│
-├── Second Polygon (if Double enabled) ──────────────────────────
-│   └─ Negated edge functions → counter-winding interference glow
-│
-├── Mix ─────────────────────────────────────────────────────────
-│   └─ 3× interpolator_u          (wet/dry crossfade Y, U, V)
-│
-├── Sync Signals ────────────────────────────────────────────────
-│   └─ Delayed by 8 clocks to match processing pipeline
-│
-└── Bypass ──────────────────────────────────────────────────────
-    └─ Select original or generated signal
-```
+The rendering pipeline splits into two independent computation phases that run at different times. During the ***vertical blanking interval***, the vertex computation state machine processes all polygon vertices (three to six, depending on **Sides**), computing each vertex's screen position from the rotation angle, morph offset, and radius. This happens once per frame. At the start of each ***active scanline***, the span computation state machine processes each polygon edge serially, using iterative binary division to find where edges cross the current line. This narrows a span window to produce the final pixel range for the per-pixel inside/outside test.
 
-The critical architectural choice is the split between blanking-time computation and active-video computation. Vertex positions and the initial edge function setup run during horizontal and vertical blanking — the "off-screen" portion of each video line. During active video, each pixel requires only additions (one per edge) and comparisons, keeping the per-pixel logic fast enough for real-time HD. The edge glow is computed from the minimum edge function value across all active edges, which creates a smooth distance-based falloff rather than a binary inside/outside boundary. When the Double toggle is enabled, a second set of edge functions (with inverted winding) adds additional glow lines that interfere with the primary polygon's edges.
+The color generation stage downstream of the per-pixel test selects fill and background independently. When both **Fill Src** and **Background** are set to Video, the polygon acts as a luminance mask: the polygon's interior shows video at full brightness while the background also shows video, creating a geometric highlight or stencil effect rather than a cutout.
+
+:::note
+The vertex computation pipeline takes five clock cycles per vertex, so a hexagon requires thirty clocks. At 74.25 MHz, this completes well within the vertical blanking interval. The span computation processes edges serially during horizontal blanking: approximately fourteen clocks per edge: and a hexagon's six edges are fully evaluated before the first active pixel arrives.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={geode_control_panel} alt="Videomancer front panel with Geode loaded"/>
-*Videomancer's front panel with Geode active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises explore Geode's core shape-synthesis capabilities, from static geometric forms to animated crystal shapes composited with live video.
+### Exercise 1: Crystal Formation
 
-### Rotary Potentiometers (Knobs 1–6)
+![Crystal Formation result](/img/instruments/videomancer/geode/geode_ex1_s1.png)
+*Crystal Formation — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Sides
-| Property | Value |
-|----------|-------|
-| Range | 3 – 8 |
-| Default | 6 |
+***A description of the exercise illustration.***
 
-Selects the number of polygon sides. The 10-bit register value is mapped to integers 3 through 8 via threshold boundaries at approximately equal spacing. At the lowest setting, Geode draws a triangle — the simplest polygon; at the highest, an octagon that approaches a circle. Because the mapping uses discrete steps, you will feel distinct click-like transitions as you sweep the knob. The vertex computation and edge function evaluation automatically adjust to handle the selected number of sides.
+#### Learning Outcomes
 
----
+A stationary series of geometric shapes of increasing complexity, learning how **Sides**, **Size**, and **Hue** interact.
 
-#### Knob 2 — Size
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
+#### Key Concepts
 
-At zero, the polygon collapses to a point. At maximum, the vertices extend to the edges of the frame. The radius directly scales the sin/cos lookup output, so the polygon maintains perfect geometric proportions at any size. When morph is active, the Size control sets the base radius around which the morph oscillation varies. Internally, controls the polygon's radius — the distance from screen center to each vertex.
+- Polygon vertex count changes the fundamental character of the shape
+- Size scales the shape from a point to full-frame
+- Hue sweeps through four discrete color zones
 
----
+#### Steps
 
-#### Knob 3 — Rotation
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
+1. Set **Sides** (Knob 1) fully counterclockwise to select a triangle. A bright white triangle appears centered on a black background.
+2. Slowly increase **Size** (Knob 2) from zero to full. Watch the triangle expand from a point to fill the frame.
+3. Step through the **Sides** control, pausing at each position: triangle, square, pentagon, hexagon. Notice how higher vertex counts make the shape approach a circle.
+4. Set **Hue** (Knob 6) to about 50%. The fill changes from white to a cool-tinted color. Sweep the knob slowly from 0% to 100% to see all four hue zones: neutral white, warm cyan, cool magenta, and golden amber.
 
-Controls the rotation animation speed. The register value is added to a 20-bit phase accumulator each frame, with the upper 10 bits becoming the base angle. At zero, the polygon is static. At low values, it rotates slowly enough to track individual vertex movements. At high values, the polygon spins rapidly, and the morph wobble creates spirograph-like motion trails when combined with persistence effects downstream.
+#### Settings
 
----
-
-#### Knob 4 — Morph
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-At zero, all vertices sit at exactly the same radius, producing a perfect regular polygon. As you increase the control, each vertex oscillates inward and outward along its radial axis. The oscillation phase is offset per vertex (by 171/1024 of a cycle), so adjacent vertices move in opposition, creating a breathing, pulsing deformation. At high values, the polygon can collapse into star-like shapes as some vertices approach the center while others extend outward. Internally, controls the amplitude of the radial morph deformation.
+| Control | Value |
+|---------|-------|
+| Sides | Vary (3 to 6) |
+| Size | 75% |
+| Rotation | 0% |
+| Morph | 0% |
+| Edge Glow | 0% |
+| Hue | 50% |
+| Fill Src | Color |
+| Draw Mode | Filled |
+| Double | Off |
+| Background | Black |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-#### Knob 5 — Edge Glow
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
+### Exercise 2: Living Geometry
 
-At zero, edges are sharp one-pixel boundaries. As you increase Edge Glow, pixels near the polygon edge receive brightness proportional to their proximity — creating a soft, neon-like halo around the polygon outline. The glow extends both inward and outward from the geometric edge. In edge-only draw mode, this control determines the line thickness of the wireframe rendering. Internally, controls the width of the edge glow effect.
+![Living Geometry result](/img/instruments/videomancer/geode/geode_ex2_s1.png)
+*Living Geometry — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-#### Knob 6 — Hue
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
+#### Learning Outcomes
 
-Controls the chrominance of the solid fill color. The hue register is divided into four quadrants that map to different color combinations by shifting the U and V chroma channels relative to the neutral midpoint. At the lowest setting the fill is achromatic (white/gray). The remaining quadrants produce warm, cool, and intermediate tint combinations. This control has no effect when Fill Src is set to Video, since the fill color comes from the input signal instead.
+An animated morphing polygon that breathes and rotates, exploring the interplay between uniform rotation and per-vertex distortion.
 
----
+#### Key Concepts
 
-### Toggle Switches (Switches 7–11)
+- Rotation uses DDS accumulation for smooth, continuous animation
+- Morph applies per-vertex radial oscillation at independent phases
+- The combination of rotation and morph creates organic, crystal-like motion
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Fill Src** | Color | Video |
-| **8 — Draw Mode** | Filled | Edge |
-| **9 — Double** | Off | On |
-| **10 — Background** | Black | Video |
-| **11 — Bypass** | Off | On |
+#### Steps
 
-The five toggles control independent binary options. Fill Src and Background select video compositing modes. Draw Mode switches between filled polygon and edge-only wireframe. Double enables a second counter-winding polygon for interference patterns. Bypass routes the input signal directly to the output.
+1. Start with a hexagon at moderate size (**Sides** fully clockwise, **Size** ~60%).
+2. Slowly turn **Rotation** (Knob 3) clockwise. The hexagon begins to spin. Find a slow, hypnotic speed around 20–30%.
+3. Now increase **Morph** (Knob 4) from zero. The vertices start pulsing independently. At low values, the hexagon wobbles gently. At high values, vertices extend far beyond the base radius, creating a star or flower shape.
+4. Try different **Sides** settings with active morph. A morphing triangle creates a three-pointed star. A morphing square creates a pinwheel. A morphing hexagon resembles a sea anemone.
+5. Set **Hue** (Knob 6) to sweep through the four color zones while the shape animates. The color shifts give each frame of the animation a different character.
 
----
+#### Settings
 
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Controls the wet/dry crossfade between the generated polygon output and the delayed input video. At maximum (default), the output is fully the generated signal. At minimum, the output is the unprocessed input. Intermediate positions blend between the two, allowing subtle geometric overlays. The mix is performed by three interpolator_u instances (one per YUV channel) using 10-bit fractional precision.
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Geode processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises progress from a simple static polygon to animated dual-polygon compositing, building familiarity with each control layer.
-
-### Exercise 1: Static Geometric Shapes
-
-<img src={geode_exercise1_result} alt="Static Geometric Shapes result"/>
-*Static Geometric Shapes — simulated result across source images.*
-**What You'll Create**: Learn how the Sides and Size controls produce different regular polygon shapes.
-
-1. **Triangle**: Set Sides fully counter-clockwise. A triangle appears on screen with sharp edges on a black background.
-2. **Square**: Slowly turn Sides clockwise until the shape snaps to four sides. Note the discrete step — the transition is not gradual.
-3. **Hexagon**: Continue clockwise to six sides. The shape approaches a circle but retains visible facets.
-4. **Scale**: Sweep Size from minimum to maximum. Watch the polygon grow from a point at center to a shape that fills the frame.
-5. **Edge glow**: Increase Edge Glow to about 50%. The edges develop a soft luminous halo. Note how the glow extends outward beyond the polygon boundary.
-6. **Wireframe**: Switch Draw Mode to Edge. The polygon interior disappears, leaving only the glowing outline.
-
-**Key concepts**: Half-plane rasterization, vertex count selection, edge distance glow, filled vs wireframe rendering
+| Control | Value |
+|---------|-------|
+| Sides | 6 (fully CW) |
+| Size | 60% |
+| Rotation | 25% |
+| Morph | 60% |
+| Edge Glow | 25% |
+| Hue | 75% |
+| Fill Src | Color |
+| Draw Mode | Filled |
+| Double | Off |
+| Background | Black |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Animated Morph and Rotation
+### Exercise 3: Video Stencil
 
-<img src={geode_exercise2_result} alt="Animated Morph and Rotation result"/>
-*Animated Morph and Rotation — simulated result across source images.*
-**What You'll Create**: Explore continuous rotation and radial morph deformation as time-varying animation.
+![Video Stencil result](/img/instruments/videomancer/geode/geode_ex3_s1.png)
+*Video Stencil — simulated result across source images.*
+#### Exercise Illustration
 
-1. **Slow rotation**: Start with a pentagon (Sides ~40%). Set Rotation to about 20%. Watch the polygon spin slowly.
-2. **Add morph**: Increase Morph to about 50%. The vertices begin pulsing inward and outward, creating a breathing star shape.
-3. **Speed up**: Increase Rotation to about 60%. The shape spins faster and the morph creates spiraling vertex trails.
-4. **Edge glow trail**: Increase Edge Glow to about 70%. The glow extends the visible area of the spinning edges, creating wider luminous arcs.
-5. **Color shift**: Sweep Hue through its full range. Watch the fill color cycle through achromatic, warm, cool, and mixed tints.
-6. **Observe morph extremes**: Increase Morph to maximum. Some vertices collapse to the center while others extend outward, creating star-burst formations.
+***A description of the exercise illustration.***
 
-**Key concepts**: DDS phase accumulator rotation, per-vertex radial oscillation, triangle wave morph, hue quadrant mapping
+#### Learning Outcomes
+
+A rotating polygon window that reveals the input video inside its boundaries, composited over either a black void or the same video as background (a geometric stencil effect.)
+
+#### Key Concepts
+
+- The polygon can act as a shaped window into the input video
+- Background and fill source can both use video independently
+- Mix blends the synthesized output with the dry input signal
+
+#### Steps
+
+1. Connect a video input with recognizable content (a camera feed, pattern, or video loop.)
+2. Set **Fill Src** (Switch 7) to **Video**. The polygon is now filled with the input video instead of a solid color.
+3. Leave **Background** (Switch 10) on **Black**. The polygon acts as a window: the video image is visible only within the polygon's boundaries, floating on a black void.
+4. Now set **Background** to **Video**. Both inside and outside the polygon show video. The polygon becomes a stencil (a subtle geometric highlight on the full-frame video.)
+5. Lower the **Mix** fader (Fader 12) to about 50%. The polygon blends with the raw input, creating a ghostly overlay effect.
+6. Enable rotation (~15%) and morph (~30%). The spinning, breathing polygon sweeps across the video content like a living magnifying lens.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Sides | 5 |
+| Size | 50% |
+| Rotation | 15% |
+| Morph | 30% |
+| Edge Glow | 0% |
+| Hue | 50% |
+| Fill Src | Video |
+| Draw Mode | Filled |
+| Double | Off |
+| Background | Video |
+| Bypass | Off |
+| Mix | 75% |
 
 ---
-
-### Exercise 3: Dual Polygon Video Composite
-
-<img src={geode_exercise3_result} alt="Dual Polygon Video Composite result"/>
-*Dual Polygon Video Composite — simulated result across source images.*
-**What You'll Create**: Combine dual polygon mode with video fill and video background for complex compositing.
-
-1. **Video fill**: Feed a camera or recorded source into the input. Set Fill Src to Video. The polygon interior now shows the live input.
-2. **Video background**: Set Background to Video. The entire screen shows video, with the polygon edges visible as glowing overlays.
-3. **Enable Double**: Turn on the Double toggle. A second set of edge glow lines appears, creating interference patterns where the two polygons' edges cross.
-4. **Triangle interference**: Set Sides to minimum (triangle). The dual triangles create six-pointed star-like glow patterns.
-5. **Morph animation**: Add Morph at about 60%. The interference patterns shift and breathe as the vertices oscillate.
-6. **Mix blend**: Lower the Mix fader to about 60%. The polygon overlay becomes semi-transparent over the video, creating a subtle geometric texture.
-7. **Sweep rotation**: Increase Rotation to about 40%. The entire composite animation rotates, with the video windowed through a spinning geometric mask.
-
-**Key concepts**: Video fill compositing, dual polygon interference, edge glow overlay on video, wet/dry mix blending
-
----
-
-
-## Tips
-
-- **Morph creates star shapes**: At high Morph values, alternating vertices collapse inward while others extend outward, turning regular polygons into star formations. The effect is most dramatic on triangles and squares.
-- **Rotation speed is exponential**: Because the rotation register value is added per frame, doubling the knob position doubles the rotation speed. Very high values produce rapid spinning.
-- **Feedback loops**: Routing Geode's output back through its own input (via Fill Src = Video or Background = Video in a feedback patch) creates recursive geometric patterns — polygons within polygons.
-- **Bypass for A/B comparison**: Switch 11 instantly shows the unprocessed signal for before/after comparison.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Convex Polygon** | A polygon where all interior angles are less than 180°; any line segment between two interior points lies entirely within the polygon. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator at a fixed rate and using its value to index a lookup table. |
-| **Edge Function** | A linear equation evaluated per pixel that determines which side of a polygon edge the pixel lies on; the sign of the result indicates inside or outside. |
-| **Half-Plane Rasterization** | A method for determining polygon interior by testing whether a pixel lies on the correct side of all edges simultaneously. |
-| **Incremental Evaluation** | An optimization where per-pixel computation is reduced to a single addition by exploiting the fact that only one coordinate changes along a scanline. |
-| **LUT** | Look-Up Table; in FPGA context, a small memory element used to implement combinational logic or ROM data. |
-| **Morph** | Radial deformation of polygon vertices that creates breathing, pulsing shapes by oscillating vertex distance from center. |
-| **N-gon** | A polygon with N sides; a regular N-gon has all sides equal and all angles equal. |
-| **Phase Accumulator** | A register that increments by a fixed value each cycle; its overflow rate generates a frequency, used here for rotation animation. |
-| **Sin/Cos LUT** | A lookup table that maps angle values to sine and cosine outputs, used for positioning vertices on a circle. |
+- **Convex Polygon**: A polygon where all interior angles are less than 180°; any line segment between two interior points stays inside the shape.
+
+- **DDS (Direct Digital Synthesis)**: A technique for generating periodic waveforms by incrementing a phase accumulator at a fixed rate and using the accumulated value to index a lookup table or drive an output.
+
+- **Morph**: In Geode, a radial oscillation applied independently to each vertex, creating organic deformations of the polygon shape.
+
+- **Rasterization**: The process of converting vector geometry (points, lines, polygons) into discrete pixel values for display.
+
+- **Scanline Rendering**: A rendering technique that processes an image one horizontal line at a time, computing which shapes are visible on each line.
+
+- **Sin/Cos LUT**: A lookup table storing precomputed sine and cosine values, allowing the FPGA to compute positions on a circle without trigonometric hardware.
+
+- **Span**: In scanline rendering, the horizontal range of pixels on a given line that fall inside a polygon.
+
+- **Synthesis Program**: A Videomancer program that generates imagery from scratch rather than processing an input video signal.
+
+- **Triangle Wave**: A periodic waveform that rises and falls linearly, used in Geode for the vertex morph oscillation.
+
+- **Vertex**: A corner point of a polygon; Geode computes vertex positions from angle and radius using a sin/cos lookup table.
 
 ---

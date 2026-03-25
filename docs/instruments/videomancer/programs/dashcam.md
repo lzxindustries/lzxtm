@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 75
 slug: /instruments/videomancer/dashcam
@@ -7,371 +7,392 @@ image: /img/instruments/videomancer/dashcam/dashcam_hero_s1.png
 description: "Dashcam emulates the look of footage recorded by a low-cost dashboard-mounted camera."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import dashcam_control_panel from '/img/instruments/videomancer/dashcam/dashcam_control_panel.png';
-import dashcam_source1_boat from '/img/instruments/videomancer/dashcam/dashcam_source1_boat.png';
-import dashcam_source2_dog from '/img/instruments/videomancer/dashcam/dashcam_source2_dog.png';
-import dashcam_source3_turtle from '/img/instruments/videomancer/dashcam/dashcam_source3_turtle.png';
-import dashcam_source4_pattern from '/img/instruments/videomancer/dashcam/dashcam_source4_pattern.png';
-import dashcam_source5_man from '/img/instruments/videomancer/dashcam/dashcam_source5_man.png';
-import dashcam_source6_paint from '/img/instruments/videomancer/dashcam/dashcam_source6_paint.png';
-import dashcam_hero_s1 from '/img/instruments/videomancer/dashcam/dashcam_hero_s1.png';
-import dashcam_hero_s2 from '/img/instruments/videomancer/dashcam/dashcam_hero_s2.png';
-import dashcam_hero_s3 from '/img/instruments/videomancer/dashcam/dashcam_hero_s3.png';
-import dashcam_hero_s4 from '/img/instruments/videomancer/dashcam/dashcam_hero_s4.png';
-import dashcam_hero_s5 from '/img/instruments/videomancer/dashcam/dashcam_hero_s5.png';
-import dashcam_hero_s6 from '/img/instruments/videomancer/dashcam/dashcam_hero_s6.png';
-import dashcam_ex1_s1 from '/img/instruments/videomancer/dashcam/dashcam_ex1_s1.png';
-import dashcam_ex1_s2 from '/img/instruments/videomancer/dashcam/dashcam_ex1_s2.png';
-import dashcam_ex1_s3 from '/img/instruments/videomancer/dashcam/dashcam_ex1_s3.png';
-import dashcam_ex1_s4 from '/img/instruments/videomancer/dashcam/dashcam_ex1_s4.png';
-import dashcam_ex1_s5 from '/img/instruments/videomancer/dashcam/dashcam_ex1_s5.png';
-import dashcam_ex1_s6 from '/img/instruments/videomancer/dashcam/dashcam_ex1_s6.png';
-import dashcam_ex2_s1 from '/img/instruments/videomancer/dashcam/dashcam_ex2_s1.png';
-import dashcam_ex2_s2 from '/img/instruments/videomancer/dashcam/dashcam_ex2_s2.png';
-import dashcam_ex2_s3 from '/img/instruments/videomancer/dashcam/dashcam_ex2_s3.png';
-import dashcam_ex2_s4 from '/img/instruments/videomancer/dashcam/dashcam_ex2_s4.png';
-import dashcam_ex2_s5 from '/img/instruments/videomancer/dashcam/dashcam_ex2_s5.png';
-import dashcam_ex2_s6 from '/img/instruments/videomancer/dashcam/dashcam_ex2_s6.png';
-import dashcam_ex3_s1 from '/img/instruments/videomancer/dashcam/dashcam_ex3_s1.png';
-import dashcam_ex3_s2 from '/img/instruments/videomancer/dashcam/dashcam_ex3_s2.png';
-import dashcam_ex3_s3 from '/img/instruments/videomancer/dashcam/dashcam_ex3_s3.png';
-import dashcam_ex3_s4 from '/img/instruments/videomancer/dashcam/dashcam_ex3_s4.png';
-import dashcam_ex3_s5 from '/img/instruments/videomancer/dashcam/dashcam_ex3_s5.png';
-import dashcam_ex3_s6 from '/img/instruments/videomancer/dashcam/dashcam_ex3_s6.png';
-
-# Dashcam
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: dashcam_source1_boat, after: dashcam_hero_s1 },
-    { label: "Dog", before: dashcam_source2_dog, after: dashcam_hero_s2 },
-    { label: "Turtle", before: dashcam_source3_turtle, after: dashcam_hero_s3 },
-    { label: "Pattern", before: dashcam_source4_pattern, after: dashcam_hero_s4 },
-    { label: "Man", before: dashcam_source5_man, after: dashcam_hero_s5 },
-    { label: "Paint", before: dashcam_source6_paint, after: dashcam_hero_s6 },
-  ]}
-/>
-*Barrel distortion, edge vignette, LFSR noise, and a blinking recording indicator transform clean video into convincing dashboard camera footage.*
+![Dashcam hero image](/img/instruments/videomancer/dashcam/dashcam_hero_s1.png)
+*Dashcam adding scan-line noise and a blinking recording indicator to a street scene, evoking low-fidelity surveillance footage.*
 
 ---
 
 ## Overview
 
-Dashcam emulates the look of footage recorded by a low-cost dashboard-mounted camera. It combines barrel distortion, vignette darkening, pseudo-random noise, night-vision tinting, sub-pixel jitter, and a blinking recording indicator dot into a single eight-clock pipeline. Every artefact is independently controllable, so you can dial in anything from a subtle lens-quality reduction to a full blown surveillance-tape aesthetic.
+Dashcam transforms your video input into something that looks like it was captured by a dashboard-mounted camera: grainy, a little rough around the edges, and occasionally punctuated by a blinking red recording dot. The core of the effect is a noise injection stage that adds pseudo-random texture to the luminance channel, mimicking the noisy sensor of a cheap security camera. A night-mode toggle strips out color and replaces it with a warm monochrome tint reminiscent of low-light infrared footage. At subtle settings, Dashcam adds just enough grit to make pristine digital video feel weathered and organic. At extreme settings, the image dissolves into a snowstorm of static.
 
-The pipeline processes the Y, U, and V channels through five composited stages: exposure adjustment, radial vignette, LFSR-driven noise injection, night-mode color shift, and overlay compositing. A 16-bit linear feedback shift register (seed 0xACE1, taps at bits 15, 13, 12, 10) provides the pseudo-random sequence used for both noise and stabilisation jitter. A final four-clock interpolator blends the processed signal with the dry input for wet/dry mix control.
+The program also features a recording indicator: a small, blinking red dot that appears in the upper-right corner of the frame when enabled. It's a visual stamp that sells the illusion of captured footage, turning any live feed into something that looks like evidence pulled from a hard drive. A wet/dry mix fader lets you dial the effect in gradually, blending the noisy, tinted result with the clean original signal to taste.
 
-The name references the ubiquitous dashboard cameras found in vehicles worldwide — inexpensive wide-angle cameras that record continuously through a windscreen, producing footage characterised by barrel distortion, peripheral darkening, sensor noise, and persistent recording overlays.
+### What's In a Name?
+
+The name ***Dashcam*** refers to the ***dashboard camera***, a compact video recorder mounted on a vehicle's windshield. Originally adopted by law enforcement and later by civilian drivers for insurance documentation, the dashcam has become an iconic source of low-fidelity, always-on footage. Dashcam footage is recognizable by its noisy image quality, fixed framing, and omnipresent timestamp overlays. This program captures that aesthetic and lets you apply it to any video signal.
 
 ---
 
 ## Quick Start
 
-1. **Night + Noise = surveillance**: Enable Night Mode and set Noise to 30–40% for the most convincing night-vision dashcam look. The green tint makes the noise grain more visible and atmospheric.
-2. **Vignette before noise**: The vignette darkens the edges, and then noise is added on top. This means edge regions show less absolute noise — just like a real lens with light falloff.
-3. **Indicator positioning**: Use Indicator X and Indicator Y at default positions (87%/12%) for a realistic upper-right recording dot. Move them to centre-bottom for a different camera model style.
+1. Feed a video signal into Videomancer and select the **Dashcam** program. With default settings, you'll see a faint layer of noise added to the image and a blinking red dot in the upper-right corner.
+2. Turn **Noise** (Knob 3) clockwise to about 75%. The image becomes visibly grainy, like footage from a budget security camera struggling in low light.
+3. Flip **Night Mode** (Switch 7) to **On**. The color drains from the image and is replaced with a warm, desaturated tint that resembles infrared night-vision footage.
+4. Sweep the **Mix** fader (Fader 12) from right to left. The noisy, tinted result crossfades smoothly back to the clean original signal.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Dashcam loaded](/img/instruments/videomancer/dashcam/dashcam_control_panel.png)
+*Videomancer's front panel with Dashcam active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Exposure
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Exposure** is mapped in the VHDL register interface but is not currently connected to the processing pipeline. Adjusting this knob has no visible effect on the output image. It is reserved for a future firmware update that may add brightness or gain control to the dashcam emulation.
+
+:::note
+Exposure is present on the control panel and in presets, but the current VHDL implementation does not use this parameter in any processing stage. Its value is stored and recalled by the preset system, ready for a future update.
+:::
+
+---
+
+### Knob 2 — Distortion
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Distortion** controls an internal vignette threshold calculation based on horizontal distance from the center of the frame. In the current VHDL implementation, the vignette value is computed but not applied to the output image. Adjusting this knob has no visible effect. It is reserved for a future update that may darken the edges of the frame to simulate a wide-angle lens.
+
+---
+
+### Knob 3 — Noise
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 13% |
+
+**Noise** controls the amplitude of pseudo-random scan-line noise injected into the luminance channel. At 0%, fully counterclockwise, the noise mask is zeroed and the image passes through clean. As you turn the knob clockwise, progressively more random texture is added to the brightness of every pixel. The noise is generated by a ***linear feedback shift register*** (LFSR), a fast digital circuit that produces a repeating but visually random pattern. At 100%, the noise is at full strength, and the image takes on the gritty, speckled quality of cheap surveillance footage. This is Dashcam's signature control.
+
+:::tip
+***Noise is additive.*** Because the LFSR output is added to the input luminance without subtraction, bright areas tend to clip to white under heavy noise. Dark areas gain visible texture while highlights wash out, which is exactly how a noisy camera sensor behaves.
+:::
+
+---
+
+### Knob 4 — Flicker
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 6% |
+
+**Flicker** is mapped in the register interface but is not currently connected to the processing pipeline. Adjusting this knob has no visible effect on the output. It is reserved for a future update that may simulate the rolling brightness variation caused by fluorescent lighting in dashcam footage.
+
+---
+
+### Knob 5 — Indicator X
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 88% |
+
+**Indicator X** is mapped in the register interface but the recording indicator position is currently fixed in the VHDL at a hardcoded screen location. Adjusting this knob has no visible effect. It is reserved for a future update that may allow horizontal repositioning of the recording dot.
+
+---
+
+### Knob 6 — Indicator Y
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 13% |
+
+**Indicator Y** is mapped in the register interface but the recording indicator position is currently fixed in the VHDL at a hardcoded screen location. Adjusting this knob has no visible effect. It is reserved for a future update that may allow vertical repositioning of the recording dot.
+
+---
+
+### Switch 7 — Night Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Night Mode** replaces the color information with a warm monochrome tint. When set to **Off**, the U and V chroma channels pass through unchanged. When set to **On**, the U channel is set to neutral (512) and the V channel is shifted slightly above neutral (612), producing a desaturated image with a warm amber cast. The effect mimics the look of infrared night-vision cameras, which render the world in shades of gray-green or warm amber.
+
+:::tip
+Combine **Night Mode** with heavy **Noise** (Knob 3) for the most convincing low-light surveillance look. The warm tint prevents the noise from looking like generic static and instead sells the illusion of a real IR sensor.
+:::
+
+---
+
+### Switch 8 — Wide Angle
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Wide Angle** is mapped in the register interface but is not currently connected to the processing pipeline. Toggling this switch has no visible effect. It is reserved for a future update that may apply barrel distortion to simulate a wide-angle lens.
+
+---
+
+### Switch 9 — Stabilize
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Stabilize** is mapped in the register interface but is not currently connected to the processing pipeline. Toggling this switch has no visible effect. It is reserved for a future update that may add simulated jitter or stabilization correction.
+
+---
+
+### Switch 10 — Timestamp
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Timestamp** enables or disables the blinking recording indicator. When set to **On** (the default), a small, dark red dot appears in the upper-right area of the frame. The dot blinks on and off at a rate determined by the frame counter: it is visible for 16 consecutive frames, then hidden for 16 frames. At 60 fps, this produces roughly a half-second blink cycle. When set to **Off**, the indicator is suppressed and the image is processed without any overlay.
+
+The indicator dot is rendered by overriding pixel values in a fixed rectangular area: the luminance is set low (dark), while the chroma is shifted to produce a red hue.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all noise injection, night-mode coloring, and indicator overlay. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the dashcam-processed result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** controls the wet/dry crossfade between the original input signal and the processed result. At 0%, fully to the left, the output is the unprocessed dry signal. At 100%, fully to the right (the default), the output is the fully processed wet signal with all active effects applied. Intermediate positions blend the two proportionally, allowing you to dial in just a hint of noise and tinting without committing to the full dashcam effect.
+
+:::tip
+The **Mix** fader is the most musical control on the panel. Use it to ride the effect in and out during a live performance, gradually introducing grit and then pulling back to the clean signal.
+:::
 
 ---
 
 ## Background
 
-### Dashboard Camera Optics
+### Dashboard Cameras and Surveillance Aesthetics
 
-Dashboard cameras use very wide-angle lenses — typically 120° to 170° field of view — to capture as much of the road as possible. These wide lenses introduce **barrel distortion**, where straight lines near the frame edges bow outward like the sides of a barrel. The distortion is strongest at the periphery and nearly invisible at the optical centre. Dashcam models this radial displacement by computing each pixel's squared distance from the frame centre and scaling the result against the Distortion parameter. With Wide Angle enabled, the distortion coefficient increases, simulating an even cheaper or wider lens.
+The dashboard camera evolved from a niche law-enforcement tool into a ubiquitous consumer device across Eastern Europe and Asia in the early 2010s, driven by insurance fraud concerns and the falling cost of CMOS image sensors. The footage from these cameras has a distinctive look: noisy, slightly washed-out, with a fixed wide-angle perspective and an ever-present timestamp or recording indicator blinking in a corner. This aesthetic has become a visual shorthand for authenticity and rawness. Filmmakers and video artists use the dashcam look to evoke surveillance, documentary realism, or found-footage horror. Dashcam distills this visual language into a real-time video effect.
 
-### Vignette and Peripheral Darkening
+### LFSR Noise Generation
 
-All lenses transmit less light at the edges of the image circle than at the centre — a phenomenon called **vignette** (from the French *vignette*, a decorative border). In expensive camera lenses this is corrected optically; in dashboard cameras it is left uncorrected or even exaggerated by the plastic lens housing. Dashcam computes a vignette factor from the horizontal distance to the frame centre, darkening pixels whose squared distance exceeds a threshold set by the Distortion control. The result is a smooth brightness rolloff toward the left and right edges.
+A ***linear feedback shift register*** (LFSR) is a digital circuit that generates a sequence of pseudo-random bits by shifting a register and feeding back a combination of its own bits through XOR gates. The specific bits chosen for feedback are called ***taps***. Dashcam uses a 16-bit LFSR with taps at positions 15, 13, 12, and 10, which produces a maximal-length sequence of 65,535 unique values before repeating. The result is a fast, hardware-efficient source of noise that looks random to the eye but is entirely deterministic, repeating the same pattern every 65,535 clock cycles. This noise is gated by the **Noise** parameter and added to the luminance channel, creating the scan-line grain characteristic of low-quality camera sensors.
 
-### CCD Sensor Noise
+### Interpolation and Wet/Dry Mixing
 
-Inexpensive CMOS and CCD sensors generate visible noise, especially in low-light conditions. The noise is a combination of shot noise (random photon arrival), read noise (amplifier thermal fluctuations), and fixed-pattern noise (pixel-to-pixel sensitivity variation). Dashcam injects additive luminance noise using a 16-bit Galois LFSR, producing a pseudo-random bit sequence that is AND-masked with the Noise parameter to control amplitude. The result resembles the grainy, shimmering texture of real low-cost sensor footage.
-
-### Recording Indicator and Timestamp Overlays
-
-Nearly all dashboard cameras burn a recording indicator and timestamp directly into the video stream — the data is part of the image, not metadata. The indicator is typically a small coloured dot or icon that blinks at a fixed rate to confirm the camera is recording. Dashcam draws a small red dot at a configurable position in the frame, flashing at approximately 1 Hz using bit 4 of the frame counter. The Timestamp toggle enables the overlay, and the Indicator X and Indicator Y controls position it within the frame.
-
-### Night Vision Mode
-
-Many dashboard cameras include an infrared LED array and a monochrome sensor mode for night recording. The resulting footage has a characteristic desaturated, green-tinted appearance — green because early night-vision systems used P43 green phosphor screens, and the convention persists in digital emulations. Dashcam's Night Mode forces the U channel to neutral (512) and shifts the V channel toward green (612), while leaving luma untouched. The result is an immediate monochrome-green transformation regardless of the input colour content.
+In audio and video processing, a ***wet/dry mix*** blends the processed (wet) signal with the original (dry) signal. Dashcam implements this using three instances of the `interpolator_u` IP block, one for each video channel (Y, U, V). The interpolator performs ***linear interpolation***: given two input values A (dry) and B (wet) and a blend factor T, it computes `A + T × (B − A)`. When T = 0, the output equals A (fully dry). When T = 1023 (the maximum 10-bit value), the output equals B (fully wet). Values in between produce a proportional blend. This crossfade is applied independently to each channel, ensuring that luminance noise, chroma tinting, and indicator overlay all fade in and out together.
 
 
 ---
 
 ## Signal Flow
 
-Y Channel → U/V Channels → Sync Signals → Interpolator → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 1. Sync Edge Detection      (hsync/vsync fall → counters)
-│   ├─ 2. Position Counters        (x_counter, y_counter, frame)
-│   ├─ 3. LFSR Update              (16-bit Galois, taps 15/13/12/10)
-│   ├─ 4. Vignette Compute         (dist_x² vs Distortion threshold)
-│   ├─ 5. Noise Injection          (LFSR AND Noise mask → additive Y)
-│   ├─ 6. Recording Indicator      (red dot when Timestamp enabled)
-│   ├─ 7. Night Mode Y             (pass-through)
-│   └─ 8. Clamp to [0, 1023]
-│
-├── U/V Channels ───────────────────────────────────────────────
-│   │
-│   ├─ 1. Recording Indicator      (force U=400, V=800 at dot)
-│   ├─ 2. Night Mode               (U→512 neutral, V→612 green)
-│   └─ 3. Else pass-through
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ 8-clock delay pipeline (hsync, vsync, field)
-│
-├── Interpolator (4 clocks) ────────────────────────────────────
-│   └─ Wet/dry blend: lerp(delayed_in, processed, Mix)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The processing pipeline runs in a single `process(clk)` block, computing noise injection, indicator overlay, and chroma replacement in four clock cycles. The dry input signal (Y, U, V) and sync signals are independently delayed through an 8-clock shift register to align with the processing latency. Three parallel `interpolator_u` instances then crossfade between the delayed dry signal and the processed wet signal, consuming four additional clocks.
 
-The vignette and noise injection both operate on the Y channel only — chroma passes through unmodified except when overridden by the recording indicator or night mode. The recording indicator has the highest compositing priority: when the pixel falls within the indicator region and the frame counter's bit 4 is high, Y/U/V are forced to fixed values (256/400/800) producing a blinking red dot. Night mode has the next priority, forcing chroma to a neutral-green tint. The LFSR runs continuously regardless of which effects are enabled, ensuring a consistent noise floor and avoiding start-up correlation.
+The recording indicator takes priority over all other processing: when the pixel falls within the indicator region and the blink phase is active, the luminance and chroma are overridden regardless of night-mode state or noise level. Night-mode chroma replacement applies only to pixels outside the indicator region. The noise injection stage adds LFSR output to luminance without clamping on the low end, which means dark pixels can only get brighter, never darker, under noise.
 
----
-
-## Parameter Reference
-
-<img src={dashcam_control_panel} alt="Videomancer front panel with Dashcam loaded"/>
-*Videomancer's front panel with Dashcam active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Exposure
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At 0% the image is darkened, simulating an underexposed sensor. At 50% (mid-position) the signal passes at unity. Higher values brighten the image, simulating the automatic gain control boost that cheap cameras apply in dim conditions. Combine with Noise for a realistic low-light look where gain boost makes sensor noise more visible. Internally, controls the overall exposure level — a brightness offset applied to the luma channel.
-
----
-
-#### Knob 2 — Distortion
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-Controls the vignette and barrel distortion intensity. The value sets the squared-distance threshold at which peripheral darkening begins. At 0% the vignette is severe — only the centre of the frame retains full brightness. At higher values the darkening threshold pushes outward, reducing the visible vignette. This parameter also influences the apparent barrel distortion when Wide Angle is enabled, since the radial distance calculation feeds both effects.
-
----
-
-#### Knob 3 — Noise
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 13% |
-| Suffix | % |
-
-At 0% no noise is added. As the value increases, the AND mask opens more bits of the LFSR output, allowing larger noise excursions. At maximum the full 10-bit LFSR sample is added, producing aggressive grain that dominates the image. The noise is additive and unsigned, so it biases luma upward — a characteristic of real sensor noise at high gain. Internally, controls the amplitude of LFSR noise injected into the luma channel.
-
----
-
-#### Knob 4 — Flicker
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 6% |
-| Suffix | % |
-
-Controls a brightness flicker effect that simulates the frame-to-frame exposure variation of a cheap auto-exposure system. At 0% the brightness is stable. Higher values introduce periodic brightness modulation driven by the frame counter, creating the stuttering exposure shifts visible in low-cost camera footage. The flicker frequency is tied to the frame counter's lower bits and the register value.
-
----
-
-#### Knob 5 — Indicator X
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 88% |
-| Suffix | % |
-
-At 0% the dot sits at the left edge of the frame. At 100% it moves to the right edge. The default position (approximately 87%) places the dot in the upper-right corner, matching the convention of most dashboard camera firmware. The indicator is only visible when the Timestamp toggle is enabled. Internally, sets the horizontal position of the recording indicator dot.
-
----
-
-#### Knob 6 — Indicator Y
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 13% |
-| Suffix | % |
-
-At 0% the dot is at the top of the frame. At 100% it moves to the bottom. The default (approximately 12%) places it near the top. Combined with Indicator X, this allows the recording dot to be positioned anywhere in the frame — useful for matching specific camera models or for creative overlay placement. Internally, sets the vertical position of the recording indicator dot.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Night Mode** | Off | On |
-| **8 — Wide Angle** | Off | On |
-| **9 — Stabilize** | Off | On |
-| **10 — Timestamp** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles control binary processing modes that layer on top of the continuous parameter controls. Night Mode, Wide Angle, and Stabilize each enable a distinct artefact. Timestamp enables the recording indicator overlay. Bypass routes the input directly to output. Unlike programs where toggles form a combined selector, each Dashcam toggle is independent — any combination of modes can be active simultaneously.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Dashcam processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
-
----
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Dashcam-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::note
+Several parameters (**Exposure**, **Distortion**, **Flicker**, **Indicator X**, **Indicator Y**, **Wide Angle**, and **Stabilize**) are mapped to VHDL signals but are not yet connected to the processing pipeline. Their register values are stored and recalled by the preset system, anticipating future VHDL updates.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These three exercises progress from basic lens emulation to full surveillance-tape reconstruction. Each adds more artefact layers and explores how they interact.
+These exercises progress from basic noise grading through night-mode aesthetics to full dashcam emulation. Each exercise layers on more of the program's active effects.
+### Exercise 1: Scan-Line Grain
 
-### Exercise 1: Wide-Angle Lens Look
+![Scan-Line Grain result](/img/instruments/videomancer/dashcam/dashcam_ex1_s1.png)
+*Scan-Line Grain — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: dashcam_source1_boat, after: dashcam_ex1_s1 },
-    { label: "Dog", before: dashcam_source2_dog, after: dashcam_ex1_s2 },
-    { label: "Turtle", before: dashcam_source3_turtle, after: dashcam_ex1_s3 },
-    { label: "Pattern", before: dashcam_source4_pattern, after: dashcam_ex1_s4 },
-    { label: "Man", before: dashcam_source5_man, after: dashcam_ex1_s5 },
-    { label: "Paint", before: dashcam_source6_paint, after: dashcam_ex1_s6 },
-  ]}
-/>
-*Wide-Angle Lens Look — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with visible straight lines — architecture, grids, or tiled surfaces.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Learn how barrel distortion and vignette interact to create a cheap wide-angle lens simulation.
+#### Learning Outcomes
 
-1. **Centre the vignette**: Set Distortion to about 50%. Observe the peripheral darkening — the frame edges are dimmer than the centre.
-2. **Increase distortion**: Lower Distortion toward 20%. The vignette tightens, darkening more of the frame. Watch for the barrel curvature effect on straight lines.
-3. **Wide angle**: Enable Wide Angle (Toggle 8). The distortion becomes more pronounced. Straight lines near the edges bow outward visibly.
-4. **Noise floor**: Add a touch of Noise (about 15%). The combination of vignette and noise creates a convincing cheap-lens look.
-5. **Mix blend**: Pull Mix down to about 70% to soften the effect slightly.
+Add convincing camera-sensor grain to a clean video signal.
 
-**Key concepts**: Barrel distortion bows straight lines outward from the optical centre, vignette darkens the periphery due to lens light falloff, wide-angle lenses exaggerate both effects
+#### Key Concepts
 
----
+- LFSR noise injection adds texture to the luminance channel
+- Noise is additive and brightness-asymmetric
+- The Mix fader controls effect intensity
 
-### Exercise 2: Night Surveillance
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: dashcam_source1_boat, after: dashcam_ex2_s1 },
-    { label: "Dog", before: dashcam_source2_dog, after: dashcam_ex2_s2 },
-    { label: "Turtle", before: dashcam_source3_turtle, after: dashcam_ex2_s3 },
-    { label: "Pattern", before: dashcam_source4_pattern, after: dashcam_ex2_s4 },
-    { label: "Man", before: dashcam_source5_man, after: dashcam_ex2_s5 },
-    { label: "Paint", before: dashcam_source6_paint, after: dashcam_ex2_s6 },
-  ]}
-/>
-*Night Surveillance — simulated result across source images.*
-**Source**: Dark or dimly-lit footage, or any footage where the contrast between bright and dark areas is prominent.
+A live camera feed or recorded footage with a mix of bright and dark areas, such as an indoor scene with windows.
 
-**What You'll Create**: Combine night mode, noise, and the recording indicator for a convincing night-vision dashcam look.
+#### Steps
 
-1. **Night mode**: Enable Night Mode (Toggle 7). The image immediately shifts to a green-tinted monochrome.
-2. **Boost exposure**: Increase Exposure to about 65%. The image brightens, simulating AGC gain boost.
-3. **Sensor noise**: Increase Noise to about 40%. The noise becomes very visible in the green-tinted image — this is the signature look of night-vision footage.
-4. **Recording indicator**: Enable Timestamp (Toggle 10). The blinking red dot appears in the corner.
-5. **Position the dot**: Adjust Indicator X and Indicator Y to place the dot in the upper-right corner.
-6. **Stabilisation jitter**: Enable Stabilize (Toggle 9) for subtle frame-to-frame tremor.
+1. **Clean baseline**: Confirm **Bypass** (Switch 11) is **Off** and **Mix** (Fader 12) is at 100%. The image should look nearly identical to the input, with only very faint noise visible.
+2. **Introduce grain**: Turn **Noise** (Knob 3) slowly clockwise to about 50%. Watch as a fine, shimmering texture appears across the image, most visible in midtones and shadows.
+3. **Heavy noise**: Push **Noise** to 100%. The image becomes heavily grained. Notice how bright areas tend to clip to white while dark areas gain the most visible texture.
+4. **Blend back**: Pull the **Mix** fader to about 60%. The grain softens as the clean dry signal blends back in, producing a more subtle, film-like texture.
+5. **A/B comparison**: Flip **Bypass** on and off to compare the grained result against the clean original.
 
-**Key concepts**: Night mode desaturates and green-tints via forced chroma values, noise is more visible at boosted exposure, the recording indicator composites on top of all other effects
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Exposure | ~50% |
+| Distortion | ~25% |
+| Noise | ~50% |
+| Flicker | ~6% |
+| Indicator X | ~88% |
+| Indicator Y | ~13% |
+| Night Mode | Off |
+| Wide Angle | Off |
+| Stabilize | Off |
+| Timestamp | Off |
+| Bypass | Off |
+| Mix | ~60% |
 
 ---
 
-### Exercise 3: Full Dashcam Reconstruction
+### Exercise 2: Night-Vision Surveillance
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: dashcam_source1_boat, after: dashcam_ex3_s1 },
-    { label: "Dog", before: dashcam_source2_dog, after: dashcam_ex3_s2 },
-    { label: "Turtle", before: dashcam_source3_turtle, after: dashcam_ex3_s3 },
-    { label: "Pattern", before: dashcam_source4_pattern, after: dashcam_ex3_s4 },
-    { label: "Man", before: dashcam_source5_man, after: dashcam_ex3_s5 },
-    { label: "Paint", before: dashcam_source6_paint, after: dashcam_ex3_s6 },
-  ]}
-/>
-*Full Dashcam Reconstruction — simulated result across source images.*
-**Source**: Any moving footage — particularly driving footage or POV video.
+![Night-Vision Surveillance result](/img/instruments/videomancer/dashcam/dashcam_ex2_s1.png)
+*Night-Vision Surveillance — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Layer all artefacts simultaneously to produce a complete dashboard camera emulation.
+***A description of the exercise illustration.***
 
-1. **Lens simulation**: Set Distortion to about 30%, enable Wide Angle.
-2. **Noise and flicker**: Set Noise to about 25%, Flicker to about 15%.
-3. **Exposure**: Set Exposure to about 55% for a slightly hot look.
-4. **Recording overlay**: Enable Timestamp, position the indicator with Indicator X at 87% and Indicator Y at 12%.
-5. **Night mode**: Optionally enable Night Mode for the green surveillance look.
-6. **Stabilisation**: Enable Stabilize for vehicle-mounted camera jitter.
-7. **Observe the composite**: Note how all artefacts layer — vignette + noise + indicator + night tint.
-8. **A/B compare**: Toggle Bypass on and off to compare the degraded output with the clean input.
+#### Learning Outcomes
 
-**Key concepts**: All dashcam artefacts can be active simultaneously, the recording indicator always composites on top, bypass provides instant A/B comparison regardless of settings
+Simulate low-light infrared surveillance footage with a blinking recording dot.
+
+#### Key Concepts
+
+- Night Mode replaces chroma with a warm monochrome tint
+- Noise and Night Mode combine to create an infrared camera aesthetic
+- The recording indicator adds a temporal element to the frame
+
+#### Video Source
+
+Any footage, but especially effective with faces, interiors, or scenes with mixed lighting that will look dramatic in monochrome.
+
+#### Steps
+
+1. **Engage night vision**: Flip **Night Mode** (Switch 7) to **On**. The image loses its color and takes on a warm amber tint.
+2. **Add sensor noise**: Turn **Noise** (Knob 3) to about 60%. The warm monochrome image becomes gritty, like CCTV footage captured after dark.
+3. **Enable the indicator**: Set **Timestamp** (Switch 10) to **On**. A small, dark red dot appears in the upper-right corner, blinking on and off every half second.
+4. **Observe the blink**: Watch the indicator cycle. It stays visible for about 16 frames, then disappears for 16 frames. This blink rhythm is driven by the frame counter.
+5. **Full effect**: Confirm **Mix** is at 100% and **Bypass** is **Off**. You now have a convincing night-vision surveillance feed.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Exposure | ~50% |
+| Distortion | ~25% |
+| Noise | ~60% |
+| Flicker | ~6% |
+| Indicator X | ~88% |
+| Indicator Y | ~13% |
+| Night Mode | On |
+| Wide Angle | Off |
+| Stabilize | Off |
+| Timestamp | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Full Dashcam Emulation
 
-## Tips
+![Full Dashcam Emulation result](/img/instruments/videomancer/dashcam/dashcam_ex3_s1.png)
+*Full Dashcam Emulation — simulated result across source images.*
+#### Exercise Illustration
 
-- **Subtle degradation**: Set Mix to 50–60% for a hint of dashcam character without fully committing. Useful for adding just a touch of vignette and noise to clean footage.
-- **Wide Angle stacks**: Wide Angle multiplies the Distortion effect. For extreme barrel distortion, set Distortion low and enable Wide Angle. For minimal distortion, set Distortion high and leave Wide Angle off.
-- **Flicker for realism**: Small amounts of Flicker (5–15%) add the exposure instability characteristic of cheap auto-exposure systems. Too much creates an obvious strobe effect.
-- **Feedback loops**: Route the output back through the input for recursive degradation — each pass adds more noise, tightens the vignette, and accumulates the dashcam aesthetic.
-- **Bypass for live performance**: Use Toggle 11 to cut between clean and degraded footage in a live performance context. The transition is instantaneous.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Combine all active stages for the most convincing possible dashcam emulation.
+
+#### Key Concepts
+
+- Combining noise, chroma replacement, and indicator overlay creates a complete dashcam aesthetic
+- The Mix fader integrates the composite effect at any intensity
+- Subtle settings can be more convincing than extreme ones
+
+#### Video Source
+
+Driving footage, street scenes, or any video with motion and changing scenery for maximum realism.
+
+#### Steps
+
+1. **Moderate noise**: Set **Noise** (Knob 3) to about 40%. We want grit, not a blizzard.
+2. **Color mode**: Keep **Night Mode** (Switch 7) **Off** for this exercise. We're going for a daytime dashcam look with natural color.
+3. **Enable the indicator**: Set **Timestamp** (Switch 10) to **On**. The blinking red dot appears in the upper-right corner.
+4. **Dial in the mix**: Set **Mix** (Fader 12) to about 70%. The noise and indicator are visible, but the underlying image remains legible.
+5. **Compare modes**: Flip **Night Mode** on. The daytime dashcam transforms into nighttime footage. Toggle it back and forth to observe how the chroma replacement changes the mood of the same scene.
+6. **Fine-tune**: Adjust **Noise** and **Mix** together until the effect feels like authentic found footage rather than a heavy-handed filter.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Exposure | ~45% |
+| Distortion | ~60% |
+| Noise | ~40% |
+| Flicker | ~20% |
+| Indicator X | ~88% |
+| Indicator Y | ~13% |
+| Night Mode | Off |
+| Wide Angle | Off |
+| Stabilize | Off |
+| Timestamp | On |
+| Bypass | Off |
+| Mix | ~70% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **AGC** | Automatic Gain Control; circuitry that boosts signal amplitude in low-light conditions, increasing both signal and noise. |
-| **Barrel Distortion** | Optical aberration where straight lines near the image edges bow outward, caused by wide-angle lens geometry. |
-| **BT.601** | ITU-R standard defining the YUV colour encoding used in standard-definition video and by the Videomancer pipeline. |
-| **Chroma** | The colour information in a video signal, encoded as U and V components in YUV colour space. |
-| **EIS** | Electronic Image Stabilisation; digital processing that compensates for camera shake by shifting the frame. |
-| **LFSR** | Linear Feedback Shift Register; a digital circuit producing a deterministic pseudo-random bit sequence. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Vignette** | Peripheral darkening in an image caused by light falloff at the edges of the lens image circle. |
+- **Chroma**: The color information in a video signal, encoded as U and V components in YUV color space
+
+- **Crossfade**: A smooth transition between two signals, blending one out while blending the other in
+
+- **Interpolation**: Computing a value between two known values using a blend factor; used here for the wet/dry mix
+
+- **LFSR**: Linear Feedback Shift Register; a digital circuit that produces a repeating sequence of pseudo-random values by shifting bits and feeding back through XOR gates
+
+- **Luminance**: The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color
+
+- **Proc Amp**: Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustments to a signal
+
+- **Pseudo-random**: A sequence that appears random but is generated by a deterministic algorithm, repeating after a fixed number of steps
+
+- **Wet/Dry Mix**: The ratio between a processed (wet) signal and the original (dry) signal, controlling effect intensity
+
+- **YUV**: A color encoding that separates brightness (Y) from color (U—blue difference, V—red difference), used in video systems
 
 ---

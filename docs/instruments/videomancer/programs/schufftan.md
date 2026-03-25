@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 258
 slug: /instruments/videomancer/schufftan
@@ -7,367 +7,432 @@ image: /img/instruments/videomancer/schufftan/schufftan_hero_s1.png
 description: "The Schüfftan process was a visual effects technique invented in 1920s German cinema."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import schufftan_control_panel from '/img/instruments/videomancer/schufftan/schufftan_control_panel.png';
-import schufftan_source1_parrot from '/img/instruments/videomancer/schufftan/schufftan_source1_parrot.png';
-import schufftan_source2_dog from '/img/instruments/videomancer/schufftan/schufftan_source2_dog.png';
-import schufftan_source3_turtle from '/img/instruments/videomancer/schufftan/schufftan_source3_turtle.png';
-import schufftan_source4_pattern from '/img/instruments/videomancer/schufftan/schufftan_source4_pattern.png';
-import schufftan_source5_woman from '/img/instruments/videomancer/schufftan/schufftan_source5_woman.png';
-import schufftan_source6_berries from '/img/instruments/videomancer/schufftan/schufftan_source6_berries.png';
-import schufftan_hero_s1 from '/img/instruments/videomancer/schufftan/schufftan_hero_s1.png';
-import schufftan_hero_s2 from '/img/instruments/videomancer/schufftan/schufftan_hero_s2.png';
-import schufftan_hero_s3 from '/img/instruments/videomancer/schufftan/schufftan_hero_s3.png';
-import schufftan_hero_s4 from '/img/instruments/videomancer/schufftan/schufftan_hero_s4.png';
-import schufftan_hero_s5 from '/img/instruments/videomancer/schufftan/schufftan_hero_s5.png';
-import schufftan_hero_s6 from '/img/instruments/videomancer/schufftan/schufftan_hero_s6.png';
-import schufftan_ex1_s1 from '/img/instruments/videomancer/schufftan/schufftan_ex1_s1.png';
-import schufftan_ex1_s2 from '/img/instruments/videomancer/schufftan/schufftan_ex1_s2.png';
-import schufftan_ex1_s3 from '/img/instruments/videomancer/schufftan/schufftan_ex1_s3.png';
-import schufftan_ex1_s4 from '/img/instruments/videomancer/schufftan/schufftan_ex1_s4.png';
-import schufftan_ex1_s5 from '/img/instruments/videomancer/schufftan/schufftan_ex1_s5.png';
-import schufftan_ex1_s6 from '/img/instruments/videomancer/schufftan/schufftan_ex1_s6.png';
-import schufftan_ex2_s1 from '/img/instruments/videomancer/schufftan/schufftan_ex2_s1.png';
-import schufftan_ex2_s2 from '/img/instruments/videomancer/schufftan/schufftan_ex2_s2.png';
-import schufftan_ex2_s3 from '/img/instruments/videomancer/schufftan/schufftan_ex2_s3.png';
-import schufftan_ex2_s4 from '/img/instruments/videomancer/schufftan/schufftan_ex2_s4.png';
-import schufftan_ex2_s5 from '/img/instruments/videomancer/schufftan/schufftan_ex2_s5.png';
-import schufftan_ex2_s6 from '/img/instruments/videomancer/schufftan/schufftan_ex2_s6.png';
-import schufftan_ex3_s1 from '/img/instruments/videomancer/schufftan/schufftan_ex3_s1.png';
-import schufftan_ex3_s2 from '/img/instruments/videomancer/schufftan/schufftan_ex3_s2.png';
-import schufftan_ex3_s3 from '/img/instruments/videomancer/schufftan/schufftan_ex3_s3.png';
-import schufftan_ex3_s4 from '/img/instruments/videomancer/schufftan/schufftan_ex3_s4.png';
-import schufftan_ex3_s5 from '/img/instruments/videomancer/schufftan/schufftan_ex3_s5.png';
-import schufftan_ex3_s6 from '/img/instruments/videomancer/schufftan/schufftan_ex3_s6.png';
-
-# Schufftan
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: schufftan_source1_parrot, after: schufftan_hero_s1 },
-    { label: "Dog", before: schufftan_source2_dog, after: schufftan_hero_s2 },
-    { label: "Turtle", before: schufftan_source3_turtle, after: schufftan_hero_s3 },
-    { label: "Pattern", before: schufftan_source4_pattern, after: schufftan_hero_s4 },
-    { label: "Woman", before: schufftan_source5_woman, after: schufftan_hero_s5 },
-    { label: "Berries", before: schufftan_source6_berries, after: schufftan_hero_s6 },
-  ]}
-/>
-*Schufftan applying luminance-keyed mirror compositing with per-scanline wobble and cool tint to simulate the classic miniature-projection technique.*
+![Schufftan hero image](/img/instruments/videomancer/schufftan/schufftan_hero_s1.png)
+*Schufftan applying luminance-keyed mirror compositing to split a video frame into reflected miniature and live plate zones.*
 
 ---
 
 ## Overview
 
-The Schüfftan process was a visual effects technique invented in 1920s German cinema. A partially-scraped mirror was placed between the camera and a miniature set: actors were filmed through the cleared areas of the mirror while the miniature's reflection filled the surrounding frame. The technique created the illusion that actors were standing inside enormous architectural sets that existed only as tabletop models. Fritz Lang's *Metropolis* (1927) is the most famous example.
+Schufftan is a video compositing program inspired by one of cinema's most ingenious practical effects. It divides your image into two worlds using luminance as a self-matte: bright areas are treated as a reflected miniature: reduced in contrast, softened, and tinted: while dark areas pass through as the live scene viewed through scraped-clear glass. The result is an uncanny split-reality effect where the same video appears to contain both a model and the real world.
 
-Schufftan translates this optical concept into the digital video domain. It divides the incoming frame into two regions based on a luminance key — pixels above a threshold and pixels below it. One region (configurable via the Mirror Side toggle) is treated as the "mirror" zone: it receives contrast reduction, horizontal blur, a cool blue-silver colour shift, and optional per-scanline wobble that simulates the imperfect flatness of a physical mirror surface. The other region passes through cleanly, representing the direct camera view through the mirror's cleared areas.
+The program recreates three signature artifacts of the original mirror technique. A per-scanline ***wobble*** simulates the physical vibration of a large mirror on set, breathing life into the boundary between reflection and reality. An ***edge double-image*** adds a ghosted overlap zone where matte and clear glass meet. And a ***mirror tint*** shifts the reflected region's color temperature, simulating the warm silver or cool blue cast of a real reflective surface.
 
-The key softness ramp controls the transition width between mirror and direct regions. A hard key produces a sharp boundary — the digital equivalent of a precisely scraped mirror. A soft key creates a gradual blend, mimicking the optical diffusion at the boundary between clear glass and reflective coating. The wobble parameter adds a sinusoidal per-scanline displacement that gives the mirror region a watery, unstable quality, as if the reflection is about to dissolve.
+At subtle settings, Schufftan can add an ethereal, otherworldly split to naturalistic footage. At extreme settings, it transforms the image into a fractured composite of contrasting textures (one side smooth and tinted, the other sharp and raw.)
+
+:::tip
+***The self-matte is the magic.*** Unlike a traditional key, Schufftan derives its matte directly from the video's own brightness: bright areas become the mirror, dark areas become the glass. This recreates the real technique where the mirror *itself* formed the matte.
+:::
+
+### What's In a Name?
+
+The name ***Schufftan*** comes from Eugen Schüfftan, a German cinematographer who patented the mirror shot technique in 1923. The technique was most famously used by Fritz Lang in *Metropolis* (1927) to composite live actors into miniature cityscapes. A large mirror was placed at 45° to the camera. A miniature set was reflected in the mirror's intact surface, while the silver coating was scraped away in precise areas to reveal the live-action scene behind the glass. Hitchcock used the same technique in *Blackmail* (1929), and Marcel Carné employed it in *Les Enfants du Paradis* (1945). The method was eventually superseded by optical printing, but its distinctive visual character: the slightly unreal quality of the reflected plate, the soft boundary where two realities meet: remains evocative.
 
 ---
 
 ## Quick Start
 
-1. **Key Level is scene-dependent**: The optimal threshold depends entirely on the tonal structure of your source material. Start at 50% and sweep until the key boundary lands where you want it.
-2. **Softness for naturalism**: Hard keys look digital; soft keys look optical. For a convincing Schüfftan look, use Softness of at least 20–30%.
-3. **Wobble amplitude goes a long way**: Even small Wobble values (10–20%) create a noticeable ripple. Reserve high values for deliberate funhouse-mirror effects.
+1. Feed a video source with a range of bright and dark areas. Set **Key Thresh** (Knob 1) to about 50%. Bright areas shift in contrast and color: they've become the "reflected miniature." Dark areas pass through unchanged: they're the live scene behind the glass.
+2. Increase **Key Soft** (Knob 2) to see the transition between the two zones widen into a soft gradient. The matte boundary dissolves.
+3. Sweep **Mirror Tint** (Knob 3) through its range. Watch the reflected zone shift from warm amber to cool blue to cyan. The live zone remains untouched.
+4. Turn up **Wobble Amt** (Knob 5) and adjust **Wobble Spd** (Knob 6). The matte boundary ripples per scanline, as though the mirror is vibrating on set.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Schufftan loaded](/img/instruments/videomancer/schufftan/schufftan_control_panel.png)
+*Videomancer's front panel with Schufftan active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Key Thresh
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Key Thresh**, the luminance key threshold, sets the brightness level that divides the image into two zones. Pixels brighter than the threshold are treated as the "reflected miniature" and receive contrast reduction, tinting, and softening. Pixels dimmer than the threshold pass through as the "live plate."
+
+At 0%, fully counterclockwise, the threshold is at black: nearly the entire image becomes the reflected zone. At 100%, fully clockwise, the threshold is at peak white: nearly the entire image passes through as the live plate. At the default of 50%, the image splits roughly at mid-gray.
+
+:::note
+The threshold is modulated by the **Wobble Amt** and **Wobble Spd** controls. When wobble is active, the effective threshold shifts per scanline, creating a rippling matte boundary.
+:::
+
+---
+
+### Knob 2 — Key Soft
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Key Soft**, the key softness, controls the width of the gradient transition between the live plate and the reflected miniature. At 0%, the boundary is a hard edge: pixels snap instantly between the two zones. As Key Soft increases, the transition widens into a smooth ramp where both zones blend together.
+
+At the default of about 25%, a moderate gradient produces a natural-looking boundary. High values create a broad, atmospheric crossfade between the two worlds. The softness range is symmetric around the threshold (it extends equally above and below the threshold level.)
+
+---
+
+### Knob 3 — Mirror Tint
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 37.5% |
+
+**Mirror Tint** shifts the color temperature of the reflected zone, simulating the spectral characteristics of different mirror surfaces. The tint sweeps through four color regions as the knob rotates:
+
+- **0 to 25%**: Warm silver (a slight amber cast, like aged glass.)
+- **25 to 50%**: Neutral to cool blue: transitioning from clear reflection to the blue-shifted appearance of aluminum mirrors.
+- **50 to 75%**: Cool blue to cyan (a deep, cold reflection.)
+- **75 to 100%**: Cyan wrapping back to warm (completing the cycle.)
+
+The tint offsets the U and V chrominance channels of the reflected zone only. The live plate is unaffected.
+
+:::tip
+For a subtle, cinematic look, keep Mirror Tint in the warm silver range (below 25%). For a science-fiction aesthetic, push it into the cool blue or cyan range.
+:::
+
+---
+
+### Knob 4 — Contrast
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Contrast**, the contrast reduction control, compresses the tonal range of the reflected zone toward a slightly below-mid-gray anchor point. This simulates the reduced contrast inherent in mirror reflections, where scattered light fills in shadows and clips highlights.
+
+At 0%, the reflected zone is fully compressed: all pixels collapse to a flat, uniform mid-tone. At 100%, no compression is applied and the reflected zone retains its original contrast. At the default of 50%, the reflected zone has noticeably less punch than the live plate, creating a clear visual distinction between the two worlds.
+
+A subtle brightness boost of about 3% is applied to the reflected zone after contrast reduction, simulating the additional exposure from a reflective surface.
+
+---
+
+### Knob 5 — Wobble Amt
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 12.5% |
+
+**Wobble Amt**, the wobble amount, controls the depth of per-scanline matte displacement. A ***direct digital synthesis*** (DDS) oscillator shifts the effective key threshold up and down for each scanline, creating a rippling, organic matte boundary that simulates mirror vibration.
+
+At 0%, the matte boundary is perfectly still. At low values, a gentle undulation gives the boundary a living, breathing quality. At high values, the threshold swings dramatically from line to line, shattering the matte into horizontal bands of alternating reflection and transparency.
+
+---
+
+### Knob 6 — Wobble Spd
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Wobble Spd**, the wobble speed, controls the frequency of the DDS oscillator that drives the scanline wobble. At low values, the wobble pattern drifts slowly, producing broad, gentle waves along the matte boundary. At high values, the oscillator cycles rapidly, producing fine, closely spaced ripples.
+
+The wobble phase accumulates continuously across scanlines and wraps around, creating a repeating sinusoidal pattern. When **Wobble Amt** is at 0%, this control has no visible effect.
+
+:::tip
+For a realistic mirror vibration, keep both Wobble Amt and Wobble Spd at low values. The boundary should shimmer, not shatter.
+:::
+
+---
+
+### Switch 7 — Invert Key
+
+| Property | Value |
+|----------|-------|
+| Off | Normal |
+| On | Invert |
+| Default | Normal |
+
+**Invert Key** reverses the matte polarity. In the **Normal** position, bright areas are treated as the reflected miniature and dark areas as the live plate: matching the original Schüfftan process where scraped-away silver revealed the live scene. In the **Invert** position, dark areas become the reflected zone and bright areas pass through.
+
+Inverting the key does not change the matte shape: only which side receives the mirror processing. The key alpha is subtracted from 1023, so a pixel that was 70% reflected becomes 70% live.
+
+---
+
+### Switch 8 — Edge Dbl
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Edge Dbl**, the edge double-image toggle, enables a ghosted overlap artifact in the matte boundary zone. In the original Schüfftan process, partially scraped glass produced a region where both the reflected miniature and the live scene were faintly visible simultaneously (a characteristic double-image.)
+
+When set to **On** (the default), pixels in the matte transition zone receive a dimmed copy of the live video added on top of the blend. The ghost is about 25% brightness of the live signal. When set to **Off**, the blend is clean with no ghosts. The edge zone is defined as the region where the key alpha falls between approximately 5% and 95%.
+
+---
+
+### Switch 9 — Detail Loss
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Detail Loss** enables a horizontal low-pass filter on the reflected zone's luminance, simulating the reduced sharpness of a mirror reflection. Reflected images are never quite as sharp as direct views: the glass surface introduces scatter, and the reflected subject is at a greater optical distance.
+
+When set to **On** (the default), a two-tap horizontal average blurs the reflected luminance slightly. When set to **Off**, the reflected zone retains full horizontal detail.
+
+---
+
+### Switch 10 — Key Source
+
+| Property | Value |
+|----------|-------|
+| Off | Y Only |
+| On | Y+Edge |
+| Default | Y Only |
+
+**Key Source** determines what signal feeds the luminance key. In the **Y Only** position, only the input luminance determines the matte: a straightforward brightness split. In the **Y+Edge** position, the magnitude of horizontal luminance edges is added to the key distance, causing high-contrast edges to push toward the reflected zone.
+
+The edge magnitude is the absolute horizontal difference between adjacent pixels, scaled by half before being added. This creates a more complex matte where edges and contours become part of the reflected world.
+
+:::note
+The Y+Edge mode makes the matte edge-aware, tending to place sharp boundaries in the reflected zone. This can produce an outline-like effect around subjects.
+:::
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Schufftan processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the mirror-composited result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix**, the wet/dry crossfade, blends between the original unprocessed video and the full Schufftan composite. At 0%, the output is entirely the dry (unprocessed) input. At 100% (the default), the output is the full wet (processed) composite. Intermediate values produce a proportional blend using three parallel interpolators (one for each YUV channel.)
+
+Mix is useful for dialing in subtle mirror effects without committing to the full composite. A setting around 50 to 75% produces a ghostly, translucent overlay where the mirror processing is present but the original image shows through.
 
 ---
 
 ## Background
 
-### The Schüfftan Process in Cinema
+### The Schüfftan Process
 
-Eugen Schüfftan patented his mirror-projection technique in 1923. The principle was simple: mount a mirror at 45° to the camera, place a miniature set where the camera can see its reflection, then carefully scrape away the mirror's reflective coating in the areas where live actors should appear. The camera simultaneously photographs the actors directly through the cleared glass and the miniature as reflected by the remaining mirror surface. The result is a seamless composite — provided the geometry is precisely calibrated and the lighting matches.
+The Schüfftan process was born from a practical problem: how to place live actors into sets too expensive or impossible to build at full scale. Eugen Schüfftan's solution was elegant. A mirror was placed at 45° to the camera. A miniature set: a cityscape, a cathedral interior, a palace hallway: was positioned to the side, reflected into the mirror so it filled the camera's field of view. Then, with extraordinary precision, the silver coating was scraped from the mirror in the exact regions where live actors needed to appear. Through the cleared glass, the camera saw the real actors on a partial set behind the mirror. Through the intact silver, it saw the reflected miniature.
 
-The technique was labour-intensive but remarkably effective. It required no optical printing, no matte paintings, and no double exposure. Everything was captured in-camera, in a single take. Fritz Lang used it extensively in *Metropolis* to place actors inside vast Art Deco cityscapes. Alfred Hitchcock employed it in *Blackmail* (1929). The process remained in use through the 1960s before being supplanted by blue-screen compositing and, eventually, digital visual effects.
+The result was a seamless in-camera composite. No post-production, no optical printing, no separate matte pass. The mirror was the matte.
 
-### Luminance Keying
+This program recreates that technique digitally. Instead of a physical mirror, the input video's own luminance serves as the matte. Instead of scraping silver, you set a threshold.
 
-Schufftan's digital mirror boundary is defined by a **luminance key** — a threshold applied to the Y channel of the incoming video. Pixels brighter than the threshold are assigned to one region; pixels darker are assigned to the other. The Mirror Side toggle determines which side becomes the mirror zone. This is the simplest form of keying, analogous to a high-contrast matte: bright areas are one layer, dark areas are another. The Softness parameter adds a ramp around the threshold, creating a smooth transition zone rather than a hard binary cut.
+### Mirror reflections in the real world
 
-### Wobble and Imperfect Reflection
+Real mirror reflections differ from direct observation in several measurable ways. The reflected image has lower contrast: scattered light within the glass fills in shadows and softens highlights. Color temperature shifts because glass and metallic coatings selectively absorb and reflect different wavelengths. Silver mirrors tend warm; aluminum mirrors lean cool. Fine detail is slightly softened by surface imperfections and the additional optical path length. And reflections from large, unsupported mirrors exhibit a subtle oscillation: thermal currents and mechanical vibrations cause the image to shimmer.
 
-Physical mirrors are never perfectly flat. Even high-quality optical mirrors have surface irregularities that distort reflected images, especially when the mirror is large or when it is positioned at an extreme angle. Schufftan simulates this imperfection with a per-scanline sinusoidal displacement — a DDS (Direct Digital Synthesis) oscillator generates a sine wave whose amplitude is controlled by the Wobble parameter. Each scanline in the mirror region is shifted horizontally (or vertically) by this sine value, producing a watery, rippling distortion that evokes an imperfect reflective surface.
-
-### Contrast Reduction and Detail Loss
-
-Reflections are always lower-contrast than direct views. Light bouncing off a mirror passes through the reflective coating twice (in and out), losing energy at each interface. Schufftan models this with two complementary processes: contrast reduction (pushing luminance values toward mid-gray) and detail loss (a horizontal IIR low-pass filter that blurs fine spatial detail). Together, these create the visual signature of a reflected image — slightly washed-out, slightly soft, clearly distinguished from the direct camera view.
-
-### Mirror Tint
-
-Metallic mirrors impart a colour cast to reflected light. Silver mirrors produce a cool blue-grey tint; copper mirrors produce a warm amber. Schufftan simulates this with a UV colour shift applied to the mirror region: U is shifted toward blue, V is shifted toward cool. The Mirror Tint parameter controls the intensity of this shift, from a barely-perceptible coolness to an aggressive blue-silver cast that clearly marks the mirror zone.
+Schufftan models each of these characteristics: contrast reduction, color tint, detail loss, and wobble.
 
 
 ---
 
 ## Signal Flow
 
-Input Register → Key Computation → Key Softness Ramp → ... → Composite → Mix + Output Register
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Stage 0: Input Register + Horizontal Gradient
-│   └─ Y_prev register; gradient = |Y[x] - Y[x-1]|
-│
-├── Stage 1: Key Computation
-│   ├─ Luma mode: key_raw = |Y - key_level|
-│   └─ Edge mode: key_raw = gradient magnitude
-│
-├── Stage 2: Key Softness Ramp
-│   └─ alpha = clamp((key_raw - clip) × gain, 0, 1023)
-│   └─ Mirror Side inverts alpha
-│
-├── Stage 3: DDS Wobble
-│   └─ wobble_offset = sine_lut[v_count + phase] × wobble_amt >> 10
-│   └─ Shift read coordinate (horizontal or vertical)
-│
-├── Stage 4: Mirror Region — Contrast Reduction
-│   └─ Y' = (Y - 512) × (1023 - contrast_reduce) >> 10 + 512
-│
-├── Stage 5: Mirror Region — Detail Loss
-│   └─ IIR: y_iir += (y_in - y_iir) >> detail_shift
-│
-├── Stage 6: Mirror Tint
-│   └─ U' = U + (mirror_tint >> 2)
-│   └─ V' = V - (mirror_tint >> 3)
-│
-├── Stage 7: Double Image (optional)
-│   └─ Y' = (Y + delayed_Y) >> 1
-│
-├── Stage 8: Composite
-│   └─ output = lerp(original, mirror_processed, alpha)
-│
-├── Stage 9: Mix + Output Register
-│   └─ Interpolate composited ↔ original by Mix amount
-│
-├── Sync Signals ─── Pass-through
-│
-└── Bypass ─── Select original or processed signal
-```
+Two key interactions define the Schufftan signal path:
 
-The pipeline has two distinct phases: key generation (Stages 0–2) and mirror processing (Stages 3–7). The key alpha signal computed in Stage 2 determines *where* the mirror effect is applied, while Stages 3–7 determine *what* the mirror effect looks like. This separation means you can shape the key boundary independently of the mirror's visual character. The wobble displacement in Stage 3 affects only the mirror region's spatial coordinates, not the key boundary itself — the boundary remains smooth while the content within it ripples. The IIR low-pass in Stage 5 is stateless between frames (no BRAM required), operating on a per-scanline basis with the detail_shift parameter controlling the filter cutoff.
+1. **The self-matte feedback loop.** The input luminance simultaneously *is* the video content and *determines* how that content is processed. Bright pixels generate high key alpha, routing themselves into the reflected plate path. Dark pixels generate low key alpha, routing themselves into the live plate path. This creates a recursive aesthetic relationship: the image's own tonal structure defines the boundary between its two processed versions.
+
+2. **Wobble modulates the matte, not the image.** The DDS oscillator offsets the key threshold per scanline, not the pixel data. This means the image content itself doesn't move: only the dividing line between reflection and reality shifts. The visual result is a boundary that ripples like heat shimmer or a vibrating mirror, while both the reflected and live zones remain stable.
+
+:::tip
+**Contrast sets the distinction.** The contrast reduction control is the most powerful visual separator between the two zones. At 50%, the reflected zone is visibly flatter and softer than the live zone. This contrast difference: more than the tint or detail loss: is what sells the illusion of a mirror.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={schufftan_control_panel} alt="Videomancer front panel with Schufftan loaded"/>
-*Videomancer's front panel with Schufftan active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises progress from basic matte splitting to full cinematic mirror compositing. Each builds on the previous, gradually engaging more of the Schufftan effect chain.
+### Exercise 1: The Mirror Split
 
-### Rotary Potentiometers (Knobs 1–6)
+![The Mirror Split result](/img/instruments/videomancer/schufftan/schufftan_ex1_s1.png)
+*The Mirror Split — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Key Thresh
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-Controls the luminance threshold that defines the boundary between mirror and direct regions. At 50%, mid-gray pixels sit exactly on the boundary. Lower values shift the boundary darker — more of the image falls into the mirror region. Higher values shift it brighter — only the brightest areas trigger the mirror effect. In Edge mode (Switch 7), this parameter instead sets the gradient magnitude threshold for edge detection.
+#### Learning Outcomes
 
----
+A clean two-zone composite where bright areas appear as a contrast-reduced, tinted reflection and dark areas pass through as the live scene.
 
-#### Knob 2 — Key Soft
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
+#### Key Concepts
 
-At 0%, the boundary between mirror and direct regions is a hard binary cut — pixels are either fully mirrored or fully direct. As you increase the control, the transition zone widens into a smooth gradient blend. High softness values create a dreamy, diffused boundary where the mirror effect fades gradually into the direct image, matching the optical behaviour of a partially-transparent reflective coating. Internally, controls the softness of the key transition ramp.
+- Luminance self-matte divides the image by brightness
+- Key threshold sets the dividing line
+- Key softness controls the transition width
 
----
+#### Video Source
 
-#### Knob 3 — Mirror Tint
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 37.5% |
-| Suffix | % |
+Footage with strong tonal contrast: a face lit from one side, architecture with bright sky and dark interiors, or a subject against a bright background.
 
-At 0%, the mirror region is spatially undistorted. Increasing the control introduces a sine-wave displacement that shifts each scanline horizontally (or vertically, depending on Switch 9), producing a watery, rippling distortion. High values create dramatic funhouse-mirror warping; low values produce a subtle shimmer that suggests an imperfect reflecting surface. Internally, controls the amplitude of the per-scanline sinusoidal wobble applied to the mirror region.
+#### Steps
 
----
+1. **Set the threshold**: Turn **Key Thresh** (Knob 1) to about 50%. The image splits: bright areas lose contrast and shift color, dark areas look normal.
+2. **Soften the edge**: Increase **Key Soft** (Knob 2) from 0% to about 40%. The hard boundary dissolves into a smooth gradient. Watch the transition zone widen.
+3. **Tint the reflection**: Sweep **Mirror Tint** (Knob 3) slowly from left to right. The reflected zone shifts from warm amber through neutral to cool blue. Find a tint that makes the reflected zone feel like a different material.
+4. **Reduce contrast**: Lower **Contrast** (Knob 4) to about 40%. The reflected zone flattens: shadows fill in, highlights dim. It starts to look like a reflection rather than the real thing.
+5. **Compare**: Toggle **Bypass** (Switch 11) to see the unprocessed source. Note how the Schufftan composite creates a tangible sense of two overlapping realities.
 
-#### Knob 4 — Contrast
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
+#### Settings
 
-Controls the contrast reduction applied to the mirror region. The processing pushes luminance values toward mid-gray (512): at 0%, no contrast change; at 100%, all luminance in the mirror region is flattened to mid-gray. Intermediate values produce the washed-out, low-contrast appearance characteristic of reflected images — the visual cue that tells the viewer they are looking at a reflection rather than direct reality.
-
----
-
-#### Knob 5 — Wobble Amt
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 12.5% |
-| Suffix | % |
-
-Controls the intensity of the blue-silver colour tint applied to the mirror region. U is shifted toward blue, V is shifted toward cool (desaturated). At 0%, no colour shift. Increasing the control produces a progressively stronger cool metallic cast — the colour signature of a silver mirror surface. The tint helps visually separate the mirror zone from the direct zone even when contrast and detail differences are subtle.
+| Control | Value |
+|---------|-------|
+| Key Thresh | 50% |
+| Key Soft | 40% |
+| Mirror Tint | ~15% |
+| Contrast | 40% |
+| Wobble Amt | 0% |
+| Wobble Spd | 0% |
+| Invert Key | Normal |
+| Edge Dbl | On |
+| Detail Loss | On |
+| Key Source | Y Only |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-#### Knob 6 — Wobble Spd
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
+### Exercise 2: The Vibrating Mirror
 
-Controls the detail loss (horizontal blur) applied to the mirror region. The processing uses an IIR (infinite impulse response) low-pass filter that smooths fine horizontal detail. At 100%, full detail is preserved — no blur. At 0%, maximum blur — the mirror region becomes a soft, indistinct wash. The IIR filter operates per-scanline with no BRAM requirement, and its cutoff frequency is set by a right-shift of the detail parameter.
+![The Vibrating Mirror result](/img/instruments/videomancer/schufftan/schufftan_ex2_s1.png)
+*The Vibrating Mirror — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-### Toggle Switches (Switches 7–11)
+#### Learning Outcomes
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Invert Key** | Normal | Invert |
-| **8 — Edge Dbl** | Off | On |
-| **9 — Detail Loss** | Off | On |
-| **10 — Key Source** | Y Only | Y+Edge |
-| **11 — Bypass** | Off | On |
+An animated mirror composite with a living, breathing boundary that shimmers like a physical mirror vibrating on set.
 
-The five toggles configure the keying mode, mirror polarity, wobble direction, double-image effect, and bypass. Key Source and Mirror Side interact to determine which image content ends up in the mirror zone. Wobble Dir selects the displacement axis. Double adds a ghost-image layer to the mirror region.
+#### Key Concepts
 
----
+- DDS wobble shifts the matte boundary per scanline
+- Wobble amount and speed create organic rippling
+- Edge double adds a ghosted overlap at the boundary
 
-### Linear Potentiometer (Fader 12)
+#### Video Source
 
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
+A static camera shot with a clear split between bright and dark regions (a window against a dark wall, or a silhouette.)
 
-Crossfades between the original input signal and the fully composited mirror output. At 0%, the output is identical to the input. At 100%, the full mirror composite is applied. Intermediate values produce a weighted blend — useful for subtle mirror-tint washes that suggest a reflective surface without fully committing to the effect.
+#### Steps
 
+1. **Establish the split**: Set **Key Thresh** to 45% and **Key Soft** to 30% to create a soft matte boundary.
+2. **Add wobble**: Increase **Wobble Amt** (Knob 5) to about 25%. The matte boundary begins to ripple horizontally. Each scanline's threshold shifts slightly.
+3. **Set wobble speed**: Adjust **Wobble Spd** (Knob 6) to about 20%. The ripple pattern should drift slowly (a gentle shimmer, not a strobe.)
+4. **Check the edge**: With **Edge Dbl** (Switch 8) set to **On**, look closely at the boundary zone. A faint ghost of the live image bleeds through the reflected zone. Toggle it off to compare (the ghosted version has more depth.)
+5. **Invert**: Flip **Invert Key** (Switch 7) to **Invert**. The reflected and live zones swap. Dark areas now receive the mirror treatment while bright areas pass through naturally.
+6. **Push it**: Increase Wobble Amt to 80% or higher. The matte fractures into horizontal bands of alternating reflection and transparency (an extreme, abstract effect.)
 
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
+#### Settings
 
-Routes the unprocessed input signal directly to the output, bypassing all Schufftan processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises progress from basic luminance keying to full Schüfftan-style mirror compositing, exploring how key shape, mirror character, and wobble interact.
-
-### Exercise 1: Basic Mirror Split
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: schufftan_source1_parrot, after: schufftan_ex1_s1 },
-    { label: "Dog", before: schufftan_source2_dog, after: schufftan_ex1_s2 },
-    { label: "Turtle", before: schufftan_source3_turtle, after: schufftan_ex1_s3 },
-    { label: "Pattern", before: schufftan_source4_pattern, after: schufftan_ex1_s4 },
-    { label: "Woman", before: schufftan_source5_woman, after: schufftan_ex1_s5 },
-    { label: "Berries", before: schufftan_source6_berries, after: schufftan_ex1_s6 },
-  ]}
-/>
-*Basic Mirror Split — simulated result across source images.*
-**Source**: Footage with a clear tonal separation — a brightly-lit subject against a dark background, or a window with daylight and an interior shadow.
-
-**What You'll Create**: Learn to use the luminance key to split the frame into mirror and direct regions.
-
-1. **Set the threshold**: Adjust Key Level to place the boundary between the bright and dark areas of your source.
-2. **Hard key**: Set Softness to 0%. The boundary is a sharp cut between mirror and direct.
-3. **Mirror character**: Increase Contrast to ~40% and Mirror Tint to ~50%. The mirror region becomes washed-out with a blue-silver cast.
-4. **Swap sides**: Toggle Mirror Side (Switch 8). The mirror effect jumps from bright to dark areas.
-5. **Soften the edge**: Increase Softness to ~50%. The hard boundary dissolves into a gradual blend.
-
-**Key concepts**: Luminance keying splits frames by brightness, Key Level positions the boundary, Softness controls the transition width, Mirror Side selects polarity
+| Control | Value |
+|---------|-------|
+| Key Thresh | 45% |
+| Key Soft | 30% |
+| Mirror Tint | ~35% |
+| Contrast | 50% |
+| Wobble Amt | 25% |
+| Wobble Spd | 20% |
+| Invert Key | Normal |
+| Edge Dbl | On |
+| Detail Loss | On |
+| Key Source | Y Only |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Wobble and Distortion
+### Exercise 3: Edge-Keyed Dreamscape
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: schufftan_source1_parrot, after: schufftan_ex2_s1 },
-    { label: "Dog", before: schufftan_source2_dog, after: schufftan_ex2_s2 },
-    { label: "Turtle", before: schufftan_source3_turtle, after: schufftan_ex2_s3 },
-    { label: "Pattern", before: schufftan_source4_pattern, after: schufftan_ex2_s4 },
-    { label: "Woman", before: schufftan_source5_woman, after: schufftan_ex2_s5 },
-    { label: "Berries", before: schufftan_source6_berries, after: schufftan_ex2_s6 },
-  ]}
-/>
-*Wobble and Distortion — simulated result across source images.*
-**Source**: A scene with strong geometric lines — architecture, grids, or tile patterns.
+![Edge-Keyed Dreamscape result](/img/instruments/videomancer/schufftan/schufftan_ex3_s1.png)
+*Edge-Keyed Dreamscape — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore how per-scanline wobble distorts the mirror region while leaving the direct region clean.
+***A description of the exercise illustration.***
 
-1. **Establish key**: Set Key Level to ~50%, Softness to ~30%, Contrast to ~30%.
-2. **Introduce wobble**: Slowly increase Wobble from 0% to ~60%. Watch the mirror region begin to ripple.
-3. **Direction**: Toggle Wobble Dir (Switch 9). Horizontal wobble bends vertical lines; Vertical wobble bends horizontal lines.
-4. **Double image**: Enable Double (Switch 10). The ghost adds a translucent layer to the already-wobbling mirror region.
-5. **Detail loss**: Reduce Detail to ~30%. The mirror region softens, making the wobble distortion more pronounced against the sharp direct region.
+#### Learning Outcomes
 
-**Key concepts**: Wobble is a per-scanline sine displacement, Direction selects the displacement axis, wobble only affects the mirror region (not the key boundary), Detail loss compounds with wobble for maximum mirror distinction
+A dreamlike composite where sharp edges in the image trigger the reflected zone, creating a halo of tinted, softened mirror-world around contours and details.
 
----
+#### Key Concepts
 
-### Exercise 3: Edge-Keyed Mirror Composite
+- Y+Edge key source adds contour information to the matte
+- Mix control blends between dry and wet for translucent effects
+- All parameters interact to create complex composites
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: schufftan_source1_parrot, after: schufftan_ex3_s1 },
-    { label: "Dog", before: schufftan_source2_dog, after: schufftan_ex3_s2 },
-    { label: "Turtle", before: schufftan_source3_turtle, after: schufftan_ex3_s3 },
-    { label: "Pattern", before: schufftan_source4_pattern, after: schufftan_ex3_s4 },
-    { label: "Woman", before: schufftan_source5_woman, after: schufftan_ex3_s5 },
-    { label: "Berries", before: schufftan_source6_berries, after: schufftan_ex3_s6 },
-  ]}
-/>
-*Edge-Keyed Mirror Composite — simulated result across source images.*
-**Source**: High-contrast footage with strong edges — text, graphic patterns, or architectural details with sharp lines.
+#### Video Source
 
-**What You'll Create**: Use Edge key mode to apply mirror processing at transitions rather than brightness levels.
+Footage with fine detail and well-defined edges: foliage, fabric textures, text, or a face with sharp features.
 
-1. **Switch to Edge mode**: Set Key Source (Switch 7) to Edge. The key is now driven by horizontal gradient magnitude, not absolute luminance.
-2. **Calibrate threshold**: Adjust Key Level to capture the major edges in your source without flooding the frame.
-3. **Mirror treatment**: Set Contrast to ~50%, Mirror Tint to ~60%, Detail to ~40%. The edge regions receive full mirror treatment.
-4. **Softness**: Increase Softness to ~40%. The mirror effect feathers outward from each edge, creating halos of reflected-looking imagery around transitions.
-5. **Wobble halo**: Add Wobble at ~30%. The edge halos now ripple, giving each contour a shimmering, heat-haze quality.
-6. **Mix to taste**: Use Mix to dial back the composite — find the point where edges shimmer but the overall image remains legible.
+#### Steps
 
-**Key concepts**: Edge mode keys on spatial transitions rather than brightness, edge keys produce haloed borders around contours, Softness feathers the edge key outward, combining edge key with wobble creates shimmering contour effects
+1. **Engage edge keying**: Set **Key Source** (Switch 10) to **Y+Edge**. Set **Key Thresh** to about 35% and **Key Soft** to 50%.
+2. **Observe the contours**: The reflected zone now wraps around edges and high-contrast boundaries. Flat areas tend toward the live plate; textured areas shift toward the reflected zone.
+3. **Style the reflection**: Set **Mirror Tint** to about 60% for a cool blue cast. Lower **Contrast** to 30% for a heavily compressed, dreamy reflected zone.
+4. **Add detail loss**: Confirm **Detail Loss** (Switch 9) is **On**. The reflected zone blurs slightly, enhancing the distinction between the sharp live plate and the soft reflection.
+5. **Gentle wobble**: Set **Wobble Amt** to about 15% and **Wobble Spd** to 10%. The contour halos shimmer subtly.
+6. **Blend back**: Lower **Mix** (Fader 12) to about 75%. The unprocessed image bleeds through, creating a translucent, ghostly overlay.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Key Thresh | 35% |
+| Key Soft | 50% |
+| Mirror Tint | ~60% |
+| Contrast | 30% |
+| Wobble Amt | 15% |
+| Wobble Spd | 10% |
+| Invert Key | Normal |
+| Edge Dbl | On |
+| Detail Loss | On |
+| Key Source | Y+Edge |
+| Bypass | Off |
+| Mix | 75% |
 
 ---
-
-
-## Tips
-
-- **Combine Contrast and Detail for mirror realism**: Real reflections are both lower-contrast and softer than direct views. Use both controls together for the most convincing mirror zone.
-- **Mirror Tint as colour grade**: At low Key Level with soft key, the mirror tint becomes a gentle cool colour wash over most of the frame — usable as a cinematic colour grade tool.
-- **Edge mode for contour effects**: Edge keying applies the mirror treatment to spatial transitions rather than brightness levels, creating haloed contours with the mirror's soft, tinted character.
-- **Feedback loops**: Routing Schufftan's output back to its input creates recursive keying — the mirror region's contrast reduction and tint accumulate, progressively separating the two zones into distinct visual layers.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Alpha** | A per-pixel transparency value (0–1023) controlling the blend between two image layers; here, between mirror and direct regions. |
-| **BT.601** | ITU-R Recommendation BT.601; the colour space standard defining YUV encoding used throughout the Videomancer pipeline. |
-| **Chroma** | The colour information in a video signal, encoded as U and V components in YUV colour space. |
-| **Composite** | The process of combining two or more image layers into a single output using alpha blending or keying. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms (here, a sine wave for wobble) using a phase accumulator and lookup table. |
-| **IIR** | Infinite Impulse Response; a filter whose output depends on both current input and previous output, creating exponential smoothing. |
-| **Keying** | Separating an image into foreground and background regions based on a signal characteristic (luminance, colour, or edge). |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage applying brightness and contrast adjustment. |
-| **Schüfftan Process** | A 1920s visual effects technique using a partially-scraped mirror to composite live actors with miniature sets. |
+- **Alpha Blend**: A compositing operation that mixes two images proportionally using a per-pixel opacity value (alpha). Alpha of 0 shows only the first image; alpha of 1 shows only the second.
+
+- **Contrast Reduction**: Compressing the tonal range of an image toward a central gray point, reducing the difference between the brightest and darkest values.
+
+- **DDS (Direct Digital Synthesis)**: A technique for generating waveforms by incrementing a phase accumulator at a programmable rate. Used here to create the per-scanline wobble oscillation.
+
+- **Edge Zone**: The transition region where the key alpha is neither fully live nor fully reflected: between approximately 5% and 95% opacity. This is where the edge double artifact appears.
+
+- **Key Threshold**: The luminance level that divides the image into two zones. Pixels above the threshold are assigned to one composite layer; pixels below are assigned to the other.
+
+- **Live Plate**: In the Schüfftan process, the real scene viewed through the scraped-clear regions of the mirror. In this program, the portion of the image below the key threshold that passes through without mirror processing.
+
+- **Matte**: A mask that defines which parts of an image are visible or transparent. In self-matting, the matte is derived from the image's own content rather than from a separate source.
+
+- **Reflected Plate**: The miniature or painting reflected in the mirror's intact silver surface. In this program, the portion of the image above the key threshold that receives contrast reduction, tinting, detail loss, and brightness boost.
+
+- **Self-Matte**: A compositing technique where the matte mask is derived from the image being composited, rather than from a separate matte source. The Schüfftan process is a physical self-matte (the mirror's silver coating is the mask.)
+
+- **Wobble**: Per-scanline oscillation of the key threshold, simulating the physical vibration of a mirror. The threshold shifts up and down for each horizontal line, creating a rippling matte boundary.
 
 ---

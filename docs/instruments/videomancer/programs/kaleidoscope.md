@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 156
 slug: /instruments/videomancer/kaleidoscope
@@ -7,39 +7,197 @@ image: /img/instruments/videomancer/kaleidoscope/kaleidoscope_hero.png
 description: "Kaleidoscope is a faithful recreation of Li-Chen Wang's legendary 1976 demo for the Cromemco Dazzler — one of the earliest consumer video graphics boards."
 ---
 
-import kaleidoscope_hero from '/img/instruments/videomancer/kaleidoscope/kaleidoscope_hero.png';
-import kaleidoscope_animation from '/img/instruments/videomancer/kaleidoscope/kaleidoscope_animation.gif';
-import kaleidoscope_control_panel from '/img/instruments/videomancer/kaleidoscope/kaleidoscope_control_panel.png';
-import kaleidoscope_exercise1_result from '/img/instruments/videomancer/kaleidoscope/kaleidoscope_exercise1_result.gif';
-import kaleidoscope_exercise2_result from '/img/instruments/videomancer/kaleidoscope/kaleidoscope_exercise2_result.gif';
-import kaleidoscope_exercise3_result from '/img/instruments/videomancer/kaleidoscope/kaleidoscope_exercise3_result.gif';
-
-# Kaleidoscope
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={kaleidoscope_hero} alt="Kaleidoscope hero image"/>
-*Kaleidoscope generating a 4-way symmetric color pattern on a 64x64 grid, with the Cromemco Dazzler 16-color palette painting concentric shapes across the display.*
-<img src={kaleidoscope_animation} alt="Kaleidoscope animated output"/>
-*Kaleidoscope output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Kaleidoscope hero image](/img/instruments/videomancer/kaleidoscope/kaleidoscope_hero_s1.png)
+*Kaleidoscope generating a four-way symmetric pattern from Li-Chen Wang's 1976 Cromemco Dazzler algorithm, rendered across a 64×64 grid in full-color YUV.*
 
 ---
 
 ## Overview
 
-Kaleidoscope is a faithful recreation of Li-Chen Wang's legendary 1976 demo for the Cromemco Dazzler — one of the earliest consumer video graphics boards. The original program fit in just 127 bytes of 8080 assembly and produced mesmerizing, endlessly evolving symmetric patterns on a 64x64 pixel display using only 16 colors. It was so captivating that it reportedly stopped traffic on New York City's Fifth Avenue when displayed in a storefront window. Videomancer's FPGA implementation preserves the original algorithm's elegant simplicity while presenting the output on modern HD video infrastructure.
+**Kaleidoscope** is a synthesis program that recreates one of the earliest real-time computer graphics demos ever written. In 1976, Li-Chen Wang wrote a tiny program for the ***Cromemco Dazzler***: a 64×64-pixel color graphics board for the Altair 8800: that produced endlessly evolving symmetric patterns from a simple pair of feedback equations. Videomancer's Kaleidoscope faithfully implements Wang's algorithm in hardware, running the original iteration engine inside the FPGA at video rate and rendering the results as a full-screen synthesis.
 
-The core algorithm is startlingly minimal. Two 8-bit coordinates (X and Y) are updated each iteration via a pair of masked shift-and-add operations: Y advances by a masked fraction of X, then X retreats by the same masked fraction of the new Y. The resulting coordinate, reduced to 5 bits in each axis, is plotted with 4-way mirror symmetry across the grid center. Colors cycle from 15 down to 1, with alternating iterations painting black — producing the characteristic interleaved color-and-void pattern. After 64 iterations at one color, the coordinates nudge by one unit and the next color begins. After all 15 colors have painted their 64 plots, the mask value increments, fundamentally altering the geometry of subsequent patterns.
+The core loop is deceptively simple. Two coordinates, X and Y, are updated each iteration by shifting and masking each other. The result is plotted with ***four-way mirror symmetry*** across the grid, and the process repeats through a cycle of fifteen colors. When all colors have been visited, the mask value increments, producing an entirely new family of shapes. The algorithm never truly repeats: it wanders through an enormous space of geometric patterns, from tight spirals to crystalline lattices to chaotic scatters.
 
-The mask is the key to visual variety. It determines which bits of the shifted coordinate participate in the feedback equation. Low mask values produce simple, repetitive structures; high mask values create chaotic, space-filling trajectories. Because the mask auto-increments through all 256 values before cycling, the Kaleidoscope passes through the full spectrum of geometric complexity — from sparse radial lines through dense fractal-like tilings — in a continuous, hypnotic evolution.
+:::tip
+Kaleidoscope is a ***synthesis*** program: it generates imagery from scratch, no input video required. However, the **Mix** fader lets you blend the generated pattern over any video source passing through the chain, creating hybrid compositions.
+:::
+
+### What's In a Name?
+
+The name references both the physical optical toy: a tube of mirrors that produces symmetric patterns from tumbling beads: and the program's algorithmic heritage. Wang's original listing was titled "KALEIDOSCOPE" in the Cromemco Dazzler software manual. We've kept the name as a tribute to that pioneering moment in real-time computer graphics, when a few dozen bytes of 8080 assembly could fill a screen with living geometry.
 
 ---
 
 ## Quick Start
 
-1. **Start with Auto Mask**: The auto-incrementing mask is the heart of the classic Kaleidoscope experience. Let it sweep through all 256 values before switching to manual exploration.
-2. **Low masks for structure**: Mask values below about 15 produce the most visually distinctive, recognizable geometric patterns — radial spokes, concentric rings, and symmetric tilings.
-3. **High masks for chaos**: Mask values above 200 produce dense, space-filling trajectories that look more like noise. The visually interesting range is typically in the middle.
+1. Confirm **Run** (Switch 7) is set to **Run** and **Auto Mask** (Switch 8) is set to **Auto**. A pattern should already be evolving on-screen: symmetric shapes in bright Dazzler colors cycling across the grid.
+2. Turn **Speed** (Knob 1) clockwise. The pattern updates faster, shapes shifting and mutating more rapidly. Turn it counterclockwise for slow, meditative evolution.
+3. Flip **Reset** (Switch 9) to **Reset**, then back to **Off**. The pattern clears and begins a fresh sequence from the current **Seed X** and **Seed Y** values. Try different seed positions to launch new pattern families.
+4. Turn **Hue Shift** (Knob 5) to rotate the color palette. The geometry stays the same, but the mood changes entirely (cool blues shift to warm reds and back again.)
+
+---
+
+## Parameters
+
+![Videomancer front panel with Kaleidoscope loaded](/img/instruments/videomancer/kaleidoscope/kaleidoscope_control_panel.png)
+*Videomancer's front panel with Kaleidoscope active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Speed** controls how many iterations of Wang's algorithm execute per video frame. At low values, the pattern evolves slowly: you can watch individual plots appear across the grid. At high values the pattern mutates rapidly, with up to 128 iterations landing per frame. The visual effect ranges from a patient, crystalline unfolding to a flickering cascade of shapes. Because the algorithm is deterministic, the same seed and mask values always produce the same sequence, just at different rates.
+
+:::note
+At very low Speed settings with a static mask and seeds, you can observe the algorithm plotting individual cells one at a time with four-way symmetry (a direct window into Wang's original step-by-step logic.)
+:::
+
+---
+
+### Knob 2 — Seed X
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Seed X** sets the initial X coordinate for the iteration engine. This value is loaded when you trigger a **Reset**. Different seeds launch the algorithm from different starting points in its coordinate space, producing entirely different pattern families from the same mask value. Small changes in the seed can lead to dramatically different visual outcomes thanks to the feedback nature of the iteration.
+
+---
+
+### Knob 3 — Seed Y
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Seed Y** sets the initial Y coordinate, complementing **Seed X**. Together, the two seeds define the starting position in a two-dimensional coordinate space. Because the algorithm feeds X and Y back into each other through shifting and masking, even tiny differences between seeds can produce wildly divergent trajectories.
+
+:::tip
+Try setting **Seed X** and **Seed Y** to matching values for symmetric initial conditions, or to opposite extremes for asymmetric launches. Reset after each change to see the effect.
+:::
+
+---
+
+### Knob 4 — Mask
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 255 |
+| Default | 0 |
+
+**Mask** directly sets the AND mask applied to the coordinate feedback terms when **Auto Mask** is disabled. The mask determines which bits of the shifted coordinate survive into the feedback equation, and this single value is the primary source of pattern variety. Low mask values (few bits set) produce sparse, geometric patterns with long, sweeping curves. High mask values (many bits set) produce dense, intricate textures. The mask effectively controls the ***complexity*** of the generated shapes.
+
+When **Auto Mask** is active, this knob has no effect: the mask increments automatically after each full color cycle.
+
+---
+
+### Knob 5 — Hue Shift
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Hue Shift** rotates the sixteen-entry color palette by an offset derived from the knob position. At the default midpoint, the original Dazzler palette is used unmodified. Turning the knob shifts all non-black color indices forward through the palette, wrapping around at the top. This changes the color assignment of every plotted cell without altering the underlying geometry. Fully counterclockwise and fully clockwise produce different rotations of the same palette.
+
+:::tip
+Because the palette wraps, certain Hue Shift positions map geometrically distinct color indices onto the same palette entry, creating the illusion of fewer colors. Other positions spread the palette wide. Experiment to find color distributions you like.
+:::
+
+---
+
+### Knob 6 — Bright
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 75% |
+
+**Bright** scales the luminance of every rendered pixel. At the default position (roughly 75%), the Dazzler palette renders at close to its natural brightness. Turning the knob counterclockwise dims the entire pattern toward black. Turning it clockwise pushes brightness higher, with the palette's whites approaching full scale. Brightness scaling is multiplicative: it compresses or expands the tonal range of the sixteen palette colors proportionally.
+
+---
+
+### Switch 7 — Run
+
+| Property | Value |
+|----------|-------|
+| Off | Pause |
+| On | Run |
+| Default | Run |
+
+**Run** starts and stops the iteration engine. When set to **Run**, the algorithm advances on every video frame, plotting new cells and cycling colors. When set to **Pause**, the engine halts and the framebuffer holds its current state: the last pattern remains frozen on-screen. This is useful for examining a single frame of the pattern in detail, or for "catching" a particular shape before it mutates away.
+
+---
+
+### Switch 8 — Auto Mask
+
+| Property | Value |
+|----------|-------|
+| Off | Manual |
+| On | Auto |
+| Default | Auto |
+
+**Auto Mask** selects between automatic and manual mask progression. In **Auto** mode, the mask increments by one each time the algorithm completes a full pass through all fifteen color levels: this is Wang's original behavior, producing an endless, non-repeating sequence of patterns. In **Manual** mode, the mask is set directly by the **Mask** knob, giving you precise control over which pattern family is displayed. Manual mode is ideal for exploring one mask value in depth or for performances where you want deterministic shapes.
+
+---
+
+### Switch 9 — Reset
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | Reset |
+| Default | Off |
+
+**Reset** clears the framebuffer and re-seeds the iteration engine with the current **Seed X** and **Seed Y** values. Flip the switch to **Reset** and then back to **Off** to trigger a fresh start. The color counter resets to its maximum, the iteration counter clears, and in Auto Mask mode, the mask resets to its starting value. This gives you a clean slate to begin a new pattern sequence.
+
+:::note
+Reset is edge-triggered: the engine re-seeds on the transition from Off to Reset. Holding the switch in the Reset position doesn't continuously reset; only the initial flip matters.
+:::
+
+---
+
+### Switch 10 — Grid
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Grid** overlays thin lines at cell boundaries, drawing a 64×64 grid across the entire output. The grid lines are rendered as dim, desaturated marks at the first pixel of each cell row and column. This is useful for visualizing the discrete structure of the framebuffer and understanding exactly how the 64×64 grid maps to the full video frame. Each cell occupies 30 pixels wide by 16 pixels tall.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the input video directly to the output, bypassing all Kaleidoscope synthesis and mixing. The sync delay pipeline still operates, so switching produces no glitch. Use Bypass for instant A/B comparison between the synthesis output and the raw input signal.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** controls the wet/dry blend between the Kaleidoscope synthesis and the input video. At 100% (fully clockwise, the default), only the synthesized pattern is visible. At 0%, only the incoming video passes through. Intermediate positions blend the two, allowing you to overlay geometric patterns on live footage. The mix operates independently on Y, U, and V channels via three parallel ***interpolators***.
+
+:::tip
+With Mix at an intermediate setting, the synthesized pattern becomes a colorful geometric texture overlaid on your video source. Try combining this with a slow Speed for a gentle, evolving overlay effect.
+:::
 
 ---
 
@@ -47,269 +205,211 @@ The mask is the key to visual variety. It determines which bits of the shifted c
 
 ### The Cromemco Dazzler
 
-The Cromemco Dazzler, introduced in February 1976, was among the first affordable video graphics boards for personal computers. Designed by Harry Garland and Roger Melen at Cromemco (a company founded in a Stanford dormitory — Crothers Memorial Hall), the Dazzler plugged into the S-100 bus of an Altair 8800 or IMSAI 8080 and produced a 64x64 pixel display with either 16 colors or 512x512 monochrome resolution. The video buffer occupied 2 KB of system memory (addresses 0200h–09FFh), organized as four 32x32 quadrant pages. At a time when most microcomputers communicated through blinking LEDs and toggle switches, the Dazzler was a revelation.
+In January 1976, the Cromemco Dazzler appeared as a kit in *Popular Electronics* magazine. It was one of the first color graphics boards for personal computers: a plug-in card for the Altair 8800 that could display a 64×64 grid of pixels in sixteen colors. The Dazzler used ***direct memory mapping***: each pixel in the grid corresponded to a nibble (four bits) in a block of system RAM. Write a value to memory, and a colored dot would appear on the TV screen.
 
-### Li-Chen Wang's 127 Bytes
+Li-Chen Wang, a programmer at Cromemco, wrote several demonstration programs for the Dazzler. His "Kaleidoscope" was the most famous: a tiny routine that generated endlessly changing symmetric patterns using nothing but integer shifts, additions, and bitwise AND operations. The entire program fit in a handful of 8080 instructions.
 
-Li-Chen Wang, already known for creating Palo Alto Tiny BASIC, wrote Kaleidoscope as a demonstration program sold by Cromemco for $15 on paper tape. The entire program fits in 127 bytes of Intel 8080 machine code — fewer bytes than most HTTP headers today. Wang exploited the Dazzler's peculiar memory layout to achieve 4-way symmetry with minimal computation: the four quadrant pages starting at 0200h, 0400h, 0600h, and 0800h naturally mirror when addressed with complemented coordinates. The algorithm uses no multiplication, no division, no lookup tables — just shifts, masks, additions, and one complement operation per axis.
+### Wang's Algorithm
 
-### Iterated Coordinate Feedback
+The core of Wang's Kaleidoscope is a pair of coupled feedback equations operating on two 8-bit coordinates:
 
-The Kaleidoscope's visual complexity arises from a simple two-variable recurrence relation. Each iteration updates `Y += (X >> 2) & mask` then `X -= (Y >> 2) & mask`. This is structurally similar to a 2D linear congruential generator, but with the masking operation introducing nonlinear interactions between bit positions. The trajectory of (X, Y) through the 256x256 coordinate space depends entirely on the mask value: some masks produce short cycles (the coordinate returns to its starting point after a few dozen iterations), while others produce long, non-repeating orbits that fill large regions of the grid. The bit-level AND operation creates abrupt transitions between mask values — a single bit change can transform a simple orbit into a chaotic one.
+```
+y = y + ((x >> 2) AND mask)
+x = x - ((y >> 2) AND mask)
+```
 
-### Mirror Symmetry and the Grid
+Each iteration, the current X coordinate is shifted right by two bits, masked, and added to Y. Then the *new* Y is shifted, masked, and *subtracted* from X. This asymmetric feedback (addition in one axis, subtraction in the other) produces the characteristic rotational quality (patterns tend to spiral rather than simply grow or shrink.)
 
-Wang's 4-way symmetry exploits the Dazzler's page-based memory architecture, but the visual effect transcends implementation convenience. Each plotted pixel appears simultaneously in all four quadrants, creating bilateral symmetry across both the horizontal and vertical axes. This produces the kaleidoscopic appearance that gives the program its name — genuine optical kaleidoscopes work by the same principle of multi-axis reflection. The resulting patterns have the visual weight and balance of mandalas, snowflakes, and other naturally symmetric forms, emerging from an algorithm that contains no concept of symmetry whatsoever — only addressing arithmetic.
+The mask value is the key parameter. It determines which bits of the shifted coordinate survive into the feedback term. Different masks produce fundamentally different pattern families: some produce tight spirals, others produce crystalline lattices, others produce scattered dots. Wang's original program auto-incremented the mask after completing a full color cycle, creating a continuous slideshow of visual themes.
 
-### Palette and Color Cycling
+### Four-Way Symmetry
 
-The Cromemco Dazzler's 16-color palette was an RGBI system: 3 bits of RGB with an additional intensity bit, producing 8 dim and 8 bright variants of each base color (including two blacks and two whites that are visually identical). Videomancer's implementation maps this palette to BT.601 YUV values, preserving the original Dazzler color character. The color cycling mechanism — painting 64 pixels at each of 15 non-black colors, with alternating black iterations — creates layered structures where newer colors overwrite older ones. As the mask evolves, earlier color layers are partially erased and replaced, producing the characteristic depth and visual history that makes Kaleidoscope patterns feel geological in their layered accumulation.
+Each computed coordinate is plotted four times, mirrored across both the horizontal and vertical center lines of the 64×64 grid. The four ***quadrants*** reflect each other:
+
+- **Lower-right**: the raw computed position
+- **Lower-left**: X coordinate mirrored
+- **Upper-left**: both X and Y mirrored
+- **Upper-right**: Y coordinate mirrored
+
+This produces the kaleidoscopic quality: every mark generates three reflections simultaneously. Even random-looking coordinate sequences become structured patterns when reflected across two axes.
+
+### Color Cycling
+
+Wang's algorithm cycles through colors in a deliberate pattern. A counter runs from 31 down to 1. On odd counts, the plotted color is black; on even counts, it's the current palette color (the counter's upper bits index the palette). This creates a strobing effect where patterns are alternately drawn and erased, building up layered imagery as different colors overwrite each other. After completing the full count, all fifteen non-black palette entries have been used once, and the mask increments.
 
 
 ---
 
 ## Signal Flow
 
-```
-Synthesis Engine
-|
-+-- Parameter Mapping ------------------------------------------------
-|   +- registers_in(0)  -> Speed (iterations per frame)
-|   +- registers_in(1)  -> Seed X (initial X coordinate)
-|   +- registers_in(2)  -> Seed Y (initial Y coordinate)
-|   +- registers_in(3)  -> Mask (coordinate feedback AND mask)
-|   +- registers_in(4)  -> Hue Shift (palette index rotation)
-|   +- registers_in(5)  -> Brightness (Y channel scaling)
-|   +- registers_in(6)  -> Toggles (run, auto mask, reset, grid, bypass)
-|   +- registers_in(7)  -> Mix
-|
-+-- Iteration Engine (per vsync, when Run active) --------------------
-|   +- 1. Coordinate Update
-|   |      Y_new = Y + ((X >> 2) AND mask)
-|   |      X_new = X - ((Y_new >> 2) AND mask)
-|   +- 2. Pixel Address    (X_new[7:3], Y_new[7:3] -> 5-bit grid pos)
-|   +- 3. Color Select     (color_ctr odd -> black, even -> color[4:1])
-|   +- 4. Hue Shift        (non-black colors rotated by Hue Shift pot)
-|   +- 5. 4-Way Mirror Write (4 FB addresses per iteration)
-|   |      (+px, +py)  (+px, -py)  (-px, +py)  (-px, -py)
-|   +- 6. Iteration Count  (64 per color -> decrement color counter)
-|   +- 7. Color Cycle      (31 down to 1, then mask++)
-|   +- 8. Frame Budget     (limited iterations per frame via Speed pot)
-|
-+-- Framebuffer (64x64 x 4-bit) -------------------------------------
-|   +- Write: engine writes 4 mirrored pixels per iteration
-|   +- Read:  rasterizer reads sequentially during active video
-|
-+-- Rasterizer (per pixel) ------------------------------------------
-|   +- 9. Cell Lookup      (cell_col, cell_row -> FB read address)
-|   +- 10. Palette LUT     (4-bit color index -> 10-bit YUV)
-|   +- 11. Brightness Scale (palette Y * bright_pot / 1024)
-|   +- 12. Grid Lines      (cell_px=0 or cell_py=0, when enabled)
-|
-+-- Output Stage ----------------------------------------------------
-|   +- 13. Interpolator Mix  (3x interpolator_u wet/dry)
-|
-+-- Sync Pipeline ---------------------------------------------------
-|   +- 8-clock shift register (hsync, vsync, avid, field)
-|
-+-- Bypass ----------------------------------------------------------
-    +- Select processed or input signal
-```
+### Signal Flow Notes
 
-The iteration engine and the rasterizer operate in separate clock domains of the same process. The engine runs during the vsync blanking interval, advancing the Kaleidoscope state by writing new pixel colors to the 64x64 framebuffer. The rasterizer reads the framebuffer during active video, mapping each cell to a 30x16 pixel block on screen. Because writes happen during blanking and reads happen during active video, there is no read-write contention.
+The architecture splits into two concurrent domains: a ***rendering*** path that reads the framebuffer and converts cell colors to YUV output, and an ***iteration*** path that writes new cells into the framebuffer during vertical blanking.
 
-Each iteration produces five clock cycles of work: one cycle to compute the new coordinates and determine the color, then four cycles to write the four mirrored copies to the framebuffer. The Speed knob controls how many of these 5-cycle iterations execute per frame, governing the rate at which the pattern evolves. At maximum speed, over 100 iterations advance per frame; at minimum, only a handful — producing glacially slow evolution that lets each individual pixel placement be observed.
+The rendering path runs continuously. Position counters track which cell is currently being displayed (using modular counters to avoid division: each cell is 30 pixels wide by 16 tall). The cell's row and column form a 12-bit address into the framebuffer. The 4-bit color index read from the framebuffer enters a 16-entry palette lookup table that outputs 10-bit Y, U, and V values. Brightness scaling multiplies the palette Y value by the Bright knob and shifts right by 10 bits. If the grid overlay is enabled, cell boundary pixels are replaced with dim neutral gray.
 
----
-
-## Parameter Reference
-
-<img src={kaleidoscope_control_panel} alt="Videomancer front panel with Kaleidoscope loaded"/>
-*Videomancer's front panel with Kaleidoscope active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Speed
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Speed controls how many Kaleidoscope iterations execute during each frame's vsync blanking interval. Higher values produce faster pattern evolution, with new colors and shapes appearing rapidly. Lower values slow the evolution to a crawl, making each individual pixel placement visible as it happens. At moderate settings (around 50%), the pattern evolves at roughly the same pace as the original 1976 program running on a 2 MHz 8080 processor — the historically authentic experience.
-
----
-
-#### Knob 2 — Seed X
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Seed X sets the initial X coordinate when the Reset toggle is activated. Together with Seed Y, it determines the starting point of the Kaleidoscope trajectory through its 256x256 coordinate space. Different seed positions produce different initial pattern geometries even at the same mask value, because the coordinate feedback path depends on the current (X, Y) position. The lower 8 bits of this 10-bit pot are used directly as the initial X byte value.
-
----
-
-#### Knob 3 — Seed Y
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Seed Y sets the initial Y coordinate when Reset is activated. It works identically to Seed X but for the vertical coordinate. The combination of Seed X and Seed Y determines the full starting state of the system. Sweeping Seed Y while holding Seed X constant produces a family of related starting conditions that diverge as the iteration progresses — small initial differences are amplified by the masked feedback, producing visibly different patterns within a few dozen iterations.
-
----
-
-#### Knob 4 — Mask
-| Property | Value |
-|----------|-------|
-| Range | 0 – 255 |
-| Default | 0 |
-
-Mask directly sets the 8-bit AND mask used in the coordinate feedback equation when Auto Mask is set to Manual. The mask is the most powerful visual control: it determines which bit positions of the shifted coordinate contribute to the feedback. A mask of 0x00 produces no movement (delta is always zero). Low mask values like 0x01 or 0x03 create simple, repetitive radial patterns. Higher mask values introduce more bit interactions, creating increasingly complex and eventually chaotic trajectories. The full 8-bit range (0–255) is mapped from the 10-bit pot's upper bits.
-
----
-
-#### Knob 5 — Hue Shift
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Hue Shift rotates the palette index for non-black pixels. The lower 4 bits of the pot value are added to each color index before the palette lookup, cycling through the 16-color Dazzler palette. This recolors the entire Kaleidoscope pattern without changing its geometry. A shift of 0 produces the original Dazzler color ordering; other values remap colors — for example, what was originally blue might appear as green or red. Because palette index 0 (black) is preserved, the spatial structure of color-versus-void is maintained regardless of the shift.
-
----
-
-#### Knob 6 — Bright
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 75% |
-| Suffix | % |
-
-Bright scales the luminance output of all palette colors. The palette Y value is multiplied by the Bright pot value and the result is divided by 1024 (a 10-bit shift). At maximum brightness, palette whites reach near-peak luminance. At minimum, the entire pattern fades to black. This control is useful for matching the Dazzler output level to whatever is being mixed behind it via the fader, or for creating subtle, dim patterns that add texture without overwhelming the source video.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Run** | Pause | Run |
-| **8 — Auto Mask** | Manual | Auto |
-| **9 — Reset** | Off | Reset |
-| **10 — Grid** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles divide into three functional groups. Run and Reset control the iteration engine's execution: Run gates per-frame iteration, Reset re-initializes coordinates and optionally the mask. Auto Mask selects between the manual Mask pot and the original auto-incrementing behavior. Grid and Bypass are display controls — Grid renders cell boundaries as dim white lines, and Bypass routes input video directly to the output. Note that Reset is edge-triggered: the grid re-seeds on the rising edge of the toggle activation, so it acts as a momentary trigger.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Mix controls the wet/dry blend between the Kaleidoscope synthesis output and the input video signal. At full mix, only the Kaleidoscope pattern is visible against the default input background. Reducing mix fades the input video into view behind the pattern, creating a colored overlay effect. At zero mix, the Kaleidoscope is invisible and only the input signal passes through. The mix engages three interpolator_u instances for independent Y, U, and V channel blending.
-
-
-
+The iteration engine runs only during vsync blanking. On each vsync, it executes a batch of iterations (controlled by Speed). Each iteration computes new X and Y coordinates, then writes the color to four framebuffer addresses in sequence: one per quadrant of the mirror symmetry. This four-clock write cycle means each iteration takes five clocks total (one compute + four writes). After 64 iterations at one color level, the coordinates are bumped and the color counter decrements. After all fifteen colors, the mask auto-increments (in Auto mode).
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises explore the Kaleidoscope's sensitivity to mask values, the effect of seed positions on pattern geometry, and the use of hue shifting to recolor the classic Dazzler palette.
+These exercises explore the Kaleidoscope's pattern generation from simple observation through deliberate control of seeds, masks, and color. Since Kaleidoscope is a synthesis program, no input source is needed.
+### Exercise 1: Watching the Machine
 
-### Exercise 1: Classic Dazzler Experience
+![Watching the Machine result](/img/instruments/videomancer/kaleidoscope/kaleidoscope_ex1_s1.png)
+*Watching the Machine — simulated result across source images.*
+#### Exercise Illustration
 
-<img src={kaleidoscope_exercise1_result} alt="Classic Dazzler Experience result"/>
-*Classic Dazzler Experience — simulated result across source images.*
-**What You'll Create**: Reproduce the authentic 1976 Cromemco Dazzler Kaleidoscope experience with auto-incrementing mask and default palette.
+***A description of the exercise illustration.***
 
-1. Set Auto Mask to Auto for the original mask sweep behavior.
-2. Set Speed to about 50% for historically authentic evolution rate.
-3. Set Brightness to about 75% for vivid but not overdriven colors.
-4. Leave Hue Shift at center (50%) — no palette rotation.
-5. Disable Grid for the clean Dazzler look.
-6. Set Mix to 100% for pure synthesis output.
-7. Toggle Reset, then return Reset to Off.
-8. Set Run to Run.
-9. Watch as the mask auto-increments through all 256 values. Notice how simple radial patterns at low masks give way to complex, space-filling structures at higher masks before the cycle repeats.
+#### Learning Outcomes
 
-**Key concepts**: Auto mask sweep, color cycling, 4-way symmetry, mask-dependent geometry, coordinate feedback
+Observe the algorithm's natural behavior (an endlessly evolving slideshow of symmetric patterns.)
 
----
+#### Key Concepts
 
-### Exercise 2: Manual Mask Exploration
+- The iteration engine runs Wang's feedback algorithm at video rate
+- Speed controls the rate of pattern evolution
+- Auto Mask produces continuous, non-repeating variation
 
-<img src={kaleidoscope_exercise2_result} alt="Manual Mask Exploration result"/>
-*Manual Mask Exploration — simulated result across source images.*
-**What You'll Create**: Manually explore specific mask values to understand how each bit position affects pattern geometry.
+#### Steps
 
-1. Set Auto Mask to Manual.
-2. Set Speed to about 30% for detailed observation.
-3. Set Mask to minimum (0). Notice no pattern evolves — the AND mask zeros all feedback.
-4. Slowly increase Mask. At very low values (around 1–3%), observe simple radial spoke patterns.
-5. Continue increasing. At moderate values (around 25–50%), patterns become more complex with interlocking arcs.
-6. At high values (around 75–100%), the coordinate trajectory becomes chaotic and fills the grid densely.
-7. Toggle Reset between mask changes to see each geometry from a fresh start.
-8. Enable Grid to count exactly how many unique cells each mask value fills.
+1. **Default state**: Leave all controls at their defaults. The pattern should already be evolving (symmetric shapes in Dazzler palette colors.)
+2. **Slow down**: Turn **Speed** (Knob 1) fully counterclockwise. Watch individual cells appear in symmetric groups of four. This is Wang's algorithm running one iteration at a time.
+3. **Speed up**: Turn Speed fully clockwise. The pattern mutates rapidly, shapes flickering and reforming as up to 128 iterations land per frame.
+4. **Pause and study**: Flip **Run** (Switch 7) to **Pause**. The current pattern freezes. Examine the four-way symmetry: every shape in the lower-right quadrant has three reflections.
+5. **Resume**: Set Run back to **Run** and let the pattern continue evolving. Notice how the character of the shapes changes periodically (that's the mask auto-incrementing after each color cycle.)
 
-**Key concepts**: Manual mask control, bit-position geometry, simple vs chaotic trajectories, coordinate space coverage
+#### Settings
 
----
-
-### Exercise 3: Palette Cycling and Overlay
-
-<img src={kaleidoscope_exercise3_result} alt="Palette Cycling and Overlay result"/>
-*Palette Cycling and Overlay — simulated result across source images.*
-**What You'll Create**: Use Hue Shift to recolor the Kaleidoscope pattern and blend it as a textured overlay at partial mix.
-
-1. Set Auto Mask to Auto for continuous evolution.
-2. Set Speed to about 60% for lively animation.
-3. Set Brightness to about 90% for vivid color output.
-4. Slowly sweep Hue Shift from minimum to maximum. Watch the entire pattern recolor as palette indices rotate — the spatial structure remains identical while colors permute.
-5. Find a hue setting that produces a pleasing color combination.
-6. Reduce Mix to about 40% to blend the Kaleidoscope with input video.
-7. Observe how the evolving colored pattern creates a dynamic, retro-styled texture over the source.
-8. Try different Hue Shift values at the same Mix level to find complementary overlays.
-
-**Key concepts**: Palette rotation, color remapping, partial mix, synthesis overlay, complementary color selection
+| Control | Value |
+|---------|-------|
+| Speed | ~50% |
+| Seed X | 50% |
+| Seed Y | 50% |
+| Mask | 0 |
+| Hue Shift | 50% |
+| Bright | ~75% |
+| Run | Run |
+| Auto Mask | Auto |
+| Reset | Off |
+| Grid | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 2: Seeds and Masks
 
-## Tips
+![Seeds and Masks result](/img/instruments/videomancer/kaleidoscope/kaleidoscope_ex2_s1.png)
+*Seeds and Masks — simulated result across source images.*
+#### Exercise Illustration
 
-- **Reset doesn't clear**: The framebuffer retains old pixel data when Reset re-seeds the coordinates. This creates visual transitions where new patterns overwrite old ones layer by layer — an artistically interesting effect.
-- **Seed position matters**: Different Seed X and Seed Y values produce different initial trajectories. Even small seed changes can dramatically alter the resulting pattern at the same mask value.
-- **Hue Shift for variety**: The Dazzler palette has strong personality — cycling through Hue Shift values radically changes the mood from warm earth tones to cool blues to vivid primaries.
-- **Grid for analysis**: Enable the grid overlay when studying how the algorithm distributes pixels across the 64x64 field. The grid reveals the discrete Dazzler pixel structure that gives the program its retro character.
-- **Partial mix for depth**: At 30–50% mix, the Kaleidoscope pattern creates a vivid colored texture over input video — excellent for retro-styled visual performances.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Learn to control which pattern family appears by manipulating seeds and masks manually.
+
+#### Key Concepts
+
+- Seed X and Seed Y define the starting coordinates
+- The Mask knob directly controls pattern complexity in Manual mode
+- Reset triggers a fresh start from the current seeds
+
+#### Steps
+
+1. **Enter manual mode**: Flip **Auto Mask** (Switch 8) to **Manual**. The mask is now under your direct control.
+2. **Set a low mask**: Turn **Mask** (Knob 4) fully counterclockwise. The pattern becomes sparse (long curves and sweeping arcs with lots of empty space.)
+3. **Increase the mask**: Slowly turn Mask clockwise. The patterns grow denser and more intricate. Notice how certain mask values produce tight, ordered lattices while others produce scattered, chaotic textures.
+4. **Change seeds**: Adjust **Seed X** (Knob 2) and **Seed Y** (Knob 3) to new positions. Flip **Reset** (Switch 9) to **Reset** and back to **Off** to launch from the new starting point. The same mask value now produces a different trajectory.
+5. **Find a favorite**: Experiment with different seed and mask combinations. When you find a pattern you like, flip Run to **Pause** to freeze it.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Speed | ~40% |
+| Seed X | 25% |
+| Seed Y | 75% |
+| Mask | ~50 |
+| Hue Shift | 50% |
+| Bright | ~75% |
+| Run | Run |
+| Auto Mask | Manual |
+| Reset | Off |
+| Grid | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Color and Overlay
+
+![Color and Overlay result](/img/instruments/videomancer/kaleidoscope/kaleidoscope_ex3_s1.png)
+*Color and Overlay — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Use palette rotation, grid visualization, and wet/dry mixing to create layered compositions.
+
+#### Key Concepts
+
+- Hue Shift rotates the palette without changing geometry
+- Grid reveals the discrete 64×64 structure
+- Mix blends synthesis with input video
+
+#### Steps
+
+1. **Palette exploration**: With a pattern running, slowly sweep **Hue Shift** (Knob 5) through its full range. Watch how the same geometric shapes take on completely different moods as colors rotate through the Dazzler palette (from cool blues and cyans to warm reds and yellows.)
+2. **Brightness control**: Turn **Bright** (Knob 6) down to dim the pattern to a subtle glow, then up toward full brightness. At low brightness, only the brightest palette entries remain visible; at high brightness, the full sixteen-color palette is vivid on screen.
+3. **Grid overlay**: Flip **Grid** (Switch 10) to **On**. A 64×64 grid of thin lines appears, revealing the discrete cell structure underlying the pattern. Each cell is 30 pixels wide by 16 pixels tall.
+4. **Mix with video**: If a video source is connected, pull the **Mix** fader (Fader 12) down from 100%. The synthesized pattern blends with the input, creating a geometric overlay on live footage.
+5. **Composite**: Set Mix to about 40% so the Kaleidoscope pattern is visible but translucent. Adjust Bright to balance the synthesis against the source material.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Speed | ~50% |
+| Seed X | 50% |
+| Seed Y | 50% |
+| Mask | 0 |
+| Hue Shift | ~80% |
+| Bright | ~60% |
+| Run | Run |
+| Auto Mask | Auto |
+| Reset | Off |
+| Grid | On |
+| Bypass | Off |
+| Mix | ~40% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **8080** | Intel 8080 microprocessor, the CPU used in the IMSAI 8080 and Altair 8800 computers that hosted the Cromemco Dazzler. |
-| **Coordinate Feedback** | The iterative update rule where X and Y modify each other through masked shift-and-add, producing the Kaleidoscope's characteristic trajectories. |
-| **Cromemco Dazzler** | One of the first consumer video graphics boards (1976), producing 64x64 color or 512x512 monochrome display via the S-100 bus. |
-| **LFSR** | Linear Feedback Shift Register; used here only for LFSR-like coordinate evolution via the masked feedback equation. |
-| **Mask** | An 8-bit AND mask applied to the shifted coordinate in the feedback equation, controlling which bit positions participate; the primary source of pattern variety. |
-| **Mirror Symmetry** | The 4-way reflection that plots each computed pixel in all four quadrants simultaneously, producing bilateral symmetry across both axes. |
-| **Palette** | The 16-entry color lookup table mapping 4-bit indices to YUV video values, based on the Dazzler's RGBI color scheme. |
-| **RGBI** | Red-Green-Blue-Intensity; the 4-bit color encoding used by the Cromemco Dazzler, with 3 base color bits and 1 intensity/brightness bit. |
-| **S-100 Bus** | The 100-pin bus standard used by early microcomputers including the Altair 8800 and IMSAI 8080; the Dazzler connected via this bus. |
+- **BRAM**: Block RAM: dedicated memory blocks inside the FPGA, used here to store the 64×64 framebuffer.
+
+- **Cromemco Dazzler**: A 1976 color graphics board for the Altair 8800, displaying a 64×64-pixel grid in sixteen colors via direct memory mapping.
+
+- **Feedback Equation**: A mathematical formula where the output of one iteration becomes the input to the next, producing evolving, self-referential patterns.
+
+- **Four-Way Symmetry**: Mirroring a computed point across both the horizontal and vertical center axes, producing four reflected copies.
+
+- **Framebuffer**: A block of memory holding the color value of every pixel in the grid, read continuously for display and written by the iteration engine.
+
+- **Interpolator**: A DSP module that linearly blends between two input values based on a mixing coefficient (used here for wet/dry control.)
+
+- **Iteration Engine**: The hardware state machine that executes Wang's coordinate feedback algorithm and writes results to the framebuffer.
+
+- **Mask**: A bitwise AND filter applied to the shifted coordinate in Wang's feedback equations, determining which bits participate and thus controlling pattern complexity.
+
+- **Palette**: A lookup table mapping 4-bit color indices (0–15) to 10-bit YUV values, based on the Cromemco Dazzler's RGBI color set.
+
+- **Synthesis Program**: A Videomancer program that generates imagery from internal algorithms rather than processing an external video input.
 
 ---

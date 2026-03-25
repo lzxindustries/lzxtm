@@ -24,13 +24,13 @@ The result is a transformation that turns even simple gradients into complex, sy
 
 ### What's In a Name?
 
-A ***corolla*** is the collective term for all the petals of a flower — the colorful ring that surrounds the center. The name captures the program's essence: each frequency-doubled harmonic creates a symmetrical, petal-like pattern, and the four layers together unfold like an opening bloom. The plural ***Corollas*** emphasizes the multiplicity — four nested layers of petals, each at a different frequency and mapped to a different color axis.
+A ***corolla*** is the collective term for all the petals of a flower: the colorful ring that surrounds the center. The name captures the program's essence: each frequency-doubled harmonic creates a symmetrical, petal-like pattern, and the four layers together unfold like an opening bloom. The plural ***Corollas*** emphasizes the multiplicity: four nested layers of petals, each at a different frequency and mapped to a different color axis.
 
 ---
 
 ## Quick Start
 
-1. Feed a video signal with clear tonal variation. Turn **Span** (Knob 4) clockwise to increase the input contrast. Watch as symmetrical patterns emerge — bright and dark regions fold into repeated shapes like petals unfurling.
+1. Feed a video signal with clear tonal variation. Turn **Span** (Knob 4) clockwise to increase the input contrast. Watch as symmetrical patterns emerge: bright and dark regions fold into repeated shapes like petals unfurling.
 2. Slowly turn **Hue 3** (Knob 5) and **Hue 4** (Knob 6) clockwise. Color appears in the image as the higher-frequency harmonics shift the U and V channels away from neutral.
 3. Sweep **Offset** (Knob 1) from one extreme to the other. The folding point shifts through the brightness range, and the entire pattern slides and reshapes in response.
 4. Toggle **Invert Span** (Switch 7). The base signal flips, and every harmonic layer reacts, producing the complementary petal arrangement.
@@ -64,7 +64,7 @@ Sweeping Offset through the full range animates the patterns like a kaleidoscope
 | Range | 0.0% – 100.0% |
 | Default | 0.0% |
 
-**Hue 1** adds a constant offset to the 2× harmonic before it is mixed into the Y (luminance) output. At 0.0%, no offset is applied — the harmonic passes at its natural level. Increasing Hue 1 shifts the DC level of the 2× harmonic upward, brightening the contribution of this layer to the luminance channel.
+**Hue 1** adds a constant offset to the 2× harmonic before it is mixed into the Y (luminance) output. At 0.0%, no offset is applied: the harmonic passes at its natural level. Increasing Hue 1 shifts the DC level of the 2× harmonic upward, brightening the contribution of this layer to the luminance channel.
 
 ---
 
@@ -155,7 +155,7 @@ Set Hue 3 and Hue 4 to different values to create color contrast between the 8×
 **Invert Hue 2** inverts the 4× harmonic before its hue offset is added. When **On**, the 4× luminance pattern flips independently of the 2× layer. Because the Y output averages these two harmonics, inverting one creates destructive interference in some regions and constructive interference in others.
 
 :::note
-Inverting one luminance harmonic while leaving the other normal creates asymmetric petal patterns — bright where they agree, mid-gray where they conflict.
+Inverting one luminance harmonic while leaving the other normal creates asymmetric petal patterns (bright where they agree, mid-gray where they conflict.)
 :::
 
 ---
@@ -205,7 +205,7 @@ Threshold is especially effective after strong harmonic processing. The repeated
 
 The core DSP operation of Corollas is ***frequency doubling***, also known as ***full-wave rectification*** in the analog domain. Imagine a ramp signal: values rising smoothly from 0 to maximum. The frequency doubler folds this ramp at its midpoint. Values below the midpoint are scaled upward (multiplied by 2). Values above the midpoint are mirrored downward and scaled. The result is a triangle wave with twice the frequency of the original ramp.
 
-Feed that triangle back through another doubler, and you get a signal at 4× the original frequency. A third doubler produces 8×, and a fourth produces 16×. Each stage doubles the number of peaks and valleys, creating progressively finer patterns — like the branching veins of a leaf or the layered petals of a flower.
+Feed that triangle back through another doubler, and you get a signal at 4× the original frequency. A third doubler produces 8×, and a fourth produces 16×. Each stage doubles the number of peaks and valleys, creating progressively finer patterns: like the branching veins of a leaf or the layered petals of a flower.
 
 ### Harmonic Distribution
 
@@ -227,35 +227,10 @@ output = (input − 512) × Span / 512 + Offset
 
 The proc amp positions and scales the input signal within the folding range. A narrow span produces gentle folds with broad, rounded peaks. A wide span drives the signal hard through the folding stages, creating sharp, well-defined harmonics with more fine detail. The offset shifts where the folding occurs relative to the image content.
 
-### Signal Flow
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel ──────────────────────────────────────────────
-│   │
-│   ├─ 1. Proc Amp             (Span × contrast + Offset brightness)
-│   ├─ 2. Invert Span          (optional bitwise complement)
-│   ├─ 3. Frequency Doubler    → 2× harmonic
-│   ├─ 4. Frequency Doubler    → 4× harmonic (from 2×)
-│   ├─ 5. Frequency Doubler    → 8× harmonic (from 4×)
-│   ├─ 6. Frequency Doubler    → 16× harmonic (from 8×)
-│   ├─ 7. Harmonic Offsets     (Hue 1–4 added, optional per-harmonic inversion)
-│   └─ 8. Output Mix + Key
-│         ├── Y = avg(harm_2x, harm_4x)
-│         ├── U = harm_8x + 512 (centered)
-│         ├── V = harm_16x + 512 (centered)
-│         └── Threshold: Y < key → black + neutral
-│
-├── U/V Input ────────────────────────────────────────────
-│   └─ (Not used — output chroma is generated from Y harmonics)
-│
-├── Sync Signals ─────────────────────────────────────────
-│   └─ Delayed through 18+2 stage pipeline (pass-through)
-│
-└── Output
-    └─ Processed YUV 4:4:4
-```
+---
+
+## Signal Flow
 
 ### Signal Flow Notes
 
@@ -281,21 +256,33 @@ These exercises explore the harmonic layers of Corollas, building from simple lu
 
 ![Triangle Wave Folding result](/img/instruments/videomancer/corollas/corollas_ex1_s1.png)
 *Triangle Wave Folding — simulated result across source images.*
-**Key Concepts**: - Frequency doubling folds a ramp at the midpoint, creating a triangle
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Understand how frequency doubling creates symmetrical fold patterns from input luminance.
+
+#### Key Concepts
+
+- Frequency doubling folds a ramp at the midpoint, creating a triangle
 - Cascading doublers multiplies the frequency geometrically (2×, 4×, 8×, 16×)
 - The proc amp controls how much of the input range passes through the folding stages
 
-**What You'll Create**: Understand how frequency doubling creates symmetrical fold patterns from input luminance.
+#### Video Source
 
-**Source**: A gradient test pattern or any footage with smooth tonal transitions such as skies or slow camera pans.
+A gradient test pattern or any footage with smooth tonal transitions such as skies or slow camera pans.
+
+#### Steps
 
 1. **Baseline**: Set **Span** (Knob 4) to about 100.0%. Set **Offset** (Knob 1) to center (0.0%). All **Hue** knobs to 0.0%. All toggles **Off**. **Threshold** at 0.0.
 2. **Fold pattern**: With a gradient input, the smooth ramp transforms into a symmetrical triangle pattern. Bright and dark regions fold into mirrored peaks.
 3. **Increase Span**: Slowly turn Span clockwise past 100%. The signal drives harder into the folding stages. More peaks appear as the harmonics grow stronger.
 4. **Sweep Offset**: Move Offset across its full range. The entire fold pattern slides through the brightness content like a kaleidoscope.
-5. **Invert**: Toggle **Invert Span** (Switch 7). The fold pattern complements — peaks become valleys and valleys become peaks.
+5. **Invert**: Toggle **Invert Span** (Switch 7). The fold pattern complements (peaks become valleys and valleys become peaks.)
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -318,13 +305,25 @@ These exercises explore the harmonic layers of Corollas, building from simple lu
 
 ![Chroma Petals result](/img/instruments/videomancer/corollas/corollas_ex2_s1.png)
 *Chroma Petals — simulated result across source images.*
-**Key Concepts**: - The 8× and 16× harmonics generate the U and V chroma channels
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Explore how harmonic offsets create color from luminance.
+
+#### Key Concepts
+
+- The 8× and 16× harmonics generate the U and V chroma channels
 - Hue offsets push chroma away from neutral, introducing visible color
 - Different offset combinations create different hues
 
-**What You'll Create**: Explore how harmonic offsets create color from luminance.
+#### Video Source
 
-**Source**: A camera feed with recognizable subjects and moderate contrast.
+A camera feed with recognizable subjects and moderate contrast.
+
+#### Steps
 
 1. **Prepare**: Begin with the settings from Exercise 1.
 2. **Add U color**: Turn **Hue 3** (Knob 5) clockwise to about 50.0%. Color appears as the 8× harmonic pattern drives the U channel.
@@ -332,7 +331,7 @@ These exercises explore the harmonic layers of Corollas, building from simple lu
 4. **Invert one chroma**: Toggle **Invert Hue 3** (Switch 10). The U channel color flips polarity, shifting the overall hue dramatically.
 5. **Balance**: Experiment with different Hue 3 and Hue 4 ratios. Equal values create one palette; unequal values create another.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -355,13 +354,25 @@ These exercises explore the harmonic layers of Corollas, building from simple lu
 
 ![Petal Isolation result](/img/instruments/videomancer/corollas/corollas_ex3_s1.png)
 *Petal Isolation — simulated result across source images.*
-**Key Concepts**: - Threshold keys out dark areas, isolating bright harmonic peaks
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Combine all controls to isolate specific harmonic layers and carve petal silhouettes.
+
+#### Key Concepts
+
+- Threshold keys out dark areas, isolating bright harmonic peaks
 - Per-harmonic inversion creates complex interference between layers
 - The full parameter set works together as a single sculptural instrument
 
-**What You'll Create**: Combine all controls to isolate specific harmonic layers and carve petal silhouettes.
+#### Video Source
 
-**Source**: High-contrast footage or a black-and-white test pattern with sharp edges.
+High-contrast footage or a black-and-white test pattern with sharp edges.
+
+#### Steps
 
 1. **Prepare**: Set Span to ~180.0%, Offset near center.
 2. **Color the petals**: Set Hue 3 to ~70.0% and Hue 4 to ~30.0% for asymmetric coloring.
@@ -370,7 +381,7 @@ These exercises explore the harmonic layers of Corollas, building from simple lu
 5. **Key the petals**: Slowly raise **Threshold** (Fader 12) until only the brightest harmonic peaks survive. The output becomes sharp petal shapes against black.
 6. **Flip the base**: Toggle **Invert Span** (Switch 7) to produce the complementary petal arrangement.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|

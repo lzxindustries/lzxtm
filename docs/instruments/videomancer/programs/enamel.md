@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 101
 slug: /instruments/videomancer/enamel
@@ -7,381 +7,406 @@ image: /img/instruments/videomancer/enamel/enamel_hero_s1.png
 description: "Enamel transforms live video into a digital simulation of cloisonné enamelwork — the ancient decorative art in which thin metal wires are soldered onto a surface to form cells, each filled with vitreous glass paste and fired to a glossy finish."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import enamel_control_panel from '/img/instruments/videomancer/enamel/enamel_control_panel.png';
-import enamel_source1_parrot from '/img/instruments/videomancer/enamel/enamel_source1_parrot.png';
-import enamel_source2_cat from '/img/instruments/videomancer/enamel/enamel_source2_cat.png';
-import enamel_source3_collage from '/img/instruments/videomancer/enamel/enamel_source3_collage.png';
-import enamel_source4_pattern from '/img/instruments/videomancer/enamel/enamel_source4_pattern.png';
-import enamel_source5_woman from '/img/instruments/videomancer/enamel/enamel_source5_woman.png';
-import enamel_source6_paint from '/img/instruments/videomancer/enamel/enamel_source6_paint.png';
-import enamel_hero_s1 from '/img/instruments/videomancer/enamel/enamel_hero_s1.png';
-import enamel_hero_s2 from '/img/instruments/videomancer/enamel/enamel_hero_s2.png';
-import enamel_hero_s3 from '/img/instruments/videomancer/enamel/enamel_hero_s3.png';
-import enamel_hero_s4 from '/img/instruments/videomancer/enamel/enamel_hero_s4.png';
-import enamel_hero_s5 from '/img/instruments/videomancer/enamel/enamel_hero_s5.png';
-import enamel_hero_s6 from '/img/instruments/videomancer/enamel/enamel_hero_s6.png';
-import enamel_ex1_s1 from '/img/instruments/videomancer/enamel/enamel_ex1_s1.png';
-import enamel_ex1_s2 from '/img/instruments/videomancer/enamel/enamel_ex1_s2.png';
-import enamel_ex1_s3 from '/img/instruments/videomancer/enamel/enamel_ex1_s3.png';
-import enamel_ex1_s4 from '/img/instruments/videomancer/enamel/enamel_ex1_s4.png';
-import enamel_ex1_s5 from '/img/instruments/videomancer/enamel/enamel_ex1_s5.png';
-import enamel_ex1_s6 from '/img/instruments/videomancer/enamel/enamel_ex1_s6.png';
-import enamel_ex2_s1 from '/img/instruments/videomancer/enamel/enamel_ex2_s1.png';
-import enamel_ex2_s2 from '/img/instruments/videomancer/enamel/enamel_ex2_s2.png';
-import enamel_ex2_s3 from '/img/instruments/videomancer/enamel/enamel_ex2_s3.png';
-import enamel_ex2_s4 from '/img/instruments/videomancer/enamel/enamel_ex2_s4.png';
-import enamel_ex2_s5 from '/img/instruments/videomancer/enamel/enamel_ex2_s5.png';
-import enamel_ex2_s6 from '/img/instruments/videomancer/enamel/enamel_ex2_s6.png';
-import enamel_ex3_s1 from '/img/instruments/videomancer/enamel/enamel_ex3_s1.png';
-import enamel_ex3_s2 from '/img/instruments/videomancer/enamel/enamel_ex3_s2.png';
-import enamel_ex3_s3 from '/img/instruments/videomancer/enamel/enamel_ex3_s3.png';
-import enamel_ex3_s4 from '/img/instruments/videomancer/enamel/enamel_ex3_s4.png';
-import enamel_ex3_s5 from '/img/instruments/videomancer/enamel/enamel_ex3_s5.png';
-import enamel_ex3_s6 from '/img/instruments/videomancer/enamel/enamel_ex3_s6.png';
-
-# Enamel
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: enamel_source1_parrot, after: enamel_hero_s1 },
-    { label: "Cat", before: enamel_source2_cat, after: enamel_hero_s2 },
-    { label: "Collage", before: enamel_source3_collage, after: enamel_hero_s3 },
-    { label: "Pattern", before: enamel_source4_pattern, after: enamel_hero_s4 },
-    { label: "Woman", before: enamel_source5_woman, after: enamel_hero_s5 },
-    { label: "Paint", before: enamel_source6_paint, after: enamel_hero_s6 },
-  ]}
-/>
-*Enamel partitioning a portrait into cloisonné cells — gold wire outlines tracing every contour, vivid quantized fill glowing between the boundaries.*
+![Enamel hero image](/img/instruments/videomancer/enamel/enamel_hero_s1.png)
+*Enamel transforming a live video feed into a cloisonné artwork with gold wire boundaries separating vivid, flat-colored cells.*
 
 ---
 
 ## Overview
 
-Enamel transforms live video into a digital simulation of cloisonné enamelwork — the ancient decorative art in which thin metal wires are soldered onto a surface to form cells, each filled with vitreous glass paste and fired to a glossy finish. The program detects edges in the luminance channel to generate wire boundaries, quantizes the brightness within those cells to produce flat, poster-like fill regions, boosts chroma saturation for vivid color, and optionally overlays a position-based gloss shimmer to simulate the curved, reflective surface of real enamel.
+Enamel recreates the look of ***cloisonné*** enamelwork: an ancient decorative art in which thin metal wires are soldered onto a surface to form compartments, then filled with vitreous glass paste and fired to a glossy finish. The program detects edges in the input video and renders them as metallic "wire" outlines, while the regions between wires are flattened into uniform, saturated fields of color. The result looks as if someone fused your video signal onto a piece of ornamental metalwork.
 
-The name references both the material (enamel — a glassy coating fused to metal) and the visual character of the output. At moderate settings, Enamel produces a stylized, illustrative look that preserves recognizable imagery while reducing it to bold outlines and flat color. At extreme settings, the image collapses into large uniform cells separated by dense wire networks, resembling stained glass or abstract mosaic. The four style presets — Cloisonné, Champlevé, Plique-à-jour, and Basse-taille — switch between gold and dark wire and between cool and warm palette temperatures, covering the major visual traditions of historical enamelwork.
+At gentle settings, Enamel adds a subtle stained-glass quality: outlines sharpen, colors become bolder, and smooth gradients snap into opaque bands. At extreme settings, the image dissolves into a mosaic of vivid cells separated by heavy wire borders: a fully abstracted material surface that you can animate with built-in shimmer and palette controls.
 
-The signal path is compact: a single video line buffer stores the previous line of Y data for vertical edge detection, horizontal gradient comes from a one-pixel delay, and the combined edge strength determines whether each pixel becomes wire or fill. Three interpolators handle the wet/dry mix. Total pipeline latency is ten clock cycles, with no frame-buffer dependency.
+:::tip
+Enamel is a ***processing*** program. It transforms an incoming video signal rather than generating imagery from scratch. Feed it a camera, a pattern generator, or the output of another program to see the cloisonné effect come alive.
+:::
+
+### What's In a Name?
+
+***Enamel*** refers directly to ***vitreous enamel***, the glassy coating fused to metal in decorative arts such as cloisonné, champlevé, and plique-à-jour. In cloisonné, thin metal strips: called ***cloisons***: are bent into patterns and soldered to a base, forming cells that are filled with colored enamel powder and fired in a kiln. The finished surface is polished smooth, with gleaming wire boundaries separating pools of opaque color. Videomancer's Enamel program captures that process digitally: edge detection creates the wire, and luminance quantization fills each cell with flat, saturated color.
 
 ---
 
 ## Quick Start
 
-1. **Wire before fill**: Edge detection operates on the raw input luminance, so wire boundaries always trace the source image's natural contours regardless of how aggressively the fill is posterized. Adjust wire first, then tune the palette.
-2. **Two-knob threshold**: Wire W and Edge Thr combine to set the effective detection threshold. Think of Wire W as the coarse control and Edge Thr as the fine-tune — together they give more range than either alone.
-3. **Coarse palette for authenticity**: Real cloisonné cells contain a single opaque color. Palette steps 1–3 produce the most convincing enamel look; higher steps add tonal nuance at the cost of realism.
+1. Feed any video source into Videomancer and select **Enamel**. With default settings, you'll see the image with subtle edge-detected wire outlines and mild color flattening.
+2. Turn **Edge Thr** (Knob 2) clockwise to widen the wire boundaries. More of the image becomes wire, thickening the dark or golden outlines between color cells.
+3. Step through **Palette** (Knob 3) to reduce the number of luminance levels in the fill regions. At the lowest setting, cells snap to just a handful of flat tones (the classic enamel look.)
+4. Flip **Style** (Switch 7) to **Basel** to switch from dark wires to bright gold wires, and toggle **Gloss** (Switch 9) to **On** to add a subtle reflective shimmer across the fill regions.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Enamel loaded](/img/instruments/videomancer/enamel/enamel_control_panel.png)
+*Videomancer's front panel with Enamel active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Wire W
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Wire W** sets the base sensitivity for edge detection. At low values, even faint gradients in the source image are classified as wire, producing dense, far-reaching outlines that cover much of the frame. As you increase **Wire W**, the edge detector becomes more selective: only strong, high-contrast boundaries register as wire, and the outlines shrink to trace only the most prominent features. At maximum, almost nothing qualifies as wire, and the effect reduces to color quantization alone.
+
+:::note
+**Wire W** and **Edge Thr** work together to define the wire network. Think of **Wire W** as the "sensitivity dial" and **Edge Thr** as the "width expansion." Balancing the two controls lets you sculpt wires that range from hairline traces to bold, heavy borders.
+:::
+
+---
+
+### Knob 2 — Edge Thr
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Edge Thr** expands the effective wire coverage by lowering the internal detection threshold. At its minimum, only the edges that already exceed the **Wire W** sensitivity become wire. As you increase **Edge Thr**, the threshold drops, and progressively more pixels are reclassified as wire: making the outlines wider and the overall wire network denser. Pair **Edge Thr** with a moderate **Wire W** setting to create thick, dramatic wire borders reminiscent of heavy-gauge cloisonné metalwork.
+
+---
+
+### Knob 3 — Palette
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 8 |
+| Default | 5 |
+
+**Palette** selects the number of luminance quantization levels applied to the fill regions between wires. This control steps through eight discrete settings, from heavily posterized (just a few flat brightness bands) to nearly unquantized (hundreds of tonal levels). Lower Palette values give the flat, opaque character of real enamel pigment: large areas of uniform tone with crisp boundaries between colors. Higher values preserve more of the source's tonal detail, producing a subtler, more photographic effect with only a hint of flattening.
+
+:::tip
+Set **Palette** to its lowest position for the most authentic cloisonné look. Real enamel cells contain a single color: no gradients. The fewer the levels, the closer you get to that handcrafted quality.
+:::
+
+---
+
+### Knob 4 — Gloss
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Gloss** (Knob 4) is reserved for a future saturation enhancement feature. In the current firmware, adjusting this knob produces no visible change to the output. The enamel color saturation is boosted automatically by a fixed internal amount on all fill pixels.
+
+---
+
+### Knob 5 — Flat Amt
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Flat Amt** controls the brightness of wire pixels. In **Basel** mode (gold wires), the wire brightness tracks this control directly: turn it up for brilliant, gleaming wires, turn it down for muted, tarnished gold. In **Cloisnne** mode (dark wires), the effect is more subtle: the wire brightness is one-quarter of the control value, so even at maximum the wires remain dark, though not completely black. Use **Flat Amt** to fine-tune the contrast between wire outlines and the colored fill cells.
+
+---
+
+### Knob 6 — Wire Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 360° |
+| Default | 0° |
+
+**Wire Hue** controls the intensity of the gloss effect on fill regions when **Gloss** (Switch 9) is enabled. Despite its name, this knob does not rotate the hue of the wire. Instead, it scales a position-based brightness modulation that simulates the curved, reflective surface of fired enamel glaze. At its minimum, the gloss pattern disappears entirely. As you increase the control, a subtle grid-like shimmer becomes visible across the fill cells, imitating the way light plays across a polished enamel surface.
+
+:::note
+The **Wire Hue** control only has a visible effect when **Gloss** (Switch 9) is set to **On**. With Gloss disabled, this knob does nothing.
+:::
+
+---
+
+### Switch 7 — Style
+
+| Property | Value |
+|----------|-------|
+| Off | Cloisnne |
+| On | Basel |
+| Default | Cloisnne |
+
+**Style** selects between two enamel wire rendering modes. In the **Cloisnne** position, wires are rendered dark: low brightness with neutral chroma: evoking the look of oxidized or blackened metal partitions. In the **Basel** position, wires are rendered bright with a warm gold tint, simulating polished brass or gold-leaf wire. The wire brightness in both modes is further adjusted by the **Flat Amt** knob (Knob 5).
+
+---
+
+### Switch 8 — Wire Color
+
+| Property | Value |
+|----------|-------|
+| Off | Gold |
+| On | Black |
+| Default | Gold |
+
+**Wire Color** shifts the color palette of the fill regions. In the **Gold** position, chrominance passes through the saturation boost unaltered, producing a neutral-to-cool palette. In the **Black** position, a subtle warm shift is applied to the V (red-difference) channel, pushing fill colors toward warmer red and orange tones. This mimics the way certain enamel pigments shift toward warm amber when fired at high temperatures.
+
+---
+
+### Switch 9 — Gloss
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Gloss** enables or disables the surface gloss simulation on fill regions. When set to **On**, a position-dependent brightness pattern is added to fill pixels, creating a subtle, grid-like shimmer that suggests the curved, reflective surface of polished enamel. The strength of this shimmer is controlled by the **Wire Hue** knob (Knob 6). When set to **Off**, fill regions receive flat, uniform brightness from the quantizer with no reflective modulation.
+
+---
+
+### Switch 10 — Video Pal
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Video Pal** enables a shimmer animation on wire pixels. When set to **On**, wire brightness is modulated frame by frame using a pattern derived from the frame counter and horizontal pixel position. The result is a subtle sparkling effect along the wires, as if light is glinting off a metallic surface. When set to **Off**, wires are rendered with static, uniform brightness.
+
+:::tip
+Combine **Video Pal** with **Basel** style and a high **Flat Amt** for maximum sparkle (the bright gold wires catch the animated light beautifully.)
+:::
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Enamel processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the enamel-processed result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the original (dry) input signal and the fully processed (wet) enamel output. At minimum, the output is entirely the original video. At maximum, the output is entirely the enamel effect. Intermediate positions blend the two, which can produce interesting semi-transparent overlay effects where the wire network and quantized fills are superimposed over the source at reduced opacity.
 
 ---
 
 ## Background
 
-### The Art of Cloisonné
+### Cloisonné enamelwork
 
-Cloisonné (from the French *cloison*, partition) is the oldest and most widely recognized enamel technique. Thin strips of metal wire — traditionally gold, silver, or copper — are bent into shapes and soldered onto a metal base to form enclosed cells. Each cell is filled with powdered glass mixed with metallic oxide pigments, then fired in a kiln at roughly 800 °C until the glass melts and fuses to the metal. After cooling, the surface is ground flat and polished to a high gloss. The result is a mosaic of vivid, opaque color fields separated by gleaming metallic lines that follow the contours of the design.
+***Cloisonné*** is one of the oldest decorative metalworking techniques, with origins tracing back to ancient Egypt and Byzantium. The word comes from the French *cloison*, meaning "partition." An artisan bends thin strips of metal: typically gold, silver, or copper: into intricate patterns and solders them to a metal base. The resulting network of tiny cells is filled with finely ground colored glass powder, then fired in a kiln at around 800°C. The glass melts, fuses to the metal, and hardens into smooth, opaque pools of vivid color separated by gleaming wire borders. The surface is then ground flat and polished to a high gloss.
 
-Cloisonné originated in the ancient Near East around the 12th century BCE and reached its artistic peak in Byzantine, Chinese, and Japanese workshops. The technique demands precision — each wire must be shaped by hand, and the enamel paste must be applied in thin layers to avoid cracking during firing. Videomancer's Enamel program digitizes this craft: edge detection generates the wire network, luminance quantization produces the flat opaque fill, and saturation boost creates the jewel-toned color characteristic of fired vitreous enamel.
+Enamel captures this process in real time. Edge detection stands in for the metal wire, luminance quantization replaces the discrete pigment fills, and the gloss simulation mimics the polished surface.
 
-### Champlevé, Plique-à-jour, and Basse-taille
+### Edge detection as wire
 
-Cloisonné is only one member of a family of historical enamel techniques that differ in how the cells are formed and how light interacts with the surface. **Champlevé** (raised field) carves or etches troughs into a thick metal plate rather than building cells from wire; the recessed areas are filled with enamel while the raised metal surface remains visible. The effect is bolder and more architectural than cloisonné because the wire boundaries are the full thickness of the plate.
+The program detects edges by computing brightness gradients in two directions: horizontal (comparing each pixel to the one immediately before it) and vertical (comparing each pixel to the same position on the previous scan line). These two gradients are combined: the larger gradient dominates, with the smaller contributing at half strength: and the result is compared against a threshold. Pixels that exceed the threshold are classified as "wire" and receive the metallic rendering; pixels below are classified as "fill" and receive the quantized enamel treatment.
 
-**Plique-à-jour** (open to daylight) removes the metal backing entirely, leaving translucent enamel suspended in a wire framework like miniature stained glass. Light passes through the enamel, producing luminous, saturated color. **Basse-taille** (low cutting) engraves the metal base with a relief pattern before applying translucent enamel; the underlying texture shows through the glass layer, creating depth and tonal variation. Enamel's four Style toggle positions are named after these techniques, cycling through gold/dark wire and warm/cool palette combinations that approximate each tradition's characteristic visual temperature.
+This two-axis edge detection ensures that both horizontal and vertical features in the source image produce wire outlines, creating a complete network of boundaries rather than detecting only one direction.
 
-### Edge Detection in Image Processing
+### Luminance quantization
 
-Edge detection identifies locations in an image where brightness changes sharply — the boundaries between objects, shadows, and textures. The simplest approach computes the **gradient**: the rate of change of pixel intensity from one sample to the next. A large gradient means a sharp transition; a small gradient means a smooth region.
+Fill pixels undergo ***posterization***: their brightness values are quantized to a reduced number of discrete levels. The quantizer works by masking the lower bits of the 10-bit luminance value, effectively rounding each pixel's brightness down to the nearest step. With the **Palette** control at its lowest setting, only 8 brightness levels remain, producing the flat, opaque look of real enamel pigment. At higher settings, the quantization becomes finer, preserving more of the source's tonal subtlety.
 
-Enamel computes two gradients per pixel. The **horizontal gradient** is the absolute difference between the current pixel's luminance and the previous pixel's luminance (a one-sample delay). The **vertical gradient** is the absolute difference between the current pixel and the corresponding pixel on the previous scan line (read from a line buffer stored in one BRAM). The two gradients are combined using an approximation of the Euclidean magnitude: the larger of the two is taken at full strength, and half the smaller is added. This produces a rotationally reasonable edge estimate without requiring a multiplication or square root — critical at 74.25 MHz on iCE40 fabric.
-
-### Color Quantization and Posterization
-
-Quantization reduces a continuous range of values to a smaller set of discrete levels. When applied to pixel brightness, it creates **posterization** — named after the flat-toned look of screen-printed posters. Smooth gradients collapse into staircase transitions between uniform tonal bands, each spanning a range of input values that all map to the same output level.
-
-Enamel quantizes the Y channel by masking the lower bits of the 10-bit luminance value. The Palette control selects one of seven shift amounts, producing between 8 levels (shift 7 — very coarse, dramatic flat cells) and 512 levels (shift 1 — nearly imperceptible steps). In the context of enamelwork simulation, heavy quantization is desirable: real enamel cells are filled with a single opaque color, so the flat tonal bands mimic the uniform appearance of fired glass paste within each wire-bounded region.
-
-### Metallic Surface Rendering
-
-Real enamel objects have a polished, curved surface that reflects light in complex ways. The glossy finish produces specular highlights — bright spots that shift position as the viewing angle changes. Enamel simulates this with a position-dependent luminance modulation derived from XOR-ing horizontal and vertical pixel coordinates. The resulting pattern is a quasi-periodic grid of bright and dark patches that mimics the alternating highlight and shadow across a curved reflective surface.
-
-The gloss intensity is controlled by AND-ing the coordinate-derived pattern with a parameter value, then shifting right by three bits. This scales the modulation from invisible (parameter = 0) to a noticeable luminance ripple (parameter = 1023). Wire pixels can also receive a separate shimmer animation derived from XOR-ing the frame counter with the horizontal position, producing a subtle per-frame sparkle that simulates the play of light across metal.
+In addition to luminance quantization, the program applies automatic ***saturation boost*** to fill pixels. Chroma values are pushed further from the neutral axis (midpoint 512), intensifying the color of each enamel cell. This compensates for the flattening effect of quantization and gives the fills the vivid, jewel-like quality characteristic of real vitreous enamel.
 
 
 ---
 
 ## Signal Flow
 
-Y Channel → U/V Channels → Mix → Bypass → Sync
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel ─────────────────────────────────────────────────
-│   │
-│   ├─ 1. Input Register + 1-Pixel Delay (horiz prev)
-│   ├─ 2. Pipeline Delay (VLB address register)
-│   ├─ 3. Line Buffer Read (prev line Y for vertical edge)
-│   ├─ 4. Edge Gradient Compute
-│   │       H = |Y_curr − Y_prev_pixel|
-│   │       V = |Y_curr − Y_prev_line|
-│   │       Combined = max(H,V) + min(H,V)/2  (clamp 1023)
-│   ├─ 5. Wire / Fill Decision
-│   │       eff_thresh = edge_threshold − wire_width/2
-│   │       is_wire = (combined > eff_thresh)
-│   │   ┌── Wire Path ──────────────────────────
-│   │   │   Gold:  Y = wire_bright, UV = warm tint
-│   │   │   Dark:  Y = wire_bright/4, UV = neutral
-│   │   │   Animate: Y += (frame XOR h_pos) shimmer
-│   │   │
-│   │   └── Fill Path ──────────────────────────
-│   │       Y = quantize(Y_source, palette_shift)
-│   │       Gloss: Y += (h_pos XOR v_pos) × gloss_amt >> 3
-│   │
-│   └─ 6. Composite Y
-│
-├── U/V Channels ──────────────────────────────────────────────
-│   │
-│   ├─ Pipeline Delay (stages 1-5)
-│   ├─ 5. Wire / Fill Decision
-│   │   ├── Wire → UV tint (gold warm / dark neutral)
-│   │   └── Fill → Saturation Boost (push UV from 512)
-│   │              + Warm/Cool palette shift (V += 32)
-│   └─ 6. Composite U/V
-│
-├── Mix ───────────────────────────────────────────────────────
-│   └─ 3× interpolator_u (dry/wet crossfade per channel)
-│
-├── Bypass ────────────────────────────────────────────────────
-│   └─ Select original (delayed) or processed signal
-│
-└── Sync ──────────────────────────────────────────────────────
-    └─ 10-clock shift register pass-through
-```
+The pipeline is 10 clocks deep: 6 clocks for the main processing stages, plus 4 clocks for the interpolator wet/dry mix. A parallel sync and data delay line keeps the original signal aligned with the processed output so the crossfader always blends matching pixels.
 
-The critical interaction is between edge detection and quantization. Edge detection operates on the *original* unquantized luminance, so the wire boundaries track the source image's natural contours regardless of how aggressively the fill is posterized. This mirrors the cloisonné workflow where wires are shaped first, then cells are filled. The effective threshold combines two knobs — Wire W sets the baseline sensitivity, and Edge Thr lowers it further, giving independent control over detection range and wire coverage. The combined edge formula (max plus half min) provides a reasonable 2D gradient magnitude without needing multiplication, and its output feeds a single comparator that classifies every pixel as wire or fill in one clock cycle.
+Two key interactions define the enamel character:
+
+1. **Edge detection feeds wire/fill routing.** The wire/fill classification at Stage 5 is a binary gate: every pixel is either wire or fill, with no gradual blending. This hard boundary is what gives cloisonné its characteristic sharp partition between metal and glass. The **Wire W** and **Edge Thr** controls together set the sensitivity and width of this gate.
+
+2. **Quantization and saturation boost work together.** Quantization flattens the luma of fill pixels into discrete bands, while the automatic saturation boost intensifies their chroma. The combination produces the vivid, opaque quality of real enamel (flat areas of bold color, like pools of molten glass.)
+
+:::note
+The vertical edge path requires a full ***video line buffer*** (1 BRAM). The line buffer stores the Y channel of the previous scan line so the gradient can be computed between vertically adjacent pixels. Without it, only horizontal edges would be detected, and the wire network would consist solely of vertical lines.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={enamel_control_panel} alt="Videomancer front panel with Enamel loaded"/>
-*Videomancer's front panel with Enamel active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises progress from basic wire detection to full cloisonné composition. Each builds on the previous, gradually engaging more of Enamel's processing chain.
+### Exercise 1: Wire Network
 
-### Rotary Potentiometers (Knobs 1–6)
+![Wire Network result](/img/instruments/videomancer/enamel/enamel_ex1_s1.png)
+*Wire Network — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Wire W
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-At low values, even gentle gradients in the source are classified as wire, producing dense, wide-coverage boundary networks that can dominate the image. At high values, only the sharpest transitions — strong object edges and high-contrast boundaries — generate wire, leaving most of the image as smooth enamel fill. The default midpoint provides a balanced coverage suitable for most video sources. Use this as the primary control for overall wire density before fine-tuning with Edge Thr. Internally, sets the baseline threshold for edge detection.
+#### Learning Outcomes
 
----
+A bold wire-frame outline of your source image, with clearly visible metallic boundaries tracing every edge.
 
-#### Knob 2 — Edge Thr
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+#### Key Concepts
 
-Lowers the effective edge threshold, pulling more gradients above the wire detection point. This control complements Wire W: while Wire W sets the base sensitivity, Edge Thr subtracts from it, widening the wire network. At zero, it has no effect. At maximum, it halves the effective threshold, dramatically increasing wire coverage. Think of it as a secondary width control — increasing Edge Thr makes existing wires thicker and reveals wire at softer transitions that Wire W alone would miss.
+- Edge detection creates the wire outlines
+- Wire W and Edge Thr together control wire density and thickness
+- Style toggle selects dark or gold wire rendering
 
----
+#### Video Source
 
-#### Knob 3 — Palette
-| Property | Value |
-|----------|-------|
-| Range | 1 – 8 |
-| Default | 5 |
+A live camera feed or recorded footage with strong shapes and moderate contrast (faces, architecture, or high-contrast objects work well.)
 
-Selects the luminance quantization level for fill cells, stepping through eight palette sizes from coarse to fine. At step 1, the Y channel is reduced to just eight brightness levels — large, flat-colored cells that closely resemble traditional enamelwork. Each successive step doubles the number of levels (16, 32, 64, 128, 256, 512), progressively restoring smooth gradation. At step 8, quantization is nearly invisible, and the fill regions retain most of the source's tonal detail. For the most authentic cloisonné look, use steps 1–3.
+#### Steps
 
----
+1. **Reveal the wires**: Turn **Wire W** (Knob 1) to about 40%. Thin outlines appear along edges in the source. The image looks like a lightly penciled sketch overlaid on the video.
+2. **Thicken the wires**: Increase **Edge Thr** (Knob 2) to about 60%. The wire outlines expand, covering more of the image with the metallic rendering. Subtle edges that were invisible before now become visible partitions.
+3. **Gold wires**: Flip **Style** (Switch 7) to **Basel**. The wires switch from dark outlines to bright, warm gold lines. Increase **Flat Amt** (Knob 5) to make the gold wires gleam brighter.
+4. **Wire brightness**: Sweep **Flat Amt** from minimum to maximum. In Basel mode, the wires go from dim amber to blazing gold. Switch Style back to **Cloisnne** and sweep again (the dark wires shift subtly from near-black to dark gray.)
+5. **Add shimmer**: Toggle **Video Pal** (Switch 10) to **On**. The wire pixels now sparkle with a frame-by-frame animation, as if catching light.
 
-#### Knob 4 — Gloss
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+#### Settings
 
-Boosts chroma saturation in fill cells by pushing U and V channels away from neutral (midpoint 512). Higher values produce more vivid, jewel-toned color that evokes the intense hues of fired vitreous enamel — cobalt blues, emerald greens, ruby reds. At zero, fill color matches the source chrominance exactly. This control has no effect on wire pixels, which receive their own fixed chroma tint based on the Style toggle. The saturation enhancement is symmetric: both warm and cool chrominance components are amplified equally.
-
----
-
-#### Knob 5 — Flat Amt
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the brightness of wire pixels. Gold wire uses this value directly as the Y level, so a high setting produces bright, gleaming metallic outlines while a low setting subdues them. Dark wire divides this value by four, so even at maximum the dark wire remains understated. This control determines the visual weight of the wire network in the composition — set it high for prominent, decorative boundaries or low for subtle contour lines that let the fill dominate.
+| Control | Value |
+|---------|-------|
+| Wire W | ~40% |
+| Edge Thr | ~60% |
+| Palette | 4 |
+| Gloss | 50% |
+| Flat Amt | ~70% |
+| Wire Hue | 0° |
+| Style | Basel |
+| Wire Color | Gold |
+| Gloss (Switch) | Off |
+| Video Pal | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-#### Knob 6 — Wire Hue
-| Property | Value |
-|----------|-------|
-| Range | 0° – 360° |
-| Default | 0° |
-| Suffix | ° |
+### Exercise 2: Enamel Palette
 
-Scales the intensity of the gloss overlay applied to fill cells when gloss is enabled. The gloss pattern is derived from XOR-ing horizontal and vertical pixel coordinates, producing a quasi-periodic brightness ripple across the enamel surface. At zero, the pattern is fully masked and gloss has no visible effect. At higher values, the shimmer becomes increasingly pronounced, adding a luminance modulation that simulates light reflecting off a polished curved surface. The effect is most visible on large, uniform fill cells created by coarse Palette settings.
+![Enamel Palette result](/img/instruments/videomancer/enamel/enamel_ex2_s1.png)
+*Enamel Palette — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-### Toggle Switches (Switches 7–11)
+#### Learning Outcomes
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Style** | Cloisnne | Basel |
-| **8 — Wire Color** | Gold | Black |
-| **9 — Gloss** | Off | On |
-| **10 — Video Pal** | Off | On |
-| **11 — Bypass** | Off | On |
+A richly colored cloisonné composition with distinct enamel cells, bold outlines, and a warm or cool palette shift.
 
-The five toggles divide into two groups. Toggles 7 and 8 are four-position switches that combine binary options into named presets: Style pairs wire type with palette temperature, and Wire Color pairs gloss enable with wire animation. Toggles 9–11 are independent two-position switches controlling gloss, the video palette flag, and bypass. The Style toggle has the most dramatic visual impact — switching between gold and dark wire and between warm and cool fill completely changes the character of the output, cycling through the four historical enamel traditions.
+#### Key Concepts
 
----
+- Palette quantization creates flat, opaque fill regions
+- Saturation boost intensifies fill colors automatically
+- Wire Color toggle shifts the fill palette warm or cool
 
-### Linear Potentiometer (Fader 12)
+#### Video Source
 
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
+Footage with varied colors and smooth gradients: landscapes, flowers, or abstract patterns with a range of hues and brightness levels.
 
-Cross-fades between the dry (original) and wet (processed) signal for each of the three YUV channels independently through matched interpolators. At 0%, the output is pure dry — identical to the source. At 100%, the output is fully processed enamel. Intermediate positions produce a transparency blend where the wire and fill are layered over the original image at reduced opacity, which can create a subtle illustrative overlay effect.
+#### Steps
 
+1. **Set up wires**: Begin with **Wire W** at ~50% and **Edge Thr** at ~40% so a clear wire network is visible.
+2. **Flatten the palette**: Step **Palette** (Knob 3) down to position 2 or 3. Smooth gradients in the source collapse into large regions of flat, uniform brightness: the enamel cells. Notice how the wire outlines naturally border these flat regions.
+3. **Warm the palette**: Flip **Wire Color** (Switch 8) to **Black**. The fill regions shift toward warmer red and orange tones, as if the enamel was fired at a higher temperature.
+4. **Compare palettes**: Toggle **Wire Color** back and forth between **Gold** and **Black**, observing how the chroma shifts. **Gold** preserves the source palette; **Black** pushes it warm.
+5. **Full enamel**: Set **Style** to **Basel** for gold wires, **Wire Color** to **Black** for warm fills, and **Palette** to 1. The image becomes a mosaic of warm-toned flat cells with bright gold outlines (classic cloisonné.)
 
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
+#### Settings
 
-Routes the unprocessed input signal directly to the output, bypassing all Enamel processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises progress from basic edge detection to full cloisonné simulation, gradually introducing quantization, coloring, and surface effects.
-
-### Exercise 1: Wire Network Discovery
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: enamel_source1_parrot, after: enamel_ex1_s1 },
-    { label: "Cat", before: enamel_source2_cat, after: enamel_ex1_s2 },
-    { label: "Collage", before: enamel_source3_collage, after: enamel_ex1_s3 },
-    { label: "Pattern", before: enamel_source4_pattern, after: enamel_ex1_s4 },
-    { label: "Woman", before: enamel_source5_woman, after: enamel_ex1_s5 },
-    { label: "Paint", before: enamel_source6_paint, after: enamel_ex1_s6 },
-  ]}
-/>
-*Wire Network Discovery — simulated result across source images.*
-**Source**: A portrait or face close-up with clear contours — eyes, nose, mouth, hairline — and a range of soft and hard edges.
-
-**What You'll Create**: Learn how Wire W and Edge Thr interact to control wire density and coverage.
-
-1. **Set baseline**: Turn Wire W to ~50% and Edge Thr to 0%. Observe the wire boundaries tracing only the strongest edges in the source.
-2. **Lower threshold**: Slowly reduce Wire W toward 0%. Watch as progressively softer transitions become wire — texture, shadows, gradual shading all sprout outlines.
-3. **Edge Thr interaction**: Return Wire W to ~50%. Now increase Edge Thr from 0% toward 100%. The wire network expands similarly — Edge Thr achieves the same visual effect as lowering Wire W, but through a different parameter path.
-4. **Combine**: Set Wire W to ~60% and Edge Thr to ~40%. Find the sweet spot where the wire traces recognizable contours without filling the entire image.
-5. **Flat Amt**: Adjust the Flat Amt knob to change wire brightness. Notice how brighter wire makes the boundaries more prominent and how dim wire lets them recede.
-
-**Key concepts**: Edge detection threshold, gradient magnitude, wire coverage, combined threshold = Wire W − Edge Thr / 2
+| Control | Value |
+|---------|-------|
+| Wire W | ~50% |
+| Edge Thr | ~40% |
+| Palette | 2 |
+| Gloss | 50% |
+| Flat Amt | ~60% |
+| Wire Hue | 0° |
+| Style | Basel |
+| Wire Color | Black |
+| Gloss (Switch) | Off |
+| Video Pal | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Palette and Saturation
+### Exercise 3: Glossy Ornament
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: enamel_source1_parrot, after: enamel_ex2_s1 },
-    { label: "Cat", before: enamel_source2_cat, after: enamel_ex2_s2 },
-    { label: "Collage", before: enamel_source3_collage, after: enamel_ex2_s3 },
-    { label: "Pattern", before: enamel_source4_pattern, after: enamel_ex2_s4 },
-    { label: "Woman", before: enamel_source5_woman, after: enamel_ex2_s5 },
-    { label: "Paint", before: enamel_source6_paint, after: enamel_ex2_s6 },
-  ]}
-/>
-*Palette and Saturation — simulated result across source images.*
-**Source**: A colorful still life — fruit, flowers, or painted objects — with a wide range of hues and smooth tonal gradients.
+![Glossy Ornament result](/img/instruments/videomancer/enamel/enamel_ex3_s1.png)
+*Glossy Ornament — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore luminance quantization and chroma saturation boost to achieve the flat, vivid look of fired enamel.
+***A description of the exercise illustration.***
 
-1. **Coarse palette**: Set Palette to step 1 (8 levels). The image collapses into broad flat regions — each cell is a single uniform tone.
-2. **Fine palette**: Step through positions 2–8 and observe how the tonal staircase becomes finer. At step 4 (64 levels), the quantization is subtle but still visible in smooth gradients.
-3. **Saturation boost**: Increase Gloss (pot 4) from 0% to 100%. Watch the colors intensify — reds become richer, blues deeper, greens more vivid. This is the vitreous enamel character.
-4. **Warm palette**: Switch Style from Cloisonné to Basse-taille (gold wire, warm fill). The overall palette shifts toward amber and orange.
-5. **Cool palette**: Switch Style to Champlevé (gold wire, cool fill). The same image takes on a cooler, bluer quality.
-6. **Compare**: Toggle Bypass rapidly to compare the processed image to the original.
+#### Learning Outcomes
 
-**Key concepts**: Bit-mask quantization, posterization levels, chroma push from midpoint, warm/cool palette temperature shift
+A fully realized cloisonné ornament with gloss sheen, animated wire sparkle, and a dry/wet blend for subtle overlay effects.
 
----
+#### Key Concepts
 
-### Exercise 3: Gloss and Animation
+- Gloss simulates a polished, reflective enamel surface
+- Wire Hue controls gloss intensity
+- Mix crossfades between raw and processed output
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: enamel_source1_parrot, after: enamel_ex3_s1 },
-    { label: "Cat", before: enamel_source2_cat, after: enamel_ex3_s2 },
-    { label: "Collage", before: enamel_source3_collage, after: enamel_ex3_s3 },
-    { label: "Pattern", before: enamel_source4_pattern, after: enamel_ex3_s4 },
-    { label: "Woman", before: enamel_source5_woman, after: enamel_ex3_s5 },
-    { label: "Paint", before: enamel_source6_paint, after: enamel_ex3_s6 },
-  ]}
-/>
-*Gloss and Animation — simulated result across source images.*
-**Source**: High-contrast footage with large uniform areas — architecture, signage, or geometric patterns — where surface effects will be clearly visible.
+#### Video Source
 
-**What You'll Create**: Enable gloss and animation to simulate the reflective surface of polished enamelwork.
+Any footage with recognizable content: the effect is dramatic enough to transform any input into ornamental art.
 
-1. **Prepare**: Set a moderate wire network (Wire W ~50%, Edge Thr ~30%) and coarse palette (step 2, 16 levels).
-2. **Enable gloss**: Switch the Gloss toggle (toggle 9) to On. Observe the subtle brightness ripple across fill regions.
-3. **Increase gloss intensity**: Slowly increase Wire Hue from 0° toward 360°. The shimmer pattern becomes more pronounced — bright highlights and darker patches alternate across the enamel surface.
-4. **Wire animation**: Switch Video Pal to On. Watch the wire boundaries begin to sparkle — the shimmer travels along the wires frame by frame.
-5. **Combined effect**: Enable both gloss and animation via the Wire Color toggle (Black position). The entire surface comes alive with shifting highlights.
-6. **Gold vs. dark wire**: Toggle between Style positions. Gold wire with animation produces a rich, gilded look; dark wire with animation creates a more subtle, engraved effect.
-7. **Mix down**: Slowly reduce the Mix fader to ~50%. The enamel effect becomes a semi-transparent overlay on the original image.
+#### Steps
 
-**Key concepts**: Position-based XOR gloss pattern, frame-counter wire shimmer, gloss amount scaling, dry/wet interpolation
+1. **Full enamel setup**: Set **Wire W** ~40%, **Edge Thr** ~50%, **Palette** to 3, **Style** to **Basel**, and **Flat Amt** to ~70%.
+2. **Enable gloss**: Flip **Gloss** (Switch 9) to **On**. A faint grid-like shimmer appears across the fill regions.
+3. **Increase gloss intensity**: Turn **Wire Hue** (Knob 6) clockwise. The shimmer becomes more pronounced, creating a visible reflective pattern that suggests the curved surface of polished glass.
+4. **Add wire animation**: Toggle **Video Pal** (Switch 10) to **On**. The gold wires now sparkle with frame-by-frame shimmer while the fill cells gleam with gloss.
+5. **Blend with source**: Pull the **Mix** fader (Fader 12) down to about 50%. The enamel effect becomes semi-transparent, overlaying the wire network and quantized fills on top of the original footage at reduced opacity. This creates a "ghostly enamel" effect.
+6. **Warm everything**: Set **Wire Color** to **Black** for warmth, and sweep **Wire Hue** slowly. Notice how the gloss interacts with the warm palette shift.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Wire W | ~40% |
+| Edge Thr | ~50% |
+| Palette | 3 |
+| Gloss | 50% |
+| Flat Amt | ~70% |
+| Wire Hue | ~200° |
+| Style | Basel |
+| Wire Color | Black |
+| Gloss (Switch) | On |
+| Video Pal | On |
+| Bypass | Off |
+| Mix | ~50% |
 
 ---
-
-
-## Tips
-
-- **Saturation is your glaze**: The Gloss knob (pot 4) boosts chroma saturation, not surface gloss. Increasing it mimics the vivid color of fired vitreous enamel — the higher the boost, the more jewel-toned the fill.
-- **Style presets are combinatorial**: The four Style positions permute two independent binary choices (gold/dark wire × warm/cool palette). Experiment with all four to find the aesthetic temperature that suits your source material.
-- **Gloss needs coarse fill**: The position-based gloss shimmer is most visible on large, uniform fill regions created by low Palette steps. With fine quantization (step 7–8), the gloss pattern is masked by the surviving tonal detail.
-- **Mix for overlay effects**: At 40–60% mix, the enamel effect becomes a semi-transparent layer over the original video, creating a subtle illustrative treatment that preserves depth and detail.
-- **Feedback loops**: Route the output back to the input to create recursive enamel — wire boundaries compound and fill regions re-quantize, producing increasingly abstract mosaic structures over successive passes.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Chroma** | The color information in a video signal, encoded as U and V components centered on midpoint 512 in 10-bit YUV color space. |
-| **Cloisonné** | A decorative enamel technique using thin metal wire to form enclosed cells (cloisons) filled with vitreous glass paste. |
-| **Edge Detection** | Identification of sharp luminance transitions in an image by computing the gradient (rate of change) between neighboring pixels. |
-| **Gradient** | The magnitude of brightness change between adjacent pixels; the basis for wire/fill classification in Enamel's processing pipeline. |
-| **Line Buffer** | A single-line delay implemented in BRAM that stores one horizontal line of video data, enabling vertical pixel comparisons. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color. |
-| **Posterization** | Reducing the number of distinct tonal levels in an image by masking lower bits, creating flat bands of uniform brightness. |
-| **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels; Enamel quantizes Y via bit-shift masking. |
-| **Saturation** | The intensity or purity of a color; Enamel boosts saturation by pushing U and V values away from neutral midpoint. |
-| **Vitreous Enamel** | A glassy coating made from powdered glass fused to a metal surface by firing; characterized by vivid, opaque color and a glossy finish. |
-| **XOR** | Exclusive OR; a bitwise operation used in Enamel to generate quasi-periodic patterns for gloss shimmer and wire animation. |
+- **Cloisonné**: A decorative art technique in which thin metal wires are soldered to a surface to form compartments (cloisons) that are filled with colored enamel and fired.
+
+- **Edge Detection**: Identifying boundaries in an image by computing brightness gradients between adjacent pixels; used here to locate wire positions.
+
+- **Gradient**: The magnitude of change in pixel brightness between two neighboring samples; larger gradients indicate stronger edges.
+
+- **Line Buffer**: A block of FPGA memory (BRAM) that stores one full scan line of pixel data, enabling comparison between vertically adjacent lines.
+
+- **Posterization**: Reducing the number of distinct brightness or color levels in an image, creating flat regions separated by hard boundaries.
+
+- **Quantization**: Mapping a continuous range of values to a smaller set of discrete levels; the mechanism behind posterization.
+
+- **Saturation Boost**: Increasing the intensity of color by pushing chroma values further from their neutral midpoint.
+
+- **Threshold**: A cutoff value that separates edge pixels (wire) from non-edge pixels (fill) based on computed gradient magnitude.
+
+- **Vitreous Enamel**: A glassy decorative coating made by fusing powdered glass to a metal surface at high temperature.
+
+- **Wire**: In Enamel's context, the rendered edge pixels that simulate the thin metal partitions in cloisonné artwork.
 
 ---

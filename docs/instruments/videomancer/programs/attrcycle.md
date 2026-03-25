@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 11
 slug: /instruments/videomancer/attrcycle
@@ -7,287 +7,382 @@ image: /img/instruments/videomancer/attrcycle/attrcycle_hero.png
 description: "Attr Cycle recreates the ZX Spectrum's distinctive attribute colour system, where the screen is divided into character-sized cells and each cell holds a foreground (ink) and background (paper) colour from a limited 8-colour palette."
 ---
 
-import attrcycle_hero from '/img/instruments/videomancer/attrcycle/attrcycle_hero.png';
-import attrcycle_animation from '/img/instruments/videomancer/attrcycle/attrcycle_animation.gif';
-import attrcycle_control_panel from '/img/instruments/videomancer/attrcycle/attrcycle_control_panel.png';
-import attrcycle_exercise1_result from '/img/instruments/videomancer/attrcycle/attrcycle_exercise1_result.gif';
-import attrcycle_exercise2_result from '/img/instruments/videomancer/attrcycle/attrcycle_exercise2_result.gif';
-import attrcycle_exercise3_result from '/img/instruments/videomancer/attrcycle/attrcycle_exercise3_result.gif';
-
-# Attrcycle
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={attrcycle_hero} alt="Attrcycle hero image"/>
-*A photographic image shattered into coarse 8-bit colour blocks where bright regions reveal cycling ZX Spectrum ink colours and shadows show paper — a living attribute clash.*
-<img src={attrcycle_animation} alt="Attrcycle animated output"/>
-*Attrcycle output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Attrcycle hero image](/img/instruments/videomancer/attrcycle/attrcycle_hero_s1.png)
+*Attrcycle painting the screen in cycling ZX Spectrum attribute colours, with coarse block grids and ink-paper luminance keying.*
 
 ---
 
 ## Overview
 
-Attr Cycle recreates the ZX Spectrum's distinctive attribute colour system, where the screen is divided into character-sized cells and each cell holds a foreground (ink) and background (paper) colour from a limited 8-colour palette. The input video's luminance drives the ink/paper selection: pixels brighter than the Density threshold take the cell's ink colour, while darker pixels receive the paper colour. The result is a continuously cycling, coarsely quantised colour map that reinterprets any video source through the lens of 1982 home computing.
+Attrcycle recreates the legendary colour system of the Sinclair ZX Spectrum home computer. The Spectrum divided its display into a coarse grid of 8×8 pixel cells, each assigned a single foreground (***ink***) colour and a single background (***paper***) colour from a palette of eight. Because every pixel in one cell had to share those two colours, graphic artists worked within extreme constraints (and the resulting aesthetic became iconic.)
 
-The name comes from the Spectrum's "attribute" memory — a separate byte per 8×8 cell that sets ink, paper, brightness, and flash. Classic demos like "Shock Megademo" exploited rapid attribute cycling to create rainbow scrollers and colour animation effects impossible in the bitmap layer alone.
+Attrcycle generates that aesthetic from scratch. The screen is divided into configurable blocks, and each block is assigned ink and paper colours from the Spectrum's eight-colour palette. A ***phase accumulator*** cycles the palette assignments over time, sweeping every block through a continuous colour rotation. The input video signal is not discarded: its luminance determines which pixels within each block receive the ink colour and which receive the paper colour. Bright areas take the ink; dark areas take the paper. The result is a living, breathing mosaic of shifting colour blocks whose internal patterns are shaped by whatever video signal you feed in.
 
-Block sizes are configurable from 8×8 up to 64×64 pixels, covering the range from authentic Spectrum resolution down to extreme mosaic scales. A per-frame phase accumulator sweeps ink and paper assignments through the palette, and an optional FLASH toggle emulates the Spectrum's periodic ink/paper swap.
+:::tip
+Although Attrcycle is classified as a ***synthesis*** program, it uses the input video's brightness as a key. Feed it a camera, a pattern generator, or another Videomancer program's output to control how the colours are distributed within each block.
+:::
+
+### What's In a Name?
+
+The name ***Attrcycle*** is a portmanteau of ***attribute*** and ***cycle***. On the ZX Spectrum, the colour data for each 8×8 cell was stored in a section of memory called the ***attribute area***. Each attribute byte held an ink colour, a paper colour, a brightness bit, and a flash bit. "Cycle" refers to the continuous rotation of palette colours across the grid (the defining animation of this program.)
 
 ---
 
 ## Quick Start
 
-1. **8×8 blocks with Grid Lines** produces the most authentic Spectrum screenshot look, especially with a pixelated or low-resolution source.
-2. **Speed at zero with Palette Offset** allows manual colour theme selection — sweep the offset to find pleasing ink/paper combinations.
-3. **Density is the content control** — it determines how much of the source's tonal structure is preserved in the ink/paper separation.
+1. With all controls at their defaults, you should see a grid of coloured blocks filling the screen. The **Grid Lines** toggle (Switch 10) is on, drawing dark borders between blocks. Each block displays a colour from the ZX Spectrum palette.
+2. Turn **Speed** (Knob 1) clockwise. The colours begin to cycle: each block's ink and paper rotate through the palette. At high speed, the entire grid shimmers with rainbow waves.
+3. Feed a video signal into Videomancer and adjust **Density** (Knob 5). This controls the luminance threshold that separates ink from paper. Bright areas of your source take the ink colour; dark areas take the paper colour. The source image's structure becomes visible within the mosaic.
+4. Turn **Block Size** (Knob 2) to explore four discrete cell sizes: 8×8, 16×16, 32×32, and 64×64 pixels. Smaller blocks reveal more of the source image's detail; larger blocks create bolder colour fields.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Attrcycle loaded](/img/instruments/videomancer/attrcycle/attrcycle_control_panel.png)
+*Videomancer's front panel with Attrcycle active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Speed** controls the rate of colour cycling. A ***phase accumulator*** increments once per video frame; the speed value determines how much it advances each frame. At 0%, fully counterclockwise, the palette is frozen: no cycling occurs, and the colour pattern is static. As speed increases, the colours rotate faster. At 100%, fully clockwise, the palette sweeps rapidly and the entire grid becomes a shimmering cascade of shifting hues.
+
+:::note
+The cycling speed depends on the video frame rate. At 60 fps, a given speed setting produces faster visual motion than at 50 fps.
+:::
+
+---
+
+### Knob 2 — Block Size
+
+| Property | Value |
+|----------|-------|
+| Range | 1x – 8x |
+| Default | 4x |
+
+**Block Size** selects the dimensions of each attribute cell. The control operates in eight discrete steps mapped to four block sizes: steps 1–2 produce 8×8 pixel blocks, steps 3–4 produce 16×16, steps 5–6 produce 32×32, and steps 7–8 produce 64×64. Smaller blocks create a finer mosaic with more spatial detail. Larger blocks produce bold, poster-like fields of colour. The block grid always aligns to the top-left corner of the active video area.
+
+---
+
+### Knob 3 — Palette Offset
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Palette Offset** shifts the starting point of the colour cycle. At 0%, fully counterclockwise, the palette begins at its default phase. Turning the knob clockwise advances the starting position, changing which colour each block displays at any given moment. This is a spatial offset, not a speed control: it shifts the entire colour map without altering the rate of cycling. Combined with **Speed**, Palette Offset lets you freeze the cycle at a specific colour arrangement.
+
+---
+
+### Knob 4 — Saturation
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Saturation** controls the intensity of the palette colours. At 0%, fully counterclockwise, all chroma is removed and the output becomes monochrome: only the luminance values of the Spectrum palette remain. As saturation increases, the colours grow richer and more vivid. At the default position (~75%), the colours closely match the original ZX Spectrum's CRT output. At 100%, chroma is at full scale.
+
+:::tip
+Setting **Saturation** to zero creates a monochrome mode that preserves the luminance structure of the eight Spectrum colours. Black stays black, white stays white, and the six intermediate colours map to distinct gray levels.
+:::
+
+---
+
+### Knob 5 — Density
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 62.6% |
+
+**Density** sets the luminance threshold that separates foreground from background within each block. Pixels from the input video whose brightness exceeds the threshold take the block's ***ink*** colour; pixels below the threshold take the ***paper*** colour. At 0%, nearly the entire image is above the threshold: almost everything displays ink. At 100%, nearly everything falls below the threshold: almost everything displays paper. At moderate values, the brightness contours of the input video create visible patterns of ink and paper within each block.
+
+---
+
+### Knob 6 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Brightness** scales the luminance of the generated output. At 0%, fully counterclockwise, the generated colours are crushed to black. As brightness increases, the palette colours become more visible. At 100%, the colours appear at their full luminance values. This control affects only the generated Spectrum colours, not the input video signal that passes through the mix.
+
+---
+
+### Switch 7 — Palette
+
+| Property | Value |
+|----------|-------|
+| Off | Spectrum |
+| On | Mono |
+| Default | Spectrum |
+
+**Palette** selects between **Spectrum** and **Mono** colour palettes. In the **Spectrum** position, the program uses the classic ZX Spectrum eight-colour palette: black, blue, red, magenta, green, cyan, yellow, and white. In the **Mono** position, the palette is intended to reduce to monochrome tones. In the current version, the Spectrum palette is active in both positions.
+
+---
+
+### Switch 8 — Pattern
+
+| Property | Value |
+|----------|-------|
+| Off | Checker |
+| On | Stripe |
+| Default | Checker |
+
+**Pattern** selects the spatial arrangement used to assign colours to blocks. In the **Checker** position, block colours are determined by XORing the column and row indices: adjacent blocks that differ in both axes receive different palette offsets, creating a checkerboard-like distribution of colours. In the **Stripe** position, only the row index is used: all blocks in the same row share the same base colour, producing horizontal bands that cycle through the palette from top to bottom.
+
+:::tip
+**Checker** mode creates a more chaotic, pointillistic field of colour. **Stripe** mode creates orderly horizontal ribbons. Both animate when **Speed** is active: checker mode creates a shimmering mosaic while stripe mode produces scrolling colour bars.
+:::
+
+---
+
+### Switch 9 — Flash
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Flash** enables the ZX Spectrum's ***FLASH*** attribute. On the original hardware, setting the FLASH bit in an attribute byte caused the ink and paper colours to swap at a fixed rate, creating a blinking effect. Attrcycle recreates this: when Flash is **On**, the ink and paper assignments swap approximately once per second (every 64 frames). The swap is instantaneous: all affected blocks change simultaneously. When Flash is **Off**, colours remain stable.
+
+---
+
+### Switch 10 — Grid Lines
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Grid Lines** enables dark borders at the boundary of each attribute block. When set to **On**, the first pixel at the left edge and top edge of every block is drawn as a near-black line, making the block grid visible. This recreates the visual structure of the Spectrum's character cell grid. When set to **Off**, the grid lines are hidden and adjacent blocks blend edge-to-edge. The grid line colour is fixed at near-black regardless of palette or brightness settings.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all Attrcycle processing. The sync delay pipeline still aligns timing, so there is no glitch when toggling. Use Bypass for instant A/B comparison between the raw input and the generated colour pattern.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input video and the wet (generated Spectrum colour) output. At 0%, the fader fully left, only the original input video is visible: no Spectrum colours appear. At 100%, the fader fully right, only the generated colour pattern is visible. At intermediate positions, the input video and the generated pattern blend together, creating ghostly overlays where the source image shows through the colour blocks.
 
 ---
 
 ## Background
 
-### The ZX Spectrum Colour Model
+### The ZX Spectrum attribute system
 
-The Spectrum's display was 256×192 pixels with 1-bit depth per pixel, but colour came from a 32×24 attribute grid. Each attribute byte encoded 3 bits of ink colour, 3 bits of paper colour, a brightness bit, and a flash bit. Only 8 colours were available (with bright variants doubling the palette to 15 plus black). This architecture meant two different-coloured objects sharing the same 8×8 cell would "clash" — one would take the other's attributes, hence the infamous "attribute clash".
+The Sinclair ZX Spectrum, released in 1982, was one of the most popular home computers in the United Kingdom and Europe. Its display was organized into a 256×192 pixel bitmap, but colour was applied at the level of 8×8 pixel ***character cells*** rather than individual pixels. Each cell had a single ***attribute byte*** that defined two colours: ***ink*** (foreground) and ***paper*** (background): plus a brightness bit and a flash bit. This meant that within any 8×8 block, only two colours were possible.
 
-### Palette Cycling as Animation
+This constraint led to a visual artifact known as ***attribute clash***: when objects of different colours overlapped within a single cell, one colour would overwrite the other, producing visible fringing along cell boundaries. Programmers and pixel artists developed elaborate techniques to work within these limits, and the resulting aesthetic: bold colour blocks, stark two-tone patterns, and visible grid structure: became one of the most recognizable visual signatures in computing history.
 
-Because the attribute layer was tiny (768 bytes), it could be reprogrammed far faster than the bitmap. Demo coders exploited this by cycling palette indices through the attribute grid each frame, creating cascading rainbow effects across the screen. "Attribute cycling" became a signature Spectrum demo effect, producing smooth colour animation without touching the bitmap.
+### The FLASH bit
 
-### Ink, Paper, and Flash
+The ZX Spectrum's attribute byte included a single-bit flag called FLASH. When set, the hardware automatically swapped the ink and paper colours at a fixed rate of approximately once per second. Game designers used this for blinking cursors, warning indicators, and attention-grabbing UI elements. Attrcycle's **Flash** toggle recreates this behavior by swapping the ink and paper palette indices every 64 frames.
 
-In Spectrum terminology, "ink" is the foreground colour drawn where the bitmap is set (1), and "paper" is the background where it's clear (0). The FLASH bit automatically swaps ink and paper at a fixed interval, creating blinking text and borders. Attr Cycle extends this to a video threshold rather than a bitmap, using input luminance as the 1/0 selector.
+### Colour cycling
 
-### Block Coordinate Hashing
+***Colour cycling***, also called ***palette animation***, is a technique where the entries in a colour lookup table are rotated over time rather than redrawing actual pixels. On hardware with indexed colour: including the ZX Spectrum, Commodore Amiga, and early VGA PCs: cycling the palette was computationally cheap: you changed a handful of colour registers and the entire display updated instantly. Artists exploited this for waterfalls, fire effects, scrolling backgrounds, and psychedelic light shows.
 
-The program uses XOR or row-only hashing of block coordinates to determine palette index. The checker pattern (col XOR row) produces a tessellated colour arrangement like a quilt, while the stripe pattern (row only) creates horizontal colour bands resembling loading screen borders.
+Attrcycle's phase accumulator implements a continuous version of this technique. Rather than rotating a lookup table in discrete steps, the accumulator adds a fractional amount each frame, producing smooth, controllable animation speed.
 
 
 ---
 
 ## Signal Flow
 
-```
-registers_in ──→ [Register Map] ──→ speed, block size, palette offset,
-                                    saturation, density, brightness
-                                    toggles: palette, pattern, flash, grid, bypass
+### Signal Flow Notes
 
-                ┌──────────────────────────────────────┐
-                │        VBLANK ANIMATION              │
-                │  phase += speed                      │
-                │  flash_ctr++; toggle every 16 frames │
-                └──────────────────────────────────────┘
+The key interaction in Attrcycle is between the ***generated colour grid*** and the ***input video luminance***. The pipeline generates a full-screen pattern of cycling Spectrum colours, but the decision of whether each pixel shows ink or paper is driven by the brightness of the input video at that pixel position. This creates a hybrid: the colours are synthetic, but their spatial arrangement is shaped by the live input.
 
-data_in ──→ [Stage 1: Block Coords]
-              h_count >> blk_shift → block_col
-              v_count >> blk_shift → block_row
-              sub-pixel mask → grid line detect
-                        │
-                        ▼
-            [Stage 2: Palette Index]
-              hash = col XOR row (checker) or row (stripe)
-              ink_idx = hash + phase + offset
-              paper_idx = ink_idx + 4
-              flash swap if active
-                        │
-                        ▼
-            [Stage 3: Colour Lookup]
-              ink  = spectrum_palette[ink_idx]
-              paper = spectrum_palette[paper_idx]
-              saturation scaling of U,V
-                        │
-                        ▼
-            [Stage 4: Luma Threshold]
-              data_in.y > density? → ink else paper
-                        │
-                        ▼
-            [Stage 5: Grid + Brightness]
-              grid line overlay (dark borders)
-              brightness scaling
-                        │
-                        ▼
-            [interpolator_u × 3]
-              wet/dry crossfade
-                        │
-                        ▼
-                   data_out
-```
+The palette index computation is the creative core of the program. Each block's colour is a function of its grid position (column, row), the animation phase, and the user-selected offset. The ink and paper indices are separated by exactly four palette positions: half the eight-colour palette: so contrasting colours naturally face each other. When Flash is enabled, these two indices swap approximately once per second, causing the entire display to alternate between two complementary colour arrangements.
 
-The pipeline transforms continuous video into a coarse colour grid in five stages. Block coordinates are computed in the first clock by shifting pixel coordinates right by the block size exponent. The palette index is derived from a hash of these coordinates combined with the animation phase, meaning the same block position traces a repeating path through the eight Spectrum colours over time. The luminance threshold in stage 4 is critical: it uses the raw input video brightness to decide whether each pixel shows as ink or paper, preserving contour information from the source even as colours are replaced.
-
----
-
-## Parameter Reference
-
-<img src={attrcycle_control_panel} alt="Videomancer front panel with Attrcycle loaded"/>
-*Videomancer's front panel with Attrcycle active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Speed
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Speed controls how fast the colour palette cycles per frame. At zero the colours are static. As speed increases, ink and paper assignments sweep through the eight-colour palette creating a rainbow cascade effect. High speeds produce a rapid strobe that blends neighbouring colours perceptually. The speed is added to a 20-bit phase accumulator, with the top 3 bits selecting the palette index, so colours change smoothly and continuously.
-
----
-
-#### Knob 2 — Block Size
-| Property | Value |
-|----------|-------|
-| Range | 1x – 8x |
-| Default | 4x |
-| Suffix | x |
-
-Block Size sets the attribute cell dimensions in four discrete steps: 8×8, 16×16, 32×32, or 64×64 pixels. At 8×8 the result closely matches original Spectrum resolution, with fine detail preserved in the ink/paper boundary. At 64×64 the image becomes an extreme mosaic where each block spans a large area, emphasising coarse shapes and eliminating fine texture.
-
----
-
-#### Knob 3 — Palette Offset
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-Palette Offset shifts the starting point of the cycling palette. This effectively rotates which of the eight colours appears first in the sequence, allowing the user to lock in a preferred colour combination. When Speed is zero, Palette Offset selects the static colour scheme directly. When cycling, it shifts the entire phase of the animation.
-
----
-
-#### Knob 4 — Saturation
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
-
-Saturation scales the chroma components of the palette colours. At zero, all colours collapse to their luminance-only equivalents (shades of grey). At maximum, the full ZX Spectrum colour palette is expressed. Mid-range values produce desaturated pastels. The scaling is applied as a signed multiplication around the 512 chroma midpoint.
-
----
-
-#### Knob 5 — Density
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 62.6% |
-| Suffix | % |
-
-Density sets the luminance threshold that determines which pixels display as ink versus paper. At minimum, nearly everything is ink (foreground colour). At maximum, nearly everything is paper (background colour). At the midpoint, the boundary follows the 50% grey level of the input, producing the most balanced and detailed ink/paper separation. This control is the primary way video content structure is preserved.
-
----
-
-#### Knob 6 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
-
-Brightness scales the output luminance from black to full intensity. At zero the output is dark regardless of palette. At maximum, white blocks reach near-peak level. Brightness is applied as a multiplication after palette lookup and ink/paper selection, affecting both colours equally.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Palette** | Spectrum | Mono |
-| **8 — Pattern** | Checker | Stripe |
-| **9 — Flash** | Off | On |
-| **10 — Grid Lines** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles control palette variant, block pattern, flash emulation, grid visibility, and bypass. Palette selects between four colour palettes — only the Spectrum palette is detailed in the VHDL, with the others as variants. Pattern changes how block coordinates map to palette indices. Flash emulates the Spectrum's periodic ink/paper swap. Grid Lines overlay dark borders at block boundaries for a retro grid aesthetic.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Mix crossfades between the dry (unprocessed) input and the wet (attribute-coloured) output. At 0% the output is the original video. At 100% the full block-colour effect is visible. Intermediate positions blend smoothly, overlaying the attribute grid semi-transparently over the source.
-
-
-
+:::note
+The saturation stage scales chroma ***around the neutral axis*** (value 512). This means reducing saturation moves colours toward gray without shifting their hue. At zero saturation, only the luminance values of the eight palette colours remain.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises demonstrate the classic Spectrum attribute aesthetic, from faithful 8×8 recreation to extreme mosaic abstraction with colour cycling.
+These exercises explore Attrcycle's colour cycling, block structure, and input-dependent keying. Each builds on the previous, progressing from static patterns to animated effects.
+### Exercise 1: The Spectrum Grid
 
-### Exercise 1: Authentic Spectrum Attribute Clash
+![The Spectrum Grid result](/img/instruments/videomancer/attrcycle/attrcycle_ex1_s1.png)
+*The Spectrum Grid — simulated result across source images.*
+#### Exercise Illustration
 
-<img src={attrcycle_exercise1_result} alt="Authentic Spectrum Attribute Clash result"/>
-*Authentic Spectrum Attribute Clash — simulated result across source images.*
-**What You'll Create**: Recreate the authentic ZX Spectrum attribute clash look with 8×8 blocks and static colours.
+***A description of the exercise illustration.***
 
-1. Set Block Size to step 1 (8×8 — smallest blocks).
-2. Set Speed to 0 (no cycling) and Palette Offset to 50%.
-3. Set Density to 50% to split foreground and background evenly.
-4. Saturation to 80%, Brightness to 70%.
-5. Pattern=Checker, Flash=Off, Grid Lines=Off.
-6. Observe how facial features are preserved in the ink/paper separation.
-7. Sweep Density to see how the threshold shifts the boundary.
+#### Learning Outcomes
 
-**Key concepts**: - 8×8 blocks match the original Spectrum resolution
-- Density threshold converts continuous luminance to binary ink/paper
-- Static palette offset selects the initial colour pairing
+A static mosaic of ZX Spectrum colours with visible cell boundaries, exploring how block size and palette offset shape the pattern.
 
----
+#### Key Concepts
 
-### Exercise 2: Rainbow Cascade with Grid
+- Block size controls the spatial granularity of the attribute grid
+- Palette offset shifts the colour distribution across the grid
+- Grid lines reveal the underlying cell structure
 
-<img src={attrcycle_exercise2_result} alt="Rainbow Cascade with Grid result"/>
-*Rainbow Cascade with Grid — simulated result across source images.*
-**What You'll Create**: Create a rainbow cycling effect with visible grid lines, similar to Spectrum demo loading screens.
+#### Steps
 
-1. Set Block Size to step 2 (16×16) for visible mosaic.
-2. Set Speed to 75% for smooth cycling.
-3. Saturation to maximum (100%), Brightness to 80%.
-4. Enable Grid Lines for the retro mosaic look.
-5. Pattern=Stripe for horizontal colour bands.
-6. Observe the cascading rainbow effect as colours cycle through rows.
+1. Set **Speed** (Knob 1) to 0% so the palette does not cycle. The colour grid is frozen.
+2. Turn **Block Size** (Knob 2) to step 1 (8×8 blocks). The screen fills with a fine mosaic of small coloured tiles.
+3. Slowly turn **Block Size** through its four positions: 8×8, 16×16, 32×32, 64×64. Watch the grid coarsen from a detailed mosaic to large, bold colour panels.
+4. Set Block Size to 16×16 and slowly sweep **Palette Offset** (Knob 3). The colour assignments shift across the grid (you're rotating which colour appears in which block.)
+5. Toggle **Pattern** (Switch 8) between **Checker** and **Stripe**. In Checker mode, adjacent blocks have different colours. In Stripe mode, all blocks in a row share the same base colour.
 
-**Key concepts**: - Stripe pattern creates horizontal colour bands mimicking loading screens
-- Grid lines add structure and retro authenticity
-- Speed controls the cascade rate through the 8-colour palette
+#### Settings
 
----
-
-### Exercise 3: Flash and Mosaic Abstraction
-
-<img src={attrcycle_exercise3_result} alt="Flash and Mosaic Abstraction result"/>
-*Flash and Mosaic Abstraction — simulated result across source images.*
-**What You'll Create**: Create an abstract blinking mosaic using large blocks, fast cycling, and flash.
-
-1. Set Block Size to step 4 (64×64) for extreme mosaic.
-2. Set Speed to 50% for moderate cycling.
-3. Enable Flash for periodic ink/paper swap.
-4. Set Density to 60% to favour ink colours.
-5. Saturation to 60%, Brightness to 90%.
-6. Pattern=Checker for maximum spatial variation.
-7. Observe how the flash creates a blinking, breathing pattern.
-
-**Key concepts**: - Large blocks create extreme abstraction where only broad shapes remain
-- Flash adds rhythmic blinking that echoes the Spectrum's cursor effect
-- Checker pattern maximises colour variation between adjacent blocks
+| Control | Value |
+|---------|-------|
+| Speed | 0% |
+| Block Size | 2x (16×16) |
+| Palette Offset | ~50% |
+| Saturation | 75% |
+| Density | ~63% |
+| Brightness | 75% |
+| Palette | Spectrum |
+| Pattern | Checker |
+| Flash | Off |
+| Grid Lines | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 2: Colour Cycling Animation
 
-## Tips
+![Colour Cycling Animation result](/img/instruments/videomancer/attrcycle/attrcycle_ex2_s1.png)
+*Colour Cycling Animation — simulated result across source images.*
+#### Exercise Illustration
 
-- **Checker vs Stripe** produces dramatically different spatial feel: checker creates quilt-like tessellation, stripe creates horizontal bands.
-- **Flash at slow speed** creates a hypnotic breathing effect where the entire screen periodically shifts between complementary colour schemes.
-- **Large blocks with high saturation** turn any video into an abstract colour field painting, retaining only the coarsest compositional structure.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+An animated colour cycle with flashing ink/paper swap, exploring the interplay of speed, flash rate, and colour intensity.
+
+#### Key Concepts
+
+- The phase accumulator drives palette rotation per frame
+- Flash recreates the ZX Spectrum's blinking attribute
+- Saturation desaturation reveals luminance structure
+
+#### Steps
+
+1. Starting from the Exercise 1 settings, slowly increase **Speed** (Knob 1). The colour grid begins to animate (each block cycles through the Spectrum palette in sequence.)
+2. At moderate speed (~40%), toggle **Flash** (Switch 9) to **On**. Every second or so, ink and paper swap across the entire display. The grid pulses with alternating colour arrangements.
+3. Lower **Saturation** (Knob 4) to 0%. The grid becomes monochrome: you can see the luminance structure of the eight palette colours: black, dark grays, mid grays, and white. The cycling and flashing continue, but now in grayscale.
+4. Bring **Saturation** back up to full (100%) and switch **Pattern** (Switch 8) to **Stripe**. The cycling colours now scroll as horizontal bands from top to bottom (a colour waterfall.)
+5. Increase **Speed** to maximum. The palette rotates so quickly that adjacent frames blur together, creating a shimmering rainbow effect.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Speed | 40% |
+| Block Size | 3x (16×16) |
+| Palette Offset | 0% |
+| Saturation | 100% |
+| Density | ~63% |
+| Brightness | 75% |
+| Palette | Spectrum |
+| Pattern | Stripe |
+| Flash | On |
+| Grid Lines | On |
+| Bypass | Off |
+| Mix | 100% |
+
+---
+
+### Exercise 3: Input-Shaped Colour Keying
+
+![Input-Shaped Colour Keying result](/img/instruments/videomancer/attrcycle/attrcycle_ex3_s1.png)
+*Input-Shaped Colour Keying — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A composite image where the cycling Spectrum colours are shaped by a live video source, with the mix crossfader creating translucent overlays.
+
+#### Key Concepts
+
+- Input video luminance drives the ink/paper threshold
+- Density controls the balance between ink and paper regions
+- Mix blends the generated pattern with the source
+
+#### Steps
+
+1. Feed a video signal with strong tonal contrast into Videomancer (a face, text, or geometric shapes work well).
+2. From the default settings, set **Speed** to a slow value (~10%) so the cycling is visible but gentle.
+3. Sweep **Density** (Knob 5) from 0% to 100%. At 0%, nearly everything is ink: one colour dominates. At 100%, nearly everything is paper: the complementary colour dominates. At moderate values, the bright and dark areas of your source split into two contrasting Spectrum colours. The shape of your input becomes visible.
+4. Set **Block Size** (Knob 2) to the smallest setting (8×8). The fine grid resolves more detail from the input image. Now try 64×64 (the input image is abstracted into broad colour fields.)
+5. Pull **Mix** (Fader 12) down to ~50%. The original input video ghosts through the colour pattern, creating a double-exposure effect. Bright input areas blend with their ink colour; dark areas blend with paper.
+6. Turn **Grid Lines** (Switch 10) **Off** and set **Block Size** to 8×8. The colours fill the screen edge-to-edge with no visible cell borders. The input image's structure appears as a colour-mapped silhouette.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Speed | 10% |
+| Block Size | 1x (8×8) |
+| Palette Offset | 0% |
+| Saturation | 75% |
+| Density | 50% |
+| Brightness | 75% |
+| Palette | Spectrum |
+| Pattern | Checker |
+| Flash | Off |
+| Grid Lines | Off |
+| Bypass | Off |
+| Mix | 50% |
+
+---
+## Glossary
+
+- **Attribute**: On the ZX Spectrum, a byte of data assigned to each 8×8 character cell defining its ink colour, paper colour, brightness, and flash state.
+
+- **Attribute Clash**: A visual artifact on the ZX Spectrum where only two colours could appear within a single 8×8 cell, causing colour fringing when objects overlapped cell boundaries.
+
+- **Colour Cycling**: An animation technique that rotates entries in a colour lookup table over time, producing the appearance of motion without redrawing pixel data.
+
+- **Density**: In Attrcycle, the luminance threshold that separates ink (foreground) from paper (background) regions within each block.
+
+- **Flash**: A ZX Spectrum attribute bit that caused ink and paper colours to swap at a fixed rate, producing a blinking effect.
+
+- **Ink**: The foreground colour assigned to a character cell in the ZX Spectrum attribute system; applied to pixels above the luminance threshold.
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness.
+
+- **Paper**: The background colour assigned to a character cell in the ZX Spectrum attribute system; applied to pixels below the luminance threshold.
+
+- **Phase Accumulator**: A counter that increments by a configurable amount each frame, producing a continuously advancing animation phase used for colour cycling.
 
 ---

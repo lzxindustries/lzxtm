@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 178
 slug: /instruments/videomancer/lorenz
@@ -7,328 +7,400 @@ image: /img/instruments/videomancer/lorenz/lorenz_hero.png
 description: "In 1963, meteorologist Edward Lorenz was running a simplified weather simulation on a Royal McBee LGP-30 computer."
 ---
 
-import lorenz_hero from '/img/instruments/videomancer/lorenz/lorenz_hero.png';
-import lorenz_animation from '/img/instruments/videomancer/lorenz/lorenz_animation.gif';
-import lorenz_control_panel from '/img/instruments/videomancer/lorenz/lorenz_control_panel.png';
-import lorenz_exercise1_result from '/img/instruments/videomancer/lorenz/lorenz_exercise1_result.gif';
-import lorenz_exercise2_result from '/img/instruments/videomancer/lorenz/lorenz_exercise2_result.gif';
-import lorenz_exercise3_result from '/img/instruments/videomancer/lorenz/lorenz_exercise3_result.gif';
-
-# Lorenz
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={lorenz_hero} alt="Lorenz hero image"/>
-*Lorenz rendering the iconic butterfly-shaped strange attractor as a persistent phosphor trace on a 64×64 canvas, its trajectory glowing against the void.*
-<img src={lorenz_animation} alt="Lorenz animated output"/>
-*Lorenz output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Lorenz hero image](/img/instruments/videomancer/lorenz/lorenz_hero_s1.png)
+*Lorenz rendering its strange attractor as a glowing phosphor trace, the butterfly-shaped trajectory drifting across a field of decaying light.*
 
 ---
 
 ## Overview
 
-In 1963, meteorologist Edward Lorenz was running a simplified weather simulation on a Royal McBee LGP-30 computer. To save time, he restarted a run from the middle, typing in state values rounded to three decimal places instead of the six stored internally. The result diverged completely from the original — a tiny rounding error, amplified by the system's nonlinear dynamics, produced a totally different trajectory. This discovery became the founding example of deterministic chaos: a system governed by simple, fixed equations whose long-term behavior is nonetheless unpredictable because infinitesimal differences in initial conditions grow exponentially over time.
+Lorenz is a real-time chaotic system visualizer that computes the famous Lorenz attractor inside the FPGA and draws its trajectory as a persistent, glowing trace on the screen. The attractor's path is plotted onto a small canvas stored in block RAM, and every frame that canvas fades slightly: producing the look of a phosphor oscilloscope display. The result is a butterfly-wing shape that wanders, stretches, and collapses depending on three mathematical parameters exposed as knobs on the front panel. Lorenz is a ***synthesis*** program: it generates imagery from scratch and can either replace the input video entirely or overlay its glowing trace on top of whatever you feed in.
 
-Lorenz renders this system in real time. Three coupled differential equations — the Lorenz equations — are integrated using a fixed-point Euler method running during the horizontal blanking intervals of the video signal. The trajectory is projected onto a 64×64 canvas stored in BRAM, where each point is plotted at maximum brightness and then slowly fades according to a phosphor decay model. The result is the iconic butterfly-shaped attractor: two lobes connected by a central saddle, the trajectory spiraling around one lobe before unpredictably switching to the other. With the classic parameters (σ=10, ρ=28, β=8/3), the system produces the strange attractor that has become one of the most recognized images in mathematics and physics.
+At its default settings, Lorenz produces a slowly evolving green trace against a dark background. Adjusting the three system parameters: **Sigma**, **Rho**, and **Beta**: reshapes the attractor from tight spirals to wide, chaotic orbits. Push the parameters far enough and the system collapses to a fixed point; pull them back and it blooms into the classic double-lobed butterfly.
 
-The program offers direct control over all three Lorenz parameters, integration speed, phosphor persistence, and trace brightness. A projection toggle switches between the X-Y and X-Z planes of the three-dimensional phase space. A periodic perturbation mode demonstrates sensitive dependence on initial conditions by kicking the state every 128 frames. Rainbow mode maps the z-coordinate to hue, revealing the vertical structure of the attractor through color.
+:::tip
+Lorenz is one of the few Videomancer programs that performs ***numerical simulation*** on the FPGA. The trajectory you see is computed step by step using the actual Lorenz differential equations (it's genuine chaos, not an approximation or a recording.)
+:::
+
+### What's In a Name?
+
+The program is named after ***Edward Lorenz***, the American meteorologist who discovered the Lorenz attractor in 1963 while studying simplified models of atmospheric convection. His work revealed that deterministic systems can behave unpredictably: a discovery that helped launch the field of ***chaos theory***. The butterfly-shaped trajectory of the Lorenz system became one of the most recognized images in mathematics and is closely associated with the phrase "the butterfly effect."
 
 ---
 
 ## Quick Start
 
-1. **Start canonical**: Begin with σ=10, ρ=28, β=8/3. These values produce the classic attractor and serve as a known-good baseline for exploration.
-2. **Rho is the drama knob**: Sweeping Rho through the bifurcation point (≈24.74) produces the most visually dramatic effect — a transition from convergent order to bounded chaos.
-3. **Decay shapes the aesthetic**: Zero decay accumulates everything, eventually saturating to a solid bright blob. Maximum decay shows only the instantaneous trajectory. The sweet spot (rate 1–2) reveals the attractor's shape through persistent trails.
+1. Turn **Sigma** (Knob 1) and **Rho** (Knob 2) to roughly their midpoints. A glowing butterfly-shaped trace should appear on screen, slowly wandering between its two lobes.
+2. Increase **StepSpd** (Knob 4) clockwise. The trace moves faster, drawing more of the attractor each frame and filling in the butterfly shape more densely.
+3. Decrease **Decay** (Knob 5) toward its minimum. The phosphor trails linger much longer, building up a bright, persistent image of the full attractor.
+4. Toggle **Proj** (Switch 7) from X-Y to X-Z to see the attractor from a different angle (the familiar butterfly rotates into a side view.)
+
+---
+
+## Parameters
+
+![Videomancer front panel with Lorenz loaded](/img/instruments/videomancer/lorenz/lorenz_control_panel.png)
+*Videomancer's front panel with Lorenz active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Sigma
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 40 |
+| Default | 10 |
+
+**Sigma** controls the first parameter of the Lorenz system, traditionally called σ (sigma). This value governs the rate of coupling between the X and Y state variables: in fluid dynamics terms, it represents the ***Prandtl number***. At low values the attractor shrinks and the trajectory may collapse to a single point or a small loop. Near the classic value of about 10 (roughly 25% on the knob), the familiar double-lobed butterfly appears. Higher values stretch the attractor horizontally, making the two wings wider and the transitions between them more abrupt.
+
+---
+
+### Knob 2 — Rho
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 50 |
+| Default | 28 |
+
+**Rho** controls the second parameter, traditionally called ρ (rho), which represents the ***Rayleigh number***: the driving force of the convective system. This is the most dramatic control. Below a critical threshold (around Rho 24), the system settles into a stable fixed point and the trace stops moving. Above that threshold the trajectory becomes chaotic, looping unpredictably between two attracting regions. Increasing Rho further makes the loops taller and wilder. This knob is essentially the "chaos dial": sweep it slowly and watch the system transition from calm to turbulent.
+
+:::note
+The transition from order to chaos happens at a specific critical value of Rho. You can watch this ***bifurcation*** happen live: sweep the knob slowly from low to high and notice the exact moment the trace stops settling and begins to wander.
+:::
+
+---
+
+### Knob 3 — Beta
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 10 |
+| Default | 3 |
+
+**Beta** controls the third Lorenz parameter, traditionally called β (beta), which describes how quickly the rotational energy dissipates in the convective model. Lower values allow the system to sustain larger orbits; higher values compress the attractor vertically. The effect is subtler than Sigma or Rho, but Beta shapes the overall proportions of the butterfly (it controls how "tall" each wing is relative to its width.)
+
+---
+
+### Knob 4 — StepSpd
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**StepSpd** (Step Speed) sets how many integration steps the FPGA computes during each horizontal blanking interval. At low values the attractor trace crawls slowly, drawing just a few new points per frame. At higher values the integrator runs many more steps per blanking period, and the trace races along the attractor's path. Because the trajectory is plotted onto a persistent canvas, faster step speeds fill in the attractor shape more quickly, building up a dense, complete portrait.
+
+:::tip
+Very high step speeds combined with low decay produce a bright, fully-drawn attractor. Very low step speeds combined with high decay show just a single glowing dot wandering through space: a moving point of light tracing out the chaotic orbit in real time.
+:::
+
+---
+
+### Knob 5 — Decay
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Decay** controls how quickly the phosphor trace fades. At minimum (fully counterclockwise), the canvas barely fades at all: old trace points persist almost indefinitely, building up a bright, dense image of the full attractor shape. At maximum (fully clockwise), old points vanish almost immediately, leaving only the most recently plotted portion of the trajectory visible as a short, glowing tail. The decay operates in four discrete steps: each frame, every canvas pixel is reduced by 0, 1, 2, or 3 brightness levels depending on the knob position.
+
+---
+
+### Knob 6 — Bright
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 75% |
+
+**Bright** (Brightness) scales the intensity of the attractor trace when it is composited onto the output. At low values the trace is dim and ghostly. At high values the trace becomes a bright, vivid overlay that dominates the image. This control does not affect the internal canvas: it only scales the brightness during the final display stage, so changing it does not alter the decay behavior or the attractor's evolution.
+
+---
+
+### Switch 7 — Proj
+
+| Property | Value |
+|----------|-------|
+| Off | X-Y |
+| On | X-Z |
+| Default | X-Y |
+
+**Proj** (Projection) selects which two of the three Lorenz state variables map to the screen axes. In the **X-Y** position, the horizontal axis shows the X variable and the vertical axis shows Y. This is the classic butterfly view. In the **X-Z** position, the vertical axis switches to the Z variable, showing the attractor from a different angle: the butterfly appears to rotate, revealing the vertical extent of the orbits. The X-Z projection emphasizes the system's vertical structure and the separation between the two lobes.
+
+---
+
+### Switch 8 — Color
+
+| Property | Value |
+|----------|-------|
+| Off | Phosphor |
+| On | Rainbow |
+| Default | Phosphor |
+
+**Color** selects between two colorization modes for the attractor trace. In **Phosphor** mode, the trace is rendered in a cool green tint reminiscent of a classic oscilloscope display: the U and V channels are both set below midpoint, producing a muted green. In **Rainbow** mode, the trace color cycles through four hue phases based on the canvas pixel's brightness level, producing a multicolored trail where recently plotted (bright) points appear in a different hue than decaying (dim) points.
+
+:::tip
+Rainbow mode is most visible at moderate decay rates, where you can see the color shift as points fade from bright to dim. With very low decay, most pixels stay at maximum brightness and the rainbow effect is less pronounced.
+:::
+
+---
+
+### Switch 9 — Perturb
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Perturb** enables periodic perturbation of the Lorenz system. When set to **On**, every 128 frames the integrator gives the X variable a sudden kick, adding a fixed offset to its value. This nudge pushes the trajectory off its current orbit, causing it to snap to the other lobe or explore a different region of phase space. The effect is intermittent: the system settles into its natural behavior between kicks, then suddenly jumps. When set to **Off**, the attractor evolves purely from its mathematical dynamics with no external disturbance.
+
+---
+
+### Switch 10 — Compose
+
+| Property | Value |
+|----------|-------|
+| Off | Overlay |
+| On | Replace |
+| Default | Overlay |
+
+**Compose** selects how the attractor trace is combined with the input video. In **Overlay** mode, the trace brightness is added to the incoming video: the attractor appears as a luminous drawing on top of the source material, and the original image remains visible beneath it. In **Replace** mode, the attractor trace completely replaces the input video: you see only the trace against a black background, like an oscilloscope screen.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Lorenz processing. The sync delay pipeline still aligns timing. Use Bypass for instant A/B comparison between the source and the attractor-composited output.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input and the wet (attractor-composited) output. At 0% the output is entirely dry: pure input video with no trace. At 100% the output is entirely wet: the full attractor composite. Intermediate positions blend the two, allowing subtle ghost-like traces overlaid on a mostly-clean signal.
 
 ---
 
 ## Background
 
-### The Lorenz System
+### Chaos Theory and the Lorenz System
 
-The Lorenz system is a set of three ordinary differential equations:
+In 1963, Edward Lorenz was running a simplified weather simulation on a Royal McBee computer when he noticed something strange. Re-entering initial conditions with slightly rounded numbers produced wildly different results. The tiny rounding error: less than one part in a thousand: amplified into a completely different weather pattern. This observation became the foundation of ***chaos theory***: the discovery that deterministic systems can exhibit unpredictable behavior when their evolution is ***sensitive to initial conditions***.
 
-$$\frac{dx}{dt} = \sigma(y - x)$$
-$$\frac{dy}{dt} = x(\rho - z) - y$$
-$$\frac{dz}{dt} = xy - \beta z$$
+The mathematical system Lorenz studied is a set of three coupled ***ordinary differential equations***:
 
-The three parameters — σ (sigma, the Prandtl number), ρ (rho, the Rayleigh number), and β (beta, a geometric factor) — were originally derived from a simplified model of atmospheric convection. At the canonical values σ=10, ρ=28, β=8/3, the system exhibits chaotic behavior: the trajectory never settles into a fixed point or periodic orbit, instead tracing an infinitely long, never-repeating path through a bounded region of phase space. This bounded region — the strange attractor — has a fractal dimension of approximately 2.06, meaning it fills more than a surface but less than a volume.
+- dx/dt = σ(y − x)
+- dy/dt = x(ρ − z) − y
+- dz/dt = xy − βz
 
-### Strange Attractors and Phase Portraits
+These three equations describe a simplified model of atmospheric convection. The variables x, y, and z represent the state of the convection cell, and the parameters σ (sigma), ρ (rho), and β (beta) control how the fluid behaves. For certain parameter values: most famously σ = 10, ρ = 28, β = 8/3: the system never settles into a repeating pattern. Instead, the trajectory wanders endlessly between two regions of phase space, tracing out the double-lobed shape known as the ***strange attractor***.
 
-A strange attractor is a set of states toward which a dynamical system evolves over time, characterized by sensitive dependence on initial conditions and a fractal geometric structure. The "phase portrait" is a visualization of the attractor — a plot of the system's trajectory through its state space. For the Lorenz system, the state space is three-dimensional (x, y, z), and the attractor resembles a butterfly or figure-eight, with the trajectory spiraling around two lobes centered at the system's unstable fixed points. Lorenz projects this 3D trajectory onto a 2D canvas by selecting either the X-Y or X-Z plane, producing the characteristic wing pattern.
+### Fixed-Point Numerical Integration
 
-### Euler Integration in Fixed-Point Arithmetic
+The FPGA implements the Lorenz equations using ***Euler integration*** in ***fixed-point arithmetic***. Each state variable (x, y, z) is stored as a signed 16-bit number in 6.10 format: six bits for the integer part, ten bits for the fractional part. This gives a range of roughly −32 to +31 with a precision of about 0.001.
 
-The VHDL implementation uses the simplest numerical integration method: the forward Euler method. At each step, the new state is computed as $x_{n+1} = x_n + \Delta t \cdot f(x_n)$, where $f$ is the right-hand side of the differential equations. The state variables are stored as signed 16-bit fixed-point numbers in 6.10 format (6 integer bits, 10 fractional bits), giving a range of approximately ±32 with a resolution of about 0.001. The multiplications required for the Lorenz equations produce 32-bit intermediate products, from which bits 25:10 are extracted as the scaled increment — effectively dividing by 1024, which serves as the integration time step $\Delta t$. Clamping at ±32000 prevents overflow when parameters are pushed to extreme values.
+Each integration step computes the three derivatives (dx, dy, dz) using three signed multiplications, then adds a scaled fraction of the derivative to each state variable. The step size is effectively 1/1024, matching the fixed-point scale. Multiple integration steps run during each horizontal blanking interval, when the video signal carries no active picture data: this means the integrator runs "for free" in time that would otherwise be wasted.
 
-### Phosphor Decay and Persistence
+### Phosphor Persistence
 
-Oscilloscope displays and early vector monitors used phosphor-coated screens where the electron beam excited the phosphor to glow brightly at the point of impact. After the beam moved on, the phosphor decayed exponentially — bright traces faded over time, leaving a ghostly afterimage. Lorenz simulates this with a 4-bit-per-pixel canvas. Each plotted point is set to maximum brightness (15). On every frame, a decay scan subtracts a configurable amount (0–3) from every canvas cell. The result is a persistence effect: recent trajectory points glow brightly, older points are dimmer, and the oldest have faded to black. Higher decay rates produce shorter trails; lower rates produce long, luminous persistence.
+The canvas uses a 64×64 grid of 4-bit pixels stored in block RAM. Each pixel can hold a brightness value from 0 (off) to 15 (maximum). When the integrator plots a point, it sets the corresponding canvas cell to maximum brightness. Every frame, a ***decay pass*** sweeps through the entire canvas and decreases each cell by a fixed amount: the rate controlled by the **Decay** knob. Points that are not refreshed eventually fade to zero.
 
-### Sensitive Dependence on Initial Conditions
-
-The hallmark of chaos is that two trajectories starting from nearly identical initial conditions will diverge exponentially over time. Lorenz's Perturb toggle demonstrates this directly: every 128 frames, a small kick (adding 0.5 in 6.10 fixed-point, which is 512 raw counts) is applied to the x state variable. This tiny perturbation is rapidly amplified by the chaotic dynamics, causing the trajectory to explore a completely different sequence of lobe switches — even though the underlying equations and parameters are unchanged. The effect is visible as a sudden change in the pattern of the attractor's trace.
+This two-pass approach: plotting new points at full brightness, then uniformly decaying the whole canvas: produces the ***phosphor persistence*** effect familiar from cathode-ray oscilloscopes. The most recently visited parts of the attractor glow brightest, while the trajectory's history fades into a dim afterimage.
 
 
 ---
 
 ## Signal Flow
 
-Canvas Address Compute → Canvas Read → Brightness Scaling → Compose
+### Signal Flow Notes
 
-```
-HORIZONTAL BLANKING (integration phase)
-│
-├── Parameter Scaling ──────────────────────────────────────────
-│   ├─ sigma = sigma_pot × 40  (6.10 fp)
-│   ├─ rho   = rho_pot × 50   (6.10 fp)
-│   ├─ beta  = beta_pot × 10  (6.10 fp)
-│   ├─ steps_per_line = step_speed >> 4 + 1  (1..64)
-│   └─ decay_rate = pot threshold → 0..3
-│
-├── Lorenz Euler Integration (signed 16-bit, 6.10 fp) ─────────
-│   ├─ dx = sigma × (y − x)
-│   ├─ dy = x × (rho − z) − y × 1024
-│   ├─ dz = x × y − beta × z
-│   ├─ x_new = x + dx[25:10]  (clamped ±32000)
-│   ├─ y_new = y + dy[25:10]  (clamped ±32000)
-│   └─ z_new = z + dz[25:10]  (clamped ±32000)
-│
-├── Projection to Canvas (64×64) ───────────────────────────────
-│   ├─ canvas_x = x >> 10 + 32  (center in 64-wide canvas)
-│   ├─ canvas_y = y >> 10 + 32  (X-Y projection)
-│   │         or  z >> 10 + 16  (X-Z projection, Z is positive-biased)
-│   └─ Plot: canvas[y][x] = 15  (max brightness)
-│
-├── Perturbation (every 128 frames) ────────────────────────────
-│   └─ If Perturb on and frame_count=0 → x += 512
-│
-FRAME START (vsync rising edge)
-│
-├── Canvas Decay Scan ──────────────────────────────────────────
-│   └─ For each cell: value = max(0, value − decay_rate)
-│
-ACTIVE VIDEO (display phase, 4 clocks)
-│
-├── Stage 1: Canvas Address Compute ────────────────────────────
-│   ├─ canvas_x = h_count >> 5  (screen ÷ 32)
-│   └─ canvas_y = v_count >> 4  (screen ÷ 16)
-│
-├── Stage 2: Canvas Read ───────────────────────────────────────
-│   └─ pixel_val = canvas[canvas_y × 64 + canvas_x]  (4-bit)
-│
-├── Stage 3: Brightness Scaling ────────────────────────────────
-│   └─ trace_bright = pixel_val × bright_pot × 4 >> 4
-│
-├── Stage 4: Compose ───────────────────────────────────────────
-│   ├─ Replace: Y = trace_bright, UV = colored/phosphor
-│   ├─ Overlay: Y = input_Y + trace_bright (saturate)
-│   └─ Rainbow: UV from pixel_val hue quadrant
-│
-├── Clocks 5–8: Interpolator (wet/dry Mix) ─────────────────────
-│   └─ lerp(delayed_input, composed, mix_amount) per channel
-│
-└── Output Mux ─────────────────────────────────────────────────
-    ├─ Bypass off → mixed output
-    └─ Bypass on  → delayed input
-```
+The integrator and the display pipeline run in different phases of the video signal. During ***horizontal blanking***: the brief interval between each line of active picture: the Lorenz equations are iterated and new points are plotted onto the canvas. During ***active video***, the canvas is read and composited with the input signal. This separation means the two processes never contend for the BRAM simultaneously (except during the decay pass, which runs at the start of each frame using a two-phase read-then-write scan).
 
-The pipeline splits into two distinct time domains. During horizontal blanking, the integrator runs up to 64 Euler steps per scan line, advancing the Lorenz trajectory and plotting points to the 64×64 canvas BRAM. At frame boundaries (vsync rising edge), a decay scan decrements every canvas cell. During active video, the display pipeline reads the canvas at a scaled address, maps the 4-bit pixel value to brightness, and composes with the input video. The canvas's low resolution (64×64) means each canvas pixel covers approximately 30×17 screen pixels, producing a blocky, CRT-oscilloscope-like rendering. The rainbow color mode uses a simple 4-quadrant lookup indexed by the upper 2 bits of the pixel value, cycling through four distinct UV pairs — it does not produce a smooth hue gradient but rather four discrete color zones that correlate with trace recency.
+The canvas is much smaller than the screen (64×64 versus approximately 1920×1080), so each canvas pixel covers a large block of screen pixels. The trace therefore appears as a coarse, blocky shape: which actually reinforces the lo-fi phosphor aesthetic. The projection step maps the signed, fixed-point attractor coordinates into unsigned canvas coordinates, centering the attractor in the grid.
 
----
-
-## Parameter Reference
-
-<img src={lorenz_control_panel} alt="Videomancer front panel with Lorenz loaded"/>
-*Videomancer's front panel with Lorenz active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Sigma
-| Property | Value |
-|----------|-------|
-| Range | 0 – 40 |
-| Default | 10 |
-
-The Lorenz σ (sigma) parameter, scaled from the 10-bit register to a range of 0–40. In the original atmospheric convection model, sigma represents the Prandtl number — the ratio of kinematic viscosity to thermal diffusivity. At the canonical value of 10 (register ≈256), the system produces the classic butterfly attractor. Lower values slow the x-y coupling, causing the trajectory to spiral more tightly around each lobe. Higher values increase the coupling strength, making lobe transitions more frequent and the overall pattern more tightly wound. At extreme values, the attractor may collapse to a fixed point or diverge to the clamp boundaries.
-
----
-
-#### Knob 2 — Rho
-| Property | Value |
-|----------|-------|
-| Range | 0 – 50 |
-| Default | 28 |
-
-The Lorenz ρ (rho) parameter, scaled from 0–50. Rho represents the Rayleigh number — the temperature difference driving convection. The canonical value is 28 (register ≈573). Below ρ≈24.74, the attractor contracts and the system settles into a stable fixed point — the trajectory spirals inward and stops. Above this critical threshold, the system becomes chaotic. Increasing rho beyond 28 expands the attractor vertically and makes the lobe switches more erratic. This is arguably the most dramatic parameter — sweeping it through the bifurcation point produces a visible transition from order to chaos.
-
----
-
-#### Knob 3 — Beta
-| Property | Value |
-|----------|-------|
-| Range | 0 – 10 |
-| Default | 3 |
-
-The Lorenz β (beta) parameter, scaled from 0–10. Beta represents a geometric aspect ratio in the convection model. The canonical value is 8/3 ≈ 2.67 (register ≈273). Beta controls the damping of the z variable. Lower values reduce damping, allowing z to grow larger and stretching the attractor vertically. Higher values increase damping, compressing the attractor into a flatter profile. This parameter has a subtler effect than sigma or rho — it shapes the attractor's proportions without dramatically changing its qualitative behavior.
-
----
-
-#### Knob 4 — StepSpd
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Integration speed. Controls how many Euler steps are computed per horizontal blanking interval. The register is shifted right by 4 bits and incremented by 1, giving a range of 1–64 steps per line. At minimum, the trajectory advances slowly — one step per scan line, requiring many frames to trace the attractor. At maximum, 64 steps are computed per line, and the trajectory races around the attractor, quickly filling the canvas with traces. Higher speeds also increase the numerical error of the Euler method, which can cause the trajectory to deviate slightly from the true mathematical solution — an acceptable trade-off that adds an element of computational imperfection to the visualization.
-
----
-
-#### Knob 5 — Decay
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-Phosphor decay rate. Controls how quickly plotted points fade from the canvas. The register is threshold-quantized into four levels: 0 (no decay — points persist indefinitely), 1 (slow fade), 2 (moderate fade), and 3 (fast fade). At zero decay, the canvas accumulates all trajectory points and eventually saturates to a solid bright field. At maximum decay, only the most recent points are visible — the trace appears as a short, bright worm crawling along the attractor. Intermediate values produce the characteristic phosphor persistence where the trajectory leaves a glowing trail that fades over several frames.
-
----
-
-#### Knob 6 — Bright
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 75% |
-| Suffix | % |
-
-Trace brightness. Scales the 4-bit canvas pixel value to the 10-bit display domain. The brightness computation multiplies the pixel value by the register value and scales the result, determining how bright the attractor trace appears against the background. At minimum, the trace is barely visible. At maximum, even partially decayed canvas cells produce bright output. This control interacts with the Compose mode: in Overlay mode, high brightness can wash out the underlying video; in Replace mode, it sets the absolute luminance of the attractor rendering.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Proj** | X-Y | X-Z |
-| **8 — Color** | Phosphor | Rainbow |
-| **9 — Perturb** | Off | On |
-| **10 — Compose** | Overlay | Replace |
-| **11 — Bypass** | Off | On |
-
-Switches 7–10 configure four independent aspects of the visualization: projection plane, color mode, perturbation, and composition method. None interact combinatorially — each switch independently modifies one dimension of the display. Switch 11 is the standard bypass.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Lorenz-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::note
+Because the integrator uses fixed-point arithmetic with limited precision, the FPGA's Lorenz system is not an exact replica of the continuous equations. The discretization introduces small numerical drift: but for a chaotic system, any tiny perturbation leads to divergent trajectories regardless. The visual result is indistinguishable from a higher-precision simulation.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises explore the Lorenz system from first principles — starting with the canonical chaotic attractor, then varying parameters to observe bifurcations, and finally experimenting with visualization modes.
+These exercises explore the Lorenz attractor from stable equilibrium through full chaos, then combine it with input video for live performance compositing.
+### Exercise 1: Finding the Butterfly
 
-### Exercise 1: The Canonical Butterfly
+![Finding the Butterfly result](/img/instruments/videomancer/lorenz/lorenz_ex1_s1.png)
+*Finding the Butterfly — simulated result across source images.*
+#### Exercise Illustration
 
-<img src={lorenz_exercise1_result} alt="The Canonical Butterfly result"/>
-*The Canonical Butterfly — simulated result across source images.*
-**What You'll Create**: Observe the classic Lorenz strange attractor at its canonical parameter values.
+***A description of the exercise illustration.***
 
-1. **Set canonical parameters**: Sigma ≈ 10 (register ~256), Rho ≈ 28 (register ~573), Beta ≈ 2.67 (register ~273).
-2. **Moderate speed**: Set StepSpd to ~50%. The trajectory traces the attractor at a visible pace.
-3. **Phosphor trail**: Set Decay to ~25%. Long persistence lets the butterfly shape accumulate.
-4. **Brightness**: Set Bright to ~75% for clear visibility.
-5. **Replace mode**: Set Compose to Replace (Switch 10 On). The attractor renders against black.
-6. **Observe**: Watch the trajectory spiral around one lobe, then unpredictably switch to the other. The two wings of the butterfly gradually fill in.
-7. **Projection**: Toggle Proj (Switch 7) to see the X-Z view. The butterfly appears from above, with the trajectory arcing between stacked lobes.
+#### Learning Outcomes
 
-**Key concepts**: The Lorenz attractor has two lobes connected by a saddle point, the trajectory never repeats, canonical values σ=10 ρ=28 β=8/3 produce the classic butterfly shape
+Discover the classic butterfly-shaped strange attractor by sweeping the Rho parameter through the critical transition from stability to chaos.
 
----
+#### Key Concepts
 
-### Exercise 2: Edge of Chaos
+- The Lorenz attractor emerges from specific parameter relationships
+- The Rho parameter controls the transition from order to chaos
+- Decay rate determines whether you see the trajectory's history or only its present
 
-<img src={lorenz_exercise2_result} alt="Edge of Chaos result"/>
-*Edge of Chaos — simulated result across source images.*
-**What You'll Create**: Sweep the Rho parameter through the bifurcation point to observe the transition from order to chaos.
+#### Steps
 
-1. **Start below critical threshold**: Set Rho to ~20 (register ~410). The trajectory spirals inward and settles to a fixed point.
-2. **Increase Decay**: Set Decay to ~50% so old traces fade quickly, showing current behavior clearly.
-3. **Sweep Rho upward**: Slowly increase Rho. Watch for the moment when the trajectory stops converging — it begins to oscillate, then suddenly breaks into chaotic switching between lobes.
-4. **The critical point**: At ρ≈24.74 (register ~506), the bifurcation occurs. Below it: stable spiral. Above it: chaos.
-5. **Push higher**: Continue increasing Rho toward 40–50. The attractor expands and the lobe switches become more erratic.
-6. **Sigma variation**: Return to canonical Rho. Now sweep Sigma from low to high. Observe how it changes the tightness of the spirals without eliminating chaos.
+1. Set **Sigma** (Knob 1) to about 25% and **Beta** (Knob 3) to about 27%. These approximate the classic values σ ≈ 10 and β ≈ 8/3.
+2. Set **Rho** (Knob 2) to its minimum. The trace should settle to a fixed point (a single dot or a tiny loop.)
+3. Set **Decay** (Knob 5) to about 25% so the trace lingers, and **Bright** (Knob 6) to about 75%.
+4. Set **Compose** (Switch 10) to **Replace** so the attractor fills the screen against a black background.
+5. Now slowly sweep **Rho** clockwise. Watch the transition: the dot begins to orbit, the orbits grow, and at a critical point the trajectory suddenly begins visiting two separate lobes (the butterfly appears.)
+6. Toggle **Proj** (Switch 7) to **X-Z** to see the same attractor from its side profile.
 
-**Key concepts**: The Lorenz system undergoes a Hopf bifurcation at a critical Rho value, below which the trajectory converges, parameter sweeping reveals the boundary between order and chaos
+#### Settings
 
----
-
-### Exercise 3: Chaos in Color
-
-<img src={lorenz_exercise3_result} alt="Chaos in Color result"/>
-*Chaos in Color — simulated result across source images.*
-**What You'll Create**: Combine perturbation, rainbow color, and video overlay for a dynamic composite visualization.
-
-1. **Canonical parameters**: Sigma ≈ 10, Rho ≈ 28, Beta ≈ 2.67.
-2. **Enable Perturb**: Turn on Switch 9. Every 128 frames (~2 seconds), the trajectory receives a kick.
-3. **Rainbow mode**: Turn on Switch 8. The trace colors shift with pixel brightness, revealing decay layers.
-4. **Overlay mode**: Set Compose to Overlay (Switch 10 Off). The attractor is added to the input video.
-5. **Reduce brightness**: Set Bright to ~40% to prevent washing out the video source.
-6. **Moderate decay**: Set Decay to ~30%. Trails persist long enough to show the attractor shape but clear fast enough to see perturbation effects.
-7. **Speed up**: Increase StepSpd to ~70%. The trajectory moves fast, rapidly filling the attractor region.
-8. **Mix**: Set Mix to ~80% for a subtle blend of attractor over video.
-
-**Key concepts**: Perturbation demonstrates sensitive dependence on initial conditions, rainbow mode reveals temporal structure through color, overlay mode composites the mathematical visualization with live video
+| Control | Value |
+|---------|-------|
+| Sigma | ~25% |
+| Rho | Sweep from 0 to 100 |
+| Beta | ~27% |
+| StepSpd | ~50% |
+| Decay | ~25% |
+| Bright | ~75% |
+| Proj | X-Y |
+| Color | Phosphor |
+| Perturb | Off |
+| Compose | Replace |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 2: Phosphor Trails in Rainbow
 
-## Tips
+![Phosphor Trails in Rainbow result](/img/instruments/videomancer/lorenz/lorenz_ex2_s1.png)
+*Phosphor Trails in Rainbow — simulated result across source images.*
+#### Exercise Illustration
 
-- **Replace for math, Overlay for art**: Replace mode isolates the attractor for pure mathematical visualization. Overlay mode integrates it with video, creating a composite where chaos theory meets lived imagery.
-- **Perturb reveals chaos**: The perturbation toggle is the clearest demonstration of sensitive dependence. Enable it and watch the trajectory change unpredictably after each kick — same equations, same parameters, different evolution.
-- **Low resolution is the point**: The 64×64 canvas intentionally produces a low-resolution, blocky rendering. This is not a limitation — it evokes the resolution constraints of early computer graphics and vector oscilloscopes, where scientists first visualized dynamical systems.
-- **Extreme parameters break beautifully**: Pushing Sigma, Rho, and Beta to extreme values causes the integrator to hit its clamp boundaries, producing geometric patterns at the canvas edges that are visually interesting in their own right.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Create a colorful, long-exposure trace of the chaotic orbit with rainbow coloring that reveals the trajectory's age.
+
+#### Key Concepts
+
+- Decay rate shapes the visual density of the trace
+- Color mode maps brightness to hue, creating gradient trails
+- Step speed controls how quickly the attractor fills in
+
+#### Steps
+
+1. Start from the butterfly discovered in Exercise 1 (Sigma ~25%, Rho ~55%, Beta ~27%).
+2. Switch **Color** (Switch 8) to **Rainbow**. The trace shifts from monochrome green to a cycling palette.
+3. Lower **Decay** (Knob 5) to near minimum. Old trace points linger and fade through different colors as their brightness decreases.
+4. Increase **StepSpd** (Knob 4) to about 70%. The attractor fills in more quickly, building a dense multicolored portrait.
+5. Now slowly adjust **Sigma** (Knob 1) and **Beta** (Knob 3) while watching the rainbow trails reshape. The attractor's proportions change (wider wings, tighter spirals, or collapse.)
+6. Enable **Perturb** (Switch 9). Every few seconds the trace receives a sudden kick, causing it to jump between lobes unexpectedly, leaving colorful arcs across the canvas.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Sigma | ~25% |
+| Rho | ~55% |
+| Beta | ~27% |
+| StepSpd | ~70% |
+| Decay | ~5% |
+| Bright | ~75% |
+| Proj | X-Y |
+| Color | Rainbow |
+| Perturb | On |
+| Compose | Replace |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Chaos Over Video
+
+![Chaos Over Video result](/img/instruments/videomancer/lorenz/lorenz_ex3_s1.png)
+*Chaos Over Video — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Layer the Lorenz attractor on top of a live video source as a glowing animated overlay, blending mathematics and imagery.
+
+#### Key Concepts
+
+- Overlay mode adds the attractor trace to live video
+- Mix crossfades between the clean source and the composited output
+- The attractor can serve as a live animated overlay element
+
+#### Video Source
+
+A live camera feed or recorded footage: darker scenes work best, as the additive overlay shows most clearly against low-luminance backgrounds.
+
+#### Steps
+
+1. Connect a video source to Videomancer's input.
+2. Set **Compose** (Switch 10) to **Overlay**. The trace now adds to the incoming video rather than replacing it.
+3. Set **Bright** (Knob 6) to about 60% so the trace is visible but not overwhelming.
+4. Set **Mix** (Fader 12) to about 70%. The source image is partially visible beneath the attractor.
+5. Set the system parameters for a lively attractor: **Sigma** ~25%, **Rho** ~55%, **Beta** ~27%, **StepSpd** ~50%.
+6. Set **Decay** (Knob 5) to about 50%: a moderate trail length that shows motion without obscuring the video.
+7. Switch **Color** (Switch 8) between **Phosphor** and **Rainbow** to see which colorization suits your source material.
+8. Slowly sweep **Rho** (Knob 2) to animate the attractor's behavior over the video (from calm orbits to wild chaos.)
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Sigma | ~25% |
+| Rho | ~55% |
+| Beta | ~27% |
+| StepSpd | ~50% |
+| Decay | ~50% |
+| Bright | ~60% |
+| Proj | X-Y |
+| Color | Phosphor |
+| Perturb | Off |
+| Compose | Overlay |
+| Bypass | Off |
+| Mix | ~70% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Attractor** | A set of states toward which a dynamical system evolves over time; the Lorenz attractor is "strange" because it has fractal structure and supports chaotic trajectories. |
-| **Bifurcation** | A qualitative change in a system's behavior as a parameter crosses a critical threshold; the Lorenz system bifurcates from stable to chaotic near ρ≈24.74. |
-| **Canvas** | The 64×64 pixel buffer stored in BRAM that accumulates trajectory points and is read out during active video. |
-| **Chaos** | Deterministic but unpredictable behavior arising from nonlinear dynamics and sensitive dependence on initial conditions. |
-| **Euler method** | The simplest numerical integration technique: $x_{n+1} = x_n + \Delta t \cdot f(x_n)$. Fast but accumulates error, especially at large time steps. |
-| **Fixed-point** | A representation of fractional numbers using integer arithmetic with a fixed binary point; the Lorenz integrator uses 6.10 format (6 integer bits, 10 fractional bits). |
-| **Lorenz equations** | Three coupled ODEs ($\dot{x}=\sigma(y-x)$, $\dot{y}=x(\rho-z)-y$, $\dot{z}=xy-\beta z$) that model simplified atmospheric convection and exhibit deterministic chaos. |
-| **Phase portrait** | A visualization of a dynamical system's trajectory through its state space. |
-| **Phosphor decay** | The gradual fading of a display phosphor after excitation, simulated by decrementing canvas pixel values each frame. |
-| **Strange attractor** | An attractor with fractal dimension, supporting chaotic trajectories that never repeat. |
+- **Attractor**: A set of states toward which a dynamical system tends to evolve; the Lorenz attractor is a "strange" attractor because it never repeats.
+
+- **Bifurcation**: A qualitative change in a system's behavior as a parameter crosses a critical threshold: such as the transition from a stable fixed point to chaotic orbiting.
+
+- **BRAM**: Block RAM; dedicated memory tiles built into the FPGA fabric, used here to store the 64×64 canvas.
+
+- **Chaos**: Deterministic behavior that appears random because infinitesimally small differences in initial conditions lead to vastly different outcomes.
+
+- **Euler Integration**: The simplest numerical method for solving differential equations, advancing the solution by adding the derivative scaled by a small time step.
+
+- **Fixed-Point Arithmetic**: A method of representing fractional numbers using integers with an implied binary decimal point, used on hardware that lacks floating-point units.
+
+- **Phase Space**: An abstract space where each axis represents one state variable of a dynamical system; the trajectory through this space shows the system's evolution.
+
+- **Phosphor Persistence**: The tendency of a phosphor-coated screen (as in a CRT or oscilloscope) to continue glowing briefly after the electron beam moves on, leaving a fading trail.
+
+- **Projection**: Selecting which two of three (or more) state variables are mapped to the horizontal and vertical screen axes, choosing the "viewing angle" of the phase portrait.
+
+- **Strange Attractor**: An attractor with a fractal structure that produces chaotic trajectories: the system is drawn toward it but never exactly repeats its path.
 
 ---

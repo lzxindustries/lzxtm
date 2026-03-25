@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 197
 slug: /instruments/videomancer/morpho
@@ -7,355 +7,417 @@ image: /img/instruments/videomancer/morpho/morpho_hero_s1.png
 description: "Mathematical morphology is a branch of image processing based on set theory — it treats images as collections of shapes and applies operations that expand, shrink, or extract boundaries."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import morpho_control_panel from '/img/instruments/videomancer/morpho/morpho_control_panel.png';
-import morpho_source1_car from '/img/instruments/videomancer/morpho/morpho_source1_car.png';
-import morpho_source2_sunset from '/img/instruments/videomancer/morpho/morpho_source2_sunset.png';
-import morpho_source3_elephant from '/img/instruments/videomancer/morpho/morpho_source3_elephant.png';
-import morpho_source4_pattern from '/img/instruments/videomancer/morpho/morpho_source4_pattern.png';
-import morpho_source5_boy from '/img/instruments/videomancer/morpho/morpho_source5_boy.png';
-import morpho_source6_berries from '/img/instruments/videomancer/morpho/morpho_source6_berries.png';
-import morpho_hero_s1 from '/img/instruments/videomancer/morpho/morpho_hero_s1.png';
-import morpho_hero_s2 from '/img/instruments/videomancer/morpho/morpho_hero_s2.png';
-import morpho_hero_s3 from '/img/instruments/videomancer/morpho/morpho_hero_s3.png';
-import morpho_hero_s4 from '/img/instruments/videomancer/morpho/morpho_hero_s4.png';
-import morpho_hero_s5 from '/img/instruments/videomancer/morpho/morpho_hero_s5.png';
-import morpho_hero_s6 from '/img/instruments/videomancer/morpho/morpho_hero_s6.png';
-import morpho_ex1_s1 from '/img/instruments/videomancer/morpho/morpho_ex1_s1.png';
-import morpho_ex1_s2 from '/img/instruments/videomancer/morpho/morpho_ex1_s2.png';
-import morpho_ex1_s3 from '/img/instruments/videomancer/morpho/morpho_ex1_s3.png';
-import morpho_ex1_s4 from '/img/instruments/videomancer/morpho/morpho_ex1_s4.png';
-import morpho_ex1_s5 from '/img/instruments/videomancer/morpho/morpho_ex1_s5.png';
-import morpho_ex1_s6 from '/img/instruments/videomancer/morpho/morpho_ex1_s6.png';
-import morpho_ex2_s1 from '/img/instruments/videomancer/morpho/morpho_ex2_s1.png';
-import morpho_ex2_s2 from '/img/instruments/videomancer/morpho/morpho_ex2_s2.png';
-import morpho_ex2_s3 from '/img/instruments/videomancer/morpho/morpho_ex2_s3.png';
-import morpho_ex2_s4 from '/img/instruments/videomancer/morpho/morpho_ex2_s4.png';
-import morpho_ex2_s5 from '/img/instruments/videomancer/morpho/morpho_ex2_s5.png';
-import morpho_ex2_s6 from '/img/instruments/videomancer/morpho/morpho_ex2_s6.png';
-import morpho_ex3_s1 from '/img/instruments/videomancer/morpho/morpho_ex3_s1.png';
-import morpho_ex3_s2 from '/img/instruments/videomancer/morpho/morpho_ex3_s2.png';
-import morpho_ex3_s3 from '/img/instruments/videomancer/morpho/morpho_ex3_s3.png';
-import morpho_ex3_s4 from '/img/instruments/videomancer/morpho/morpho_ex3_s4.png';
-import morpho_ex3_s5 from '/img/instruments/videomancer/morpho/morpho_ex3_s5.png';
-import morpho_ex3_s6 from '/img/instruments/videomancer/morpho/morpho_ex3_s6.png';
-
-# Morpho
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: morpho_source1_car, after: morpho_hero_s1 },
-    { label: "Sunset", before: morpho_source2_sunset, after: morpho_hero_s2 },
-    { label: "Elephant", before: morpho_source3_elephant, after: morpho_hero_s3 },
-    { label: "Pattern", before: morpho_source4_pattern, after: morpho_hero_s4 },
-    { label: "Boy", before: morpho_source5_boy, after: morpho_hero_s5 },
-    { label: "Berries", before: morpho_source6_berries, after: morpho_hero_s6 },
-  ]}
-/>
-*Morpho applying 3-tap horizontal erosion, dilation, and morphological gradient operations to extract and transform edge structures in the video signal.*
+![Morpho hero image](/img/instruments/videomancer/morpho/morpho_hero_s1.png)
+*Morpho applying morphological gradient extraction to a textured source, revealing luminous edge contours against a dark field.*
 
 ---
 
 ## Overview
 
-**Mathematical morphology** is a branch of image processing based on set theory — it treats images as collections of shapes and applies operations that expand, shrink, or extract boundaries. The two fundamental operations are **erosion** (which shrinks bright regions and widens dark regions) and **dilation** (which expands bright regions and fills dark gaps). From these two primitives, a rich set of derived operations emerges: **gradient** (dilation minus erosion, revealing edges), **opening** (erosion followed by dilation, smoothing without expanding), and **closing** (dilation followed by erosion, filling gaps without shrinking).
+**Morpho** is an edge sculptor. It applies ***morphological image processing***: a family of techniques that probe the shape and structure of an image by sliding a small sampling window across the video signal. The window finds the darkest or brightest pixel in the neighborhood and uses that value to erode, dilate, or outline the features in the frame. The result is a set of tools for thinning bright regions, expanding them, or extracting their edges as glowing outlines.
 
-Morpho implements the erosion and dilation primitives using a 3-pixel horizontal sliding window. The structuring element — the shape that defines the neighborhood — is either a cross (3 horizontal pixels) or a full square (the same 3 pixels — since only one line is buffered, the vertical extent is limited). On every pixel, the algorithm computes the local minimum (erosion) and local maximum (dilation) across the 3-tap window. The operation selector chooses which result to output. The gradient operation computes the difference between max and min, extracting horizontal edge information.
+At gentle settings, Morpho can soften noise, clean up rough edges, or subtly sharpen contours. At extreme settings, it reduces the image to stark silhouettes, thick neon outlines, or high-contrast graphic shapes. The gradient mode is particularly striking: it computes the difference between the thickest and thinnest versions of the image, producing edge maps that look like hand-drawn ink outlines or luminous wireframes.
 
-Because Morpho operates on a 1D (horizontal) kernel without vertical line buffers, it is a pure **horizontal morphology** operator. The effects are most visible along vertical edges in the source image, where the horizontal kernel crosses brightness transitions. Despite this limitation, the program produces striking edge-detection and structural effects when combined with contrast, threshold, and edge gain controls.
+Because Morpho operates on a horizontal neighborhood of three pixels, it's fast and resource-light: no frame buffers, no memory, just a sliding window and some comparisons. This makes it responsive and artifact-free, perfect for real-time performance where clean edges and bold silhouettes are the goal.
+
+### What's In a Name?
+
+The name ***Morpho*** carries a dual meaning. The first is ***morphology***, the study of form and structure: the mathematical discipline from which these operations originate. The second is the ***Morpho butterfly***, a genus of iridescent blue butterflies whose wings reveal intricate structural patterns when viewed up close. Like the butterfly, Morpho reveals the hidden structure in a video signal: the edges, contours, and boundaries that define its shape.
 
 ---
 
 ## Quick Start
 
-1. **Gradient for edge detection**: Morphological gradient is one of the cleanest edge detectors — non-negative, bounded, and noise-resistant.
-2. **Threshold cleans noise**: In gradient mode, threshold removes weak micro-edges caused by noise, leaving only meaningful boundaries.
-3. **Edge Gain amplifies subtlety**: Low-contrast edges can be brought out by increasing Edge Gain without affecting flat regions.
+1. Set **Operation** (Switch 7) to **Erode** and **Channel** (Switch 8) to **All**. This activates gradient mode. You should see a mostly dark screen with bright outlines tracing the edges of your video source.
+2. Turn **Edge Gain** (Knob 6) clockwise. The edge outlines grow brighter and more prominent, as if someone is tracing them with a neon marker.
+3. Raise **Threshold** (Knob 3) slightly. The faintest, noisiest edges vanish, leaving only the strongest contours behind (a clean, bold edge map.)
+4. Sweep **Mix** (Fader 12) from right to left. The processed edges blend back toward the original image, creating a sharpening effect where edges are enhanced but the source is still recognizable.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Morpho loaded](/img/instruments/videomancer/morpho/morpho_control_panel.png)
+*Videomancer's front panel with Morpho active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Erode Amt
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Erode Amt** controls the intensity of the erosion effect. ***Erosion*** shrinks bright regions by replacing each pixel with the darkest value found in its immediate neighborhood. At low values, the erosion is subtle: fine details soften and thin bright lines begin to disappear. At high values, bright features are aggressively consumed by their darker surroundings, leaving only the largest, most dominant shapes.
+
+---
+
+### Knob 2 — Dilate Amt
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Dilate Amt** controls the intensity of the dilation effect. ***Dilation*** is the opposite of erosion: it expands bright regions by replacing each pixel with the brightest value in its neighborhood. At low values, the effect is gentle: small bright features grow slightly. At high values, bright areas spread outward, swallowing dark gaps and thin dark lines, producing bold, thickened shapes.
+
+---
+
+### Knob 3 — Threshold
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Threshold** clips dim pixels to black. At 0%, fully counterclockwise, every pixel passes through unchanged. As you increase the threshold, progressively brighter pixels are forced to black, carving away the dimmest parts of the image. This is especially powerful in gradient mode: raising the threshold eliminates faint, noisy edges while preserving strong contours, producing a clean edge map.
+
+:::tip
+In gradient mode, **Threshold** acts as an edge-strength filter. Low threshold values let every faint ripple through; high values isolate only the boldest structural boundaries.
+:::
+
+---
+
+### Knob 4 — Contrast
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Contrast** adjusts the tonal range of the processed signal. At the default midpoint, contrast is neutral. Turning counterclockwise compresses the tonal range, flattening the image toward mid-gray. Turning clockwise expands it, pushing darks darker and brights brighter for a punchier, more dramatic result.
+
+---
+
+### Knob 5 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Brightness** shifts the overall luminance of the processed signal. At the default midpoint, brightness is neutral. Turning counterclockwise darkens the image; turning clockwise brightens it. Combined with **Contrast**, this pair provides standard proc amp adjustment over the morphological output.
+
+---
+
+### Knob 6 — Edge Gain
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Edge Gain** amplifies the output of gradient mode. In gradient mode, the program computes the difference between the local maximum and local minimum: the ***morphological gradient***. Edge Gain multiplies that difference, boosting faint edges into visibility or driving strong edges into hard saturation. At the default midpoint, the gradient passes through at roughly unity gain. Turning clockwise pushes edges brighter; turning fully counterclockwise reduces the gradient toward silence.
+
+:::note
+Edge Gain only affects the output when gradient mode is active (Operation = **Erode**, Channel = **All**). In other modes, this knob has no visible effect.
+:::
+
+---
+
+### Switch 7 — Operation
+
+| Property | Value |
+|----------|-------|
+| Off | Erode |
+| On | Open |
+| Default | Erode |
+
+**Operation** selects between two primary morphological behaviors. When set to **Erode**, the program applies erosion (or gradient, depending on the **Channel** switch). When set to **Open**, the program applies dilation (or an opening approximation). The effect of this switch changes depending on the Channel setting (see the Toggle Group Notes below.)
+
+---
+
+### Switch 8 — Channel
+
+| Property | Value |
+|----------|-------|
+| Off | Luma |
+| On | All |
+| Default | Luma |
+
+**Channel** selects whether morphological processing applies to the luma channel only or to all three channels (Y, U, and V). When set to **Luma**, the brightness channel is processed while color information passes through unaltered. When set to **All**, color channels are also processed: and the Operation switch changes its behavior, unlocking gradient and open modes.
+
+:::tip
+Start with **Luma** mode. Processing only brightness preserves the original color palette while sculpting edges and silhouettes. Switch to **All** when you want the full morphological treatment: gradient edge maps with neutral color, or all-channel erosion and dilation.
+:::
+
+---
+
+### Switch 9 — Struct Elm
+
+| Property | Value |
+|----------|-------|
+| Off | Cross |
+| On | Square |
+| Default | Cross |
+
+**Struct Elm** (Structuring Element) selects the shape of the sampling neighborhood used for morphological operations. When set to **Cross**, the window samples in a cross-shaped pattern. When set to **Square**, the window uses a full square neighborhood. The cross pattern emphasizes horizontal and vertical edges; the square pattern treats all directions equally.
+
+---
+
+### Switch 10 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** flips the brightness of the input signal before any morphological processing takes place. Because inversion happens at the very first stage, it reverses the behavior of erosion and dilation: what was erode becomes a dilation-like effect (since dark regions become bright and vice versa), and gradient edges shift to different contours. This is a powerful creative tool for exploring the complementary structure of an image.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all morphological processing. The sync delay pipeline still aligns timing, so there is no glitch when toggling. Use Bypass for instant A/B comparison between the raw source and the processed result.
+
+---
+
+:::note Toggle Group Notes
+
+**Operation** (Switch 7) and **Channel** (Switch 8) combine to select one of four processing modes. The two toggles form a binary selector that fundamentally changes how Morpho processes the video signal:
+
+| Operation | Channel | Mode | Description |
+|-----------|---------|------|-------------|
+| Erode | Luma | Erode | Local minimum on Y only; color preserved |
+| Open | Luma | Dilate | Local maximum on Y only; color preserved |
+| Erode | All | Gradient | Edge map (max − min) on Y; color set to neutral |
+| Open | All | Open | Erosion on all channels (opening approximation) |
+
+In **Luma** modes, only the brightness channel is affected; U and V pass through untouched. In **All** modes, all three channels are processed. Gradient mode is special: it computes the morphological gradient on the luma channel and forces color to neutral gray, producing a monochrome edge map amplified by **Edge Gain**.
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** crossfades between the dry (original) signal and the wet (processed) signal. At 100%, fully right, the output is entirely morphological. At 0%, fully left, the output is the original video. Intermediate positions blend the two, which is particularly useful for subtle edge enhancement: a small amount of gradient mixed into the original signal acts as an unsharp mask, gently sharpening contours without replacing the image.
+
+:::tip
+***Mix is your sharpening dial.*** In gradient mode, blending a small amount of the edge map back into the original signal produces a sharpening effect similar to an ***unsharp mask*** (a classic technique from darkroom photography.)
+:::
 
 ---
 
 ## Background
 
-### What Are Erosion and Dilation?
+### Mathematical Morphology
 
-**Erosion** replaces each pixel with the minimum value in its neighborhood. Bright features smaller than the structuring element disappear, and dark regions expand. The effect is like acid eating away at the edges of bright objects. **Dilation** is the dual operation — it replaces each pixel with the maximum in its neighborhood. Dark features smaller than the structuring element disappear, and bright regions expand. The effect is like spreading paint outward from bright edges. Together, erosion and dilation form the foundation of mathematical morphology.
+The word ***morphology*** means "the study of form." In image processing, ***mathematical morphology*** is a set of operations that probe an image with a small shape called a ***structuring element***: a tiny template slid across every pixel. At each position, the structuring element examines the pixel's neighbors and produces a single output value based on the neighborhood. The two fundamental operations are ***erosion*** (take the minimum) and ***dilation*** (take the maximum).
 
-### What Is a Morphological Gradient?
+Erosion shrinks bright regions and widens dark ones. If you imagine white shapes on a black background, erosion eats away at their edges. Dilation does the opposite: bright regions grow, swallowing narrow dark gaps. These two operations are the building blocks of more complex morphological filters.
 
-The **morphological gradient** is the difference between dilation and erosion: `gradient(x) = dilate(x) − erode(x)`. This quantity is zero in flat regions (where the local max equals the local min) and large at edges (where the max and min differ significantly). The result is an edge-detection map that highlights boundaries proportional to the local contrast. Unlike differential edge detectors (Sobel, Prewitt), the morphological gradient is inherently non-negative and bounded, making it well-suited for direct video display.
+### Compound Operations
 
-### What Is a Structuring Element?
+By combining erosion and dilation in sequence, we get two compound operations:
 
-The **structuring element** defines the shape and size of the neighborhood used for morphological operations. Common shapes include crosses, squares, disks, and lines. Morpho offers two choices: a horizontal cross (3 adjacent pixels on the same scanline) and a square (which, given the 1D implementation, functions identically). The structuring element determines which features the operation affects — smaller elements detect finer detail, larger elements affect broader structures.
+- ***Opening*** (erode, then dilate) removes small bright noise while preserving the overall shape of larger features. It smooths the contours of bright objects without changing their size.
+- ***Closing*** (dilate, then erode) removes small dark gaps and holes while preserving bright shapes.
+
+The ***morphological gradient*** is the difference between dilation and erosion: `dilate(image) − erode(image)`. This produces thick outlines at every boundary: wherever pixel values change rapidly across the structuring element. It's a nonlinear edge detector that responds to the *magnitude* of transitions regardless of direction.
+
+### Structuring Elements
+
+The structuring element defines the shape and reach of the neighborhood. A ***cross*** element samples only the pixels directly above, below, left, and right of the center. A ***square*** element samples all eight surrounding pixels plus the center. The cross is sensitive to horizontal and vertical edges; the square is more isotropic, responding equally to diagonal boundaries.
+
+Morpho uses a 3-pixel horizontal window: a one-dimensional structuring element. This means it detects horizontal transitions in the signal. Vertical structure is preserved but not directly probed. The advantage is speed and simplicity: no line buffers or frame memory are required, keeping the design compact and the latency low.
 
 
 ---
 
 ## Signal Flow
 
-Y Channel → UV Channels → UV Channels → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel (or All Channels) ────────────────────────────────
-│   │
-│   ├─ 1. 3-Pixel Shift Register  (prev, curr, next)
-│   ├─ 2. min3 / max3             (local minimum and maximum)
-│   ├─ 3. Operation Select         (erode / dilate / gradient / open)
-│   ├─ 4. Edge Gain               (scale gradient output)
-│   ├─ 5. Threshold               (clip low values to zero)
-│   ├─ 6. Contrast                (gain around midpoint)
-│   └─ 7. Brightness              (DC offset)
-│
-├── UV Channels (Luma mode) ────────────────────────────────────
-│   └─ Pass-through (original chroma preserved)
-│
-├── UV Channels (All mode) ─────────────────────────────────────
-│   └─ Same morphological processing as Y
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ Pass-through (hsync, vsync, field, avid)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+Morpho's pipeline is short and direct: two clocks for the morphological computation, then four clocks through the interpolator for wet/dry mixing (six clocks total.)
 
-The 3-pixel shift register is the core of the operation — it maintains three consecutive horizontal pixels and feeds them to the min3 and max3 functions simultaneously. The operation selector then chooses which result to output: erosion (min3 result), dilation (max3 result), gradient (max3 − min3 scaled by edge gain), or open (an approximation using only the min3 result). The Channel switch determines whether the morphological operation is applied only to Y (preserving original chroma) or to all three YUV channels independently.
+The critical interaction is between the **Operation** and **Channel** toggles. These two switches form a 2-bit selector that chooses among four distinct algorithms. Gradient mode is the most complex: it computes both the local minimum and maximum, subtracts them, multiplies the result by **Edge Gain**, and forces the color channels to neutral gray. This produces a monochrome edge map where brightness represents edge strength.
 
----
-
-## Parameter Reference
-
-<img src={morpho_control_panel} alt="Videomancer front panel with Morpho loaded"/>
-*Videomancer's front panel with Morpho active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Erode Amt
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At center, the erosion passes at unity (full local minimum replacement). Below center, the erosion effect is blended with the original signal. Above center, the erosion is exaggerated, further darkening eroded regions. In gradient mode, this control modulates the erosion component of the difference. Internally, controls the erosion amount — how strongly the min3 result influences the output when the Erode operation is selected.
-
----
-
-#### Knob 2 — Dilate Amt
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the dilation amount — how strongly the max3 result influences the output when the Dilate operation is selected. Functions symmetrically to the Erode Amt control but for the maximum operation. Higher values create stronger dilation (brighter expansion). In gradient mode, this modulates the dilation component.
-
----
-
-#### Knob 3 — Threshold
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
-
-Sets a minimum brightness threshold below which the processed output is forced to zero (black). At 0%, no thresholding — the full range passes through. As Threshold increases, progressively brighter values are cut, leaving only the strongest features. This is particularly effective in gradient mode, where it removes weak edges and leaves only strong boundaries.
-
----
-
-#### Knob 4 — Contrast
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Applies gain around the midpoint (512) to the morphologically processed signal. Values above center increase contrast, making the morphological features more defined. Values below center compress the tonal range. This control shapes the visual weight of the eroded, dilated, or gradient features.
-
----
-
-#### Knob 5 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Adds a DC offset to the output luminance after all morphological processing. At center, no offset. Above center, the image brightens. Below center, it darkens.
-
----
-
-#### Knob 6 — Edge Gain
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At center, the gradient (max − min) passes at unity. Above center, the edge signal is amplified, making edges brighter and more prominent. Below center, the edge signal is attenuated. This control is most relevant when the Gradient operation is selected and has minimal effect in pure erode/dilate modes. Internally, scales the morphological gradient output.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Operation** | Erode | Open |
-| **8 — Channel** | Luma | All |
-| **9 — Struct Elm** | Cross | Square |
-| **10 — Invert** | Off | On |
-| **11 — Bypass** | Off | On |
-
-Switches 7–11 control the morphological operation and processing scope. Operation selects the morphological function. Channel determines whether morphology is applied to Y only or all channels. Struct Elm chooses the neighborhood shape. Invert reverses the luminance polarity. Bypass enables comparison.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Morpho processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
-
----
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Morpho-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::note
+Morpho's structuring element is a 3-pixel horizontal line: a 1D neighborhood. This means edges are detected along the horizontal axis. Vertical edges perpendicular to the scan direction are detected strongly; purely horizontal edges (parallel to the scan) may be less pronounced. For full 2D morphology, consider chaining Morpho with a program that operates in the vertical dimension.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from basic erosion/dilation to morphological gradient edge detection and creative structural effects.
-
+These exercises progress from basic erosion to gradient edge extraction and creative blending. Each one builds on the previous, gradually engaging more of the processing modes.
 ### Exercise 1: Erosion and Dilation
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: morpho_source1_car, after: morpho_ex1_s1 },
-    { label: "Sunset", before: morpho_source2_sunset, after: morpho_ex1_s2 },
-    { label: "Elephant", before: morpho_source3_elephant, after: morpho_ex1_s3 },
-    { label: "Pattern", before: morpho_source4_pattern, after: morpho_ex1_s4 },
-    { label: "Boy", before: morpho_source5_boy, after: morpho_ex1_s5 },
-    { label: "Berries", before: morpho_source6_berries, after: morpho_ex1_s6 },
-  ]}
-/>
+![Erosion and Dilation result](/img/instruments/videomancer/morpho/morpho_ex1_s1.png)
 *Erosion and Dilation — simulated result across source images.*
-**Source**: High-contrast footage with clear edges — text, graphic elements, or architectural subjects.
+#### Exercise Illustration
 
-**What You'll Create**: Understand the fundamental erosion and dilation operations and how they reshape image features.
+***A description of the exercise illustration.***
 
-1. **Erode**: Set Operation to Erode (Switch 7). Observe how bright features shrink horizontally — text becomes thinner, bright lines narrow. Dark regions expand.
-2. **Dilate**: Switch Operation to Dilate. Observe the opposite effect — bright features expand, dark lines fill, and small dark details disappear.
-3. **Compare**: Toggle between Erode and Dilate using Switch 7. Notice how they are symmetrically opposite operations.
-4. **Amount control**: With Erode selected, sweep Erode Amt and observe how the erosion intensity varies.
-5. **All channels**: Switch Channel to All mode (Switch 8). The erosion/dilation now affects color as well — edges show color bleeding effects.
+#### Learning Outcomes
 
-**Key concepts**: Erosion replaces with local minimum (shrinks bright), dilation replaces with local maximum (expands bright), they are dual operations
+Explore how erosion and dilation reshape the bright and dark features of a video signal.
 
----
+#### Key Concepts
 
-### Exercise 2: Morphological Gradient (Edge Detection)
+- Erosion shrinks bright regions by selecting the local minimum
+- Dilation expands bright regions by selecting the local maximum
+- The two operations are complementary inverses
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: morpho_source1_car, after: morpho_ex2_s1 },
-    { label: "Sunset", before: morpho_source2_sunset, after: morpho_ex2_s2 },
-    { label: "Elephant", before: morpho_source3_elephant, after: morpho_ex2_s3 },
-    { label: "Pattern", before: morpho_source4_pattern, after: morpho_ex2_s4 },
-    { label: "Boy", before: morpho_source5_boy, after: morpho_ex2_s5 },
-    { label: "Berries", before: morpho_source6_berries, after: morpho_ex2_s6 },
-  ]}
-/>
-*Morphological Gradient (Edge Detection) — simulated result across source images.*
-**Source**: Footage with distinct objects and clear boundaries — outdoor scenes, product shots, or geometric patterns.
+#### Video Source
 
-**What You'll Create**: Use the morphological gradient to extract edge information from the image.
+A live camera feed or recorded footage with clear bright-on-dark subjects: white text on a black background, a face lit against darkness, or high-contrast graphic shapes.
 
-1. **Select gradient**: Set Operation to Gradient (Switch 7). The output shows edges as bright lines on a dark background.
-2. **Edge gain**: Increase Edge Gain to amplify the edge signal. The edges become brighter and more visible.
-3. **Threshold clean**: Increase Threshold to remove weak edges and noise, leaving only strong boundaries.
-4. **Contrast**: Push Contrast to ~70% to sharpen the edge map.
-5. **Invert**: Toggle Invert (Switch 10). The edge map becomes dark lines on a bright background — a line-drawing effect.
-6. **Color edges**: Switch Channel to All mode. The gradient now shows color differences at edges, producing rainbow-fringed edge detection.
+#### Steps
 
-**Key concepts**: Gradient = dilation − erosion, reveals edges proportional to local contrast, threshold removes weak edges, edge gain amplifies the detection
+1. **Erode**: With **Operation** set to **Erode** and **Channel** set to **Luma**, the video signal is already being eroded. Bright features appear slightly thinner, and fine white details begin to vanish.
+2. **Dilate**: Flip **Operation** to **Open** (with Channel still on Luma). Bright features expand outward. Thin dark gaps between bright objects fill in. White text becomes bolder.
+3. **Invert and compare**: Toggle **Invert** (Switch 10). The brightness inverts before morphological processing, so erosion now shrinks what *was* dark (now bright), producing a different silhouette.
+4. **All-channel processing**: Set **Channel** to **All** and **Operation** to **Open**. Now erosion applies to color as well as brightness. Saturated regions shrink; neutral zones encroach.
 
----
+#### Settings
 
-### Exercise 3: Creative Structural Effects
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: morpho_source1_car, after: morpho_ex3_s1 },
-    { label: "Sunset", before: morpho_source2_sunset, after: morpho_ex3_s2 },
-    { label: "Elephant", before: morpho_source3_elephant, after: morpho_ex3_s3 },
-    { label: "Pattern", before: morpho_source4_pattern, after: morpho_ex3_s4 },
-    { label: "Boy", before: morpho_source5_boy, after: morpho_ex3_s5 },
-    { label: "Berries", before: morpho_source6_berries, after: morpho_ex3_s6 },
-  ]}
-/>
-*Creative Structural Effects — simulated result across source images.*
-**Source**: Abstract or textured footage — flowing water, smoke, foliage, or video feedback.
-
-**What You'll Create**: Combine morphological operations with contrast and inversion for creative visual effects.
-
-1. **Strong erosion**: Set Operation to Erode, Erode Amt to ~80%, Contrast to ~80%. The image reduces to its darkest structures.
-2. **All channels**: Switch to All mode. Color channels erode independently, creating color fringing.
-3. **Invert**: Enable Invert. The eroded negative creates a bold, high-contrast graphic.
-4. **Threshold sculpting**: Increase Threshold to ~40%. Only the strongest dark structures survive the erosion.
-5. **Mix blend**: Lower Mix to ~50%. The eroded structure overlays the original, creating a combined texture.
-6. **Open mode**: Switch to Open (Switch 7, 4th position). This smooths fine detail while preserving larger structures.
-
-**Key concepts**: Morphological operations reshape image structure, all-channel mode creates color effects, inversion reveals complementary structure, open mode smooths noise
+| Control | Value |
+|---------|-------|
+| Erode Amt | 50% |
+| Dilate Amt | 50% |
+| Threshold | 0% |
+| Contrast | 50% |
+| Brightness | 50% |
+| Edge Gain | 50% |
+| Operation | Erode |
+| Channel | Luma |
+| Struct Elm | Cross |
+| Invert | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 2: Gradient Edge Map
 
-## Tips
+![Gradient Edge Map result](/img/instruments/videomancer/morpho/morpho_ex2_s1.png)
+*Gradient Edge Map — simulated result across source images.*
+#### Exercise Illustration
 
-- **All-channel mode for color**: Applying morphology to UV channels creates color bleeding and fringing effects that can be striking on graphic input.
-- **Erosion for dark structures**: Erosion reveals the dark skeleton of an image — the network of dark lines and shadows.
-- **Dilation for glow**: Dilation spreads bright regions, creating a blooming glow effect on highlights.
-- **Mix for overlay**: Use 40–60% Mix to overlay the morphological result on the original, combining edge structure with source detail.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Extract a clean, luminous edge map from a video source (bright outlines on a dark field, like a neon wireframe.)
+
+#### Key Concepts
+
+- The morphological gradient is the difference between dilation and erosion
+- Edge Gain amplifies faint edges into visibility
+- Threshold filters out noise, isolating strong contours
+
+#### Video Source
+
+Footage with strong structural features: architecture, mechanical objects, or a face with clear contours. Moderate contrast works best: extremely flat or extremely busy sources produce less interesting gradients.
+
+#### Steps
+
+1. **Activate gradient mode**: Set **Operation** to **Erode** and **Channel** to **All**. The screen goes mostly dark with faint bright lines at every edge.
+2. **Boost edges**: Turn **Edge Gain** (Knob 6) clockwise past the midpoint. The edge outlines brighten dramatically, like luminous tracings of the source geometry.
+3. **Clean up noise**: Raise **Threshold** (Knob 3) slowly. The faintest edges: noise, texture, subtle gradients: disappear, leaving only the strongest structural boundaries.
+4. **Blend with source**: Pull **Mix** (Fader 12) to about 70%. The edge map blends with the original image, creating an edge-sharpened version of the source where contours glow while the image remains recognizable.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Erode Amt | 50% |
+| Dilate Amt | 50% |
+| Threshold | 30% |
+| Contrast | 50% |
+| Brightness | 50% |
+| Edge Gain | 80% |
+| Operation | Erode |
+| Channel | All |
+| Struct Elm | Cross |
+| Invert | Off |
+| Bypass | Off |
+| Mix | 70% |
 
 ---
 
+### Exercise 3: Silhouette Sculpting
+
+![Silhouette Sculpting result](/img/instruments/videomancer/morpho/morpho_ex3_s1.png)
+*Silhouette Sculpting — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Combine erosion, inversion, and thresholding to sculpt silhouettes and high-contrast graphic shapes from a video source.
+
+#### Key Concepts
+
+- Inversion before morphology reverses which features are eroded or dilated
+- Threshold carves the processed output into stark shapes
+- Mix allows subtle blending for composite effects
+
+#### Video Source
+
+High-contrast footage: a performer against a bright background, projected graphics, or any source with clear foreground/background separation.
+
+#### Steps
+
+1. **Strong erosion**: Set **Operation** to **Erode**, **Channel** to **Luma**, and push **Erode Amt** (Knob 1) high. Bright features thin dramatically, leaving skeletal remnants.
+2. **Invert**: Enable **Invert** (Switch 10). The brightness flips before erosion, so now *dark* features are being eroded. The silhouette restructures: what was foreground becomes background, and new shapes emerge.
+3. **Threshold sculpt**: Raise **Threshold** (Knob 3) to carve the eroded image into stark black-and-white shapes. The threshold cuts cleanly through the eroded tonal range.
+4. **Blend back**: Pull **Mix** (Fader 12) to about 40%. The silhouette blends into the original image, creating a ghostly overlay where hard-edged shapes float over recognizable content.
+5. **Explore openings**: Flip **Operation** to **Open** and **Channel** to **All**. The combined erosion-on-all-channels produces a different silhouette character (softer, more rounded.)
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Erode Amt | 80% |
+| Dilate Amt | 50% |
+| Threshold | 40% |
+| Contrast | 50% |
+| Brightness | 50% |
+| Edge Gain | 50% |
+| Operation | Erode |
+| Channel | Luma |
+| Struct Elm | Cross |
+| Invert | On |
+| Bypass | Off |
+| Mix | 40% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Dilation** | A morphological operation that replaces each pixel with the local maximum, expanding bright regions. |
-| **Erosion** | A morphological operation that replaces each pixel with the local minimum, shrinking bright regions. |
-| **Gradient** | The morphological gradient: dilation minus erosion, producing an edge-detection map. |
-| **Morphology** | Mathematical morphology; a branch of image processing based on set-theoretic operations on image shapes. |
-| **Opening** | Erosion followed by dilation; smooths features smaller than the structuring element without expanding larger ones. |
-| **Shift Register** | A chain of flip-flops that delays data by one clock per stage, forming a sliding window over consecutive pixels. |
-| **Structuring Element** | The shape and size of the neighborhood used for morphological operations (cross, square, etc.). |
+- **Dilation**: A morphological operation that replaces each pixel with the maximum value in its neighborhood, expanding bright regions and filling dark gaps
+
+- **Erosion**: A morphological operation that replaces each pixel with the minimum value in its neighborhood, shrinking bright regions and widening dark areas
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color
+
+- **Morphological Gradient**: The difference between dilation and erosion at each pixel, producing an edge map where brightness indicates edge strength
+
+- **Morphology**: In image processing, a family of operations that probe the shape and structure of an image using a small neighborhood template
+
+- **Opening**: A compound morphological operation consisting of erosion followed by dilation, used to remove small bright noise while preserving larger shapes
+
+- **Proc Amp**: Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal
+
+- **Structuring Element**: The shape defining which neighboring pixels are examined during a morphological operation (cross, square, line, etc.)
+
+- **Threshold**: A brightness cutoff below which pixel values are forced to black, used to clean up or isolate features
+
+- **Unsharp Mask**: A sharpening technique that enhances edges by subtracting a blurred version of the image from the original, or by blending an edge map back into the source
 
 ---

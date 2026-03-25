@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 179
 slug: /instruments/videomancer/ludosphere
@@ -7,350 +7,415 @@ image: /img/instruments/videomancer/ludosphere/ludosphere_hero_s1.png
 description: "Take three spinning wheels — one sweeping left to right across the screen, one sweeping top to bottom, and one pulsing forward through time."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import ludosphere_control_panel from '/img/instruments/videomancer/ludosphere/ludosphere_control_panel.png';
-import ludosphere_source1_dog from '/img/instruments/videomancer/ludosphere/ludosphere_source1_dog.png';
-import ludosphere_source2_runner from '/img/instruments/videomancer/ludosphere/ludosphere_source2_runner.png';
-import ludosphere_source3_collage from '/img/instruments/videomancer/ludosphere/ludosphere_source3_collage.png';
-import ludosphere_source4_pattern from '/img/instruments/videomancer/ludosphere/ludosphere_source4_pattern.png';
-import ludosphere_source5_girl from '/img/instruments/videomancer/ludosphere/ludosphere_source5_girl.png';
-import ludosphere_source6_wood from '/img/instruments/videomancer/ludosphere/ludosphere_source6_wood.png';
-import ludosphere_hero_s1 from '/img/instruments/videomancer/ludosphere/ludosphere_hero_s1.png';
-import ludosphere_hero_s2 from '/img/instruments/videomancer/ludosphere/ludosphere_hero_s2.png';
-import ludosphere_hero_s3 from '/img/instruments/videomancer/ludosphere/ludosphere_hero_s3.png';
-import ludosphere_hero_s4 from '/img/instruments/videomancer/ludosphere/ludosphere_hero_s4.png';
-import ludosphere_hero_s5 from '/img/instruments/videomancer/ludosphere/ludosphere_hero_s5.png';
-import ludosphere_hero_s6 from '/img/instruments/videomancer/ludosphere/ludosphere_hero_s6.png';
-import ludosphere_ex1_s1 from '/img/instruments/videomancer/ludosphere/ludosphere_ex1_s1.png';
-import ludosphere_ex1_s2 from '/img/instruments/videomancer/ludosphere/ludosphere_ex1_s2.png';
-import ludosphere_ex1_s3 from '/img/instruments/videomancer/ludosphere/ludosphere_ex1_s3.png';
-import ludosphere_ex1_s4 from '/img/instruments/videomancer/ludosphere/ludosphere_ex1_s4.png';
-import ludosphere_ex1_s5 from '/img/instruments/videomancer/ludosphere/ludosphere_ex1_s5.png';
-import ludosphere_ex1_s6 from '/img/instruments/videomancer/ludosphere/ludosphere_ex1_s6.png';
-import ludosphere_ex2_s1 from '/img/instruments/videomancer/ludosphere/ludosphere_ex2_s1.png';
-import ludosphere_ex2_s2 from '/img/instruments/videomancer/ludosphere/ludosphere_ex2_s2.png';
-import ludosphere_ex2_s3 from '/img/instruments/videomancer/ludosphere/ludosphere_ex2_s3.png';
-import ludosphere_ex2_s4 from '/img/instruments/videomancer/ludosphere/ludosphere_ex2_s4.png';
-import ludosphere_ex2_s5 from '/img/instruments/videomancer/ludosphere/ludosphere_ex2_s5.png';
-import ludosphere_ex2_s6 from '/img/instruments/videomancer/ludosphere/ludosphere_ex2_s6.png';
-import ludosphere_ex3_s1 from '/img/instruments/videomancer/ludosphere/ludosphere_ex3_s1.png';
-import ludosphere_ex3_s2 from '/img/instruments/videomancer/ludosphere/ludosphere_ex3_s2.png';
-import ludosphere_ex3_s3 from '/img/instruments/videomancer/ludosphere/ludosphere_ex3_s3.png';
-import ludosphere_ex3_s4 from '/img/instruments/videomancer/ludosphere/ludosphere_ex3_s4.png';
-import ludosphere_ex3_s5 from '/img/instruments/videomancer/ludosphere/ludosphere_ex3_s5.png';
-import ludosphere_ex3_s6 from '/img/instruments/videomancer/ludosphere/ludosphere_ex3_s6.png';
-
-# Ludosphere
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: ludosphere_source1_dog, after: ludosphere_hero_s1 },
-    { label: "Runner", before: ludosphere_source2_runner, after: ludosphere_hero_s2 },
-    { label: "Collage", before: ludosphere_source3_collage, after: ludosphere_hero_s3 },
-    { label: "Pattern", before: ludosphere_source4_pattern, after: ludosphere_hero_s4 },
-    { label: "Girl", before: ludosphere_source5_girl, after: ludosphere_hero_s5 },
-    { label: "Wood", before: ludosphere_source6_wood, after: ludosphere_hero_s6 },
-  ]}
-/>
-*Ludosphere applying three-axis oscillator modulation to produce spherical color patterns across the video frame.*
+![Ludosphere hero image](/img/instruments/videomancer/ludosphere/ludosphere_hero_s1.png)
+*Ludosphere projecting spherical color patterns across three spatial axes, blending oscillator geometry with input video luminance.*
 
 ---
 
 ## Overview
 
-Take three spinning wheels — one sweeping left to right across the screen, one sweeping top to bottom, and one pulsing forward through time. Each wheel generates a smooth waveform that can modulate the brightness of the source video or paint new color across it. Ludosphere is a three-axis oscillator colorizer: a direct digital synthesis (DDS) engine that layers spatial and temporal waveforms onto the video signal.
+Ludosphere is a three-axis oscillator colorizer that sweeps ramp and triangle waveforms through the YUV color space to produce spherical color patterns. Three independent ***direct digital synthesis*** (DDS) phase accumulators operate along the horizontal, vertical, and frame axes, generating luminance and chrominance patterns that can be blended with the input video. The result is a rich palette of interference patterns, animated gradients, and procedural color fields layered onto or driven by whatever signal enters the input.
 
-The name evokes *ludo* (play) and *sphere* — a playful sphere of oscillating color. The three oscillators are completely independent. Each has its own frequency (Clock), its own modulation depth (Mod), and its own waveshape selector (Flip). At zero modulation depth the oscillator output replaces the video entirely, producing pure geometric ramp or triangle patterns. As modulation increases, the source video and oscillator blend additively, creating luminance-dependent patterning. Colorize mode routes the vertical and frame-rate oscillators into the chroma channels, transforming the pattern from monochrome undulation into full-spectrum color.
+At its simplest, Ludosphere replaces the input picture with pure oscillator geometry: smooth washes and hard-edged bands that tile across the screen. Blend in the input video's brightness via the three Mod controls, and those geometric patterns begin to react to the source content, bending and warping along the contours of the image. Enable **Colorize** and the program paints new hues onto the picture, turning monochrome footage into kaleidoscopic color.
 
-This is a ported program that predates the Videomancer ABI standard. Several toggles and the fader read from registers that fall outside the 8-register hardware interface, meaning F Flip, Colorize, Bypass, and Shift will respond to unpredictable data in the current ABI. Despite this limitation, the horizontal and vertical oscillator controls function correctly and produce the program's signature spatial modulation effects.
+:::tip
+Ludosphere excels at adding color to black-and-white or desaturated sources. Feed it a monochrome camera signal, enable **Colorize**, and explore the Shift fader to sweep through the entire chroma wheel.
+:::
+
+### What's In a Name?
+
+The name ***Ludosphere*** fuses the Latin *ludus*: meaning play, game, or sport: with *sphere*. It refers to a playful sphere of color: three oscillator axes carving out a region of YUV color space the way latitude, longitude, and time sweep through a globe. The name also nods to the Dutch historian Johan Huizinga's concept of the ***magic circle***, the boundary within which the rules of play apply. Inside Ludosphere's magic circle, the ordinary rules of color are suspended.
 
 ---
 
 ## Quick Start
 
-1. **Start with one axis**: Ludosphere is most intuitive when you build the pattern one axis at a time — set H Clock and H Mod first, then add vertical, then temporal.
-2. **Zero Mod for pure geometry**: Setting all Mod knobs to zero removes source video entirely, turning Ludosphere into a pure geometric pattern generator ideal for texture backgrounds.
-3. **Frequency ratios create structure**: Integer ratios between H Clock and V Clock (1:1, 2:1, 3:2) produce regular grid and diamond tilings; irrational ratios produce more organic, continuously varying patterns.
+1. Turn all three **Clock** knobs (Knobs 1–3) to roughly 60%. Vertical bands, horizontal bands, and a slow animation appear on screen, superimposed on the input.
+2. Enable **Colorize** (Switch 10). The grayscale pattern explodes into color: the V and F oscillators now drive the U and V chroma channels directly.
+3. Slowly sweep **Shift** (Fader 12) from end to end. The entire color palette rotates through the chroma wheel, shifting hues smoothly.
+4. Turn **H Mod** (Knob 4) fully clockwise. The horizontal oscillator pattern now bends with the brightness of the input video: bright areas push the pattern one way, dark areas pull it the other.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Ludosphere loaded](/img/instruments/videomancer/ludosphere/ludosphere_control_panel.png)
+*Videomancer's front panel with Ludosphere active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — H Clock
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**H Clock** sets the frequency of the horizontal oscillator. This oscillator accumulates phase once per pixel, so it produces vertical bands on screen. At 0%, fully counterclockwise, the oscillator is nearly static: a single uniform wash spans the entire width of the picture. As the value increases, more cycles of the waveform fit within each scan line, and the vertical bands multiply and become narrower. At 100%, fully clockwise, the bands are at their highest spatial frequency.
+
+Because the oscillator is a ***phase accumulator***, the number of bands on screen is not always a whole number. At certain knob positions the pattern tiles perfectly; at others, the last band on the right edge is truncated, producing a visible seam. This is normal DDS behavior.
+
+---
+
+### Knob 2 — V Clock
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**V Clock** sets the frequency of the vertical oscillator. This oscillator accumulates phase once per scan line, so it produces horizontal bands on screen. At 0%, a single wash stretches from the top to the bottom of the picture. As the value increases, horizontal bands multiply and grow thinner. At 100%, the bands are at their highest vertical frequency.
+
+**V Clock** and **H Clock** interact to create a grid of color cells. When both are set to similar values, the cells are roughly square. Unequal values produce tall or wide rectangles.
+
+---
+
+### Knob 3 — F Clock
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**F Clock** sets the frequency of the frame oscillator. Unlike the horizontal and vertical oscillators, this one accumulates phase once per video frame, creating patterns that evolve over time rather than across the screen. At 0%, the oscillation is extremely slow: barely perceptible. As the value increases, the animation speeds up. At high values the pattern cycles rapidly, producing a flickering or pulsing effect.
+
+:::note
+The frame oscillator is free-running: it does not reset at the start of each frame. This means its phase drifts continuously, creating organic motion rather than a locked loop.
+:::
+
+---
+
+### Knob 4 — H Mod
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**H Mod** controls how much the input video's luminance modulates the horizontal oscillator output. At 0%, the horizontal oscillator produces a pure, unmodulated pattern: a clean ramp or triangle independent of the input image. As the value increases, the input brightness is blended additively with the oscillator waveform: bright areas of the input push the oscillator value higher, dark areas pull it lower. At 100%, the modulation is at full strength and the oscillator pattern strongly tracks the contours of the source image.
+
+Because H Mod drives the Y (luminance) output channel, turning it up makes the input picture visible through the oscillator pattern.
+
+---
+
+### Knob 5 — V Mod
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**V Mod** controls how much the input video's luminance modulates the vertical oscillator output. The behavior mirrors **H Mod**, but the vertical oscillator feeds the U (blue-difference) chroma channel when **Colorize** is enabled. At 0%, the vertical oscillator runs independently. At higher values, input brightness reshapes the vertical color pattern.
+
+:::tip
+With **Colorize** enabled, **V Mod** determines how strongly the source image's brightness drives the blue-yellow axis of the output color. High values create a color pattern that follows the contours of the input.
+:::
+
+---
+
+### Knob 6 — F Mod
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**F Mod** controls how much the input video's luminance modulates the frame oscillator output. The frame oscillator feeds the V (red-difference) chroma channel when **Colorize** is enabled. At 0%, the frame oscillator produces a pure animation unrelated to the input. At higher values, the source brightness is blended in, causing the animated color to track the image content.
+
+---
+
+### Switch 7 — H Flip
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**H Flip** selects the waveform shape of the horizontal oscillator. With the switch set to **Off**, the oscillator outputs a ***sawtooth*** (ramp) waveform: a smooth rise from black to white followed by an abrupt reset. With the switch set to **On**, the waveform is converted to a ***triangle*** by folding the ramp at its midpoint: values below center are scaled upward, values above center are mirrored back down. The triangle waveform is symmetrical and produces softer, more rounded visual patterns than the hard-edged sawtooth.
+
+---
+
+### Switch 8 — V Flip
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**V Flip** selects the waveform shape of the vertical oscillator. **Off** produces a sawtooth; **On** produces a triangle. The effect is the same transformation described for **H Flip**, applied to the vertical axis. Sawtooth produces sharp horizontal edges at each cycle boundary; triangle produces smooth peaks and valleys.
+
+---
+
+### Switch 9 — F Flip
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**F Flip** selects the waveform shape of the frame oscillator. **Off** produces a sawtooth; **On** produces a triangle. With a sawtooth, the animated color ramps up and then snaps back. With a triangle, the color fades up and then fades back down symmetrically, creating a gentler pulsation.
+
+---
+
+### Switch 10 — Colorize
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Colorize** controls whether the oscillators replace the input's chroma channels. With the switch set to **Off**, the input U and V chroma channels pass through unchanged: only the Y (luminance) channel is affected by the horizontal oscillator. With the switch set to **On**, the vertical oscillator output (plus the **Shift** offset) replaces the U channel, and the frame oscillator output (plus the **Shift** offset) replaces the V channel. This injects entirely new color into the image.
+
+:::tip
+***Colorize is the gateway to Ludosphere's full color palette.*** Without it, only the luminance channel is processed. Enable it and the program becomes a complete YUV color synthesizer layered on top of the input signal.
+:::
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Ludosphere processing. Sync timing is unaffected, so there is no glitch when toggling. Use **Bypass** for instant A/B comparison between the raw input and the processed result.
+
+---
+
+### Fader 12 — Shift
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Shift** applies a global offset to the U and V chroma channels. The offset is added as a signed value centered at the midpoint: at 50% there is no shift. Moving the fader below 50% rotates chroma in one direction; moving above 50% rotates it in the other. Because the addition wraps around rather than clamping, **Shift** smoothly rotates the entire color palette through the chroma wheel.
+
+**Shift** only affects the output when **Colorize** is enabled. Without Colorize, the chroma channels pass through from the input and the shift has no visible effect.
+
+:::note
+Because Shift uses wrapping arithmetic, sweeping the fader from one end to the other cycles through all possible hue offsets with no discontinuity (the colors loop seamlessly.)
+:::
 
 ---
 
 ## Background
 
-### Direct Digital Synthesis
+### Direct digital synthesis
 
-Ludosphere's oscillators are built on DDS phase accumulators — a technique borrowed from RF signal generation. A 16-bit accumulator adds a frequency word on every relevant video event (pixel clock, line start, or frame start). The upper bits of the accumulator form a sawtooth ramp. The frequency word sets how fast the ramp sweeps: small values produce slow, wide patterns; large values produce dense, rapid oscillation. Because the accumulator is purely integer arithmetic, the frequency is perfectly stable — no drift, no jitter, no analog tuning errors.
+The core of Ludosphere is three ***direct digital synthesis*** (DDS) phase accumulators. A DDS oscillator works by adding a fixed number: the ***frequency word***: to an accumulator register on every clock tick. When the accumulator overflows, it wraps around and the cycle begins again. The upper bits of the accumulator form a sawtooth ramp whose frequency is proportional to the frequency word.
 
-### Sawtooth-to-Triangle Conversion
+In Ludosphere, the three accumulators tick at different rates. The horizontal accumulator advances once per pixel, so its pattern repeats within a single scan line. The vertical accumulator advances once per line, so its pattern repeats within a single field. The frame accumulator advances once per frame, producing motion that evolves over time.
 
-The frequency doubler module folds a sawtooth ramp at its midpoint. Values below 512 are scaled upward; values above 512 are mirrored downward. The result is a symmetric triangle wave — zero at the edges, peak in the center. Visually, this transforms a hard-edged ramp gradient into a smooth undulation that rises and falls symmetrically. The Flip toggle on each axis selects between the raw sawtooth (sharp discontinuity at wrap-around) and the folded triangle (smooth peaks and valleys).
+### Waveshaping
 
-### Proc Amp as Modulator
+Each oscillator passes through a ***frequency doubler*** module that can convert the sawtooth ramp into a triangle wave. The conversion works by folding the waveform at its midpoint: values in the lower half are scaled up by two, and values in the upper half are mirrored and scaled. The result is a symmetrical triangle that rises to a peak at the center value and then descends back to zero.
 
-The proc_amp_u module is normally a brightness/contrast stage, but Ludosphere repurposes it as a modulator. The input video's luminance feeds the contrast port while the oscillator waveform feeds the brightness port. When modulation depth (contrast) is zero, the output equals the oscillator waveform — pure pattern, no source video. When modulation depth is at midpoint (512), the source luma is added at unity gain. The result is an additive blend where the oscillator provides a base pattern and the source video rides on top. This creates the characteristic effect where brighter regions of the source push through the oscillator pattern more visibly than darker regions.
+The Flip toggles bypass or engage this fold. In sawtooth mode, the oscillator produces hard edges at every cycle boundary where the ramp resets. In triangle mode, those edges disappear, replaced by smooth peaks and valleys. This distinction becomes very visible at lower frequencies where individual cycles span large regions of the screen.
 
-### Chroma Shift and Color Space Rotation
+### Luma modulation
 
-The Shift control adds a signed offset to the U and V chroma channels when Colorize is active. Because YUV chroma is circular (values that exceed the range wrap around), shifting the offset smoothly rotates the generated color through the chroma plane. A slow sweep of Shift produces a continuously cycling color palette in the oscillator-driven regions.
+After waveshaping, each oscillator is mixed with the input luminance through a ***proc amp*** (processing amplifier) stage. The proc amp computes:
 
-### Video Timing and Accumulator Ranges
+$$\text{result} = (\text{input luma} - 0.5) \times \text{mod depth} + \text{oscillator}$$
 
-Each DDS accumulator operates on a different timing domain. The horizontal accumulator advances on every pixel clock, resetting at the start of each active line — it creates patterns that repeat across the width of the frame. The vertical accumulator advances once per line, resetting at the top of each field — it creates patterns that repeat vertically. The frame accumulator advances once per field and never resets, producing slow temporal variation that evolves over many seconds.
+When the mod depth is zero, the input luma term vanishes and the result is the pure oscillator waveform. As the mod depth increases, the input brightness is blended in: bright parts of the image push the oscillator output higher, dark parts pull it lower. At full mod depth the input picture is strongly visible through the oscillator geometry.
 
 
 ---
 
 ## Signal Flow
 
-Video Timing Generator → Phase Accumulators → Waveshapers → Luma Modulation → Shift Offset → Output Mux
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Video Timing Generator ─────────────────────────────────────
-│   └─ Extract hsync/vsync/avid edges → t_video_timing_port
-│
-├── Phase Accumulators (3× video_timing_accumulator) ───────────
-│   ├─ H: pixel-rate DDS       (freq = H Clock, resets per line)
-│   ├─ V: line-rate DDS        (freq = V Clock, resets per field)
-│   └─ F: frame-rate DDS       (freq = F Clock, free-running)
-│
-├── Waveshapers (3× frequency_doubler) ─────────────────────────
-│   ├─ H Flip off: sawtooth    │  H Flip on: triangle
-│   ├─ V Flip off: sawtooth    │  V Flip on: triangle
-│   └─ F Flip off: sawtooth    │  F Flip on: triangle
-│
-├── Luma Modulation (3× proc_amp_u) ────────────────────────────
-│   ├─ H: wave_h × input Y     (depth = H Mod)
-│   ├─ V: wave_v × input Y     (depth = V Mod)
-│   └─ F: wave_f × input Y     (depth = F Mod)
-│
-├── Shift Offset (Colorize path) ───────────────────────────────
-│   ├─ U out = mod_v + Shift − 512   (wrapping add)
-│   └─ V out = mod_f + Shift − 512   (wrapping add)
-│
-└── Output Mux ─────────────────────────────────────────────────
-    ├─ Bypass=1: pass input unchanged
-    ├─ Colorize=1: Y=mod_h, U=shifted_v, V=shifted_f
-    └─ Colorize=0: Y=mod_h, U=input_U, V=input_V
-```
+The key architectural detail is how the three oscillator axes map to the three YUV channels. The horizontal oscillator exclusively drives the Y (luminance) output: this makes the most visually prominent oscillator the one that creates vertical banding. The vertical oscillator drives U (blue-difference chroma), and the frame oscillator drives V (red-difference chroma). This asymmetry means the spatial oscillators control color hue while the temporal oscillator controls color saturation along a different chroma axis. Together, the three axes trace a path through YUV color space that resembles motion across the surface of a sphere: hence the name.
 
-The three oscillators share no state — each operates on an independent phase accumulator at a different timing scale. The horizontal oscillator creates patterns tied to horizontal position within each line, the vertical to line position, and the frame-rate to temporal position across frames. When all three modulation depths are set to moderate values, the source video appears multiplied by a three-dimensional standing wave that creates the program's signature spherical interference patterns. The Colorize output mux separates concerns: the horizontal axis always drives luminance, while the vertical and frame-rate axes drive chrominance (with the Shift offset rotating hue).
+The **Shift** fader applies a uniform offset to both U and V outputs simultaneously. Because it uses wrapping addition (no clamping), it acts as a hue rotation control that shifts the entire chroma palette in one smooth motion. This global shift interacts with the V and F oscillators multiplicatively: the oscillators create the color pattern, and Shift rotates the whole pattern through the color wheel.
 
----
-
-## Parameter Reference
-
-<img src={ludosphere_control_panel} alt="Videomancer front panel with Ludosphere loaded"/>
-*Videomancer's front panel with Ludosphere active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — H Clock
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Horizontal oscillator frequency word. Low values produce a single wide gradient across the frame — the ramp cycles slowly from left to right. Higher values compress the pattern into multiple oscillation cycles per line, creating vertical stripe patterns. Because the accumulator resets at each active-video start, the horizontal pattern is always phase-locked to the left edge of the frame. At very high values the pattern aliases, producing moire-like interference with the pixel grid.
-
----
-
-#### Knob 2 — V Clock
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Vertical oscillator frequency word. Low values produce a single gradient from top to bottom of the frame. Higher values create horizontal stripe patterns by completing multiple accumulator cycles across the field height. The vertical accumulator resets at each vsync, so the pattern is phase-locked to the top of the frame. Combined with H Clock, these two controls define the spatial frequency grid of the oscillator pattern.
-
----
-
-#### Knob 3 — F Clock
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Frame-rate oscillator frequency word. This accumulator advances once per field (approximately 60 Hz for HD, 50 Hz for PAL) and never resets. Low values create a very slow temporal pulsation — the entire frame brightens and dims over several seconds. Higher values create faster flicker that can appear as a strobe or rapid color cycling when Colorize is active. Because it is free-running, the frame oscillator produces continuous temporal evolution independent of spatial position.
-
----
-
-#### Knob 4 — H Mod
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Horizontal luma modulation depth. At zero, the proc_amp output equals the H oscillator waveform — pure horizontal pattern with no source video contribution. As the value increases, the source video luminance is additively blended with the oscillator. At midpoint, the source and oscillator contribute equally. Higher values further emphasize the source content riding on the oscillator wave. This control sets the balance between abstract generated pattern and video-modulated texture on the Y output channel.
-
----
-
-#### Knob 5 — V Mod
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Vertical luma modulation depth. Functions identically to H Mod but applies to the vertical oscillator. When Colorize is active, this axis drives the U chroma channel after shift offset is applied. At zero modulation, the U output is a pure vertical oscillator pattern. Increasing V Mod blends source luminance into the chroma pattern, creating luminance-keyed color bands.
-
----
-
-#### Knob 6 — F Mod
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Frame-rate luma modulation depth. Applies to the temporal oscillator which drives the V chroma channel when Colorize is active. At zero, the V output pulses as a pure frame-rate oscillation. Increasing F Mod ties the temporal pulsation to source brightness — bright areas pulse at full amplitude while dark areas remain near neutral. This creates content-dependent color animation.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — H Flip** | Off | On |
-| **8 — V Flip** | Off | On |
-| **9 — F Flip** | Off | On |
-| **10 — Colorize** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles have split responsibilities. H Flip and V Flip control waveshape on their respective spatial axes and function correctly through the standard ABI registers. F Flip, Colorize, and Bypass read from out-of-bounds registers (8, 9, 10) and will not respond to the physical toggle switches — their effective values depend on whatever data the FPGA bus presents at those addresses. The fader (register 7) has its bit 0 read as V Flip, which means the fader position can inadvertently affect the vertical waveshape.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Shift
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Chroma shift offset. Adds a signed value (register value minus 512) to both U and V channels when Colorize is active. Sweeping the fader rotates the generated chroma through the YUV color wheel — a full sweep covers approximately one complete hue rotation. Reads from register 11 (out of bounds) so the physical fader does not control this parameter in the current ABI.
-
-
-
+:::tip
+**Mapping summary**: H oscillator → Y (brightness pattern), V oscillator → U (blue-yellow color), F oscillator → V (red-cyan color). Keeping this mapping in mind helps predict what each knob will do.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises focus on the working controls (H Clock, V Clock, F Clock, H Mod, V Mod, F Mod, H Flip) to explore Ludosphere's spatial and temporal oscillation effects.
+These exercises progress from pure oscillator geometry to full video colorization, gradually introducing modulation and chroma controls.
+### Exercise 1: Oscillator Grid
 
-### Exercise 1: Spatial Interference Grid
+![Oscillator Grid result](/img/instruments/videomancer/ludosphere/ludosphere_ex1_s1.png)
+*Oscillator Grid — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: ludosphere_source1_dog, after: ludosphere_ex1_s1 },
-    { label: "Runner", before: ludosphere_source2_runner, after: ludosphere_ex1_s2 },
-    { label: "Collage", before: ludosphere_source3_collage, after: ludosphere_ex1_s3 },
-    { label: "Pattern", before: ludosphere_source4_pattern, after: ludosphere_ex1_s4 },
-    { label: "Girl", before: ludosphere_source5_girl, after: ludosphere_ex1_s5 },
-    { label: "Wood", before: ludosphere_source6_wood, after: ludosphere_ex1_s6 },
-  ]}
-/>
-*Spatial Interference Grid — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with recognizable subjects and moderate contrast.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Learn how horizontal and vertical oscillators create a spatial modulation grid that interacts with the source video.
+#### Learning Outcomes
 
-1. **Single horizontal ramp**: Set H Clock to about 20%. A single wide gradient sweeps across the frame from left to right.
-2. **Add vertical**: Set V Clock to about 20%. A second gradient sweeps top to bottom. The two multiply together, creating a diagonal pattern.
-3. **Increase frequencies**: Raise both H Clock and V Clock to about 60%. The pattern becomes a tighter grid of bright and dark regions.
-4. **Triangle mode**: Toggle H Flip on. The horizontal hard-edged ramp becomes a smooth undulation. Compare the two textures.
-5. **Add modulation**: Raise H Mod and V Mod to about 50%. The source video begins to appear within the oscillator pattern — brighter regions of the source push through the grid.
+A static grid of geometric bands, transitioning from hard-edged sawtooth stripes to soft triangular waves.
 
-**Key concepts**: DDS phase accumulators create perfectly stable spatial frequency patterns, the frequency_doubler converts sawtooth to triangle for different visual textures, modulation depth controls the balance between generated pattern and source video content
+#### Key Concepts
 
----
+- DDS phase accumulators create tiling ramp patterns
+- Horizontal oscillator tiles per pixel; vertical oscillator tiles per line
+- Flip converts sawtooth edges to smooth triangle peaks
 
-### Exercise 2: Temporal Pulsation
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: ludosphere_source1_dog, after: ludosphere_ex2_s1 },
-    { label: "Runner", before: ludosphere_source2_runner, after: ludosphere_ex2_s2 },
-    { label: "Collage", before: ludosphere_source3_collage, after: ludosphere_ex2_s3 },
-    { label: "Pattern", before: ludosphere_source4_pattern, after: ludosphere_ex2_s4 },
-    { label: "Girl", before: ludosphere_source5_girl, after: ludosphere_ex2_s5 },
-    { label: "Wood", before: ludosphere_source6_wood, after: ludosphere_ex2_s6 },
-  ]}
-/>
-*Temporal Pulsation — simulated result across source images.*
-**Source**: A static image or slow-moving footage so the temporal effect is clearly visible.
+Any video source: a camera feed, color bars, or a test pattern. The input will be mostly hidden behind the oscillator pattern.
 
-**What You'll Create**: Explore how the frame-rate oscillator adds temporal animation to the spatial modulation pattern.
+#### Steps
 
-1. **Spatial base**: Set H Clock ~40%, V Clock ~40%, both Mod controls at ~50%. Establish a visible spatial grid modulating the source.
-2. **Slow pulse**: Set F Clock to about 10%. The entire frame slowly brightens and dims over several seconds as the frame accumulator sweeps.
-3. **Faster pulse**: Raise F Clock to about 40%. The pulsation quickens to a visible strobe-like flicker.
-4. **Frame modulation**: Set F Mod to about 50%. Now the temporal pulse is modulated by source brightness — bright areas pulse while dark areas remain steady.
-5. **All three axes**: With all three oscillators running, the pattern becomes a three-dimensional standing wave that evolves over time. Adjust the three Clock controls to find rhythmic interference patterns.
+1. Turn **H Clock** (Knob 1) to about 60%. Vertical bands of varying brightness appear across the screen.
+2. Turn **V Clock** (Knob 2) to about 60%. Horizontal bands appear, crossing the vertical ones to form a checkerboard-like grid.
+3. Leave **F Clock** (Knob 3) at 0% and all three **Mod** knobs at 0%. The pattern should be purely geometric and static.
+4. Toggle **H Flip** (Switch 7) on. The vertical bands change from hard-edged sawtooth ramps to smooth triangles. The visual texture softens noticeably.
+5. Toggle **V Flip** (Switch 8) on. The horizontal bands also become triangular. The grid now has rounded diamond-shaped cells.
 
-**Key concepts**: The frame-rate accumulator advances once per field and never resets, creating temporal evolution independent of spatial position; three independent oscillators interfere constructively and destructively to produce complex evolving patterns
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| H Clock | 60% |
+| V Clock | 60% |
+| F Clock | 0% |
+| H Mod | 0% |
+| V Mod | 0% |
+| F Mod | 0% |
+| H Flip | On |
+| V Flip | On |
+| F Flip | Off |
+| Colorize | Off |
+| Bypass | Off |
+| Shift | 50% |
 
 ---
 
-### Exercise 3: Pure Oscillator Patterns
+### Exercise 2: Animated Colorizer
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: ludosphere_source1_dog, after: ludosphere_ex3_s1 },
-    { label: "Runner", before: ludosphere_source2_runner, after: ludosphere_ex3_s2 },
-    { label: "Collage", before: ludosphere_source3_collage, after: ludosphere_ex3_s3 },
-    { label: "Pattern", before: ludosphere_source4_pattern, after: ludosphere_ex3_s4 },
-    { label: "Girl", before: ludosphere_source5_girl, after: ludosphere_ex3_s5 },
-    { label: "Wood", before: ludosphere_source6_wood, after: ludosphere_ex3_s6 },
-  ]}
-/>
-*Pure Oscillator Patterns — simulated result across source images.*
-**Source**: Any footage — the source video will be overwhelmed by the oscillator output.
+![Animated Colorizer result](/img/instruments/videomancer/ludosphere/ludosphere_ex2_s1.png)
+*Animated Colorizer — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore the raw geometric patterns produced when modulation depth is at zero, removing source video contribution entirely.
+***A description of the exercise illustration.***
 
-1. **Zero modulation**: Set H Mod, V Mod, and F Mod all to 0%. The proc_amp now outputs pure oscillator waveform with no source video content.
-2. **Horizontal ramp**: Set H Clock to about 30%, V Clock and F Clock to 0%. A single horizontal gradient fills the frame.
-3. **Cross pattern**: Raise V Clock to about 30%. The horizontal and vertical ramps multiply to form a diagonal cross pattern.
-4. **Triangle folding**: Toggle H Flip on. The sharp ramp becomes a smooth hill. The cross pattern becomes a diamond or ellipse.
-5. **Frequency ratios**: Set H Clock to exactly 2× V Clock. The horizontal pattern has twice as many cycles as the vertical, creating a 2:1 Lissajous-like grid. Try 3:1 and 4:1 ratios for more complex geometric tilings.
+#### Learning Outcomes
 
-**Key concepts**: At zero modulation depth the proc_amp outputs pure oscillator waveform, frequency ratios between H and V create different geometric tilings, sawtooth vs triangle waveshape dramatically changes the visual character of the pattern
+A slowly pulsating color wash that paints the input video in cycling hues.
+
+#### Key Concepts
+
+- The frame oscillator creates temporal animation
+- Colorize maps oscillators to the U and V chroma channels
+- Shift rotates the entire chroma palette
+
+#### Video Source
+
+A live camera feed or black-and-white footage. Desaturated or monochrome material works especially well because the color is entirely generated by the oscillators.
+
+#### Steps
+
+1. Set **H Clock** (Knob 1) to about 40% and **V Clock** (Knob 2) to about 40%, creating a moderate grid in the luminance channel.
+2. Set **F Clock** (Knob 3) to about 30%. A slow animation begins: because F Clock drives the V chroma channel (via the output mux), the color will cycle once Colorize is enabled.
+3. Enable **Colorize** (Switch 10). The screen fills with color. The horizontal and vertical patterns define the luminance structure, while the frame oscillator creates a pulsing color shift.
+4. Slowly sweep **Shift** (Fader 12) from one end to the other. The entire color palette rotates: reds become greens become blues and back again, smoothly and without discontinuity.
+5. Toggle **F Flip** (Switch 9) on. The pulsation changes from a sharp sawtooth ramp-and-snap to a symmetrical fade-up-then-fade-down (a gentler, breathing rhythm.)
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| H Clock | 40% |
+| V Clock | 40% |
+| F Clock | 30% |
+| H Mod | 0% |
+| V Mod | 0% |
+| F Mod | 0% |
+| H Flip | Off |
+| V Flip | Off |
+| F Flip | On |
+| Colorize | On |
+| Bypass | Off |
+| Shift | 50% |
 
 ---
 
+### Exercise 3: Video-Reactive Color Sculpting
 
-## Tips
+![Video-Reactive Color Sculpting result](/img/instruments/videomancer/ludosphere/ludosphere_ex3_s1.png)
+*Video-Reactive Color Sculpting — simulated result across source images.*
+#### Exercise Illustration
 
-- **Triangle smooths, sawtooth edges**: Use H Flip to choose between smooth undulations (triangle) and hard gradient edges (sawtooth). Triangle mode is gentler on the eye; sawtooth creates sharper geometric edges.
-- **Temporal animation is free-running**: The frame oscillator never resets, so it drifts continuously. This is ideal for slowly evolving texture but means the pattern never returns to exactly the same state.
-- **Working controls only**: In the current ABI, only pots 1–6 and toggle 7 (H Flip) respond predictably. Plan your patches around these controls.
-- **Feedback loops**: Routing Ludosphere output back into its input creates recursive oscillator patterns that evolve chaotically and can produce video fractals at certain frequency ratios.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A fully modulated color field where the oscillator geometry bends and warps along the contours of the source image, painting the video in reactive, shifting hues.
+
+#### Key Concepts
+
+- Luma modulation blends input brightness into the oscillator pattern
+- All three axes can respond to source content simultaneously
+- Colorize + modulation = input-reactive color synthesis
+
+#### Video Source
+
+High-contrast footage: faces, architectural scenes, or anything with strong brightness gradients. The richer the tonal range, the more the modulation has to work with.
+
+#### Steps
+
+1. Start with the Exercise 2 settings (**H Clock** 40%, **V Clock** 40%, **F Clock** 30%, **Colorize** on, **F Flip** on).
+2. Turn **H Mod** (Knob 4) to about 70%. The luminance pattern begins tracking the input: bright areas of the source push the oscillator higher, dark areas pull it lower. The geometric grid warps to follow the image content.
+3. Turn **V Mod** (Knob 5) to about 70%. The chroma U channel now also follows the source brightness. Colors begin to cluster along the edges and contours of the input picture.
+4. Turn **F Mod** (Knob 6) to about 50%. The animated color pulsation is now modulated by brightness: bright regions pulse at full amplitude while dark regions remain more subdued.
+5. Sweep **Shift** (Fader 12) to find a hue that complements your source material. The entire color map rotates while preserving the modulated structure.
+6. Flip all three **Flip** switches on. The waveforms change from sawtooth to triangle. The pattern softens: edges become gradients, and the color transitions become smoother.
+7. Use **Bypass** (Switch 11) to compare the processed and unprocessed images.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| H Clock | 40% |
+| V Clock | 40% |
+| F Clock | 30% |
+| H Mod | 70% |
+| V Mod | 70% |
+| F Mod | 50% |
+| H Flip | On |
+| V Flip | On |
+| F Flip | On |
+| Colorize | On |
+| Bypass | Off |
+| Shift | 50% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **ABI** | Application Binary Interface; the 8-register communication protocol between the firmware and FPGA program. Ludosphere reads beyond this range. |
-| **Accumulator** | A register that sums a frequency word on each clock event, producing a linearly sweeping ramp. |
-| **Chroma** | The color information in a video signal, encoded as U and V channels in YUV color space. |
-| **DDS** | Direct Digital Synthesis; a technique for generating precise waveforms using a phase accumulator and frequency word. |
-| **Frequency Doubler** | A waveshaper that folds a sawtooth ramp at its midpoint to produce a symmetric triangle wave. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
-| **Phase Accumulator** | An integer register that adds a fixed increment on each event, sweeping through its range to produce a ramp waveform. |
-| **Proc Amp** | Processing Amplifier; a brightness/contrast stage. In Ludosphere, repurposed as a modulator blending oscillator and source. |
-| **Triangle Wave** | A symmetric waveform that ramps linearly up then linearly down, with no discontinuity at the peaks. |
+- **Chroma**: The color information in a video signal, encoded as U (blue-difference) and V (red-difference) components in YUV color space.
+
+- **DDS (Direct Digital Synthesis)**: A method of generating waveforms by incrementing a phase accumulator at a fixed rate; the accumulator's overflow creates a repeating ramp whose frequency is determined by the increment size.
+
+- **Frequency Doubler**: A waveshaping module that folds a ramp waveform at its midpoint, converting a sawtooth into a symmetrical triangle and doubling its apparent frequency.
+
+- **Frequency Word**: The fixed increment added to a DDS phase accumulator on each clock tick; larger values produce higher frequencies.
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color.
+
+- **Phase Accumulator**: A register that wraps around on overflow, producing a periodic ramp signal whose period depends on the increment value.
+
+- **Proc Amp**: Processing Amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (offset) adjustments to a signal.
+
+- **Sawtooth**: A waveform that rises linearly from minimum to maximum and then resets abruptly, producing a ramp with a hard edge at each cycle boundary.
+
+- **Triangle**: A waveform that rises linearly to a peak and then falls linearly back to the minimum, producing smooth, symmetrical peaks and valleys.
+
+- **Wrapping Addition**: Arithmetic that allows values to overflow and wrap around to zero rather than clamping at the maximum, producing seamless cyclic behavior.
+
+- **YUV**: A color space that separates luminance (Y) from chrominance (U, V), allowing independent manipulation of brightness and color.
 
 ---

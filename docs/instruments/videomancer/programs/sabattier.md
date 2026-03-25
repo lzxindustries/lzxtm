@@ -16,24 +16,24 @@ description: "In the traditional photographic darkroom, the Sabattier effect occ
 
 **Sabattier** recreates the photographic darkroom technique of pseudo-solarization, where a partially developed print is briefly re-exposed to light. Midtone regions undergo partial tonal reversal while shadows and highlights remain relatively stable, producing a surreal, metallic appearance. The program computes this effect in real time by measuring each pixel's distance from the midtone center and subtracting a proportional dip, creating the characteristic tonal fold that defines the Sabattier effect.
 
-The defining artifact of darkroom solarization — the ***Mackie line*** — is reproduced. In the darkroom, bromide ions released during development migrate laterally and inhibit development at tonal boundaries, leaving bright luminous borders where light and dark regions meet. Sabattier generates this artifact digitally via horizontal gradient detection: wherever the solarized luminance changes sharply from pixel to pixel, an additive glow appears along the boundary.
+The defining artifact of darkroom solarization: the ***Mackie line***: is reproduced. In the darkroom, bromide ions released during development migrate laterally and inhibit development at tonal boundaries, leaving bright luminous borders where light and dark regions meet. Sabattier generates this artifact digitally via horizontal gradient detection: wherever the solarized luminance changes sharply from pixel to pixel, an additive glow appears along the boundary.
 
 Beyond straight recreation, Sabattier offers creative extensions that go well beyond what a darkroom could achieve. Independent per-channel solarization, selectable curve shapes, equidensity contour mode, and metallic tinting expand the palette from subtle vintage warmth to aggressive digital abstraction.
 
 :::note
-Sabattier uses zero block RAM — the solarization curve is computed piecewise, not stored in a lookup table.
+Sabattier uses zero block RAM: the solarization curve is computed piecewise, not stored in a lookup table.
 :::
 
 ### What's In a Name?
 
-The effect is named after ***Armand Sabatier***, the French scientist who first documented the phenomenon of tonal reversal through re-exposure in 1862. (The double-t spelling ***Sabattier*** entered popular use through a historical transcription error and became the accepted name for the effect.) The term ***pseudo-solarization*** distinguishes this darkroom accident from true solarization (caused by extreme overexposure of the negative itself). Man Ray famously popularized the technique in the 1930s, using it to create otherworldly portraits with glowing contour lines — the Mackie lines that Sabattier reproduces.
+The effect is named after ***Armand Sabatier***, the French scientist who first documented the phenomenon of tonal reversal through re-exposure in 1862. (The double-t spelling ***Sabattier*** entered popular use through a historical transcription error and became the accepted name for the effect.) The term ***pseudo-solarization*** distinguishes this darkroom accident from true solarization (caused by extreme overexposure of the negative itself). Man Ray famously popularized the technique in the 1930s, using it to create otherworldly portraits with glowing contour lines (the Mackie lines that Sabattier reproduces.)
 
 ---
 
 ## Quick Start
 
 1. Turn **Y Inversion** (Knob 1) clockwise to about 75%. The midtones fold: areas near middle gray darken while highlights and shadows remain anchored. This is the core Sabattier effect.
-2. Increase **Mackie Gain** (Knob 3) to about 50%. Bright edge lines appear at tonal boundaries — the Mackie lines. Adjust **Threshold** (Knob 6) to control how much gradient is needed to trigger them.
+2. Increase **Mackie Gain** (Knob 3) to about 50%. Bright edge lines appear at tonal boundaries: the Mackie lines. Adjust **Threshold** (Knob 6) to control how much gradient is needed to trigger them.
 3. Turn **Mackie Width** (Knob 4) clockwise. The sharp edge lines soften and bloom outward, creating a glowing halo along each boundary.
 4. Toggle **Curve Shape** (Switch 10) from **S-Curve** to **W-Curve**. The single midtone dip splits into two, creating additional tonal folds at the quarter tones.
 
@@ -51,7 +51,7 @@ The effect is named after ***Armand Sabatier***, the French scientist who first 
 | Range | 0.0% – 100.0% |
 | Default | 50.0% |
 
-**Y Inversion** controls the depth of solarization applied to the luminance channel. At 0%, fully counterclockwise, no tonal reversal occurs — the luminance passes through unchanged. As the value increases, midtones are progressively folded downward: pixels near mid-gray darken while shadows and highlights remain stable. At 100%, the dip reaches its maximum depth. The effect is strongest at the midtone center (512 in S-curve mode) and tapers off toward the extremes, creating the signature triangular tonal fold of pseudo-solarization.
+**Y Inversion** controls the depth of solarization applied to the luminance channel. At 0%, fully counterclockwise, no tonal reversal occurs: the luminance passes through unchanged. As the value increases, midtones are progressively folded downward: pixels near mid-gray darken while shadows and highlights remain stable. At 100%, the dip reaches its maximum depth. The effect is strongest at the midtone center (512 in S-curve mode) and tapers off toward the extremes, creating the signature triangular tonal fold of pseudo-solarization.
 
 :::tip
 Start with Y Inversion around 50% to see the effect clearly without losing too much midtone detail. Higher values create increasingly dramatic tonal reversal.
@@ -77,7 +77,7 @@ Start with Y Inversion around 50% to see the effect clearly without losing too m
 | Range | 0.0% – 100.0% |
 | Default | 50.0% |
 
-**Mackie Gain** controls the brightness of the Mackie line edge glow. At 0%, no edge glow is applied — even where tonal boundaries exist, no bright contour line appears. Increasing the value amplifies the detected gradient into a visible additive overlay. At 100%, the Mackie lines are at their brightest, tracing luminous borders along every significant tonal boundary in the solarized image. The glow is clamped to prevent overflow.
+**Mackie Gain** controls the brightness of the Mackie line edge glow. At 0%, no edge glow is applied: even where tonal boundaries exist, no bright contour line appears. Increasing the value amplifies the detected gradient into a visible additive overlay. At 100%, the Mackie lines are at their brightest, tracing luminous borders along every significant tonal boundary in the solarized image. The glow is clamped to prevent overflow.
 
 ---
 
@@ -91,7 +91,7 @@ Start with Y Inversion around 50% to see the effect clearly without losing too m
 **Mackie Width** controls how far the edge glow spreads beyond the detected boundary. At 0%, the Mackie lines are sharp, single-pixel edges. As the value increases, an ***IIR*** (infinite impulse response) lowpass filter blends each new edge sample with the previous output, causing the glow to smear horizontally and bloom outward. At 100%, the glow spreads broadly, creating a soft halo around every tonal boundary.
 
 :::note
-The IIR filter operates horizontally along each scan line. Mackie Width does not affect the vertical extent of the glow — that is determined solely by the source imagery.
+The IIR filter operates horizontally along each scan line. Mackie Width does not affect the vertical extent of the glow (that is determined solely by the source imagery.)
 :::
 
 ---
@@ -114,7 +114,7 @@ The IIR filter operates horizontally along each scan line. Mackie Width does not
 | Range | 0.0% – 100.0% |
 | Default | 0.0% |
 
-**Threshold** sets the minimum gradient strength required for Mackie lines to appear. At 0%, even the smallest tonal transition triggers an edge glow. As the value increases, only sharper, more prominent boundaries produce Mackie lines — subtle gradients are gated off. At 100%, only the most extreme tonal edges survive. Use Threshold to clean up noisy or busy images where too many Mackie lines clutter the result.
+**Threshold** sets the minimum gradient strength required for Mackie lines to appear. At 0%, even the smallest tonal transition triggers an edge glow. As the value increases, only sharper, more prominent boundaries produce Mackie lines: subtle gradients are gated off. At 100%, only the most extreme tonal edges survive. Use Threshold to clean up noisy or busy images where too many Mackie lines clutter the result.
 
 :::tip
 Threshold and **Mackie Gain** work together. A higher Threshold suppresses weak edges while Gain amplifies the survivors. Use them in tandem to isolate just the strongest contour lines.
@@ -130,7 +130,7 @@ Threshold and **Mackie Gain** work together. A higher Threshold suppresses weak 
 | On | On |
 | Default | Off |
 
-**Equidensity** switches between normal solarization and ***equidensity contour*** mode. With the switch set to **Off**, the standard solarization dip is applied. With the switch set to **On**, the dip is doubled and clamped, creating sharp contour bands where the proximity function peaks — the image is divided into luminance zones separated by dark boundary lines. This is the digital equivalent of equidensity film, a specialist material used in scientific imaging to visualize iso-luminance contours.
+**Equidensity** switches between normal solarization and ***equidensity contour*** mode. With the switch set to **Off**, the standard solarization dip is applied. With the switch set to **On**, the dip is doubled and clamped, creating sharp contour bands where the proximity function peaks: the image is divided into luminance zones separated by dark boundary lines. This is the digital equivalent of equidensity film, a specialist material used in scientific imaging to visualize iso-luminance contours.
 
 ---
 
@@ -189,7 +189,7 @@ Threshold and **Mackie Gain** work together. A higher Threshold suppresses weak 
 | Range | 0.0% – 100.0% |
 | Default | 100.0% |
 
-**Mix** crossfades between the dry (unprocessed) and wet (solarized) signal. At 0%, fully left, the output is the original input — no solarization is visible. At 100%, fully right, the output is entirely the processed signal. Intermediate values blend the two, allowing subtle integration of the Sabattier effect into the source image.
+**Mix** crossfades between the dry (unprocessed) and wet (solarized) signal. At 0%, fully left, the output is the original input: no solarization is visible. At 100%, fully right, the output is entirely the processed signal. Intermediate values blend the two, allowing subtle integration of the Sabattier effect into the source image.
 
 ---
 
@@ -197,62 +197,32 @@ Threshold and **Mackie Gain** work together. A higher Threshold suppresses weak 
 
 ### Solarization in the darkroom
 
-True ***solarization*** occurs when photographic film receives so much light that the silver halide crystals begin to reverse their response — shadows become highlights and vice versa. ***Pseudo-solarization***, the Sabattier effect, is a related but distinct phenomenon. A partially developed print is briefly exposed to white light during development; the undeveloped silver halide in the lighter areas responds to the new exposure while the already-developed dark areas are largely unaffected. The result is a partial tonal reversal concentrated in the midtones, with the characteristic Mackie lines forming at the boundary between reversed and non-reversed regions.
+True ***solarization*** occurs when photographic film receives so much light that the silver halide crystals begin to reverse their response: shadows become highlights and vice versa. ***Pseudo-solarization***, the Sabattier effect, is a related but distinct phenomenon. A partially developed print is briefly exposed to white light during development; the undeveloped silver halide in the lighter areas responds to the new exposure while the already-developed dark areas are largely unaffected. The result is a partial tonal reversal concentrated in the midtones, with the characteristic Mackie lines forming at the boundary between reversed and non-reversed regions.
 
 ### Mackie lines and bromide migration
 
-In darkroom pseudo-solarization, the bright contour lines at tonal boundaries are called ***Mackie lines***, named after Alexander Mackie who studied them in 1938. They form because bromide ions — a byproduct of silver development — migrate laterally from fully developed dark regions into adjacent lighter regions, locally inhibiting development and creating a narrow bright fringe. Sabattier simulates this by detecting horizontal gradients in the solarized luminance signal: wherever adjacent pixels differ sharply, a bright additive overlay is generated. The IIR filter controlled by **Mackie Width** mimics the lateral diffusion of the bromide ions.
+In darkroom pseudo-solarization, the bright contour lines at tonal boundaries are called ***Mackie lines***, named after Alexander Mackie who studied them in 1938. They form because bromide ions: a byproduct of silver development: migrate laterally from fully developed dark regions into adjacent lighter regions, locally inhibiting development and creating a narrow bright fringe. Sabattier simulates this by detecting horizontal gradients in the solarized luminance signal: wherever adjacent pixels differ sharply, a bright additive overlay is generated. The IIR filter controlled by **Mackie Width** mimics the lateral diffusion of the bromide ions.
 
-### Signal Flow
+### Equidensity contour mode
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 1. Polarity               (optional complement: 1023 − Y)
-│   ├─ 2. Proximity Calculation   (distance from midtone; S or W curve)
-│   ├─ 3. Proximity × Y Inversion (multiply + normalize)
-│   ├─ 4. Equidensity + Dip Sub   (optional doubling + subtraction + clamp → solar Y)
-│   ├─ 5. Gradient Delay Pipeline  (2-pixel delay for gradient detection)
-│   ├─ 6. Gradient Detection       (|solar_y[n] − solar_y[n−2]|)
-│   ├─ 7. Threshold Gate           (suppress gradients below threshold)
-│   ├─ 8. Mackie Gain Multiply     (amplify surviving gradients)
-│   ├─ 9. IIR Width Spread         (lowpass → bloom)
-│   ├─ 10. Additive Overlay        (solar Y + Mackie glow, clamped)
-│   ├─ 11. Tint Multiply           (luminance × tint amount)
-│   └─ 12. Tint Apply              (Y passes through)
-│
-├── U/V Channels ───────────────────────────────────────────────
-│   │
-│   ├─ 5. Proximity Calculation    (distance from midpoint per channel)
-│   ├─ 6. Proximity × UV Inversion (multiply + normalize, if Channel=YUV)
-│   ├─ 7. Dip Subtraction + Clamp  (UV solar complete, if Channel=YUV)
-│   ├─ 10. Pass-through             (no Mackie overlay on chroma)
-│   └─ 12. Tint Apply               (U + tint_shift, V − tint_shift, clamped)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ 16-clock delay pipeline (hsync, vsync, field, avid)
-│
-└── Mix ────────────────────────────────────────────────────────
-    └─ Interpolator: dry/wet crossfade (4 clocks)
-```
+When **Equidensity** is enabled, the solarization dip is doubled and clamped before subtraction. This transforms the smooth tonal fold into a sharper steplike function that divides the image into discrete luminance zones separated by dark boundary lines: resembling the output of equidensity film used in astronomical and medical imaging. Combined with **W-Curve** mode, the image is carved into four or more distinct tonal bands.
+
+
+---
+
+## Signal Flow
 
 ### Signal Flow Notes
 
 The pipeline is deeply pipelined at 16 clocks (12 processing + 4 for the mix interpolator) to meet timing closure at 74.25 MHz. Two key interactions define the sound of Sabattier:
 
-1. **Solarization before gradient detection**: The luminance channel is solarized first (stages 1–4), then the gradient detector examines the *solarized* result (stages 5–6). This means Mackie lines appear at the tonal boundaries created by solarization itself — not at the original image boundaries. The deeper the Y Inversion, the more gradient energy the detector finds.
+1. **Solarization before gradient detection**: The luminance channel is solarized first (stages 1–4), then the gradient detector examines the *solarized* result (stages 5–6). This means Mackie lines appear at the tonal boundaries created by solarization itself: not at the original image boundaries. The deeper the Y Inversion, the more gradient energy the detector finds.
 
 2. **Tint is luminance-modulated**: The metallic tint (stages 11–12) multiplies a tint coefficient by the overlay luminance. Bright areas receive more color shift than dark areas. Because the Mackie lines add brightness at tonal boundaries, they also receive strong tinting, creating iridescent edge highlights.
 
 :::warning
-The Mackie Width IIR filter only spreads horizontally. There is no vertical diffusion — the glow follows scan lines. This is most visible on vertical edges, where the spread creates a horizontal tail.
+The Mackie Width IIR filter only spreads horizontally. There is no vertical diffusion: the glow follows scan lines. This is most visible on vertical edges, where the spread creates a horizontal tail.
 :::
-
-### Equidensity contour mode
-
-When **Equidensity** is enabled, the solarization dip is doubled and clamped before subtraction. This transforms the smooth tonal fold into a sharper steplike function that divides the image into discrete luminance zones separated by dark boundary lines — resembling the output of equidensity film used in astronomical and medical imaging. Combined with **W-Curve** mode, the image is carved into four or more distinct tonal bands.
 
 
 ---
@@ -264,21 +234,33 @@ These exercises progress from basic solarization to complex multi-parameter dark
 
 ![Classic Sabattier result](/img/instruments/videomancer/sabattier/sabattier_ex1_s1.png)
 *Classic Sabattier — simulated result across source images.*
-**Key Concepts**: - Solarization subtracts a midtone-peaked dip from the signal
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Learn the basic solarization effect and understand how the proximity function shapes tonal folding.
+
+#### Key Concepts
+
+- Solarization subtracts a midtone-peaked dip from the signal
 - The depth of the dip is controlled by Y Inversion
 - S-Curve vs W-Curve changes the number of fold points
 
-**What You'll Create**: Learn the basic solarization effect and understand how the proximity function shapes tonal folding.
+#### Video Source
 
-**Source**: A portrait or face with clear midtone gradients — skin tones show the effect well.
+A portrait or face with clear midtone gradients (skin tones show the effect well.)
+
+#### Steps
 
 1. **Set the dip**: Turn **Y Inversion** (Knob 1) to about 75%. Midtones darken while highlights and shadows remain. This is the core Sabattier fold.
 2. **Observe the fold**: Watch areas near middle gray. They have darkened relative to the extremes, creating a surreal tonal reversal.
 3. **Try W-Curve**: Toggle **Curve Shape** (Switch 10) to **W-Curve**. The single fold splits into two, and additional contour bands appear at quarter-tone values.
-4. **Flip polarity**: Toggle **Polarity** (Switch 8) to **Negative**. The entire tonal map shifts — what was previously a shadow fold is now a highlight fold.
+4. **Flip polarity**: Toggle **Polarity** (Switch 8) to **Negative**. The entire tonal map shifts (what was previously a shadow fold is now a highlight fold.)
 5. **Add chroma**: Set **Channel** (Switch 9) to **YUV** and increase **UV Inversion** (Knob 2) to 50%. Colors in the midrange shift as chroma channels undergo their own tonal fold.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -301,13 +283,25 @@ These exercises progress from basic solarization to complex multi-parameter dark
 
 ![Mackie Line Portraits result](/img/instruments/videomancer/sabattier/sabattier_ex2_s1.png)
 *Mackie Line Portraits — simulated result across source images.*
-**Key Concepts**: - Mackie lines appear at tonal boundaries in the solarized image
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Explore the Mackie line edge glow and learn how Threshold and Width shape its appearance.
+
+#### Key Concepts
+
+- Mackie lines appear at tonal boundaries in the solarized image
 - Threshold gates weak edges; Gain amplifies strong edges
 - Width spreads the glow horizontally via an IIR lowpass filter
 
-**What You'll Create**: Explore the Mackie line edge glow and learn how Threshold and Width shape its appearance.
+#### Video Source
 
-**Source**: High-contrast footage with clear edges — architectural details, silhouettes, or text overlays.
+High-contrast footage with clear edges (architectural details, silhouettes, or text overlays.)
+
+#### Steps
 
 1. **Prepare solarization**: Set **Y Inversion** (Knob 1) to about 50%. The image should show a visible midtone fold.
 2. **Reveal Mackie lines**: Increase **Mackie Gain** (Knob 3) from 0% upward. Bright contour lines appear along every tonal boundary.
@@ -315,7 +309,7 @@ These exercises progress from basic solarization to complex multi-parameter dark
 4. **Spread the glow**: Increase **Mackie Width** (Knob 4). The sharp edge lines bloom outward into a soft halo. Notice the glow only spreads horizontally.
 5. **Add metallic sheen**: Increase **Tint** (Knob 5) to about 40%. The bright Mackie lines gain a blue-cyan color shift, creating an iridescent metallic edge.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -338,13 +332,25 @@ These exercises progress from basic solarization to complex multi-parameter dark
 
 ![Equidensity Contour Map result](/img/instruments/videomancer/sabattier/sabattier_ex3_s1.png)
 *Equidensity Contour Map — simulated result across source images.*
-**Key Concepts**: - Equidensity doubles the solarization dip, creating sharp tonal bands
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Combine equidensity mode with W-Curve and metallic tinting for a scientific-visualization-style contour map.
+
+#### Key Concepts
+
+- Equidensity doubles the solarization dip, creating sharp tonal bands
 - W-Curve adds additional fold points, multiplying the bands
 - Metallic tinting colors the result based on brightness
 
-**What You'll Create**: Combine equidensity mode with W-Curve and metallic tinting for a scientific-visualization-style contour map.
+#### Video Source
 
-**Source**: Footage with broad, gradual tonal transitions — a sunset, studio lighting, or slow-moving clouds.
+Footage with broad, gradual tonal transitions (a sunset, studio lighting, or slow-moving clouds.)
+
+#### Steps
 
 1. **Enable equidensity**: Toggle **Equidensity** (Switch 7) to **On** and set **Y Inversion** (Knob 1) to about 80%. The image divides into discrete luminance zones separated by dark contour lines.
 2. **Switch to W-Curve**: Toggle **Curve Shape** (Switch 10) to **W-Curve**. Additional contour bands appear as the two-peaked proximity function creates more fold boundaries.
@@ -353,7 +359,7 @@ These exercises progress from basic solarization to complex multi-parameter dark
 5. **Metallic finish**: Toggle **Metallic** (Switch 11) to **On**. The entire image is tinted with a strong blue-cyan metallic sheen, with brighter contour areas receiving the strongest color shift.
 6. **Adjust mix**: Sweep **Mix** (Fader 12) to blend the contour map with the original footage.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|

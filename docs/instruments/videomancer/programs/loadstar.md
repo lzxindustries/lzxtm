@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 177
 slug: /instruments/videomancer/loadstar
@@ -7,352 +7,389 @@ image: /img/instruments/videomancer/loadstar/loadstar_hero_s1.png
 description: "There was a ritual shared by an entire generation of home computer users."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import loadstar_control_panel from '/img/instruments/videomancer/loadstar/loadstar_control_panel.png';
-import loadstar_source1_fruit from '/img/instruments/videomancer/loadstar/loadstar_source1_fruit.png';
-import loadstar_source2_boat from '/img/instruments/videomancer/loadstar/loadstar_source2_boat.png';
-import loadstar_source3_clouds from '/img/instruments/videomancer/loadstar/loadstar_source3_clouds.png';
-import loadstar_source4_pattern from '/img/instruments/videomancer/loadstar/loadstar_source4_pattern.png';
-import loadstar_source5_man from '/img/instruments/videomancer/loadstar/loadstar_source5_man.png';
-import loadstar_source6_berries from '/img/instruments/videomancer/loadstar/loadstar_source6_berries.png';
-import loadstar_hero_s1 from '/img/instruments/videomancer/loadstar/loadstar_hero_s1.png';
-import loadstar_hero_s2 from '/img/instruments/videomancer/loadstar/loadstar_hero_s2.png';
-import loadstar_hero_s3 from '/img/instruments/videomancer/loadstar/loadstar_hero_s3.png';
-import loadstar_hero_s4 from '/img/instruments/videomancer/loadstar/loadstar_hero_s4.png';
-import loadstar_hero_s5 from '/img/instruments/videomancer/loadstar/loadstar_hero_s5.png';
-import loadstar_hero_s6 from '/img/instruments/videomancer/loadstar/loadstar_hero_s6.png';
-import loadstar_ex1_s1 from '/img/instruments/videomancer/loadstar/loadstar_ex1_s1.png';
-import loadstar_ex1_s2 from '/img/instruments/videomancer/loadstar/loadstar_ex1_s2.png';
-import loadstar_ex1_s3 from '/img/instruments/videomancer/loadstar/loadstar_ex1_s3.png';
-import loadstar_ex1_s4 from '/img/instruments/videomancer/loadstar/loadstar_ex1_s4.png';
-import loadstar_ex1_s5 from '/img/instruments/videomancer/loadstar/loadstar_ex1_s5.png';
-import loadstar_ex1_s6 from '/img/instruments/videomancer/loadstar/loadstar_ex1_s6.png';
-import loadstar_ex2_s1 from '/img/instruments/videomancer/loadstar/loadstar_ex2_s1.png';
-import loadstar_ex2_s2 from '/img/instruments/videomancer/loadstar/loadstar_ex2_s2.png';
-import loadstar_ex2_s3 from '/img/instruments/videomancer/loadstar/loadstar_ex2_s3.png';
-import loadstar_ex2_s4 from '/img/instruments/videomancer/loadstar/loadstar_ex2_s4.png';
-import loadstar_ex2_s5 from '/img/instruments/videomancer/loadstar/loadstar_ex2_s5.png';
-import loadstar_ex2_s6 from '/img/instruments/videomancer/loadstar/loadstar_ex2_s6.png';
-import loadstar_ex3_s1 from '/img/instruments/videomancer/loadstar/loadstar_ex3_s1.png';
-import loadstar_ex3_s2 from '/img/instruments/videomancer/loadstar/loadstar_ex3_s2.png';
-import loadstar_ex3_s3 from '/img/instruments/videomancer/loadstar/loadstar_ex3_s3.png';
-import loadstar_ex3_s4 from '/img/instruments/videomancer/loadstar/loadstar_ex3_s4.png';
-import loadstar_ex3_s5 from '/img/instruments/videomancer/loadstar/loadstar_ex3_s5.png';
-import loadstar_ex3_s6 from '/img/instruments/videomancer/loadstar/loadstar_ex3_s6.png';
-
-# Loadstar
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: loadstar_source1_fruit, after: loadstar_hero_s1 },
-    { label: "Boat", before: loadstar_source2_boat, after: loadstar_hero_s2 },
-    { label: "Clouds", before: loadstar_source3_clouds, after: loadstar_hero_s3 },
-    { label: "Pattern", before: loadstar_source4_pattern, after: loadstar_hero_s4 },
-    { label: "Man", before: loadstar_source5_man, after: loadstar_hero_s5 },
-    { label: "Berries", before: loadstar_source6_berries, after: loadstar_hero_s6 },
-  ]}
-/>
-*Loadstar applying animated border color cycling and attribute clash quantization to recreate the look of an 8-bit home computer loading screen.*
+![Loadstar hero image](/img/instruments/videomancer/loadstar/loadstar_hero_s1.png)
+*Loadstar applying character cell quantization and animated border color cycling to live video, evoking the unmistakable aesthetic of a Commodore 64 loading screen.*
 
 ---
 
 ## Overview
 
-There was a ritual shared by an entire generation of home computer users. You pressed play on the cassette deck, typed LOAD, and waited. While the machine's tape interface screamed and chirped, the screen border flickered through a hypnotic sequence of colors — a side effect of the loading protocol toggling I/O lines that happened to be mapped to the border color register. On the ZX Spectrum, the border strobed through all eight palette colors in rapid succession. On the Commodore 64, it cycled more slowly. Either way, the flashing border became the visual signature of the loading process — an accidental light show that an entire generation associates with anticipation.
+Loadstar transforms live video into a real-time homage to the Commodore 64 loading experience. The program divides the screen into a visible border region and a central picture area, just like the C64's VIC-II chip. The border pulses with animated color cycling, while the inner image is broken into character cells with quantized luma values: a faithful recreation of the ***attribute clash*** that defined 8-bit home computing visuals. The result is a lo-fi, blocky aesthetic that sits somewhere between retro nostalgia and modern glitch art.
 
-Loadstar recreates this experience as a video processing effect. The program divides the screen into a border region and a content area. The border cycles through a palette of synthetic colors at a user-controlled speed, emulating the tape-loading animation. Within the content area, the input video is quantized into character cells — rectangular blocks that sample and hold a single brightness value, exactly as an 8-bit computer's text mode display would render graphics. The Attr Clash toggle applies the most infamous limitation of 1980s display hardware: restricting each character cell to a single color from an eight-level palette, producing the characteristic "attribute clash" where fine detail is lost to block-level color quantization.
+At subtle settings, Loadstar adds a gentle character cell texture and a discreet flashing border frame. Push the controls further and the image collapses into a grid of flat color blocks surrounded by a hyperactive neon border. The wet/dry **Mix** fader lets you blend the processed result with the original signal at any ratio, making Loadstar equally useful as a light texture overlay or a full-screen 8-bit time machine.
 
-This is an early prototype with four of six potentiometers and one toggle unused. The active controls — Border Spd, Cell Size, Border Flash, Attr Clash, Interlace, and Mix — are sufficient to produce convincing retro-computing aesthetics, but the full vision of the program (character set rendering, brightness/contrast adjustment, color cycling within the content area) remains unimplemented.
+:::tip
+Loadstar pairs beautifully with synthesis programs. Route a pattern generator through Loadstar to give procedural graphics the unmistakable look of a 1980s home computer display.
+:::
+
+### What's In a Name?
+
+***Loadstar*** was the name of a beloved disk magazine published for the Commodore 64 and 128 from 1984 to 2007. The word itself combines "load," the keyword you typed to run a program on a C64 (`LOAD "*",8,1`), with "star," evoking both the wildcard asterisk in that command and the guiding North Star. For a generation of computer users, the flashing border bars and blocky character graphics of a loading screen were the ritual prelude to every adventure. This program recreates that ritual.
 
 ---
 
 ## Quick Start
 
-1. **Border Flash is the signature**: The animated border color cycling is the program's most distinctive effect. It creates an instant nostalgia trigger for anyone who grew up with 8-bit computers.
-2. **Attr Clash creates the retro look**: Without attribute clash, the cell quantization is subtle. With it enabled, the eight-color palette restriction dominates the image and creates the authentic ZX Spectrum aesthetic.
-3. **Cell Size matters**: Smaller cells (4–5 px) produce a subtle texture overlay. Larger cells (9–11 px) produce a dramatic mosaic. Match the cell size to the viewing distance — larger displays benefit from larger cells.
+1. Feed a video signal into Videomancer and select **Loadstar**. The border of the screen immediately begins flashing with animated color bars (the loading ritual has begun.)
+2. Toggle **Attr Clash** (Switch 9) to **On**. The central image snaps into flat, cell-sized blocks of quantized brightness, as though the video has been stuffed into a character-mapped display.
+3. Turn **Cell Size** (Knob 2) clockwise to increase the width of each character cell. The image becomes coarser and more abstract, like zooming into the PETSCII character grid.
+4. Slide the **Mix** fader (Fader 12) toward the center to blend the 8-bit effect with the original video. You can dial in just a hint of retro texture or go full C64.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Loadstar loaded](/img/instruments/videomancer/loadstar/loadstar_control_panel.png)
+*Videomancer's front panel with Loadstar active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Border Spd
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 38% |
+
+**Border Spd** controls how quickly the border color cycles from frame to frame. At 0%, fully counterclockwise, the border color advances slowly: a gentle, meditative pulse. As you turn the knob clockwise, the cycling accelerates and the border flashes through its palette more aggressively. At 100%, the color change is rapid and frenetic, recalling the frantic border stripes of a C64 turbo loader. The speed is determined by the top three bits of the control value, added to a base increment of one per frame.
+
+:::note
+Border Spd has no effect unless **Border Flash** (Switch 7) is set to **On**.
+:::
+
+---
+
+### Knob 2 — Cell Size
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 8 |
+| Default | 3 |
+
+**Cell Size** sets the width of each character cell in pixels. The cell width is computed from the top three bits of the control value plus a base of four, giving a range of four to eleven pixels. At minimum, cells are narrow and the image retains more horizontal detail. As you increase the value, cells widen and horizontal information is increasingly quantized: each cell holds a single sampled luma value that repeats across its full width. At maximum, cells span eleven pixels and the image dissolves into broad, flat stripes.
+
+---
+
+### Knob 3 — Color Depth
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 8 |
+| Default | 5 |
+
+**Color Depth** is reserved for future development. In the current version of Loadstar, adjusting this knob does not change the output. It is mapped to a register but not yet consumed by the processing pipeline.
+
+---
+
+### Knob 4 — Charset
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 7 |
+| Default | 0 |
+
+**Charset** is reserved for future development. In the current version of Loadstar, adjusting this knob does not change the output. A future revision may use this control to select among character pattern overlays.
+
+---
+
+### Knob 5 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 63% |
+
+**Brightness** is reserved for future development. In the current version of Loadstar, adjusting this knob does not change the output. A future revision may use this control to apply a brightness offset to the processed signal, emulating the variable phosphor brightness of vintage CRT monitors.
+
+---
+
+### Knob 6 — Contrast
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Contrast** is reserved for future development. In the current version of Loadstar, adjusting this knob does not change the output. A future revision may use this control to apply a contrast gain to the processed signal.
+
+---
+
+### Switch 7 — Border Flash
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Border Flash** enables or disables the animated border color cycling. When set to **On**, the border region: the frame surrounding the central picture area: cycles through colors at a rate set by **Border Spd** (Knob 1). Each video frame, the border color index advances by a step derived from the speed setting. When set to **Off**, the border color freezes at its current value.
+
+---
+
+### Switch 8 — Color Cycle
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Color Cycle** is reserved for future development. In the current version of Loadstar, toggling this switch does not change the output.
+
+---
+
+### Switch 9 — Attr Clash
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Attr Clash** enables ***attribute clash***, the defining visual limitation of 8-bit character-mapped displays. When set to **On**, the luma channel is quantized to three bits per character cell. Each cell can display only one of eight brightness levels, and the chroma channels are forced to neutral gray. The result is a flat, monochrome mosaic that recalls the C64's high-resolution bitmap mode, where each 8×8 cell was limited to two colors. When set to **Off**, the central picture area passes through without attribute-clash quantization: luma and chroma retain their full input values (still subject to cell-size sampling on the luma channel).
+
+:::tip
+***Attribute clash is the signature effect.*** It is what separates Loadstar from a generic pixelator. With Attr Clash enabled, the image looks like it has been drawn on a character-mapped display. Without it, you get cell-width horizontal quantization but the colors remain natural.
+:::
+
+---
+
+### Switch 10 — Interlace
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Interlace** simulates the look of an interlaced display by darkening every other scan line. When set to **On**, odd-numbered lines have their luma value halved, creating visible horizontal stripe artifacts reminiscent of a CRT television displaying an interlaced signal. When set to **Off**, all lines are processed at full brightness.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed, delay-aligned input signal directly to the output, skipping all Loadstar processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the processed result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** controls the wet/dry blend between the processed Loadstar output and the original input signal. At 0%, fully down, only the original input is heard: the effect is silent. As you raise the fader, the character cells, border flash, and attribute clash fade in. At 100%, fully up, the output is entirely the Loadstar-processed signal. The crossfade is performed by three independent interpolators (one each for Y, U, and V), ensuring smooth transitions with no color artifacts.
 
 ---
 
 ## Background
 
-### The Tape Loading Border Effect
+### Character cells and attribute clash
 
-When a ZX Spectrum loaded data from cassette tape, the CPU interpreted the audio signal by monitoring the state of a single I/O port. Each bit transition toggled the border color register as a side effect of the decoding algorithm. The result was a rapid, seemingly random sequence of color changes — cyan, red, blue, yellow — that strobed across the screen border at audio frequency rates. Users quickly learned to read these patterns: steady alternation meant good data; erratic flashing meant a loading error. The Commodore 64 had a similar effect, though its border color changes were driven by different mechanisms. Loadstar abstracts this into a simple counter-based animation: every vertical sync, the border color advances by an increment derived from the Border Spd parameter, cycling through a palette of synthetic hues.
+The Commodore 64's VIC-II video chip divided the screen into a grid of ***character cells***, typically 8×8 pixels each. In high-resolution bitmap mode, each cell could display only two colors: a foreground and a background: chosen from a fixed 16-color palette. When an image contained more color variation than the cell could represent, neighboring cells snapped to different palette entries, creating hard, blocky boundaries. This artifact was known as ***attribute clash*** (or "color clash" on the ZX Spectrum), and it became one of the most recognizable visual signatures of 8-bit computing.
 
-### Character Cells and Text Mode Graphics
+Loadstar recreates this effect by sampling the luma value at the start of each character cell and holding it for the cell's full width. When **Attr Clash** is enabled, the held value is further quantized to three bits, reducing the image to eight discrete brightness levels with neutral chroma.
 
-Early home computers could not afford enough memory for a full bitmap display. Instead, they divided the screen into a grid of character cells — typically 8×8 pixels — and stored only a character code and color attribute for each cell. This meant that within any single cell, all pixels shared the same foreground and background colors. To display graphics, programmers either designed custom character sets that approximated shapes, or accepted the blocky limitations of the text mode. Loadstar emulates this by dividing the screen into cells of configurable width (4–11 pixels) and sample-and-holding the input luma at the start of each cell. Every pixel within the cell displays the same brightness, producing the characteristic blocky appearance.
+### Border color cycling
 
-### Attribute Clash
+On the Commodore 64, the screen border was a separate, programmable region surrounding the main display area. Clever programmers discovered that by rapidly changing the border color register during the vertical blanking interval, they could produce animated color bars in the border region. This technique became especially associated with ***turbo loaders***, fast-loading routines that displayed flashing border stripes as a progress indicator while data streamed from the disk drive. The faster the stripes, the faster the load.
 
-The ZX Spectrum's most notorious display limitation was attribute clash (sometimes called "colour clash" or "attribute bleed"). The Spectrum stored one foreground and one background color per 8×8 character cell — just two colors shared by all 64 pixels in the cell. When a sprite or graphic moved across a cell boundary, it was forced to adopt the color attribute of the cell it entered, causing bright objects to suddenly change color as they crossed the invisible grid. Game developers spent enormous effort working around this limitation — designing monochrome games, keeping sprites on cell boundaries, or embracing the clash as a stylistic feature. Loadstar's Attr Clash toggle applies a similar quantization: the held luma value is reduced to three bits (eight levels), and chroma is forced to neutral. The result is an eight-color palette constrained per cell.
+Loadstar divides the output frame into a border region (pixels outside the central 1184×648 area) and a picture region. The border color is a 4-bit index that advances by a configurable step on each vertical sync event. The speed knob controls the magnitude of each step, and the resulting color is mapped into the YUV domain with offset chroma values.
 
-### Interlace and CRT Simulation
+### Interlaced scanning
 
-Home computers of the 1980s displayed their output on cathode ray tube televisions. The CRT's electron beam scanned alternate lines on successive fields, and the inherent phosphor persistence and beam width created a characteristic visual texture where odd and even scan lines were not equally bright. Loadstar's Interlace toggle approximates this by dimming every other scan line — halving the luma of odd-numbered lines. The effect is subtle on its own but adds an authentic CRT quality when combined with cell quantization and attribute clash.
-
-### LFSR Hashing for Per-Cell Color
-
-In the VHDL implementation, the held luma sample at the start of each cell is used as a hash input to derive a three-bit color index. The top three bits of the held luminance value directly determine which of eight palette levels the cell receives. This is not a true LFSR hash but rather a simple truncation that maps the continuous luminance range into eight coarse buckets. The mapping is deterministic — the same input brightness always produces the same cell color — but because the input video varies spatially, the result looks like a mosaic of pseudo-randomly assigned colors across the screen.
+***Interlaced*** video displays each frame in two passes: first the odd-numbered lines, then the even-numbered lines. On a CRT, the two fields blend together in the viewer's eye. On an LCD or in a digital processing chain, the two-field structure can produce visible horizontal line artifacts, especially when the image contains fast motion. Loadstar's interlace mode simulates this look by halving the brightness of every other scan line, producing the characteristic stripe texture of an interlaced CRT viewed at close range.
 
 
 ---
 
 ## Signal Flow
 
-Clock 1: Sync Edge → Clock 2: Cell Tracking → Clock 3: Border Detection → ... → Sync Delay → Output Mux
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Clock 1: Sync Edge Detection ───────────────────────────────
-│   ├─ Detect falling edge of hsync_n → reset x_counter
-│   ├─ Detect falling edge of vsync_n → reset y_counter
-│   └─ Increment frame_counter, update border_color
-│
-├── Clock 2: Cell Tracking ─────────────────────────────────────
-│   ├─ v_cell_w = cell_size(9:7) + 4  (cell width: 4..11 px)
-│   ├─ Track local_x within cell, cell_x across line
-│   └─ Sample-and-hold: latch data_in.y at cell boundary
-│
-├── Clock 3: Border Detection ──────────────────────────────────
-│   └─ v_in_border = 1 if x<48 or x>1232 or y<36 or y>684
-│
-├── Clock 4: Color Assignment ──────────────────────────────────
-│   ├─ Border region → animated border color (Y, U, V)
-│   ├─ Attr Clash on → quantized 3-bit Y, neutral U/V
-│   └─ Attr Clash off → passthrough input Y, U, V
-│
-├── Clock 5: Interlace Dimming ─────────────────────────────────
-│   └─ If interlace on and odd line → Y >>= 1
-│
-├── Clocks 5–8: Interpolator (wet/dry Mix) ─────────────────────
-│   └─ lerp(delayed_input, processed, mix_amount) per channel
-│
-├── Sync Delay (8 clocks) ──────────────────────────────────────
-│   └─ Shift registers for hsync, vsync, field, Y, U, V
-│
-└── Output Mux ─────────────────────────────────────────────────
-    ├─ Bypass off → mixed output
-    └─ Bypass on  → delayed input
-```
+The processing pipeline is implemented in a single clocked process with an 8-clock total delay. Timing detection and frame counting happen first: the x and y counters track the current pixel position, and the frame counter increments on each vertical sync falling edge. The cell boundary detector uses a local counter that resets when it reaches the configured cell width, at which point the current input luma value is captured into a hold register.
 
-The pipeline does not instantiate a `video_timing_generator` entity. Instead, it manually detects hsync and vsync falling edges to track pixel position using 12-bit x and y counters. The cell tracking logic uses modular arithmetic — a local counter `s_local_x` counts pixels within the current cell and resets when it reaches the cell width, at which point the held luma value is updated. The border region is defined by fixed pixel coordinate thresholds (x range 48–1232, y range 36–684), creating a border frame approximately 48 pixels wide on each side. Four of the six potentiometer registers (`s_color_depth`, `s_charset`, `s_brightness`, `s_contrast`) and one toggle (`s_color_cycle`) are registered but never referenced in the processing pipeline — they are reserved for future implementation.
+Two key branching paths follow. If the current pixel falls in the border region, the output is a synthetic color derived from the cycling border index. If the pixel is inside the picture area and attribute clash is enabled, the held luma value is quantized to three bits and chroma is forced to the neutral midpoint. Without attribute clash, the input YUV passes through unmodified (though the Y channel still shows cell-width sample-and-hold artifacts from the capture logic). The interlace stage then optionally halves luma on odd scan lines.
 
----
-
-## Parameter Reference
-
-<img src={loadstar_control_panel} alt="Videomancer front panel with Loadstar loaded"/>
-*Videomancer's front panel with Loadstar active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Border Spd
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 38% |
-| Suffix | % |
-
-Border cycling speed. Controls how fast the border color advances per frame. The speed is derived from bits 9:7 of the register plus 1, giving an increment range of 1–8 per vertical sync. At minimum, the border color changes slowly — one palette step per frame. At maximum, it advances eight steps per frame, producing a rapid strobe that closely resembles the ZX Spectrum's tape loading animation. The effect is only visible when Border Flash is enabled.
-
----
-
-#### Knob 2 — Cell Size
-| Property | Value |
-|----------|-------|
-| Range | 1 – 8 |
-| Default | 3 |
-
-Character cell width. The register value is quantized to eight steps — the top three bits plus four give a cell width of 4 to 11 pixels. At the minimum (4 pixels), cells are narrow and the sample-and-hold effect is subtle. At the maximum (11 pixels), cells are wide and the blocky character-cell appearance is pronounced. The cell height is not independently controllable — vertical quantization is achieved only through interlace dimming, not through vertical sample-and-hold.
-
----
-
-#### Knob 3 — Color Depth
-| Property | Value |
-|----------|-------|
-| Range | 1 – 8 |
-| Default | 5 |
-
-Color Depth — currently unused. The register is read and stored in `s_color_depth` but never referenced in the processing pipeline. Reserved for future implementation of variable color palette depth.
-
----
-
-#### Knob 4 — Charset
-| Property | Value |
-|----------|-------|
-| Range | 0 – 7 |
-| Default | 0 |
-
-Charset — currently unused. The register is read and stored in `s_charset` but never referenced. Reserved for future implementation of character set overlay rendering.
-
----
-
-#### Knob 5 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 63% |
-| Suffix | % |
-
-Brightness — currently unused. The register is read and stored in `s_brightness` but never referenced. Reserved for future implementation of a brightness offset stage.
-
----
-
-#### Knob 6 — Contrast
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Contrast — currently unused. The register is read and stored in `s_contrast` but never referenced. Reserved for future implementation of a contrast gain stage.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Border Flash** | Off | On |
-| **8 — Color Cycle** | Off | On |
-| **9 — Attr Clash** | Off | On |
-| **10 — Interlace** | Off | On |
-| **11 — Bypass** | Off | On |
-
-Switches 7–11 control five binary options. Only three are actively wired into the processing pipeline — Border Flash, Attr Clash, and Interlace. The Color Cycle toggle (Switch 8) is registered but has no effect on the output. Bypass (Switch 11) is the standard signal routing switch. The active toggles are independent: each controls a different stage of the pipeline with no interaction between them.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Wet/dry mix crossfade. At 0%, only the delayed dry input is passed through. At 100%, the fully processed signal (border animation, cell quantization, attribute clash, interlace) is output. Intermediate values blend the two proportionally, allowing subtle application of the retro effect over the clean source.
-
-
-
+:::note
+The dry signal path (for the Mix interpolator's "A" input) is the ***delayed*** original input, not the real-time input. An 8-clock shift register delays the original Y, U, V, and sync signals to align them with the processing pipeline's output. This ensures the wet/dry crossfade produces no timing artifacts.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises explore the program's active controls, progressing from simple border animation to full 8-bit display emulation. The unused controls (Color Depth, Charset, Brightness, Contrast, Color Cycle) are left at their defaults throughout.
+These exercises progress from the simplest border-flash effect through attribute clash quantization to a full 8-bit aesthetic combining all active parameters.
+### Exercise 1: The Loading Ritual
 
-### Exercise 1: Tape Loading Border
+![The Loading Ritual result](/img/instruments/videomancer/loadstar/loadstar_ex1_s1.png)
+*The Loading Ritual — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: loadstar_source1_fruit, after: loadstar_ex1_s1 },
-    { label: "Boat", before: loadstar_source2_boat, after: loadstar_ex1_s2 },
-    { label: "Clouds", before: loadstar_source3_clouds, after: loadstar_ex1_s3 },
-    { label: "Pattern", before: loadstar_source4_pattern, after: loadstar_ex1_s4 },
-    { label: "Man", before: loadstar_source5_man, after: loadstar_ex1_s5 },
-    { label: "Berries", before: loadstar_source6_berries, after: loadstar_ex1_s6 },
-  ]}
-/>
-*Tape Loading Border — simulated result across source images.*
-**Source**: Any video source — the border effect is independent of the content area.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Recreate the classic tape-loading border strobe from 8-bit home computers.
+#### Learning Outcomes
 
-1. **Enable Border Flash**: Turn on Switch 7. The border region immediately begins cycling through colors.
-2. **Slow strobe**: Set Border Spd to minimum. The border color changes once per frame — a slow, deliberate pulse.
-3. **Fast strobe**: Increase Border Spd toward maximum. The border flashes rapidly through the palette, closely approximating the ZX Spectrum's loading animation.
-4. **A/B compare**: Toggle Bypass (Switch 11) to see the unprocessed signal, then back to see the border effect.
-5. **Mix blend**: Reduce Mix to ~50% to see the border animation blended with the clean border area.
+A pulsing, animated border frame reminiscent of a C64 turbo loader, overlaid on an otherwise unprocessed video signal.
 
-**Key concepts**: Border color is a 4-bit counter incremented per frame, speed is derived from top 3 register bits plus 1, effect is gated by the Border Flash toggle
+#### Key Concepts
 
----
+- The border region is separate from the picture area
+- Border Flash produces animated color cycling driven by the frame counter
+- Border Spd controls the color advance rate
 
-### Exercise 2: Character Cell Mosaic
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: loadstar_source1_fruit, after: loadstar_ex2_s1 },
-    { label: "Boat", before: loadstar_source2_boat, after: loadstar_ex2_s2 },
-    { label: "Clouds", before: loadstar_source3_clouds, after: loadstar_ex2_s3 },
-    { label: "Pattern", before: loadstar_source4_pattern, after: loadstar_ex2_s4 },
-    { label: "Man", before: loadstar_source5_man, after: loadstar_ex2_s5 },
-    { label: "Berries", before: loadstar_source6_berries, after: loadstar_ex2_s6 },
-  ]}
-/>
-*Character Cell Mosaic — simulated result across source images.*
-**Source**: Live camera or footage with recognizable subjects — faces, text, or geometric patterns.
+A live camera feed or any recorded video with moderate brightness and color.
 
-**What You'll Create**: Explore the cell-based sample-and-hold quantization and attribute clash.
+#### Steps
 
-1. **Enable Attr Clash**: Turn on Switch 9. The content area is immediately quantized to eight brightness levels with no color.
-2. **Small cells**: Set Cell Size to step 1 (minimum). The quantization is subtle — narrow 4-pixel cells retain much spatial detail.
-3. **Large cells**: Increase Cell Size to step 8 (maximum). The image becomes a coarse mosaic of 11-pixel-wide blocks, each holding a single brightness level.
-4. **Without Attr Clash**: Turn off Switch 9. The same cell structure is visible (sample-and-hold luma) but with full brightness resolution and preserved chroma.
-5. **Add Interlace**: Turn on Switch 10. Alternate scan lines dim, adding CRT texture to the mosaic.
-6. **Add Border Flash**: Turn on Switch 7 with Border Spd at ~50%. The border flashes while the content area displays the cell mosaic.
+1. **Enable the border**: Set **Border Flash** (Switch 7) to **On**. The border region immediately begins cycling through colors.
+2. **Slow it down**: Turn **Border Spd** (Knob 1) fully counterclockwise. The border pulses gently, advancing one color step per frame.
+3. **Speed it up**: Slowly turn Border Spd clockwise. The cycling accelerates: at high values, the border becomes a rapid strobe of shifting hues.
+4. **Clean center**: Confirm that **Attr Clash** (Switch 9) is **Off** and **Interlace** (Switch 10) is **Off**. The central picture area passes through cleanly while the border flashes around it.
 
-**Key concepts**: Cell width is quantized to 8 steps (4–11 pixels), attribute clash reduces luma to 3 bits and kills chroma, interlace dims odd lines
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Border Spd | ~80% |
+| Cell Size | 1 |
+| Color Depth | 5 |
+| Charset | 0 |
+| Brightness | ~63% |
+| Contrast | ~50% |
+| Border Flash | On |
+| Color Cycle | Off |
+| Attr Clash | Off |
+| Interlace | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Full 8-Bit Emulation
+### Exercise 2: Character-Mapped Display
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: loadstar_source1_fruit, after: loadstar_ex3_s1 },
-    { label: "Boat", before: loadstar_source2_boat, after: loadstar_ex3_s2 },
-    { label: "Clouds", before: loadstar_source3_clouds, after: loadstar_ex3_s3 },
-    { label: "Pattern", before: loadstar_source4_pattern, after: loadstar_ex3_s4 },
-    { label: "Man", before: loadstar_source5_man, after: loadstar_ex3_s5 },
-    { label: "Berries", before: loadstar_source6_berries, after: loadstar_ex3_s6 },
-  ]}
-/>
-*Full 8-Bit Emulation — simulated result across source images.*
-**Source**: High-contrast footage — retro games, pixel art, or text-heavy material for maximum authenticity.
+![Character-Mapped Display result](/img/instruments/videomancer/loadstar/loadstar_ex2_s1.png)
+*Character-Mapped Display — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Combine all active effects for a complete 8-bit home computer display simulation.
+***A description of the exercise illustration.***
 
-1. **Set up cell grid**: Cell Size to step 5–6 (moderate blocks). Enable Attr Clash.
-2. **Add scan lines**: Enable Interlace for CRT texture.
-3. **Add border strobe**: Enable Border Flash. Set Border Spd to ~60% for a medium-speed cycling rate.
-4. **Mix adjustment**: Reduce Mix to ~85% for a subtle blend that lets some original detail show through the retro effect.
-5. **Observe cell boundaries**: Watch how moving subjects cause attribute clash as their brightness changes the quantized cell color — exactly as sprites moving across cell boundaries on a ZX Spectrum.
-6. **Speed variation**: Sweep Border Spd from minimum to maximum while watching the border. Find the speed that most closely matches your memory of loading a game from tape.
+#### Learning Outcomes
 
-**Key concepts**: The combination of cell quantization, attribute clash, interlace dimming, and border animation recreates the full visual experience of an 8-bit display, four unused controls remain for future expansion
+A retro character-cell display where the video image is broken into flat-colored blocks, as though rendered on an 8-bit computer's text-mode screen.
+
+#### Key Concepts
+
+- Cell Size controls horizontal quantization granularity
+- Attribute clash reduces luma to three bits and neutralizes chroma
+- The combination produces a character-mapped display aesthetic
+
+#### Video Source
+
+Footage with strong, recognizable shapes: a face, a hand, or large geometric objects. High-contrast material works best.
+
+#### Steps
+
+1. **Enable attribute clash**: Set **Attr Clash** (Switch 9) to **On**. The image immediately snaps to eight discrete brightness levels with neutral (gray) chroma.
+2. **Set cell width**: Turn **Cell Size** (Knob 2) to a midrange position. Each cell is now several pixels wide, and the image becomes a mosaic of flat blocks.
+3. **Widen cells**: Increase Cell Size toward maximum. The blocks grow larger and the image becomes increasingly abstract (recognizable shapes dissolve into coarse tiles.)
+4. **Narrow cells**: Decrease Cell Size to near-minimum. The blocks narrow to four pixels, and the image regains much of its detail while retaining the quantized brightness levels.
+5. **Add scanlines**: Toggle **Interlace** (Switch 10) to **On**. Horizontal stripe artifacts appear across the image, adding a CRT-like texture to the character cells.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Border Spd | ~38% |
+| Cell Size | 5 |
+| Color Depth | 5 |
+| Charset | 0 |
+| Brightness | ~63% |
+| Contrast | ~50% |
+| Border Flash | On |
+| Color Cycle | Off |
+| Attr Clash | On |
+| Interlace | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Full 8-Bit Immersion
 
-## Tips
+![Full 8-Bit Immersion result](/img/instruments/videomancer/loadstar/loadstar_ex3_s1.png)
+*Full 8-Bit Immersion — simulated result across source images.*
+#### Exercise Illustration
 
-- **Interlace adds depth**: The scan line dimming is subtle but essential for CRT authenticity. It works best in combination with attribute clash, where the alternating bright/dim lines break up the flat cell blocks.
-- **Unused controls are safe to ignore**: Four potentiometers and one toggle are wired but inert. Move them freely — they have no effect on the output.
-- **Mix for subtlety**: At 100% mix, the retro effect is total. At 50–70%, the original image shows through the cell grid, creating a ghostly overlay effect that suggests a computer display composited over live video.
-- **Feedback routing**: Sending the output back to the input creates recursive cell quantization — each pass reduces the image further toward the eight-color palette, eventually converging to a stable mosaic.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A complete Commodore 64 loading screen experience: flashing border, character-cell picture, interlaced scanlines, and a controlled mix with the original video.
+
+#### Key Concepts
+
+- All active stages combine to form a complete retro display emulation
+- The Mix fader blends the 8-bit aesthetic with the original signal
+- Border animation and picture processing work independently
+
+#### Video Source
+
+Any video source: camera feed, recorded footage, or even a test pattern. Material with a range of brightness values showcases the attribute clash quantization best.
+
+#### Steps
+
+1. **Full processing**: Enable **Border Flash** (Switch 7), **Attr Clash** (Switch 9), and **Interlace** (Switch 10). All three active processing modes engage simultaneously.
+2. **Fast border**: Set **Border Spd** (Knob 1) to about 80%. The border cycles rapidly.
+3. **Medium cells**: Set **Cell Size** (Knob 2) to a midrange value. The picture area shows clearly defined character blocks.
+4. **Blend**: Lower the **Mix** fader (Fader 12) to about 85%. The character-cell effect blends with the underlying video, producing a ghostly overlay where the original image shows through the quantized blocks.
+5. **A/B compare**: Toggle **Bypass** (Switch 11) to compare the full effect with the clean input. Toggle it back to return to the processed output.
+6. **Explore**: Sweep Cell Size and Border Spd simultaneously while watching the result. The border animation and cell granularity change independently, letting you find the combination that best suits the source material.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Border Spd | ~80% |
+| Cell Size | 4 |
+| Color Depth | 5 |
+| Charset | 0 |
+| Brightness | ~63% |
+| Contrast | ~50% |
+| Border Flash | On |
+| Color Cycle | Off |
+| Attr Clash | On |
+| Interlace | On |
+| Bypass | Off |
+| Mix | ~85% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Attribute Clash** | A display limitation of the ZX Spectrum where each 8×8 character cell could contain only two colors (foreground and background), causing color bleeding at cell boundaries when objects moved across them. |
-| **Cell** | A rectangular block of pixels that shares a single brightness and color value, emulating the character cells of 8-bit text mode displays. |
-| **Chroma** | The color information in a video signal, encoded as U and V components. Loadstar forces chroma to neutral (512, 512) in attribute clash mode. |
-| **CRT** | Cathode Ray Tube; the display technology used by 8-bit home computers. Loadstar's interlace mode simulates the visible scan line structure of CRT displays. |
-| **Interlace** | A scanning technique where alternate lines are drawn on successive fields. Loadstar approximates this by dimming odd-numbered lines. |
-| **LFSR** | Linear Feedback Shift Register; a hardware pseudo-random number generator. Referenced in the VHDL header but not used in the current implementation. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
-| **Sample-and-Hold** | A technique where a signal value is captured (sampled) at a specific moment and held constant until the next sample point. |
+- **Attribute Clash**: A visual artifact of 8-bit character-mapped displays where each cell is limited to a small number of colors, causing hard boundaries between adjacent cells
+
+- **Border Region**: The frame area surrounding the central picture on a home computer display, separately programmable from the main screen content
+
+- **Character Cell**: A fixed-width block of pixels treated as a single unit on a character-mapped display, typically 8×8 pixels on the Commodore 64
+
+- **Chroma**: The color information in a video signal, encoded as U and V components in YUV color space
+
+- **Interlaced**: A scanning method that displays each video frame in two alternating passes (odd lines then even lines), producing visible line structure on close inspection
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness
+
+- **Quantization**: Mapping a continuous range of values to a smaller set of discrete levels, producing visible steps in gradients
+
+- **Sample and Hold**: A technique that captures a signal value at a specific moment and holds it constant until the next sample point, used here to maintain a uniform brightness across each character cell
+
+- **VIC-II**: The Video Interface Chip (model 6569/6567) used in the Commodore 64 to generate video output, managing character cells, sprites, and border color
 
 ---

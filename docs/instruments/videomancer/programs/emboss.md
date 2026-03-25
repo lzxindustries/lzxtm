@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 100
 slug: /instruments/videomancer/emboss
@@ -7,361 +7,372 @@ image: /img/instruments/videomancer/emboss/emboss_hero_s1.png
 description: "Every surface tells a story through the way it catches light."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import emboss_control_panel from '/img/instruments/videomancer/emboss/emboss_control_panel.png';
-import emboss_source1_boat from '/img/instruments/videomancer/emboss/emboss_source1_boat.png';
-import emboss_source2_parrot from '/img/instruments/videomancer/emboss/emboss_source2_parrot.png';
-import emboss_source3_collage from '/img/instruments/videomancer/emboss/emboss_source3_collage.png';
-import emboss_source4_pattern from '/img/instruments/videomancer/emboss/emboss_source4_pattern.png';
-import emboss_source5_woman from '/img/instruments/videomancer/emboss/emboss_source5_woman.png';
-import emboss_source6_knit from '/img/instruments/videomancer/emboss/emboss_source6_knit.png';
-import emboss_hero_s1 from '/img/instruments/videomancer/emboss/emboss_hero_s1.png';
-import emboss_hero_s2 from '/img/instruments/videomancer/emboss/emboss_hero_s2.png';
-import emboss_hero_s3 from '/img/instruments/videomancer/emboss/emboss_hero_s3.png';
-import emboss_hero_s4 from '/img/instruments/videomancer/emboss/emboss_hero_s4.png';
-import emboss_hero_s5 from '/img/instruments/videomancer/emboss/emboss_hero_s5.png';
-import emboss_hero_s6 from '/img/instruments/videomancer/emboss/emboss_hero_s6.png';
-import emboss_ex1_s1 from '/img/instruments/videomancer/emboss/emboss_ex1_s1.png';
-import emboss_ex1_s2 from '/img/instruments/videomancer/emboss/emboss_ex1_s2.png';
-import emboss_ex1_s3 from '/img/instruments/videomancer/emboss/emboss_ex1_s3.png';
-import emboss_ex1_s4 from '/img/instruments/videomancer/emboss/emboss_ex1_s4.png';
-import emboss_ex1_s5 from '/img/instruments/videomancer/emboss/emboss_ex1_s5.png';
-import emboss_ex1_s6 from '/img/instruments/videomancer/emboss/emboss_ex1_s6.png';
-import emboss_ex2_s1 from '/img/instruments/videomancer/emboss/emboss_ex2_s1.png';
-import emboss_ex2_s2 from '/img/instruments/videomancer/emboss/emboss_ex2_s2.png';
-import emboss_ex2_s3 from '/img/instruments/videomancer/emboss/emboss_ex2_s3.png';
-import emboss_ex2_s4 from '/img/instruments/videomancer/emboss/emboss_ex2_s4.png';
-import emboss_ex2_s5 from '/img/instruments/videomancer/emboss/emboss_ex2_s5.png';
-import emboss_ex2_s6 from '/img/instruments/videomancer/emboss/emboss_ex2_s6.png';
-import emboss_ex3_s1 from '/img/instruments/videomancer/emboss/emboss_ex3_s1.png';
-import emboss_ex3_s2 from '/img/instruments/videomancer/emboss/emboss_ex3_s2.png';
-import emboss_ex3_s3 from '/img/instruments/videomancer/emboss/emboss_ex3_s3.png';
-import emboss_ex3_s4 from '/img/instruments/videomancer/emboss/emboss_ex3_s4.png';
-import emboss_ex3_s5 from '/img/instruments/videomancer/emboss/emboss_ex3_s5.png';
-import emboss_ex3_s6 from '/img/instruments/videomancer/emboss/emboss_ex3_s6.png';
-
-# Emboss
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: emboss_source1_boat, after: emboss_hero_s1 },
-    { label: "Parrot", before: emboss_source2_parrot, after: emboss_hero_s2 },
-    { label: "Collage", before: emboss_source3_collage, after: emboss_hero_s3 },
-    { label: "Pattern", before: emboss_source4_pattern, after: emboss_hero_s4 },
-    { label: "Woman", before: emboss_source5_woman, after: emboss_hero_s5 },
-    { label: "Knit", before: emboss_source6_knit, after: emboss_hero_s6 },
-  ]}
-/>
-*Emboss rendering directional bas-relief lighting across luminance gradients, carving depth from flat video.*
+![Emboss hero image](/img/instruments/videomancer/emboss/emboss_hero_s1.png)
+*Emboss transforming a face into a carved stone bas-relief: highlights and shadows revealing surface geometry as if the image were pressed into metal.*
 
 ---
 
 ## Overview
 
-Every surface tells a story through the way it catches light. A coin pressed into clay, a name stamped into leather, a fossil embedded in stone — these are all forms of relief, where three-dimensional structure is revealed by the interplay of highlights and shadows across a surface. Emboss brings this principle to video, computing spatial gradients in both horizontal and vertical directions and combining them under a virtual light source to create the illusion of a raised or carved surface.
+**Emboss** creates a three-dimensional ***bas-relief*** effect by computing spatial gradients: the rate at which brightness changes from pixel to pixel: and combining them with a configurable virtual light source direction. Where a surface slopes toward the light, it brightens; where it slopes away, it darkens. The result looks like the original image has been pressed into a metal or stone surface and lit from a single direction.
 
-The program works by measuring how brightness changes from pixel to pixel (horizontally) and from line to line (vertically). These two gradients — essentially the slope of the image in two perpendicular directions — are combined according to a selectable light angle that determines which edges appear illuminated and which fall into shadow. The result is added to a bias level (typically mid-gray) to produce a bas-relief effect where bright edges on one side of an object are matched by dark edges on the opposite side. The name comes directly from the metalworking and printing term for raising a design above a surface.
+The program computes both horizontal gradients (comparing each pixel to its left neighbor) and vertical gradients (comparing each pixel to the previous scanline via a BRAM line buffer), then combines them according to one of eight cardinal or diagonal light directions. A depth control amplifies the gradient, a bias sets the neutral mid-point, and a contrast stage stretches the final output. An optional metallic tint adds a warm color cast to the relief surface.
 
-At moderate depth settings, Emboss creates convincing three-dimensional textures from flat video — text appears stamped into metal, faces gain sculptural weight, and architectural details develop tactile presence. At extreme settings, the effect becomes a high-contrast edge map where only the steepest gradients survive, useful as a key source or for generating abstract line-art textures from photographic material.
+### What's In a Name?
+
+***Emboss*** comes from the Old French ***embocer*** ("to swell out"), referring to the technique of creating raised designs on metal, leather, or paper. In traditional metalwork, embossing pushes the material up from behind to create a three-dimensional surface. Emboss simulates this in video by computing how brightness "rises" and "falls" across the image surface, then lighting the result as if it were a physical relief.
 
 ---
 
 ## Quick Start
 
-1. **Light Angle is the key creative control**: Rotating through the eight positions transforms the character of the emboss. Diagonal angles (SE, NW) produce the strongest sense of three-dimensionality. Cardinal angles (E, S, W, N) emphasize edges aligned perpendicular to the light.
-2. **Bias sets the canvas**: Think of Bias as the color of the surface the emboss is stamped into. Mid-gray is the classic emboss look. Black bias creates a lithographic plate effect. White bias creates a watermark appearance.
-3. **Subtle mix for texture overlay**: Setting Mix to 10–30% overlays a gentle relief texture onto the original video without overwhelming the source content — excellent for adding tactile "weight" to flat graphics.
+1. Feed any video source into Videomancer with **Emboss** loaded. The image immediately takes on a gray, three-dimensional appearance with edges revealed as highlights and shadows.
+2. Increase **Depth** (Knob 1) to about 60%. The edge relief becomes more pronounced (highlights brighter, shadows deeper.)
+3. Slowly turn **Light Ang** (Knob 2). The light source moves around the image in eight directions, dramatically changing which edges catch the light and which fall into shadow.
+4. Adjust **Bias** (Knob 3) to control the overall brightness of the relief. At 50%, the surface is mid-gray. Below 50%, it darkens; above 50%, it brightens.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Emboss loaded](/img/instruments/videomancer/emboss/emboss_control_panel.png)
+*Videomancer's front panel with Emboss active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Depth
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Depth** controls the amplitude of the emboss effect: how much the gradients are amplified before becoming visible. At 0%, the surface is perfectly flat (no gradient contribution). As Depth increases, subtle pixel-to-pixel brightness changes are magnified into visible highlights and shadows. Very high Depth values create an aggressive, high-contrast relief where even minor details cast dramatic shadows.
+
+---
+
+### Knob 2 — Light Ang
+
+| Property | Value |
+|----------|-------|
+| Range | 0deg – 360deg |
+| Default | 90deg |
+
+**Light Ang** selects the direction of the virtual light source from eight positions: East, Southeast, South, Southwest, West, Northwest, North, and Northeast. The light direction determines the sign combinations of the horizontal and vertical gradients: an East light creates highlights on right-facing edges and shadows on left-facing edges. Rotating the light around all eight positions creates a dramatic shift in the perceived three-dimensionality of the image.
+
+:::tip
+Try slowly sweeping Light Ang while the source video is static. The image appears to rotate in three dimensions as the light moves around it: a convincing illusion that a 2D video signal has become a physical surface.
+:::
+
+---
+
+### Knob 3 — Bias
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Bias** adds a DC offset to the entire embossed output. At 50%, the surface appears mid-gray in flat areas (no gradient). Below 50%, flat areas darken toward black; above 50%, they brighten toward white. Bias controls the overall "exposure" of the relief: the base brightness upon which the highlights and shadows are painted.
+
+---
+
+### Knob 4 — Sharpen
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Sharpen** boosts the edge gradients by adding a proportion of the raw gradient back into the depth-scaled result. At 0%, no additional sharpening. As Sharpen increases, edges become harder and more defined: useful for bringing out fine detail in low-contrast sources. At high values, the effect can become visually aggressive.
+
+---
+
+### Knob 5 — Metal Tnt
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Metal Tnt** applies a metallic color tint to the embossed surface when Color is set to Source. The tint shifts the U channel positive and the V channel negative proportionally to the Y value (brightness), creating a warm metallic cast that's stronger in bright areas and weaker in shadows: mimicking the color behavior of a polished metal surface catching warm light.
+
+---
+
+### Knob 6 — Contrast
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Contrast** stretches the embossed output around mid-gray (512). At 50%, contrast is unity. Above 50%, the highlights are pushed brighter and shadows deeper, increasing the perceived depth of the relief. Below 50%, contrast is reduced (the relief becomes flatter and more subtle.)
+
+---
+
+### Switch 7 — Style
+
+| Property | Value |
+|----------|-------|
+| Off | Raised |
+| On | Carved |
+| Default | Raised |
+
+**Style** selects between **Raised** and **Carved** relief. Raised creates the appearance of a surface pushed outward (the default embossing direction). Carved inverts the gradient, making the surface appear pressed inward: like an intaglio engraving where the image is cut into the material rather than raised above it.
+
+---
+
+### Switch 8 — Color
+
+| Property | Value |
+|----------|-------|
+| Off | Gray |
+| On | Source |
+| Default | Gray |
+
+**Color** selects between **Gray** (monochrome) and **Source** (color-preserved) output. In Gray mode, the embossed output is achromatic: pure luminance relief with neutral chroma. In Source mode, the original U and V channels are passed through (optionally modified by Metal Tnt), so the relief surface retains the color of the original image.
+
+---
+
+### Switch 9 — Channel
+
+| Property | Value |
+|----------|-------|
+| Off | Y Only |
+| On | YUV |
+| Default | Y Only |
+
+**Channel** selects between **Y Only** and **YUV** processing scope. Currently, the emboss gradient computation is performed exclusively on the Y (luminance) channel regardless of this setting.
+
+---
+
+### Switch 10 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** flips the output luminance. With Invert **On**, highlights become shadows and shadows become highlights: equivalent to viewing the relief from behind the surface or reversing the light source direction.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) signal and the wet (Emboss-processed) signal. At partial values, the emboss effect blends with the original video, which can create a detail-enhanced look: the edges from the emboss add subtle dimensional cues to the original image.
 
 ---
 
 ## Background
 
-### Bas-Relief Sculpture
+### Bas-relief and embossing
 
-The technique that Emboss emulates has roots stretching back thousands of years. **Bas-relief** (from the Italian *basso-rilievo*, "low relief") is a sculptural method where figures project slightly from a flat background. Unlike freestanding sculpture, bas-relief relies entirely on the way a single light source rakes across the surface to reveal form. The shadows cast by the raised portions create the perception of depth. Ancient Egyptian temple walls, Greek friezes, and Renaissance architectural ornament all exploit this principle. Emboss translates the same idea into the pixel domain: spatial gradients become the raised surface, and the light angle control determines where the virtual illumination falls.
+***Bas-relief*** (from the Italian ***basso-rilievo***, "low relief") is a sculptural technique where figures project slightly from a flat background. Unlike full three-dimensional sculpture, the depth is compressed: everything exists within a shallow layer. This compression makes bas-relief ideal for representing complex scenes on flat surfaces: coins, architectural friezes, and decorative metalwork. Digital embossing mimics this by extracting the edge information from an image and presenting it as a shallow surface lit from a single direction.
 
-### Embossing in Printing and Manufacturing
+### Spatial gradients and edge detection
 
-In commercial printing and packaging, **embossing** is the process of creating a raised image on paper or card stock using matched male and female dies. A related technique, **debossing**, pushes the image *into* the surface rather than raising it. The Style toggle (Raised/Carved) in Emboss mirrors this distinction exactly — the Carved position negates the gradient combination, reversing which edges receive highlights versus shadows. Blind embossing (without ink) relies entirely on the play of ambient light across the raised surface, just as the Gray color mode strips chroma and presents the relief as pure luminance.
+The mathematical foundation of embossing is the ***spatial gradient***: the rate of change of brightness across space. The horizontal gradient measures how brightness changes from left to right (computed by subtracting the previous pixel). The vertical gradient measures top-to-bottom change (computed by subtracting the previous scanline stored in a BRAM line buffer). These two gradients define a surface normal at each pixel: the direction the surface "faces." Combining them with a light direction vector determines whether each point is lit (highlight) or shadowed.
 
-### Sobel and Prewitt Edge Detection
+### The eight light directions
 
-Emboss's gradient computation is closely related to classical edge detection kernels used in image processing. The **Sobel operator** convolves a 3×3 kernel with the image to estimate horizontal and vertical derivatives, weighting the center row/column more heavily. The **Prewitt operator** uses equal weights. Emboss simplifies this to a minimal 1×2 kernel in each direction: the horizontal gradient is simply *current pixel minus previous pixel*, and the vertical gradient is *current pixel minus previous line*. This minimal kernel is computationally cheap (a single subtraction per axis) and fits naturally into the FPGA's scanline-sequential processing model, where a one-pixel register delay and a one-line BRAM buffer are all that are needed. The resulting gradients capture the same directional edge information as larger kernels, with slightly more sensitivity to noise.
+Traditional 2D emboss filters combine horizontal and vertical gradients in fixed proportions. Emboss extends this by offering eight selectable light positions: the four cardinal directions (North, South, East, West) and four diagonals (NE, SE, SW, NW). Each direction uses a specific sign combination of the H and V gradients:
 
-### Directional Lighting in 3D Graphics
-
-In real-time 3D rendering, the appearance of a surface under illumination is computed from the **dot product** of the surface normal and the light direction vector. For a heightfield (a 2D surface where each pixel represents a height), the surface normal at any point can be approximated from the horizontal and vertical gradients of the height values. Emboss uses exactly this principle: the Y channel acts as a heightfield, the two gradients approximate the surface normal, and the light angle control rotates the virtual light source around the compass. The eight selectable directions (E, SE, S, SW, W, NW, N, NE) correspond to the eight combinations of positive, negative, and zero contributions from each gradient axis — a discrete approximation of a continuously rotating dot product.
-
-### Metallic Surface Rendering
-
-The Metal Tint control adds a luminance-dependent color shift to the source chroma, mimicking the way metallic surfaces reflect colored light. In physical metallurgy, the color of a metal surface depends on which wavelengths its free electrons absorb and re-emit. Gold absorbs blue, copper absorbs green and blue, and steel reflects nearly equally. The Metal Tint effect approximates this by using the embossed luminance to modulate the U and V channels in opposite directions — brighter areas shift toward one hue while darker areas shift toward the complementary hue, creating the iridescent color variation seen on brushed or anodized metal surfaces.
+- **East** (+H): highlights on right-facing edges
+- **West** (−H): highlights on left-facing edges
+- **South** (+V): highlights on downward-facing edges
+- **North** (−V): highlights on upward-facing edges
+- **Diagonals**: Average of two adjacent cardinal gradients
 
 
 ---
 
 ## Signal Flow
 
-Y Channel → U/V Channels → Wet/Dry Mix → Sync Delay → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 1. Input Register         (latch current Y, U, V)
-│   ├─ 2. Horizontal Gradient    (current Y − previous pixel Y)
-│   ├─ 3. Vertical Gradient      (current Y − previous line Y via BRAM)
-│   ├─ 4. Direction Select       (8-way mux: pot upper 3 bits → sign combo of H/V)
-│   ├─ 5. Style Negate           (carved: negate combined gradient)
-│   ├─ 6. Depth Multiply         (combined × depth pot, scaled)
-│   ├─ 7. Sharpen Add            (add edge-boost: combined × sharpen pot)
-│   ├─ 8. Bias Add               (DC offset: emboss + bias pot)
-│   ├─ 9. Contrast Expand        (stretch around mid-gray: (val−512) × k + 512)
-│   ├─ 10. Invert                (optional: 1023 − result)
-│   └─ 11. Clamp                 (0–1023)
-│
-├── U/V Channels ───────────────────────────────────────────────
-│   │
-│   ├─ A. Gray Mode              (U=512, V=512 — neutral gray)
-│   └─ B. Source Color Mode
-│       ├─ Metal Tint             (luminance-dependent U/V shift)
-│       └─ Clamp                  (0–1023)
-│
-├── Wet/Dry Mix ────────────────────────────────────────────────
-│   └─ 3× interpolator_u         (mix fader crossfades Y, U, V)
-│
-├── Sync Delay ─────────────────────────────────────────────────
-│   └─ 8-clock pipeline delay    (hsync, vsync, field, data)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The gradient computation uses a single pixel delay for horizontal comparison and a single BRAM line buffer for vertical comparison. This makes the gradients first-order (Sobel-like with a 1-pixel kernel), which gives clean, one-pixel-wide edge transitions. The directional combine selects from eight pre-defined gradient combinations using the three MSBs of the Light Ang pot, providing 45° angular resolution. The depth scaling is a signed multiply, and the bias offset is added afterward, so the bias does not affect the gradient amplitude (it only shifts the DC level.)
 
-The critical architectural detail is that gradients are computed only on the Y (luminance) channel. The horizontal gradient uses a single register delay — one clock cycle stores the previous pixel, and the subtraction yields the horizontal slope. The vertical gradient uses a BRAM-based line buffer that stores the entire previous scanline's Y values, allowing a per-pixel subtraction between the current and previous lines. These two gradients are combined through an 8-way multiplexer controlled by the upper three bits of the Light Angle pot, which selects cardinal and diagonal compass directions by choosing sign combinations and half-amplitude scaling of the H and V gradients.
-
-After direction selection, the combined gradient passes through depth scaling (multiplication by the Depth pot), optional sharpening (additive edge boost), bias offset (DC level shift to make the emboss visible against a neutral background), and contrast expansion (gain around mid-gray). The U/V path is separate and simpler — in Gray mode, chroma is replaced with neutral 512; in Source Color mode, the original chroma is preserved with an optional metallic tint that shifts U and V in opposite directions proportional to the source luminance.
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={emboss_control_panel} alt="Videomancer front panel with Emboss loaded"/>
-*Videomancer's front panel with Emboss active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises progress from a basic stone-carved relief to a metallic color emboss.
+### Exercise 1: Stone Relief
 
-### Rotary Potentiometers (Knobs 1–6)
+![Stone Relief result](/img/instruments/videomancer/emboss/emboss_ex1_s1.png)
+*Stone Relief — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Depth
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-At 0%, the gradient is fully attenuated and the output is determined entirely by the bias and contrast settings — effectively a flat gray field. As Depth increases, edges in the source image produce progressively stronger highlights and shadows in the output. At maximum, even subtle gradients in the source are amplified into strong relief, and the effect transitions from a gentle surface texture to a high-contrast edge detector. Internally, controls the amplitude of the emboss effect by scaling the combined directional gradient before it is added to the bias level.
+#### Learning Outcomes
 
----
+A classic gray stone relief with Southeast lighting: the most familiar emboss look, like a carved architectural panel.
 
-#### Knob 2 — Light Ang
-| Property | Value |
-|----------|-------|
-| Range | 0deg – 360deg |
-| Default | 90deg |
-| Suffix | deg |
+#### Key Concepts
 
-Selects the virtual light source direction from eight compass points. The pot's upper three bits map to East (0), Southeast (1), South (2), Southwest (3), West (4), Northwest (5), North (6), and Northeast (7). Each direction determines the sign combination of the horizontal and vertical gradients: East uses only the horizontal gradient with positive sign, South uses only the vertical gradient, and diagonal directions average both gradients with appropriate signs. Rotating through the eight positions changes which side of each edge receives the highlight and which receives the shadow, creating the appearance of the light source orbiting the embossed surface.
+- Bias sets the surface's neutral brightness
+- Depth amplifies edge gradients
+- Southeast lighting is the most natural for Western eyes (light from upper-left)
 
----
+#### Video Source
 
-#### Knob 3 — Bias
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+A portrait, text, or any image with clear edges. High-contrast subjects with distinct outlines produce the most readable relief.
 
-At 0%, the bias is zero and the emboss output is centered around black — only positive gradients are visible. At the default 50% (register value 512), the bias places the neutral surface at mid-gray, allowing both highlights (above mid-gray) and shadows (below mid-gray) to be visible. At 100%, the neutral surface is near white and only negative gradients (shadows) appear as darker-than-white regions. The bias acts as a virtual surface color for the embossed relief. Internally, sets the DC offset added to the emboss gradient before output.
+#### Steps
 
----
+1. Set **Color** (Switch 8) to Gray for monochrome output.
+2. Set **Light Ang** (Knob 2) to about 25% (approximately Southeast).
+3. Set **Depth** (Knob 1) to about 50%.
+4. Set **Bias** (Knob 3) to 50% (mid-gray neutral surface).
+5. Set **Contrast** (Knob 6) to about 60% for slightly enhanced depth.
+6. Observe edges appearing as light/shadow pairs (the image looks carved into stone.)
 
-#### Knob 4 — Sharpen
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
+#### Settings
 
-Adds an edge-sharpening component to the emboss output by mixing a portion of the raw gradient magnitude back into the depth-scaled signal. At 0%, no sharpening is applied and the relief is smooth. As Sharpen increases, edges become more pronounced and the transition between highlight and shadow grows steeper. At high values, Sharpen effectively doubles the edge response, making fine details in the source more visible in the embossed output. This interacts with Depth — both amplify edges, but Depth scales the directional gradient while Sharpen adds an omnidirectional edge boost.
-
----
-
-#### Knob 5 — Metal Tnt
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
-
-Controls a luminance-dependent color shift applied when the Color toggle is set to Source. The Metal Tint value is divided by four to produce a tinting coefficient, which is then multiplied by the source luminance value. The resulting product is added to the U channel and subtracted from the V channel, creating complementary hue shifts in bright versus dark areas. At 0%, source chroma passes through unmodified. At higher values, the embossed surface develops an iridescent, anodized-metal quality where highlights and shadows take on different hues. Metal Tint has no effect in Gray mode because the chroma channels are replaced with neutral 512.
+| Control | Value |
+|---------|-------|
+| Depth | ~50% |
+| Light Ang | ~25% |
+| Bias | ~50% |
+| Sharpen | ~0% |
+| Metal Tnt | ~0% |
+| Contrast | ~60% |
+| Style | Raised |
+| Color | Gray |
+| Channel | Y Only |
+| Invert | Off |
+| Bypass | Off |
+| Mix | ~100% |
 
 ---
 
-#### Knob 6 — Contrast
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+### Exercise 2: Metallic Color Surface
 
-Applies a gain around middle gray to the embossed output. The contrast coefficient is computed as half the pot value plus 256 (giving a range of 256 to 767 from a neutral multiplier of 512). The embossed signal is offset to center it around zero, multiplied by this coefficient, then shifted back. At the default 50% (register 512), contrast is unity and the emboss appears as computed. Below 50%, the relief is softened — highlights and shadows compress toward mid-gray. Above 50%, the relief is exaggerated — subtle emboss textures are stretched into starker highlight/shadow pairs. Extreme settings clip the output, producing binary black-and-white edge maps.
+![Metallic Color Surface result](/img/instruments/videomancer/emboss/emboss_ex2_s1.png)
+*Metallic Color Surface — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-### Toggle Switches (Switches 7–11)
+#### Learning Outcomes
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Style** | Raised | Carved |
-| **8 — Color** | Gray | Source |
-| **9 — Channel** | Y Only | YUV |
-| **10 — Invert** | Off | On |
-| **11 — Bypass** | Off | On |
+A polished metal surface with warm color tinting: like a bronze relief panel where the original colors shimmer through the metallic surface.
 
-Switches 7–11 configure independent qualitative aspects of the emboss effect. Style (Raised/Carved) reverses the gradient polarity, flipping the apparent direction of the relief. Color (Gray/Source) determines whether the output is monochrome relief or carries the original video's chroma information. Channel (Y Only/YUV) controls whether the emboss processing extends to chroma channels. Invert reverses the final luminance polarity. Bypass routes the input directly to the output for A/B comparison.
+#### Key Concepts
 
----
+- Source color preserves the original chromatic information
+- Metal Tnt adds a warm, brightness-dependent cast
+- High contrast with partial mix creates a detail-enhanced look
 
-### Linear Potentiometer (Fader 12)
+#### Video Source
 
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
+Video with visible color: landscapes, paint, fabric. The metallic tint interacts most dramatically with saturated sources.
 
-Crossfades between the original (dry) signal and the embossed (wet) signal using three parallel interpolators — one each for Y, U, and V. At 0% (register 0), the output is entirely the original input. At 100% (register 1023, the default), the output is entirely the embossed result. Intermediate values produce a blend where the emboss texture is partially visible over the original image. This is particularly useful for subtle surface texturing: a low mix value overlays a gentle relief onto the source video without losing the original detail.
+#### Steps
 
+1. Set **Color** to Source to preserve the original chroma.
+2. Set **Depth** to about 40% and **Light Ang** to about 35% (approximately South-Southwest).
+3. Set **Metal Tnt** (Knob 5) to about 60%. A warm metallic cast appears, stronger in highlights.
+4. Set **Sharpen** (Knob 4) to about 30% for enhanced edge detail.
+5. Reduce **Mix** to about 40%. The emboss blends with the original video, adding dimensional detail without losing the original image.
 
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
+#### Settings
 
-Routes the unprocessed input signal directly to the output, bypassing all Emboss processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises progress from basic directional emboss to complex metallic surface textures. Each builds familiarity with a different part of the processing chain.
-
-### Exercise 1: Sculptural Relief
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: emboss_source1_boat, after: emboss_ex1_s1 },
-    { label: "Parrot", before: emboss_source2_parrot, after: emboss_ex1_s2 },
-    { label: "Collage", before: emboss_source3_collage, after: emboss_ex1_s3 },
-    { label: "Pattern", before: emboss_source4_pattern, after: emboss_ex1_s4 },
-    { label: "Woman", before: emboss_source5_woman, after: emboss_ex1_s5 },
-    { label: "Knit", before: emboss_source6_knit, after: emboss_ex1_s6 },
-  ]}
-/>
-*Sculptural Relief — simulated result across source images.*
-**Source**: A portrait or face with strong contours and varied skin tones.
-
-**What You'll Create**: Learn how Depth, Light Angle, and Bias interact to create a convincing bas-relief.
-
-1. **Basic relief**: Set Depth to ~50%. A subtle emboss appears — edges gain highlight/shadow pairs.
-2. **Rotate the light**: Slowly sweep Light Angle through all eight positions. Watch how the virtual illumination orbits the subject, revealing different contours at each angle.
-3. **Adjust bias**: Sweep Bias from 0% to 100%. At low bias, only highlights are visible against black. At 50% (default), the relief sits on mid-gray. At high bias, only shadows are visible against white.
-4. **Raised vs Carved**: Toggle Style. The face alternates between appearing to project outward (Raised) and being pressed into the surface (Carved).
-5. **Contrast sculpt**: Increase Contrast above 50% to exaggerate the relief. The subject should look like a coin or medallion.
-
-**Key concepts**: Emboss computes directional gradients, Light Angle selects which edges receive highlights, Bias sets the neutral surface level, Style reverses the relief polarity
+| Control | Value |
+|---------|-------|
+| Depth | ~40% |
+| Light Ang | ~35% |
+| Bias | ~50% |
+| Sharpen | ~30% |
+| Metal Tnt | ~60% |
+| Contrast | ~50% |
+| Style | Raised |
+| Color | Source |
+| Channel | Y Only |
+| Invert | Off |
+| Bypass | Off |
+| Mix | ~40% |
 
 ---
 
-### Exercise 2: Metallic Color Emboss
+### Exercise 3: Inverted Intaglio
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: emboss_source1_boat, after: emboss_ex2_s1 },
-    { label: "Parrot", before: emboss_source2_parrot, after: emboss_ex2_s2 },
-    { label: "Collage", before: emboss_source3_collage, after: emboss_ex2_s3 },
-    { label: "Pattern", before: emboss_source4_pattern, after: emboss_ex2_s4 },
-    { label: "Woman", before: emboss_source5_woman, after: emboss_ex2_s5 },
-    { label: "Knit", before: emboss_source6_knit, after: emboss_ex2_s6 },
-  ]}
-/>
-*Metallic Color Emboss — simulated result across source images.*
-**Source**: A brightly colored scene — flowers, painted surfaces, or color bars.
+![Inverted Intaglio result](/img/instruments/videomancer/emboss/emboss_ex3_s1.png)
+*Inverted Intaglio — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore Source color mode and Metallic Tint for iridescent surfaces.
+***A description of the exercise illustration.***
 
-1. **Color relief**: Set Color to Source. The embossed relief now carries the original video's hue and saturation — edges are colored rather than monochrome.
-2. **Metal surface**: Increase Metal Tint from 0% toward ~60%. Watch the color shift — bright areas and dark areas take on complementary hues, mimicking anodized metal.
-3. **Light direction**: Set Light Angle to a diagonal (SE or NW) for the strongest sense of three-dimensionality with colored edges.
-4. **Sharpen detail**: Add ~30% Sharpen. Fine textures in the source become more visible in the relief.
-5. **Partial mix**: Lower Mix to ~40%. The metallic emboss blends with the original color image, creating a subtle hammered-metal overlay.
+#### Learning Outcomes
 
-**Key concepts**: Source color mode preserves original chroma, Metal Tint creates luminance-dependent hue shifts, partial mix blends emboss with original
+An intaglio engraving where the image appears cut into the surface rather than raised above it (like a printing plate or carved seal.)
 
----
+#### Key Concepts
 
-### Exercise 3: Edge Map Key Source
+- Carved style reverses the relief direction
+- Invert swaps highlights and shadows
+- Combining Carved + Invert creates a double-reversed look
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: emboss_source1_boat, after: emboss_ex3_s1 },
-    { label: "Parrot", before: emboss_source2_parrot, after: emboss_ex3_s2 },
-    { label: "Collage", before: emboss_source3_collage, after: emboss_ex3_s3 },
-    { label: "Pattern", before: emboss_source4_pattern, after: emboss_ex3_s4 },
-    { label: "Woman", before: emboss_source5_woman, after: emboss_ex3_s5 },
-    { label: "Knit", before: emboss_source6_knit, after: emboss_ex3_s6 },
-  ]}
-/>
-*Edge Map Key Source — simulated result across source images.*
-**Source**: High-contrast footage — silhouettes, text overlays, or architectural elements with strong edges.
+#### Video Source
 
-**What You'll Create**: Push Emboss into a high-contrast edge detector suitable as a key or mask source.
+High-contrast subject with bold shapes: text, logos, or strong geometric patterns work well for an intaglio look.
 
-1. **Maximum depth**: Set Depth to 100%. Only the strongest gradients in the source should produce visible output.
-2. **Maximum contrast**: Set Contrast to 100%. The mid-range values collapse, leaving predominantly black and white.
-3. **Set bias to center**: Keep Bias at ~50% to center the edge map around mid-gray before the contrast expansion clips it.
-4. **Sharpen for detail**: Add ~60% Sharpen to bring up fine lines.
-5. **Invert for polarity**: Toggle Invert to choose whether edges appear as white-on-black or black-on-white.
-6. **Gray mode**: Keep Color on Gray for a clean monochrome edge map without chroma artifacts.
-7. **Compare directions**: Step through Light Angle positions. Each direction emphasizes different edge orientations — East/West highlight vertical edges, North/South highlight horizontal edges.
+#### Steps
 
-**Key concepts**: High Depth + high Contrast converts Emboss into an edge detector, Light Angle selects edge orientation sensitivity, Invert controls edge polarity
+1. Set **Style** (Switch 7) to Carved. The gradient is negated (previously raised areas become cut-in.)
+2. Set **Depth** to about 70% for a deep carving.
+3. Set **Bias** to about 55% (slightly brighter surface).
+4. Set **Contrast** (Knob 6) to about 75% for dramatic depth.
+5. Enable **Invert** (Switch 10). The highlight/shadow relationship inverts again: the combination of Carved + Invert creates a unique double-reversal that can look like a photographic print from an engraving plate.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Depth | ~70% |
+| Light Ang | ~25% |
+| Bias | ~55% |
+| Sharpen | ~0% |
+| Metal Tnt | ~0% |
+| Contrast | ~75% |
+| Style | Carved |
+| Color | Gray |
+| Channel | Y Only |
+| Invert | On |
+| Bypass | Off |
+| Mix | ~100% |
 
 ---
-
-
-## Tips
-
-- **Sharpen fills in fine detail**: The base emboss can miss fine textures because the 1-pixel and 1-line gradient kernels are small. Sharpen boosts these fine edges back into visibility within the relief.
-- **Contrast as a threshold**: At extreme Contrast settings, the emboss becomes a binary edge map. Route this to another module as a key source for selective processing.
-- **Metal Tint for warmth**: Even a small Metal Tint value (10–20%) adds warmth and visual interest to Source color mode, breaking the monotony of a uniform emboss tint.
-- **Carved + dark bias = intaglio print**: Setting Style to Carved with Bias below 50% produces the look of a copperplate intaglio engraving — dark lines etched into a dark surface with only the deepest cuts catching light.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Bas-Relief** | A sculptural technique where figures project slightly from a flat background, creating the illusion of depth through light and shadow. |
-| **Bias** | A DC offset added to a signal to shift its operating point; in Emboss, the neutral surface brightness level. |
-| **Deboss** | The opposite of emboss; pressing a design into a surface rather than raising it above the surface. |
-| **Dot Product** | A mathematical operation that projects one vector onto another; used in lighting calculations to determine surface brightness. |
-| **Gradient** | The rate of change of a value across space; in image processing, the difference between adjacent pixel values. |
-| **Heightfield** | A 2D representation of a 3D surface where pixel brightness represents height above a base plane. |
-| **Intaglio** | A printmaking technique where the image is incised into a surface and ink is held in the grooves. |
-| **Line Buffer** | A BRAM-based memory storing one complete scanline of pixel data, enabling vertical comparisons between adjacent lines. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
-| **Sobel Operator** | A 3×3 convolution kernel used in image processing to compute horizontal and vertical gradient approximations for edge detection. |
-| **Surface Normal** | A vector perpendicular to a surface at a given point, used in lighting calculations to determine the angle of incidence. |
+- **Bas-Relief**: A sculptural technique where figures project slightly from a flat background (the visual effect Emboss simulates.)
+
+- **Gradient**: The rate of change of a value across space. Horizontal gradient compares left-to-right; vertical gradient compares top-to-bottom.
+
+- **Intaglio**: The opposite of relief: an image cut into a surface rather than raised above it, used in printmaking and seal carving.
+
+- **Light Direction**: The virtual angle from which the embossed surface is illuminated, determining which edges appear as highlights and which as shadows.
+
+- **Line Buffer**: A BRAM memory storing the previous scanline's Y values for vertical gradient computation.
+
+- **Spatial Frequency**: How rapidly brightness changes across the image: high spatial frequencies (fine detail) produce the strongest gradients.
 
 ---

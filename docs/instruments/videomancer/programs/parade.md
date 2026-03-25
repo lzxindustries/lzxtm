@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 215
 slug: /instruments/videomancer/parade
@@ -7,367 +7,412 @@ image: /img/instruments/videomancer/parade/parade_hero_s1.png
 description: "Before digital scopes and vectorscopes, broadcast engineers relied on cathode-ray tube waveform monitors to see inside the video signal."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import parade_control_panel from '/img/instruments/videomancer/parade/parade_control_panel.png';
-import parade_source1_dog from '/img/instruments/videomancer/parade/parade_source1_dog.png';
-import parade_source2_parrot from '/img/instruments/videomancer/parade/parade_source2_parrot.png';
-import parade_source3_elephant from '/img/instruments/videomancer/parade/parade_source3_elephant.png';
-import parade_source4_pattern from '/img/instruments/videomancer/parade/parade_source4_pattern.png';
-import parade_source5_girl from '/img/instruments/videomancer/parade/parade_source5_girl.png';
-import parade_source6_knit from '/img/instruments/videomancer/parade/parade_source6_knit.png';
-import parade_hero_s1 from '/img/instruments/videomancer/parade/parade_hero_s1.png';
-import parade_hero_s2 from '/img/instruments/videomancer/parade/parade_hero_s2.png';
-import parade_hero_s3 from '/img/instruments/videomancer/parade/parade_hero_s3.png';
-import parade_hero_s4 from '/img/instruments/videomancer/parade/parade_hero_s4.png';
-import parade_hero_s5 from '/img/instruments/videomancer/parade/parade_hero_s5.png';
-import parade_hero_s6 from '/img/instruments/videomancer/parade/parade_hero_s6.png';
-import parade_ex1_s1 from '/img/instruments/videomancer/parade/parade_ex1_s1.png';
-import parade_ex1_s2 from '/img/instruments/videomancer/parade/parade_ex1_s2.png';
-import parade_ex1_s3 from '/img/instruments/videomancer/parade/parade_ex1_s3.png';
-import parade_ex1_s4 from '/img/instruments/videomancer/parade/parade_ex1_s4.png';
-import parade_ex1_s5 from '/img/instruments/videomancer/parade/parade_ex1_s5.png';
-import parade_ex1_s6 from '/img/instruments/videomancer/parade/parade_ex1_s6.png';
-import parade_ex2_s1 from '/img/instruments/videomancer/parade/parade_ex2_s1.png';
-import parade_ex2_s2 from '/img/instruments/videomancer/parade/parade_ex2_s2.png';
-import parade_ex2_s3 from '/img/instruments/videomancer/parade/parade_ex2_s3.png';
-import parade_ex2_s4 from '/img/instruments/videomancer/parade/parade_ex2_s4.png';
-import parade_ex2_s5 from '/img/instruments/videomancer/parade/parade_ex2_s5.png';
-import parade_ex2_s6 from '/img/instruments/videomancer/parade/parade_ex2_s6.png';
-import parade_ex3_s1 from '/img/instruments/videomancer/parade/parade_ex3_s1.png';
-import parade_ex3_s2 from '/img/instruments/videomancer/parade/parade_ex3_s2.png';
-import parade_ex3_s3 from '/img/instruments/videomancer/parade/parade_ex3_s3.png';
-import parade_ex3_s4 from '/img/instruments/videomancer/parade/parade_ex3_s4.png';
-import parade_ex3_s5 from '/img/instruments/videomancer/parade/parade_ex3_s5.png';
-import parade_ex3_s6 from '/img/instruments/videomancer/parade/parade_ex3_s6.png';
-
-# Parade
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: parade_source1_dog, after: parade_hero_s1 },
-    { label: "Parrot", before: parade_source2_parrot, after: parade_hero_s2 },
-    { label: "Elephant", before: parade_source3_elephant, after: parade_hero_s3 },
-    { label: "Pattern", before: parade_source4_pattern, after: parade_hero_s4 },
-    { label: "Girl", before: parade_source5_girl, after: parade_hero_s5 },
-    { label: "Knit", before: parade_source6_knit, after: parade_hero_s6 },
-  ]}
-/>
-*Parade rendering a three-column waveform monitor over live video, with green phosphor traces mapping the Y, U, and V channel levels across every scanline.*
+![Parade hero image](/img/instruments/videomancer/parade/parade_hero_s1.png)
+*Parade rendering three side-by-side waveform columns from a color video signal, tracing Y, U, and V channel amplitudes as glowing green phosphor traces against a dark background.*
 
 ---
 
 ## Overview
 
-Before digital scopes and vectorscopes, broadcast engineers relied on cathode-ray tube waveform monitors to see inside the video signal. A phosphor trace painted the instantaneous voltage of each scanline as a vertical dot — low values near the bottom of the screen, high values near the top — producing a luminous curtain of dots whose shape revealed the tonal and color structure of the picture at a glance. Parade brings that tradition into the Videomancer processing pipeline.
+Parade turns your Videomancer into a broadcast-grade waveform monitor. It captures each line of incoming video and redraws it as a luminous dot graph: the brightness and color values of every pixel become vertical positions on screen, rendered as glowing traces that rise and fall like a city skyline viewed through an oscilloscope. Three columns march side by side: luminance on the left, blue-difference chrominance in the center, red-difference chrominance on the right: giving you a complete X-ray of the signal's anatomy.
 
-The program captures one full scanline of Y, U, and V channel values into three BRAM line buffers. On the next frame, for each horizontal position in each column, the stored channel value is mapped to a vertical screen position and compared against the current vertical scan coordinate. Where the two match within a configurable persistence threshold, a bright dot is drawn in the selected phosphor color. The result is three side-by-side waveform traces — the classic parade display — that update every scanline. Four display modes (Parade, Overlay, RGB, Luma), four phosphor colors (Green, Amber, Blue, White), optional graticule grid lines at 10% / 50% / 90% levels, and a gain control with eight discrete magnification steps give the user a full-featured monitoring tool that can overlay the source video or replace it entirely.
+But Parade is more than a measurement tool. With adjustable phosphor persistence, selectable trace colors, and a wet/dry mix fader, the waveform display itself becomes a visual instrument. Overlay the traces on top of the source video for heads-up monitoring, or push intensity and persistence to extremes and let the glowing dot-graphs become abstract neon landscapes. Parade bridges the gap between cold analysis and warm aesthetics (a spell that reveals the hidden skeleton of light.)
 
-The name *Parade* references the broadcast engineering term for the side-by-side arrangement of channel waveforms. In a standard parade display, each component of the color space gets its own column so that levels, clipping, and color balance can be evaluated independently — exactly what this program provides.
+:::tip
+Parade is equally at home in a technical calibration session and in a live visual performance. Use it to check levels, then leave it running as a visual element in its own right.
+:::
+
+### What's In a Name?
+
+In broadcast engineering, a ***parade display*** is a standard waveform monitor layout that arranges color channels side by side in a marching formation: like soldiers on parade, lined up for inspection. Each column shows one component of the video signal, allowing the engineer to compare their amplitudes at a glance. The name captures both the orderly arrangement and the sense of presentation: the signal's inner structure, put on display for all to see.
 
 ---
 
 ## Quick Start
 
-1. **Green phosphor for authenticity**: The P31 green preset matches the classic Tektronix waveform monitor look. Combine with high persistence for maximum CRT nostalgia.
-2. **Low persistence for precision**: When reading exact signal levels, reduce Persist to near-zero for thin, precise traces. Each pixel corresponds to a single signal value.
-3. **Gain zoom for noise analysis**: At 4× gain, sensor noise and quantization artifacts in the source become clearly visible as jittering dot clusters — useful for evaluating camera quality.
+1. Feed a video signal into Videomancer and select **Parade**. You'll see three vertical columns of glowing dots: these trace the Y, U, and V values of each pixel along the scan line.
+2. Turn **Intensity** (Knob 1) clockwise to brighten the dot traces. The waveform becomes vivid and easy to read.
+3. Increase **Persist** (Knob 2) to thicken the traces vertically. The dots spread into fat bands, creating a phosphor-glow look reminiscent of a vintage CRT oscilloscope.
+4. Flip the **Graticule** switch (Switch 9) to **On**. Three faint horizontal reference lines appear at 10%, 50%, and 90% of the signal range, helping you gauge levels at a glance.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Parade loaded](/img/instruments/videomancer/parade/parade_control_panel.png)
+*Videomancer's front panel with Parade active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Intensity
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Intensity** controls the brightness of the waveform dots. At 0%, the trace dots are dark and nearly invisible against the background. As you turn the knob clockwise, the dots grow brighter, making the waveform easier to read. At 100%, the dots are at full brightness (a vivid, saturated trace that leaps off the screen.)
+
+Intensity does not change the shape or position of the waveform. It only controls how bright the dot pixels are rendered, similar to the beam intensity knob on a traditional oscilloscope.
+
+---
+
+### Knob 2 — Persist
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Persist** controls the vertical thickness of each waveform dot, simulating the phosphor persistence of an analog CRT display. At 0%, each dot is a single pixel tall: a thin, precise trace. As you increase Persist, each dot spreads vertically, producing thicker bands of light. At 100%, the spread reaches its maximum, and the trace becomes a wide, glowing ribbon.
+
+:::tip
+Higher persistence values create a softer, more organic look that's useful as a visual effect. Lower values give a sharp, technical trace ideal for accurate signal reading.
+:::
+
+---
+
+### Knob 3 — Gain
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Gain** controls the vertical scaling of the waveform, similar to the volts-per-division setting on an oscilloscope. At 0%, the waveform is compressed to a narrow band around the center line: signal variations are barely visible. At moderate settings, the waveform fills the vertical space naturally. At 100%, the waveform is magnified to four times its natural height, stretching peaks and valleys far beyond the screen edges.
+
+The gain scaling uses eight discrete steps (0.125×, 0.25×, 0.5×, 1×, 1.5×, 2×, 3×, 4×) selected by the top three bits of the knob position. This gives you oscilloscope-style zoom levels rather than a smooth linear sweep.
+
+:::note
+At high gain settings, signal peaks that exceed the screen boundaries are clipped. This is normal: it's how real oscilloscopes behave when the V/div is set too high.
+:::
+
+---
+
+### Knob 4 — Grat Opac
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Grat Opac** controls the brightness of the ***graticule***, the set of horizontal reference lines overlaid on the waveform display. At 0%, the graticule lines are invisible even when enabled. As you increase the value, the lines brighten, becoming thin gray markers at 10%, 50%, and 90% of the signal range. At 100%, the graticule lines are at their brightest.
+
+This control has no effect unless the **Graticule** switch (Switch 9) is set to **On**.
+
+---
+
+### Knob 5 — Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 360° |
+| Default | 0° |
+
+**Hue** is intended to rotate the color of the phosphor trace through 360 degrees of hue. In the current firmware, the phosphor color is selected by the **Phosphor** toggle (Switch 8) rather than this continuous knob. Adjusting Hue has no visible effect in this version.
+
+---
+
+### Knob 6 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Brightness** controls the luminance of the background behind the waveform traces. At 0%, the background is completely black, giving maximum contrast against the glowing dots. As you increase Brightness, the background lightens to a dim gray. At 100%, the background reaches its brightest level, reducing the contrast between the trace and the background.
+
+When **Over Video** (Switch 10) is enabled, the source video replaces the flat background, and Brightness has no visible effect.
+
+---
+
+### Switch 7 — Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Parade |
+| On | Luma |
+| Default | Parade |
+
+**Mode** selects the display layout. In the **Parade** position, the screen is divided into three equal columns, each rendering one video component: Y (luminance) on the left, U (blue-difference chrominance) in the center, and V (red-difference chrominance) on the right. The **Luma** position is intended for a single full-width luminance display.
+
+---
+
+### Switch 8 — Phosphor
+
+| Property | Value |
+|----------|-------|
+| Off | Green |
+| On | White |
+| Default | Green |
+
+**Phosphor** selects the color of the waveform trace, named after the phosphor coatings used in cathode ray tubes. In the **Green** position, the dots glow green with suppressed chroma: the classic oscilloscope look. In the **White** position, the dots are rendered as neutral white with no color tint, resembling a modern digital waveform monitor.
+
+---
+
+### Switch 9 — Graticule
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Graticule** enables or disables the horizontal reference lines overlaid on the waveform. When set to **On**, three thin lines appear at the 10%, 50%, and 90% levels of the signal range. These ***graticule*** lines serve as visual rulers, helping you judge whether a signal is clipping, centered, or within legal broadcast limits. When set to **Off**, the lines are hidden. Graticule brightness is controlled separately by **Grat Opac** (Knob 4).
+
+---
+
+### Switch 10 — Over Video
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Over Video** controls whether the original video signal is visible behind the waveform traces. When set to **Off**, the background is a flat dark field (controlled by **Brightness**, Knob 6). When set to **On**, the source video is rendered behind the waveform dots, creating a heads-up overlay where you can see both the image content and its signal analysis simultaneously.
+
+:::tip
+Over Video is especially useful during live performance: the audience sees the source material with luminous waveform traces dancing on top of it.
+:::
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all waveform rendering. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the waveform display and the clean source.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input signal and the wet (waveform display) output. At 0%, only the original video is visible: the waveform display is completely hidden. At 100%, only the waveform display is visible. Intermediate positions blend the two, allowing you to ghost the waveform over the source at any desired opacity.
+
+:::tip
+Mix provides a smoother alternative to the **Over Video** toggle. With Over Video off, sliding Mix to a midpoint lets the source video bleed through the dark waveform background as a subtle ghost image.
+:::
 
 ---
 
 ## Background
 
-### Waveform Monitors in Broadcast Engineering
+### Waveform monitors
 
-The waveform monitor is the oscilloscope of the video world. It displays the voltage of a video signal as a function of horizontal position within each scanline. Engineers use it to verify that peak white does not exceed the legal limit, that black level is properly set, and that the pedestal (setup level) is correct. In a parade configuration, the Y, U, and V components are shown side by side in three equal columns, making it easy to see whether the color components are balanced. Clipping in any channel is immediately visible as a trace that flattens against the top or bottom of the display.
+A ***waveform monitor*** is one of the most fundamental tools in video engineering. It plots the amplitude of a video signal as a vertical trace against horizontal time, producing a graph where height represents brightness. Every broadcast studio, post-production suite, and color grading room relies on waveform monitors to ensure video signals stay within legal levels and to diagnose problems invisible to the naked eye.
 
-### Phosphor Persistence and CRT Aesthetics
+The earliest waveform monitors were oscilloscopes repurposed for video work, displaying one scan line of analog voltage on a CRT screen. The phosphor coating of the CRT would glow briefly where the electron beam struck, producing a fading trace: the characteristic green glow that Parade recreates digitally.
 
-Early waveform monitors used long-persistence phosphors — P31 green for general monitoring, P7 amber for low-light broadcast trucks, P11 blue for photographic recording. The persistence allowed the trace to remain visible between sweeps, creating the characteristic glowing curtain effect. Parade simulates this by widening the dot-match threshold: higher persistence means each dot is drawn not as a single-pixel line but as a vertical smear, mimicking the slow decay of a long-persistence phosphor.
+### The parade display
 
-### Gain and Vertical Scale
+The ***parade display*** is a specific waveform layout that separates a composite or component video signal into its individual channels, displaying them side by side. For a YUV signal, this means three columns: Y (luminance), U (Cb, blue-difference chrominance), and V (Cr, red-difference chrominance). This arrangement makes it easy to compare channel amplitudes and spot imbalances.
 
-Professional waveform monitors offer selectable V/div settings that magnify the displayed waveform vertically. At unity gain (1×), a full-range signal fills the display. At 2× gain, the display zooms in on the center of the range, revealing fine detail in mid-tone transitions while clipping the extremes off-screen. Parade implements eight discrete gain levels using shift-based scaling — 0.125×, 0.25×, 0.5×, 1×, 1.5×, 2×, 3×, and 4× — allowing the user to examine narrow signal excursions at high magnification.
+In a parade display, each column resamples the full scan line. Every horizontal pixel position within a column maps back to a corresponding position in the original line, so the three waveforms are spatially aligned. You can look straight across the three columns to compare how a single feature in the image contributes to each channel.
 
-### Graticule Overlays
+### Phosphor persistence
 
-A graticule is the calibrated grid overlay on an oscilloscope or waveform monitor. In Parade, thin horizontal lines are drawn at the 10%, 50%, and 90% positions (lines 108, 540, and 972 of 1080) to provide reference markers. The graticule opacity is independently controllable, allowing it to be subtle or prominent.
+On a real CRT waveform monitor, the electron beam traces the waveform once per field. The ***phosphor*** coating on the screen face glows at the point of impact and then fades over a few milliseconds. This natural decay creates a soft, slightly blurred trace. Engineers chose phosphor compounds with different persistence characteristics depending on whether they needed a crisp single-trace readout or a longer-lasting afterglow for spotting intermittent events.
 
-### Line Buffers and Dot Rendering
+Parade simulates this with the **Persist** control. Increasing persistence widens the vertical spread of each dot, mimicking the glow of a slow-decay phosphor. The result is a thicker, fuzzier trace: aesthetically warmer and more organic, at the cost of reduced precision.
 
-The core of the display engine is a set of three dual-port BRAM line buffers (Y, U, V), each storing 2048 pixel values from the most recent scanline. During the subsequent frame, the stored value at each horizontal position is read, scaled by the gain setting, and mapped to a vertical screen coordinate. The current v_count is compared to the mapped coordinate; if the absolute distance is less than the persistence threshold, a dot is drawn at the phosphor color. This comparison runs for every pixel in every frame, producing the characteristic waveform curtain.
+### Graticule
+
+On a physical waveform monitor, the ***graticule*** is a set of calibrated lines etched or printed on a transparent overlay in front of the CRT screen. These lines mark key reference levels: typically 0%, 50%, and 100% of the signal range, plus markers for broadcast-legal limits. The graticule never changes; the trace moves behind it.
+
+Parade renders its graticule as thin horizontal lines at the 10%, 50%, and 90% levels. These serve as visual rulers for gauging signal amplitude: a well-exposed image should have its Y waveform spanning from near the bottom graticule to near the top, with peaks and valleys distributed across the range.
 
 
 ---
 
 ## Signal Flow
 
-Clock 1: Input Register → Clock 2: Address Compute → Clocks 3–4: BRAM Read → ... → Sync Signals → Output Mux
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Clock 1: Input Register + Counter Logic ─────────────────────
-│   ├─ h_count, v_count ← sync edge detection
-│   ├─ line_buffer_y.write(h_count, Y_in)
-│   ├─ line_buffer_u.write(h_count, U_in)
-│   └─ line_buffer_v.write(h_count, V_in)
-│
-├── Clock 2: Address Compute ────────────────────────────────────
-│   └─ rd_addr = remap h_count within column (×3 for parade)
-│
-├── Clocks 3–4: BRAM Read Latency (2 clocks) ───────────────────
-│   └─ stored_y, stored_u, stored_v ← line buffer read
-│
-├── Clock 5: Register BRAM Output ───────────────────────────────
-│   └─ Break critical path for next-stage multiply
-│
-├── Clock 6: Gain Scaling ───────────────────────────────────────
-│   ├─ abs_offset = |stored_ch - 512|
-│   ├─ scaled = abs_offset × gain_factor (shift-based, 8 levels)
-│   └─ mapped_pos = 540 ± scaled
-│
-├── Clock 7: Compare + Graticule ────────────────────────────────
-│   ├─ dot_hit = |v_count - mapped_pos| ≤ (1 + persist/32)
-│   ├─ col_sel = h_count column selection (Y/U/V)
-│   └─ grat_hit = graticule_en AND v_count ∈ {108, 540, 972}
-│
-├── Clock 8: Output Compose ─────────────────────────────────────
-│   ├─ dot_active → phosphor color (Green/Amber/Blue/White)
-│   ├─ grat_hit → graticule line (half grat_opacity, achromatic)
-│   ├─ over_video → pass-through source Y/U/V
-│   └─ else → dark background (brightness/4, achromatic)
-│
-├── Clocks 9–12: Interpolator (wet/dry Mix) ─────────────────────
-│   └─ lerp(dry, composed, mix_amount) per Y, U, V
-│
-├── Sync Signals ────────────────────────────────────────────────
-│   └─ 12-stage delay pipeline (hsync_n, vsync_n, field_n, YUV)
-│
-└── Output Mux ──────────────────────────────────────────────────
-    └─ bypass ? delayed_input : mix_result
-```
+The pipeline has two conceptually distinct paths that share the same line buffer memory. The ***write path*** captures incoming pixel values continuously during the active video period, storing one full scan line of Y, U, and V data into three dual-port BRAMs. The ***read path*** runs simultaneously, reading back stored values for each horizontal position and comparing them against the current vertical position to determine whether a dot should be drawn.
 
-The critical interaction is between the line buffer write path and the display render path. During each scanline, the current pixel values are written into the BRAM line buffers at the h_count address. Simultaneously, the read path fetches the *previously stored* line's values at a remapped address — in parade mode, each of the three 640-pixel columns maps its local position back to the full 1920-pixel line range via a ×3 multiplication. The gain stage then converts the 10-bit channel value to a 12-bit vertical screen position using shift-based discrete magnification levels, avoiding any hardware multiplier. The persistence threshold widens the dot match from a single-pixel hair to a configurable vertical smear, recreating the phosphor bloom of an analog CRT waveform monitor.
+The critical interaction is in the gain scaling stage: channel values are offset from the midpoint (512), scaled using shift-based discrete gain levels, and then mapped to vertical screen coordinates. The comparison stage checks whether the current scanline (`v_count`) falls within the persistence threshold of the mapped position: if so, a dot is lit. Graticule hits are evaluated in parallel: thin horizontal lines at pre-computed 10%, 50%, and 90% positions override the background but are themselves overridden by active dots. The composition priority is dot > graticule > over-video > dark background.
+
+:::note
+The 12-clock processing delay is matched by a sync delay pipeline that shifts hsync, vsync, field, and raw video data by the same number of clocks. This ensures the mixed output stays in perfect alignment with the video timing.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={parade_control_panel} alt="Videomancer front panel with Parade loaded"/>
-*Videomancer's front panel with Parade active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises progress from basic waveform reading to creative use of the parade display as a visual effect. Each builds on the previous, gradually exploring the aesthetic potential of what is traditionally a measurement tool.
+### Exercise 1: Reading the Waveform
 
-### Rotary Potentiometers (Knobs 1–6)
+![Reading the Waveform result](/img/instruments/videomancer/parade/parade_ex1_s1.png)
+*Reading the Waveform — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Intensity
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-At 0%, the dots are invisible — the display shows only the background and graticule. At 100%, the dots are drawn at maximum luminance in the selected phosphor color. This directly sets the Y value of dot pixels; the U and V components are determined by the phosphor color selection toggle. Internally, controls the brightness of the phosphor trace dots.
+#### Learning Outcomes
 
----
+Learn to read the parade display as a diagnostic tool, identifying signal levels and color channel balance.
 
-#### Knob 2 — Persist
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+#### Key Concepts
 
-At 0%, each dot is a single-pixel-high hairline. As you increase the control, the match threshold widens and each dot becomes a vertical smear — the trace thickens into a luminous band. At maximum, the smear reaches ±31 pixels, creating a soft, glowing curtain. This is the primary control for achieving the classic CRT waveform monitor aesthetic. Internally, controls the vertical thickness of each waveform dot, simulating the persistence of a CRT phosphor.
+- The waveform display plots signal amplitude vertically against horizontal position
+- Three columns show Y, U, and V channels independently
+- Graticule lines provide reference levels for signal amplitude
 
----
+#### Video Source
 
-#### Knob 3 — Gain
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+A live camera feed or recorded footage with a mix of bright highlights, mid-tones, and dark shadows (a face lit from one side works well.)
 
-Vertical gain control with eight discrete magnification levels selected by the top 3 bits of the register value: 0.125×, 0.25×, 0.5×, 1×, 1.5×, 2×, 3×, 4×. At unity (1×), a full-range 0–1023 signal maps to the full 1080-line display height. At 4×, the display zooms into the center quarter of the signal range, revealing fine-grained structure in mid-tone transitions while clipping the extremes off-screen. Lower gain values compress the trace into a narrow band in the center of the display.
+#### Steps
 
----
+1. **Default parade**: With the program loaded and a video signal connected, observe the three columns of dots. The left column (Y) shows brightness: bright areas push dots toward the top, dark areas toward the bottom.
+2. **Enable graticule**: Flip **Graticule** (Switch 9) to **On** and increase **Grat Opac** (Knob 4) to about 60%. Three reference lines appear (these mark 10%, 50%, and 90% of the signal range.)
+3. **Adjust gain**: Turn **Gain** (Knob 3) slowly clockwise. The waveform stretches vertically, magnifying small differences and making subtle details visible. Find a gain level where the trace fills most of the screen without clipping at the edges.
+4. **Sharpen the trace**: Set **Persist** (Knob 2) to a low value, around 10%. The trace narrows to a thin, precise line. This is the sharpest reading.
+5. **Compare channels**: Look across the three columns at the same horizontal position. A white object will show high Y, mid U, and mid V. A saturated color will show strong offsets from center in the U and V columns.
 
-#### Knob 4 — Grat Opac
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+#### Settings
 
-Controls the brightness of the graticule reference lines. These are thin horizontal lines drawn at the 10%, 50%, and 90% vertical positions (lines 108, 540, and 972). The graticule is achromatic (U=V=512) and drawn at half of this control's value. At 0%, the graticule is invisible even when enabled by Toggle 9. At 100%, the reference lines are prominent calibration markers.
-
----
-
-#### Knob 5 — Hue
-| Property | Value |
-|----------|-------|
-| Range | 0° – 360° |
-| Default | 0° |
-| Suffix | ° |
-
-Rotates the hue of the phosphor trace. This control shifts the chrominance of all dot pixels around the color wheel. At 0°, the color is determined solely by the Phosphor toggle (Green/Amber/Blue/White). As you rotate the hue, the phosphor color shifts — green becomes cyan, amber becomes red, and so on. This allows fine-tuning the aesthetic of the waveform display beyond the four preset phosphor colors.
+| Control | Value |
+|---------|-------|
+| Intensity | ~70% |
+| Persist | ~10% |
+| Gain | ~50% |
+| Grat Opac | ~60% |
+| Hue | 0° |
+| Brightness | ~0% |
+| Mode | Parade |
+| Phosphor | Green |
+| Graticule | On |
+| Over Video | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-#### Knob 6 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+### Exercise 2: Phosphor Portrait
 
-Sets the background brightness behind the waveform traces. The background Y value is this control divided by 4. At 0%, the background is pure black — the classic waveform monitor look. Increasing the value reveals the background as a dim gray field, which can help distinguish the waveform area from the surrounding blanking region when Over Video is off.
+![Phosphor Portrait result](/img/instruments/videomancer/parade/parade_ex2_s1.png)
+*Phosphor Portrait — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-### Toggle Switches (Switches 7–11)
+#### Learning Outcomes
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Mode** | Parade | Luma |
-| **8 — Phosphor** | Green | White |
-| **9 — Graticule** | Off | On |
-| **10 — Over Video** | Off | On |
-| **11 — Bypass** | Off | On |
+Transform the parade display into a glowing phosphor portrait overlaid on the source video.
 
-Toggles 7 and 8 form two related 2-bit selectors controlling display mode and phosphor color. Toggle 9 enables the graticule overlay. Toggle 10 selects whether the scope renders on a dark background or composites over the source video. Toggle 11 is the standard bypass.
+#### Key Concepts
 
----
+- Persistence and intensity transform the waveform from a measurement into a visual texture
+- Phosphor color selection changes the aesthetic character of the display
+- Over Video composites the waveform on top of the source image
 
-### Linear Potentiometer (Fader 12)
+#### Video Source
 
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
+A high-contrast portrait or figure against a dark background (something with strong silhouette edges.)
 
-Crossfades between the dry (original) input signal and the wet (waveform monitor) output. At 0%, the output is pure source video. At 100%, the output is the full waveform display. Intermediate values blend the two, which can create a semi-transparent scope overlay effect useful for monitoring during live performance.
+#### Steps
 
+1. **Thicken the trace**: Increase **Persist** (Knob 2) to about 80%. The thin dots become wide bands of light, creating soft vertical columns of glow.
+2. **Boost intensity**: Turn **Intensity** (Knob 1) to about 90%. The thick traces become vivid and luminous.
+3. **Switch to white**: Flip **Phosphor** (Switch 8) to **White**. The green CRT look is replaced by a clean white trace, giving a more modern, ethereal quality.
+4. **Overlay on video**: Flip **Over Video** (Switch 10) to **On**. The source video appears behind the glowing waveform traces, creating a composite where the subject is visible through the luminous bars.
+5. **Add graticule**: Turn on **Graticule** (Switch 9) and set **Grat Opac** (Knob 4) to about 40%. The thin reference lines add a subtle grid structure to the composition.
+6. **Blend with mix**: Pull **Mix** (Fader 12) to about 60%. The waveform overlay softens, blending with the dry source for a ghostly, translucent effect.
 
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
+#### Settings
 
-Routes the unprocessed input signal directly to the output, bypassing all Parade processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises progress from basic waveform reading to advanced monitoring techniques, building familiarity with Parade's scope display in the context of live video analysis.
-
-### Exercise 1: Reading a Parade Display
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: parade_source1_dog, after: parade_ex1_s1 },
-    { label: "Parrot", before: parade_source2_parrot, after: parade_ex1_s2 },
-    { label: "Elephant", before: parade_source3_elephant, after: parade_ex1_s3 },
-    { label: "Pattern", before: parade_source4_pattern, after: parade_ex1_s4 },
-    { label: "Girl", before: parade_source5_girl, after: parade_ex1_s5 },
-    { label: "Knit", before: parade_source6_knit, after: parade_ex1_s6 },
-  ]}
-/>
-*Reading a Parade Display — simulated result across source images.*
-**Source**: A color bar test pattern or footage with known brightness levels (skin tones, pure white, pure black regions).
-
-**What You'll Create**: Learn to read the three-column parade display and identify signal levels by their vertical position.
-
-1. **Default parade view**: Ensure Mode is set to Parade. Feed color bars or a known-level source.
-2. **Read the Y column**: The left column shows luminance. White bars should trace near the top of the display; black bars trace near the bottom. Mid-gray sits at the 50% graticule line.
-3. **Read U and V columns**: The center (U) and right (V) columns show chrominance. For achromatic signals (gray, white, black), both traces sit at the center line (512 = no color). Saturated colors push the traces above or below center.
-4. **Enable Graticule**: Toggle Graticule On and increase Grat Opac to ~60%. Use the 10%/50%/90% lines as reference markers.
-5. **Adjust Gain**: Sweep the Gain control through its eight magnification levels. Watch the waveform expand and contract vertically. At 2× or 4×, fine-grained tonal transitions that were invisible at 1× become clearly resolved.
-
-**Key concepts**: Parade separates Y/U/V into three columns for independent monitoring, vertical position maps to signal level, graticule lines provide calibrated references, gain magnifies the vertical scale
+| Control | Value |
+|---------|-------|
+| Intensity | ~90% |
+| Persist | ~80% |
+| Gain | ~40% |
+| Grat Opac | ~40% |
+| Hue | 0° |
+| Brightness | 0% |
+| Mode | Parade |
+| Phosphor | White |
+| Graticule | On |
+| Over Video | On |
+| Bypass | Off |
+| Mix | ~60% |
 
 ---
 
-### Exercise 2: Phosphor Aesthetics
+### Exercise 3: Neon Landscape
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: parade_source1_dog, after: parade_ex2_s1 },
-    { label: "Parrot", before: parade_source2_parrot, after: parade_ex2_s2 },
-    { label: "Elephant", before: parade_source3_elephant, after: parade_ex2_s3 },
-    { label: "Pattern", before: parade_source4_pattern, after: parade_ex2_s4 },
-    { label: "Girl", before: parade_source5_girl, after: parade_ex2_s5 },
-    { label: "Knit", before: parade_source6_knit, after: parade_ex2_s6 },
-  ]}
-/>
-*Phosphor Aesthetics — simulated result across source images.*
-**Source**: Any dynamic footage — camera feed, music video, or abstract patterns.
+![Neon Landscape result](/img/instruments/videomancer/parade/parade_ex3_s1.png)
+*Neon Landscape — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore the CRT aesthetic controls — phosphor color, persistence, and intensity — to create visually evocative waveform displays.
+***A description of the exercise illustration.***
 
-1. **Set high persistence**: Turn Persist to ~80%. The waveform traces become thick, glowing bands — the signature CRT look.
-2. **Cycle phosphors**: Switch through Green, Amber, Blue, and White. Each gives a distinctly different mood — clinical green, warm amber, cold blue, stark white.
-3. **Adjust intensity**: Push Intensity to ~90% for bright, saturated traces. Pull it back to ~30% for a dim, subtle glow.
-4. **Rotate hue**: Sweep the Hue pot through 360° to shift the phosphor color continuously. Find a custom color that complements your source material.
-5. **Enable Over Video**: Toggle Over Video On. The waveform traces now overlay the source picture — a live heads-up display of signal levels on the image itself.
-6. **Background brightness**: With Over Video Off, increase Brightness to ~40% to see the display area as a gray field, separating it from the blanking surround.
+#### Learning Outcomes
 
-**Key concepts**: Persistence thickens traces for CRT emulation, phosphor color sets the mood, hue provides continuous fine-tuning, Over Video composites scope onto the picture
+Push the parade display to its visual extremes, turning the waveform into an abstract neon landscape.
 
----
+#### Key Concepts
 
-### Exercise 3: Gain Zoom and Detail Analysis
+- High gain magnifies small signal differences into dramatic vertical sweeps
+- Combining high persistence with high intensity creates painterly, abstract visuals
+- The waveform display can be used purely as a generative visual element
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: parade_source1_dog, after: parade_ex3_s1 },
-    { label: "Parrot", before: parade_source2_parrot, after: parade_ex3_s2 },
-    { label: "Elephant", before: parade_source3_elephant, after: parade_ex3_s3 },
-    { label: "Pattern", before: parade_source4_pattern, after: parade_ex3_s4 },
-    { label: "Girl", before: parade_source5_girl, after: parade_ex3_s5 },
-    { label: "Knit", before: parade_source6_knit, after: parade_ex3_s6 },
-  ]}
-/>
-*Gain Zoom and Detail Analysis — simulated result across source images.*
-**Source**: Footage with subtle tonal detail — skin tones, fabric textures, or gradient test patterns.
+#### Video Source
 
-**What You'll Create**: Use high gain magnification to examine fine signal structure that is invisible at unity scale.
+Any video with motion: a panning camera, moving figures, or animated graphics. The motion creates evolving waveform shapes.
 
-1. **Feed subtle content**: Use a camera aimed at skin or fabric — signals with narrow dynamic range.
-2. **Set gain to 1×**: The waveform occupies only a narrow band in the center of the display. Fine tonal gradations are invisible at this scale.
-3. **Increase gain to 4×**: Turn Gain fully clockwise. The display zooms into the center quarter of the signal range. Fine texture and noise that were invisible at 1× are now clearly resolved as separated trace lines.
-4. **Lower persistence**: Set Persist to ~10% for thin, precise traces. Each individual value is visible as a distinct dot rather than a blurred band.
-5. **Sweep source content**: Slowly change the camera angle or lighting. Watch the magnified trace respond to subtle brightness shifts that are invisible in the picture itself.
-6. **Compare with overlay**: Enable Over Video and reduce Mix to ~60% for a semi-transparent high-magnification scope overlaid on the picture.
+#### Steps
 
-**Key concepts**: Gain magnifies the vertical scale to reveal fine detail, low persistence provides maximum precision, high gain clips extreme values off-screen, overlaid scope enables simultaneous image and signal analysis
+1. **Maximum gain**: Turn **Gain** (Knob 3) fully clockwise. The waveform explodes vertically: peaks shoot past the screen edges, and even subtle signal variations become towering columns of light.
+2. **Maximum persistence**: Set **Persist** (Knob 2) fully clockwise. Each dot becomes a wide vertical band. The three columns merge into broad, overlapping ribbons of glow.
+3. **Full intensity**: Set **Intensity** (Knob 1) to about 95%. The traces are blazing bright against the dark background.
+4. **Dark background**: Set **Brightness** (Knob 6) to about 10%. A faint gray background adds a trace of depth without competing with the vivid traces.
+5. **Green phosphor**: Ensure **Phosphor** (Switch 8) is set to **Green**. The classic oscilloscope green pops against the near-black background.
+6. **Disable graticule**: Set **Graticule** (Switch 9) to **Off**. Without reference lines, the display becomes pure abstract pattern.
+7. **Watch the motion**: As the video source changes, the waveform sweeps and pulses in real time, creating an evolving neon terrain.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Intensity | ~95% |
+| Persist | 100% |
+| Gain | 100% |
+| Grat Opac | 0% |
+| Hue | 0° |
+| Brightness | ~10% |
+| Mode | Parade |
+| Phosphor | Green |
+| Graticule | Off |
+| Over Video | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
-
-
-## Tips
-
-- **Over Video for live monitoring**: Toggle Over Video On during live performance to get a heads-up signal level display without leaving the picture view.
-- **Graticule for quick level checks**: Enable the graticule and look for Y traces touching the 10% or 90% lines — this indicates the signal is approaching the legal limits for broadcast.
-- **Mix for overlay compositing**: At 30–50% Mix with Over Video Off, the waveform display becomes a semi-transparent overlay that can be composited into the final output for video art applications.
-- **Hue rotation for creative use**: Although Parade is primarily a monitoring tool, rotating the phosphor hue creates colorful oscilloscope aesthetics suitable for VJ performance or music visualization.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **DDS** | Direct Digital Synthesis; a digital technique for generating periodic waveforms using a phase accumulator. |
-| **Gain** | Vertical magnification of the waveform display, analogous to V/div on an oscilloscope. |
-| **Graticule** | Calibrated reference grid lines overlaid on the waveform display at known signal levels. |
-| **Line Buffer** | A BRAM-based memory that stores one complete scanline of pixel values for subsequent readout and display. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Parade** | A waveform display layout where Y, U, and V channels are shown in three side-by-side columns. |
-| **Persistence** | The duration a CRT phosphor dot remains visible after excitation; simulated by widening the vertical dot match threshold. |
-| **Phosphor** | The luminescent coating inside a CRT that glows when struck by an electron beam; different phosphor types emit different colors. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
+- **Chrominance**: The color information in a video signal, encoded as U (blue-difference) and V (red-difference) components that describe hue and saturation independently of brightness
+
+- **Graticule**: A set of calibrated reference lines on a waveform monitor screen, used to measure signal amplitude against known levels
+
+- **Luminance**: The brightness component (Y) of a YUV video signal, representing perceived lightness on a scale from black to white
+
+- **Parade Display**: A waveform monitor layout that arranges video signal components (Y, U, V or R, G, B) side by side in separate columns for simultaneous comparison
+
+- **Persistence**: On a CRT display, the duration a phosphor dot continues to glow after the electron beam has moved on; simulated here as vertical dot thickness
+
+- **Phosphor**: A chemical coating on the face of a cathode ray tube that glows when struck by an electron beam; different phosphor compounds produce different colors and decay rates
+
+- **Waveform Monitor**: A specialized oscilloscope used in video engineering to display the amplitude of a video signal as a vertical trace against horizontal time, revealing brightness and color levels
 
 ---

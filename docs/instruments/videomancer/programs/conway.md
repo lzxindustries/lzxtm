@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 65
 slug: /instruments/videomancer/conway
@@ -7,306 +7,396 @@ image: /img/instruments/videomancer/conway/conway_hero.png
 description: "Conway's Game of Life is the most famous cellular automaton, devised by mathematician John Horton Conway in 1970."
 ---
 
-import conway_hero from '/img/instruments/videomancer/conway/conway_hero.png';
-import conway_animation from '/img/instruments/videomancer/conway/conway_animation.gif';
-import conway_control_panel from '/img/instruments/videomancer/conway/conway_control_panel.png';
-import conway_exercise1_result from '/img/instruments/videomancer/conway/conway_exercise1_result.gif';
-import conway_exercise2_result from '/img/instruments/videomancer/conway/conway_exercise2_result.gif';
-import conway_exercise3_result from '/img/instruments/videomancer/conway/conway_exercise3_result.gif';
-
-# Conway
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={conway_hero} alt="Conway hero image"/>
-*Conway rendering a cellular automaton evolving across a 64x36 toroidal grid, with live cells rendered in vivid hue against a dark field.*
-<img src={conway_animation} alt="Conway animated output"/>
-*Conway output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Conway hero image](/img/instruments/videomancer/conway/conway_hero_s1.png)
+*Conway's Game of Life cellular automaton rendered as luminous cells on a 16×16 toroidal grid, evolving generation by generation into emergent patterns of digital life.*
 
 ---
 
 ## Overview
 
-Conway's Game of Life is the most famous cellular automaton, devised by mathematician John Horton Conway in 1970. Despite its simple rules — a cell lives if it has exactly three neighbors, survives if it has two or three, and dies otherwise — the system produces astonishingly complex emergent behavior. Gliders, oscillators, spaceships, and even Turing-complete computational structures arise from these four conditions. Videomancer's implementation operates on a 64x36 toroidal grid where each cell occupies 30x30 pixels at 1080p, producing a large-format display of cellular evolution driven entirely by FPGA logic.
+Conway is a self-contained ***cellular automaton*** synthesizer that runs a complete implementation of Conway's Game of Life on a 16×16 toroidal grid. Rather than processing incoming video, it generates its own imagery from scratch: a colony of living and dead cells evolving according to simple mathematical rules that produce surprisingly complex, unpredictable behavior. The grid wraps around at every edge, so patterns that drift off the right side reappear on the left, and patterns that fall off the bottom emerge from the top.
 
-The simulation is double-buffered: one generation is displayed while the next is computed during the vsync blanking interval. A serial neighbor-counting scan iterates through all 2304 cells, summing the eight neighbors for each cell and writing the new state to the back buffer. At the next vsync, the buffers swap. The initial state is seeded by a 16-bit LFSR with density controlled by Knob 2 — low density produces sparse, isolated structures that evolve slowly, while high density creates a chaotic initial field that quickly settles into stable patterns and oscillators.
+Each cell occupies a rectangular tile of pixels, scaled to fit the current video resolution. Living cells glow with adjustable brightness and optional color. Dead cells are black. The simulation advances at a speed you control, from glacially slow single steps to a rapid cascade of generations. A density control determines how many cells are alive when the grid is first seeded, and two seed parameters let you dial in different starting arrangements for repeatable or exploratory results.
 
-The Run/Pause toggle freezes the simulation while continuing to display the current generation, allowing study of a particular configuration. The Reset toggle re-seeds the grid from the current LFSR state, generating a new random initial condition. At full mix, the Game of Life renders as a stark grid of luminous cells on black. Reducing the mix fader blends the evolving pattern with input video, creating a living cellular texture overlay.
+:::tip
+Conway is a ***synthesis*** program. It generates its own visuals rather than processing an input signal. However, the **Mix** fader lets you blend the cellular automaton output with any incoming video for layered compositions.
+:::
+
+### What's In a Name?
+
+**Conway** is named after the British mathematician John Horton Conway, who invented the ***Game of Life*** in 1970. Despite its name, it isn't a game you play: it's a ***zero-player game***, a simulation you set in motion and observe. Conway designed the rules to be as simple as possible while still producing behavior complex enough to be interesting. He succeeded spectacularly: patterns in the Game of Life can compute, replicate, and organize in ways that continue to surprise mathematicians and hobbyists alike, more than fifty years later.
 
 ---
 
 ## Quick Start
 
-1. **Medium density is most interesting**: Initial densities between 25-35% produce the most complex emergent behavior. Too sparse and everything dies; too dense and everything quickly stabilizes into a dense grid of blocks.
-2. **Pause for study**: Use the Run/Pause toggle to freeze the simulation at interesting moments. Study the structures — blocks (2x2), blinkers (3 in a row), beehives (6-cell hexagons), and more complex oscillators.
-3. **Seed repeatability**: Note your Seed X, Seed Y, and Density positions to reproduce favorite initial conditions. The same seeds always produce the same evolution path.
+1. The grid begins with a random population of living cells. Watch the colony evolve as generations tick forward automatically.
+2. Turn **Density** (Knob 2) counter-clockwise to thin the initial population, then flip **Reset** (Switch 9) to **On** and back to **Off** to reseed the grid. A sparse starting population tends to produce more recognizable patterns and ***still lifes***.
+3. Enable **Grid** (Switch 8) to see faint lines outlining each cell. This makes it easier to follow individual cells as they are born and die.
+4. Flip **Color** (Switch 10) to **Hue** and sweep **Cell Hue** (Knob 5) to paint the living cells in shifting colors.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Conway loaded](/img/instruments/videomancer/conway/conway_control_panel.png)
+*Videomancer's front panel with Conway active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 38% |
+
+**Speed** controls how many video frames elapse between each generation of the simulation. At 0%, the automaton advances at its fastest rate: roughly one generation per frame. As **Speed** increases toward 100%, a frame divider stretches the interval between updates, slowing the evolution to a leisurely crawl. At maximum, dozens of frames pass between each generation tick.
+
+:::note
+The speed control is inverted relative to what you might expect: lower values produce faster evolution; higher values produce slower evolution. Think of it as a "deliberation time" knob (how long the colony pauses to consider its next move.)
+:::
+
+---
+
+### Knob 2 — Density
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Density** sets the probability that each cell starts alive when the grid is seeded. At 0%, the grid begins nearly empty: only a few scattered survivors. At 50%, roughly half the cells spring to life. At 100%, the grid starts almost completely full. Very low and very high densities tend to collapse quickly into stable or dead configurations; moderate densities between 20% and 50% produce the longest-lived, most interesting evolutions.
+
+---
+
+### Knob 3 — Seed X
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Seed X** controls the horizontal component of the ***LFSR*** seed value that determines the initial random arrangement of cells. Changing this knob produces a completely different starting pattern, even when **Density** stays the same. Combined with **Seed Y**, these two controls give you access to over a million distinct starting arrangements.
+
+---
+
+### Knob 4 — Seed Y
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Seed Y** controls the vertical component of the LFSR seed value. Together with **Seed X**, it determines the exact initial configuration of living and dead cells. If you find a starting pattern you like, note both seed positions: returning to the same **Seed X** and **Seed Y** values with the same **Density** will reproduce the identical starting grid.
+
+:::tip
+**Seed X** and **Seed Y** are concatenated to form a 16-bit LFSR seed. The upper 10 bits come from **Seed X** and the lower 6 bits from **Seed Y**, so **Seed X** has finer control over the starting pattern.
+:::
+
+---
+
+### Knob 5 — Cell Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Cell Hue** sets the chrominance of living cells when **Color** (Switch 10) is set to **Hue** mode. At 0%, cells take on one extreme of the hue spectrum. At 100%, they shift to the opposite extreme. Sweeping this knob smoothly rotates through the available color range. In **Mono** mode, this control has no visible effect (cells remain neutral gray.)
+
+The hue is applied by mapping the pot value to the U channel and its complement to the V channel, producing a diagonal sweep through YUV color space rather than a full 360° hue rotation.
+
+---
+
+### Knob 6 — Bright
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 75% |
+
+**Bright** controls the luminance of living cells. At 0%, living cells are completely black: indistinguishable from dead cells. At 100%, living cells glow at maximum brightness. When **Grid** is enabled, the grid lines are drawn at 1/16th of the **Bright** value, so they remain visible but subdued relative to the cells.
+
+---
+
+### Switch 7 — Run
+
+| Property | Value |
+|----------|-------|
+| Off | Pause |
+| On | Run |
+| Default | Run |
+
+**Run** controls whether the simulation advances. In the **Run** position, the automaton computes new generations at the rate set by **Speed**. In the **Pause** position, the current generation is frozen on screen: no cells are born or die until you flip back to **Run**. Pausing is useful for studying a particular arrangement of cells, or for dramatic live performance timing.
+
+---
+
+### Switch 8 — Grid
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Grid** enables thin lines drawn at the boundary of every cell, creating a visible lattice over the playing field. With **Grid** set to **Off**, only the living cells themselves are visible, floating on a black background. With **Grid** set to **On**, a faint framework outlines the full 16×16 grid, making it easier to count neighbors and track individual cell fates across generations.
+
+---
+
+### Switch 9 — Reset
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Reset** re-seeds the grid with a new random population when toggled from **Off** to **On**. The new population is determined by the current **Density**, **Seed X**, and **Seed Y** values. After the grid has been re-seeded, flip **Reset** back to **Off** to allow the simulation to proceed. The reset is edge-triggered (only the transition from Off to On initiates the reseed.)
+
+:::note
+**Reset** also restarts after power-on if the grid hasn't been seeded yet. The very first seed happens automatically at startup using the default **Seed X**, **Seed Y**, and **Density** values.
+:::
+
+---
+
+### Switch 10 — Color
+
+| Property | Value |
+|----------|-------|
+| Off | Mono |
+| On | Hue |
+| Default | Mono |
+
+**Color** selects between **Mono** and **Hue** rendering modes. In **Mono** mode, living cells are rendered as neutral gray at the brightness set by **Bright**: the U and V channels sit at the midpoint (512), producing no color. In **Hue** mode, the **Cell Hue** knob controls the chrominance of living cells, painting them in color. Dead cells and grid lines are always neutral regardless of this toggle.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input video directly to the output, bypassing Conway's cellular automaton rendering entirely. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use **Bypass** for instant A/B comparison between the raw input and the Conway overlay.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the delayed input video and the cellular automaton output. At 0%, only the original input is visible: the automaton is completely hidden. At 100%, only the Conway output is visible. Intermediate positions blend the two, allowing you to layer the grid of evolving cells over incoming footage for composite effects.
+
+:::tip
+With **Mix** at around 50%, living cells appear as bright overlays on top of your input video, creating a compelling interaction between the geometric automaton grid and organic video content.
+:::
 
 ---
 
 ## Background
 
-### Conway's Original Rules
+### Cellular automata
 
-John Conway established the B3/S23 rule in 1970, published by Martin Gardner in his Mathematical Games column in Scientific American. "B3" means a dead cell with exactly three alive neighbors becomes alive (birth). "S23" means a live cell with two or three alive neighbors survives; with fewer or more, it dies (from loneliness or overcrowding). These two conditions produce Class IV behavior in Stephen Wolfram's classification — neither completely ordered nor completely chaotic, but balanced at the edge of complexity. Videomancer's FPGA applies these rules across 2304 cells in a single vsync interval, achieving real-time generational updates at video frame rate.
+A ***cellular automaton*** is a grid of cells, each in one of a finite number of states, that evolves in discrete time steps according to a fixed set of rules. The idea was pioneered by John von Neumann and Stanislaw Ulam in the 1940s as a way to study self-reproducing systems. Each cell's next state depends only on its current state and the states of its immediate neighbors. Despite this radical simplicity, cellular automata can produce behavior of extraordinary complexity: oscillating patterns, traveling structures, and even universal computation.
 
-### Toroidal Topology
+### The B3/S23 rule
 
-On an infinite plane, the Game of Life has no boundary artifacts. On a finite grid, boundaries introduce edge effects that can disrupt pattern evolution. Videomancer uses a toroidal wrap — the top row's neighbors include the bottom row, and the left column's neighbors include the right column. This creates a continuous surface without edges, preserving the dynamics of infinite-plane Life on a 64x36 finite grid. Gliders that exit one edge re-enter from the opposite side, and oscillator patterns near the border are not disrupted by missing neighbors.
+Conway's Game of Life uses the ***B3/S23*** rule set, which means:
 
-### Double Buffering
+- **Birth (B3)**: A dead cell with exactly 3 living neighbors becomes alive.
+- **Survival (S23)**: A living cell with 2 or 3 living neighbors stays alive.
+- **Death**: A living cell with fewer than 2 neighbors dies of isolation. A living cell with more than 3 neighbors dies of overcrowding.
 
-Computing the next generation requires reading the current state of all neighbors while writing new states — a classic read-write hazard. Videomancer solves this with two complete grid buffers (A and B). During one frame, buffer A is displayed and the neighbor scan reads from A to compute new states written to B. At the next vsync, B becomes the display buffer and A becomes the computation target. This ensures that every neighbor count reads from a consistent, unmodified generation snapshot, producing correct Life dynamics without the artifacts that in-place updates would cause.
+These three rules, applied simultaneously to every cell on the grid, are sufficient to produce ***gliders*** (patterns that translate across the grid), ***oscillators*** (patterns that cycle between states), ***still lifes*** (stable patterns that never change), and even ***glider guns*** (oscillators that periodically emit traveling gliders). On a 16×16 grid these larger structures are rare, but small oscillators and still lifes appear constantly.
 
-### LFSR Density Seeding
+### Toroidal topology
 
-The initial random field is generated by a 16-bit LFSR that creates one pseudo-random bit per cell. The density pot (Knob 2) sets a threshold: an LFSR output below the threshold sets the cell alive, above leaves it dead. At minimum density, almost no cells are alive; at maximum, nearly all cells start alive. The mathematically interesting region is typically between 20-40% density, where enough cells exist to form structures but enough empty space exists for those structures to evolve. The Seed X and Seed Y knobs provide additional control over the LFSR initial state, allowing exploration of different random fields.
+Conway's grid on Videomancer is ***toroidal***: the top edge wraps to the bottom, and the left edge wraps to the right. Imagine folding the grid into a doughnut shape. This means every cell always has exactly 8 neighbors, even the corner cells. The toroidal topology prevents edge effects and allows gliders and other traveling patterns to loop around the grid indefinitely rather than crashing into walls.
 
-### Emergent Complexity
+### Double buffering
 
-From a random initial state, the Game of Life follows a predictable narrative arc: initial chaos gives way to rapid evolution, which gradually settles into a mix of still lifes (stable patterns like blocks and beehives), oscillators (repeating patterns like blinkers and toads), and occasionally gliders or more complex moving structures. The statistical properties of this settling process — the ratio of survivors, the period distribution of oscillators, the number of remaining active cells — depend on the initial density and the grid's toroidal boundary conditions. Videomancer's large 64x36 grid provides enough space for diverse emergent structures.
+The FPGA implements ***double buffering***: two complete copies of the 16×16 grid are stored in registers. While one buffer is being displayed on screen, the next generation is computed and written into the other buffer. At the next vertical sync, the buffers swap. This ensures the display never shows a partially computed generation (every frame shows a complete, consistent state.)
 
 
 ---
 
 ## Signal Flow
 
-```
-Synthesis Engine
-|
-+-- Parameter Mapping ------------------------------------------------
-|   +- registers_in(0)  -> Speed (generation interval in frames)
-|   +- registers_in(1)  -> Density (initial fill threshold)
-|   +- registers_in(2)  -> Seed X (LFSR seed component)
-|   +- registers_in(3)  -> Seed Y (LFSR seed component)
-|   +- registers_in(4)  -> Cell Hue (chroma offset)
-|   +- registers_in(5)  -> Brightness (live cell Y level)
-|   +- registers_in(6)  -> Toggles (run, grid, reset, color, bypass)
-|   +- registers_in(7)  -> Mix
-|
-+-- Simulation Logic (per vsync, when Run active) --------------------
-|   +- 1. Speed Timer    (frame counter vs speed interval)
-|   +- 2. Reset Check    (rising edge on reset toggle → LFSR re-seed)
-|   +- 3. Serial Scan    (iterate all 64x36 cells during blanking)
-|   +- 4. Neighbor Sum   (8 toroidal neighbors per cell)
-|   +- 5. B3/S23 Rule    (alive if sum=3, survive if alive and sum=2|3)
-|   +- 6. Buffer Swap    (alternate display/compute buffers at vsync)
-|
-+-- LFSR Seed (on Reset) ---------------------------------------------
-|   +- 7. Per-Cell Seed  (LFSR bit vs density threshold → alive/dead)
-|   +- 8. Density Pot    (threshold for initial fill probability)
-|
-+-- Rasterizer (per pixel) -------------------------------------------
-|   +- 9. Cell Lookup    (h_count/30, v_count/30 → grid position)
-|   +- 10. Alive Test    (display buffer cell at (col, row))
-|   +- 11. Grid Line     (cell_px < 1 or cell_py < 1, when enabled)
-|   +- 12. Color Mux     (alive → bright + hue, dead → black, grid → dim)
-|
-+-- Output Stage ----------------------------------------------------
-|   +- 13. Interpolator Mix  (3x interpolator_u wet/dry)
-|
-+-- Sync Pipeline ---------------------------------------------------
-|   +- 6-clock shift register (hsync, vsync, avid, field)
-|
-+-- Bypass ----------------------------------------------------------
-    +- Select processed or input signal
-```
+### Signal Flow Notes
 
-The serial neighbor scan is the computational core of the design. During each vsync blanking interval (approximately 45 lines at 74.25 MHz = ~82,000 clock cycles), the scan sequentially reads all 2304 cells and their 8 neighbors. For each cell, the three rows above, same, and below are accessed with left/right neighbors using modular addressing for toroidal wrap. A 4-bit sum accumulates the neighbor count, and the B3/S23 rule determines the new state. At 3 clocks per cell, the scan completes in approximately 7,000 cycles — well within the blanking budget.
+The engine operates in two phases synchronized to the video timing. During ***vertical blanking***, the game engine runs: either seeding the grid with LFSR-generated random values, or computing the next generation by scanning all 256 cells sequentially (one cell per clock cycle). During ***active video***, the renderer reads the front buffer and maps each pixel's position to its corresponding cell, looking up whether that cell is alive or dead.
 
-The double-buffer swap occurs atomically at the vsync edge by toggling a single bit (s_active_buf). The rasterizer reads from whichever buffer is currently marked as the display buffer, while the computation writes to the other. This ensures no tearing or partial-generation artifacts during the scan.
+The LFSR seed is constructed by concatenating the 10-bit **Seed X** pot value with the lower 6 bits of the **Seed Y** pot value. The density threshold comparison (`lfsr(9:0) < density_pot`) means that higher **Density** values admit more cells. The speed divider subtracts a scaled pot value from 60 to determine the number of frames between generations, so lower pot values yield faster simulation rates.
 
----
-
-## Parameter Reference
-
-<img src={conway_control_panel} alt="Videomancer front panel with Conway loaded"/>
-*Videomancer's front panel with Conway active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Speed
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 38% |
-| Suffix | % |
-
-Speed controls the number of video frames between generation updates. At low values (fast), the simulation evolves rapidly, producing a flickering, dynamic field where patterns emerge and dissolve quickly. At high values (slow), generations advance ponderously, allowing individual cell state changes to be observed. Moderate speeds (around 30-50%) produce the most visually engaging evolution, where structures form and interact at a pace the eye can follow.
-
----
-
-#### Knob 2 — Density
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Density sets the threshold for the initial random fill when the grid is seeded. Each cell's LFSR bit is compared against this threshold — below the threshold produces a live cell. At low density, the grid starts with sparse, isolated cells that may die quickly or form small stable structures. At high density, the grid starts nearly full and rapidly thins as overcrowded cells die, leaving a dense field of oscillators and still lifes. The most complex emergent behavior typically occurs at 25-35% initial density.
-
----
-
-#### Knob 3 — Seed X
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Seed X provides the first component of the 16-bit LFSR seed. Combined with Seed Y, it determines the initial pseudo-random sequence used to populate the grid. Different Seed X values produce different random fields, each with unique evolutionary trajectories. Returning to the same Seed X and Seed Y values at the same Density produces an identical initial configuration, enabling repeatability.
-
----
-
-#### Knob 4 — Seed Y
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Seed Y provides the second component of the 16-bit LFSR seed. Together with Seed X, it fully determines the pseudo-random bit sequence. Sweeping Seed Y while holding Seed X constant produces a family of related initial conditions, each differing in specific cell placements but sharing statistical properties (density, distribution uniformity) determined by the LFSR characteristics.
-
----
-
-#### Knob 5 — Cell Hue
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Cell Hue sets the chroma offset for live cells when Color mode is active. Sweeping this knob rotates through the YUV color wheel, coloring live cells in any hue from red through blue through green and back. Dead cells always render as black (zero luminance). In Mono mode, this knob has no visible effect — live cells appear as achromatic white at the current brightness level.
-
----
-
-#### Knob 6 — Bright
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 75% |
-| Suffix | % |
-
-Bright controls the luminance (Y channel) of live cells. Dead cells remain at zero luminance regardless of this setting. Grid lines, when enabled, render at a fraction of the brightness value. Higher brightness creates a bold, high-contrast cellular display; lower brightness produces a subtle, dim pattern that blends gently when mixed with input video.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Run** | Pause | Run |
-| **8 — Grid** | Off | On |
-| **9 — Reset** | Off | On |
-| **10 — Color** | Mono | Hue |
-| **11 — Bypass** | Off | On |
-
-The five toggles divide into simulation control (Run, Reset), display options (Grid, Color), and signal routing (Bypass). Run and Reset directly affect the simulation state: Run gates the generational computation, while Reset re-initializes the grid. Grid and Color are purely visual and do not affect the simulation. Bypass routes the input signal past the overlay. Note that Reset is a momentary action toggle — the grid re-seeds on the rising edge of Reset, then the toggle can be returned to its off position.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Mix controls the wet/dry blend between the Game of Life display and the input video. At full mix, only the cellular automaton is visible against black. Reducing mix fades in the input video behind the cell pattern, creating a living, evolving overlay on live footage. At zero mix, the simulation is invisible and only the input signal passes through. The mix engages three interpolator_u instances for Y, U, and V channels independently.
-
-
-
+:::note
+The generation compute is entirely sequential: 256 clock cycles to process all cells. On a 74.25 MHz clock, this takes roughly 3.4 microseconds, well within the vertical blanking interval of any supported video standard.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises explore the Game of Life's sensitivity to initial conditions, the visual difference between density regimes, and the use of the simulation as a video overlay texture.
+These exercises explore Conway's Game of Life from sparse, contemplative starting conditions through dense, chaotic populations, culminating in a mixed-media composition with incoming video.
+### Exercise 1: Still Lifes and Oscillators
 
-### Exercise 1: Sparse Genesis
+![Still Lifes and Oscillators result](/img/instruments/videomancer/conway/conway_ex1_s1.png)
+*Still Lifes and Oscillators — simulated result across source images.*
+#### Exercise Illustration
 
-<img src={conway_exercise1_result} alt="Sparse Genesis result"/>
-*Sparse Genesis — simulated result across source images.*
-**What You'll Create**: Seed a low-density initial field and observe the emergence of stable structures from isolated cells.
+***A description of the exercise illustration.***
 
-1. Set Speed to about 40% for observable evolution pace.
-2. Set Density to about 15% for a sparse initial field.
-3. Set Seed X and Seed Y to any position.
-4. Toggle Reset to seed the grid, then return Reset to Off.
-5. Set Run to Run.
-6. Watch as isolated cells die (too few neighbors) while small clusters stabilize into blocks and blinkers.
-7. Enable Grid to see exactly which cells are alive.
-8. After evolution stabilizes (minimal change between generations), try increasing Speed for rapid visual scanning.
+#### Learning Outcomes
 
-**Key concepts**: Low-density evolution, still lifes (blocks, beehives), oscillators (blinkers), loneliness death, stable attractors
+A sparse colony that evolves quickly into a collection of ***still lifes*** (stable blocks, beehives) and ***oscillators*** (blinkers, toads) scattered across the grid.
+
+#### Key Concepts
+
+- Sparse populations tend to settle into stable or oscillating patterns
+- The B3/S23 rules produce recognizable structures at low density
+- Grid overlay helps track individual cell behavior
+
+#### Steps
+
+1. Set **Density** (Knob 2) to about 15% (just a few dozen cells alive.)
+2. Flip **Reset** (Switch 9) to **On** and back to **Off** to seed a sparse grid.
+3. Enable **Grid** (Switch 8) to see the cell boundaries.
+4. Set **Speed** (Knob 1) to about 50% so generations advance slowly enough to follow.
+5. Watch the colony settle. Within a few dozen generations, most activity will stop, leaving isolated clusters that either sit still or blink.
+6. Try different **Seed X** and **Seed Y** values and reset again. Each seed produces a different family of survivors.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Speed | 50% |
+| Density | 15% |
+| Seed X | 50% |
+| Seed Y | 50% |
+| Cell Hue | 50% |
+| Bright | 75% |
+| Run | Run |
+| Grid | On |
+| Reset | Off |
+| Color | Mono |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Dense Chaos
+### Exercise 2: Dense Chaos in Color
 
-<img src={conway_exercise2_result} alt="Dense Chaos result"/>
-*Dense Chaos — simulated result across source images.*
-**What You'll Create**: Seed a high-density initial field and observe the rapid die-off and stabilization into a complex pattern.
+![Dense Chaos in Color result](/img/instruments/videomancer/conway/conway_ex2_s1.png)
+*Dense Chaos in Color — simulated result across source images.*
+#### Exercise Illustration
 
-1. Set Density to about 80% for a nearly full starting grid.
-2. Set Speed to about 50% — the initial evolution is dramatic and benefits from moderate speed.
-3. Toggle Reset to seed the grid.
-4. Set Run to Run and watch the initial chaos — many cells die from overcrowding in the first few generations.
-5. Observe the rapid transition from chaos to a dense pattern of still lifes and oscillators.
-6. Switch Run to Pause at an interesting moment and study the frozen generation.
-7. Compare the final stable population to the sparse-start result.
+***A description of the exercise illustration.***
 
-**Key concepts**: High-density evolution, overcrowding death, rapid stabilization, B3/S23 dynamics, oscillator density
+#### Learning Outcomes
+
+A dense, turbulent colony rendered in vivid color, evolving at high speed into a restless, ever-changing mosaic.
+
+#### Key Concepts
+
+- High density creates turbulent, rapidly evolving populations
+- Color mode visualizes cells with chromatic hue
+- Speed control shapes the rhythm of evolution
+
+#### Steps
+
+1. Set **Density** (Knob 2) to about 80%.
+2. Flip **Reset** (Switch 9) to reseed the grid with a packed starting population.
+3. Set **Speed** (Knob 1) to about 10% for fast evolution.
+4. Switch **Color** (Switch 10) to **Hue** and sweep **Cell Hue** (Knob 5) to find a color you like.
+5. Turn **Bright** (Knob 6) to about 90% so cells glow intensely.
+6. Watch the dense population roil: large swaths of cells flicker between life and death before the population stabilizes or dies out.
+7. If the grid goes completely dead, try a different **Seed X** or **Seed Y** and reset again.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Speed | 10% |
+| Density | 80% |
+| Seed X | 50% |
+| Seed Y | 50% |
+| Cell Hue | 40% |
+| Bright | 90% |
+| Run | Run |
+| Grid | On |
+| Reset | Off |
+| Color | Hue |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
 ### Exercise 3: Living Texture Overlay
 
-<img src={conway_exercise3_result} alt="Living Texture Overlay result"/>
+![Living Texture Overlay result](/img/instruments/videomancer/conway/conway_ex3_s1.png)
 *Living Texture Overlay — simulated result across source images.*
-**What You'll Create**: Use the evolving Game of Life as a dynamic texture overlay blended with input video.
+#### Exercise Illustration
 
-1. Set Density to about 30% for a moderately complex evolving field.
-2. Set Speed to about 25% for rapid, continuous evolution.
-3. Toggle Reset to seed, then switch Run to Run.
-4. Switch Color to Hue and sweep Cell Hue to find a color that complements your source video.
-5. Set Bright to about 90% for vivid cells visible through the mix.
-6. Reduce Mix to about 50% to blend the cellular pattern with the input video.
-7. Disable Grid for a cleaner overlay texture.
-8. Observe how the evolving cell pattern creates a dynamic, organic texture over the video.
+***A description of the exercise illustration.***
 
-**Key concepts**: Partial mix compositing, cellular texture, hue complementarity, dynamic overlay, organic pattern
+#### Learning Outcomes
+
+A composite image where the Conway grid is layered over incoming video, adding a rhythmic, evolving digital texture to the source material.
+
+#### Key Concepts
+
+- Mix fader blends automaton output with input video
+- Cellular automaton as a generative texture layer
+- Pause allows freezing a pattern for static overlay
+
+#### Steps
+
+1. Connect a video source to Videomancer's input.
+2. Set **Density** (Knob 2) to about 30% and **Speed** (Knob 1) to about 25% for a moderate, rhythmic evolution.
+3. Enable **Color** (Switch 10) in **Hue** mode and set **Cell Hue** (Knob 5) to complement your source footage.
+4. Lower **Mix** (Fader 12) to about 50%. The cellular automaton grid appears as a translucent overlay on top of the incoming video.
+5. Adjust **Bright** (Knob 6) to balance the cell brightness against the video content.
+6. When you see an interesting pattern, flip **Run** (Switch 7) to **Pause** to freeze it as a static texture overlay.
+7. Resume with **Run** to let the pattern continue evolving.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Speed | 25% |
+| Density | 30% |
+| Seed X | 50% |
+| Seed Y | 50% |
+| Cell Hue | 40% |
+| Bright | 75% |
+| Run | Run |
+| Grid | Off |
+| Reset | Off |
+| Color | Hue |
+| Bypass | Off |
+| Mix | 50% |
 
 ---
-
-
-## Tips
-
-- **Grid lines reveal structure**: Enable Grid when studying patterns to see individual cell boundaries. Disable Grid for cleaner visual output during performances.
-- **Speed as visual rhythm**: Fast speeds create a flickering, organic visual texture. Slow speeds reveal the deliberate, logical progression of each generation.
-- **Overlay for organic visuals**: At partial mix, the evolving cellular pattern creates a living, breathing texture over input video — ideal for abstract visual performances.
-- **Color marks the living**: In Hue mode, live cells pop with color against the black background of dead cells, making pattern structure immediately visible.
-- **Reset for fresh starts**: If the simulation reaches a stable dead state (all still lifes, no oscillators), toggle Reset to inject new random life.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **B3/S23** | The canonical Game of Life rule: Birth with 3 neighbors, Survival with 2 or 3 neighbors. All other live cells die. |
-| **Blinker** | A period-2 oscillator consisting of three cells in a line that alternates between horizontal and vertical orientation. |
-| **Block** | A 2x2 stable still life that never changes state. |
-| **Cell** | One 30x30 pixel region within the 64x36 grid, the fundamental unit of the cellular automaton. |
-| **Double Buffer** | Two complete grid copies that alternate between display and computation roles, preventing partial-update artifacts. |
-| **Glider** | A 5-cell pattern that translates one cell diagonally every 4 generations, the simplest moving structure in the Game of Life. |
-| **LFSR** | Linear Feedback Shift Register; generates pseudo-random bits for initial grid seeding. |
-| **Oscillator** | A pattern that returns to its initial state after a fixed number of generations (its period). |
-| **Serial Scan** | The process of sequentially visiting all 2304 grid cells during vsync blanking to compute neighbor counts. |
-| **Still Life** | A stable pattern where every live cell has 2 or 3 neighbors and no dead cell has exactly 3 live neighbors. |
-| **Toroidal Grid** | A grid topology where opposite edges are connected, creating a continuous surface without boundaries. |
-| **Vsync** | Vertical synchronization pulse marking the start of a new video frame, used to trigger generation computation. |
+- **B3/S23**: The specific rule set used by Conway's Game of Life: birth on exactly 3 neighbors, survival on 2 or 3 neighbors.
+
+- **Cellular Automaton**: A grid of cells that evolves in discrete steps according to fixed rules based on neighbor states.
+
+- **Double Buffering**: A technique where two copies of the grid are maintained so the display always shows a complete generation while the next is computed.
+
+- **Glider**: A small pattern in the Game of Life that translates across the grid, appearing to move.
+
+- **LFSR**: Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator used here to seed the initial grid.
+
+- **Oscillator**: A pattern that cycles between two or more states indefinitely, such as a blinker (period 2) or a toad (period 2).
+
+- **Still Life**: A stable pattern that does not change from one generation to the next, such as a 2×2 block or a beehive.
+
+- **Toroidal**: A topology where opposite edges of the grid are connected, forming the surface of a torus (doughnut shape).
 
 ---

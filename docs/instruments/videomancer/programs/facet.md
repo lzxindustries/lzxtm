@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 105
 slug: /instruments/videomancer/facet
@@ -7,363 +7,386 @@ image: /img/instruments/videomancer/facet/facet_hero_s1.png
 description: "Most video effects blur, bend, or color-grade a continuous image."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import facet_control_panel from '/img/instruments/videomancer/facet/facet_control_panel.png';
-import facet_source1_skull from '/img/instruments/videomancer/facet/facet_source1_skull.png';
-import facet_source2_cat from '/img/instruments/videomancer/facet/facet_source2_cat.png';
-import facet_source3_clouds from '/img/instruments/videomancer/facet/facet_source3_clouds.png';
-import facet_source4_pattern from '/img/instruments/videomancer/facet/facet_source4_pattern.png';
-import facet_source5_boy from '/img/instruments/videomancer/facet/facet_source5_boy.png';
-import facet_source6_wood from '/img/instruments/videomancer/facet/facet_source6_wood.png';
-import facet_hero_s1 from '/img/instruments/videomancer/facet/facet_hero_s1.png';
-import facet_hero_s2 from '/img/instruments/videomancer/facet/facet_hero_s2.png';
-import facet_hero_s3 from '/img/instruments/videomancer/facet/facet_hero_s3.png';
-import facet_hero_s4 from '/img/instruments/videomancer/facet/facet_hero_s4.png';
-import facet_hero_s5 from '/img/instruments/videomancer/facet/facet_hero_s5.png';
-import facet_hero_s6 from '/img/instruments/videomancer/facet/facet_hero_s6.png';
-import facet_ex1_s1 from '/img/instruments/videomancer/facet/facet_ex1_s1.png';
-import facet_ex1_s2 from '/img/instruments/videomancer/facet/facet_ex1_s2.png';
-import facet_ex1_s3 from '/img/instruments/videomancer/facet/facet_ex1_s3.png';
-import facet_ex1_s4 from '/img/instruments/videomancer/facet/facet_ex1_s4.png';
-import facet_ex1_s5 from '/img/instruments/videomancer/facet/facet_ex1_s5.png';
-import facet_ex1_s6 from '/img/instruments/videomancer/facet/facet_ex1_s6.png';
-import facet_ex2_s1 from '/img/instruments/videomancer/facet/facet_ex2_s1.png';
-import facet_ex2_s2 from '/img/instruments/videomancer/facet/facet_ex2_s2.png';
-import facet_ex2_s3 from '/img/instruments/videomancer/facet/facet_ex2_s3.png';
-import facet_ex2_s4 from '/img/instruments/videomancer/facet/facet_ex2_s4.png';
-import facet_ex2_s5 from '/img/instruments/videomancer/facet/facet_ex2_s5.png';
-import facet_ex2_s6 from '/img/instruments/videomancer/facet/facet_ex2_s6.png';
-import facet_ex3_s1 from '/img/instruments/videomancer/facet/facet_ex3_s1.png';
-import facet_ex3_s2 from '/img/instruments/videomancer/facet/facet_ex3_s2.png';
-import facet_ex3_s3 from '/img/instruments/videomancer/facet/facet_ex3_s3.png';
-import facet_ex3_s4 from '/img/instruments/videomancer/facet/facet_ex3_s4.png';
-import facet_ex3_s5 from '/img/instruments/videomancer/facet/facet_ex3_s5.png';
-import facet_ex3_s6 from '/img/instruments/videomancer/facet/facet_ex3_s6.png';
-
-# Facet
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: facet_source1_skull, after: facet_hero_s1 },
-    { label: "Cat", before: facet_source2_cat, after: facet_hero_s2 },
-    { label: "Clouds", before: facet_source3_clouds, after: facet_hero_s3 },
-    { label: "Pattern", before: facet_source4_pattern, after: facet_hero_s4 },
-    { label: "Boy", before: facet_source5_boy, after: facet_hero_s5 },
-    { label: "Wood", before: facet_source6_wood, after: facet_hero_s6 },
-  ]}
-/>
-*Facet dividing a video frame into flat-shaded crystal cells with black edge outlines, creating a stained-glass mosaic effect.*
+![Facet hero image](/img/instruments/videomancer/facet/facet_hero_s1.png)
+*Facet dividing a live video frame into flat-shaded crystal cells with dark leadwork outlines, producing a mosaic resembling hand-cut stained glass.*
 
 ---
 
 ## Overview
 
-Most video effects blur, bend, or color-grade a continuous image. Facet does something more structural — it divides the entire frame into a regular grid of rectangular cells and replaces the contents of each cell with a single, uniform color sampled from the source at the cell's origin. The result looks like a view through a faceted crystal or a leaded stained-glass window: flat panes of color separated by sharp geometric boundaries.
+Facet is a spatial tessellation effect that cuts the video frame into a grid of rectangular cells, each painted with a single sampled color. The result looks like looking through a faceted crystal or a stained glass window: the original image is still recognizable by its broad shapes and colors, but all fine detail within each cell has been replaced by a single flat tone. Black outlines at the cell boundaries complete the illusion, adding dark leadwork between the colored panes. Toggle the outlines off, and the cells butt together seamlessly like bathroom tiles; toggle flat shading off, and the original image shows through a black grid overlay.
 
-The name comes from the flat, polished surfaces of a cut gemstone. Each cell in Facet's grid acts like one facet of a crystal — reflecting a single point of the scene behind it as a uniform plane of color. At small cell sizes, the effect is a subtle loss of detail, like frosted glass. At large cell sizes, the image dissolves into an abstract color-field painting where only the broadest tonal structure of the source remains.
+At conservative settings: small cells, thin outlines: Facet produces a gentle mosaic that softens the image without destroying it. At extreme settings: large cells, heavy leadwork: the video collapses into an abstract quilt of bold color blocks separated by thick dark borders. Enable **Mono** to strip the chroma entirely, reducing the mosaic to a grayscale crystal lattice. The wet/dry **Mix** fader lets you dissolve smoothly between the faceted effect and the unprocessed source, opening up a range of semi-transparent overlay textures.
 
-Two toggles give Facet its character. **Outlines** draws black borders at cell boundaries, turning the mosaic into an explicit grid — a stained-glass window or comic-book panel layout. **Flat Shade** switches between the sample-and-hold mosaic (flat color per cell) and the original live pixels, allowing the grid outlines to overlay a fully detailed image. Combined with the Mono desaturation toggle and the wet/dry Mix fader, these controls span a range from subtle texture to bold graphic abstraction.
+:::tip
+Facet's signature look is the combination of flat shading and outlines. Together, they turn any video source into a stained glass window in real time.
+:::
+
+### What's In a Name?
+
+A ***facet*** is one of the flat, polished surfaces of a cut gemstone. When light enters a diamond or a prism, each facet reflects a single color at a single angle: a tiny, flat mirror. Facet does the same thing to video: it cuts the image into flat faces, each capturing one color from the source. The whole frame becomes a jewel, its surface divided into clean geometric planes.
 
 ---
 
 ## Quick Start
 
-1. **Cell Size sweet spot**: Around 30–50% produces cells large enough to read as flat color panes while preserving enough of the source composition to remain recognizable — the ideal range for stained-glass effects.
-2. **Edge width scales with cell size**: A 3-pixel edge is barely visible in a 35-pixel cell but consumes 75% of a 4-pixel cell. Increase cell size before increasing edge width to maintain visible cell interiors.
-3. **Outlines without flat shade**: Disabling Flat Shade while keeping Outlines on creates a grid overlay on full-resolution video — useful as a compositional guide or graphic design element.
+1. With **Flat Shade** (Switch 9) and **Outlines** (Switch 8) both set to **On** (their defaults), slowly turn **Cell Size** (Knob 1) clockwise. The image breaks into progressively larger blocks of uniform color, like zooming into a mosaic.
+2. Increase **Edge Width** (Knob 2). Black borders appear at the boundaries of each cell, dividing the mosaic into a stained glass grid. Wider edges create heavier leadwork.
+3. Toggle **Flat Shade** (Switch 9) to **Off**. The original image shows through the grid: only the dark outlines remain, overlaid like a wire mesh on the source video.
+4. Sweep the **Mix** fader (Fader 12) from right to left. The faceted effect fades into the original, creating a ghostly overlay at intermediate positions.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Facet loaded](/img/instruments/videomancer/facet/facet_control_panel.png)
+*Videomancer's front panel with Facet active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Cell Size
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 38% |
+
+**Cell Size** controls the width and height of each rectangular cell in the mosaic grid. At 0%, cells are only a few pixels across: a fine tessellation barely distinguishable from the original image. As you turn the knob clockwise, cells grow wider and taller, and the mosaic becomes coarser. At 100%, cells are large blocks spanning dozens of pixels, reducing the image to a bold grid of flat color panels. Because cell width and height are equal, all cells are square.
+
+---
+
+### Knob 2 — Edge Width
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Edge Width** controls the thickness of the black outlines drawn at cell boundaries when **Outlines** (Switch 8) is enabled. At 0%, the outlines are invisible: zero pixels wide: even if the Outlines toggle is on. As Edge Width increases, a dark border grows along the left and top edges of each cell, creating heavier and heavier leadwork. At maximum, the outlines consume up to seven pixels of each cell edge, leaving thick black bars between the colored panes.
+
+:::note
+Edge Width has no visible effect unless **Outlines** (Switch 8) is set to **On**. With Outlines off, the Edge Width knob does nothing.
+:::
+
+---
+
+### Knob 3 — Contrast
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Contrast** is reserved for a future firmware update. It is intended to apply a ***proc amp*** contrast adjustment to the faceted image, scaling pixel values around their midpoint to make the mosaic punchier or flatter. This control currently has no visible effect on the output.
+
+---
+
+### Knob 4 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Brightness** is reserved for a future firmware update. It is intended to apply a brightness offset to the faceted image, shifting all pixel values up or down to lighten or darken the mosaic. This control currently has no visible effect on the output.
+
+---
+
+### Knob 5 — Color Reduce
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Color Reduce** is reserved for a future firmware update. It is intended to ***quantize*** color values within each cell, snapping them to a smaller palette of distinct levels. Lower values would produce fewer colors, creating a bolder, more poster-like mosaic. This control currently has no visible effect on the output.
+
+---
+
+### Knob 6 — Randomize
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 13% |
+
+**Randomize** is reserved for a future firmware update. It is intended to add spatial jitter to cell boundaries, breaking the rigid grid into an irregular, organic tessellation: something closer to a ***Voronoi diagram*** than a regular checkerboard. This control currently has no visible effect on the output.
+
+---
+
+### Switch 7 — Hex Grid
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Hex Grid** is reserved for a future firmware update. It is intended to switch the cell tessellation from a rectangular grid to a hexagonal layout, where cells interlock like honeycomb. This toggle currently has no visible effect on the output.
+
+---
+
+### Switch 8 — Outlines
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Outlines** enables or disables the black borders drawn at cell boundaries. Default: **On**. When enabled, pixels at the left edge and top edge of each cell are rendered as solid black (luminance zero, neutral chroma), creating dark leadwork lines between cells. The width of these outlines is controlled by **Edge Width** (Knob 2). When disabled, cells sit edge to edge with no visible border, and the mosaic becomes a seamless patchwork of flat color.
+
+---
+
+### Switch 9 — Flat Shade
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Flat Shade** enables or disables flat shading of cell interiors. Default: **On**. When enabled, each cell is filled with a single color sampled from the first pixel at the cell boundary: effectively the top-left corner of the cell. All original image detail within the cell is replaced by this uniform tone. When disabled, the original video image passes through unmodified, and only the outlines (if enabled) are drawn over it. Turning Flat Shade off transforms Facet from a mosaic effect into a grid overlay effect.
+
+:::tip
+With **Flat Shade** off and **Outlines** on, Facet becomes a simple grid generator. The dark lines divide the image into cells without altering the video content inside them: useful for compositional framing or a retro CRT-monitor aesthetic.
+:::
+
+---
+
+### Switch 10 — Mono
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Mono** converts the flat-shaded cells to monochrome. Default: **Off**. When enabled, the chroma channels (U and V) are replaced with neutral midpoint values, removing all color and leaving only grayscale facets. The luminance values are preserved, so the brightness structure of the mosaic remains intact. Mono only has a visible effect when **Flat Shade** (Switch 9) is also enabled; with Flat Shade off, the chroma passes through from the original signal unmodified.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Facet processing stages. Default: **Off**. The sync delay pipeline still aligns timing, so there is no glitch when toggling. Use Bypass for instant A/B comparison between the raw input and the faceted result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** controls the wet/dry blend between the faceted (processed) signal and the original (delayed) video. At 0%, fully left, the output is entirely dry: the original image with no facet effect. At 100% (default), fully right, the output is entirely wet: the full mosaic. Intermediate values create a semi-transparent overlay where the mosaic sits ghosted on top of the source, producing a soft, dreamlike double exposure.
 
 ---
 
 ## Background
 
-### The Fairlight CVI and Early Video Mosaics
+### Spatial Tessellation
 
-Facet belongs to the Fairlight category — effects inspired by the Fairlight Computer Video Instrument, one of the first real-time digital video effects processors. The original Fairlight CVI (1984) could pixelate live video by reducing spatial resolution in real time, creating the blocky mosaic look that became iconic in 1980s music videos and television. Facet extends this legacy with configurable cell sizes, optional outlines, and flat-shading control.
+***Tessellation*** is the art of dividing a flat surface into smaller shapes that fit together without gaps or overlaps. Floor tiles, honeycomb, and stained glass windows are all tessellations. In mathematics, the study of tessellations goes back to ancient Greece, but the term entered popular culture through the impossible geometries of M. C. Escher. Facet implements the simplest possible tessellation: a regular grid of identical squares. Each square cell captures one color from the underlying image, discarding all the fine detail within its borders.
 
-### Sample-and-Hold in Video
+### Flat Shading
 
-The core technique behind Facet's flat shading is **sample-and-hold**: at the start of each cell, the current pixel value is captured and held constant until the next cell boundary. This is the spatial equivalent of a zero-order hold in signal processing — no interpolation, no averaging, just the raw value at one sample point extended across a region. The result is a staircase approximation of the original image, with each step being one cell wide.
+In computer graphics, ***flat shading*** is the earliest and most basic technique for coloring a polygon. Each face receives a single, uniform color: there is no smooth gradient across the surface. This was the standard rendering method for early 3D games and CAD software because it required the fewest calculations per polygon. Facet applies the same idea to 2D video: each cell in the grid is a "polygon" filled with a single sampled color. The result is a mosaic of flat planes that looks hand-cut, like a stained glass window or a low-polygon 3D model viewed head-on.
 
-In analog video processing, sample-and-hold circuits were used for time-base correction and signal clamping. Digital implementations like Facet's use a simple register that latches the incoming pixel value whenever a counter resets. The visual effect is identical to nearest-neighbor downsampling followed by nearest-neighbor upsampling — pixels become visible as uniform rectangles.
+### Stained Glass and Leadwork
 
-### Cell Grids and Tesselation
-
-Facet divides the frame using a regular rectangular grid. The cell width is derived from the Cell Size register: bits [9:5] plus a constant offset of 4, giving a range of 4 to 35 pixels. Both axes use the same cell width, producing square cells. Local X and Y counters track position within each cell, resetting at cell boundaries to drive both the sample-and-hold latch and the edge detector.
-
-This fixed-frequency grid contrasts with irregular tessellation methods like Voronoi diagrams or Delaunay triangulations. Facet's regularity is deliberate — it creates a mechanical, crystalline quality rather than an organic one. The grid is synchronized to the video raster, so cell boundaries align consistently across frames.
-
-### Flat Shading and Cel Animation
-
-The Flat Shade toggle switches between two rendering modes. When enabled, each cell displays the held sample — a single uniform color. When disabled, the original live pixels pass through, and only the edge outlines (if enabled) affect the image. The "flat shade" terminology comes from 3D computer graphics, where it refers to rendering each polygon face with a single color rather than interpolating across vertices.
-
-Combined with black outlines, flat shading creates a look reminiscent of **cel animation** — the traditional animation technique where characters and backgrounds are painted with flat colors and outlined in black ink. The visual connection is immediate: Facet turns live video into something that looks hand-drawn.
+The visual metaphor at the heart of Facet is the stained glass window. In traditional glasswork, colored glass pieces are cut to shape and joined by strips of lead called ***came***. The dark came lines serve a structural purpose: holding the glass together: but they also define the visual rhythm of the window, separating the color fields and giving the design its characteristic boldness. In Facet, the black outlines play the same role. They are not structurally necessary, but they define the visual boundaries between cells and give the mosaic its weight and presence.
 
 
 ---
 
 ## Signal Flow
 
-Sync Detection → Cell Grid → Processing → Mix → Sync Delay → Bypass Mux
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Sync Detection ─────────────────────────────────────────────
-│   ├─ Detect hsync/vsync falling edges
-│   ├─ Maintain global X/Y raster counters
-│   └─ Maintain local_x / local_y within current cell
-│
-├── Cell Grid ──────────────────────────────────────────────────
-│   ├─ Cell width = reg(0)[9:5] + 4    (range 4–35 pixels)
-│   ├─ local_x resets at cell boundary  → sample-and-hold Y/U/V
-│   └─ local_y resets at row cell boundary
-│
-├── Processing ─────────────────────────────────────────────────
-│   ├─ 1. Edge detect: local_x < edge_w OR local_y < edge_w
-│   │      → black (Y=0, U=512, V=512)
-│   ├─ 2. Flat shade: held Y/U/V from cell origin sample
-│   │      OR live input Y/U/V (when Flat Shade off)
-│   └─ 3. Mono: force U/V to 512 (neutral chroma)
-│
-├── Mix ────────────────────────────────────────────────────────
-│   └─ 3× interpolator_u: lerp(dry, wet, mix_amount)
-│
-├── Sync Delay ─────────────────────────────────────────────────
-│   └─ 8-clock pipeline delay for hsync/vsync/field/data
-│
-└── Bypass Mux ─────────────────────────────────────────────────
-    └─ Select processed or delayed-dry signal
-```
+The pipeline has two key interactions to understand. First, ***edge detection takes priority over flat shading***. If a pixel lies at the left or top edge of a cell and outlines are enabled, it is always rendered black regardless of the Flat Shade or Mono settings. Second, ***Mono only affects the flat shading path***. When Flat Shade is off, the original chroma passes through untouched, and the Mono toggle has no visible effect.
 
-The processing pipeline is structurally simple — a single process handles sync detection, cell grid tracking, sample-and-hold, edge detection, and output selection in sequence. The critical interaction is between the cell grid counters and the sample-and-hold latch: when `local_x` resets to zero (cell boundary), the current input pixel is captured into `held_y/u/v` registers. All subsequent pixels within that cell use the held values when Flat Shade is active. Edge detection runs in parallel, checking whether the current local position falls within the edge-width threshold — if so, the pixel is forced to black regardless of the shading mode.
+The 8-clock sync and data delay pipeline preserves a time-aligned copy of the original input. This delayed copy serves two roles: it feeds the "dry" side of the wet/dry mix, and it provides the sync signals (hsync, vsync, field) for the output. Because all three interpolator instances share the same enable signal, the Y, U, and V mix outputs are always phase-aligned.
 
-The edge width is derived from bits [9:7] of the Edge Width register, giving a 3-bit range of 0–7 pixels. This is compared against both `local_x` and `local_y`, so edges appear as an L-shaped border at the top and left of each cell. At maximum, the edge can consume nearly the entire cell, leaving only a small window of the shaded content visible.
-
----
-
-## Parameter Reference
-
-<img src={facet_control_panel} alt="Videomancer front panel with Facet loaded"/>
-*Videomancer's front panel with Facet active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Cell Size
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 38% |
-| Suffix | % |
-
-Controls the cell size — the width and height of each rectangular facet in the grid. The VHDL extracts bits [9:5] and adds 4 to the result, producing cell dimensions from 4 pixels (fully counter-clockwise) to 35 pixels (fully clockwise). At small values, the mosaic is fine enough that the source image remains recognizable. At large values, the image dissolves into a coarse grid of color blocks where only the broadest tonal regions are distinguishable.
-
----
-
-#### Knob 2 — Edge Width
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-Controls the width of the black edge borders drawn at cell boundaries. The VHDL extracts bits [9:7], giving a 3-bit integer range of 0–7 pixels. At 0, no edges are drawn regardless of the Outlines toggle. As the value increases, the black border at the top and left of each cell widens, progressively obscuring more of the cell's interior. At maximum edge width relative to a small cell size, the entire grid can appear nearly black — the edges consume the cells.
-
----
-
-#### Knob 3 — Contrast
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Mapped to a register but not used in the current VHDL implementation. The Contrast control is reserved for a future processing stage. Adjusting this knob has no effect on the output.
-
----
-
-#### Knob 4 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Mapped to a register but not used in the current VHDL implementation. The Brightness control is reserved for a future processing stage. Adjusting this knob has no effect on the output.
-
----
-
-#### Knob 5 — Color Reduce
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-Mapped to a register but not used in the current VHDL implementation. The Color Reduce control is reserved for a future processing stage that would quantize the color palette. Adjusting this knob has no effect on the output.
-
----
-
-#### Knob 6 — Randomize
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 13% |
-| Suffix | % |
-
-Mapped to a register but not used in the current VHDL implementation. The Randomize control is reserved for a future stage that would jitter cell boundaries or introduce noise into the grid. Adjusting this knob has no effect on the output.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Hex Grid** | Off | On |
-| **8 — Outlines** | Off | On |
-| **9 — Flat Shade** | Off | On |
-| **10 — Mono** | Off | On |
-| **11 — Bypass** | Off | On |
-
-Toggles 8 through 10 control the three active rendering modes — outlines, flat shading, and monochrome desaturation. Toggle 7 (Hex Grid) is mapped but not implemented in the current VHDL. Toggle 11 is the standard bypass switch. The active toggles are independent: Outlines and Flat Shade can each be enabled or disabled separately, giving four distinct visual combinations — outlines only (grid overlay on live video), flat shade only (mosaic without borders), both (stained-glass look), or neither (pass-through with only the cell-boundary sample-and-hold latch active but no visible effect).
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Facet-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::note
+Five TOML-declared parameters: **Contrast**, **Brightness**, **Color Reduce**, **Randomize**, and **Hex Grid**: are mapped to hardware registers but are not yet connected to the processing pipeline. They are reserved for a future firmware update and currently have no visible effect.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from simple mosaic effects to graphic stained-glass compositions, building familiarity with cell size, edge outlines, and flat shading interactions.
+These exercises progress from a basic stained glass look to monochrome abstraction, gradually exploring the interactions among cell size, outlines, flat shading, and monochrome mode.
+### Exercise 1: Stained Glass Window
 
-### Exercise 1: Crystal Mosaic
+![Stained Glass Window result](/img/instruments/videomancer/facet/facet_ex1_s1.png)
+*Stained Glass Window — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: facet_source1_skull, after: facet_ex1_s1 },
-    { label: "Cat", before: facet_source2_cat, after: facet_ex1_s2 },
-    { label: "Clouds", before: facet_source3_clouds, after: facet_ex1_s3 },
-    { label: "Pattern", before: facet_source4_pattern, after: facet_ex1_s4 },
-    { label: "Boy", before: facet_source5_boy, after: facet_ex1_s5 },
-    { label: "Wood", before: facet_source6_wood, after: facet_ex1_s6 },
-  ]}
-/>
-*Crystal Mosaic — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with recognizable subjects — faces, text, or geometric objects work well.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Learn how Cell Size and Flat Shade interact to create mosaic effects at different resolutions.
+#### Learning Outcomes
 
-1. **Enable flat shading**: Confirm Flat Shade (Toggle 9) is On and Outlines (Toggle 8) is Off.
-2. **Minimum cells**: Turn Cell Size fully counter-clockwise. At 4-pixel cells, the image is slightly softened but recognizable.
-3. **Increase cell size**: Slowly sweep Cell Size clockwise. Watch the image progressively dissolve into larger and larger color blocks.
-4. **Find the sweet spot**: Around 40–50%, faces and objects are still recognizable as colored shapes but fine detail is gone.
-5. **Maximum cells**: At 100%, the image is a very coarse grid — only broad color regions remain.
+A stained glass window effect with bold colored cells and prominent dark borders.
 
-**Key concepts**: Cell size controls the trade-off between detail and abstraction, flat shading samples one pixel per cell and holds it across the entire cell area
+#### Key Concepts
 
----
+- Flat shading replaces all detail within a cell with a single sampled color
+- Outlines create dark leadwork at cell boundaries
+- Edge Width controls the heaviness of the leadwork
 
-### Exercise 2: Stained Glass
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: facet_source1_skull, after: facet_ex2_s1 },
-    { label: "Cat", before: facet_source2_cat, after: facet_ex2_s2 },
-    { label: "Clouds", before: facet_source3_clouds, after: facet_ex2_s3 },
-    { label: "Pattern", before: facet_source4_pattern, after: facet_ex2_s4 },
-    { label: "Boy", before: facet_source5_boy, after: facet_ex2_s5 },
-    { label: "Wood", before: facet_source6_wood, after: facet_ex2_s6 },
-  ]}
-/>
-*Stained Glass — simulated result across source images.*
-**Source**: Brightly colored footage — flowers, neon signs, colorful fabrics, or abstract video feedback.
+Colorful footage with large areas of distinct hue: flowers, neon signs, painted murals, or color bar test patterns.
 
-**What You'll Create**: Combine flat shading with edge outlines to create a stained-glass window effect.
+#### Steps
 
-1. **Set moderate cell size**: Cell Size around 50–60% to create visible color panes.
-2. **Enable outlines**: Turn on Outlines (Toggle 8). Black borders appear at cell boundaries.
-3. **Adjust edge width**: Sweep Edge Width from minimum to maximum. Watch the grid lines thicken.
-4. **Find the balance**: Around 30–40% Edge Width, the black borders create distinct cell separation without overwhelming the color content.
-5. **Try without flat shade**: Turn off Flat Shade (Toggle 9). The outlines now overlay the full-resolution source — a comic-book panel effect.
-6. **Re-enable flat shade**: The combination of flat color panes and black borders creates the classic stained-glass look.
+1. **Set the cell size**: Turn **Cell Size** (Knob 1) to roughly 60%. The image breaks into a medium-coarse mosaic of flat-colored squares.
+2. **Add leadwork**: With **Outlines** (Switch 8) already on, increase **Edge Width** (Knob 2) to about 50%. Thick black borders appear between cells, completing the stained glass illusion.
+3. **Refine the grid**: Sweep Cell Size slowly. Smaller cells preserve more of the source's shape; larger cells create bolder, more abstract panels. Find the sweet spot where the subject is still recognizable but clearly "glassed."
+4. **Compare**: Toggle **Bypass** (Switch 11) on and off to see the raw source next to the faceted version.
 
-**Key concepts**: Outlines draw black borders at cell boundaries, edge width controls the visual weight of the grid, flat shade and outlines are independent and combinable
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cell Size | ~60% |
+| Edge Width | ~50% |
+| Contrast | ~50% |
+| Brightness | ~50% |
+| Color Reduce | ~25% |
+| Randomize | ~12% |
+| Hex Grid | Off |
+| Outlines | On |
+| Flat Shade | On |
+| Mono | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Monochrome Grid Overlay
+### Exercise 2: Ghost Grid Overlay
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: facet_source1_skull, after: facet_ex3_s1 },
-    { label: "Cat", before: facet_source2_cat, after: facet_ex3_s2 },
-    { label: "Clouds", before: facet_source3_clouds, after: facet_ex3_s3 },
-    { label: "Pattern", before: facet_source4_pattern, after: facet_ex3_s4 },
-    { label: "Boy", before: facet_source5_boy, after: facet_ex3_s5 },
-    { label: "Wood", before: facet_source6_wood, after: facet_ex3_s6 },
-  ]}
-/>
-*Monochrome Grid Overlay — simulated result across source images.*
-**Source**: High-contrast footage — silhouettes, architectural details, or stark black-and-white material.
+![Ghost Grid Overlay result](/img/instruments/videomancer/facet/facet_ex2_s1.png)
+*Ghost Grid Overlay — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Use Mono and Outlines together to create a graphic pencil-sketch or architectural wireframe effect.
+***A description of the exercise illustration.***
 
-1. **Enable mono**: Turn on Mono (Toggle 10). The image becomes grayscale.
-2. **Enable outlines and flat shade**: Both toggles On.
-3. **Set cell size**: Around 40% for medium-resolution cells.
-4. **Increase edge width**: Around 50% to make the grid structure prominent.
-5. **Adjust mix**: Lower Mix to ~60%. The grid starts to dissolve into the monochrome source underneath — a technical drawing or blueprint effect.
-6. **Try large cells**: Increase Cell Size to 80–100%. With mono and outlines, this creates bold, abstract compositions of gray blocks separated by thick black lines.
-7. **Compare**: Toggle Bypass to see the unprocessed signal for A/B comparison.
+#### Learning Outcomes
 
-**Key concepts**: Mono strips chrominance, leaving only luminance structure visible through the faceted grid; mix fader blends the effect intensity
+A semi-transparent dark grid overlaid on live video, like looking through a wire mesh or a window screen.
+
+#### Key Concepts
+
+- Flat Shade off turns Facet into a grid overlay on the original image
+- Mix creates semi-transparent blending between processed and dry signals
+- Edge Width and Cell Size define the grid geometry independently
+
+#### Video Source
+
+A live camera feed or recorded footage with recognizable subjects and moderate contrast.
+
+#### Steps
+
+1. **Disable flat shading**: Set **Flat Shade** (Switch 9) to **Off**. The mosaic disappears, and the original video shows through.
+2. **Enable outlines**: Confirm **Outlines** (Switch 8) is **On**. A grid of dark lines now overlays the source image.
+3. **Adjust the grid**: Set **Cell Size** (Knob 1) to about 40% and **Edge Width** (Knob 2) to about 30%. You see a fine dark grid dividing the frame into small squares.
+4. **Soften with Mix**: Slide the **Mix** fader (Fader 12) to roughly 60%. The grid becomes semi-transparent (a ghostly lattice floating over the source.)
+5. **Explore extremes**: Push Edge Width to maximum while keeping Cell Size small. The outlines grow so thick that the grid becomes a dominant visual element, nearly occluding the image.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cell Size | ~40% |
+| Edge Width | ~30% |
+| Contrast | ~50% |
+| Brightness | ~50% |
+| Color Reduce | ~25% |
+| Randomize | ~12% |
+| Hex Grid | Off |
+| Outlines | On |
+| Flat Shade | Off |
+| Mono | Off |
+| Bypass | Off |
+| Mix | ~60% |
 
 ---
 
+### Exercise 3: Monochrome Crystal
 
-## Tips
+![Monochrome Crystal result](/img/instruments/videomancer/facet/facet_ex3_s1.png)
+*Monochrome Crystal — simulated result across source images.*
+#### Exercise Illustration
 
-- **Mono for emphasis**: The Mono toggle removes color distraction, making the geometric structure of the grid more prominent. Try it with high-contrast source material for bold graphic results.
-- **Mix for subtlety**: At 100%, Facet fully replaces the source. Pulling Mix back to 60–80% lets the original detail show through the mosaic — a frosted-glass look.
-- **Feedback loops**: Routing Facet's output back to its input creates recursive mosaics — each pass samples the already-flat-shaded cells, progressively reducing the image to fewer and fewer unique color values.
-- **Reserved controls**: Knobs 3–6 and Toggle 7 are mapped but unused in the current VHDL. Future firmware updates may activate Contrast, Brightness, Color Reduce, Randomize, and Hex Grid features.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+An abstract monochrome pattern of large grayscale blocks separated by heavy black borders (a crystal lattice reduced to pure light and shadow.)
+
+#### Key Concepts
+
+- Mono strips color from the flat-shaded cells, leaving only grayscale facets
+- Large cells with heavy outlines create bold abstract compositions
+- The interaction between Mono and Flat Shade: Mono only works when Flat Shade is on
+
+#### Video Source
+
+High-contrast footage: stark shadows, bright highlights, strong silhouettes. Black-and-white film clips or backlit subjects work especially well.
+
+#### Steps
+
+1. **Large cells**: Turn **Cell Size** (Knob 1) to about 80%. The image becomes a very coarse mosaic of large flat blocks.
+2. **Heavy borders**: Increase **Edge Width** (Knob 2) to roughly 70%. Thick black outlines dominate the grid.
+3. **Enable monochrome**: Set **Mono** (Switch 10) to **On** while keeping **Flat Shade** (Switch 9) on. All color vanishes, leaving a grayscale crystal lattice.
+4. **Full wet**: Confirm **Mix** (Fader 12) is at 100% so the effect is fully applied.
+5. **Observe luminance structure**: Move your camera or change the source. Notice how the grayscale values in each cell track the average brightness of the underlying image region, even though all detail is gone.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cell Size | ~80% |
+| Edge Width | ~70% |
+| Contrast | ~50% |
+| Brightness | ~50% |
+| Color Reduce | ~25% |
+| Randomize | ~12% |
+| Hex Grid | Off |
+| Outlines | On |
+| Flat Shade | On |
+| Mono | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **BT.601** | ITU-R BT.601; the color encoding standard used by Videomancer's YUV pipeline for standard-definition video. |
-| **Cell** | A rectangular region of the frame defined by the cell grid; each cell displays either a flat-shaded sample or the live input depending on mode. |
-| **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Mosaic** | A spatial effect that replaces groups of pixels with uniform blocks, reducing spatial resolution. |
-| **Sample-and-Hold** | A technique that captures a signal value at a specific moment and holds it constant until the next capture event. |
-| **Tessellation** | The division of a surface into tiles (cells) that cover it without gaps or overlaps. |
-| **Zero-Order Hold** | A signal reconstruction method that holds each sample constant until the next sample arrives, producing a staircase waveform. |
+- **Came**: The lead strips joining pieces of glass in a stained glass window; Facet's outlines serve the same visual role
+
+- **Chroma**: The color information in a video signal, encoded as U and V components in YUV color space
+
+- **Flat Shading**: A rendering technique where each polygon or cell receives a single uniform color with no smooth gradation
+
+- **Interpolation**: Computing intermediate values between two known points; used by the Mix fader to blend processed and original signals
+
+- **Leadwork**: The network of lead came strips in a stained glass window; in Facet, the black cell outlines
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness
+
+- **Mosaic**: An image composed of small, uniformly colored tiles arranged in a grid
+
+- **Proc Amp**: Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal
+
+- **Tessellation**: Dividing a surface into shapes that fit together without gaps or overlaps
+
+- **Voronoi Diagram**: A partition of a plane into regions based on distance to a set of seed points, producing an irregular, organic-looking tessellation
 
 ---

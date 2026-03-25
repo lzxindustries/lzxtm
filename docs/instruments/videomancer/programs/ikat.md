@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 141
 slug: /instruments/videomancer/ikat
@@ -7,360 +7,396 @@ image: /img/instruments/videomancer/ikat/ikat_hero_s1.png
 description: "Ikat simulates the ancient resist-dyeing technique of the same name by dividing the video frame into vertical (or horizontal) stripe columns and processing each column as if it were a bundle of warp threads dipped into a dye bath."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import ikat_control_panel from '/img/instruments/videomancer/ikat/ikat_control_panel.png';
-import ikat_source1_boat from '/img/instruments/videomancer/ikat/ikat_source1_boat.png';
-import ikat_source2_castle from '/img/instruments/videomancer/ikat/ikat_source2_castle.png';
-import ikat_source3_turtle from '/img/instruments/videomancer/ikat/ikat_source3_turtle.png';
-import ikat_source4_pattern from '/img/instruments/videomancer/ikat/ikat_source4_pattern.png';
-import ikat_source5_boy from '/img/instruments/videomancer/ikat/ikat_source5_boy.png';
-import ikat_source6_knit from '/img/instruments/videomancer/ikat/ikat_source6_knit.png';
-import ikat_hero_s1 from '/img/instruments/videomancer/ikat/ikat_hero_s1.png';
-import ikat_hero_s2 from '/img/instruments/videomancer/ikat/ikat_hero_s2.png';
-import ikat_hero_s3 from '/img/instruments/videomancer/ikat/ikat_hero_s3.png';
-import ikat_hero_s4 from '/img/instruments/videomancer/ikat/ikat_hero_s4.png';
-import ikat_hero_s5 from '/img/instruments/videomancer/ikat/ikat_hero_s5.png';
-import ikat_hero_s6 from '/img/instruments/videomancer/ikat/ikat_hero_s6.png';
-import ikat_ex1_s1 from '/img/instruments/videomancer/ikat/ikat_ex1_s1.png';
-import ikat_ex1_s2 from '/img/instruments/videomancer/ikat/ikat_ex1_s2.png';
-import ikat_ex1_s3 from '/img/instruments/videomancer/ikat/ikat_ex1_s3.png';
-import ikat_ex1_s4 from '/img/instruments/videomancer/ikat/ikat_ex1_s4.png';
-import ikat_ex1_s5 from '/img/instruments/videomancer/ikat/ikat_ex1_s5.png';
-import ikat_ex1_s6 from '/img/instruments/videomancer/ikat/ikat_ex1_s6.png';
-import ikat_ex2_s1 from '/img/instruments/videomancer/ikat/ikat_ex2_s1.png';
-import ikat_ex2_s2 from '/img/instruments/videomancer/ikat/ikat_ex2_s2.png';
-import ikat_ex2_s3 from '/img/instruments/videomancer/ikat/ikat_ex2_s3.png';
-import ikat_ex2_s4 from '/img/instruments/videomancer/ikat/ikat_ex2_s4.png';
-import ikat_ex2_s5 from '/img/instruments/videomancer/ikat/ikat_ex2_s5.png';
-import ikat_ex2_s6 from '/img/instruments/videomancer/ikat/ikat_ex2_s6.png';
-import ikat_ex3_s1 from '/img/instruments/videomancer/ikat/ikat_ex3_s1.png';
-import ikat_ex3_s2 from '/img/instruments/videomancer/ikat/ikat_ex3_s2.png';
-import ikat_ex3_s3 from '/img/instruments/videomancer/ikat/ikat_ex3_s3.png';
-import ikat_ex3_s4 from '/img/instruments/videomancer/ikat/ikat_ex3_s4.png';
-import ikat_ex3_s5 from '/img/instruments/videomancer/ikat/ikat_ex3_s5.png';
-import ikat_ex3_s6 from '/img/instruments/videomancer/ikat/ikat_ex3_s6.png';
-
-# Ikat
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: ikat_source1_boat, after: ikat_hero_s1 },
-    { label: "Castle", before: ikat_source2_castle, after: ikat_hero_s2 },
-    { label: "Turtle", before: ikat_source3_turtle, after: ikat_hero_s3 },
-    { label: "Pattern", before: ikat_source4_pattern, after: ikat_hero_s4 },
-    { label: "Boy", before: ikat_source5_boy, after: ikat_hero_s5 },
-    { label: "Knit", before: ikat_source6_knit, after: ikat_hero_s6 },
-  ]}
-/>
-*Ikat applying column-quantized dye simulation and LFSR-driven bleed to create warp-resist textile textures from live video.*
+![Ikat hero image](/img/instruments/videomancer/ikat/ikat_hero_s1.png)
+*Ikat transforming a live video feed into resist-dyed textile stripes with quantized color columns, feathered dye-bleed edges, and LFSR grain.*
 
 ---
 
 ## Overview
 
-Ikat simulates the ancient resist-dyeing technique of the same name by dividing the video frame into vertical (or horizontal) stripe columns and processing each column as if it were a bundle of warp threads dipped into a dye bath. Within each column, the luminance channel is quantized to a reduced set of levels — mimicking the way hand-dyed threads hold only a few distinct color values across a skein. At column boundaries, an LFSR-driven jitter displacement bleeds color from one stripe into the next, replicating the soft, irregular edges that occur when wax or string resist barriers fail to contain the dye perfectly.
+**Ikat** simulates the ancient textile dyeing technique of the same name, transforming video into a woven fabric of quantized color stripes. The screen becomes a loom: the image is divided into vertical (or horizontal) columns, each column's luminance is reduced to a limited palette of tones, and the boundaries between columns blur with pseudo-random jitter: just as real dye bleeds past the edges of tightly tied threads.
 
-The name comes from the Malay-Indonesian word *ikat*, meaning "to tie" or "to bind" — referring to the bundles of yarn that are tightly bound before immersion in dye vats. In the physical process, the resist ties create sharp but imperfect color boundaries; the tighter the tie, the crisper the edge. Ikat reproduces this dynamic digitally: the Column Width control sets the stripe spacing (the width of each yarn bundle), the Palette control sets the quantization coarseness (how many dye levels each bundle can hold), and the Bleed control governs the feathering at column edges (how much dye leaks across the resist barrier).
+At subtle settings, Ikat adds a gentle woven texture to any source, softening hard edges into organic, fabric-like transitions. At extreme settings, the image collapses into bold bands of flat color separated by ragged, jittering seams. The effect evokes hand-dyed silk, traditional batik cloth, and the imperfect beauty of artisan craft.
 
-At conservative settings — wide columns, moderate quantization, low bleed — Ikat adds a subtle woven-fabric texture to any video source, compressing tonal detail into flat, dye-lot bands while preserving the overall composition. At extreme settings — narrow columns, coarse quantization, maximum bleed and jitter — the image dissolves into a buzzing, thread-like interference pattern where the original subject is barely recognizable through the textile simulation.
+:::note
+Ikat is a ***processing*** program: it transforms an incoming video signal. Feed it camera footage, pattern generators, or the output of other Videomancer programs for the richest results.
+:::
+
+### What's In a Name?
+
+***Ikat*** is a Malay-Indonesian word meaning "to tie" or "to bind." It names a family of dyeing techniques practiced across Southeast Asia, Central Asia, Japan, and Latin America for centuries. In traditional ikat, artisans tightly bind sections of yarn with resist material before submerging the yarn in dye. The bound sections resist the dye, creating patterns where color and bare thread alternate. Because the bindings are never perfectly tight, dye bleeds slightly past the edges, producing the characteristic feathered boundaries that distinguish ikat from printed fabric. This Videomancer program recreates that imperfect resist process digitally: columns of pixels are "tied" into quantized bands, and pseudo-random jitter blurs their edges just as dye seeps past thread bindings.
 
 ---
 
 ## Quick Start
 
-1. **Unused controls**: Pot 6 (Warmth) and Toggle 8 (Palette Src) are registered but have no effect in the current VHDL. Don't spend time searching for their influence.
-2. **Column width sets the fundamental scale**: Everything else — bleed, quantization, jitter — operates within the column structure defined by Pot 1. Start by choosing a column width that matches the visual density you want, then tune the other controls.
-3. **Bleed is chroma-only**: The edge bleed feathers color (U/V) at column boundaries but does not affect luminance. This means the brightness structure remains column-quantized even at maximum bleed.
+1. Feed a video source with visible detail and color variation. Turn **Col Width** (Knob 1) clockwise to create narrow vertical stripes across the image. The source breaks into columns of quantized color.
+2. Increase **Bleed Amt** (Knob 2). The hard edges between columns soften as color bleeds between adjacent stripes (dye seeping past resist boundaries.)
+3. Lower **Palette** (Knob 3) to reduce the number of tonal levels within each column. The image simplifies into bold, flat bands of color, like cloth dipped in a limited number of dye baths.
+4. Raise **Dye Depth** (Knob 5) to inject LFSR jitter into the luminance channel. The column edges become ragged and organic rather than perfectly straight, completing the hand-dyed illusion.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Ikat loaded](/img/instruments/videomancer/ikat/ikat_control_panel.png)
+*Videomancer's front panel with Ikat active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Col Width
+
+| Property | Value |
+|----------|-------|
+| Range | 2 – 16 |
+| Default | 7 |
+
+**Col Width** sets the width of each color column. The image is divided into stripes whose widths are always powers of two: 4, 8, 16, 32, or 64 pixels: so the boundaries snap between discrete sizes as you turn the knob. At the narrowest setting, the image is sliced into many thin stripes that preserve fine detail. At the widest, broad columns of uniform color dominate the frame, each one a wide swatch of dyed fabric.
+
+:::tip
+Because column widths are powers of two, there are only five distinct stripe sizes rather than a continuous sweep. Listen for the visual "clicks" as the pattern snaps between widths.
+:::
+
+---
+
+### Knob 2 — Bleed Amt
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 37.5% |
+
+**Bleed Amt** controls how much color bleeds across column boundaries. At zero, each column is a crisp, hard-edged stripe. As bleed increases, the chroma channels fade toward neutral gray at the edges of each column, simulating dye that has seeped past an imperfect resist. The bleed is symmetrical: both edges of every column soften identically. At maximum, the bleeding extends deep into each column, and narrow columns may lose nearly all their color saturation.
+
+---
+
+### Knob 3 — Palette
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 8 |
+| Default | 1 |
+
+**Palette** determines how many brightness levels survive within each column. At the minimum setting, the luminance channel is aggressively quantized into very few tonal steps, producing bold, flat bands reminiscent of cloth dipped in just two or three dye baths. As the value increases clockwise, more tonal levels are preserved and the banding becomes subtler. At the maximum, quantization is minimal and the original luminance detail remains largely intact.
+
+---
+
+### Knob 4 — Saturate
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Saturate** amplifies or attenuates the color richness of the processed signal. At the midpoint, chroma passes through unchanged. Turning the knob clockwise pushes the U and V channels further from neutral, intensifying colors the way a concentrated dye bath produces more vivid hues. Below the midpoint, the chroma channels compress toward neutral, producing a muted, sun-faded textile appearance.
+
+:::note
+Saturation boost is applied ***before*** edge bleed, so highly saturated columns show more dramatic color fading at their boundaries. Pushing saturation high while increasing bleed creates vivid stripe centers that wash out to neutral at the seams.
+:::
+
+---
+
+### Knob 5 — Dye Depth
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Dye Depth** scales the amplitude of pseudo-random jitter applied to the luminance channel. At zero, the quantized luminance is clean and uniform within each column. As the value increases, the 16-bit LFSR displaces brightness values by increasing amounts, producing the irregular, organic texture of hand-applied dye. At maximum, the jitter is strong enough to create visible speckle and grain across the columns.
+
+---
+
+### Knob 6 — Warmth
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Warmth** is reserved for a future firmware update. It is intended to shift the processed palette toward warmer or cooler tones. Currently has no visible effect on the output.
+
+---
+
+### Switch 7 — Axis
+
+| Property | Value |
+|----------|-------|
+| Off | Vert |
+| On | Horiz |
+| Default | Vert |
+
+**Axis** selects the orientation of the column grid. In the default **Vert** position, columns run vertically: the image is sliced into side-by-side stripes like warp threads on a loom. Switch to **Horiz** to rotate the grid ninety degrees, creating horizontal bands like weft threads. Column width, bleed, and all other parameters operate identically in both orientations.
+
+---
+
+### Switch 8 — Palette Src
+
+| Property | Value |
+|----------|-------|
+| Off | Fixed |
+| On | Video |
+| Default | Fixed |
+
+**Palette Src** is reserved for a future firmware update. It is intended to select whether the dye color palette is derived from fixed internal values (**Fixed**) or sampled from the incoming video signal (**Video**). Currently has no visible effect on the output.
+
+---
+
+### Switch 9 — Double Ikat
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Double Ikat** enables luminance quantization on both axes simultaneously. With the switch **Off**, only the primary axis (set by **Axis**) is quantized into columns. With it **On**, the perpendicular axis also receives the same quantization mask, converting continuous stripes into a grid of rectangular tiles. This mimics the traditional ***double ikat*** technique, where both warp and weft threads are resist-dyed before weaving (arguably the most difficult and prized form of the craft.)
+
+:::tip
+Double Ikat combined with moderate **Col Width** and low **Palette** produces a mosaic of flat-colored tiles that resembles traditional Balinese ***geringsing*** double-ikat cloth.
+:::
+
+---
+
+### Switch 10 — Noise
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Noise** is intended to control animation of the jitter pattern. The LFSR jitter source free-runs on every active pixel, so the displacement pattern naturally varies from frame to frame regardless of this toggle's position. The visual effect is subtle and frame-rate-dependent.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input directly to the output, disabling all Ikat processing stages. The sync delay pipeline still aligns timing, so there is no glitch when toggling. Use Bypass for instant A/B comparison between the raw input and the processed result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) and wet (processed) signal. At 0%, the output is the original input: identical to Bypass. At 100%, the output is fully processed. Intermediate values blend the two, allowing you to dial in subtle textile textures overlaid on the source image.
 
 ---
 
 ## Background
 
-### What Is Ikat Dyeing?
+### Resist dyeing
 
-**Ikat** is a dyeing technique practiced across South-East Asia, Central Asia, Japan (*kasuri*), and parts of Central and South America. Unlike printing, where patterns are applied to finished cloth, ikat creates patterns by selectively dyeing the *yarn* before weaving. Bundles of threads are wrapped tightly with wax, string, or rubber at intervals that correspond to the desired pattern, then submerged in dye. The bound sections resist the dye; the exposed sections absorb it. After dyeing, the bindings are removed and the threads are woven into fabric. Because the resist boundaries are never perfectly sharp, ikat textiles have a characteristic soft, feathered edge between color regions — a visual signature that distinguishes them from printed fabric.
+***Resist dyeing*** is one of humanity's oldest decorative techniques. The principle is simple: protect part of a material from absorbing dye, and only the unprotected areas take on color. Wax resist (batik), paste resist (katazome), and tie resist (shibori) are all variations on this theme. Ikat is a specific form where individual threads are tied before dyeing and then woven into fabric. Because the ties are never perfectly tight and the threads shift slightly during weaving, the resulting patterns have characteristically soft, feathered edges: in stark contrast to the hard edges of printed fabric. This feathering is the visual signature of ikat, and it's what we're recreating digitally.
 
-### Column Quantization as Warp Simulation
+### Column quantization
 
-In the physical process, each warp thread holds a single color value at any given point along its length — it was either exposed to the dye or it was not. Ikat simulates this by dividing the video frame into columns of a programmable width and quantizing the luminance within each column to a reduced number of levels. The quantization is implemented as a bit mask on the 10-bit Y channel: the upper bits of the Palette register control how many low-order bits are zeroed. At minimum quantization, the signal passes with full 10-bit resolution. At maximum, only the top two or three bits survive, collapsing the image into a few stark tonal bands — like yarn that has been dipped in only two or three dye baths.
+Ikat's column quantization implements a spatial version of ***sample and hold***. The pixel position along the chosen axis is divided by the column width using a ***barrel shift***: a single-cycle bit-shift that replaces a hardware divider, but constrains widths to powers of two. The remainder (fractional position within the column) is extracted with a bitwise mask. Within each column, the luminance channel is quantized by masking its low-order bits, collapsing smooth gradients into flat dye-lot bands. The number of bits masked is controlled by the **Palette** parameter.
 
-### LFSR Jitter as Resist Bleed
+### LFSR jitter
 
-Real ikat textiles never have perfectly straight color boundaries. The dye seeps under the resist ties, creating a soft, irregular edge. Ikat simulates this imperfection using a 16-bit **linear-feedback shift register** (LFSR) seeded with the value 0xACE1. The LFSR produces a pseudo-random displacement that shifts each pixel's luminance by a variable amount controlled by the Dye Depth knob. The jitter is added directly to the quantized Y channel, creating the fuzzy, hand-dyed look at stripe edges.
+A ***linear feedback shift register*** (LFSR) generates a deterministic but pseudo-random sequence of 16-bit values. Ikat uses the lower 8 bits of this sequence, scaled by the **Dye Depth** parameter, to displace the Y channel after quantization. Because the LFSR advances on every active pixel, the displacement pattern is spatially varying: each pixel receives a different jitter offset. The result resembles the uneven dye absorption of natural fiber, where some threads absorb more dye than others despite receiving the same treatment.
 
-### Double Ikat and Saturation Boost
+### Edge bleed mechanics
 
-Traditional *double ikat* — where both warp and weft threads are pre-dyed — is among the most difficult textile techniques in the world. Toggle 9 enables this mode: the quantization mask is applied a second time on the perpendicular axis, creating a cross-hatched pattern instead of simple stripes. Meanwhile, the Saturate knob boosts the U and V chroma channels when set above 50%, simulating the vivid, over-saturated colors produced by repeated dye immersion.
+The edge bleed algorithm computes each pixel's distance from the nearest column boundary. Pixels within the bleed zone: the region near the edge controlled by **Bleed Amt**: have their chroma scaled toward the neutral midpoint (value 512). Pixels near the center of a column retain full color, while those at the boundary fade to gray. This creates the ikat signature: vivid color in the stripe centers washing out to soft, undefined boundaries at the edges.
 
 
 ---
 
 ## Signal Flow
 
-Y Channel → U/V Channels → Sync Signals → Interpolator → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 1. Column Quantization    (divide position by col_width → column index)
-│   │      + LFSR Jitter Offset  (s_jitter_amount × LFSR → signed displacement)
-│   ├─ 2. Palette Quantization   (bit-mask Y by palette_depth(9:7))
-│   ├─ 3. Jitter Composite       (add jitter_offset to quantized Y, clamp)
-│   │      + Double Ikat          (re-apply quant mask on perpendicular axis)
-│   └─ 4. Output Registration
-│
-├── U/V Channels ───────────────────────────────────────────────
-│   │
-│   ├─ 1. Pass-through (latched)
-│   ├─ 2. Saturation Boost       (if sat_boost > 512: U,V × sat_boost >> 9)
-│   ├─ 3. Edge Bleed             (U,V × edge_blend factor at column boundaries)
-│   └─ 4. Output Registration
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ 8-clock delay pipeline (hsync, vsync, field)
-│
-├── Interpolator (4 clocks) ────────────────────────────────────
-│   └─ Crossfade dry (delayed input) ↔ wet (processed) by Mix fader
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The critical interaction is between column quantization and edge bleed. Stage 1 determines which "thread" each pixel belongs to and computes the fractional position within the column. Stage 2 uses that fractional position to compute the edge blend factor. In Stage 3, the edge blend factor scales chroma toward neutral: pixels near the center of a column retain full saturation while pixels near the boundary fade to gray.
 
-The key interaction in the pipeline is between column quantization and edge bleed. Stage 1 computes which column a pixel belongs to and its fractional position within that column. Stage 2 quantizes Y and boosts chroma. Stage 3 applies the LFSR jitter to Y and fades chroma toward neutral at column edges using the fractional position — pixels near the center of a column retain full chroma, while pixels near the boundary are attenuated proportionally to the Bleed Amount. Double Ikat re-applies the quantization mask in Stage 3, effectively quantizing on both axes. Note that Pot 6 (Warmth / `s_color_shift`) and Toggle 8 (Palette Src / `s_palette_mode`) are mapped to registers but are not connected to any processing stage in the current VHDL — they are reserved for future use and have no effect on the output.
+**Saturate** amplifies chroma ***before*** edge bleed is applied (Stage 2 feeds into Stage 3). This means boosting saturation intensifies not only the column centers but also increases the contrast of the edge fade: vivid centers wash out more dramatically. Conversely, **Dye Depth** jitter is applied to the luminance channel ***after*** palette quantization (Stage 3), so the jitter displaces quantized levels rather than raw pixel values. The result is displacement within the "dye lot" rather than generic noise.
 
----
-
-## Parameter Reference
-
-<img src={ikat_control_panel} alt="Videomancer front panel with Ikat loaded"/>
-*Videomancer's front panel with Ikat active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Col Width
-| Property | Value |
-|----------|-------|
-| Range | 2 – 16 |
-| Default | 7 |
-
-Controls the width of each simulated warp stripe in pixels. The pot value is divided by 16 and offset by 4, giving an effective column width range of 4 to 68 pixels. Narrow columns create a fine, thread-like vertical pattern where individual stripes are barely wider than a pixel. Wide columns create bold, flat bands of color. The column width interacts with Bleed Amount — narrower columns leave less room for edge feathering, so the bleed zone can span the entire stripe at high bleed settings.
-
----
-
-#### Knob 2 — Bleed Amt
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 37.5% |
-| Suffix | % |
-
-Controls how much color feathers at the boundaries between adjacent columns. At 0%, column edges are hard — each stripe has a sharp transition to its neighbor. As the value increases, the chroma channels are progressively attenuated near column edges, creating a soft gradient that simulates dye seeping under the resist tie. The bleed zone is symmetric: it fades from both the left and right edges of each column toward the center.
-
----
-
-#### Knob 3 — Palette
-| Property | Value |
-|----------|-------|
-| Range | 1 – 8 |
-| Default | 1 |
-
-Controls the number of quantization levels applied to the luminance channel. Despite its TOML label of "Palette," in the VHDL this control operates as a bit-mask depth selector: the upper three bits of the register (`palette_depth(9:7)`) determine how many low-order bits of the 10-bit Y channel are zeroed. At the minimum setting, Y passes through with full resolution. At the maximum, only two or three MSBs remain, collapsing the image into stark tonal bands. This simulates having fewer dye baths — fewer quantization levels mean fewer distinct thread colors.
-
----
-
-#### Knob 4 — Saturate
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Controls a multiplicative boost applied to the U and V chroma channels when the register value exceeds 512 (50%). Below 50%, chroma passes through unmodified. Above 50%, each chroma sample is multiplied by the register value and right-shifted by 9 bits, progressively over-saturating colors. This simulates the vivid, concentrated dye hues of deeply-immersed textile fibers. At maximum, colors become intensely saturated, often clipping to primary values.
-
----
-
-#### Knob 5 — Dye Depth
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Controls the magnitude of LFSR-driven luminance displacement. Despite its TOML label of "Dye Depth," in the VHDL this register scales the raw LFSR output to produce a signed jitter offset that is added to the quantized Y channel. At 0%, no jitter is applied and quantized columns have perfectly uniform luminance. As the value increases, each pixel's brightness is perturbed by a pseudo-random amount, creating the characteristic irregular, hand-dyed look of ikat textiles. The jitter interacts with palette quantization: heavy quantization with moderate jitter produces pixels that occasionally jump between adjacent dye levels.
-
----
-
-#### Knob 6 — Warmth
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Mapped to the VHDL signal `s_color_shift` but not connected to any processing stage in the current implementation. Adjusting this control has no visible effect on the output. It is reserved for future functionality.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Axis** | Vert | Horiz |
-| **8 — Palette Src** | Fixed | Video |
-| **9 — Double Ikat** | Off | On |
-| **10 — Noise** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles control a mix of independent binary options and reserved controls. Toggle 7 (Axis) swaps the stripe direction between vertical and horizontal. Toggle 8 (Palette Src) is registered but unused in the current VHDL — it has no effect. Toggle 9 (Double Ikat) applies quantization on both axes simultaneously. Toggle 10 (Noise) animates the jitter pattern by advancing an accumulator on each vertical sync. Toggle 11 (Bypass) routes input directly to output.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Ikat processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
-
----
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Ikat-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::tip
+**Chroma is spatial, luma is textural.** Edge bleed affects U and V (color fading at column edges) while LFSR jitter affects only Y (brightness grain within columns). The two effects operate on different channels, creating a layered visual texture that separates color structure from luminance detail.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from simple column striping to full textile simulation, each building on the previous to engage more of the processing chain.
+These exercises progress from basic stripe creation to complex double-ikat textile simulation. Each exercise introduces new controls and builds on the previous visual discoveries.
+### Exercise 1: Warp Threads
 
-### Exercise 1: Basic Warp Stripes
+![Warp Threads result](/img/instruments/videomancer/ikat/ikat_ex1_s1.png)
+*Warp Threads — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: ikat_source1_boat, after: ikat_ex1_s1 },
-    { label: "Castle", before: ikat_source2_castle, after: ikat_ex1_s2 },
-    { label: "Turtle", before: ikat_source3_turtle, after: ikat_ex1_s3 },
-    { label: "Pattern", before: ikat_source4_pattern, after: ikat_ex1_s4 },
-    { label: "Boy", before: ikat_source5_boy, after: ikat_ex1_s5 },
-    { label: "Knit", before: ikat_source6_knit, after: ikat_ex1_s6 },
-  ]}
-/>
-*Basic Warp Stripes — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with clearly defined subjects and moderate contrast.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Learn how column width and palette quantization create the fundamental ikat stripe pattern.
+#### Learning Outcomes
 
-1. **Set column width**: Turn Col Width to about 40%. Watch as the image divides into vertical stripes of uniform width.
-2. **Quantize luminance**: Slowly increase Palette from minimum. Watch smooth gradients within each stripe collapse into flat tonal bands — like threads dipped in progressively fewer dye colors.
-3. **Narrow the stripes**: Reduce Col Width toward 20%. The stripes become finer, more thread-like. Notice how the image's structure is still visible through the stripe pattern.
-4. **Switch axis**: Flip the Axis toggle to Horiz. The stripes rotate 90 degrees, creating horizontal bands instead of vertical columns.
-5. **Return to vertical**: Flip Axis back to Vert for the exercises that follow.
+Transform a video source into a simple vertical-stripe warp pattern with soft, dye-bleed edges.
 
-**Key concepts**: Column quantization divides the frame into stripes, palette quantization reduces tonal levels within stripes, independent axis control rotates the stripe pattern
+#### Key Concepts
 
----
+- Column quantization divides the image into vertical stripes
+- Power-of-two column widths create discrete stripe sizes
+- Edge bleed softens column boundaries with a dye-like fade
 
-### Exercise 2: Dye Bleed and Jitter
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: ikat_source1_boat, after: ikat_ex2_s1 },
-    { label: "Castle", before: ikat_source2_castle, after: ikat_ex2_s2 },
-    { label: "Turtle", before: ikat_source3_turtle, after: ikat_ex2_s3 },
-    { label: "Pattern", before: ikat_source4_pattern, after: ikat_ex2_s4 },
-    { label: "Boy", before: ikat_source5_boy, after: ikat_ex2_s5 },
-    { label: "Knit", before: ikat_source6_knit, after: ikat_ex2_s6 },
-  ]}
-/>
-*Dye Bleed and Jitter — simulated result across source images.*
-**Source**: Footage with broad tonal gradients — skies, skin tones, or slowly-moving abstract video.
+A live camera feed or recorded footage with recognizable subjects and color variation (faces, landscapes, or colorful objects work well.)
 
-**What You'll Create**: Explore how edge bleed and LFSR jitter create the characteristic soft, hand-dyed ikat look.
+#### Steps
 
-1. **Establish stripes**: Set Col Width ~40%, Palette ~40% for visible column quantization.
-2. **Add bleed**: Slowly increase Bleed Amt. Watch the hard edges between columns soften — chroma fades toward neutral at stripe boundaries, simulating dye seeping under the resist ties.
-3. **Add jitter**: Increase Dye Depth from 0% to ~60%. Each pixel's brightness is now displaced by a pseudo-random amount, creating the fuzzy, uneven look of hand-dyed threads.
-4. **Animate jitter**: Toggle Noise to On. The jitter pattern now shifts frame-by-frame, creating a shimmering, living textile effect.
-5. **Boost saturation**: Increase Saturate above 50%. Watch colors intensify as if the virtual threads have been dipped in concentrated dye.
+1. Turn **Col Width** (Knob 1) to its midpoint. The image breaks into vertical stripes, each column showing a simplified version of the source.
+2. Lower **Palette** (Knob 3) to about 25%. Luminance within each column collapses into broad tonal bands (like cloth dipped in very few dye baths.)
+3. Slowly raise **Bleed Amt** (Knob 2) from zero. Watch the hard edges between stripes soften as color fades toward gray at each boundary.
+4. Increase **Saturate** (Knob 4) past the midpoint to enrich the colors within each stripe. Notice how the bleed edges become more dramatic with higher saturation (vivid centers, neutral seams.)
+5. Toggle **Bypass** (Switch 11) on and off to compare the woven result with the original source.
 
-**Key concepts**: Bleed feathers chroma at column edges, LFSR jitter creates pseudo-random luminance displacement, noise animation adds temporal shimmer, saturation boost simulates concentrated dye
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Col Width | ~50% |
+| Bleed Amt | ~40% |
+| Palette | ~25% |
+| Saturate | ~65% |
+| Dye Depth | 0% |
+| Warmth | 50% |
+| Axis | Vert |
+| Palette Src | Fixed |
+| Double Ikat | Off |
+| Noise | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Double Ikat Textile
+### Exercise 2: Dye Bleed and Grain
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: ikat_source1_boat, after: ikat_ex3_s1 },
-    { label: "Castle", before: ikat_source2_castle, after: ikat_ex3_s2 },
-    { label: "Turtle", before: ikat_source3_turtle, after: ikat_ex3_s3 },
-    { label: "Pattern", before: ikat_source4_pattern, after: ikat_ex3_s4 },
-    { label: "Boy", before: ikat_source5_boy, after: ikat_ex3_s5 },
-    { label: "Knit", before: ikat_source6_knit, after: ikat_ex3_s6 },
-  ]}
-/>
-*Double Ikat Textile — simulated result across source images.*
-**Source**: High-contrast footage with strong geometric content — architecture, text, or patterned surfaces.
+![Dye Bleed and Grain result](/img/instruments/videomancer/ikat/ikat_ex2_s1.png)
+*Dye Bleed and Grain — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Combine all processing stages to create a full double-ikat textile simulation.
+***A description of the exercise illustration.***
 
-1. **Start with fine stripes**: Set Col Width ~25%, Palette ~60% for a dense vertical stripe pattern.
-2. **Heavy bleed and jitter**: Set Bleed Amt ~70%, Dye Depth ~80%. The stripe edges are now thoroughly feathered.
-3. **Enable double ikat**: Toggle Double Ikat to On. Immediately, the vertical stripes gain a horizontal cross-quantization, creating a woven grid pattern.
-4. **Maximum saturation**: Push Saturate to ~90%. Colors become vivid and over-dyed.
-5. **Animate**: Enable Noise. The cross-hatched pattern shimmers and shifts per frame.
-6. **Blend back**: Lower Mix to ~70% to let some of the original image show through the textile overlay, creating a fabric-over-video composite.
+#### Learning Outcomes
 
-**Key concepts**: Double ikat applies quantization on both axes creating cross-hatched patterns, all processing stages compound to create full textile simulation, mix control layers texture over source
+Add dye imperfections and grain to the stripe pattern, creating a more realistic hand-dyed textile appearance.
+
+#### Key Concepts
+
+- LFSR jitter adds organic texture to quantized luminance
+- Edge bleed and jitter operate on different channels (U/V vs. Y)
+- Dye Depth controls the amplitude of luminance displacement
+
+#### Video Source
+
+Footage with moderate tonal range: interior scenes, still lifes, or nature footage with both highlights and shadows.
+
+#### Steps
+
+1. Begin with the settings from Exercise 1 (moderate column width, bleed, low palette).
+2. Raise **Dye Depth** (Knob 5) slowly from zero. A grainy, speckled texture appears within each column as the LFSR displaces luminance values.
+3. At about 50%, the grain is clearly visible. Each column now has an organic, fibrous texture rather than flat posterized bands.
+4. Sweep **Col Width** (Knob 1) between its five width settings. Notice how the grain interacts differently at each column width: narrow columns compress the jitter into tight speckle, while wide columns spread it into gentle undulation.
+5. Experiment with **Axis** (Switch 7), flipping between **Vert** and **Horiz**. The stripes rotate ninety degrees, reorienting the "warp" direction while all other parameters stay the same.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Col Width | ~50% |
+| Bleed Amt | ~40% |
+| Palette | ~25% |
+| Saturate | ~65% |
+| Dye Depth | ~50% |
+| Warmth | 50% |
+| Axis | Vert |
+| Palette Src | Fixed |
+| Double Ikat | Off |
+| Noise | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Double Ikat Mosaic
 
-## Tips
+![Double Ikat Mosaic result](/img/instruments/videomancer/ikat/ikat_ex3_s1.png)
+*Double Ikat Mosaic — simulated result across source images.*
+#### Exercise Illustration
 
-- **Jitter creates the hand-dyed look**: The LFSR displacement is Ikat's signature effect. Without jitter, the quantized columns look mechanical and digital. With moderate jitter, they look like hand-dyed yarn.
-- **Double ikat is computationally cheap but visually dramatic**: Enabling the double ikat toggle re-applies the same quantization mask on the perpendicular axis, creating a woven grid from what was previously a simple stripe pattern.
-- **Feedback loops**: Routing the output back to the input creates recursive column quantization — each pass further reduces the tonal palette, simulating the visual effect of over-dyeing on already-dyed fabric.
-- **Bypass for A/B comparison**: Switch 11 instantly shows the unprocessed signal. Use it to judge how much textile texture has been added.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Build a full double-ikat mosaic: a grid of quantized tiles with blurred edges and animated grain, resembling traditional Balinese geringsing cloth.
+
+#### Key Concepts
+
+- Double ikat quantizes both axes simultaneously
+- Combined parameters create complex textile textures
+- Mix blends the textile effect with the source image
+
+#### Video Source
+
+High-contrast footage with bold shapes: architectural details, dancer silhouettes, or colorful abstract patterns from other Videomancer programs.
+
+#### Steps
+
+1. Set **Col Width** (Knob 1) to a moderate value. Enable **Double Ikat** (Switch 9). The vertical stripes become a grid of rectangular tiles as both axes are quantized simultaneously.
+2. Lower **Palette** (Knob 3) to a low value. Each tile snaps to a single flat tone (the image becomes a mosaic of dyed squares.)
+3. Increase **Bleed Amt** (Knob 2) to about 60%. The tile edges bleed, and narrow tiles may lose color entirely, leaving only the wider tiles with vivid centers.
+4. Raise **Dye Depth** (Knob 5) to about 50%. The tiles shimmer with luminance grain.
+5. Pull **Mix** (Fader 12) back to about 70% to blend the mosaic with the original source. The textile pattern overlays the recognizable image beneath like a woven screen.
+6. Increase **Saturate** (Knob 4) to push the dye colors to vivid intensity. The contrast between saturated tile centers and neutral edges creates a jewel-toned fabric effect.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Col Width | ~60% |
+| Bleed Amt | ~60% |
+| Palette | ~20% |
+| Saturate | ~80% |
+| Dye Depth | ~50% |
+| Warmth | 50% |
+| Axis | Vert |
+| Palette Src | Fixed |
+| Double Ikat | On |
+| Noise | Off |
+| Bypass | Off |
+| Mix | ~70% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Bit Mask** | A binary pattern used to selectively zero specific bits of a value, implementing quantization by preserving only the most significant bits. |
-| **Bleed** | The soft transition zone at column boundaries where chroma fades toward neutral, simulating dye seeping under resist ties. |
-| **Column Quantization** | Dividing the video frame into fixed-width vertical or horizontal stripes, within which pixel values are processed as a group. |
-| **Double Ikat** | A textile technique (and this program's mode) where both warp and weft threads are pre-dyed, creating patterns on two axes simultaneously. |
-| **Ikat** | A Malay-Indonesian dyeing technique where yarn is bound with resist material before dyeing, creating patterns with characteristically soft edges. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input is a linear function of its previous state, producing a pseudo-random sequence used for jitter generation. |
-| **LUT** | Look-Up Table; FPGA logic resources used for combinational logic. Ikat uses approximately 700 LUTs. |
-| **Resist** | A material (wax, string, rubber) that prevents dye from reaching covered portions of yarn, creating the pattern boundaries in ikat textiles. |
+- **Barrel Shift**: A digital circuit that shifts a binary number by a variable number of positions in a single clock cycle, used here to divide pixel position by power-of-two column widths without a hardware divider.
+
+- **Double Ikat**: A textile technique where both warp and weft threads are resist-dyed before weaving, creating patterns that align on two axes; in this program, luminance quantization applied on both horizontal and vertical axes simultaneously.
+
+- **Edge Bleed**: The softening of color at stripe boundaries, simulating dye that has seeped past an imperfect resist binding; implemented by fading chroma toward neutral gray near column edges.
+
+- **Ikat**: A dyeing technique in which threads are tied and dyed before weaving, producing patterns with characteristically soft, feathered edges.
+
+- **LFSR**: Linear Feedback Shift Register: a shift register whose input bit is a function of its previous state, producing a deterministic pseudo-random sequence used here for luminance jitter.
+
+- **Palette Quantization**: Reducing the number of distinct brightness levels by masking the low-order bits of each pixel value, collapsing smooth gradients into flat dye-lot bands.
+
+- **Power of Two**: A number that is an exact power of 2 (4, 8, 16, 32, 64), enabling efficient division via bit shifts instead of hardware dividers.
+
+- **Resist**: A material or technique that prevents dye from penetrating certain areas of fabric, creating patterns through selective dye absorption.
+
+- **Sample and Hold**: A signal processing operation that captures a value at one point and maintains it unchanged across a range, used here to hold a single quantized color across each column width.
+
+- **Warp**: The set of vertical threads stretched on a loom, through which the horizontal weft threads are woven; in this program, the primary axis of column quantization.
 
 ---

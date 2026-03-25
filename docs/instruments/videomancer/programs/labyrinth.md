@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 162
 slug: /instruments/videomancer/labyrinth
@@ -7,310 +7,395 @@ image: /img/instruments/videomancer/labyrinth/labyrinth_hero.png
 description: "Labyrinth is a real-time procedural maze generator that draws its entire structure from a single hash function — no frame buffer, no stored map, zero BRAM."
 ---
 
-import labyrinth_hero from '/img/instruments/videomancer/labyrinth/labyrinth_hero.png';
-import labyrinth_animation from '/img/instruments/videomancer/labyrinth/labyrinth_animation.gif';
-import labyrinth_control_panel from '/img/instruments/videomancer/labyrinth/labyrinth_control_panel.png';
-import labyrinth_exercise1_result from '/img/instruments/videomancer/labyrinth/labyrinth_exercise1_result.gif';
-import labyrinth_exercise2_result from '/img/instruments/videomancer/labyrinth/labyrinth_exercise2_result.gif';
-import labyrinth_exercise3_result from '/img/instruments/videomancer/labyrinth/labyrinth_exercise3_result.gif';
-
-# Labyrinth
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={labyrinth_hero} alt="Labyrinth hero image"/>
-*Labyrinth generating a procedural binary-tree maze with luminous corridors and an explorer dot traversing the passages.*
-<img src={labyrinth_animation} alt="Labyrinth animated output"/>
-*Labyrinth output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Labyrinth hero image](/img/instruments/videomancer/labyrinth/labyrinth_hero_s1.png)
+*A procedural binary-tree maze wrapping the screen in glowing corridors, its walls shifting and reforming as the seed evolves frame by frame.*
 
 ---
 
 ## Overview
 
-Labyrinth is a real-time procedural maze generator that draws its entire structure from a single hash function — no frame buffer, no stored map, zero BRAM. Every pixel on every frame computes its own wall-or-corridor status from its grid coordinates and a seed value. The result is a perfect binary-tree maze that fills the screen with configurable cell sizes, wall thicknesses, and wall brightness, all generated at pixel clock speed.
+**Labyrinth** is a real-time maze synthesizer that draws an infinite, self-consistent grid of corridors and walls directly onto the video output. Unlike most maze programs that pre-compute a layout and store it in memory, Labyrinth generates its pattern ***procedurally***: every wall is a pure function of its grid position and a seed value, requiring zero block RAM. The result is a maze you can reshape instantly by turning a single knob.
 
-The name refers to the mythological labyrinth of Crete — the maze built by Daedalus to contain the Minotaur. In computing, maze generation is a classic algorithmic problem dating to the earliest days of personal computing. Labyrinth's approach is inspired by the legendary one-line Commodore 64 BASIC maze: `10 PRINT CHR$(205.5+RND(1)); : GOTO 10`, which generates a maze-like pattern by randomly choosing between two diagonal characters. Labyrinth applies a similar principle — each cell independently decides whether to open a passage east or south based on a deterministic hash — but extends it to a proper binary-tree maze with navigable corridors and an optional animated explorer dot.
+At its simplest, Labyrinth overlays a static maze pattern in a chosen luminance over the incoming video. Turning up the **Evolve** control causes the seed to increment automatically, and the maze topology mutates in real time: walls dissolve and reform as corridors reroute themselves across the screen. Switch to **Invert** wall mode and the maze walls become inverted copies of the underlying video, creating a stained-glass window effect. Enable the **Explorer** and a bright green dot wanders the corridors on its own, tracing a path through the structure at a speed you control.
 
-At conservative settings — small cells, thin walls, moderate luminance — Labyrinth produces a fine grid overlay suitable for compositing or texture generation. At extreme settings — large cells, thick walls, full brightness — it generates bold architectural structures that command the screen. The Evolve parameter slowly mutates the seed, causing the maze topology to morph in real time, walls dissolving and reforming in an endless architectural dream.
+Because the maze is computed per-pixel with no frame buffer, Labyrinth is extremely lightweight on FPGA resources. It uses roughly 600 logic cells and zero BRAMs, leaving plenty of room for signal chain stacking with other programs.
+
+### What's In a Name?
+
+The name ***Labyrinth*** nods to the ancient architectural puzzle: a structure of branching corridors designed to confuse and contain. In mythology, the Labyrinth of Crete held the Minotaur at its center. Here, the maze holds your video signal. The program's algorithm is a ***binary tree maze***, one of the simplest procedural generators, where each cell opens a passage either east or south. The result is a perfect maze with exactly one path between any two cells: a true labyrinth.
 
 ---
 
 ## Quick Start
 
-1. **Seed is your starting point**: Each seed value produces a unique maze. Sweep the Seed knob slowly to browse maze topologies and find one that fits your composition.
-2. **Evolve at low values for subtlety**: Even very low Evolve settings create gradual maze mutation — walls shift over seconds or minutes, adding organic temporal variation without disorienting rapid change.
-3. **Cell Size defines the scale**: Small cells create fine texture; large cells create bold architecture. The 8 discrete steps provide a good range from dense mesh to wide-open corridors.
+1. With video flowing through Videomancer, load **Labyrinth**. You should see a grid of white walls overlaid on your input signal. The default cell size is 16 pixels, creating a fine lattice.
+2. Turn **Cell Size** (Knob 1) clockwise to enlarge the grid cells. The maze structure becomes bold and architectural. Turn **Wall Thk** (Knob 2) to fatten or slim the walls.
+3. Now increase **Evolve** (Knob 4) past zero. The maze begins to shift: walls dissolve and reform as the seed advances. The faster you turn, the more frantic the mutation.
+4. Flip **Explorer** (Switch 9) to **On**. A bright green dot appears in one of the cells and begins navigating the corridors. Adjust **Exp Speed** (Knob 6) to control how many cells it traverses per second.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Labyrinth loaded](/img/instruments/videomancer/labyrinth/labyrinth_control_panel.png)
+*Videomancer's front panel with Labyrinth active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Cell Size
+
+| Property | Value |
+|----------|-------|
+| Range | 8px – 64px |
+| Default | 29px |
+
+**Cell Size** sets the width and height of each maze cell in pixels. The control snaps to eight discrete sizes: at the smallest setting the maze is a fine mesh of tiny corridors, and at the largest it becomes a bold architectural grid with wide open rooms. Larger cells make the maze structure more legible from a distance, while smaller cells create a dense, textile-like pattern that can obscure the video beneath almost entirely.
+
+:::tip
+Cell size also determines how many cells fit on screen, which changes the ***complexity*** of the maze. Smaller cells pack more decision points into the frame, producing more intricate pathways.
+:::
+
+---
+
+### Knob 2 — Wall Thk
+
+| Property | Value |
+|----------|-------|
+| Range | 1px – 4px |
+| Default | 2px |
+
+**Wall Thk** (wall thickness) selects how many pixels wide each wall segment is, from a single-pixel hairline to a chunky four-pixel bar. Thicker walls emphasize the grid structure and reduce the visible corridor area, while thinner walls let more of the underlying video show through. The visual weight of the maze shifts dramatically between the extremes.
+
+---
+
+### Knob 3 — Seed
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 1023 |
+| Default | 0 |
+
+**Seed** determines the maze topology. Each seed value produces a completely different arrangement of walls and corridors. Because the maze is generated procedurally from the seed, sweeping this control smoothly redraws the entire maze pattern in real time. Two different seed values will never produce the same layout.
+
+:::note
+Seed operates as a direct 10-bit value fed into the hash function. There are 1,024 distinct static maze patterns available.
+:::
+
+---
+
+### Knob 4 — Evolve
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Evolve** controls the rate at which the seed automatically increments over time. At zero the maze is completely static: it holds a single frozen pattern determined by the **Seed** knob. As you increase Evolve, the seed advances by a small amount each video frame, causing walls to appear and disappear in a slow, organic mutation. At high values the maze transforms rapidly, producing a flickering, kaleidoscopic effect where no pattern persists for more than a few frames.
+
+---
+
+### Knob 5 — Wall Luma
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Wall Luma** sets the brightness of maze walls when **Wall Mode** is set to **Solid**. At zero the walls are black, becoming invisible against a dark background. At maximum the walls are peak white. This control has no effect when Wall Mode is set to **Invert**, because in that mode walls take their color from the inverted video signal instead of a flat luminance value.
+
+---
+
+### Knob 6 — Exp Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0c/s – 64c/s |
+| Default | 0c/s |
+
+**Exp Speed** (explorer speed) controls how many cells per second the explorer dot traverses. The control snaps to eight discrete speeds. At the lowest non-zero setting the dot crawls through one cell per second; at maximum it races through up to 64 cells per second, streaking across the screen. When set to zero, the explorer is frozen in place even if it is visible.
+
+:::tip
+The explorer uses a simple directional walk through the maze topology. If it gets stuck in a loop, changing the **Seed** or enabling **Evolve** will alter the maze around it and free it into new corridors.
+:::
+
+---
+
+### Switch 7 — Wall Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Solid |
+| On | Invert |
+| Default | Solid |
+
+**Wall Mode** selects how maze walls are colored. In **Solid** mode, each wall pixel is drawn at the luminance set by **Wall Luma**, producing clean monochrome lines. In **Invert** mode, wall pixels display the ***complement*** of the underlying video: luminance is inverted and chroma channels are negated, creating a photographic-negative effect confined to the wall pattern. Invert mode turns the maze into a stained-glass overlay where corridors show the original image and walls show its negative.
+
+---
+
+### Switch 8 — Corridor
+
+| Property | Value |
+|----------|-------|
+| Off | Video |
+| On | Dimmed |
+| Default | Video |
+
+**Corridor** determines how the open areas between walls are rendered. In **Video** mode, corridors pass the input signal through unchanged: you see the original video in the open spaces. In **Dimmed** mode, corridor pixels are attenuated to roughly 70% brightness, creating a subtle shadow that makes the maze structure more visible against bright source material.
+
+---
+
+### Switch 9 — Explorer
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Explorer** enables or disables the animated explorer dot. When **On**, a bright green dot appears at a cell position and walks through the maze corridors according to the current direction and speed. The dot occupies a small cluster of pixels at the center of its current cell. When **Off**, no dot is drawn and the explorer logic is idle.
+
+---
+
+### Switch 10 — Border
+
+| Property | Value |
+|----------|-------|
+| Off | Thin |
+| On | Thick |
+| Default | Thin |
+
+**Border** selects between a thin and thick outer border around the entire maze frame. In **Thin** mode, the maze edge is defined only by the outermost cell walls. In **Thick** mode, a four-pixel-wide solid border is drawn around the entire active video area, giving the maze a distinct frame. The thick border is purely decorative and does not affect the internal maze topology.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all maze rendering. The sync delay pipeline still runs, so there is no timing glitch when toggling. Use Bypass for instant A/B comparison between the maze overlay and the clean input.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry input signal and the wet maze output. At zero the output is pure dry: identical to the unprocessed input. At maximum the output is pure wet: the full maze overlay. Intermediate values blend the two, allowing the maze pattern to be subtly ghosted over the video rather than stamped on at full opacity.
+
+:::tip
+Mix is implemented as a per-channel linear interpolation across Y, U, and V simultaneously. Partial mix values with **Invert** wall mode create dreamy double-exposure effects where the maze walls are translucent negatives.
+:::
 
 ---
 
 ## Background
 
-### Binary-Tree Mazes
+### Binary Tree Mazes
 
-A **binary-tree maze** is one of the simplest perfect maze algorithms. For each cell in the grid, the generator makes exactly one random decision: open a passage either east or south (but not both). This single-bit choice per cell guarantees a connected, acyclic graph — a perfect maze with exactly one path between any two cells. The algorithm has a distinctive visual bias: the north and west borders are always solid (no cell can open northward or westward), creating two unbroken walls along the top and left edges. Labyrinth implements this by hashing each cell's coordinates with a seed to produce the east-or-south decision, making the entire maze a pure function of position and seed.
+The ***binary tree maze*** is one of the simplest procedural maze algorithms. For every cell in the grid, a single binary decision is made: open a passage to the east, or open a passage to the south. That's it: one bit of information per cell. Despite this extreme simplicity, the result is a ***perfect maze***: a connected graph with exactly one path between any two cells and no loops.
 
-### Hash-Based Procedural Generation
+Binary tree mazes have a characteristic visual signature: the north and west borders are always solid walls (because no cell ever opens northward or westward), and there is a strong diagonal bias running from the northwest corner toward the southeast. This diagonal texture is part of the charm: it gives the maze a windswept, organic quality that belies its mechanical origin.
 
-Rather than storing a maze map in memory, Labyrinth computes each cell's wall configuration on the fly using a **hash function**. The hash takes the cell's X coordinate, Y coordinate, and a seed value, and produces a 16-bit result. Bit 0 of the hash determines whether the cell opens east or south. Because the hash is deterministic, the same seed always produces the same maze, and changing the seed produces a completely different topology. This approach requires zero BRAM — the maze exists only as a mathematical function evaluated at each pixel position.
+The algorithm was popularized in the 1980s by one-line maze generators on the Commodore 64, where the program simply printed a random choice of "/" or "\" for each character position. Labyrinth implements the same principle in hardware, replacing the character grid with a pixel grid and the random number generator with a deterministic hash function seeded by the grid coordinates.
+
+### Procedural Generation via Hashing
+
+Labyrinth avoids storing the maze in memory entirely. Instead, it computes each cell's wall configuration ***on the fly*** as the video raster scans across the screen. For each pixel, the pipeline determines which grid cell it belongs to, hashes the cell coordinates together with the seed value, and reads a single bit of the result to decide whether the passage opens east or south.
+
+The hash function combines the cell's X and Y coordinates with the seed using XOR and addition: a lightweight mixing operation that fits in a handful of logic cells. Because the same inputs always produce the same output, the maze is perfectly stable from frame to frame as long as the seed doesn't change. Changing the seed by even one count produces a completely different maze topology, which is what makes the **Evolve** control so visually striking.
+
+:::note
+Because the maze is a pure function of position and seed, there is no startup time and no initialization sequence. The maze appears fully formed on the very first frame after the program loads.
+:::
 
 ### The Explorer
 
-Labyrinth includes an optional animated explorer — a bright dot that moves through the maze corridors. On each frame (vsync), the explorer attempts to advance in its current direction. If a wall blocks the path, it turns. The explorer's speed is configurable in discrete steps, from stationary to 64 cells per second. The explorer provides visual proof that the generated structure is a navigable maze, not just a random wall pattern, and adds a dynamic element to an otherwise static pattern.
+The explorer is an autonomous agent that walks through the maze topology one cell at a time. On each vertical sync pulse, it advances a configurable number of steps. At each step, it checks whether the passage ahead is open by evaluating the same hash function used to draw the walls. If the path is clear, it moves forward. If blocked, it turns and tries another direction.
 
-### Maze Generation in Computing History
-
-The connection between maze generation and early computing runs deep. The Commodore 64 one-liner `10 PRINT CHR$(205.5+RND(1)); : GOTO 10` is perhaps the most famous single line of BASIC ever written — it fills the screen with a random pattern of forward and backward slash characters that reads as a maze-like texture. Labyrinth elevates this concept from a character-mode trick to a proper pixel-level maze with navigable corridors, configurable geometry, and real-time evolution.
-
-### Video Overlay and Compositing
-
-Although classified as a synthesis program, Labyrinth's Mix fader and corridor dimming options create hybrid possibilities. When Corridor mode is set to Video, the corridors pass the incoming video signal through — the maze becomes an overlay grid. When set to Dimmed, corridors show a darkened version of the input. Combined with the Wall Mode invert option, which replaces solid-color walls with inverted video, Labyrinth can function as a complex compositing tool that segments the screen into maze-defined regions.
+The explorer's position is tracked as a pair of cell coordinates and a two-bit direction register (north, east, south, west). Its rendering is simple: when the raster scan reaches the cell matching the explorer's coordinates, a small cluster of bright green pixels is drawn at the cell center. The green color is fixed in hardware: Y=800, U=300, V=350: chosen for maximum visibility against both light and dark backgrounds.
 
 
 ---
 
 ## Signal Flow
 
-Cell Coordinate → Hash + Wall Decision → Wall Rasterisation → Explorer Overlay → Color Mux
+### Signal Flow Notes
 
-```
-Video Input (YUV 4:4:4) — used for corridor fill and bypass
-│
-├── Timing Detection ───────────────────────────────────────────
-│   ├─ video_timing_generator (sync edge detection)
-│   ├─ H counter (pixel position within scanline)
-│   └─ V counter (scanline number within frame)
-│
-├── Seed Evolution ─────────────────────────────────────────────
-│   └─ Accumulator: seed = seed_pot + evolve_counter(23..14)
-│       (evolve_counter increments each vsync by evolve_pot)
-│
-├── Stage 1: Cell Coordinate Computation ───────────────────────
-│   ├─ cell_x = h_count / cell_width
-│   ├─ cell_y = v_count / cell_width
-│   ├─ local_x = h_count mod cell_width
-│   └─ local_y = v_count mod cell_width
-│
-├── Stage 2: Hash + Wall Decision ──────────────────────────────
-│   ├─ hash = cell_hash(cell_x, cell_y, seed)
-│   ├─ open_east = hash(0)
-│   ├─ wall_east = NOT hash(0)
-│   ├─ wall_south = hash(0)
-│   ├─ wall_west = NOT cell_hash(cell_x-1, cell_y, seed)(0)
-│   └─ wall_north = cell_hash(cell_x, cell_y-1, seed)(0)
-│
-├── Stage 3: Wall Rasterisation ────────────────────────────────
-│   ├─ North wall: local_y < wall_thick AND wall_north
-│   ├─ West wall: local_x < wall_thick AND wall_west
-│   ├─ East wall: local_x >= cell_w - wall_thick AND wall_east
-│   ├─ South wall: local_y >= cell_w - wall_thick AND wall_south
-│   └─ Thick border: optional 4px outer frame
-│
-├── Stage 4: Explorer Overlay ──────────────────────────────────
-│   └─ Bright green dot at cell center if explorer enabled and
-│       pixel is in explorer's current cell
-│
-├── Stage 5: Color Mux ────────────────────────────────────────
-│   ├─ Explorer pixel: Y=800, U=300, V=350 (bright green)
-│   ├─ Wall pixel:
-│   │   ├─ Solid (normal): Y = Wall Luma, U = 512, V = 512
-│   │   └─ Invert: Y = 1023−input_Y, U = 1023−input_U, V = 1023−input_V
-│   └─ Corridor pixel:
-│       ├─ Video: pass-through input Y, U, V
-│       └─ Dimmed: Y = input_Y × 700/1024, U/V pass-through
-│
-├── Interpolator Mix ───────────────────────────────────────────
-│   └─ 3× interpolator_u: crossfade delayed input ↔ maze output
-│
-├── Sync / Data Delay (6 clocks) ───────────────────────────────
-│   └─ Shift registers for sync signals and Y, U, V
-│
-└── Bypass Mux ─────────────────────────────────────────────────
-    └─ Select processed (mix output) or raw input
-```
+The maze pipeline is a six-clock-cycle cascade. The first clock captures the input and extracts sync edges. The second computes which grid cell the current pixel falls in by dividing the horizontal and vertical counters by the cell width. The third hashes the cell coordinates with the seed to determine whether the east or south passage is open, and evaluates neighbor hashes for the north and west walls. The fourth clock tests the pixel's local position within the cell against the wall thickness to produce a binary is-wall flag. The fifth overlays the explorer dot if applicable, and the sixth selects the output color: explorer green, wall color (solid or inverted), or corridor video (full or dimmed).
 
-The maze is entirely stateless — every pixel recomputes its wall membership from scratch using the `cell_hash` function. Neighboring cells' walls are also recomputed to determine the current cell's north and west boundaries (a cell's north wall is the south wall of the cell above; a cell's west wall is the east wall of the cell to the left). The hash function XORs bit-rotated coordinates with the seed, producing a pseudo-random but deterministic wall pattern. The explorer updates its position once per vsync (frame), attempting up to 4 movement steps per frame depending on the speed setting. The seed evolution accumulator adds the Evolve register value on each frame, so even small Evolve settings eventually cause the maze to change — higher values cause faster mutation. The thick border option draws a 4-pixel solid frame around the entire screen, ensuring the maze has a visible outer boundary.
+The explorer update runs ***once per frame*** on the vsync pulse, not per pixel. It evaluates the same `cell_hash` function to determine passability, advancing up to 64 steps per frame depending on the speed control. Because it shares the hash function with the rendering pipeline, the explorer's path is always consistent with the drawn walls (it never walks through a visible wall.)
 
----
-
-## Parameter Reference
-
-<img src={labyrinth_control_panel} alt="Videomancer front panel with Labyrinth loaded"/>
-*Videomancer's front panel with Labyrinth active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Cell Size
-| Property | Value |
-|----------|-------|
-| Range | 8px – 64px |
-| Default | 29px |
-| Suffix | px |
-
-Controls the width of each maze cell in pixels. The register is quantized to 8 discrete steps mapping to cell widths of 8, 12, 16, 20, 24, 32, 48, and 64 pixels. At the smallest setting, hundreds of tiny cells fill the screen in a dense labyrinthine mesh. At the largest, only a handful of cells are visible — each corridor is wide enough to pass a bus through. Cell width also determines cell height (cells are square), so changing this parameter uniformly scales the entire maze geometry.
-
----
-
-#### Knob 2 — Wall Thk
-| Property | Value |
-|----------|-------|
-| Range | 1px – 4px |
-| Default | 2px |
-| Suffix | px |
-
-Controls the thickness of maze walls in pixels. Quantized to 4 discrete steps: 1, 2, 3, or 4 pixels. At 1 pixel, the walls are hairline-thin and the corridors dominate. At 4 pixels, the walls become substantial structural elements. Wall thickness interacts with cell size — at small cell sizes, thick walls can consume a significant fraction of the cell area, leaving only narrow corridors. At large cell sizes, even 4-pixel walls appear as fine lines relative to the corridor width.
-
----
-
-#### Knob 3 — Seed
-| Property | Value |
-|----------|-------|
-| Range | 0 – 1023 |
-| Default | 0 |
-
-Sets the initial seed for the maze hash function. Different seed values produce entirely different maze topologies — every wall in the grid changes when the seed changes. This is the primary pattern selection control. Because the hash is deterministic, returning to the same seed value always reproduces the same maze. When Evolve is active, this provides the starting point for the evolution sequence.
-
----
-
-#### Knob 4 — Evolve
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-Controls the speed of maze evolution. When set above zero, an accumulator adds the register value to an internal counter on each frame. The upper bits of this counter are added to the seed, causing the maze topology to slowly mutate over time. At low values, the maze changes imperceptibly — walls shift every few seconds. At high values, the maze morphs rapidly, walls dissolving and reforming in a continuous architectural flux. At zero, the maze is static, locked to the Seed parameter value.
-
----
-
-#### Knob 5 — Wall Luma
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-At 0%, walls are black — invisible against a dark corridor background but visible when corridors pass video. At 100%, walls are maximum white. This control has no effect when Wall Mode is set to Invert, because inverted walls derive their brightness from the input video signal rather than this parameter. Internally, sets the luminance of wall pixels when Wall Mode is set to Solid (normal).
-
----
-
-#### Knob 6 — Exp Speed
-| Property | Value |
-|----------|-------|
-| Range | 0c/s – 64c/s |
-| Default | 0c/s |
-| Suffix | c/s |
-
-Controls the speed of the explorer dot in discrete steps. The register is quantized to 8 levels: 0 (stationary), 1, 2, 4, 8, 16, 32, and 64 cells per second. At zero, the explorer remains fixed at its starting position. At higher speeds, it moves through the corridors more quickly, changing direction when it encounters walls. The explorer is only visible when the Explorer toggle (Toggle 9) is enabled.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Wall Mode** | Solid | Invert |
-| **8 — Corridor** | Video | Dimmed |
-| **9 — Explorer** | Off | On |
-| **10 — Border** | Thin | Thick |
-| **11 — Bypass** | Off | On |
-
-The five toggles control independent binary options. Wall Mode and Corridor mode affect how walls and corridors are rendered. Explorer enables the animated dot. Border adds a thick outer frame. Bypass is the standard signal routing switch. Each bit is decoded independently from `registers_in(6)`.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Controls the wet/dry crossfade between the delayed input signal and the maze output via three `interpolator_u` instances (one per Y/U/V channel). At 0% (register 0), the output is the delayed input — no maze visible. At 100% (register 1023), the output is fully the maze signal. Intermediate values create a semi-transparent maze overlay where the wall structure is partially blended with the input video.
-
-
-
+:::tip
+The data delay pipeline keeps a six-clock copy of the raw input Y, U, and V channels. The **Mix** fader interpolates between this delayed dry signal and the maze-rendered wet signal, so partial mix values always produce correctly timed blends with no horizontal smearing.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from a basic static maze to an evolving labyrinth with an animated explorer, exploring the interactions between cell geometry, wall rendering, and seed evolution.
+These exercises progress from static mazes through evolving patterns to animated explorer journeys. Each one layers in more of Labyrinth's controls.
+### Exercise 1: The Frozen Maze
 
-### Exercise 1: Static Maze Grid
+![The Frozen Maze result](/img/instruments/videomancer/labyrinth/labyrinth_ex1_s1.png)
+*The Frozen Maze — simulated result across source images.*
+#### Exercise Illustration
 
-<img src={labyrinth_exercise1_result} alt="Static Maze Grid result"/>
-*Static Maze Grid — simulated result across source images.*
-**What You'll Create**: Learn how cell size, wall thickness, and seed define the maze structure.
+***A description of the exercise illustration.***
 
-1. **Default maze**: With all controls at default, observe the maze pattern. Note the square cells with walls connecting in a tree-like pattern.
-2. **Cell size sweep**: Turn Cell Size from minimum to maximum. Watch the maze transition from a dense fine mesh to a few large corridors. Count the approximate number of cells at each extreme.
-3. **Wall thickness**: Starting with Cell Size at step 3 (~16px), sweep Wall Thickness through all 4 steps. Note the discrete jumps — 1px hairlines to 4px solid walls.
-4. **Seed exploration**: Slowly sweep the Seed knob. Each position produces a completely different maze topology. Note how the change is instantaneous — the entire grid reconfigures simultaneously.
-5. **Wall luminance**: Sweep Wall Luma from 0% to 100%. The walls fade from invisible black to bright white. This confirms that corridor brightness is independent of wall brightness.
+#### Learning Outcomes
 
-**Key concepts**: Binary-tree maze algorithm, hash-based procedural generation, deterministic seed-to-topology mapping, discrete parameter quantization
+A static, architectural maze overlay on top of live video (clean white corridors carved into the image.)
+
+#### Key Concepts
+
+- Binary tree mazes are generated procedurally from a seed
+- Cell size controls maze complexity
+- Wall thickness changes the visual weight of the structure
+
+#### Steps
+
+1. Load **Labyrinth** with video flowing. You should see a lattice of white walls.
+2. Turn **Cell Size** (Knob 1) to its maximum setting. The maze becomes a bold grid of large rooms and wide corridors.
+3. Set **Wall Thk** (Knob 2) to its maximum (4 px). The walls become thick bars, giving the maze a heavy, architectural feel.
+4. Slowly sweep **Seed** (Knob 3) from one end to the other. Watch the entire maze topology change (every wall rearranges with each new seed value.)
+5. Reduce **Cell Size** back to a middle setting. The maze becomes denser, with more corridors and decision points filling the screen.
+6. Toggle **Border** (Switch 10) to **Thick** to add a solid frame around the maze.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cell Size | 64 px |
+| Wall Thk | 4 px |
+| Seed | ~500 |
+| Evolve | 0% |
+| Wall Luma | 100% |
+| Exp Speed | 0 c/s |
+| Wall Mode | Solid |
+| Corridor | Video |
+| Explorer | Off |
+| Border | Thick |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
 ### Exercise 2: Evolving Corridors
 
-<img src={labyrinth_exercise2_result} alt="Evolving Corridors result"/>
+![Evolving Corridors result](/img/instruments/videomancer/labyrinth/labyrinth_ex2_s1.png)
 *Evolving Corridors — simulated result across source images.*
-**What You'll Create**: Explore seed evolution to create a maze that morphs over time, and use the explorer to navigate it.
+#### Exercise Illustration
 
-1. **Start evolution**: Set Evolve to ~20%. The maze begins to slowly mutate — walls dissolve and new ones form. Watch for several seconds to see the transformation.
-2. **Speed up**: Increase Evolve to ~60%. The mutation accelerates — the maze becomes a continuously shifting structure.
-3. **Enable explorer**: Turn Explorer (Toggle 9) On. A bright green dot appears and begins navigating the corridors.
-4. **Explorer speed**: Increase Exp Speed to step 4 (~50%). The explorer moves faster, visibly navigating passages and turning at walls.
-5. **Thick border**: Enable Border (Toggle 10). A solid frame appears around the screen, enclosing the maze and preventing edge corridors from appearing to extend off-screen.
-6. **Freeze**: Set Evolve back to 0%. The maze freezes, but the explorer continues navigating the static structure, demonstrating that evolution and navigation are independent.
+***A description of the exercise illustration.***
 
-**Key concepts**: Evolve accumulator adds to seed over time, explorer uses wall-following navigation, border provides visual frame, evolution and navigation are independent
+#### Learning Outcomes
+
+A living, breathing maze that mutates in real time: walls dissolving and reforming in an endless architectural animation.
+
+#### Key Concepts
+
+- Evolve increments the seed automatically each frame
+- Wall Mode Invert creates photographic-negative walls
+- Corridor Dimmed mode adds depth to the overlay
+
+#### Steps
+
+1. Start from a medium **Cell Size** (around 24 px) and moderate **Wall Thk** (2 px).
+2. Increase **Evolve** (Knob 4) slowly from zero. The maze begins to shift. At low values, walls change gradually: one or two walls flicker per frame. At higher values the entire maze reshuffles continuously.
+3. Set **Corridor** (Switch 8) to **Dimmed**. The open corridors darken slightly, giving the maze a sense of depth (as though you're looking down into recessed passageways.)
+4. Flip **Wall Mode** (Switch 7) to **Invert**. The walls now display a photographic negative of the video passing beneath them. The evolving maze becomes a shifting kaleidoscope of inverted color.
+5. Adjust **Wall Luma** (Knob 5): notice it has no effect while in Invert mode. Switch back to **Solid** and sweep Wall Luma to confirm it controls wall brightness in Solid mode only.
+6. Reduce **Mix** (Fader 12) to about 50%. The maze becomes a semi-transparent ghost layer drifting over the video.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cell Size | 24 px |
+| Wall Thk | 2 px |
+| Seed | 0 |
+| Evolve | ~40% |
+| Wall Luma | 100% |
+| Exp Speed | 0 c/s |
+| Wall Mode | Invert |
+| Corridor | Dimmed |
+| Explorer | Off |
+| Border | Thin |
+| Bypass | Off |
+| Mix | 50% |
 
 ---
 
-### Exercise 3: Inverted Maze Compositing
+### Exercise 3: The Explorer's Journey
 
-<img src={labyrinth_exercise3_result} alt="Inverted Maze Compositing result"/>
-*Inverted Maze Compositing — simulated result across source images.*
-**What You'll Create**: Use Wall Mode invert and Corridor dimming to create a complex compositing effect where the maze segments the video into complementary regions.
+![The Explorer's Journey result](/img/instruments/videomancer/labyrinth/labyrinth_ex3_s1.png)
+*The Explorer's Journey — simulated result across source images.*
+#### Exercise Illustration
 
-1. **Feed live video**: Ensure an active video source is connected for corridor pass-through.
-2. **Enable invert**: Set Wall Mode to Invert. Walls now display the inverted video signal — wherever the corridor shows normal video, the adjacent wall shows its negative.
-3. **Dim corridors**: Set Corridor to Dimmed. The corridor (normal) video darkens, making the inverted walls more prominent by contrast.
-4. **Large cells**: Set Cell Size to step 6 (~75%). The large cells create bold geometric partitions of the screen — each corridor region shows dimmed video, each wall region shows inverted video.
-5. **Mix blend**: Lower Mix to ~60%. The maze overlay becomes semi-transparent, blending the segmented regions with the original input.
-6. **Evolve**: Set Evolve to ~15%. The segmentation boundaries slowly shift as walls dissolve and reform, creating an ever-changing compositing map.
+***A description of the exercise illustration.***
 
-**Key concepts**: Inverted walls create complementary video regions, corridor dimming enhances wall/corridor contrast, large cells as compositional partitions, evolving segmentation
+#### Learning Outcomes
+
+An animated dot tracing a path through a slowly evolving maze: a tiny autonomous agent exploring an infinite procedural world.
+
+#### Key Concepts
+
+- The explorer navigates the maze topology autonomously
+- Explorer speed is quantized into eight discrete rates
+- Evolve and Explorer interact: the maze changes around the moving dot
+
+#### Steps
+
+1. Set a medium **Cell Size** (around 20 px) with **Wall Thk** at 2 px.
+2. Set **Seed** to any value you like (this determines the starting maze.)
+3. Enable **Explorer** (Switch 9). A bright green dot appears in one of the cells.
+4. Increase **Exp Speed** (Knob 6) to a moderate rate (around 8 c/s). The dot begins moving through the corridors, turning at walls and navigating intersections.
+5. Now slowly increase **Evolve** (Knob 4). The maze begins mutating around the explorer. Walls the dot was heading toward may vanish; new walls appear behind it. The explorer adapts in real time, always respecting the current maze state.
+6. Set **Wall Mode** to **Solid** and reduce **Wall Luma** (Knob 5) to about 50%. The walls become a medium gray, making the green explorer dot stand out vividly against both walls and corridors.
+7. Watch the dot's journey unfold. Each combination of Seed and Evolve rate produces a different behavioral pattern: sometimes the dot explores widely, sometimes it loops in a small region.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cell Size | 20 px |
+| Wall Thk | 2 px |
+| Seed | ~250 |
+| Evolve | ~20% |
+| Wall Luma | 50% |
+| Exp Speed | 8 c/s |
+| Wall Mode | Solid |
+| Corridor | Video |
+| Explorer | On |
+| Border | Thin |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
-
-
-## Tips
-
-- **Wall Mode Invert for compositing**: Inverted walls turn the maze into a video segmentation tool — corridors and walls show complementary views of the source, creating a split-reality effect.
-- **Explorer proves navigability**: The green explorer dot is more than decoration — it visually demonstrates that the generated structure is a valid, navigable maze with connected corridors.
-- **Corridor dim enhances contrast**: When corridors pass video through unchanged, they can overpower the wall structure. Dimming the corridors makes the maze pattern more visible without completely hiding the video content.
-- **Mix for transparency**: At 50% mix with a live video source, the maze becomes a semi-transparent overlay — useful for subtle grid effects without dominating the composition.
-- **Feedback creates fractal mazes**: Routing Labyrinth's output back to its input creates recursive maze-on-maze patterns — corridors within corridors, walls within walls.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Binary-tree maze** | A maze generation algorithm where each cell opens exactly one passage (east or south), producing a perfect maze with a single path between any two cells. |
-| **Cell** | One unit of the maze grid. Each cell has four potential walls (north, south, east, west) and an interior corridor. |
-| **Deterministic** | A process that always produces the same output for the same input. Labyrinth's hash function is deterministic — the same seed always produces the same maze. |
-| **Explorer** | An animated dot that navigates the maze corridors, changing direction upon encountering walls. |
-| **Hash function** | A mathematical function that maps input values to pseudo-random output values. Used here to determine wall placement from cell coordinates and seed. |
-| **Perfect maze** | A maze with exactly one path between any two cells — no loops and no isolated regions. |
-| **Procedural generation** | Creating content algorithmically rather than storing it in memory. Labyrinth generates the entire maze from a hash function with zero storage. |
-| **Seed** | An initial value fed to the hash function that determines the maze topology. Different seeds produce different mazes. |
+- **Binary Tree Maze**: A maze algorithm where each cell opens exactly one passage: either east or south: producing a perfect maze with a characteristic diagonal bias.
+
+- **Cell**: A single rectangular unit of the maze grid, defined by **Cell Size**. Each cell contains one wall-decision bit.
+
+- **Corridor**: The open passageway between walls where the underlying video (or a dimmed version of it) is visible.
+
+- **Evolve**: The automatic seed increment that causes the maze topology to change over time, frame by frame.
+
+- **Explorer**: An animated dot that autonomously navigates the maze corridors using directional walking logic.
+
+- **Hash Function**: A deterministic mixing operation that converts cell coordinates and a seed into a wall decision, ensuring the same inputs always produce the same maze.
+
+- **Perfect Maze**: A maze with exactly one path between any two cells and no loops (every cell is reachable from every other cell.)
+
+- **Procedural Generation**: Creating content algorithmically at runtime rather than storing it in memory. Labyrinth's maze exists only as a function, never as stored data.
+
+- **Seed**: A numeric value that determines the maze topology. Different seeds produce completely different wall arrangements.
 
 ---

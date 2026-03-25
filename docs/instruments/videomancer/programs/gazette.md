@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 126
 slug: /instruments/videomancer/gazette
@@ -7,379 +7,430 @@ image: /img/instruments/videomancer/gazette/gazette_hero_s1.png
 description: "Every home computer of the early 1980s faced the same engineering constraint: memory was expensive, and storing a unique color for every pixel on screen was a luxury none of them could afford."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import gazette_control_panel from '/img/instruments/videomancer/gazette/gazette_control_panel.png';
-import gazette_source1_castle from '/img/instruments/videomancer/gazette/gazette_source1_castle.png';
-import gazette_source2_car from '/img/instruments/videomancer/gazette/gazette_source2_car.png';
-import gazette_source3_turtle from '/img/instruments/videomancer/gazette/gazette_source3_turtle.png';
-import gazette_source4_pattern from '/img/instruments/videomancer/gazette/gazette_source4_pattern.png';
-import gazette_source5_man from '/img/instruments/videomancer/gazette/gazette_source5_man.png';
-import gazette_source6_knit from '/img/instruments/videomancer/gazette/gazette_source6_knit.png';
-import gazette_hero_s1 from '/img/instruments/videomancer/gazette/gazette_hero_s1.png';
-import gazette_hero_s2 from '/img/instruments/videomancer/gazette/gazette_hero_s2.png';
-import gazette_hero_s3 from '/img/instruments/videomancer/gazette/gazette_hero_s3.png';
-import gazette_hero_s4 from '/img/instruments/videomancer/gazette/gazette_hero_s4.png';
-import gazette_hero_s5 from '/img/instruments/videomancer/gazette/gazette_hero_s5.png';
-import gazette_hero_s6 from '/img/instruments/videomancer/gazette/gazette_hero_s6.png';
-import gazette_ex1_s1 from '/img/instruments/videomancer/gazette/gazette_ex1_s1.png';
-import gazette_ex1_s2 from '/img/instruments/videomancer/gazette/gazette_ex1_s2.png';
-import gazette_ex1_s3 from '/img/instruments/videomancer/gazette/gazette_ex1_s3.png';
-import gazette_ex1_s4 from '/img/instruments/videomancer/gazette/gazette_ex1_s4.png';
-import gazette_ex1_s5 from '/img/instruments/videomancer/gazette/gazette_ex1_s5.png';
-import gazette_ex1_s6 from '/img/instruments/videomancer/gazette/gazette_ex1_s6.png';
-import gazette_ex2_s1 from '/img/instruments/videomancer/gazette/gazette_ex2_s1.png';
-import gazette_ex2_s2 from '/img/instruments/videomancer/gazette/gazette_ex2_s2.png';
-import gazette_ex2_s3 from '/img/instruments/videomancer/gazette/gazette_ex2_s3.png';
-import gazette_ex2_s4 from '/img/instruments/videomancer/gazette/gazette_ex2_s4.png';
-import gazette_ex2_s5 from '/img/instruments/videomancer/gazette/gazette_ex2_s5.png';
-import gazette_ex2_s6 from '/img/instruments/videomancer/gazette/gazette_ex2_s6.png';
-import gazette_ex3_s1 from '/img/instruments/videomancer/gazette/gazette_ex3_s1.png';
-import gazette_ex3_s2 from '/img/instruments/videomancer/gazette/gazette_ex3_s2.png';
-import gazette_ex3_s3 from '/img/instruments/videomancer/gazette/gazette_ex3_s3.png';
-import gazette_ex3_s4 from '/img/instruments/videomancer/gazette/gazette_ex3_s4.png';
-import gazette_ex3_s5 from '/img/instruments/videomancer/gazette/gazette_ex3_s5.png';
-import gazette_ex3_s6 from '/img/instruments/videomancer/gazette/gazette_ex3_s6.png';
-
-# Gazette
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Castle", before: gazette_source1_castle, after: gazette_hero_s1 },
-    { label: "Car", before: gazette_source2_car, after: gazette_hero_s2 },
-    { label: "Turtle", before: gazette_source3_turtle, after: gazette_hero_s3 },
-    { label: "Pattern", before: gazette_source4_pattern, after: gazette_hero_s4 },
-    { label: "Man", before: gazette_source5_man, after: gazette_hero_s5 },
-    { label: "Knit", before: gazette_source6_knit, after: gazette_hero_s6 },
-  ]}
-/>
-*Gazette imposing ZX Spectrum-style attribute cell restrictions on live video, producing characteristic two-color-per-cell patterns with chroma bleed artifacts.*
+![Gazette hero image](/img/instruments/videomancer/gazette/gazette_hero_s1.png)
+*Gazette restricting a live video feed to the two-color-per-cell palette of a ZX Spectrum, producing characteristic attribute clash across the entire frame.*
 
 ---
 
 ## Overview
 
-Every home computer of the early 1980s faced the same engineering constraint: memory was expensive, and storing a unique color for every pixel on screen was a luxury none of them could afford. The solution — used independently by Sinclair, IBM, Commodore, and the MSX consortium — was the **attribute cell**: divide the screen into a grid of small tiles and assign each tile just two colors from a fixed palette. Gazette recreates this restriction in real time on live video.
+Gazette is a retro computing color restriction effect that divides the screen into character cells and forces each cell to display only two colors: an ***ink*** color and a ***paper*** color: drawn from one of four classic 8-bit computer palettes. The result is an authentic simulation of the display limitations that defined the visual identity of machines like the ZX Spectrum, the IBM CGA adapter, the Commodore 64, and the MSX standard.
 
-The program divides the incoming frame into character cells (4, 8, 16, or 32 pixels wide), samples the luminance at the center of each cell, and uses that measurement to pick two palette colors — an "ink" for bright pixels and a "paper" for dark pixels. Each pixel within the cell is then thresholded against the cell's reference luma and colored accordingly. The result is the distinctive banded, clashing look of 8-bit computer graphics applied to any video source. The name *Gazette* references the newspaper-like quality of the output: coarse halftone structure, limited color, and a blocky grid that recalls newsprint or early teletext pages.
+The magic of Gazette lies in its per-cell color assignment. Each cell samples the luminance of the incoming video at its center point. Bright pixels adopt the ink color, while dark pixels adopt the paper color. The ink color itself is chosen from the palette based on that cell's brightness, so adjacent cells end up displaying different color pairs. This produces ***attribute clash***: the phenomenon where sharp color boundaries appear at cell edges because each cell is locked to its own two-color subset of the full palette.
 
-At default settings Gazette produces clean retro-computing aesthetics with sharp cell boundaries and a well-defined palette. Pushing the Ink Bias and Paper Bias controls introduces intentional palette mismatches and color distortion. Enabling Color Bleed smears chroma horizontally across cell boundaries, replicating the analog artifact that plagued composite video connections on real 8-bit hardware. The Flash toggle swaps ink and paper colors on a half-second cycle, directly modeling the ZX Spectrum's FLASH attribute bit.
+Gazette goes beyond strict emulation by offering creative controls that the original hardware never had. **Color Bleed** simulates the horizontal chroma smear of composite video cables. **Flash** periodically swaps ink and paper, recreating the blinking text attribute found on many of these platforms. And **Cell Size** scales the character grid from tiny 4-pixel cells up to chunky 32-pixel blocks, letting you dial in the level of restriction from subtle to dramatic.
+
+:::tip
+Gazette is at its most visually striking with high-contrast source material. Faces, text, and geometric patterns all produce vivid attribute clash patterns.
+:::
+
+### What's In a Name?
+
+A ***gazette*** is a newspaper or official journal: columns of ink on paper. The name plays on Gazette's core metaphor: every character cell is defined by exactly two values, ***ink*** and ***paper***, just as a printed gazette renders its text with dark ink pressed onto light paper. The name also nods to the Sinclair ZX Spectrum, whose BASIC language used the commands `INK` and `PAPER` to set character cell colors: a direct inspiration for this program's architecture.
 
 ---
 
 ## Quick Start
 
-1. **8px cells for authenticity**: The ZX Spectrum used 8 × 8 character cells. Setting Cell Size to 8px in Square mode produces the most historically accurate attribute clash pattern.
-2. **Black Paper for clarity**: Enable Black Paper when you want the palette colors to stand out against a clean background. This avoids the muddy look that comes from mismatched paper colors in adjacent cells.
-3. **Color Bleed transforms aesthetics**: Even a small amount of color bleed softens the harsh cell boundaries and adds an analog warmth. High bleed at large cell sizes produces wide rainbow streaks reminiscent of badly tuned PAL decoders.
+1. Feed a video signal into Videomancer and load **Gazette**. The image immediately snaps to the ZX Spectrum palette with visible character cell boundaries.
+2. Turn **Palette** (Knob 5) to cycle through the four platform palettes: ZX Spectrum, CGA, C64, and MSX. Each has a different personality.
+3. Adjust **Ink Bias** (Knob 2) clockwise while watching the image. The ink color brightens and shifts across the palette for each cell, changing the overall color palette of the image.
+4. Toggle **Bright** (Switch 7) to **Bright** to switch from the dim, muted normal palette half to the vivid bright palette half.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Gazette loaded](/img/instruments/videomancer/gazette/gazette_control_panel.png)
+*Videomancer's front panel with Gazette active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Cell Size
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 3 |
+| Default | 2 |
+
+**Cell Size** selects the width of each character cell in pixels. The four positions are 4, 8, 16, and 32 pixels wide. Smaller cells preserve more spatial detail from the source but create more frequent attribute boundaries. Larger cells produce a chunkier, more abstract look with fewer color transitions.
+
+At the smallest setting (4 pixels), the image retains a surprising amount of recognizable detail despite the two-color restriction. At the largest setting (32 pixels), the screen becomes a coarse grid of bold color blocks (each one a miniature flag of ink and paper.)
+
+:::note
+The original ZX Spectrum used 8×8 pixel character cells. Set **Cell Size** to position 1 and **Cell Shape** to **Square** for the most authentic Spectrum look.
+:::
+
+---
+
+### Knob 2 — Ink Bias
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Ink Bias** shifts the palette index used for the ink color in every cell. At its default position, the ink color is determined purely by the cell's sampled luminance: dark cells pick dark ink colors, bright cells pick bright ink colors. Increasing Ink Bias pushes all ink selections toward brighter palette entries, while decreasing it pulls them toward darker entries. This acts as a global tint control over the ink layer without affecting which pixels are classified as ink or paper.
+
+The bias is added to the cell's luma value before the palette lookup, so the effect is most visible in mid-tone cells where a small push can jump to an entirely different color.
+
+---
+
+### Knob 3 — Paper Bias
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Paper Bias** selects the palette entry used for the paper (background) color across all cells. Unlike Ink Bias, this control is not modulated by cell luminance: every cell on screen shares the same paper color. At low values, paper is a dark color from the palette. As you increase Paper Bias, the paper color walks through the palette toward brighter entries.
+
+The interaction between Ink Bias and Paper Bias defines the overall color scheme of the image. Pushing them apart creates high-contrast two-tone graphics; bringing them closer together produces subtle, low-contrast results where ink and paper nearly merge.
+
+:::tip
+Try setting Paper Bias to a mid-range value and slowly sweeping Ink Bias. The image cycles through dramatically different color schemes as the ink color walks through the palette entries.
+:::
+
+---
+
+### Knob 4 — Threshold
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Threshold** biases the cutoff point that decides whether each pixel becomes ink or paper. At the center position (50%), the decision is based purely on the cell's sampled brightness: pixels brighter than the cell average become ink, and darker pixels become paper. Turning the knob clockwise raises the cutoff, meaning more of each cell becomes paper. Turning it counterclockwise lowers the cutoff, meaning more of each cell becomes ink.
+
+At extreme settings, entire cells can flip to all-ink or all-paper, eliminating the two-tone texture within cells and reducing the image to blocks of solid color.
+
+---
+
+### Knob 5 — Palette
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 3 |
+| Default | 0 |
+
+**Palette** selects one of four classic 8-bit computer color palettes. Each palette contains 16 colors organized into two halves: 8 normal-intensity colors and 8 bright-intensity colors: sorted by luminance.
+
+- **Position 0: ZX Spectrum**: The iconic 15-color palette (black appears in both halves) of the Sinclair ZX Spectrum. Bold primaries with no intermediate shades.
+- **Position 1: CGA**: The 16-color palette of the IBM Color Graphics Adapter. Includes brown and two grays, giving it a warmer, more utilitarian feel.
+- **Position 2: C64**: The Commodore 64's 16-color palette. Subtler than the Spectrum, with multiple grays and muted earth tones.
+- **Position 3: MSX**: The MSX standard's TMS9918-derived palette. Warm reds and greens with a distinctive retro Japanese computer aesthetic.
+
+---
+
+### Knob 6 — Color Bleed
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Color Bleed** simulates the horizontal chroma smearing that occurred when 8-bit computers connected to televisions via composite video cables. At zero, colors transition crisply at cell and pixel boundaries. As you increase Color Bleed, an ***IIR*** (infinite impulse response) low-pass filter smears the chroma channels horizontally, causing each pixel's color to bleed into its neighbors.
+
+The filter operates at four discrete intensity levels: no bleed, 50% carry, 75% carry, and approximately 94% carry. At the highest setting, colors trail dramatically to the right, producing rainbow streaks reminiscent of a CRT television receiving a weak composite signal.
+
+:::note
+Color Bleed affects only the chroma (U and V) channels. Luminance transitions remain sharp regardless of the bleed setting, just as they did on real composite video hardware.
+:::
+
+---
+
+### Switch 7 — Bright
+
+| Property | Value |
+|----------|-------|
+| Off | Normal |
+| On | Bright |
+| Default | Normal |
+
+**Bright** selects between the normal-intensity and bright-intensity halves of the current palette. In the **Normal** position, ink and paper colors are drawn from the first 8 entries of the palette: the dim, muted set. In the **Bright** position, colors are drawn from entries 8–15: the vivid, saturated set.
+
+On the original ZX Spectrum, the BRIGHT attribute was a per-cell flag that doubled the intensity of both ink and paper. Gazette applies it globally, affecting all cells simultaneously.
+
+---
+
+### Switch 8 — Cell Shape
+
+| Property | Value |
+|----------|-------|
+| Off | 8x1 Row |
+| On | Square |
+| Default | 8x1 Row |
+
+**Cell Shape** determines the vertical extent of each character cell. In the **8×1 Row** position, each scan line independently samples and assigns cell colors, creating tall, narrow character cells that are one pixel high. In the **Square** position, cells extend vertically to match their horizontal width (4×4, 8×8, 16×16, or 32×32 pixels), and the cell color is sampled once at the center of the square.
+
+The **Square** setting produces the most authentic retro computer look, since real hardware character cells were square or nearly square. The **8×1 Row** setting creates a finer vertical structure with line-by-line color variation, producing a distinctive moiré-like texture.
+
+---
+
+### Switch 9 — Black Paper
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Black Paper** forces the paper color to black (palette entry 0) regardless of the Paper Bias setting. This emulates the classic "bright text on a black background" appearance of most 8-bit computer displays. With Black Paper enabled, only the ink color varies per cell, producing a cleaner, higher-contrast result.
+
+:::tip
+Enable **Black Paper** and set **Bright** to **Bright** for the quintessential ZX Spectrum loading screen look (vivid colors floating on a jet-black background.)
+:::
+
+---
+
+### Switch 10 — Flash
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Flash** periodically swaps the ink and paper colors in every cell. The swap occurs on a roughly half-second cycle (every 16 frames), recreating the blinking text attribute found on many 8-bit platforms. When Flash is **Off**, colors are stable. When Flash is **On**, the image alternates between normal and inverted color assignments, producing a rhythmic pulsing effect.
+
+On the ZX Spectrum, FLASH was a per-character attribute for drawing attention to specific screen elements. Gazette applies it globally, affecting all cells at once.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the original input video directly to the output, bypassing all Gazette processing. Sync timing is still aligned through the delay pipeline, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the palette-restricted result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the original input video and the Gazette-processed result. At 0% (fully down), the output is pure dry input. At 100% (fully up), the output is pure Gazette effect. Intermediate positions blend the two, allowing subtle color restriction overlays or gentle retro tinting.
+
+The mix operates per-channel on Y, U, and V independently, so partial mix values produce a ghostly overlay of the palette-restricted image on top of the clean source.
 
 ---
 
 ## Background
 
-### The ZX Spectrum Attribute Cell
+### Attribute clash
 
-The Sinclair ZX Spectrum (1982) stored its display in a notoriously quirky format. The pixel bitmap occupied 6144 bytes — one bit per pixel across 256 × 192 resolution — but color information was stored separately in a 768-byte **attribute area**, one byte per 8 × 8 character cell. Each attribute byte specified an ink color (foreground), a paper color (background), a bright flag, and a flash flag, all drawn from a fixed palette of 8 colors (15 with the bright variant). This meant every 8 × 8 block of pixels could show at most two colors. When the image content didn't align neatly with the cell grid, adjacent cells displayed clashing color pairs — the infamous **attribute clash** that became the Spectrum's visual signature. Game artists spent enormous effort designing graphics that worked within or artistically exploited this limitation.
+The display hardware of 1980s home computers worked under severe memory constraints. A machine like the ZX Spectrum had only 6,912 bytes of video memory for a 256×192 pixel display: not nearly enough to store an independent color for every pixel. The solution was ***attribute-based color***: the screen was divided into 8×8 pixel character cells, and each cell stored a single byte specifying one ink color and one paper color. Every pixel within that cell could only be one of those two colors.
 
-### CGA, C64, and MSX Palette Comparisons
+This memory-efficient scheme came with a famous trade-off. When a graphical element crossed a cell boundary, its colors would abruptly change at the cell edge, producing harsh color fringing that became known as ***attribute clash*** or ***color clash***. Artists and programmers spent enormous effort designing graphics that hid or worked around this limitation. Gazette embraces it as an aesthetic, applying the restriction to live video where the clash becomes part of the visual texture.
 
-Other platforms imposed similar constraints with different palettes. IBM's CGA adapter (1981) offered 16 colors but typically displayed only 4 at a time in graphics modes — a restriction that forced distinctive cyan-magenta-white or red-green-yellow color schemes. The Commodore 64 (1982) had a fixed 16-color palette with earth tones and muted blues derived from the VIC-II chip's analog color generation. The MSX standard (1983) used Texas Instruments' TMS9918A video display processor with its own 15-color palette plus transparent, characterized by saturated primaries and limited intermediate tones. Gazette packs all four palettes into a single 64-entry ROM, selectable with one knob. Each platform's entries are sorted by luminance and split into normal (indices 0–7) and bright (indices 8–15) halves, allowing the Bright toggle to select the vivid variant.
+### Palette archaeology
 
-### Threshold-Based Ink and Paper Assignment
+Each of Gazette's four palettes reflects the design philosophy and hardware constraints of its era. The ZX Spectrum's palette is pure and mathematical: three bits of RGB plus one brightness bit, yielding 15 unique colors (black is duplicated across both halves). CGA introduced browns and grays, reflecting IBM's pragmatic office-computing roots. The C64's palette was hand-tuned by engineers for pleasing skin tones and natural colors on NTSC televisions, resulting in a distinctively warm, earthy set. The MSX palette derives from Texas Instruments' TMS9918 video chip, with its characteristic warm reds and cool greens.
 
-Within each cell, Gazette must decide which pixels get the ink color and which get the paper color. It does this by comparing each pixel's luminance to an adaptive **cutoff** value: the cell's sampled center luma plus a user-adjustable offset from the Threshold knob. Pixels brighter than the cutoff become ink; pixels darker become paper. The Ink Bias knob shifts the palette index for ink colors by adding an offset to the sampled cell luma before the palette lookup, allowing you to push ink assignments toward brighter or dimmer palette entries. Paper Bias independently selects which palette entry the paper pixels receive — at the default midpoint, paper tends toward a mid-palette color; fully counter-clockwise, paper becomes the darkest available color. The Black Paper toggle overrides this entirely, forcing paper to index 0 (always black) regardless of the bias setting.
+All four palettes are stored in the FPGA as constant ROM arrays, pre-converted from RGB to YUV at ***elaboration time***: the moment when the FPGA design is compiled. This means the color conversion math runs on the synthesis computer, not in the FPGA hardware, keeping the runtime logic simple and fast.
 
-### Color Bleed and Attribute Clash Artifacts
+### Composite video bleed
 
-On real 8-bit hardware, attribute clash was a spatial artifact — colors bled across cell boundaries because the hardware painted each cell's attribute across all its pixels. But a second artifact occurred when these computers were connected to a television via composite video: the chrominance signal smeared horizontally because of the limited bandwidth of the NTSC or PAL chroma subcarrier. Gazette replicates this with a four-level horizontal IIR (infinite impulse response) filter on the U and V chroma channels. At the lowest bleed setting ("Off"), chroma transitions are sharp at cell boundaries. At "Low" (50% IIR coefficient), chroma smears gently into adjacent cells. At "Med" (75%) and "High" (~94%), the smear extends across multiple cells, producing the rainbow fringing and color bleeding characteristic of composite video on vintage hardware. The luma channel is never bled — only chroma — matching the behavior of real composite decoders.
+When 8-bit computers connected to televisions through composite video cables, the chroma (color) information was encoded as a high-frequency modulated signal riding on top of the luminance (brightness) signal. Television decoders separated these imperfectly, causing the color of each pixel to bleed horizontally into its neighbors. Sharp color transitions smeared into rainbow fringes, and adjacent colors would contaminate each other.
 
-### The FLASH Attribute
-
-The ZX Spectrum's attribute byte included a single FLASH bit. When set, the hardware automatically swapped the ink and paper colors of that cell at a rate of approximately once per second (alternating every 16 frames at 50 Hz). Programmers used it for blinking cursors, flashing warning messages, and simple animation effects. Gazette's Flash toggle simulates this behavior globally: when enabled, all cells swap their ink and paper assignments every 16 frames (based on an internal frame counter), producing a rhythmic color inversion across the entire image.
+Gazette's **Color Bleed** control simulates this artifact using an ***IIR filter***: a feedback filter where each pixel's chroma output is a weighted mix of the current palette color and the previous pixel's output. At the strongest setting, the filter retains 94% of the previous value and adds only 6% of the new color, producing long, dramatic chroma trails that cascade across the screen.
 
 
 ---
 
 ## Signal Flow
 
-Input Registration → Palette Index + Threshold → Output Registration
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Cell Tracking ──────────────────────────────────────────────
-│   ├─ Pixel counter + cell column index
-│   ├─ Cell sub-row counter (square mode)
-│   └─ Center detection → BRAM write (column luma buffer)
-│
-├── Stage 1: Input Registration + BRAM Read/Write ──────────────
-│   └─ Sample cell center luma → s_col_samples[cell_col]
-│
-├── Stage 2: Palette Index + Threshold ─────────────────────────
-│   ├─ ink_half = (cell_luma + ink_bias) >> 7     (3-bit)
-│   ├─ paper_half = paper_bias >> 7               (3-bit)
-│   ├─ Black Paper override → paper_half = 0
-│   ├─ ink_full = bright & ink_half               (4-bit)
-│   ├─ paper_full = bright & paper_half           (4-bit)
-│   ├─ ink_addr = palette_sel & ink_full           (6-bit)
-│   ├─ paper_addr = palette_sel & paper_full       (6-bit)
-│   └─ Threshold: pixel_Y >= cell_luma + (threshold - 512) → INK
-│
-├── Stage 2b: Flash Swap + Address Selection ───────────────────
-│   ├─ Flash toggle + frame_count(4) → swap ink/paper
-│   └─ Select final palette address
-│
-├── Stage 3a: Palette ROM Lookup ───────────────────────────────
-│   └─ 64-entry YUV palette → (Y, U, V) from address
-│
-├── Stage 3b: Color Bleed IIR ──────────────────────────────────
-│   ├─ Y: direct pass-through (no bleed)
-│   └─ U, V: horizontal IIR (0% / 50% / 75% / ~94%)
-│
-├── Stage 4: Output Registration ───────────────────────────────
-│   └─ comp_y, comp_u, comp_v → interpolator inputs
-│
-├── Mix Stage: Interpolator (4 clk) ────────────────────────────
-│   └─ 3× interpolator_u: wet/dry crossfade per channel
-│
-├── Sync Delay ─────────────────────────────────────────────────
-│   └─ 10-clock shift register for hsync, vsync, field, YUV
-│
-└── Output ─────────────────────────────────────────────────────
-    └─ Bypass mux: processed or delayed original
-```
+The pipeline's key interaction is between the BRAM column buffer and the palette index computation. At the center of each cell, the input luma is written into a 256-entry BRAM. On every subsequent pixel in that cell, the stored luma is read back and used to compute both the ink palette index and the threshold cutoff. This means the ink color and the ink-vs-paper decision are both driven by a single sample taken at the cell's center (not by the current pixel's brightness.)
 
-The pipeline has two critical data paths that converge at Stage 2. The **cell luma path** samples the input Y value at each cell's center pixel and stores it in a 256-entry BRAM column buffer; the stored value becomes the reference for the entire cell. The **pixel path** carries each pixel's own Y value through a one-clock register. At Stage 2, the pixel Y is compared against the cell reference (offset by Threshold) to produce the ink/paper decision, while the cell reference simultaneously drives the ink palette index computation via Ink Bias. This means a single sampled pixel at the cell center determines both *which* colors the cell uses and *where* the boundary between them falls.
+The threshold mechanism deserves special attention. The cutoff is not a fixed value but an ***adaptive threshold***: `cell_luma + (threshold - 512)`. When Threshold is centered, the cutoff equals the cell's own brightness, so pixels brighter than average become ink and darker pixels become paper. Turning Threshold clockwise raises the bar, pushing more pixels into paper territory. This interaction between per-cell luma sampling and global threshold bias is what gives Gazette its characteristic texture.
 
-The Color Bleed IIR filter at Stage 3b operates only on chroma, leaving luma sharp. This matches the physical behavior of composite video: luminance bandwidth is high, chrominance bandwidth is low. The IIR state resets at the start of each scan line, preventing color from the right edge of one line from bleeding into the left edge of the next.
-
----
-
-## Parameter Reference
-
-<img src={gazette_control_panel} alt="Videomancer front panel with Gazette loaded"/>
-*Videomancer's front panel with Gazette active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Cell Size
-| Property | Value |
-|----------|-------|
-| Range | 0 – 3 |
-| Default | 2 |
-
-Selects the character cell width in pixels: 4, 8, 16, or 32. Smaller cells produce finer detail and more accurate color reproduction but create a busier grid. Larger cells create bold, blocky graphics with more dramatic attribute clash — each cell covers more of the image, so the two-color restriction becomes more visually apparent. The 8-pixel setting most closely matches the ZX Spectrum's original 8 × 8 character cells. In Square cell shape mode, the cell height matches the width; in 8×1 Row mode, each scan line acts as its own cell row regardless of this setting.
-
----
-
-#### Knob 2 — Ink Bias
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
-
-Biases the ink (foreground) palette index by adding an offset to the cell's sampled luma before the palette lookup. At the default three-quarter position, ink colors track the cell brightness naturally — bright cells get bright ink, dark cells get dark ink. Turning counter-clockwise compresses the ink range toward darker palette entries; turning clockwise pushes it toward brighter entries. Extreme settings cause all cells to share similar ink colors regardless of their actual brightness, which flattens the tonal structure but can create striking uniform color fields.
-
----
-
-#### Knob 3 — Paper Bias
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-Selects which palette entry is used for the paper (background) color. Unlike Ink Bias, Paper Bias is independent of the cell's sampled luma — it directly maps a range of the knob position to one of 8 (or 16 with Bright) palette entries. At the default one-quarter position, paper tends toward darker entries. Turning clockwise selects progressively brighter paper colors. Combined with the Black Paper toggle, this control lets you choose between a uniform black background (toggle on) or a colored background that varies across the palette range (toggle off, knob sweeping).
-
----
-
-#### Knob 4 — Threshold
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Adjusts the luminance threshold that separates ink pixels from paper pixels within each cell. At the default center position, the cutoff equals the cell's sampled center luma — pixels brighter than the cell center become ink, pixels darker become paper. Turning counter-clockwise lowers the cutoff, making more pixels qualify as ink (brighter overall appearance). Turning clockwise raises the cutoff, making more pixels qualify as paper (darker overall appearance). This control interacts directly with the source material's contrast: high-contrast footage produces clean ink/paper separation at any threshold setting, while low-contrast footage may need careful threshold adjustment to produce a readable pattern.
-
----
-
-#### Knob 5 — Palette
-| Property | Value |
-|----------|-------|
-| Range | 0 – 3 |
-| Default | 0 |
-
-Selects one of four classic computer palettes. **ZX** provides the Sinclair Spectrum's 8-color palette (plus bright variants) with its strong primaries and characteristic cyan, magenta, and green. **CGA** reproduces IBM's 16-color graphics palette with its distinctive browns and dark gray. **C64** offers the Commodore 64's muted, earth-toned palette with its unique light blue and gray shades. **MSX** provides the TMS9918A's saturated, slightly warm palette. Each palette contains 16 entries split into normal (0–7, dim) and bright (8–15, vivid) halves, selected by the Bright toggle.
-
----
-
-#### Knob 6 — Color Bleed
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-Controls the strength of horizontal chroma smearing applied after the palette lookup. At the fully counter-clockwise position, chroma transitions are pixel-sharp at cell boundaries. Increasing the control engages a progressively stronger IIR lowpass on the U and V channels: "Low" blends 50% of the previous pixel's chroma with the current value, "Med" blends 75%, and "High" blends approximately 94%. The luma channel is never affected — only color bleeds. Higher settings replicate the rainbow fringing and chroma crawl visible on composite video connections to real 8-bit computers. The IIR state resets at the start of each scan line.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Bright** | Normal | Bright |
-| **8 — Cell Shape** | 8x1 Row | Square |
-| **9 — Black Paper** | Off | On |
-| **10 — Flash** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles provide independent control over palette brightness, cell geometry, paper color forcing, color animation, and signal bypass. Bright and Black Paper interact with the palette index computation at Stage 2. Cell Shape affects the cell counter and BRAM write timing. Flash acts at Stage 2b after the ink/paper decision. Bypass operates at the final output mux after the interpolator.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Controls the wet/dry mix between the original input and the palette-restricted output. At 100% (fully up), the output is entirely the cell-colored signal. Pulling the fader down crossfades toward the original video, with 0% reproducing the input exactly. Intermediate positions create a translucent overlay effect where the cell grid is visible but the original image shows through. Three parallel `interpolator_u` instances handle Y, U, and V channels independently with 10-bit fractional precision.
-
-
-
+:::tip
+**Color Bleed resets at every line start.** The IIR filter state is cleared to neutral (512) at each horizontal sync, so bleed trails never wrap from the end of one line to the beginning of the next. This matches the behavior of real composite video decoders.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from exploring basic palette restriction to combining controls for complex retro-computing aesthetics. Each introduces new interactions between the cell grid, palette selection, and analog artifacts.
+These exercises progress from basic palette exploration to creative composite video simulation. Each one builds on the previous, gradually engaging more of Gazette's control surface.
+### Exercise 1: ZX Spectrum Loading Screen
 
-### Exercise 1: ZX Spectrum Text Screen
+![ZX Spectrum Loading Screen result](/img/instruments/videomancer/gazette/gazette_ex1_s1.png)
+*ZX Spectrum Loading Screen — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Castle", before: gazette_source1_castle, after: gazette_ex1_s1 },
-    { label: "Car", before: gazette_source2_car, after: gazette_ex1_s2 },
-    { label: "Turtle", before: gazette_source3_turtle, after: gazette_ex1_s3 },
-    { label: "Pattern", before: gazette_source4_pattern, after: gazette_ex1_s4 },
-    { label: "Man", before: gazette_source5_man, after: gazette_ex1_s5 },
-    { label: "Knit", before: gazette_source6_knit, after: gazette_ex1_s6 },
-  ]}
-/>
-*ZX Spectrum Text Screen — simulated result across source images.*
-**Source**: A camera pointed at printed text, a title card, or any high-contrast monochrome source.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Recreate the ZX Spectrum's characteristic BASIC screen appearance — white text on a black background with sharp 8-pixel cells.
+#### Learning Outcomes
 
-1. **Set the palette**: Turn Palette (Knob 5) to "ZX" (fully counter-clockwise).
-2. **8-pixel cells**: Set Cell Size (Knob 1) to "8px" (one step from minimum).
-3. **Black paper**: Enable Black Paper (Toggle 9) for a clean black background.
-4. **Bright mode**: Enable Bright (Toggle 7) for full-intensity colors.
-5. **Center threshold**: Set Threshold (Knob 4) to 50% — ink and paper divide at mid-gray.
-6. **No bleed**: Set Color Bleed (Knob 6) fully counter-clockwise.
-7. **Observe**: The source resolves into a grid of colored text-like blocks on a black field. Adjust Threshold to control how much of the image appears as "ink."
-8. **Add flash**: Enable Flash (Toggle 10) — the entire screen blinks between ink and paper, like a ZX Spectrum FLASH attribute.
+Recreate the look of a ZX Spectrum loading screen: vivid primary colors on a black background with visible 8×8 character cells.
 
-**Key concepts**: Attribute cell restriction limits each block to two colors, threshold controls which pixels become ink vs. paper, Black Paper forces a uniform background
+#### Key Concepts
 
----
+- Attribute clash creates color boundaries at cell edges
+- Ink and paper combine to define the two-color character cell
+- The Bright toggle switches between palette intensity halves
 
-### Exercise 2: Commodore Color Clash
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Castle", before: gazette_source1_castle, after: gazette_ex2_s1 },
-    { label: "Car", before: gazette_source2_car, after: gazette_ex2_s2 },
-    { label: "Turtle", before: gazette_source3_turtle, after: gazette_ex2_s3 },
-    { label: "Pattern", before: gazette_source4_pattern, after: gazette_ex2_s4 },
-    { label: "Man", before: gazette_source5_man, after: gazette_ex2_s5 },
-    { label: "Knit", before: gazette_source6_knit, after: gazette_ex2_s6 },
-  ]}
-/>
-*Commodore Color Clash — simulated result across source images.*
-**Source**: Footage with varied colors and moderate contrast — flowers, market scenes, or colorful patterns.
+A portrait or still image with clear tonal contrast (a face, a logo, or bold graphic shapes.)
 
-**What You'll Create**: Explore how different palettes and cell sizes generate "attribute clash" — the visible seams between adjacent cells that use different color pairs.
+#### Steps
 
-1. **C64 palette**: Turn Palette (Knob 5) to "C64" (two steps from minimum).
-2. **Large cells**: Set Cell Size (Knob 1) to "32px" for dramatic cell boundaries.
-3. **Square mode**: Enable Square cell shape (Toggle 8) for true tile appearance.
-4. **Colored paper**: Turn off Black Paper (Toggle 9). Set Paper Bias (Knob 3) to ~50%.
-5. **Observe the clash**: Scan across the image and note where adjacent cells use different color pairs. The boundary between them is hard and abrupt — this is attribute clash.
-6. **Reduce cell size**: Step Cell Size down to 16px, then 8px. Watch attribute clash become finer-grained and less visible.
-7. **Add color bleed**: Slowly increase Color Bleed (Knob 6) from Off through Low, Med, High. The chroma smears across cell boundaries, softening the clash.
-8. **Compare palettes**: Switch between ZX, CGA, C64, and MSX. Each palette colors the same scene differently.
+1. **Set the platform**: Turn **Palette** (Knob 5) fully counterclockwise to select the ZX Spectrum palette (position 0).
+2. **Set authentic cell size**: Set **Cell Size** (Knob 1) to position 1 (8-pixel cells) and toggle **Cell Shape** (Switch 8) to **Square** for authentic 8×8 cells.
+3. **Black background**: Enable **Black Paper** (Switch 9). The paper layer snaps to black.
+4. **Go bright**: Toggle **Bright** (Switch 7) to **Bright**. Colors jump from muted to vivid (classic Spectrum loading screen intensity.)
+5. **Tune the ink**: Sweep **Ink Bias** (Knob 2) slowly. Watch how the ink color cycles through the Spectrum colors: blue, red, magenta, green, cyan, yellow, white: as the bias walks through the palette.
+6. **Adjust the threshold**: Center **Threshold** (Knob 4) and then nudge it to control how much ink vs. paper appears in each cell.
 
-**Key concepts**: Larger cells create more visible attribute clash, color bleed softens chroma transitions between cells, each platform palette has a distinct color character
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cell Size | 1 (8px) |
+| Ink Bias | 75% |
+| Paper Bias | 0% |
+| Threshold | 50% |
+| Palette | 0 (ZX Spectrum) |
+| Color Bleed | 0% |
+| Bright | Bright |
+| Cell Shape | Square |
+| Black Paper | On |
+| Flash | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Composite Artifact Machine
+### Exercise 2: Composite Video Nostalgia
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Castle", before: gazette_source1_castle, after: gazette_ex3_s1 },
-    { label: "Car", before: gazette_source2_car, after: gazette_ex3_s2 },
-    { label: "Turtle", before: gazette_source3_turtle, after: gazette_ex3_s3 },
-    { label: "Pattern", before: gazette_source4_pattern, after: gazette_ex3_s4 },
-    { label: "Man", before: gazette_source5_man, after: gazette_ex3_s5 },
-    { label: "Knit", before: gazette_source6_knit, after: gazette_ex3_s6 },
-  ]}
-/>
-*Composite Artifact Machine — simulated result across source images.*
-**Source**: Any dynamic footage with motion — panning cameras, moving subjects, or scrolling graphics.
+![Composite Video Nostalgia result](/img/instruments/videomancer/gazette/gazette_ex2_s1.png)
+*Composite Video Nostalgia — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Combine color bleed, palette bias, and flash to replicate the full experience of 8-bit computer graphics on a composite video connection.
+***A description of the exercise illustration.***
 
-1. **CGA palette**: Set Palette to "CGA" — its browns and magentas are especially prone to composite artifacts.
-2. **8-pixel cells**: Set Cell Size to "8px" and enable Square mode for a character-cell grid.
-3. **Strong bleed**: Set Color Bleed (Knob 6) to "High" — chroma smears heavily across cells.
-4. **Skewed bias**: Set Ink Bias high (~80%) and Paper Bias low (~20%) for strong contrast between foreground and background colors.
-5. **Enable flash**: Toggle Flash (Toggle 10). Watch the color grid pulse as ink and paper swap every half second.
-6. **Mix down**: Pull the Mix fader to ~60%. The processed grid becomes a translucent overlay on the original video — the cell structure is visible but the source shines through.
-7. **Sweep threshold**: Slowly move Threshold (Knob 4) across its full range while flash is active. The proportion of ink to paper shifts, changing the density and rhythm of the blinking pattern.
+#### Learning Outcomes
 
-**Key concepts**: High Color Bleed replicates composite video chroma smear, Flash creates rhythmic color inversion, Mix crossfades between processed and original signal, Ink and Paper Bias control the palette distribution
+Simulate what a Commodore 64 game looked like on a consumer television connected via composite cable (smeared colors, chunky cells, and warm earth tones.)
+
+#### Key Concepts
+
+- Color Bleed simulates composite video chroma smearing
+- Different palettes evoke different hardware platforms
+- Cell Shape affects how attribute clash manifests vertically
+
+#### Video Source
+
+Footage with colorful, high-contrast content (animation, bold graphics, or colorful objects.)
+
+#### Steps
+
+1. **Select the C64 palette**: Turn **Palette** (Knob 5) to position 2 for the Commodore 64 color set.
+2. **Set large cells**: Turn **Cell Size** (Knob 1) to position 2 (16-pixel cells) and set **Cell Shape** to **Square** for chunky 16×16 blocks.
+3. **Add color bleed**: Turn **Color Bleed** (Knob 6) to about 70%. The palette colors begin to smear horizontally, producing rainbow trails.
+4. **Warm up the paper**: Increase **Paper Bias** (Knob 3) to about 50% to select a warm mid-tone as the paper color.
+5. **Partial mix**: Lower **Mix** (Fader 12) to about 60%. The palette-restricted image blends with the clean source, producing a ghostly overlay effect.
+6. **Compare palettes**: Cycle through the four palettes with Knob 5. Notice how each platform's color personality transforms the mood of the image.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cell Size | 2 (16px) |
+| Ink Bias | 75% |
+| Paper Bias | 50% |
+| Threshold | 50% |
+| Palette | 2 (C64) |
+| Color Bleed | 70% |
+| Bright | Normal |
+| Cell Shape | Square |
+| Black Paper | Off |
+| Flash | Off |
+| Bypass | Off |
+| Mix | 60% |
 
 ---
 
+### Exercise 3: Blinking Bulletin Board
 
-## Tips
+![Blinking Bulletin Board result](/img/instruments/videomancer/gazette/gazette_ex3_s1.png)
+*Blinking Bulletin Board — simulated result across source images.*
+#### Exercise Illustration
 
-- **Threshold tracks contrast**: High-contrast source material works best at the default 50% threshold. For low-contrast footage, lower the threshold to ensure enough pixels qualify as ink to produce visible detail.
-- **Flash as performance tool**: Flash creates a rhythmic visual pulse that works well synchronized to music or other temporal events. The ~0.5-second cycle is slow enough to read but fast enough to feel energetic.
-- **Mix for layering**: Use the fader at 40–60% to overlay the cell grid on the original video. The retro-computing aesthetic bleeds through the live image, creating a palimpsest effect.
-- **Palette choice shapes mood**: ZX and CGA palettes are vivid and graphic; C64 is muted and earthy; MSX sits between them. Each palette imposes a different emotional character on the same footage.
-- **Row mode for video**: 8×1 Row cell shape mode treats each scan line independently, which often looks better on moving video because vertical motion doesn't cause entire square cells to change color abruptly.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Produce an animated display reminiscent of a BBS (bulletin board system) terminal with blinking text attributes and fine character cells.
+
+#### Key Concepts
+
+- Flash creates rhythmic ink/paper color swaps
+- Small cells and row mode create a text-like line structure
+- Ink Bias and Paper Bias together define the color scheme
+
+#### Video Source
+
+Any moving video. Scrolling text, a slow camera pan, or a talking head all work well (motion makes the flash effect more dynamic.)
+
+#### Steps
+
+1. **Tiny cells in row mode**: Set **Cell Size** (Knob 1) to position 0 (4-pixel cells) and **Cell Shape** (Switch 8) to **8×1 Row**. This creates a fine horizontal texture (every scan line has independent color assignments.)
+2. **Choose CGA**: Set **Palette** (Knob 5) to position 1 for the CGA palette, with its distinctive browns and grays.
+3. **Enable Flash**: Toggle **Flash** (Switch 10) to **On**. The image begins pulsing as ink and paper swap every half second.
+4. **Set contrasting ink and paper**: Push **Ink Bias** (Knob 2) high (~80%) and **Paper Bias** (Knob 3) low (~20%). This creates a strong two-tone contrast that makes the flash swap dramatic.
+5. **Add a touch of bleed**: Set **Color Bleed** (Knob 6) to about 30%. The colors smear subtly, softening the cell boundaries.
+6. **Lower the threshold**: Pull **Threshold** (Knob 4) below center (~35%) so more of the image renders as ink, creating denser "text" coverage.
+7. **Observe the flash rhythm**: Watch how the periodic swap creates a systematic pulsing. Cells that were mostly ink become mostly paper, and vice versa.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Cell Size | 0 (4px) |
+| Ink Bias | 80% |
+| Paper Bias | 20% |
+| Threshold | 35% |
+| Palette | 1 (CGA) |
+| Color Bleed | 30% |
+| Bright | Normal |
+| Cell Shape | 8×1 Row |
+| Black Paper | Off |
+| Flash | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Attribute Cell** | A rectangular region of the screen that shares a single foreground (ink) and background (paper) color pair, as used by 1980s home computers. |
-| **Attribute Clash** | The visible discontinuity at the boundary between adjacent attribute cells that use different color pairs, producing hard color seams in the image. |
-| **BT.601** | ITU-R standard defining the YUV color matrix used for standard-definition video encoding and decoding. |
-| **C64** | Commodore 64; a home computer (1982) whose VIC-II video chip produced a distinctive 16-color palette. |
-| **CGA** | Color Graphics Adapter; IBM's first color display standard (1981) with a fixed 16-color palette. |
-| **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **Composite Video** | An analog video format that encodes luminance and chrominance on a single wire, causing chroma bandwidth limitations and color bleeding. |
-| **FLASH** | An attribute flag on the ZX Spectrum that caused the ink and paper colors of a cell to swap at approximately 1 Hz. |
-| **IIR** | Infinite Impulse Response; a filter structure where the output feeds back into the computation, creating exponential decay. |
-| **Ink** | The foreground color assigned to bright pixels within an attribute cell. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **MSX** | A standardized home computer architecture (1983) using the TMS9918A video processor with a 15+1 color palette. |
-| **Paper** | The background color assigned to dark pixels within an attribute cell. |
-| **ROM** | Read-Only Memory; here, a lookup table of pre-computed palette values synthesized into FPGA logic at build time. |
-| **ZX Spectrum** | A home computer by Sinclair Research (1982) famous for its attribute cell color system and resulting attribute clash. |
+- **Attribute Clash**: The visual artifact produced when adjacent character cells display different ink/paper color pairs, creating harsh color boundaries at cell edges.
+
+- **BRAM**: Block RAM; dedicated memory blocks inside the FPGA used here to store per-column luminance samples for the cell color assignment.
+
+- **Character Cell**: A rectangular region of pixels that shares a single pair of colors (ink and paper), inherited from the memory-saving display architecture of 1980s home computers.
+
+- **Composite Video**: An analog video signal format that combines luminance and chrominance into a single wire, causing imperfect separation and characteristic color smearing artifacts.
+
+- **Elaboration Time**: The moment when the FPGA design is compiled by synthesis tools, before it runs on hardware; constant computations like palette color conversion happen here.
+
+- **IIR Filter**: Infinite Impulse Response filter; a feedback-based filter where the output depends on both the current input and the filter's own previous output, producing exponential decay trails.
+
+- **Ink**: The foreground color assigned to bright pixels within each character cell, selected from the active palette based on cell luminance.
+
+- **Palette**: A fixed set of colors available to the display hardware; Gazette offers four historically accurate palettes with 16 entries each.
+
+- **Paper**: The background color assigned to dark pixels within each character cell, selected uniformly across the screen via the Paper Bias control.
+
+- **YUV**: A color encoding that separates brightness (Y) from color (U and V), used internally by Videomancer's video processing pipeline.
 
 ---

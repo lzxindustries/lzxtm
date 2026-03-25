@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 64
 slug: /instruments/videomancer/contour
@@ -7,377 +7,368 @@ image: /img/instruments/videomancer/contour/contour_hero_s1.png
 description: "A topographic map turns continuous terrain into a set of discrete elevation lines."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import contour_control_panel from '/img/instruments/videomancer/contour/contour_control_panel.png';
-import contour_source1_field from '/img/instruments/videomancer/contour/contour_source1_field.png';
-import contour_source2_ballerina from '/img/instruments/videomancer/contour/contour_source2_ballerina.png';
-import contour_source3_turtle from '/img/instruments/videomancer/contour/contour_source3_turtle.png';
-import contour_source4_pattern from '/img/instruments/videomancer/contour/contour_source4_pattern.png';
-import contour_source5_boy from '/img/instruments/videomancer/contour/contour_source5_boy.png';
-import contour_source6_berries from '/img/instruments/videomancer/contour/contour_source6_berries.png';
-import contour_hero_s1 from '/img/instruments/videomancer/contour/contour_hero_s1.png';
-import contour_hero_s2 from '/img/instruments/videomancer/contour/contour_hero_s2.png';
-import contour_hero_s3 from '/img/instruments/videomancer/contour/contour_hero_s3.png';
-import contour_hero_s4 from '/img/instruments/videomancer/contour/contour_hero_s4.png';
-import contour_hero_s5 from '/img/instruments/videomancer/contour/contour_hero_s5.png';
-import contour_hero_s6 from '/img/instruments/videomancer/contour/contour_hero_s6.png';
-import contour_ex1_s1 from '/img/instruments/videomancer/contour/contour_ex1_s1.png';
-import contour_ex1_s2 from '/img/instruments/videomancer/contour/contour_ex1_s2.png';
-import contour_ex1_s3 from '/img/instruments/videomancer/contour/contour_ex1_s3.png';
-import contour_ex1_s4 from '/img/instruments/videomancer/contour/contour_ex1_s4.png';
-import contour_ex1_s5 from '/img/instruments/videomancer/contour/contour_ex1_s5.png';
-import contour_ex1_s6 from '/img/instruments/videomancer/contour/contour_ex1_s6.png';
-import contour_ex2_s1 from '/img/instruments/videomancer/contour/contour_ex2_s1.png';
-import contour_ex2_s2 from '/img/instruments/videomancer/contour/contour_ex2_s2.png';
-import contour_ex2_s3 from '/img/instruments/videomancer/contour/contour_ex2_s3.png';
-import contour_ex2_s4 from '/img/instruments/videomancer/contour/contour_ex2_s4.png';
-import contour_ex2_s5 from '/img/instruments/videomancer/contour/contour_ex2_s5.png';
-import contour_ex2_s6 from '/img/instruments/videomancer/contour/contour_ex2_s6.png';
-import contour_ex3_s1 from '/img/instruments/videomancer/contour/contour_ex3_s1.png';
-import contour_ex3_s2 from '/img/instruments/videomancer/contour/contour_ex3_s2.png';
-import contour_ex3_s3 from '/img/instruments/videomancer/contour/contour_ex3_s3.png';
-import contour_ex3_s4 from '/img/instruments/videomancer/contour/contour_ex3_s4.png';
-import contour_ex3_s5 from '/img/instruments/videomancer/contour/contour_ex3_s5.png';
-import contour_ex3_s6 from '/img/instruments/videomancer/contour/contour_ex3_s6.png';
-
-# Contour
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Field", before: contour_source1_field, after: contour_hero_s1 },
-    { label: "Ballerina", before: contour_source2_ballerina, after: contour_hero_s2 },
-    { label: "Turtle", before: contour_source3_turtle, after: contour_hero_s3 },
-    { label: "Pattern", before: contour_source4_pattern, after: contour_hero_s4 },
-    { label: "Boy", before: contour_source5_boy, after: contour_hero_s5 },
-    { label: "Berries", before: contour_source6_berries, after: contour_hero_s6 },
-  ]}
-/>
-*Contour rendering iso-luminance contour lines across a landscape, transforming video into a topographic elevation map.*
+![Contour hero image](/img/instruments/videomancer/contour/contour_hero_s1.png)
+*Contour tracing iso-luminance lines across a landscape: dark lines separating bands of brightness like a topographic elevation map drawn in light.*
 
 ---
 
 ## Overview
 
-A topographic map turns continuous terrain into a set of discrete elevation lines. Each line traces a path along the ground where every point is at the same altitude. Contour does the same thing to a video signal — but instead of altitude, it traces paths of equal *luminance*. Wherever brightness changes from one quantized level to the next, a contour line appears.
+**Contour** draws lines wherever the brightness of your video crosses discrete threshold levels, creating an image that looks like a ***topographic map*** of light. Each contour line marks the boundary between one brightness band and the next. Where the image changes suddenly: sharp edges, contrasty transitions: the contour lines crowd together. Where the image is smooth and gradual, the lines spread apart. The result is an abstraction that reveals the terrain of luminance hidden in any video source.
 
-The program begins by quantizing the 10-bit luma channel into a reduced set of levels — effectively rounding every pixel's brightness to the nearest step on a staircase. It then compares each pixel's quantized value to its horizontal neighbor (one clock earlier) and vertical neighbor (from a line buffer storing the previous scan line). Wherever the quantized values differ, a contour line is drawn. The result is a network of lines that trace the iso-luminance contours of the source image, exactly as elevation lines trace iso-altitude contours on a map.
+The program quantizes the input luma into a configurable number of discrete levels (from 16 to 512), then detects where the quantized value of a pixel differs from its horizontal or vertical neighbor. Those boundary pixels become contour lines. An optional ***index contour*** system (borrowed from cartography) draws every Nth line brighter than the others, giving the map a sense of scale. The areas between contour lines can show the original video or a flat-fill background.
 
-Every Nth contour can be promoted to an *index contour* — drawn brighter and more prominent, like the bold lines on a real topographic map that mark major elevation intervals. Between contour lines, the fill area can show the original source video or a flat-brightness surface. A color mode shifts the chroma of contour lines to create tinted cartographic effects. All of this runs through an 8-clock pipeline using a single BRAM tile for the vertical line buffer.
+### What's In a Name?
+
+***Contour*** comes from the Italian ***contorno***, meaning "outline" or "to draw around." In cartography, contour lines connect points of equal elevation: the wavy concentric lines on a topographic map. Contour applies the same principle to video: its lines connect pixels of equal brightness, turning a moving image into a living elevation map where brightness is the altitude.
 
 ---
 
 ## Quick Start
 
-1. **Start coarse, refine fine**: Begin with Interval low (16 levels) to see the broad contour structure, then increase to add detail. Dense contours on a busy source can be hard to read.
-2. **Index hierarchy is essential**: Enable the Color toggle and set Major Frq to create bold/fine line weight distinction. Without index hierarchy, dense contour fields become an undifferentiated mesh.
-3. **Source fill for overlay**: Use source fill mode (Style) when you want contour lines drawn on top of the original video, like a topographic overlay on a satellite photo.
+1. Feed any video source into Videomancer with **Contour** loaded. You'll see the image broken into horizontal bands of flat brightness, with dark lines at the boundaries.
+2. Turn **Interval** (Knob 1) clockwise. The contour lines multiply: more brightness levels are distinguished, and the lines pack together more tightly in areas of gradual transition.
+3. Increase **Line Thk** (Knob 2) to about 80%. The contour lines become brighter and more prominent against the background.
+4. Set **Style** (Switch 7) to Terrain. The areas between contours become a flat gray instead of the original video, emphasizing the map-like quality.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Contour loaded](/img/instruments/videomancer/contour/contour_control_panel.png)
+*Videomancer's front panel with Contour active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Interval
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Interval** controls how many discrete brightness levels the image is divided into. At low values, the image is quantized into just 16 levels: very coarse banding with widely spaced contour lines. As Interval increases, the number of levels rises through 32, 64, 128, 256, and up to 512, producing finer and finer contour spacing. With fine spacing, only areas with very steep brightness gradients show visible contour lines; with coarse spacing, contours appear everywhere.
+
+:::tip
+For a clean topographic look, start with Interval around 40% (about 64 brightness levels). This gives enough resolution to see the shape of the image while keeping the contour lines clearly distinct.
+:::
+
+---
+
+### Knob 2 — Line Thk
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Line Thk** sets the brightness of the contour lines themselves. At low values, the lines are dim and subtle. At high values, they are bright white. Index contours (when enabled) are drawn at the full Line Thk brightness, while regular contours are drawn at half brightness: so increasing this parameter also increases the contrast between major and minor contours.
+
+---
+
+### Knob 3 — Major Frq
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Major Frq** controls the brightness of the flat fill shown between contour lines when Style is set to Terrain. At 0%, the fill is black; at 100%, the fill is white. When Style is set to Topo (source video visible between contours), this control has no visible effect on the fill areas.
+
+---
+
+### Knob 4 — Fill Xpar
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Fill Xpar** determines how frequently index (major) contours appear. At low values, every second contour is drawn as an index line. At mid values, every fourth or eighth contour is an index. At high values, only every sixteenth contour is promoted to index. Index contours are drawn at full brightness while regular contours are half brightness, creating the visual hierarchy familiar from cartographic maps.
+
+---
+
+### Knob 5 — Smooth
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Smooth** adds a hue shift to the contour lines when Color is set to Source. This shifts the U (blue-yellow) component of the contour line color, creating colored rather than monochrome contour lines. At 50%, no offset is applied. Below 50%, the contours shift toward blue; above 50%, toward yellow.
+
+---
+
+### Knob 6 — Offset
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Offset** is reserved and currently has no visible effect.
+
+---
+
+### Switch 7 — Style
+
+| Property | Value |
+|----------|-------|
+| Off | Topo |
+| On | Terrain |
+| Default | Topo |
+
+**Style** selects what is shown between the contour lines. **Topo** preserves the original source video in the non-contour areas, overlaying contour lines on top. **Terrain** replaces the non-contour areas with a flat fill whose brightness is set by Major Frq, creating a clean map-like rendering with only lines and a uniform background.
+
+---
+
+### Switch 8 — Color
+
+| Property | Value |
+|----------|-------|
+| Off | Brown |
+| On | Source |
+| Default | Brown |
+
+**Color** enables or disables the index contour system. When set to **Brown**, all contour lines are drawn at the same brightness (no index hierarchy). When set to **Source**, index contours are enabled: every Nth contour (frequency set by Fill Xpar) is drawn brighter than the rest, creating a visual hierarchy of major and minor contour lines.
+
+:::note
+The label "Brown" vs "Source" refers to the intended map style: brown-ink topographic lines (uniform) versus source-derived colored contours (with index hierarchy). The actual line color is controlled by the Smooth parameter and the Color toggle interaction.
+:::
+
+---
+
+### Switch 9 — Fill
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Fill** enables or disables color on the contour lines themselves. When **Off**, contour lines are rendered in monochrome (neutral gray at the brightness set by Line Thk). When **On**, the contour lines receive a hue shift controlled by Smooth, creating colored lines that can make the map more visually interesting.
+
+---
+
+### Switch 10 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Animate** is reserved for future use and currently has no visible effect.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) signal and the wet (Contour-processed) signal.
 
 ---
 
 ## Background
 
-### Topographic Maps and Iso-Lines
+### Topographic cartography
 
-The topographic contour map was invented in the 18th century as a way to represent three-dimensional terrain on a flat sheet of paper. The key insight is that if you slice a mountain with a series of horizontal planes at regular altitude intervals, the intersection of each plane with the terrain surface produces a closed curve — a *contour line* or *isoline*. Plotting all these curves from above produces a 2D map where the density and spacing of lines encodes the steepness of the terrain. Closely-spaced lines mean a steep slope; widely-spaced lines mean a gentle grade.
+***Topographic maps*** represent three-dimensional terrain on a two-dimensional surface using contour lines: curves that connect all points at the same elevation. Where the terrain is steep, contour lines pack tightly together. Where the terrain is gentle, they spread apart. A skilled map reader can reconstruct the shape of hills, valleys, and ridges purely from the pattern of these lines. Contour applies an identical principle to brightness: the "elevation" is the luminance value of each pixel.
 
-Contour applies this principle to video luminance. The "altitude" is brightness. The "horizontal planes" are the quantization levels created by the Interval control. The "contour lines" appear wherever the quantized brightness changes between adjacent pixels. A flat gray area produces no contours; a sharp brightness edge produces a dense cluster of lines; a gentle gradient produces evenly-spaced parallel contours.
+### Quantization and contouring
 
-### Index Contours and Cartographic Hierarchy
+The technical process behind Contour is ***luminance quantization***: reducing the continuous range of brightness values to a small number of discrete steps. This is done by discarding the low-order bits of the 10-bit luminance value: shift right to remove detail, shift left to restore scale. The number of bits discarded determines the number of levels (and therefore the density of contour lines). Contour lines appear wherever a quantized pixel differs from its immediate horizontal neighbor (1-pixel delay register) or its vertical neighbor (previous scanline stored in a BRAM line buffer).
 
-Real topographic maps use two weights of contour line. Regular (or *intermediate*) contour lines are drawn thin and light. Every 5th or 10th line is an *index contour* — drawn thicker and bolder, often with its altitude value printed alongside. This visual hierarchy lets the map reader quickly estimate elevation differences by counting bold lines rather than thin ones.
+### Index contours and map hierarchy
 
-Contour implements this by applying a bitmask to the quantized level number. When the masked level equals zero, the contour is promoted to an index contour and drawn at full brightness. Regular contours are drawn at half brightness. The Major Frq control sets the bitmask threshold — every 2nd, 4th, 8th, or 16th contour becomes a major index line. This directly mirrors the cartographic convention of major and minor contour intervals.
-
-### From Paper Maps to Video Synthesis
-
-Cartographic contour rendering has been used as a creative tool since the earliest days of computer graphics. Iso-luminance contours turn a photographic image into something that looks like a hand-drawn map — abstract, schematic, and revealing of structure that the eye normally glosses over. In video synthesis, contour lines respond to motion: as objects move through the frame, the contour lines shift and flow around them, creating a dynamic topographic landscape that evolves in real time. Feeding the contoured output back into the input creates recursive elevation maps — contour lines tracing the contours of previous contour lines, building up intricate nested patterns.
+Cartographers use a hierarchical system where every fifth contour line (in typical 1:24,000 scale maps) is drawn slightly thicker and labeled with the elevation value. These ***index contours*** help the map reader quickly estimate elevation without counting every individual line. Contour implements a similar system: a bitmask on the quantized level number determines which lines are promoted to "index" status and drawn at full brightness rather than half brightness.
 
 
 ---
 
 ## Signal Flow
 
-Input Register → Contour Detection → Classify + Color → Composite Output
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Stage 1: Input Register + Quantize Luma ─────────────────────
-│   │
-│   ├─ Capture Y, U, V from data_in
-│   ├─ Quantize Y: shift right by quant_shift, shift left
-│   │   (discard low bits → N discrete levels)
-│   ├─ Store quantized Y → horizontal register (1-clock delay)
-│   └─ Write quantized Y → video_line_buffer (for next line)
-│
-├── Stage 2: Contour Detection ──────────────────────────────────
-│   │
-│   ├─ Horizontal contour: quant_y ≠ quant_y_prev_h
-│   ├─ Vertical contour: quant_y ≠ line_buffer_read
-│   └─ Combined: contour = horizontal OR vertical
-│
-├── Stage 3: Classify + Color ───────────────────────────────────
-│   │
-│   ├─ Index test: (level AND index_mask) == 0 → index contour
-│   ├─ Contour luma: index → full brightness, regular → half
-│   ├─ Contour chroma: mono (U=V=512) or colored (U + offset)
-│   └─ Fill selection: source video or flat-brightness grey
-│
-├── Stage 4: Composite Output ──────────────────────────────────
-│   │
-│   └─ if contour → contour Y/U/V, else → fill Y/U/V
-│
-├── Mix: Interpolator ×3 (4 clocks) ───────────────────────────
-│   │
-│   └─ Crossfade: dry (delayed original) ↔ wet (composite)
-│
-├── Sync Delay Pipeline (8 clocks) ─────────────────────────────
-│   └─ hsync_n, vsync_n, field_n, Y, U, V delay registers
-│
-└── Bypass Mux ─────────────────────────────────────────────────
-    └─ bypass=0 → mix output, bypass=1 → delayed original
-```
-
-The critical interaction is between quantization and neighbor comparison. The Interval control determines how many discrete luma levels exist — fewer levels means wider spacing between contour lines. A coarse quantization (6-bit shift, 16 levels) produces bold, widely-spaced contours like a large-scale map with 100-metre intervals. Fine quantization (1-bit shift, 512 levels) produces dense, tightly-packed contours like a detailed survey map with 1-metre intervals. The line buffer enables vertical contour detection: without it, only horizontal edges along each scan line would be visible. With it, contour lines form closed curves that trace the full perimeter of each iso-luminance region.
-
----
-
-## Parameter Reference
-
-<img src={contour_control_panel} alt="Videomancer front panel with Contour loaded"/>
-*Videomancer's front panel with Contour active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Interval
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At low values (counter-clockwise), the luma channel is quantized coarsely into as few as 16 levels, producing bold, widely-spaced contour lines like a large-scale topographic map. As the control increases, the number of levels grows — 32, 64, 128, 256, up to 512 — and the contour lines pack closer together, revealing finer tonal detail in the source. At maximum, the contour density approaches the source resolution and nearly every pixel boundary becomes a contour, creating a dense texture of lines. Internally, controls the quantization interval — the spacing between adjacent contour levels.
-
----
-
-#### Knob 2 — Line Thk
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At maximum, contour lines are drawn at full white; at minimum, they are nearly invisible. Index contours always appear at the full brightness set by this control, while regular contours are drawn at half that brightness. This creates the visual hierarchy of bold and fine lines that makes the topographic structure readable. Setting this control low while keeping Fill Xpar high creates a subtle ghost-line effect where contours are barely visible against the fill. Internally, sets the brightness of the contour lines themselves.
-
----
-
-#### Knob 3 — Major Frq
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the frequency of index (major) contour lines. The control sets a bitmask threshold that determines how many regular contour levels appear between each bold index contour. At low values, every second contour is promoted to an index line — dense bold markings. At higher values, the spacing widens to every 4th, 8th, or 16th contour. This mirrors the cartographic convention of labeling every 5th or 10th elevation line as a bold index contour for fast visual reference. The effect is most visible when the Interval is set to produce many contour levels.
-
----
-
-#### Knob 4 — Fill Xpar
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Sets the fill brightness used when the Style toggle selects flat fill mode. In flat fill mode, the area between contour lines is rendered as a uniform grey whose brightness is set by this control. At low values the fill is dark, making bright contour lines stand out against a near-black background. At high values the fill approaches white and the contour lines appear as dark interruptions in a bright field. When the Style toggle selects source fill, this control has no visible effect — the original video fills the spaces between contour lines.
-
----
-
-#### Knob 5 — Smooth
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Shifts the chrominance of contour lines when the Fill toggle enables colored contour mode. At center position (512), no color shift is applied and contour lines take their chroma from the source pixel. Below center, the U component is reduced, tinting contour lines toward yellow-red. Above center, U is increased, tinting toward blue-cyan. This allows cartographic color coding — for example, brown contour lines on a terrain map or blue bathymetric contour lines on an ocean chart. When colored mode is off, contour lines are drawn monochrome (neutral chroma) regardless of this control.
-
----
-
-#### Knob 6 — Offset
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Reserved for future use. Adjusting this control has no effect on the current processing chain. The register is mapped in the ABI but not consumed by any stage in the pipeline.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Style** | Topo | Terrain |
-| **8 — Color** | Brown | Source |
-| **9 — Fill** | Off | On |
-| **10 — Animate** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles control independent aspects of the contour rendering. Style selects whether the fill between contour lines shows the original source video or a flat-brightness grey. Color enables or disables the index contour hierarchy. Fill enables or disables chroma tinting of contour lines. Animate is reserved. Bypass routes the original signal around the entire processing chain for A/B comparison.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Contour processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
-
----
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Contour-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+The contour detection compares quantized values rather than raw pixel values, which provides inherent noise immunity: small pixel-to-pixel variations that don't cross a quantization boundary are ignored. The detection is strictly binary (is the boundary crossed or not), with no gradual falloff, which gives the contour lines their characteristic crisp, one-pixel-wide appearance. The line buffer uses a single BRAM tile to store one complete line of quantized Y values for vertical comparison.
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises introduce contour rendering from basic topographic line work through complex cartographic compositions. Each exercise uses a different source to highlight different aspects of the contouring algorithm.
+These exercises progress from a basic topographic rendering to a colorful animated terrain display.
+### Exercise 1: Classic Topographic Map
 
-### Exercise 1: Basic Topographic Map
+![Classic Topographic Map result](/img/instruments/videomancer/contour/contour_ex1_s1.png)
+*Classic Topographic Map — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Field", before: contour_source1_field, after: contour_ex1_s1 },
-    { label: "Ballerina", before: contour_source2_ballerina, after: contour_ex1_s2 },
-    { label: "Turtle", before: contour_source3_turtle, after: contour_ex1_s3 },
-    { label: "Pattern", before: contour_source4_pattern, after: contour_ex1_s4 },
-    { label: "Boy", before: contour_source5_boy, after: contour_ex1_s5 },
-    { label: "Berries", before: contour_source6_berries, after: contour_ex1_s6 },
-  ]}
-/>
-*Basic Topographic Map — simulated result across source images.*
-**Source**: A close-up of a face or portrait with smooth tonal gradients — skin tones produce well-spaced, readable contour lines.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Create a clean topographic contour rendering with bold index lines and fine intermediate contours.
+#### Learning Outcomes
 
-1. **Set the contour interval**: Turn Interval to about 40% to create ~64 quantization levels — a moderate contour density.
-2. **Enable flat fill**: Set Style to flat fill mode. Set Fill Xpar to about 10% for a dark background.
-3. **Brighten contour lines**: Turn Line Thk to about 80% for clearly visible contour lines.
-4. **Add index hierarchy**: Enable Color toggle to turn on index contours. Set Major Frq to about 50% so every 4th contour is bold.
-5. **Monochrome lines**: Keep Fill (color contours) off for classic black-and-white cartographic rendering.
-6. **Full wet mix**: Set Mix to 100%.
-7. **Compare**: Toggle Bypass to see the original portrait, then switch back to see the topographic rendering.
+A black-and-white topographic map of brightness, with clean contour lines on a uniform gray background.
 
-**Key concepts**: Quantization creates discrete luma levels, contour detection finds level boundaries in both axes, index contours add visual hierarchy
+#### Key Concepts
 
----
+- Quantization creates discrete brightness bands
+- Contour lines appear at band boundaries
+- Terrain-style fill creates a clean map-like look
 
-### Exercise 2: Color Terrain Overlay
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Field", before: contour_source1_field, after: contour_ex2_s1 },
-    { label: "Ballerina", before: contour_source2_ballerina, after: contour_ex2_s2 },
-    { label: "Turtle", before: contour_source3_turtle, after: contour_ex2_s3 },
-    { label: "Pattern", before: contour_source4_pattern, after: contour_ex2_s4 },
-    { label: "Boy", before: contour_source5_boy, after: contour_ex2_s5 },
-    { label: "Berries", before: contour_source6_berries, after: contour_ex2_s6 },
-  ]}
-/>
-*Color Terrain Overlay — simulated result across source images.*
-**Source**: A landscape or nature scene with broad tonal variation — hills, sky gradients, foliage.
+A landscape, face, or any image with smooth tonal gradients. High-contrast geometric scenes work less well (too many edges = too many contour lines everywhere).
 
-**What You'll Create**: Create a colored contour overlay on top of the original source video, like a terrain map printed on a satellite photograph.
+#### Steps
 
-1. **Source fill**: Set Style to source fill mode so the original video shows between contour lines.
-2. **Moderate density**: Set Interval to about 55% for a comfortable contour spacing.
-3. **Enable colored contours**: Turn on Fill (color contours). Turn Smooth to about 30% to tint contour lines warm brown — classic terrain map color.
-4. **Index hierarchy**: Enable Color toggle. Set Major Frq to about 70% so every 8th contour is bold.
-5. **Semi-transparent mix**: Set Mix to about 65% so contour lines are overlaid semi-transparently on the source.
-6. **Adjust line brightness**: Set Line Thk to about 70%. Index lines should be clearly bold; regular lines subtler.
-7. **Sweep interval**: Slowly sweep Interval from low to high. Watch the contour density change from bold elevation bands to fine survey lines.
+1. Set **Style** (Switch 7) to Terrain for a flat-fill background.
+2. Set **Interval** (Knob 1) to about 40% for moderate contour density.
+3. Set **Major Frq** (Knob 3) to about 30% for a dark gray background.
+4. Set **Line Thk** (Knob 2) to about 80% for bright contour lines.
+5. Set **Color** (Switch 8) to Source to enable index contours.
+6. Set **Fill Xpar** (Knob 4) to about 50% so every 8th contour is thicker.
 
-**Key concepts**: Source fill preserves photographic content, color shift tints contour lines for cartographic effect, mix creates transparent overlay
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Interval | ~40% |
+| Line Thk | ~80% |
+| Major Frq | ~30% |
+| Fill Xpar | ~50% |
+| Smooth | ~50% |
+| Offset | ~50% |
+| Style | Terrain |
+| Color | Source |
+| Fill | Off |
+| Animate | Off |
+| Bypass | Off |
+| Mix | ~100% |
 
 ---
 
-### Exercise 3: Dense Contour Texture
+### Exercise 2: Source-Through Contour Overlay
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Field", before: contour_source1_field, after: contour_ex3_s1 },
-    { label: "Ballerina", before: contour_source2_ballerina, after: contour_ex3_s2 },
-    { label: "Turtle", before: contour_source3_turtle, after: contour_ex3_s3 },
-    { label: "Pattern", before: contour_source4_pattern, after: contour_ex3_s4 },
-    { label: "Boy", before: contour_source5_boy, after: contour_ex3_s5 },
-    { label: "Berries", before: contour_source6_berries, after: contour_ex3_s6 },
-  ]}
-/>
-*Dense Contour Texture — simulated result across source images.*
-**Source**: Abstract video patterns, feedback loops, or color bars — high-contrast material with many brightness transitions.
+![Source-Through Contour Overlay result](/img/instruments/videomancer/contour/contour_ex2_s1.png)
+*Source-Through Contour Overlay — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Push the contouring into extreme density to create texture effects rather than readable maps.
+***A description of the exercise illustration.***
 
-1. **Maximum density**: Turn Interval fully clockwise for 512 quantization levels. The contour lines become so dense they form a texture.
-2. **Flat dark fill**: Set Style to flat fill. Set Fill Xpar to about 5% for near-black background.
-3. **Full brightness**: Set Line Thk to 100%.
-4. **Disable index hierarchy**: Turn off Color toggle so all contour lines are equal weight.
-5. **Enable color**: Turn on Fill (color contours). Sweep Smooth across its range to cycle the contour hue through warm and cool tones.
-6. **Half mix**: Set Mix to about 50%. The dense contour texture merges with the source, creating a moire-like interference pattern.
-7. **Sweep interval**: Slowly turn Interval counter-clockwise to reduce density. Watch the texture open up into distinct contour lines.
+#### Learning Outcomes
 
-**Key concepts**: Extreme contour density creates texture rather than line work, color shift produces spectral effects on dense contour fields, mix creates interference patterns
+The original video with contour lines overlaid, emphasizing edges and tonal transitions.
+
+#### Key Concepts
+
+- Topo style preserves the original video between contour lines
+- The contour lines act as an edge overlay on the source image
+- Fine interval spacing emphasizes areas of rapid brightness change
+
+#### Video Source
+
+Any dynamic video source: movement creates shifting contour patterns as the brightness landscape changes frame to frame.
+
+#### Steps
+
+1. Set **Style** to Topo. The original video now shows through between the contour lines.
+2. Increase **Interval** to about 70% for dense contour lines.
+3. Set **Line Thk** to about 60% (visible but not overpowering.)
+4. Set **Fill** (Switch 9) to On and adjust **Smooth** (Knob 5) to give the lines a colored tint.
+5. Reduce **Mix** (Fader 12) to about 60% to blend the contour overlay with the original.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Interval | ~70% |
+| Line Thk | ~60% |
+| Major Frq | ~50% |
+| Fill Xpar | ~50% |
+| Smooth | ~60% |
+| Offset | ~50% |
+| Style | Topo |
+| Color | Brown |
+| Fill | On |
+| Animate | Off |
+| Bypass | Off |
+| Mix | ~60% |
 
 ---
 
+### Exercise 3: Dense High-Contrast Contour Field
 
-## Tips
+![Dense High-Contrast Contour Field result](/img/instruments/videomancer/contour/contour_ex3_s1.png)
+*Dense High-Contrast Contour Field — simulated result across source images.*
+#### Exercise Illustration
 
-- **Flat fill for isolation**: Use flat fill mode with a dark Fill Xpar to isolate the contour structure against a clean background — ideal for pure cartographic rendering.
-- **Color coding**: Enable Fill toggle and use Smooth to tint contour lines brown (terrain), blue-green (bathymetric), or any intermediate hue for thematic cartographic effects.
-- **Feedback creates nested contours**: Routing the contoured output back into the input creates contour lines *of* contour lines — recursive topographic structures that build up into intricate patterns.
-- **Mix for transparency**: Partial Mix values create a translucent contour overlay where the line network is visible but the source image shows through, combining cartographic and photographic information.
-- **Motion reveals flow**: Moving subjects cause contour lines to shift and flow in real time. The contour network breathes and ripples as brightness changes propagate through the frame.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A dense field of contour lines on a near-black background (the image reduced to a lattice of brightness boundaries.)
+
+#### Key Concepts
+
+- Maximum contour density creates a dense line field
+- Terrain fill with a dark background creates maximum contrast
+- Index contours provide visual rhythm in a dense field
+
+#### Video Source
+
+A slowly moving image with a mix of gradients and detail (clouds, water, or abstract video textures.)
+
+#### Steps
+
+1. Set **Interval** to 100% for maximum contour density (512 levels).
+2. Set **Line Thk** to 100% for maximum line brightness.
+3. Set **Style** to Terrain and **Major Frq** to about 5% (near-black fill).
+4. Enable index contours: **Color** to Source, **Fill Xpar** to about 25% (every 4th line is major).
+5. The image becomes a dense lattice of fine lines with periodic bright index contours.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Interval | ~100% |
+| Line Thk | ~100% |
+| Major Frq | ~5% |
+| Fill Xpar | ~25% |
+| Smooth | ~50% |
+| Offset | ~50% |
+| Style | Terrain |
+| Color | Source |
+| Fill | Off |
+| Animate | Off |
+| Bypass | Off |
+| Mix | ~100% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Contour Line** | A curve connecting points of equal value; in this program, points of equal quantized luminance. |
-| **Index Contour** | A bold contour line marking a major interval, drawn at full brightness versus the half brightness of regular contour lines. |
-| **Iso-Luminance** | A surface or line of constant brightness, analogous to an iso-altitude line on a topographic map. |
-| **Line Buffer** | A BRAM-based delay that stores one full scan line of data, enabling vertical neighbor comparison between consecutive lines. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels by discarding low-order bits. |
-| **Topographic Map** | A map that uses contour lines to represent the shape and elevation of terrain; the visual metaphor for this program. |
+- **Contour Line**: A line connecting all points at the same value: in topography, the same elevation; in Contour, the same brightness level.
+
+- **Index Contour**: A heavier contour line drawn at regular intervals (every 4th, 8th, or 16th) to provide visual hierarchy and help the viewer estimate values.
+
+- **Line Buffer**: A single-scanline BRAM memory that stores the previous line's quantized brightness, enabling vertical contour detection.
+
+- **Quantization**: The process of reducing a continuous range of values to a small number of discrete levels, discarding fine detail to reveal broad structure.
+
+- **Topographic Map**: A map that represents three-dimensional terrain using contour lines (the direct inspiration for Contour's visual approach.)
 
 ---

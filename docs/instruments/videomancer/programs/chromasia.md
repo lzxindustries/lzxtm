@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 50
 slug: /instruments/videomancer/chromasia
@@ -7,359 +7,442 @@ image: /img/instruments/videomancer/chromasia/chromasia_hero_s1.png
 description: "Every video effects box from the 1980s and 1990s shipped with a bank of colour transformations — negative, solarise, posterise, sepia — accessible by punching a number on a keypad or scrolling through a menu."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import chromasia_control_panel from '/img/instruments/videomancer/chromasia/chromasia_control_panel.png';
-import chromasia_source1_dog from '/img/instruments/videomancer/chromasia/chromasia_source1_dog.png';
-import chromasia_source2_field from '/img/instruments/videomancer/chromasia/chromasia_source2_field.png';
-import chromasia_source3_elephant from '/img/instruments/videomancer/chromasia/chromasia_source3_elephant.png';
-import chromasia_source4_pattern from '/img/instruments/videomancer/chromasia/chromasia_source4_pattern.png';
-import chromasia_source5_man from '/img/instruments/videomancer/chromasia/chromasia_source5_man.png';
-import chromasia_source6_berries from '/img/instruments/videomancer/chromasia/chromasia_source6_berries.png';
-import chromasia_hero_s1 from '/img/instruments/videomancer/chromasia/chromasia_hero_s1.png';
-import chromasia_hero_s2 from '/img/instruments/videomancer/chromasia/chromasia_hero_s2.png';
-import chromasia_hero_s3 from '/img/instruments/videomancer/chromasia/chromasia_hero_s3.png';
-import chromasia_hero_s4 from '/img/instruments/videomancer/chromasia/chromasia_hero_s4.png';
-import chromasia_hero_s5 from '/img/instruments/videomancer/chromasia/chromasia_hero_s5.png';
-import chromasia_hero_s6 from '/img/instruments/videomancer/chromasia/chromasia_hero_s6.png';
-import chromasia_ex1_s1 from '/img/instruments/videomancer/chromasia/chromasia_ex1_s1.png';
-import chromasia_ex1_s2 from '/img/instruments/videomancer/chromasia/chromasia_ex1_s2.png';
-import chromasia_ex1_s3 from '/img/instruments/videomancer/chromasia/chromasia_ex1_s3.png';
-import chromasia_ex1_s4 from '/img/instruments/videomancer/chromasia/chromasia_ex1_s4.png';
-import chromasia_ex1_s5 from '/img/instruments/videomancer/chromasia/chromasia_ex1_s5.png';
-import chromasia_ex1_s6 from '/img/instruments/videomancer/chromasia/chromasia_ex1_s6.png';
-import chromasia_ex2_s1 from '/img/instruments/videomancer/chromasia/chromasia_ex2_s1.png';
-import chromasia_ex2_s2 from '/img/instruments/videomancer/chromasia/chromasia_ex2_s2.png';
-import chromasia_ex2_s3 from '/img/instruments/videomancer/chromasia/chromasia_ex2_s3.png';
-import chromasia_ex2_s4 from '/img/instruments/videomancer/chromasia/chromasia_ex2_s4.png';
-import chromasia_ex2_s5 from '/img/instruments/videomancer/chromasia/chromasia_ex2_s5.png';
-import chromasia_ex2_s6 from '/img/instruments/videomancer/chromasia/chromasia_ex2_s6.png';
-import chromasia_ex3_s1 from '/img/instruments/videomancer/chromasia/chromasia_ex3_s1.png';
-import chromasia_ex3_s2 from '/img/instruments/videomancer/chromasia/chromasia_ex3_s2.png';
-import chromasia_ex3_s3 from '/img/instruments/videomancer/chromasia/chromasia_ex3_s3.png';
-import chromasia_ex3_s4 from '/img/instruments/videomancer/chromasia/chromasia_ex3_s4.png';
-import chromasia_ex3_s5 from '/img/instruments/videomancer/chromasia/chromasia_ex3_s5.png';
-import chromasia_ex3_s6 from '/img/instruments/videomancer/chromasia/chromasia_ex3_s6.png';
-
-# Chromasia
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: chromasia_source1_dog, after: chromasia_hero_s1 },
-    { label: "Field", before: chromasia_source2_field, after: chromasia_hero_s2 },
-    { label: "Elephant", before: chromasia_source3_elephant, after: chromasia_hero_s3 },
-    { label: "Pattern", before: chromasia_source4_pattern, after: chromasia_hero_s4 },
-    { label: "Man", before: chromasia_source5_man, after: chromasia_hero_s5 },
-    { label: "Berries", before: chromasia_source6_berries, after: chromasia_hero_s6 },
-  ]}
-/>
-*Chromasia in Colorize mode painting a single cyan hue across a still life, with the wet/dry mix fader blending the tinted image against the original.*
+![Chromasia hero image](/img/instruments/videomancer/chromasia/chromasia_hero_s1.png)
+*Chromasia applying its eight-mode color processing chain to transform video through negative, solarize, posterize, colorize, sepia, threshold, color swap, and sketch effects.*
 
 ---
 
 ## Overview
 
-Every video effects box from the 1980s and 1990s shipped with a bank of colour transformations — negative, solarise, posterise, sepia — accessible by punching a number on a keypad or scrolling through a menu. The NewTek NewTek's ChromaFX bank was the archetype: a numbered list of colour mutations you could hot-switch during a live broadcast. Chromasia distils that tradition into an eight-mode colour effects processor on a single FPGA, addressed not by menu but by the binary state of three toggle switches.
+Chromasia is a multi-mode color processor inspired by the legendary NewTek Video Toaster's ChromaFX bank. It packs eight switchable color effects into a single program, selected by a three-bit toggle combination. Each mode transforms video in a fundamentally different way: from simple color inversion to edge-detected sketch lines: and every mode responds to the same set of knobs, letting you reshape the effect with familiar, consistent controls.
 
-The three mode-select toggles form a 3-bit address — 000 through 111 — mapping to Negative, Solarize, Posterize, Colorize, Sepia, Threshold, Color Swap, and Sketch. Each mode repurposes the six potentiometers in its own way: Intensity and Secondary serve as mode-dependent primary and secondary parameters, while Hue, Saturation, Edge Gain, and Brightness provide dedicated tonal shaping across every mode. The result is a Swiss-army-knife processor where a single toggle flip replaces one colour transformation with another, all in a unified eight-clock pipeline that uses zero BRAM and roughly 600 logic cells.
+At its gentlest, Chromasia adds a warm sepia wash or a subtle single-hue tint. At its most aggressive, it crushes video into hard black-and-white thresholds, swaps color channels into alien palettes, or reduces the image to sketch-like edge outlines. The **Mix** fader lets you crossfade between the dry input and the processed result, so you can dial in exactly as much transformation as you want.
 
-At conservative settings — a gentle solarise fold or a light sepia wash — Chromasia is a subtle colourist's tool. At extremes — hard binary threshold, aggressive posterisation, or full channel-swap routing — it becomes a graphic design weapon, transforming source video into stark, poster-art abstractions. The name fuses *chroma* (colour) with *fantasia* (imagination): a playground of chromatic reinvention.
+:::tip
+Think of Chromasia as a ***spell book*** with eight pages. Each toggle combination opens a different page, and the six knobs shape the spell on that page.
+:::
+
+### What's In a Name?
+
+The name ***Chromasia*** blends ***chroma***, the Greek word for color, with ***-asia***, evoking a dreamlike, fantastical quality: a land where color behaves differently. It's also a nod to ***chromatic aberration*** and ***synesthesia***, the blending of senses. In Chromasia's world, brightness can become hue, edges can become drawings, and channels can trade places.
 
 ---
 
 ## Quick Start
 
-1. **Binary mode addressing**: Memorise the three-toggle patterns — 000 Negative, 001 Solarize, 010 Posterize, 011 Colorize, 100 Sepia, 101 Threshold, 110 Color Swap, 111 Sketch. Once internalised, switching modes becomes a physical gesture rather than a menu hunt.
-2. **All Channels is the hidden dimension**: Negative, Solarize, and Posterize behave like entirely different effects depending on whether All Channels is set to Y Only or YUV. Explore both states for every mode.
-3. **Mix fader as a colourist's tool**: Rather than using modes at full strength, blend them at 20–40% via the Mix fader. A subtle Sepia wash or a faint Solarize shimmer can add warmth or texture without overwhelming the source.
+1. Set all three **Mode** toggles (Switches 7, 8, 9) to Off. This selects **Negative** mode. Your video inverts (darks become lights, lights become darks.)
+2. Flip **Mode A** (Switch 7) to On, leaving the others Off. This selects **Solarize** mode. Turn **Intensity** (Knob 1) slowly. Watch as the solarization threshold sweeps across the tonal range, creating a folded, metallic look.
+3. Now set **Mode A** to On and **Mode B** to On (Switches 7 and 8 both On, Switch 9 Off). This selects **Colorize** mode. Turn the **Hue** knob (Knob 3) to paint the entire image in a single rotating color.
+4. Adjust the **Mix** fader (Fader 12) to blend the colorized result with the original. At 50%, you get a tinted overlay; at 100%, full effect.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Chromasia loaded](/img/instruments/videomancer/chromasia/chromasia_control_panel.png)
+*Videomancer's front panel with Chromasia active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Intensity
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Intensity** is the primary parameter for most modes, though its exact behavior depends on which mode is active. In **Solarize** mode, Intensity sets the fold threshold: values below this point pass through unchanged, while values above it are reflected back downward, creating a V-shaped transfer curve. In **Posterize** mode, Intensity controls how many quantization levels remain: fully counterclockwise yields extreme 1-bit banding, while fully clockwise preserves nearly all detail. In **Sepia** mode, Intensity controls the warmth of the brown tint: higher values push the image further from neutral. In **Threshold** mode, Intensity sets the cutoff level for the binary black-and-white conversion.
+
+:::note
+In **Negative**, **Colorize**, **Color Swap**, and **Sketch** modes, Intensity has no visible effect. Those modes use other dedicated controls.
+:::
+
+---
+
+### Knob 2 — Secondary
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Secondary** is a mode-dependent auxiliary parameter. Its primary role is in **Color Swap** mode, where it selects one of eight channel-routing sub-modes. The top three bits of the Secondary value determine which routing applies, so turning the knob steps through discrete swap configurations rather than producing a smooth sweep. In other modes, Secondary has no visible effect.
+
+:::tip
+In **Color Swap** mode, you can think of the **Secondary** knob as a ***rotary switch*** with eight positions. Each position defines a different wiring diagram for how Y, U, and V channels are shuffled.
+:::
+
+---
+
+### Knob 3 — Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 360° |
+| Default | 0° |
+
+**Hue** controls the tint angle in **Colorize** mode. Turning the knob sweeps through the full 360° color wheel. At 0°, the tint is dominated by blue-cyan tones. Rotating clockwise moves through greens, yellows, reds, magentas, and back around. The hue value addresses a 64-entry sine/cosine lookup table that generates U and V chroma offsets, producing a smooth circular sweep through color space. In modes other than Colorize, the Hue knob has no effect.
+
+---
+
+### Knob 4 — Saturation
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Saturation** controls the chroma intensity of the applied tint in **Colorize** mode. At 0%, fully counterclockwise, the chroma offsets are zero regardless of the Hue setting: the image remains desaturated. As Saturation increases, the single-hue tint grows stronger, pushing U and V channels further from neutral. At 100%, the tint is at full strength. In modes other than Colorize, this control has no visible effect.
+
+---
+
+### Knob 5 — Edge Gain
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Edge Gain** controls the sensitivity of horizontal edge detection in **Sketch** mode. The sketch algorithm computes the absolute difference between each pixel and its left neighbor, then multiplies by the Edge Gain value. Low gain produces faint, subtle outlines of only the strongest edges. High gain amplifies even small brightness transitions into bold dark lines. The result is rendered as dark strokes on a white background. In modes other than Sketch, Edge Gain has no effect.
+
+---
+
+### Knob 6 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | -100.0% – 100.0% |
+| Default | 0.1% |
+
+**Brightness** is mapped to the register but is not directly applied in the current VHDL implementation: it is reserved for future use as an output brightness offset. In the current version, this knob has no visible effect.
+
+:::note
+The **Brightness** parameter is defined in the program metadata and mapped to `registers_in(5)`, but the processing pipeline does not currently read it. It may be activated in a future firmware update.
+:::
+
+---
+
+### Switch 7 — Mode A
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Mode A** is bit 0 of the three-bit mode selector. Together with **Mode B** (Switch 8) and **Mode C** (Switch 9), it selects which of the eight processing modes is active. See the Toggle Group Notes below for the complete mode table.
+
+---
+
+### Switch 8 — Mode B
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Mode B** is bit 1 of the three-bit mode selector. Combined with **Mode A** and **Mode C**, it selects the active processing mode. See the Toggle Group Notes below for the full table.
+
+---
+
+### Switch 9 — Mode C
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Mode C** is bit 2 of the three-bit mode selector. It is the highest-order bit of the mode selection, so flipping this single switch jumps between the lower four modes (Negative, Solarize, Posterize, Colorize) and the upper four modes (Sepia, Threshold, Color Swap, Sketch). See the Toggle Group Notes below for the full table.
+
+---
+
+### Switch 10 — All Channels
+
+| Property | Value |
+|----------|-------|
+| Off | Y Only |
+| On | YUV |
+| Default | Y Only |
+
+**All Channels** determines whether the active mode processes only the luminance channel or all three YUV channels. When set to **Y Only**, modes like Negative, Solarize, and Posterize affect only the brightness (Y) while leaving chrominance (U, V) untouched. When set to **YUV**, the same operation is applied to all three channels simultaneously, producing dramatically different color results. This toggle is most impactful in Negative, Solarize, and Posterize modes.
+
+:::tip
+Try **Negative** mode with **All Channels** set to **Y Only**: you get a luminance inversion that looks like a film negative, but the colors stay recognizable. Switch to **YUV** and the colors also invert, producing true complementary color reversal.
+:::
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Chromasia processing. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the processed result.
+
+---
+
+:::note Toggle Group Notes
+
+Toggles 7, 8, and 9 (**Mode A**, **Mode B**, **Mode C**) form a 3-bit binary mode selector. Together they choose one of eight processing modes:
+
+| Mode C (Sw 9) | Mode B (Sw 8) | Mode A (Sw 7) | Binary | Mode |
+|:-:|:-:|:-:|:-:|:--|
+| Off | Off | Off | 000 | **Negative** — inverts pixel values (complement) |
+| Off | Off | On | 001 | **Solarize** — V-curve fold around Intensity threshold |
+| Off | On | Off | 010 | **Posterize** — bit-mask quantization controlled by Intensity |
+| Off | On | On | 011 | **Colorize** — desaturate and apply single Hue tint |
+| On | Off | Off | 100 | **Sepia** — desaturate and apply warm brown tint |
+| On | Off | On | 101 | **Threshold** — binary black/white at Intensity cutoff |
+| On | On | Off | 110 | **Color Swap** — channel routing selected by Secondary |
+| On | On | On | 111 | **Sketch** — horizontal edge detection with Edge Gain |
+
+Only one mode is active at a time. The mode selection is purely combinational: switching toggles produces an instant transition with no glitch or fade.
+
+#### Color Swap Sub-Modes
+
+Within **Color Swap** mode (binary 110), the **Secondary** knob selects one of eight channel-routing patterns via its top three bits:
+
+| Secondary Range | Sub-Mode | Routing |
+|:-:|:-:|:--|
+| 0–12% | Identity | Y → Y, U → U, V → V (no change) |
+| 13–24% | U↔V | U and V swap places |
+| 25–37% | Y→U | Luma replaces U; V unchanged |
+| 38–49% | Y→V | Luma replaces V; U unchanged |
+| 50–62% | Rotate CW | V → Y, Y → U, U → V |
+| 63–74% | Rotate CCW | U → Y, V → U, Y → V |
+| 75–87% | Average | (U+V)/2 → Y, Y → U, Y → V |
+| 88–100% | Monochrome | Y → all three channels |
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input and the wet (processed) output. At 0%, the output is entirely the original signal. At 100%, the output is entirely the processed result. Intermediate values blend the two. The crossfade is implemented using three parallel interpolators (one per YUV channel) with 4-clock latency each.
+
+:::tip
+**Mix** is powerful for subtle effects. A **Threshold** at full effect is stark black-and-white, but mixed at 30% it becomes a gentle contrast boost. A **Solarize** at full strength is dramatic, but at 20% it adds a soft metallic sheen.
+:::
 
 ---
 
 ## Background
 
-### Analog Video Effects Heritage
+### The NewTek Video Toaster ChromaFX Legacy
 
-The earliest analog video effects processors were simple circuits: an inverting amplifier for negative, a level clamp for threshold, a gain stage for contrast. By the mid-1980s, products like the Fairlight and Videonics TitleMaker bundled dozens of such effects into a single rackmount box. The NewTek NewTek (1990) elevated the concept to a software-switchable bank of one hundred numbered colour effects. Chromasia inherits that philosophy — a curated palette of classic transformations, each a distinct flavour of colour alteration, switchable in real time.
+Chromasia is a spiritual successor to the ***ChromaFX*** effects bank from the NewTek Video Toaster, the groundbreaking Amiga-based video production system of the early 1990s. ChromaFX offered a panel of color transformations: negative, solarize, posterize, colorize, sepia: that could be applied to live video in real time. These were among the first affordable real-time digital color effects available to independent video producers, and they became iconic visual signatures of the era. Chromasia reimagines that toolkit in modern FPGA hardware, adding channel-swap and sketch modes while providing fine parametric control over each effect.
 
 ### Solarization and the Sabattier Effect
 
-Solarization — the partial reversal of tones in a photographic image — has roots in darkroom chemistry. The Sabattier effect, discovered in 1862, occurs when a partially developed print is briefly re-exposed to light, causing previously dark tones to lighten while light tones remain. The result is a V-shaped or folded transfer curve where pixel values above a threshold are reflected back toward zero. Chromasia's Solarize mode implements this fold digitally: pixels below the Intensity threshold pass unchanged, while pixels above are reflected around the threshold, creating the characteristic metallic, relief-like appearance. Man Ray and Lee Miller popularised the solarised look in fine art photography during the 1930s.
+The solarization mode implements a ***V-curve transfer function***, a digital simulation of the ***Sabattier effect*** from darkroom photography. In the analog darkroom, briefly re-exposing a partially developed print causes tones near the exposure threshold to reverse, creating haunting, metallic-looking images with mixed positive and negative regions. Chromasia's digital version uses the **Intensity** knob as the threshold: pixel values below the threshold pass through unchanged, while values above it are reflected downward. The result is a symmetric fold in the tonal curve that produces the same eerie partial-reversal look.
 
-### Posterization and Quantization
+### Colorization and Hue Mapping
 
-When a continuous-tone image is reduced to a small number of discrete levels, smooth gradients collapse into flat bands separated by hard edges. This is posterization — named after the limited-palette screen-printing technique used to produce large-format posters. In the digital domain, posterization is a form of quantization: the 10-bit pixel values (1024 possible levels) are truncated to fewer bits by right-shifting and then left-shifting, discarding the lower bits. Chromasia's Posterize mode uses this bit-mask approach, with the Intensity knob selecting how many bits to discard. At full intensity a single bit remains — the image collapses to pure black and white with no intermediate tones.
+The colorize mode strips all existing color from the image and replaces it with a single hue. Internally, this works by setting the U and V chroma channels to offsets computed from a 64-entry sine/cosine ***lookup table*** addressed by the **Hue** parameter. The sine and cosine values trace a circle in the UV color plane, and the **Saturation** parameter scales the radius of that circle. The result is a monochromatic wash: the image retains its brightness contours but all color information comes from the chosen hue angle.
 
-### Edge Detection for Sketch Mode
+### Edge Detection and Sketch
 
-Sketch mode turns video into a line drawing by detecting horizontal edges. The technique is simple: compare each pixel with its immediate horizontal neighbour (one pixel delay). The absolute difference between adjacent pixels is zero in uniform regions and large at transitions. Multiplying this difference by a gain factor and subtracting from white produces dark lines on a bright background — the visual language of a pencil sketch. This single-pixel horizontal differencing is the simplest possible edge detector, requiring no BRAM or multi-line buffers, yet produces surprisingly convincing line art from high-contrast source material.
-
-### Sine LUT for Hue Rotation in Colorize Mode
-
-Colorize mode replaces the original chroma information with a single hue defined by the Hue knob. The hue is encoded as an angle on the colour wheel, and the FPGA converts that angle to U and V offsets using a 64-entry quarter-wave sine/cosine look-up table. The Hue register's upper six bits index into the LUT, producing signed cosine and sine values that are multiplied by the Saturation parameter to yield the final U and V displacements from the neutral chroma midpoint (512). This approach — angle-to-chroma via trigonometric LUT — is the same technique used in broadcast colour-bar generators and analog vectorscope calibration circuits, here repurposed to paint an entire frame in a single chosen hue.
+The sketch mode performs ***horizontal edge detection*** by computing the absolute brightness difference between each pixel and its immediate left neighbor. This one-pixel delay creates a simple ***finite difference*** gradient detector. Strong brightness transitions produce large differences, which the **Edge Gain** parameter amplifies. The output is rendered as dark lines on a white background: white minus the scaled edge magnitude: so that edges appear as dark pencil strokes against a clean field. Because only horizontal differences are computed (no vertical component), the sketch emphasizes vertical edges and contour lines more than horizontal ones.
 
 
 ---
 
 ## Signal Flow
 
-```
-Input Video (YUV 4:4:4, 30-bit)
-│
-├─── Stage 1: Input Register ──────────────────────────────────
-│    ├─ Latch Y, U, V
-│    └─ Store previous Y pixel (for sketch edge detection)
-│
-├─── Stage 2: Eight Modes in Parallel ─────────────────────────
-│    ├─ Mode 0 (000): Negative        — 1023 − channel
-│    ├─ Mode 1 (001): Solarize        — V-fold at Intensity threshold
-│    ├─ Mode 2 (010): Posterize       — bit-mask quantization
-│    ├─ Mode 3 (011): Colorize        — LUT hue + saturation → U,V
-│    ├─ Mode 4 (100): Sepia           — warm brown tint via Intensity
-│    ├─ Mode 5 (101): Threshold       — binary black/white at Intensity
-│    ├─ Mode 6 (110): Color Swap      — channel routing (8 sub-modes)
-│    └─ Mode 7 (111): Sketch          — |Y − Y_prev| × Edge Gain
-│
-├─── Stage 3: Output Mode Mux ─────────────────────────────────
-│    └─ 3-bit toggle select → one mode's Y,U,V to pipeline
-│
-├─── Stage 4: Composite Register ──────────────────────────────
-│    └─ Latch selected mode output
-│
-├─── Stages 5–8: Interpolator (wet/dry mix) ───────────────────
-│    └─ 4-clock crossfade between delayed original and processed
-│
-├─── Sync Delay ────────────────────────────────────────────────
-│    └─ 8-clock delay matching pipeline depth (hsync, vsync, field)
-│
-└─── Output ────────────────────────────────────────────────────
-     └─ Bypass mux: processed or delayed original
-```
+### Signal Flow Notes
 
-All eight modes are computed in parallel on every clock cycle. The 3-bit toggle state selects which mode's output propagates through the mux into the composite register. This means switching modes is instantaneous — there is no transition delay, no reconfiguration, and no dropped frames. The single-pixel delay register for sketch edge detection is the only state element beyond simple pipeline registers; all other modes are purely combinational functions of the input pixel and the parameter registers.
+The critical architectural insight is that all eight modes are computed ***in parallel*** every clock cycle, and a single multiplexer selects which mode's output reaches the composite register. This means switching modes via the toggles produces an instantaneous, glitch-free transition: there's no reconfiguration delay, no pipeline flush. Every mode is always "running" in the background.
 
-The All Channels toggle (Switch 10) is a cross-cutting concern that affects how several modes handle chroma. When set to Y Only, modes like Negative, Solarize, and Posterize process only the luminance channel, passing U and V through unchanged. When set to YUV, the same transformation is applied to all three channels, producing dramatically different colour results — a negative that inverts hue and saturation, a solarise that folds chroma as well as luma. Colorize, Sepia, Threshold, and Sketch always replace or neutralise chroma regardless of this toggle.
+The **All Channels** toggle (Switch 10) controls whether Negative, Solarize, and Posterize apply their transformation to all three YUV channels or only to Y. For Colorize, Sepia, Threshold, and Sketch, the chroma handling is hardcoded: Colorize and Sepia replace U/V with computed values, Threshold and Sketch force U/V to neutral midpoint.
 
----
-
-## Parameter Reference
-
-<img src={chromasia_control_panel} alt="Videomancer front panel with Chromasia loaded"/>
-*Videomancer's front panel with Chromasia active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Intensity
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-The Intensity knob is the primary parameter for most modes. In Solarize, it sets the fold threshold — the luminance value at which the V-curve reflects. In Posterize, it selects the bit-depth reduction level (nine quantization steps from 2 colours to 512 colours). In Sepia, it controls the strength of the warm brown tint. In Threshold, it sets the black/white cutoff level. The dual nature of this control means that a single knob sweep produces a completely different animation depending on the active mode — a gentle fold in Solarize, a staircase collapse in Posterize, a tint deepening in Sepia.
-
----
-
-#### Knob 2 — Secondary
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-The Secondary knob provides a second dimension of control where the mode requires it. In Color Swap mode, its upper three bits select among eight channel-routing permutations — U↔V swap, Y replacing U or V, cross-channel averages, and full monochrome routing. In other modes the Secondary knob is unused and can be left at any position without effect. This per-mode multiplexing keeps the panel uncluttered: rather than dedicating separate controls to each of eight modes, Chromasia reuses the same physical knobs with different mappings.
-
----
-
-#### Knob 3 — Hue
-| Property | Value |
-|----------|-------|
-| Range | 0° – 360° |
-| Default | 0° |
-| Suffix | ° |
-
-The Hue knob drives the sine/cosine LUT in Colorize mode. Sweeping it through its full range rotates the tint colour through 360 degrees of the YUV colour wheel — from red through yellow, green, cyan, blue, magenta, and back. The upper six bits of the 10-bit register index the 64-entry quarter-wave tables, so the resolution is approximately 5.6 degrees per step, yielding 64 distinct hue positions. Outside of Colorize mode, the Hue knob has no effect on the output.
-
----
-
-#### Knob 4 — Saturation
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-The Saturation knob controls the amplitude of the chroma offset applied in Colorize mode. At minimum, the colourised frame is desaturated — luminance is preserved but all colour is removed, producing a monochrome output tinted by whatever tiny residual the LUT yields at low gain. At maximum, the tint is vivid and fully saturated. The multiplication of the LUT output by the Saturation register is a 10×10-bit product, truncated to 10 bits, ensuring the chroma offset scales cleanly from zero to full amplitude.
-
----
-
-#### Knob 5 — Edge Gain
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Edge Gain controls the sensitivity of the Sketch mode edge detector. After computing the absolute horizontal pixel difference, Chromasia multiplies the result by this gain value. Low gain produces faint, delicate lines — only the strongest edges in the source are visible. High gain amplifies even subtle gradients into bold, dark strokes. The product is clamped to 10 bits, so at very high gain, moderate edges saturate to full black, producing a coarser, more graphic line style.
-
----
-
-#### Knob 6 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | -100.0% – 100.0% |
-| Default | 0.1% |
-| Suffix | % |
-
-The Brightness knob is mapped to the `registers_in(5)` register and is available as a global parameter. In the current pipeline architecture, Brightness is routed to the register bus and available for future contrast/brightness post-processing expansion. Its presence on the panel maintains the classic video-processor control layout — Intensity, Secondary, Hue, Saturation, Edge Gain, Brightness — even when not all knobs are active in every mode.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Mode A** | Off | On |
-| **8 — Mode B** | Off | On |
-| **9 — Mode C** | Off | On |
-| **10 — All Channels** | Y Only | YUV |
-| **11 — Bypass** | Off | On |
-
-Toggles 7, 8, and 9 (Mode A, Mode B, Mode C) form a 3-bit binary selector. Mode A is bit 0 (LSB), Mode B is bit 1, Mode C is bit 2 (MSB). The eight combinations map directly to the eight processing modes: 000 = Negative, 001 = Solarize, 010 = Posterize, 011 = Colorize, 100 = Sepia, 101 = Threshold, 110 = Color Swap, 111 = Sketch. This binary addressing scheme is a deliberate nod to the DIP-switch configurations of early digital video hardware, where modes were selected by hardware switches rather than menus. Flipping a single toggle jumps between two modes that differ by one bit — Negative (000) to Solarize (001), or Posterize (010) to Colorize (011) — encouraging exploratory performance.
-
-Toggle 10 (All Channels) is an orthogonal modifier that does not change which mode is active, but changes *how deeply* that mode processes colour. When set to Y Only, chroma passes through untouched in Negative, Solarize, and Posterize modes. When set to YUV, the same transformation is applied to U and V as well, producing dramatically different results. Modes that inherently replace chroma (Colorize, Sepia, Threshold, Sketch) are unaffected by this toggle.
-
-Toggle 11 (Bypass) routes the delayed original signal directly to the output, bypassing all processing and the wet/dry mix. Use it for instant A/B comparison.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-The Mix fader controls the wet/dry crossfade between the processed signal and the delayed original via a 4-clock interpolator. At 100% (fader fully up), the output is entirely the processed signal. At 0%, the output is entirely the original. Intermediate positions blend the two, which is particularly effective for subtle colour grading — a 30% mix of Sepia over the original adds warmth without obliterating the source colours. The crossfade operates on all three channels simultaneously.
-
-
-
+:::tip
+Because all modes run in parallel, the FPGA resource cost is the ***sum*** of all eight modes, not just the active one. This is why Chromasia uses zero BRAM: all processing is purely combinational and register-based, keeping the resource footprint low enough to fit all eight modes simultaneously.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from single-mode exploration to multi-mode comparison and creative blending. Each builds familiarity with a different subset of Chromasia's eight processing modes.
-
+These exercises explore three progressively complex uses of Chromasia's mode-switching architecture, from single-mode color manipulation to rapid mode-switching performance.
 ### Exercise 1: Solarize Sweep
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: chromasia_source1_dog, after: chromasia_ex1_s1 },
-    { label: "Field", before: chromasia_source2_field, after: chromasia_ex1_s2 },
-    { label: "Elephant", before: chromasia_source3_elephant, after: chromasia_ex1_s3 },
-    { label: "Pattern", before: chromasia_source4_pattern, after: chromasia_ex1_s4 },
-    { label: "Man", before: chromasia_source5_man, after: chromasia_ex1_s5 },
-    { label: "Berries", before: chromasia_source6_berries, after: chromasia_ex1_s6 },
-  ]}
-/>
+![Solarize Sweep result](/img/instruments/videomancer/chromasia/chromasia_ex1_s1.png)
 *Solarize Sweep — simulated result across source images.*
-**Source**: Footage or stills with broad tonal range — landscapes, portraits, or gradient test patterns.
+#### Exercise Illustration
 
-**What You'll Create**: Understand the solarize fold curve and the effect of the Intensity threshold on tonal reflection.
+***A description of the exercise illustration.***
 
-1. **Select Solarize**: Set Mode A On, Mode B Off, Mode C Off (toggle pattern 001).
-2. **Threshold sweep**: Start with Intensity at 0%. Slowly increase — watch as highlights begin to fold back toward black. At 50%, the fold point is at mid-gray. At 100%, only the brightest pixels are reflected.
-3. **All Channels**: Toggle All Channels to YUV. Observe how the fold now affects chroma as well — colour wraps in unexpected ways.
-4. **Mix blend**: Lower the Mix fader to ~50% to blend the solarised result with the original, creating a subtle metallic sheen.
-5. **Compare**: Flip Mode A off (000 = Negative) to compare solarization with simple inversion.
+#### Learning Outcomes
 
-**Key concepts**: Solarization reflects values above a threshold, creating a V-shaped transfer curve. The Intensity knob sets the fold point. All Channels extends the fold to chroma.
+A slowly sweeping solarization effect that reveals the Sabattier-like metallic tonal inversion across the full brightness range.
 
----
+#### Key Concepts
 
-### Exercise 2: Colorize a Monochrome Scene
+- Solarization creates a V-curve fold in the tonal range
+- The Intensity threshold determines where the fold occurs
+- All Channels extends the fold to chrominance
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: chromasia_source1_dog, after: chromasia_ex2_s1 },
-    { label: "Field", before: chromasia_source2_field, after: chromasia_ex2_s2 },
-    { label: "Elephant", before: chromasia_source3_elephant, after: chromasia_ex2_s3 },
-    { label: "Pattern", before: chromasia_source4_pattern, after: chromasia_ex2_s4 },
-    { label: "Man", before: chromasia_source5_man, after: chromasia_ex2_s5 },
-    { label: "Berries", before: chromasia_source6_berries, after: chromasia_ex2_s6 },
-  ]}
-/>
-*Colorize a Monochrome Scene — simulated result across source images.*
-**Source**: Black-and-white footage or a desaturated feed — old film clips, surveillance cameras, or any source with strong tonal contrast.
+#### Video Source
 
-**What You'll Create**: Learn how the Hue and Saturation knobs paint a single tint across the luminance structure of the image.
+A live camera feed or recorded footage with a wide tonal range (faces, landscapes, or anything with smooth gradients.)
 
-1. **Select Colorize**: Set Mode A On, Mode B On, Mode C Off (toggle pattern 011).
-2. **Full saturation**: Turn Saturation to maximum. The image is painted in a vivid single hue.
-3. **Hue rotation**: Slowly sweep the Hue knob through its full range. Watch the colour cycle through the entire YUV wheel — from warm amber through green, cyan, violet, and back.
-4. **Desaturate**: Bring Saturation back to ~30%. The tint becomes a subtle wash — the image is nearly monochrome with just a hint of colour.
-5. **Sepia comparison**: Flip Mode C On (100 = Sepia). The warm brown tint is similar but fixed — there is no hue control. Compare the two approaches to colour tinting.
+#### Steps
 
-**Key concepts**: Colorize replaces chroma with a single hue defined by a sine/cosine LUT, scaled by Saturation. Sepia is a fixed warm-brown variant. The Hue knob provides full 360° control in Colorize mode.
+1. Select **Solarize** mode: set **Mode A** (Switch 7) to On, **Mode B** (Switch 8) and **Mode C** (Switch 9) to Off.
+2. Set **Mix** (Fader 12) to 100% so the full effect is visible.
+3. Turn **Intensity** (Knob 1) slowly from minimum to maximum. Watch the solarization threshold sweep across the image: tones above the threshold fold downward, creating metallic, molten-looking regions.
+4. Set **All Channels** (Switch 10) to **YUV**. The fold now applies to the color channels as well, producing surreal rainbow inversions in the solarized regions.
+5. Back **Mix** down to about 50%. The solarized version blends with the original, creating a subtle iridescent overlay.
 
----
+#### Settings
 
-### Exercise 3: Sketch to Threshold Composite
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: chromasia_source1_dog, after: chromasia_ex3_s1 },
-    { label: "Field", before: chromasia_source2_field, after: chromasia_ex3_s2 },
-    { label: "Elephant", before: chromasia_source3_elephant, after: chromasia_ex3_s3 },
-    { label: "Pattern", before: chromasia_source4_pattern, after: chromasia_ex3_s4 },
-    { label: "Man", before: chromasia_source5_man, after: chromasia_ex3_s5 },
-    { label: "Berries", before: chromasia_source6_berries, after: chromasia_ex3_s6 },
-  ]}
-/>
-*Sketch to Threshold Composite — simulated result across source images.*
-**Source**: High-contrast footage with strong edges — architecture, typography, silhouettes, or hand-drawn graphics on camera.
-
-**What You'll Create**: Combine Sketch edge detection with Threshold binary conversion to create bold graphic outputs.
-
-1. **Select Sketch**: Set all three mode toggles On (111).
-2. **Edge Gain sweep**: Start with Edge Gain at 0% — the output is nearly white. Slowly increase until strong edges appear as dark strokes on the bright background.
-3. **Bold lines**: Set Edge Gain to ~70% for prominent edges.
-4. **Switch to Threshold**: Flip Mode A Off (110 = Color Swap). Observe the channel routing. Now flip Mode B Off and Mode C On (100 = Sepia). Finally, set Mode A On, Mode C On (101 = Threshold).
-5. **Threshold level**: Sweep Intensity to move the black/white cutoff. Notice the stark, graphic quality of the binary image.
-6. **Mix**: Lower the Mix fader to ~40% to blend the threshold result with the original, creating a high-contrast overlay effect.
-
-**Key concepts**: Sketch uses horizontal pixel differencing to extract edges. Threshold converts to binary black/white. Both destroy chroma information. The Mix fader can blend either back against the source for creative compositing.
+| Control | Value |
+|---------|-------|
+| Intensity | ~75% |
+| Secondary | 0% |
+| Hue | 0° |
+| Saturation | 50% |
+| Edge Gain | 0% |
+| Brightness | 0% |
+| Mode A | On |
+| Mode B | Off |
+| Mode C | Off |
+| All Channels | YUV |
+| Bypass | Off |
+| Mix | 50% |
 
 ---
 
+### Exercise 2: Colorize and Sepia Tinting
 
-## Tips
+![Colorize and Sepia Tinting result](/img/instruments/videomancer/chromasia/chromasia_ex2_s1.png)
+*Colorize and Sepia Tinting — simulated result across source images.*
+#### Exercise Illustration
 
-- **Color Swap sub-modes**: The Secondary knob in Color Swap mode (110) selects among eight different channel routings. Sweep it to discover unexpected false-colour palettes — some swap U and V, others replace chroma with luminance, creating monochrome variants.
-- **Sketch plus feedback**: Route Chromasia's Sketch output back to its input through an external feedback path. The edge detector re-edges its own edges, creating increasingly abstract line patterns that evolve over time.
-- **Sepia vs. Colorize**: Sepia is a convenience preset — a fixed warm brown tint scaled by Intensity. Colorize offers full hue control. If you want a custom-coloured tint (cyan, violet, gold), use Colorize mode and set the Hue knob to taste.
-- **Threshold for keying**: The binary black/white output of Threshold mode is ideal as a key signal for downstream compositing. Feed a clean silhouette or high-contrast graphic to produce a hard matte.
-- **Bypass for A/B**: Toggle Bypass (Switch 11) at any time to compare processed and original. The 8-clock delay is matched, so the transition is seamless — no timing shift when switching.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A tinted monochrome look, transitioning from cool single-hue colorization to warm sepia.
+
+#### Key Concepts
+
+- Colorize replaces all chroma with a single hue angle
+- Saturation controls the strength of the applied tint
+- Sepia applies a fixed warm brown tint scaled by Intensity
+
+#### Video Source
+
+Black-and-white or muted footage works well, but any source benefits from tinting.
+
+#### Steps
+
+1. Select **Colorize** mode: set **Mode A** (Switch 7) to On, **Mode B** (Switch 8) to On, **Mode C** (Switch 9) to Off.
+2. Set **Saturation** (Knob 4) to about 30%. Turn **Hue** (Knob 3) slowly. The entire image tints with a single pure color that sweeps through the rainbow.
+3. Increase **Saturation** to 80%. The color becomes vivid and dominant (the image becomes a monochrome study in your chosen hue.)
+4. Now switch to **Sepia** mode: set **Mode C** (Switch 9) to On, **Mode A** (Switch 7) to Off, **Mode B** (Switch 8) to Off.
+5. Turn **Intensity** (Knob 1) to about 75%. The image takes on the warm, nostalgic brown tone of an old photograph. Higher Intensity pushes the tone further from neutral.
+6. Lower **Mix** (Fader 12) to about 40% for a subtle vintage warmth layered over the original colors.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Intensity | 75% |
+| Secondary | 0% |
+| Hue | 180° |
+| Saturation | 30% |
+| Edge Gain | 0% |
+| Brightness | 0% |
+| Mode A | Off |
+| Mode B | Off |
+| Mode C | On |
+| All Channels | Y Only |
+| Bypass | Off |
+| Mix | 40% |
 
 ---
 
+### Exercise 3: Sketch Threshold Mask
+
+![Sketch Threshold Mask result](/img/instruments/videomancer/chromasia/chromasia_ex3_s1.png)
+*Sketch Threshold Mask — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A high-contrast sketch effect where bold edge outlines emerge from a thresholded image, resembling a pen-and-ink drawing.
+
+#### Key Concepts
+
+- Sketch mode detects horizontal edges via pixel-to-pixel luminance difference
+- Edge Gain amplifies subtle transitions into bold lines
+- Threshold mode can be layered via Mix for contrast enhancement
+
+#### Video Source
+
+Footage with strong structural content: architecture, text, mechanical objects, or faces with clear contour lines.
+
+#### Steps
+
+1. Select **Sketch** mode: set all three mode toggles to On (**Mode A**, **Mode B**, **Mode C** all On).
+2. Set **Edge Gain** (Knob 5) to about 70%. Bold dark lines appear at brightness transitions, drawn on a white background.
+3. Set **Mix** (Fader 12) to 100% to see the full sketch effect.
+4. Lower **Edge Gain** to about 30%. Only the strongest edges survive: finer detail fades into the white field. Increase back to 90% for aggressive, detailed line work.
+5. Now switch to **Threshold** mode: set **Mode A** (Switch 7) to On, **Mode B** (Switch 8) to Off, **Mode C** (Switch 9) to On.
+6. Set **Intensity** (Knob 1) to about 50%. The image snaps to stark black and white.
+7. Lower **Mix** to about 70% and compare the feel of Threshold's hard binary key versus Sketch's edge-detected line drawing.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Intensity | 50% |
+| Secondary | 0% |
+| Hue | 0° |
+| Saturation | 50% |
+| Edge Gain | 70% |
+| Brightness | 0% |
+| Mode A | On |
+| Mode B | On |
+| Mode C | On |
+| All Channels | Y Only |
+| Bypass | Off |
+| Mix | 100% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Chroma** | The color information in a video signal, encoded as U and V components in the YUV color space, distinct from luminance. |
-| **DIP switch** | Dual In-line Package switch; a miniature toggle switch array on a circuit board used for hardware configuration, referenced as inspiration for Chromasia's binary mode selection. |
-| **Edge detection** | A signal processing technique that identifies boundaries between regions of different brightness by computing pixel-to-pixel differences. |
-| **Luminance** | The brightness component (Y) of a video signal, independent of color information. |
-| **LUT** | Look-Up Table; a pre-computed array mapping input values to output values, used here for sine/cosine hue conversion in Colorize mode. |
-| **Posterization** | Reduction of a continuous-tone image to a limited number of discrete brightness levels, producing flat color bands separated by hard edges. |
-| **Quantization** | The process of mapping a continuous range of values to a finite set of discrete levels, the mathematical basis of the Posterize mode. |
-| **Sabattier effect** | A photographic darkroom technique where partial re-exposure during development causes tonal reversal, producing the characteristic solarized look. |
-| **Solarization** | Partial inversion of tones in an image by reflecting values above a threshold, creating a V-shaped transfer curve and metallic appearance. |
-| **Transfer curve** | A graph mapping input pixel values to output pixel values, defining how a processing stage remaps brightness or color. |
+- **Chroma**: The color information in a video signal, encoded as U and V components in YUV color space, where U and V values of 512 represent neutral (no color).
+
+- **Complement**: The arithmetical inverse of a pixel value; for a 10-bit signal, the complement of a value *x* is 1023 − *x*.
+
+- **Edge Detection**: A technique for finding boundaries in an image by measuring the rate of change (gradient) of brightness between neighboring pixels.
+
+- **Finite Difference**: A discrete approximation of a derivative, computed by subtracting adjacent sample values. Chromasia uses a first-order horizontal finite difference for sketch mode.
+
+- **Interpolator**: A circuit that smoothly blends between two values using a fractional mix parameter; used here for the dry/wet crossfade.
+
+- **Lookup Table (LUT)**: A precomputed array of values that replaces real-time calculation; Chromasia's colorize mode uses a 64-entry sine/cosine LUT for hue mapping.
+
+- **Posterization**: Reducing the number of distinct tonal levels by discarding low-order bits, producing flat bands of uniform color.
+
+- **Sabattier Effect**: A darkroom technique in which partial re-exposure during development produces a mix of positive and negative tones; digital solarization simulates this with a V-curve transfer function.
+
+- **Solarization**: A tonal transformation that folds brightness values around a threshold, creating regions of reversed contrast within the image.
+
+- **Transfer Function**: The mathematical relationship between input and output values for each pixel; Chromasia's modes implement different transfer functions (linear complement, V-curve fold, step function, etc.).
 
 ---

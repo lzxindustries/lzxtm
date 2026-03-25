@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 169
 slug: /instruments/videomancer/lenticular
@@ -7,370 +7,398 @@ image: /img/instruments/videomancer/lenticular/lenticular_hero_s1.png
 description: "Lenticular prints are those plastic-ridged cards that seem to shift or animate when you tilt them."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import lenticular_control_panel from '/img/instruments/videomancer/lenticular/lenticular_control_panel.png';
-import lenticular_source1_runner from '/img/instruments/videomancer/lenticular/lenticular_source1_runner.png';
-import lenticular_source2_skull from '/img/instruments/videomancer/lenticular/lenticular_source2_skull.png';
-import lenticular_source3_elephant from '/img/instruments/videomancer/lenticular/lenticular_source3_elephant.png';
-import lenticular_source4_pattern from '/img/instruments/videomancer/lenticular/lenticular_source4_pattern.png';
-import lenticular_source5_boy from '/img/instruments/videomancer/lenticular/lenticular_source5_boy.png';
-import lenticular_source6_berries from '/img/instruments/videomancer/lenticular/lenticular_source6_berries.png';
-import lenticular_hero_s1 from '/img/instruments/videomancer/lenticular/lenticular_hero_s1.png';
-import lenticular_hero_s2 from '/img/instruments/videomancer/lenticular/lenticular_hero_s2.png';
-import lenticular_hero_s3 from '/img/instruments/videomancer/lenticular/lenticular_hero_s3.png';
-import lenticular_hero_s4 from '/img/instruments/videomancer/lenticular/lenticular_hero_s4.png';
-import lenticular_hero_s5 from '/img/instruments/videomancer/lenticular/lenticular_hero_s5.png';
-import lenticular_hero_s6 from '/img/instruments/videomancer/lenticular/lenticular_hero_s6.png';
-import lenticular_ex1_s1 from '/img/instruments/videomancer/lenticular/lenticular_ex1_s1.png';
-import lenticular_ex1_s2 from '/img/instruments/videomancer/lenticular/lenticular_ex1_s2.png';
-import lenticular_ex1_s3 from '/img/instruments/videomancer/lenticular/lenticular_ex1_s3.png';
-import lenticular_ex1_s4 from '/img/instruments/videomancer/lenticular/lenticular_ex1_s4.png';
-import lenticular_ex1_s5 from '/img/instruments/videomancer/lenticular/lenticular_ex1_s5.png';
-import lenticular_ex1_s6 from '/img/instruments/videomancer/lenticular/lenticular_ex1_s6.png';
-import lenticular_ex2_s1 from '/img/instruments/videomancer/lenticular/lenticular_ex2_s1.png';
-import lenticular_ex2_s2 from '/img/instruments/videomancer/lenticular/lenticular_ex2_s2.png';
-import lenticular_ex2_s3 from '/img/instruments/videomancer/lenticular/lenticular_ex2_s3.png';
-import lenticular_ex2_s4 from '/img/instruments/videomancer/lenticular/lenticular_ex2_s4.png';
-import lenticular_ex2_s5 from '/img/instruments/videomancer/lenticular/lenticular_ex2_s5.png';
-import lenticular_ex2_s6 from '/img/instruments/videomancer/lenticular/lenticular_ex2_s6.png';
-import lenticular_ex3_s1 from '/img/instruments/videomancer/lenticular/lenticular_ex3_s1.png';
-import lenticular_ex3_s2 from '/img/instruments/videomancer/lenticular/lenticular_ex3_s2.png';
-import lenticular_ex3_s3 from '/img/instruments/videomancer/lenticular/lenticular_ex3_s3.png';
-import lenticular_ex3_s4 from '/img/instruments/videomancer/lenticular/lenticular_ex3_s4.png';
-import lenticular_ex3_s5 from '/img/instruments/videomancer/lenticular/lenticular_ex3_s5.png';
-import lenticular_ex3_s6 from '/img/instruments/videomancer/lenticular/lenticular_ex3_s6.png';
-
-# Lenticular
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: lenticular_source1_runner, after: lenticular_hero_s1 },
-    { label: "Skull", before: lenticular_source2_skull, after: lenticular_hero_s2 },
-    { label: "Elephant", before: lenticular_source3_elephant, after: lenticular_hero_s3 },
-    { label: "Pattern", before: lenticular_source4_pattern, after: lenticular_hero_s4 },
-    { label: "Boy", before: lenticular_source5_boy, after: lenticular_hero_s5 },
-    { label: "Berries", before: lenticular_source6_berries, after: lenticular_hero_s6 },
-  ]}
-/>
-*Lenticular dividing a portrait into alternating shifted stripes, creating a shimmering parallax depth effect reminiscent of holographic trading cards.*
+![Lenticular hero image](/img/instruments/videomancer/lenticular/lenticular_hero_s1.png)
+*Lenticular splitting live video into interlaced vertical stripes that alternate between shifted and unshifted views, producing a shimmering pseudo-3D parallax effect.*
 
 ---
 
 ## Overview
 
-Lenticular prints are those plastic-ridged cards that seem to shift or animate when you tilt them. Under each tiny cylindrical lens, two or more images are interleaved in narrow strips. Tilt one way and you see image A; tilt the other and you see image B. The brain fuses the alternation into a sense of depth or motion, even though the card is perfectly flat.
+Lenticular is a video processing program that divides the screen into alternating vertical (or horizontal) stripes. Every other stripe shows a horizontally shifted copy of the image, while the remaining stripes pass the original pixels through. The result is an interleaved parallax effect that recalls the shimmer of a ***lenticular print***: those ridged plastic cards that change images as you tilt them. At small stripe widths and moderate shift distances, the image appears to split into two slightly offset layers, creating an uncanny illusion of depth on a flat screen.
 
-Lenticular simulates this optical trick electronically. It divides the video frame into vertical (or horizontal) stripes and shows alternating views within each stripe — the current pixel in one stripe, a horizontally shifted copy in the next. A 64-sample shift register provides the delay source, so the "second view" is the same image displaced by a selectable number of pixels. The result is a synthetic parallax: objects appear to hover at different depths depending on how far left or right their shifted copy lands.
+The program's second personality is ***wiggle mode***, where the alternation happens across time instead of space. Rather than interleaving two views side by side, Lenticular flips the entire frame between the original and shifted image on every other video frame, producing a rapid back-and-forth animation. This is the digital equivalent of physically tilting a lenticular card to make it "wiggle."
 
-The effect ranges from subtle — narrow stripes with a small shift produce a gentle shimmer that suggests holographic film — to aggressive, where wide stripes and large shifts shatter the image into a venetian-blind mosaic of displaced fragments. A wiggle mode alternates the view selection on frame parity instead of stripe position, creating a temporal flicker that mimics the experience of physically rocking a lenticular card back and forth.
+:::tip
+Try feeding Lenticular a high-contrast source and setting **Stripe W** to a narrow width. The fine interleaving creates a moiré shimmer that looks different from every viewing angle (just like a holographic sticker.)
+:::
+
+### What's In a Name?
+
+A ***lenticular lens*** is an array of tiny cylindrical magnifying lenses molded into a sheet of plastic. When an image is printed in interlaced strips behind the lens, each strip is magnified to fill the field of view: but only from a specific angle. Tilt the card, and a different set of strips snaps into focus, revealing a different image. Novelty postcards, flip-sticker baseball cards, and early "3D" magazine covers all use lenticular printing. Lenticular recreates this optical trick electronically, splitting video into alternating stripe views and animating between them.
 
 ---
 
 ## Quick Start
 
-1. **Stripe width controls the illusion**: Narrow stripes (4–8 pixels) produce the most convincing depth effect because the eye cannot resolve individual bands. Wide stripes (32–64 pixels) create an obvious split-image look.
-2. **Shift distance is in pixels, not percentage**: The Shift pot maps directly to the shift register tap index (0–63 pixels). Small values like 3–5 pixels create subtle parallax; above 20 it becomes an obvious displacement.
-3. **Views and Depth pots have limited effect**: Views (pot 3) is registered but unused — the stripe boundary is always hard. Depth (pot 6) is unconnected. Future firmware may activate these controls.
+1. Load **Lenticular** and feed it a camera or any video source. Set **Stripe W** (Knob 1) to about 40%. You'll see the image divided into vertical stripes of alternating content.
+2. Slowly increase **Shift** (Knob 2). Alternate stripes now show pixels from earlier in the scan line (the image appears to peel apart into two offset layers.)
+3. Flip the **Direction** toggle (Switch 8) from **Vert** to **Radial**. Instead of spatial stripes, the entire image now flickers between the two views on alternating frames (a rapid wiggle animation.)
+4. Flip **Direction** back to **Vert** and narrow the **Stripe W** to about 15%. The fine interleaving produces a dense, shimmering parallax texture.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Lenticular loaded](/img/instruments/videomancer/lenticular/lenticular_control_panel.png)
+*Videomancer's front panel with Lenticular active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Stripe W
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Stripe W** controls the width of each alternating stripe. The stripe period is quantized into five discrete levels: at the lowest knob positions the stripes are 4 pixels wide, stepping through 8, 16, and 32 pixels, up to 64 pixels wide at the highest setting. This control determines how finely the image is sliced. Very narrow stripes (4 px) produce a dense, almost holographic shimmer where the two views blend perceptually. Wide stripes (64 px) create broad, clearly separated bands (the shifted and unshifted regions are individually legible.)
+
+:::note
+Because the stripe width is quantized, turning the knob does not produce a smooth sweep. Instead, the pattern snaps between five discrete widths. Listen for the moment each step clicks into place.
+:::
+
+---
+
+### Knob 2 — Shift
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Shift** sets the horizontal pixel offset between the two interleaved views. Internally, a 64-sample ***shift register*** delays the incoming pixels. This knob selects the tap point, from 0 (no delay: both stripe views are identical) up to 63 pixels of horizontal displacement. At low values, the two views are nearly the same and the stripes are subtle. At high values, the alternate stripes show content that appeared many pixels earlier on the scan line, creating a strong parallax displacement. Edges and high-contrast boundaries become the most visually dramatic areas, because the horizontal offset makes them visibly double.
+
+:::tip
+Combine a moderate **Shift** with a narrow **Stripe W** for a "lenticular postcard" look. Widen the stripes and push Shift to maximum for an aggressive image-doubling glitch.
+:::
+
+---
+
+### Knob 3 — Views
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Views** is reserved for a future firmware update. Adjusting this knob has no visible effect on the output image in the current version.
+
+---
+
+### Knob 4 — Angle
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Angle** enables a vertical softening effect on the alternate stripes. When the knob is set above its minimum position, the Y (luminance) channel on every alternate stripe is averaged with the luminance of the previous scan line, read from a ***line buffer***. This creates a subtle vertical smear on the shifted stripes while leaving the primary stripes sharp, adding an additional dimension of visual separation between the two interleaved views.
+
+:::note
+The blending engages as a threshold: any position above minimum activates the vertical averaging at full strength. The knob does not provide a graduated blend: it functions as an enable switch with a small dead zone at the bottom of its travel.
+:::
+
+---
+
+### Knob 5 — Sharp
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Sharp** controls the luminance intensity of the processed output. Below the midpoint (50%), the processed image is attenuated: darkened proportionally as you turn the knob counterclockwise. At the lowest setting, the processed stripes are fully black. Above 50%, the luminance passes through at full strength with no attenuation. Use lower **Sharp** values to reduce the visual impact of the interleaving effect, fading the striped image toward darkness while the **Mix** fader blends toward the dry signal.
+
+---
+
+### Knob 6 — Depth
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Depth** is reserved for a future firmware update. Adjusting this knob has no visible effect on the output image in the current version.
+
+---
+
+### Switch 7 — Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Flip |
+| On | Anim |
+| Default | Flip |
+
+**Mode** selects the stripe orientation. In the **Flip** position, stripes run vertically: alternating columns of pixels. In the **Anim** position, stripes run horizontally: alternating rows of pixels. Vertical stripes produce the classic lenticular interleave along the horizontal axis. Horizontal stripes create a different visual character: the parallax displacement shifts content between adjacent scan lines rather than adjacent columns, producing a layered, venetian-blind effect.
+
+---
+
+### Switch 8 — Direction
+
+| Property | Value |
+|----------|-------|
+| Off | Vert |
+| On | Radial |
+| Default | Vert |
+
+**Direction** selects between spatial interleaving and temporal wiggle. In the **Vert** position, alternation is spatial: even-numbered stripes show the original pixels, odd-numbered stripes show the shifted view, and both are visible simultaneously on every frame. In the **Radial** position, alternation is temporal: the entire frame flips between the original view and the shifted view on every other video frame, producing a rapid wiggle animation. This is the "flip card" mode (the image appears to jitter back and forth.)
+
+:::warning
+At standard frame rates, the temporal wiggle can produce a rapid flicker. Viewers sensitive to flashing images should approach this mode with care.
+:::
+
+---
+
+### Switch 9 — Source
+
+| Property | Value |
+|----------|-------|
+| Off | Luma |
+| On | Edge |
+| Default | Luma |
+
+**Source** flips the assignment of which stripes show the original view and which show the shifted view. In the **Luma** position, the default assignment applies. In the **Edge** position, the assignment is inverted: stripes that previously showed the original now show the shifted view, and vice versa. This effectively mirrors the parallax direction, swapping left-eye and right-eye perspectives.
+
+---
+
+### Switch 10 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Animate** is reserved for a future firmware update. Toggling this switch has no visible effect on the output image in the current version.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Lenticular processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the striped result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input and the wet (processed) output. At 0%, only the original signal passes through. At 100%, only the processed lenticular output is visible. Intermediate values blend the two together smoothly. Because Lenticular defaults to 100% mix, you hear the full effect immediately on load. Pull the fader down to soften the stripe interleaving into a subtle shimmer.
 
 ---
 
 ## Background
 
-### Lenticular Printing
+### Lenticular printing
 
-Lenticular technology dates to the 1940s, when inventor Victor Anderson patented a method for creating images with an illusion of depth using an array of cylindrical lenses bonded over a specially prepared print. Each lens acts as a tiny window that shows a different vertical slice of the underlying image depending on the viewing angle. By interlacing two or more perspectives beneath the lens sheet, the print can display flip effects (two distinct images), animation (a sequence of frames), and stereoscopic 3D (left-right eye parallax).
+***Lenticular printing*** is a technique developed in the early twentieth century that uses an array of tiny cylindrical lenses: called ***lenticules***: bonded to the surface of a printed sheet. The image beneath the lens array is printed as a series of interlaced vertical strips, each strip visible only from a narrow range of viewing angles. As the viewer tilts the print, different strips snap into focus, creating the illusion of motion, depth, or image transformation. The technique reached mass popularity in the 1960s through novelty postcards, cereal-box prizes, and magazine covers. Today it's used in commercial packaging, security labels, and art prints.
 
-### Parallax and Stereopsis
+Lenticular exploits the same underlying principle digitally. Instead of physical lenses selecting which strips you see, the program selects which pixels belong to the "original" view and which belong to the "shifted" view, interleaving them across the screen in alternating stripes.
 
-Depth perception from binocular vision relies on parallax — the slight horizontal displacement between what each eye sees. Lenticular 3D prints exploit this by directing different images to each eye through the lens array. Lenticular the program creates a similar displacement digitally: alternating stripes show the image at two different horizontal offsets, and the viewer's brain can interpret the displacement as depth information, especially when the stripe width is small enough that individual stripes are hard to resolve.
+### Shift registers and parallax
 
-### Shift Registers in Video Processing
+In hardware, a ***shift register*** is a chain of memory cells arranged so that data moves from one cell to the next on every clock pulse. Lenticular uses a 64-stage shift register to store the most recent 64 pixels of Y, U, and V video data as they stream across each scan line. By reading from a selectable tap along this chain, the program retrieves a pixel that appeared some number of clock cycles earlier: effectively a horizontally displaced copy of the image. The **Shift** knob selects which tap to read.
 
-The horizontal displacement is implemented with a 64-sample shift register — a chain of 64 storage slots that each hold one pixel's YUV values. Every clock cycle, each slot passes its contents to the next, and the newest pixel enters slot 0. By reading from a selectable tap (slot N), the circuit retrieves the pixel that was N positions to the left on the same scan line. This is a classic FPGA pattern for horizontal delay because it requires no BRAM — just flip-flops — and provides random access to any tap with no read latency.
+This horizontal displacement is what creates the illusion of depth. In real stereoscopic vision, each eye sees the world from a slightly different horizontal position. Lenticular approximates this by presenting two horizontally offset views of the same scene, interleaved through the stripe pattern.
 
-### Line Buffers and Vertical Relationships
+### Wiggle stereoscopy
 
-A video line buffer stores one complete scan line. By writing the current line's Y values and reading back the previous line's Y values at the same horizontal position, the circuit can compare or blend vertically adjacent lines. Lenticular uses this to optionally average the shifted view's luminance with the previous line's luminance on alternate stripes, adding a vertical smearing component to the parallax effect.
-
-### Wiggle Mode
-
-Real lenticular cards animate when you tilt them — the image flips back and forth between views. Wiggle mode recreates this temporal alternation digitally. Instead of selecting views based on stripe position (spatial interleaving), it selects based on frame parity (temporal interleaving). On even frames, the entire screen shows view A; on odd frames, view B. For a still-image simulator, the effect collapses to a single frame showing one view, but on live video the result is a rapid flicker between the original and shifted image.
+***Wiggle stereoscopy*** is a technique where a camera captures two photographs of the same scene from slightly different positions, and the two images are played back in rapid alternation. The brain interprets the oscillating horizontal shift as depth: objects closer to the camera appear to move more than distant objects. Animated GIF "wigglegrams" are a popular modern incarnation of this century-old technique. Lenticular's temporal wiggle mode (the **Radial** position of the **Direction** toggle) implements this principle in real time, flipping the entire frame between the original and shifted view on alternating video frames.
 
 
 ---
 
 ## Signal Flow
 
-Input Register → Stripe Selection → Shift Register Tap → Source Select → Depth Scaling → Output Compose + Clamp
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Stage 1: Input Register + Shift Register Write ─────────────
-│   ├─ Register input Y/U/V
-│   ├─ Write pixel into 64-sample Y/U/V shift register
-│   ├─ Compute stripe_shift (4/8/16/32/64 px from pot)
-│   ├─ Compute shift_tap (0–63 from pot high bits)
-│   └─ Line buffer write (current line Y for next-line read)
-│
-├── Stage 2: Stripe Selection ──────────────────────────────────
-│   ├─ Vertical stripes: stripe_bit = h_count(stripe_shift)
-│   ├─ Horizontal stripes: stripe_bit = v_count(stripe_shift)
-│   ├─ Wiggle mode: use frame_count(0) instead of stripe_bit
-│   ├─ Direction: optionally invert alt selection
-│   └─ Fractional position within stripe (for transition)
-│
-├── Stage 3: Shift Register Tap + Line Buffer Read ─────────────
-│   ├─ Read shifted pixel from SR at shift_tap index
-│   └─ Line buffer previous-line Y data arrives
-│
-├── Stage 4: Source Select + Vertical Blend ────────────────────
-│   ├─ Alt stripe → shifted pixel; Primary → current pixel
-│   └─ If alt AND vert_shift > 16: average Y with prev-line Y
-│
-├── Stage 5: Depth Scaling ─────────────────────────────────────
-│   ├─ depth ≤ 512: Y = (depth × selected_Y) >> 10
-│   └─ depth > 512: Y = selected_Y (pass-through)
-│
-├── Stage 6: Output Compose + Clamp ────────────────────────────
-│   └─ Final Y/U/V output
-│
-├── Interpolator (4 clk): Wet/dry mix ─────────────────────────
-│   └─ lerp(dry, processed, mix_amount) per channel
-│
-└── Bypass Mux ─────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+Two primary signal paths run in parallel through the pipeline:
 
-The shift register provides zero-latency random access to any of 64 preceding pixels on the same scan line, which is key to fast horizontal displacement without BRAM addressing overhead. The stripe selection logic uses a single bit of the position counter — the bit at the stripe_shift position — to determine odd/even stripe identity, making the stripe width always a power of two. The depth scaling stage applies a brightness attenuation to the selected view when the depth pot is in its lower half, creating a dimming effect that can suggest receding depth; when the pot is above midpoint, the view passes through at full brightness.
+1. **Shift register path**: Every incoming pixel is written into a 64-deep FIFO. On alternate stripes, the program reads a tap from this register: effectively looking "backward" along the scan line by 0 to 63 pixels. This creates the horizontal parallax displacement. On primary stripes, the current pixel passes through unchanged.
+
+2. **Line buffer path**: The Y channel is also written into a one-line-deep buffer. When **Angle** is enabled, alternate stripes blend the shift-register Y with the previous line's Y, softening the shifted view vertically.
+
+:::tip
+**Stripe selection is the heart of the effect.** The bit tested in `h_count` (or `v_count` in horizontal mode) determines whether each pixel falls on a primary or alternate stripe. The **Stripe W** knob selects which bit to test, quantizing the stripe period to powers of two.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={lenticular_control_panel} alt="Videomancer front panel with Lenticular loaded"/>
-*Videomancer's front panel with Lenticular active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises progress from basic stripe interleaving to animated wiggle effects, building familiarity with Lenticular's spatial and temporal modes.
+### Exercise 1: Classic Lenticular Card
 
-### Rotary Potentiometers (Knobs 1–6)
+![Classic Lenticular Card result](/img/instruments/videomancer/lenticular/lenticular_ex1_s1.png)
+*Classic Lenticular Card — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Stripe W
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-Controls the stripe period — the width of each lenticular lens in pixels. The pot is quantized into five steps: values below 205 give 4-pixel stripes (very fine, nearly invisible interleaving), 205–409 give 8-pixel stripes, 410–613 give 16-pixel stripes, 614–818 give 32-pixel stripes, and above 818 give 64-pixel stripes (coarse, obvious venetian-blind-like bands). Smaller stripes produce a more convincing depth illusion because the eye cannot resolve individual bands; larger stripes create a graphic split-screen effect.
+#### Learning Outcomes
 
----
+A classic lenticular postcard effect: the image appears to shimmer with depth as if viewed through a ridged plastic overlay.
 
-#### Knob 2 — Shift
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+#### Key Concepts
 
-Controls the horizontal pixel displacement — how far the alternate-stripe view is shifted from the current pixel. The pot's upper 6 bits select a tap index from 0 to 63 in the shift register, so the shift ranges from 0 pixels (no displacement, both views identical) to 63 pixels. Larger shifts create stronger parallax but also more visible duplication artifacts. Subtle shifts of 2–8 pixels produce a gentle holographic shimmer; shifts above 20 pixels fracture the image into obviously displaced slices.
+- Stripe interleaving creates two parallel views of the same scene
+- The shift register provides horizontal displacement
+- Narrow stripes merge perceptually; wide stripes remain distinct
 
----
+#### Video Source
 
-#### Knob 3 — Views
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+A live camera feed pointed at a scene with objects at different distances, or any video with recognizable subjects and moderate contrast.
 
-Labeled "Views" in the TOML interface but mapped to the transition crossfade width in the VHDL. In the current hardware implementation, the transition value is registered but not used in the stripe selection logic — the stripe boundary is always a hard cut. The pot value is captured for future firmware revisions that could implement soft crossfade zones between stripes.
+#### Steps
 
----
+1. Set **Stripe W** (Knob 1) to about 25%. The image is divided into narrow vertical stripes.
+2. Slowly increase **Shift** (Knob 2) from 0% to about 40%. You'll see the alternate stripes slide sideways: the image splits into two offset copies interleaved together.
+3. Step through the five stripe widths by sweeping **Stripe W** slowly from minimum to maximum. Notice each discrete jump. Settle on a narrow width (around 15–25%) for the finest lenticular shimmer.
+4. Enable **Angle** (Knob 4) by turning it above minimum. The alternate stripes soften vertically, adding a subtle blur that distinguishes them from the sharp primary stripes.
+5. Toggle **Source** (Switch 9) to **Edge**. The parallax direction reverses (the "near" and "far" layers swap.)
 
-#### Knob 4 — Angle
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+#### Settings
 
-Labeled "Angle" in the TOML interface but controls the vertical shift blend in the VHDL. When this pot is above a minimum threshold (register value > 16), alternate stripes blend their shifted Y value with the previous scan line's Y value from the line buffer, creating a vertical smearing component on alternate stripes. This adds a subtle vertical motion blur to the parallax effect. Below the threshold, no vertical blending occurs.
-
----
-
-#### Knob 5 — Sharp
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Labeled "Sharp" in the TOML interface but controls the parallax depth scaling in the VHDL. When the pot is in its lower half (0–512), the selected stripe's luminance is multiplied by the pot value and right-shifted by 10 bits, attenuating the brightness. This creates a depth-fading effect where the alternate view appears dimmer, suggesting distance. When the pot is above midpoint, the view passes through at full brightness with no attenuation.
+| Control | Value |
+|---------|-------|
+| Stripe W | ~20% |
+| Shift | ~40% |
+| Views | 50% |
+| Angle | ~60% |
+| Sharp | 75% |
+| Depth | 50% |
+| Mode | Flip |
+| Direction | Vert |
+| Source | Luma |
+| Animate | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-#### Knob 6 — Depth
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+### Exercise 2: Wiggle Stereoscopy
 
-Not connected in the VHDL implementation. The register value is received but not mapped to any processing signal. The control is reserved for future use.
+![Wiggle Stereoscopy result](/img/instruments/videomancer/lenticular/lenticular_ex2_s1.png)
+*Wiggle Stereoscopy — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-### Toggle Switches (Switches 7–11)
+#### Learning Outcomes
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Mode** | Flip | Anim |
-| **8 — Direction** | Vert | Radial |
-| **9 — Source** | Luma | Edge |
-| **10 — Animate** | Off | On |
-| **11 — Bypass** | Off | On |
+A rapid-fire wiggle animation where the image jitters back and forth between two horizontally offset views, creating an impression of depth.
 
-Toggles 7, 8, and 9 each occupy a single bit in the toggle register despite having multi-value TOML labels. The TOML presents 4-option labels for Toggles 7 and 8, but the VHDL reads only 1 bit each, treating them as binary switches. Toggle 10 is declared in the TOML but not connected in the VHDL. Toggle 11 (Bypass) is at the standard bit 4 position.
+#### Key Concepts
 
----
+- Temporal alternation creates wiggle stereoscopy
+- Frame-rate flickering simulates depth perception
+- Shift distance controls the strength of the 3D illusion
 
-### Linear Potentiometer (Fader 12)
+#### Video Source
 
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
+A static camera shot of a scene with clear foreground and background elements: a tabletop with objects, a hallway, or any scene with depth.
 
-Controls the wet/dry crossfade between the original input and the processed output. At 0% the output is entirely dry (unprocessed video). At 100% the output is entirely wet (the lenticular-processed image). Intermediate values blend the two, allowing the stripe interleaving to be subtly mixed in rather than applied at full strength.
+#### Steps
 
+1. Set **Direction** (Switch 8) to **Radial** to engage temporal wiggle mode.
+2. Set **Shift** (Knob 2) to about 20%. The entire frame alternates between the original and shifted view. You should see a gentle oscillation.
+3. Increase **Shift** gradually. The oscillation grows more dramatic. Find the sweet spot where the depth illusion is strongest without becoming disorienting.
+4. Try **Mode** (Switch 7) in both **Flip** and **Anim** positions. In wiggle mode, the orientation toggle has no visible effect because the alternation is temporal, not spatial (the entire frame switches.)
+5. Pull **Mix** (Fader 12) down to about 60%. The wiggle effect softens as the dry signal bleeds through, creating a ghostly double-exposure oscillation.
 
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
+#### Settings
 
-Routes the unprocessed input signal directly to the output, bypassing all Lenticular processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises explore the lenticular effect from subtle depth shimmer to aggressive image fragmentation, building familiarity with stripe width, shift distance, and the various mode options.
-
-### Exercise 1: Holographic Shimmer
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: lenticular_source1_runner, after: lenticular_ex1_s1 },
-    { label: "Skull", before: lenticular_source2_skull, after: lenticular_ex1_s2 },
-    { label: "Elephant", before: lenticular_source3_elephant, after: lenticular_ex1_s3 },
-    { label: "Pattern", before: lenticular_source4_pattern, after: lenticular_ex1_s4 },
-    { label: "Boy", before: lenticular_source5_boy, after: lenticular_ex1_s5 },
-    { label: "Berries", before: lenticular_source6_berries, after: lenticular_ex1_s6 },
-  ]}
-/>
-*Holographic Shimmer — simulated result across source images.*
-**Source**: A portrait or close-up with a clear foreground subject and blurred background.
-
-**What You'll Create**: Create a subtle holographic shimmer that suggests depth without obvious stripe artifacts.
-
-1. **Fine stripes**: Set Stripe W to about 15% (8-pixel stripes).
-2. **Small shift**: Set Shift to about 10% (a few pixels of displacement).
-3. **Vertical orientation**: Set Mode to Flip (toggle off).
-4. **Interleave mode**: Set Direction to Vert (toggle off).
-5. **Default direction**: Set Source to Luma (toggle off).
-6. **Full depth**: Set Sharp to about 75% (above midpoint for full brightness).
-7. **No vertical blend**: Set Angle to 0%.
-8. **Mix fully wet**: Push Mix to 100%.
-9. **Observe**: The foreground subject should have a slight double-vision shimmer while the background, being out of focus, shows a soft haze.
-10. **Sweep shift**: Slowly increase Shift — watch the parallax grow from imperceptible to clearly visible.
-
-**Key concepts**: Small stripes and small shifts create a near-invisible parallax, the brain interprets horizontal displacement as depth, fine stripes are harder to resolve perceptually
+| Control | Value |
+|---------|-------|
+| Stripe W | 50% |
+| Shift | ~20% |
+| Views | 50% |
+| Angle | 0% |
+| Sharp | 75% |
+| Depth | 50% |
+| Mode | Flip |
+| Direction | Radial |
+| Source | Luma |
+| Animate | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Venetian Blind Split
+### Exercise 3: Venetian Blind Layers
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: lenticular_source1_runner, after: lenticular_ex2_s1 },
-    { label: "Skull", before: lenticular_source2_skull, after: lenticular_ex2_s2 },
-    { label: "Elephant", before: lenticular_source3_elephant, after: lenticular_ex2_s3 },
-    { label: "Pattern", before: lenticular_source4_pattern, after: lenticular_ex2_s4 },
-    { label: "Boy", before: lenticular_source5_boy, after: lenticular_ex2_s5 },
-    { label: "Berries", before: lenticular_source6_berries, after: lenticular_ex2_s6 },
-  ]}
-/>
-*Venetian Blind Split — simulated result across source images.*
-**Source**: Any high-contrast footage with horizontal and vertical detail.
+![Venetian Blind Layers result](/img/instruments/videomancer/lenticular/lenticular_ex3_s1.png)
+*Venetian Blind Layers — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Create an obvious stripe-based image split with large displacement.
+***A description of the exercise illustration.***
 
-1. **Wide stripes**: Set Stripe W to about 85% (64-pixel stripes).
-2. **Large shift**: Set Shift to about 60% (roughly 40 pixels).
-3. **Vertical stripes**: Keep Mode at Flip (toggle off).
-4. **Observe**: The image splits into alternating bands — even stripes show the current view, odd stripes show a displaced copy. It looks like peering through a venetian blind where each slat shows a different perspective.
-5. **Switch to horizontal**: Toggle Mode to on for horizontal stripes. The bands now run left to right — top and bottom halves show different views.
-6. **Flip direction**: Toggle Source on to swap which stripes show which view.
-7. **Depth dim**: Pull Sharp below 50% to dim the alternate stripes, making them recede visually.
+#### Learning Outcomes
 
-**Key concepts**: Large stripes make the interleaving visible as a graphic split, horizontal vs vertical stripe orientation rotates the effect 90 degrees, direction toggle swaps which view is primary
+A dramatic venetian-blind effect where the image is sliced into wide horizontal bands, alternating between the original and a shifted copy.
 
----
+#### Key Concepts
 
-### Exercise 3: Wiggle and Vertical Blur
+- Horizontal stripes create a venetian-blind interleave
+- Wide stripes reveal the two views as distinct layers
+- Combining orientation and shift produces a layered composite
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: lenticular_source1_runner, after: lenticular_ex3_s1 },
-    { label: "Skull", before: lenticular_source2_skull, after: lenticular_ex3_s2 },
-    { label: "Elephant", before: lenticular_source3_elephant, after: lenticular_ex3_s3 },
-    { label: "Pattern", before: lenticular_source4_pattern, after: lenticular_ex3_s4 },
-    { label: "Boy", before: lenticular_source5_boy, after: lenticular_ex3_s5 },
-    { label: "Berries", before: lenticular_source6_berries, after: lenticular_ex3_s6 },
-  ]}
-/>
-*Wiggle and Vertical Blur — simulated result across source images.*
-**Source**: Animated content or a slowly moving camera feed.
+#### Video Source
 
-**What You'll Create**: Explore temporal wiggle mode and the vertical line-buffer blend.
+Video footage with strong horizontal lines or layered compositions: cityscapes, bookshelves, a window with blinds, or any subject with interesting horizontal structure.
 
-1. **Medium stripes**: Set Stripe W to about 50% (16-pixel stripes).
-2. **Moderate shift**: Set Shift to about 30%.
-3. **Enable wiggle**: Toggle Direction on (wiggle mode).
-4. **Observe on live video**: The entire frame alternates between original and shifted views on alternate fields. On a still image, only one view is visible.
-5. **Add vertical blend**: Turn Angle to about 50%. On live video, alternate frames now blend the shifted Y with the previous line's Y, adding a vertical smear.
-6. **Switch back to interleave**: Toggle Direction off. Now the vertical blend applies to the spatially interleaved stripes, creating a combined parallax + vertical-smear texture.
-7. **Depth scaling**: Pull Sharp to about 25%. The alternate stripes dim, making the vertical-blend smear more apparent as a ghostly underlayer.
+#### Steps
 
-**Key concepts**: Wiggle mode creates temporal alternation mimicking physical card tilting, vertical blend adds line-buffer smearing to alternate views, depth scaling can dim alternate views for emphasis
+1. Set **Mode** (Switch 7) to **Anim** for horizontal stripes.
+2. Set **Stripe W** (Knob 1) between 60–80% for wide, clearly visible horizontal bands.
+3. Increase **Shift** (Knob 2) to about 50%. The alternate bands now show a noticeably displaced copy of the image. The result resembles looking through venetian blinds at a scene that has shifted sideways.
+4. Enable **Angle** (Knob 4) to add the vertical line-buffer softening. On horizontal stripes, this blurs the alternate bands slightly, making them look like they belong to a different focal plane.
+5. Lower **Sharp** (Knob 5) below 50%. The processed output darkens: the interleaved bands fade toward black while the primary bands remain at full brightness, creating a dramatic contrast between the two views.
+6. Toggle **Source** (Switch 9) to **Edge** and compare. The assignment of which bands are "primary" and "shifted" swaps.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Stripe W | ~70% |
+| Shift | ~50% |
+| Views | 50% |
+| Angle | ~60% |
+| Sharp | ~35% |
+| Depth | 50% |
+| Mode | Anim |
+| Direction | Vert |
+| Source | Luma |
+| Animate | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
-
-
-## Tips
-
-- **Wiggle mode needs live video**: On a still image, wiggle mode shows only one view (frame 0 is always even). Feed live or animated content to see the temporal flicker.
-- **Vertical blend is an on/off threshold**: The Angle pot acts as a gate — above ~1.5% it enables a 50/50 average with the previous line on alt stripes. The pot value beyond the threshold does not change the blend ratio.
-- **Direction swap mirrors depth**: Toggling Source on inverts which stripes show original vs. shifted views, effectively flipping the perceived depth direction — objects that popped out now recede.
-- **TOML labels differ from VHDL function**: Pots 3–5 and toggles 7–9 have TOML labels that describe intended features (Views, Angle, Sharp, Mode, Direction, Source) but map to different VHDL signals (transition, vert_shift, depth, orient, wiggle, direction). Trust the pot behavior description, not the label name.
-- **Feedback creates recursive parallax**: Routing the output back to the input produces an echoing lenticular effect where each pass adds another layer of horizontal displacement, building toward a kaleidoscopic fragmentation.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **Interleave** | Spatially alternating between two views stripe-by-stripe within a single frame. |
-| **Lenticular** | A printing technology using cylindrical lens arrays to create images with depth or animation effects. |
-| **Line Buffer** | A memory that stores one complete scan line for comparison or mixing with adjacent lines. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Parallax** | The apparent displacement of an object when viewed from different positions; the basis of stereoscopic depth perception. |
-| **Shift Register** | A chain of storage elements that passes data from one stage to the next on each clock cycle, providing selectable time delay. |
-| **Stereopsis** | The brain's ability to perceive depth by comparing the slightly different images received by each eye. |
-| **Wiggle** | Temporal alternation between views on successive frames, mimicking the effect of tilting a lenticular card. |
+- **Interleaving**: Arranging two or more signals in alternating segments so they occupy the same physical space; in Lenticular, alternating stripes carry different views of the same image.
+
+- **Lenticular Lens**: An array of tiny cylindrical lenses that direct light from interlaced image strips to different viewing angles, creating the illusion of motion or depth.
+
+- **Line Buffer**: A block RAM that stores one full scan line of pixel data, allowing the program to read the previous line's luminance for vertical blending.
+
+- **Parallax**: The apparent displacement of an object caused by a change in the observer's point of view; used in stereoscopy to create depth perception from flat images.
+
+- **Shift Register**: A chain of memory cells where data advances one position per clock cycle, providing a tapped delay line for horizontal pixel displacement.
+
+- **Stereoscopy**: Any technique that creates the illusion of three-dimensional depth from two-dimensional images, typically by presenting slightly different views to each eye.
+
+- **Stripe Period**: The number of pixels (or lines) in one full cycle of the alternating pattern (one primary stripe plus one alternate stripe.)
+
+- **Wiggle Stereoscopy**: A depth illusion technique where two horizontally offset images are displayed in rapid alternation, causing the brain to interpret the oscillation as depth.
 
 ---

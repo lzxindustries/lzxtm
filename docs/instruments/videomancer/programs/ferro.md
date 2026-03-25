@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 110
 slug: /instruments/videomancer/ferro
@@ -7,385 +7,433 @@ image: /img/instruments/videomancer/ferro/ferro_hero_s1.png
 description: "The cyanotype is one of the oldest photographic processes — a UV-sensitive emulsion of ferric ammonium citrate and potassium ferricyanide, coated onto paper, exposed through a negative, and developed in running water."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import ferro_control_panel from '/img/instruments/videomancer/ferro/ferro_control_panel.png';
-import ferro_source1_house from '/img/instruments/videomancer/ferro/ferro_source1_house.png';
-import ferro_source2_castle from '/img/instruments/videomancer/ferro/ferro_source2_castle.png';
-import ferro_source3_collage from '/img/instruments/videomancer/ferro/ferro_source3_collage.png';
-import ferro_source4_pattern from '/img/instruments/videomancer/ferro/ferro_source4_pattern.png';
-import ferro_source5_woman from '/img/instruments/videomancer/ferro/ferro_source5_woman.png';
-import ferro_source6_wood from '/img/instruments/videomancer/ferro/ferro_source6_wood.png';
-import ferro_hero_s1 from '/img/instruments/videomancer/ferro/ferro_hero_s1.png';
-import ferro_hero_s2 from '/img/instruments/videomancer/ferro/ferro_hero_s2.png';
-import ferro_hero_s3 from '/img/instruments/videomancer/ferro/ferro_hero_s3.png';
-import ferro_hero_s4 from '/img/instruments/videomancer/ferro/ferro_hero_s4.png';
-import ferro_hero_s5 from '/img/instruments/videomancer/ferro/ferro_hero_s5.png';
-import ferro_hero_s6 from '/img/instruments/videomancer/ferro/ferro_hero_s6.png';
-import ferro_ex1_s1 from '/img/instruments/videomancer/ferro/ferro_ex1_s1.png';
-import ferro_ex1_s2 from '/img/instruments/videomancer/ferro/ferro_ex1_s2.png';
-import ferro_ex1_s3 from '/img/instruments/videomancer/ferro/ferro_ex1_s3.png';
-import ferro_ex1_s4 from '/img/instruments/videomancer/ferro/ferro_ex1_s4.png';
-import ferro_ex1_s5 from '/img/instruments/videomancer/ferro/ferro_ex1_s5.png';
-import ferro_ex1_s6 from '/img/instruments/videomancer/ferro/ferro_ex1_s6.png';
-import ferro_ex2_s1 from '/img/instruments/videomancer/ferro/ferro_ex2_s1.png';
-import ferro_ex2_s2 from '/img/instruments/videomancer/ferro/ferro_ex2_s2.png';
-import ferro_ex2_s3 from '/img/instruments/videomancer/ferro/ferro_ex2_s3.png';
-import ferro_ex2_s4 from '/img/instruments/videomancer/ferro/ferro_ex2_s4.png';
-import ferro_ex2_s5 from '/img/instruments/videomancer/ferro/ferro_ex2_s5.png';
-import ferro_ex2_s6 from '/img/instruments/videomancer/ferro/ferro_ex2_s6.png';
-import ferro_ex3_s1 from '/img/instruments/videomancer/ferro/ferro_ex3_s1.png';
-import ferro_ex3_s2 from '/img/instruments/videomancer/ferro/ferro_ex3_s2.png';
-import ferro_ex3_s3 from '/img/instruments/videomancer/ferro/ferro_ex3_s3.png';
-import ferro_ex3_s4 from '/img/instruments/videomancer/ferro/ferro_ex3_s4.png';
-import ferro_ex3_s5 from '/img/instruments/videomancer/ferro/ferro_ex3_s5.png';
-import ferro_ex3_s6 from '/img/instruments/videomancer/ferro/ferro_ex3_s6.png';
-
-# Ferro
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: ferro_source1_house, after: ferro_hero_s1 },
-    { label: "Castle", before: ferro_source2_castle, after: ferro_hero_s2 },
-    { label: "Collage", before: ferro_source3_collage, after: ferro_hero_s3 },
-    { label: "Pattern", before: ferro_source4_pattern, after: ferro_hero_s4 },
-    { label: "Woman", before: ferro_source5_woman, after: ferro_hero_s5 },
-    { label: "Wood", before: ferro_source6_wood, after: ferro_hero_s6 },
-  ]}
-/>
-*Ferro rendering a live camera feed as a Prussian blue cyanotype contact print with paper fiber texture and edge diffusion softness.*
+![Ferro hero image](/img/instruments/videomancer/ferro/ferro_hero_s1.png)
+*Ferro transforming a live video feed into a luminous Prussian blue cyanotype contact print, complete with paper fiber texture and edge diffusion.*
 
 ---
 
 ## Overview
 
-The cyanotype is one of the oldest photographic processes — a UV-sensitive emulsion of ferric ammonium citrate and potassium ferricyanide, coated onto paper, exposed through a negative, and developed in running water. The result is a monochrome image in deep Prussian blue on a warm cream ground. Ferro simulates every stage of this chemistry in real time, processing live video as though it were being contact-printed onto sensitized paper under ultraviolet light.
+Ferro is a cyanotype contact print simulator. It converts any video input into a continuous reproduction of the historic photographic process invented by Sir John Herschel in 1842: the same process that gave us the word "blueprint." The program inverts the luminance of the input signal (as a contact print inverts a negative), applies a nonlinear contrast curve modeled on the ***Hurter–Driffield sensitometric response*** of ferric salt emulsion, maps the resulting print density to a Prussian blue color axis, and overlays paper fiber texture and edge diffusion artifacts to complete the illusion.
 
-The program inverts the input luminance (modeling the negative-to-positive contact print), applies an S-shaped contrast curve modeled on the Hurter–Driffield sensitometric response of iron-salt emulsion, maps the resulting density onto one of four toning presets (Classic Prussian Blue, Deep Blue, Tea-Toned Sepia, Wine-Toned Violet), overlays paper fiber texture from a 16-bit LFSR noise generator, and smears detail with an IIR edge diffusion filter simulating imperfect negative-to-paper contact. The name references the Latin *ferrum* (iron), the element at the heart of the cyanotype's chemistry — ferric salts reduced to ferrous Prussian blue.
+What makes Ferro special is the fidelity of its emulation. The contrast curve isn't a simple gamma: it uses a piecewise reciprocal approximation that compresses deep shadows (where the Prussian blue pigment saturates) while retaining highlight separation (where thin emulsion shows the paper base through the blue). Four selectable tone presets let you move beyond classic Prussian blue into sepia, violet, and a deeper blue based on Mike Ware's 1994 reformulated cyanotype chemistry. At low intensity, Ferro produces a subtle vintage wash. At full strength, it is a convincing digital darkroom.
 
-At default settings, Ferro produces a convincing Prussian blue cyanotype with subtle grain, gentle diffusion, and the characteristic warm cream of cotton rag paper. Pushing the controls reveals more extreme territory — bleached-out washes, dense sepia prints, violet-toned platinum palladium crossovers, and aggressive paper textures that fragment the image into fiber and noise.
+:::note
+Ferro uses zero block RAMs. The entire tone curve is computed arithmetically using a reciprocal lookup table of only eight entries, making it one of the most resource-efficient programs in the Videomancer library.
+:::
+
+### What's In a Name?
+
+The name ***Ferro*** comes from the Latin word *ferrum*, meaning iron. The cyanotype process depends on light-sensitive ***ferric*** (iron-based) salts: ferric ammonium citrate and potassium ferricyanide. When exposed to ultraviolet light, these iron compounds undergo a chemical reduction to form ***ferric ferrocyanide***: the deep blue pigment known as Prussian blue. The entire family of iron-based photographic processes is called ***siderotype***, but cyanotype artists and chemists most often use the prefix "ferro" when referring to the chemistry. It's fitting: this program is built on iron.
 
 ---
 
 ## Quick Start
 
-1. **Exposure before contrast**: Set Exposure first to place the tonal range in the H-D curve's sweet spot, then shape the curve with Contrast. Adjusting them in the opposite order requires re-tuning Exposure every time Contrast changes.
-2. **Bleach for vintage fading**: A small amount of Bleach (10–20%) simulates the look of an aged cyanotype that has faded over decades of UV exposure — paler overall with warmer shadows.
-3. **Sepia + warm paper**: The Tea-Toned Sepia preset paired with Warm paper and gentle Bleach produces a convincingly vintage look that resembles a 19th-century albumen print.
+1. Send a video signal into Videomancer with **Ferro** loaded. You should immediately see a deep blue-on-white image: the default Prussian blue preset with negative polarity, simulating a contact print from a photographic negative.
+2. Turn **Contrast** (Knob 1) slowly clockwise past the midpoint. The tonal separation increases: shadows deepen to near-indigo, and highlights brighten toward the paper white. Back it off to around 50% for a natural-looking print.
+3. Turn **Paper Grain** (Knob 2) up to about 40%. A subtle fibrous texture appears across the image, as if the emulsion were coated onto watercolor paper. The texture is most visible in midtones.
+4. Toggle **Tone A** (Switch 7) to **On** while leaving **Tone B** (Switch 8) at **Off**. The color axis shifts from classic Prussian blue to a richer, deeper blue: the Ware formula cyanotype. Now set both **Tone A** and **Tone B** to **On** to hear the color turn to a warm wine-violet. Explore all four combinations.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Ferro loaded](/img/instruments/videomancer/ferro/ferro_control_panel.png)
+*Videomancer's front panel with Ferro active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Contrast
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Contrast** controls the steepness of the sensitometric response curve: the relationship between input luminance and print density. At 0%, fully counterclockwise, the curve is nearly flat and the image appears low-contrast and foggy, as if the emulsion were underexposed. At 50%, the curve produces a natural tonal range with smooth highlight-to-shadow transitions. As the value increases beyond 50%, the curve steepens, compressing midtones and pushing the image toward stark white paper and saturated blue. At 100%, the curve is at maximum steepness, producing hard-edged, high-contrast prints reminiscent of overexposed contact prints where only the densest negative areas register.
+
+:::tip
+The contrast curve is ***not*** a simple brightness-contrast adjustment. It models the nonlinear response of light-sensitive ferric salts, so the compression happens asymmetrically: shadows saturate faster than highlights brighten. Listen to the midtones: they tell you where the curve is working.
+:::
+
+---
+
+### Knob 2 — Paper Grain
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Paper Grain** controls the amplitude of the simulated paper fiber texture. At 0%, the paper surface is perfectly smooth: a glass plate print. As the value increases, a fine noise pattern modulates the luminance, simulating the visible fibers of watercolor or rag paper as they show through the semi-transparent emulsion. The texture is generated by a ***linear feedback shift register*** (LFSR), producing a pseudo-random pattern that repeats on a very long cycle. At 100%, the paper grain is very pronounced, as if the emulsion were coated onto rough handmade paper.
+
+The texture is added to the luminance channel only, after colorization. This matches the physical reality: in a real cyanotype, the paper texture affects how much pigment sits on any given fiber, modulating brightness but not the hue of the blue.
+
+---
+
+### Knob 3 — Diffusion
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Diffusion** controls the edge diffusion amount, simulating imperfect contact between the photographic negative and the sensitized paper during UV exposure. At 0%, edges are perfectly sharp: the negative was pressed flat under heavy glass. As the value increases, density transitions soften, simulating the optical spread caused by a gap between the negative and the paper surface. At high values, the entire image takes on a dreamy, soft-focus quality, as if printed from a negative that was loosely laid on the paper.
+
+The diffusion is implemented as a single-pole ***IIR*** (infinite impulse response) lowpass filter applied horizontally to the luminance channel. The top four bits of the Diffusion parameter set the filter coefficient, producing 16 discrete levels of blur from crisp to heavily smoothed.
+
+:::note
+Diffusion is applied only to the luminance channel. The chrominance values (U and V) pass through the colorization stage without horizontal blur, which is physically accurate: in a real cyanotype, the blue hue doesn't spread laterally; only the density does.
+:::
+
+---
+
+### Knob 4 — Vignette
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Vignette** is reserved for a future update. The control is read by the program but does not currently affect the output. Adjusting this knob has no visible effect.
+
+---
+
+### Knob 5 — Bleach
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Bleach** controls the overall density fade, simulating the natural bleaching that occurs when a finished cyanotype is exposed to bright light. At 0%, fully counterclockwise, no bleaching is applied and the print retains its full density range. As the value increases, the entire image fades toward the paper base color, as if left in direct sunlight. At 100%, the blue is almost entirely bleached away, leaving a faint ghost image on the paper.
+
+Bleach operates by scaling the computed density value toward zero before colorization. This means it uniformly reduces the strength of both the luminance depression and the chrominance shift: the image fades evenly toward paper white, not toward some other color.
+
+:::tip
+***Bleaching is reversible in a real cyanotype.*** Place a bleached print in a dark drawer for a few hours and the blue regenerates. In Ferro, you can simulate this by sweeping Bleach back to zero and watching the full density return.
+:::
+
+---
+
+### Knob 6 — Exposure
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Exposure** controls the pre-inversion brightness offset, simulating the overall UV exposure time of the contact print. At 50% (the default midpoint), no offset is applied. Turning below 50% darkens the exposure: less UV light reached the paper, producing a lighter, more delicate print with reduced density. Turning above 50% brightens the exposure: more UV light reached the paper, producing a denser, more saturated print where even subtle negative areas register as blue.
+
+Exposure is applied after the polarity inversion but before the contrast curve. This means it shifts the entire tonal range up or down the curve, changing which portion of the sensitometric response is engaged. A small Exposure adjustment can dramatically change the character of the print.
+
+---
+
+### Switch 7 — Tone A
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Tone A** is the first bit of the two-bit tone preset selector. Combined with **Tone B** (Switch 8), it selects one of four cyanotype toning presets. See the Toggle Group Notes section below for the full preset table.
+
+---
+
+### Switch 8 — Tone B
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Tone B** is the second bit of the two-bit tone preset selector. Combined with **Tone A** (Switch 7), it selects one of four cyanotype toning presets. See the Toggle Group Notes section below for the full preset table.
+
+---
+
+### Switch 9 — Polarity
+
+| Property | Value |
+|----------|-------|
+| Off | Negative |
+| On | Positive |
+| Default | Negative |
+
+**Polarity** selects whether the luminance channel is inverted before processing. In the **Negative** position (default), luminance is inverted: bright areas in the input become the darkest blue on the print, and dark areas become paper white. This is how a real cyanotype contact print works: you place a photographic negative on the sensitized paper, and the transparent areas of the negative allow UV light through to form blue pigment. In the **Positive** position, luminance is not inverted: bright areas remain bright (paper white) and dark areas become blue. This simulates printing from a positive transparency, or making a direct-positive cyanotype.
+
+---
+
+### Switch 10 — Paper Color
+
+| Property | Value |
+|----------|-------|
+| Off | Warm |
+| On | Cool |
+| Default | Warm |
+
+**Paper Color** selects between two paper base tones. In the **Warm** position (default), the paper has a slight cream tint (Y=960, U=506, V=516), simulating aged or off-white watercolor paper. In the **Cool** position, the paper is a cleaner, more neutral white (Y=970, U=510, V=510), simulating modern bright-white paper stock.
+
+The paper color is most visible in highlight areas where density is low and the paper base shows through the emulsion. It also subtly affects the perceived warmth of the overall print.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Ferro processing stages. The sync delay pipeline still aligns timing, so there is no glitch when toggling. Use Bypass for instant A/B comparison between the original video and the cyanotype effect.
+
+---
+
+:::note Toggle Group Notes
+
+**Tone A** and **Tone B** together form a two-bit binary selector that chooses from four cyanotype toning presets. Each preset defines the color axis from the paper base to maximum print density:
+
+| Tone B | Tone A | Preset | Description |
+|--------|--------|--------|-------------|
+| Off | Off | Classic Prussian Blue | The standard cyanotype blue. Deep navy-indigo at maximum density, paper white at minimum. |
+| Off | On | Deep Blue (Ware) | A richer, more saturated blue based on Mike Ware's 1994 reformulated cyanotype chemistry using ammonium iron(III) oxalate. Slightly higher density range. |
+| On | Off | Tea-Toned Sepia | Warm sepia-brown tones, simulating the effect of soaking a finished cyanotype in tannic acid (black tea or coffee). The blue is chemically converted to a warm brown-black. |
+| On | On | Wine-Toned Violet | Purple-violet tones, simulating toning with anthocyanin-rich wine or grape juice. The result is a moody, reddish-purple print. |
+
+:::tip
+In a real darkroom, toning a cyanotype is irreversible: you can't un-tone a tea-stained print. In Ferro, you can switch between presets instantly. Try toggling between Classic Prussian Blue and Tea-Toned Sepia while watching how the color axis rotates through color space.
+:::
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** controls the wet/dry crossfade between the original input signal and the processed cyanotype output. At 0%, only the original (dry) signal passes through. At 100% (the default), only the processed (wet) cyanotype signal is output. Intermediate values blend between the two, allowing you to dial in a partial cyanotype wash that retains some of the original color and luminance of the input.
+
+The mix is applied independently to each channel (Y, U, and V) using three parallel interpolators. This means color blending is smooth and continuous across the entire range.
 
 ---
 
 ## Background
 
-### Anna Atkins and the Birth of the Cyanotype
+### The Cyanotype Process
 
-Sir John Herschel invented the cyanotype process in 1842, but it was Anna Atkins who first used it to create an entire illustrated book — *Photographs of British Algae: Cyanotype Impressions* (1843). Atkins placed botanical specimens directly onto sensitized paper and exposed them to sunlight, creating white silhouettes on a deep blue ground. Her work is widely considered the first book illustrated with photographic images. The cyanotype's simplicity — two chemicals, sunlight, and water — made it the first photographic process accessible outside a laboratory.
+The cyanotype is one of the oldest photographic printing processes, invented by Sir John Herschel in 1842. It uses two iron-based chemicals: ***ferric ammonium citrate*** and ***potassium ferricyanide***: coated onto paper and dried in the dark. When the coated paper is exposed to ultraviolet light through a photographic negative, the iron salts undergo a chemical reduction to form ***ferric ferrocyanide***, the insoluble pigment known as ***Prussian blue***. The unexposed areas are washed away in water, leaving a white-on-blue negative image.
 
-### Prussian Blue Chemistry
+The process was adopted commercially by Marion and Company of Paris in 1872 for reproducing architectural and engineering drawings: the original "blueprints." It remained the standard reprographic technology through the 1940s. As a fine-art medium, the cyanotype was pioneered by Anna Atkins (who used it to catalog botanical specimens in 1843) and later embraced by pictorialist photographers including Edward Steichen and Clarence White.
 
-The distinctive color of a cyanotype comes from Prussian blue (iron(III) hexacyanoferrate(II)), one of the first synthetic pigments, accidentally discovered in Berlin around 1706. During UV exposure, ferric ammonium citrate is photo-reduced from Fe³⁺ to Fe²⁺. The ferrous ions react with potassium ferricyanide to precipitate insoluble Prussian blue directly within the paper fibers. Unexposed areas wash away in water, leaving the cream-white paper base. This is why a cyanotype is always a negative process — where light strikes, blue forms; where a negative blocks light, paper remains white. Ferro models this by inverting input luminance before applying the tone curve.
+### Sensitometric Response
 
-### Hurter–Driffield Sensitometry
+Real photographic emulsions don't respond linearly to light. The relationship between exposure and density follows a characteristic ***S-curve*** described by Hurter and Driffield in 1890. The toe of the curve (low exposure) rises slowly: the emulsion needs a threshold of UV energy before pigment begins to form. The straight-line section (mid-exposure) is roughly linear. The shoulder (high exposure) saturates: beyond a certain point, adding more light produces no additional density.
 
-Ferdinand Hurter and Vero Charles Driffield published their landmark paper on photographic sensitometry in 1890, establishing the characteristic S-shaped curve that describes how photographic emulsions respond to light. The curve has three regions: a *toe* (shadow compression where exposure barely registers), a *straight-line* section (proportional density increase in the midtones), and a *shoulder* (highlight saturation where increased exposure produces diminishing density gains). Ferro models this response with a piecewise soft-clip function — `512 + (centered × (contrast_k + 512)) / (|centered| + 512)` — that compresses shadows and highlights while separating midtones. The Contrast control adjusts the steepness of this curve, corresponding to the *gamma* (slope of the straight-line section) of the emulsion.
+Ferro models this response with a piecewise reciprocal approximation. The contrast parameter shifts the curve's steepness, changing where the toe and shoulder fall relative to the input signal. This is more physically accurate than a simple gamma curve or a linear contrast control, and it explains why Ferro's contrast feels different from the contrast control on other programs.
 
-### Contact Printing and Edge Diffusion
+### Toning Chemistry
 
-In contact printing, the negative is placed directly against the sensitized paper and pressed flat in a printing frame. Any gap between negative and paper causes UV light to scatter laterally, creating soft, diffused edges — an effect distinctive to contact prints versus enlarger-projected prints. The diffusion is most visible around high-contrast edges: fine lines blur, text softens, and hard boundaries acquire a gentle halo. Ferro simulates this with a first-order IIR lowpass filter on the luminance channel, where the filter coefficient is controlled by the Diffusion knob. At zero the image is pixel-sharp; at full the image smears horizontally like a slightly out-of-contact print.
+A finished cyanotype can be ***toned*** by soaking it in various chemical solutions that react with the Prussian blue pigment. Tannic acid (found in black tea and coffee) converts the blue to warm sepia-brown through a chemical substitution reaction. Anthocyanins (found in red wine and grape juice) shift the blue toward violet-purple. Mike Ware's 1994 reformulated "new cyanotype" chemistry uses ammonium iron(III) oxalate instead of ferric ammonium citrate, producing a deeper, richer blue with higher maximum density and better archival stability.
 
-### Paper Fiber Texture in Printmaking
-
-Fine-art photographic prints are made on paper with visible fiber texture — cotton rag, kozo, or gampi. The paper surface is not perfectly flat; its woven or felted structure modulates the density of the printed image at a fine scale. In cyanotype printing, the emulsion soaks into the paper fibers, so the image literally *is* the paper — every fiber shows through. Ferro adds this texture with a 16-bit LFSR pseudo-random noise generator, scaled by the Paper Grain control. At low levels it creates a subtle organic texture; at high levels the paper itself becomes the dominant visual element.
+Ferro's four tone presets model these real chemical variations by defining different color axes (different YUV deltas from the paper base to maximum density) for each toning bath.
 
 
 ---
 
 ## Signal Flow
 
-Y Channel → U Channel → V Channel → ... → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 1. Polarity Inversion     (1023 - Y for negative contact print)
-│   ├─ 1. Exposure Offset        (± 512 centered shift)
-│   ├─ 2. H-D Contrast Curve     (S-curve: shadow compress, midtone sep)
-│   ├─ 3. Density-to-Color Y     (paper_y - range_y × density / 1024)
-│   ├─ 3. Bleach                  (density × (1023 - bleach) / 1024)
-│   ├─ 4. IIR Edge Diffusion     (lowpass: α × prev + (16 - α) × curr)
-│   ├─ 4. Paper Fiber Noise      (LFSR bipolar ±32, scaled by grain)
-│   └─ 5. Wet/Dry Mix Y          (interpolator_u, 4 clocks)
-│
-├── U Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 3. Density-to-Color U     (paper_u + delta_u × density / 1024)
-│   └─ 5. Wet/Dry Mix U          (interpolator_u, 4 clocks)
-│
-├── V Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 3. Density-to-Color V     (paper_v + delta_v × density / 1024)
-│   └─ 5. Wet/Dry Mix V          (interpolator_u, 4 clocks)
-│
-├── Tone Preset (2-bit selector) ───────────────────────────────
-│   ├─ 00: Classic Prussian Blue  (range=880, Δu=+125, Δv=−140)
-│   ├─ 01: Deep Blue (Ware)       (range=900, Δu=+150, Δv=−155)
-│   ├─ 10: Tea-Toned Sepia        (range=850, Δu=−60,  Δv=+80)
-│   └─ 11: Wine-Toned Violet      (range=860, Δu=+90,  Δv=+70)
-│
-├── Paper Base Color ───────────────────────────────────────────
-│   ├─ Warm: Y=960, U=506, V=516 (cream cotton rag)
-│   └─ Cool: Y=970, U=510, V=510 (bright white)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ Pass-through (hsync, vsync, field — 8-clock delay)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The processing chain has two key interactions to understand:
 
-The critical interaction in Ferro's pipeline is the relationship between density and color. After inversion and contrast shaping, the single-channel density value fans out into all three YUV channels simultaneously — Y decreases from the paper base toward black, while U and V shift from neutral paper tones toward the selected Prussian blue (or toned) target. This means the Contrast control does not just affect brightness — it reshapes the entire color mapping by changing which density values fall in the toe, midtone, and shoulder regions of the H-D curve. The Bleach control acts as a density multiplier applied *before* the color mapping, so it fades the image toward paper white while preserving the tonal character of whatever density remains.
+1. **Exposure before contrast**: The exposure offset is applied to the (possibly inverted) luminance ***before*** the reciprocal contrast curve. This means exposure doesn't simply brighten or darken the result: it shifts the signal's position on the S-curve, changing which part of the sensitometric response is engaged. A small exposure change can have a large effect when the signal sits near the toe or shoulder of the curve.
 
-Edge diffusion and paper texture operate only on the Y channel after colorization. This matches the physics of the real process: the emulsion diffusion and paper fiber modulation are spatial phenomena that affect density uniformly, not chromaticity. The U and V channels pass through the colorization stage but are not filtered or textured, preserving clean Prussian blue hue even at high diffusion or grain settings.
+2. **Bleach after contrast, before color**: Bleach is applied to the density value after the contrast curve computes it but before the density is mapped to the Prussian blue color axis. This ensures the fade is physically consistent: bleaching reduces Prussian blue pigment uniformly, not selectively by tone.
 
----
-
-## Parameter Reference
-
-<img src={ferro_control_panel} alt="Videomancer front panel with Ferro loaded"/>
-*Videomancer's front panel with Ferro active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Contrast
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Controls the steepness of the Hurter–Driffield sensitometric contrast curve. At the midpoint, the curve provides moderate separation between shadow and highlight densities with natural-looking midtone gradation. Turning counter-clockwise flattens the curve toward a linear response — shadows and highlights compress less, producing a lower-contrast print with more visible detail in the extremes. Turning clockwise steepens the S-curve, crushing shadows and blowing highlights while increasing midtone separation. At maximum, the response approaches a hard threshold — pixels snap to either paper-white or full-density blue with little midtone.
-
----
-
-#### Knob 2 — Paper Grain
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-At zero the print surface is perfectly smooth. As you increase this control, fine-grained bipolar noise modulates the density, simulating the visible fiber structure of cotton rag paper. At moderate values the texture is subtle and organic, adding the visual warmth of a real handmade print. At high values the noise becomes the dominant signal, breaking the image into a field of luminance speckle that obscures the underlying content. Internally, scales the amplitude of the LFSR paper fiber noise applied to the luminance channel after colorization and diffusion.
-
----
-
-#### Knob 3 — Diffusion
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-At zero the filter coefficient (alpha) is zero — no blending with the previous pixel, yielding a sharp image. As you increase the control, alpha grows from 0 toward 15/16, causing each output pixel to blend more heavily with its horizontal predecessor. The effect is a directional smear that softens edges and bleeds detail in the scan direction, closely mimicking the lateral light scatter seen in real contact prints with poor negative-to-paper registration. Internally, controls the IIR lowpass filter coefficient for horizontal edge diffusion, simulating imperfect contact between negative and paper during UV exposure.
-
----
-
-#### Knob 4 — Vignette
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-Labeled Vignette in the control interface, this parameter is reserved in the current VHDL implementation — the register is mapped but not connected to any processing stage. Adjusting this control has no visible effect on the output. It is included for future firmware revisions that may add a UV exposure falloff simulation.
-
----
-
-#### Knob 5 — Bleach
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-Reduces the overall print density by multiplying the post-curve density value with `(1023 - bleach) / 1024`. At zero the full density is preserved. Increasing Bleach fades the entire tonal range toward the paper base color, simulating the chemical bleaching step used in alternative process printing to lighten an overexposed cyanotype. At maximum the density is multiplied by near-zero, producing an almost blank paper-white image with only the faintest trace of blue (or toning color) in the deepest shadows.
-
----
-
-#### Knob 6 — Exposure
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Applies a brightness offset to the input luminance before contrast shaping. The offset is centered at the register midpoint (512): at midpoint, no offset is applied. Turning counter-clockwise subtracts from the inverted luminance, making the print darker (as though the UV exposure time were reduced). Turning clockwise adds to the luminance, brightening the print (longer exposure). This control interacts strongly with Contrast — shifting the input into the toe or shoulder of the H-D curve before the S-shape is applied changes which parts of the tonal range get compressed.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Tone A** | Off | On |
-| **8 — Tone B** | Off | On |
-| **9 — Polarity** | Negative | Positive |
-| **10 — Paper Color** | Warm | Cool |
-| **11 — Bypass** | Off | On |
-
-Toggles 7 and 8 form a 2-bit tone preset selector (4 combinations), controlling the Prussian blue or alternative toning color applied during the density-to-YUV colorization stage. Toggle 9 selects negative (contact print) or positive (direct print) polarity. Toggle 10 chooses between warm cream and cool white paper base colors. Toggle 11 is the global bypass.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Ferro processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
-
----
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Ferro-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::tip
+**Diffusion is Y-only.** The IIR lowpass filter that simulates contact edge diffusion operates exclusively on the luminance channel. The U and V chrominance channels receive their colorized values directly from the density-to-color mapping without any horizontal blur. This is physically accurate: in a real cyanotype, the pigment density blurs at imperfect contact boundaries, but the hue of Prussian blue doesn't change just because the edge is soft.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from a basic Prussian blue cyanotype to toned and textured alternative-process prints. Each builds on the previous, gradually engaging more of the processing chain.
+These exercises progress from a simple contact print to advanced toning and texture techniques, building familiarity with every control on the panel.
+### Exercise 1: Classic Blueprint
 
-### Exercise 1: Classic Prussian Blue Cyanotype
+![Classic Blueprint result](/img/instruments/videomancer/ferro/ferro_ex1_s1.png)
+*Classic Blueprint — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: ferro_source1_house, after: ferro_ex1_s1 },
-    { label: "Castle", before: ferro_source2_castle, after: ferro_ex1_s2 },
-    { label: "Collage", before: ferro_source3_collage, after: ferro_ex1_s3 },
-    { label: "Pattern", before: ferro_source4_pattern, after: ferro_ex1_s4 },
-    { label: "Woman", before: ferro_source5_woman, after: ferro_ex1_s5 },
-    { label: "Wood", before: ferro_source6_wood, after: ferro_ex1_s6 },
-  ]}
-/>
-*Classic Prussian Blue Cyanotype — simulated result across source images.*
-**Source**: A well-lit portrait or still life with recognizable subjects and a wide tonal range — skin tones, fabric, and shadow areas work well.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Create a convincing traditional cyanotype contact print with natural tonality and subtle paper texture.
+#### Learning Outcomes
 
-1. **Default tone**: With Tone A and Tone B both off, the Classic Prussian Blue preset is active. Observe the Prussian blue rendering of the source.
-2. **Exposure**: Sweep Exposure from minimum to maximum. Watch the print darken (under-exposure) and lighten (over-exposure). Return to the midpoint for balanced density.
-3. **Contrast**: Increase Contrast to about 60%. Midtones separate more distinctly while shadows and highlights compress — the signature S-curve of a photographic emulsion.
-4. **Paper grain**: Increase Paper Grain to about 30%. Subtle fiber texture appears across the image, most visible in midtone areas.
-5. **Diffusion**: Increase Diffusion to about 25%. Edges soften slightly, simulating imperfect negative-to-paper contact.
-6. **A/B compare**: Toggle Bypass on and off to compare the cyanotype rendering against the original color feed.
+A convincing Prussian blue cyanotype print: the classic blueprint look: with subtle paper texture.
 
-**Key concepts**: Negative inversion is the foundation of contact printing, the H-D curve shapes photographic tonality, paper grain adds organic texture to a digital image
+#### Key Concepts
+
+- Negative polarity inverts luminance to simulate contact printing
+- The contrast curve models the nonlinear response of ferric salt emulsion
+- Paper grain adds physical texture to the digital print
+
+#### Video Source
+
+A live camera feed or recorded footage with clear subject-background separation and a range of tonal values.
+
+#### Steps
+
+1. **Default print**: With Ferro loaded at default settings, observe the deep blue-on-white image. The input luminance is inverted (negative polarity), so bright areas in the source become the darkest blue.
+2. **Adjust exposure**: Turn **Exposure** (Knob 6) slowly clockwise. The overall print darkens: more of the paper is exposed to UV. Back it off until highlight details just begin to emerge from the paper white.
+3. **Set contrast**: Increase **Contrast** (Knob 1) until the tonal range feels natural: shadows are deep indigo, highlights are clean paper, and midtones have smooth gradation.
+4. **Add paper grain**: Turn **Paper Grain** (Knob 2) up to about 30%. A fibrous texture appears in the midtones, as if the emulsion is showing the paper surface beneath.
+5. **Add edge diffusion**: Turn **Diffusion** (Knob 3) to around 25%. Density transitions soften slightly, as if the negative wasn't pressed perfectly flat against the paper.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Contrast | ~60% |
+| Paper Grain | ~30% |
+| Diffusion | ~25% |
+| Vignette | 0% |
+| Bleach | 0% |
+| Exposure | ~55% |
+| Tone A | Off |
+| Tone B | Off |
+| Polarity | Negative |
+| Paper Color | Warm |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
 ### Exercise 2: Tea-Toned Sepia Print
 
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: ferro_source1_house, after: ferro_ex2_s1 },
-    { label: "Castle", before: ferro_source2_castle, after: ferro_ex2_s2 },
-    { label: "Collage", before: ferro_source3_collage, after: ferro_ex2_s3 },
-    { label: "Pattern", before: ferro_source4_pattern, after: ferro_ex2_s4 },
-    { label: "Woman", before: ferro_source5_woman, after: ferro_ex2_s5 },
-    { label: "Wood", before: ferro_source6_wood, after: ferro_ex2_s6 },
-  ]}
-/>
+![Tea-Toned Sepia Print result](/img/instruments/videomancer/ferro/ferro_ex2_s1.png)
 *Tea-Toned Sepia Print — simulated result across source images.*
-**Source**: Landscape footage with trees, water, or architecture — subjects that suit warm-toned vintage aesthetics.
+#### Exercise Illustration
 
-**What You'll Create**: Explore toning presets and bleach to create a sepia-toned alternative-process print.
+***A description of the exercise illustration.***
 
-1. **Select sepia tone**: Set Tone B on and Tone A off to activate the Tea-Toned Sepia preset. The blue shifts to a warm brown.
-2. **Reduce contrast**: Set Contrast to about 40%. Tea-toned prints historically have a softer, lower-contrast look than Prussian blue cyanotypes.
-3. **Bleach**: Increase Bleach to about 30%. The density lightens, simulating a tannin-bleached print. Shadows retain some color while highlights push toward paper white.
-4. **Warm paper**: Ensure Paper Color is set to Warm. The warm cream base reinforces the vintage sepia aesthetic.
-5. **Add grain**: Set Paper Grain to about 40% to simulate rough handmade paper.
-6. **Compare blue vs sepia**: Toggle Tone B off and on to compare Prussian blue against sepia side by side.
+#### Learning Outcomes
 
-**Key concepts**: Toning changes the chemical composition of the image deposit, bleach reduces density before colorization, paper color affects the entire tonal range
+A warm sepia-toned cyanotype print that looks as if it was soaked in a bath of strong black tea, with gentle bleaching to simulate age.
 
----
+#### Key Concepts
 
-### Exercise 3: Extreme Texture and Diffusion
+- Tone presets change the color axis from paper base to maximum density
+- Bleach fades density toward the paper base regardless of the tone preset
+- Paper Color subtly affects the highlight warmth
 
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: ferro_source1_house, after: ferro_ex3_s1 },
-    { label: "Castle", before: ferro_source2_castle, after: ferro_ex3_s2 },
-    { label: "Collage", before: ferro_source3_collage, after: ferro_ex3_s3 },
-    { label: "Pattern", before: ferro_source4_pattern, after: ferro_ex3_s4 },
-    { label: "Woman", before: ferro_source5_woman, after: ferro_ex3_s5 },
-    { label: "Wood", before: ferro_source6_wood, after: ferro_ex3_s6 },
-  ]}
-/>
-*Extreme Texture and Diffusion — simulated result across source images.*
-**Source**: High-contrast graphic material — text overlays, geometric patterns, or footage with strong edges.
+#### Video Source
 
-**What You'll Create**: Push the diffusion and grain controls to their limits to deconstruct the image into abstract texture.
+Portrait footage or still-life scenes with rich midtone detail.
 
-1. **Maximum diffusion**: Set Diffusion to about 80%. The image smears heavily in the horizontal direction — fine detail dissolves into broad tonal washes.
-2. **Heavy grain**: Set Paper Grain to about 75%. The noise dominates — the image becomes a dense field of fiber-like texture with only broad tonal shapes recognizable from the source.
-3. **Deep blue**: Set both Tone A on and Tone B off for the Deep Blue (Ware) preset. The saturated blue works well with extreme textures.
-4. **High contrast**: Set Contrast to about 80%. The S-curve clips most of the smeared tonal range into either paper-white or full-density blue, creating a stark graphic effect.
-5. **Positive polarity**: Toggle Polarity to Positive. The tonality inverts — areas that were blue become white, and vice versa.
-6. **Partial mix**: Set Mix to about 50% to see the original half-ghosted behind the extreme cyanotype texture.
+#### Steps
 
-**Key concepts**: IIR diffusion accumulates across the scanline, high grain makes the LFSR noise the primary visual element, positive polarity reverses the contact print metaphor
+1. **Start from classic**: Begin with the settings from Exercise 1.
+2. **Enable tea toning**: Set **Tone B** (Switch 8) to **On** and leave **Tone A** (Switch 7) at **Off**. The Prussian blue transforms to warm sepia-brown.
+3. **Warm the paper**: Ensure **Paper Color** (Switch 10) is set to **Warm**. The paper has a cream tint that complements the sepia tone.
+4. **Add light bleaching**: Turn **Bleach** (Knob 5) to about 30%. The overall density fades, as if the print has been sitting near a sunny window for a few weeks. The deepest shadows lighten to a warm brown, and the highlights become almost pure paper.
+5. **Increase paper grain**: Raise **Paper Grain** (Knob 2) to about 50%. The rougher texture emphasizes the handmade quality.
+6. **Compare**: Toggle **Bypass** (Switch 11) to compare the sepia print with the original video. Toggle it back off and adjust **Mix** (Fader 12) to about 70% to blend some of the original color back through the sepia wash.
 
----
+#### Settings
 
-
-## Tips
-
-- **Grain reveals paper**: Paper Grain is most visible in midtone regions. In deep shadows and pure highlights the noise is clipped, so it disappears at the extremes of the tonal range.
-- **Diffusion is directional**: The IIR filter smears left-to-right only (following the scan direction). Vertical detail is not affected. For a more uniform softness, combine Diffusion with moderate Paper Grain.
-- **Positive polarity for solarization**: Switching to Positive polarity while keeping all other settings at cyanotype defaults produces a solarized-negative appearance — an eerie reversal where bright sky becomes deep blue and dark shadows become paper-white.
-- **Mix for subtle tinting**: Use Mix at 10–30% to add a faint Prussian blue tonality over an otherwise clean video signal — useful as a color grading tool rather than a full-process simulation.
-- **Vignette is reserved**: The Vignette knob is mapped but unimplemented in the current firmware. Adjusting it has no effect.
+| Control | Value |
+|---------|-------|
+| Contrast | ~40% |
+| Paper Grain | ~50% |
+| Diffusion | ~20% |
+| Vignette | 0% |
+| Bleach | ~30% |
+| Exposure | ~50% |
+| Tone A | Off |
+| Tone B | On |
+| Polarity | Negative |
+| Paper Color | Warm |
+| Bypass | Off |
+| Mix | ~70% |
 
 ---
 
+### Exercise 3: Extreme Texture Positive
+
+![Extreme Texture Positive result](/img/instruments/videomancer/ferro/ferro_ex3_s1.png)
+*Extreme Texture Positive — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+An abstract, heavily textured image using positive polarity and wine-toned violet, maximizing the physical artifacts for an expressive, painterly result.
+
+#### Key Concepts
+
+- Positive polarity bypasses the luminance inversion for a direct-print look
+- High paper grain and diffusion combine for heavily textured results
+- Cool paper with wine-violet toning creates an unusual color palette
+
+#### Video Source
+
+High-contrast footage with strong geometric shapes (architecture, silhouettes, or abstract patterns.)
+
+#### Steps
+
+1. **Switch to positive**: Set **Polarity** (Switch 9) to **Positive**. Bright areas remain bright and dark areas become the densest color. The image no longer looks like a contact print negative.
+2. **Set wine-violet tone**: Enable both **Tone A** (Switch 7) and **Tone B** (Switch 8) to select the wine-toned violet preset. The color axis shifts to a moody purple.
+3. **Cool paper**: Set **Paper Color** (Switch 10) to **Cool**. The neutral white paper creates a starker contrast against the violet tones.
+4. **Crank the contrast**: Push **Contrast** (Knob 1) to about 80%. The sensitometric curve steepens, producing hard transitions between paper white and saturated violet.
+5. **Heavy texture**: Set **Paper Grain** (Knob 2) to about 75% and **Diffusion** (Knob 3) to about 80%. The image becomes dreamy and rough, as if printed on coarse handmade paper from a negative held several inches away.
+6. **Half mix**: Set **Mix** (Fader 12) to about 50%. The heavily textured violet print blends with the original video, creating a ghostly overlay where the source content shows through the paper texture.
+7. **Animate exposure**: Slowly sweep **Exposure** (Knob 6) from 0% to 100% while watching how the tonal range slides along the contrast curve.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Contrast | ~80% |
+| Paper Grain | ~75% |
+| Diffusion | ~80% |
+| Vignette | 0% |
+| Bleach | 0% |
+| Exposure | ~50% |
+| Tone A | On |
+| Tone B | On |
+| Polarity | Positive |
+| Paper Color | Cool |
+| Bypass | Off |
+| Mix | ~50% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **BT.601** | ITU-R Recommendation BT.601; the color encoding standard used for standard-definition video, defining the YUV matrix coefficients used throughout Videomancer. |
-| **Contact Print** | A photographic print made by placing a negative in direct contact with sensitized paper and exposing to light, producing a 1:1 scale positive image. |
-| **Cyanotype** | A photographic printing process using iron salts that produces images in Prussian blue; invented by Sir John Herschel in 1842. |
-| **Density** | The opacity of a photographic image; higher density means less light transmission (darker print area). |
-| **H-D Curve** | Hurter–Driffield characteristic curve; the S-shaped relationship between log exposure and resulting density in a photographic emulsion. |
-| **IIR** | Infinite Impulse Response; a filter topology where each output sample depends on previous output samples, creating a recursive feedback loop. |
-| **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator using XOR feedback taps. |
-| **Prussian Blue** | Iron(III) hexacyanoferrate(II); the deep blue pigment formed during cyanotype development. |
-| **Sensitometry** | The science of measuring photographic materials' response to light exposure; the basis of the H-D curve. |
-| **Toning** | A post-processing step that chemically alters the color of a photographic print, converting the image substance to a different compound (e.g., sepia, selenium, gold). |
+- **Bleaching**: The fading of Prussian blue pigment when exposed to strong visible light; in a real cyanotype, the effect is partially reversible with dark storage.
+
+- **Contact Print**: A photographic print made by placing a negative directly against sensitized paper and exposing it to light, producing a 1:1 scale print without an enlarger.
+
+- **Cyanotype**: An iron-based photographic printing process that produces images in Prussian blue, invented by Sir John Herschel in 1842.
+
+- **Diffusion**: The optical spreading of light at the boundary between a negative and the sensitized paper surface; imperfect contact causes soft, blurred edges.
+
+- **Hurter–Driffield Curve**: The characteristic S-shaped curve describing the relationship between exposure and density in a photographic emulsion; also called the H&D curve or D-log E curve.
+
+- **IIR Filter**: An infinite impulse response filter, a type of digital filter where the output depends on both current input and previous output values, creating a feedback-based smoothing effect.
+
+- **LFSR**: A linear feedback shift register, a shift register that generates a long cycle of pseudo-random bits by feeding back selected tap XOR combinations.
+
+- **Prussian Blue**: The pigment ferric ferrocyanide (Fe₄[Fe(CN)₆]₃), the insoluble blue compound formed by the cyanotype chemical reaction.
+
+- **Sensitometric Response**: The measured relationship between the amount of light energy applied to a photographic emulsion and the resulting optical density.
+
+- **Toning**: A post-processing step where a finished cyanotype is soaked in a chemical bath (tea, wine, etc.) to alter the color of the Prussian blue pigment through chemical substitution.
 
 ---

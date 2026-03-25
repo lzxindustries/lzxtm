@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 67
 slug: /instruments/videomancer/coral
@@ -7,318 +7,401 @@ image: /img/instruments/videomancer/coral/coral_hero.png
 description: "Coral simulates the vertical growth of a reef structure from the edge of the frame."
 ---
 
-import coral_hero from '/img/instruments/videomancer/coral/coral_hero.png';
-import coral_animation from '/img/instruments/videomancer/coral/coral_animation.gif';
-import coral_control_panel from '/img/instruments/videomancer/coral/coral_control_panel.png';
-import coral_exercise1_result from '/img/instruments/videomancer/coral/coral_exercise1_result.gif';
-import coral_exercise2_result from '/img/instruments/videomancer/coral/coral_exercise2_result.gif';
-import coral_exercise3_result from '/img/instruments/videomancer/coral/coral_exercise3_result.gif';
-
-# Coral
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={coral_hero} alt="Coral hero image"/>
-*Eight branching coral columns growing upward from the screen floor, their LFSR-driven splits propagating organic structure through a depth-shaded reef rendered in warm living color.*
-<img src={coral_animation} alt="Coral animated output"/>
-*Coral output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Coral hero image](/img/instruments/videomancer/coral/coral_hero_s1.png)
+*Glowing coral colonies rising from the screen edge, branching and splitting as LFSR-driven growth fills the frame with organic structure.*
 
 ---
 
 ## Overview
 
-Coral simulates the vertical growth of a reef structure from the edge of the frame. Eight branch columns emerge from the bottom of the screen and climb upward at a configurable speed. An LFSR pseudo-random generator triggers probabilistic splits that transfer growth energy to neighboring columns, producing the branching, fractal-like silhouettes characteristic of real coral formations. The result is a slowly materializing reef that fills the frame from the ground up — a living architecture generated entirely from arithmetic.
+**Coral** is a generative program that grows branching reef structures from the edge of the screen. Four vertical columns extend frame by frame toward the opposite edge, and a pseudorandom number generator triggers ***splits*** that transfer growth energy between neighboring branches. The result is an ever-expanding network of coral-like bands whose shape is governed by chance and a handful of controls.
 
-The name refers directly to the marine invertebrates of order Scleractinia that build calcium carbonate skeletons over decades, creating the largest biological structures on Earth. In the program's domain, each of the eight columns is a discrete growth front whose height accumulates frame by frame. When the LFSR fires a split event, a quarter of a source column's height is donated to an adjacent column, simulating the lateral branching that gives real coral its characteristic tree-like morphology. A depth-based color gradient darkens the base of each column relative to its tip, mimicking the natural light attenuation that occurs as sunlight penetrates water — branches near the surface are bright, while the reef's foundation fades into shadow.
+Because Coral overlays its synthesized structures on whatever video signal is passing through the chain, feeding it interesting source material creates layered composites. At low growth speeds, the reef emerges slowly: a single branch creeping upward one pixel at a time. At high speeds, the entire screen can fill with coral in seconds, completely overtaking the source image.
 
-Growth speed, branch thickness, column spacing, split probability, overlay intensity, and gradient strength are all continuously adjustable. At low growth speeds the reef builds slowly and deliberately; at maximum speed the columns race to fill the screen within seconds. The direction toggle flips the growth origin from bottom to top, and the color mode switches between warm coral hues and cool deep-water blues.
+:::tip
+Coral is classified as a ***synthesis*** program: the reef structures are generated entirely inside the FPGA, not derived from the input video. The input signal is still visible wherever coral hasn't grown.
+:::
+
+### What's In a Name?
+
+***Coral*** takes its name directly from the marine organism. Coral reefs grow by depositing hard mineral structure over time, branching outward and splitting into new colonies when conditions are right. This program models that behavior: vertical branches extend from an origin edge, an LFSR decides when and where to split, and a depth-based color gradient darkens the roots (just as living coral darkens in deeper water.)
 
 ---
 
 ## Quick Start
 
-1. **Reset for synchronized starts**: Toggle Current before a performance segment to guarantee all branches begin growing from zero simultaneously. This produces a clean, repeatable growth animation.
-2. **Low Split Rate for architectural regularity**: With Split Rate near zero, all eight columns grow uniformly, creating a symmetric colonnade. This clean geometry works well as a compositional grid element.
-3. **High Split Rate for organic chaos**: At maximum split probability, the canopy becomes wildly uneven — some columns saturate at full screen height while others remain stunted. This turbulent growth pattern most closely resembles real coral reef morphology.
+1. With all controls at their defaults, watch the four coral branches grow upward from the bottom of the screen. Growth is continuous and automatic (the reef is already alive.)
+2. Turn **Branch D** (Knob 2) counterclockwise and then clockwise. The branches become thinner or wider, changing the weight of each column.
+3. Sweep **Color Grd** (Knob 4) from minimum to maximum. The roots of each branch darken progressively, adding depth to the structure.
+4. Flip **Palette** (Toggle 8) to **Neon**. The warm orange-pink coral shifts to a cool blue. Flip **Species** (Toggle 7) to **Pillar** and the reef inverts, growing downward from the top of the screen.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Coral loaded](/img/instruments/videomancer/coral/coral_control_panel.png)
+*Videomancer's front panel with Coral active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Grow Spd
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Grow Spd** sets the vertical growth rate: how many pixels each branch extends per video frame. At the lowest setting the reef creeps upward one pixel at a time, giving you a long, contemplative growth sequence. As you turn the knob clockwise, branches accelerate, and the screen fills with coral much more quickly.
+
+Because growth is clamped to the visible height of the screen, even the fastest setting cannot cause branches to overshoot. Once a branch reaches the opposite edge it simply stops elongating, and the reef holds its shape until you trigger a reset.
+
+---
+
+### Knob 2 — Branch D
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Branch D** controls the horizontal diameter of each coral column. At minimum, branches are thin two-pixel lines. Turning the knob clockwise widens them into broad bands up to about thirty pixels across. Wider branches overlap sooner when spacing is tight, merging into a solid curtain of color.
+
+:::note
+Branch diameter is uniform across all four columns. There is no per-branch width control (the entire reef shares one thickness setting.)
+:::
+
+---
+
+### Knob 3 — Branch Th
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Branch Th** governs the horizontal spacing between coral columns. At low values the four branches cluster tightly together at the left side of the screen. As you increase the knob, the columns spread apart, pushing the rightmost branches further across the frame. At extreme settings only one or two branches remain visible on screen while the rest drift off the right edge.
+
+Think of this as a ***thinning*** control: higher values thin out the visible reef by spreading branches apart, while lower values pack them densely together.
+
+---
+
+### Knob 4 — Color Grd
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Color Grd** adjusts the strength of the depth-based color gradient that darkens branches near their root. At the lowest setting, the gradient is very subtle: branches appear nearly uniform in brightness from root to tip. As you increase the knob, the darkening near the origin edge becomes more pronounced, creating a sense of depth: roots recede into shadow while tips glow brightly.
+
+The gradient operates in four discrete strength levels, so you will notice distinct steps as you sweep the knob rather than a perfectly smooth transition.
+
+:::tip
+Combine a strong gradient with low **Grow Spd** to watch the shading develop slowly as each branch extends. The tip stays bright while the root behind it gradually falls into shadow.
+:::
+
+---
+
+### Knob 5 — Max Hght
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Max Hght** controls how frequently branches split and transfer growth energy to their neighbors. At minimum, splits are extremely rare and each branch grows independently in a straight column. As you increase the knob, the LFSR-based split mechanism fires more often: a randomly chosen branch donates a quarter of its accumulated height to an adjacent column, accelerating that neighbor's growth.
+
+At high settings, splits happen nearly every frame, creating a cascade of shared growth that fills the screen rapidly. The visual result is that branches appear to race each other: one surges ahead, splits its energy sideways, and the neighbor catches up.
+
+---
+
+### Knob 6 — Angle Sp
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Angle Sp** determines the opacity of the coral overlay where it covers the source video. Below the halfway point, coral pixels are blended fifty-fifty with the underlying source, producing a translucent reef through which the input image remains clearly visible. Above the halfway point, coral pixels completely replace the source, producing fully opaque branches.
+
+:::note
+This control behaves as a binary threshold, not a smooth crossfade. You will see a distinct shift at the midpoint rather than a gradual change in transparency.
+:::
+
+---
+
+### Switch 7 — Species
+
+| Property | Value |
+|----------|-------|
+| Off | Staghorn |
+| On | Pillar |
+| Default | Staghorn |
+
+**Species** sets the growth direction. In the **Staghorn** position, branches grow upward from the bottom of the screen: like the upward-reaching arms of ***staghorn coral***. In the **Pillar** position, branches grow downward from the top, resembling stalactites or inverted pillar formations. The depth gradient adjusts automatically: roots are always at the origin edge and tips always at the growing end.
+
+---
+
+### Switch 8 — Palette
+
+| Property | Value |
+|----------|-------|
+| Off | Reef |
+| On | Neon |
+| Default | Reef |
+
+**Palette** selects between two color schemes. **Reef** renders branches in warm coral tones: a bright orange-pink luma with reddish chroma: reminiscent of shallow tropical reefs. **Neon** switches to cool blue tones, evoking deep-water bioluminescence. Both palettes are affected by the **Color Grd** depth gradient.
+
+---
+
+### Switch 9 — Current
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Current** triggers a branch reset. When you flip this toggle from Off to On, all four branches are cleared to zero height and the reef begins growing again from scratch. This is an ***edge-triggered*** action: only the transition from Off to On causes a reset. Leaving the toggle in the On position does not continuously reset.
+
+:::warning
+Resetting during a performance erases the entire reef instantly. There is no undo (growth must start over from the origin edge.)
+:::
+
+---
+
+### Switch 10 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Animate** is reserved for future use. In the current implementation, growth is always active regardless of this toggle's position. The reef grows continuously each frame whether Animate is set to Off or On.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all coral rendering. The sync delay pipeline still aligns timing, so there is no glitch when toggling. Use Bypass for instant A/B comparison between the raw input and the coral-composited result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (original input) and wet (coral-composited) signal. At minimum, only the original input passes through: no coral is visible. At maximum, the full coral composite is shown. Intermediate positions blend the two proportionally.
+
+This is the final stage in the processing chain and operates independently of the **Angle Sp** opacity control. Even if coral branches are fully opaque, the Mix fader can dissolve them into the source signal.
 
 ---
 
 ## Background
 
-### Coral Biology and Reef Formation
+### Procedural growth simulation
 
-Coral reefs are built by colonies of tiny polyps — soft-bodied organisms related to jellyfish — that secrete calcium carbonate exoskeletons. Over centuries, successive generations of polyps build upon the skeletons of their predecessors, creating massive three-dimensional structures. The branching pattern of species like *Acropora* (staghorn coral) is governed by a combination of genetic body plan, water flow direction, light availability, and nutrient gradients. Coral's eight-column growth model abstracts this process: each column represents a vertical growth axis, and the LFSR-driven splits simulate the stochastic branching events that occur when a polyp colony reaches a critical mass and bifurcates into adjacent territory.
+Coral models a simplified version of ***L-system*** growth: the mathematical framework biologists use to describe branching patterns in plants, corals, and other organisms. In a full L-system, a set of rewriting rules generates arbitrarily complex branching structures. Coral distills this idea to its essence: four columns grow at a fixed rate, and a random process decides when to share growth with a neighbor. The result captures the visual character of branching growth without the computational cost of a full recursive system.
 
-### L-Systems and Formal Grammars for Growth
+### LFSR-based randomness
 
-Aristid Lindenmayer introduced L-systems in 1968 to model the branching patterns of plants and algae. An L-system is a parallel rewriting grammar: a set of production rules that replace symbols with strings of symbols, generating increasingly complex structures through repeated application. The classic example replaces `F` (draw forward) with `F[+F]F[-F]F`, producing branching tree-like figures. Coral's growth model is a hardware-friendly simplification of this concept — instead of symbolic rewriting, it uses a fixed array of height accumulators with probabilistic neighbor transfers, achieving a similar visual result (vertical structures that branch laterally) without the memory overhead of storing a parse tree.
+The splitting decision relies on a 16-bit ***linear feedback shift register*** (LFSR), a classic hardware random number generator. Each clock cycle the LFSR shifts its bits and feeds back a combination through XOR gates, producing a pseudorandom sequence that repeats only after 65,535 steps. The program compares the low ten bits of the LFSR output against the split-rate threshold: if the random value falls below the threshold, a split occurs. Higher thresholds mean more frequent splits, and therefore faster, more chaotic growth.
 
-### Branching Growth Algorithms in Computer Graphics
+The LFSR also selects ***which*** branch splits (bits 14–13 choose the source column) and ***which direction*** the split transfers (bit 12 picks left or right neighbor). This ensures that splits are distributed across all branches rather than favoring one column.
 
-Procedural generation of branching structures is a foundational technique in computer graphics, from the space-colonization algorithms used for tree modeling to the diffusion-limited aggregation (DLA) processes used for lightning, rivers, and mineral dendrites. Coral's approach falls into the category of *agent-based growth models*: each of the eight columns is an autonomous agent that accumulates height independently, with the LFSR providing a shared random oracle that occasionally triggers inter-agent communication (the split event). The simplicity of the model — eight 12-bit accumulators, one LFSR comparison per frame, no BRAMs — makes it feasible in the constrained LUT budget of an iCE40 FPGA while still producing visually rich branching behavior.
+### Depth gradient shading
 
-### Depth Cues and Underwater Light Attenuation
-
-In natural underwater environments, light intensity decreases exponentially with depth due to absorption and scattering by water molecules. This creates a characteristic gradient: objects near the surface are brightly illuminated, while those at depth are darker and shift toward blue-green hues. Coral's depth gradient stage models this phenomenon by computing a vertical position-dependent darkening factor and subtracting it from the base coral luminance. The Color Gradient parameter controls the strength of this attenuation — at maximum, branches near their root are deeply shadowed; at minimum, the entire column is uniformly bright. The gradient gives the flat, column-based structure a sense of three-dimensional depth, implying that the base of the reef is further from the viewer than the growing tips.
-
-### LFSR-Driven Stochastic Branching
-
-The 16-bit maximal-length LFSR (taps at bits 16, 15, 13, 4) provides the randomness that drives branch splitting. On each vertical sync pulse, the low 10 bits of the LFSR output are compared against the Split Rate threshold. When the LFSR value falls below the threshold, a split event occurs: the source column is selected by LFSR bits 15–13 (3 bits → 0–7), the neighbor direction by bit 12 (left or right), and a quarter of the source column's accumulated height is transferred to the destination column as bonus growth. This mechanism ensures that splits are temporally and spatially unpredictable while remaining deterministic for a given LFSR seed — the same growth sequence will replay identically if the program is reset.
+Living coral colonies darken with depth: sunlight attenuates as it passes through water, so deeper structures receive less illumination. Coral's depth gradient models this effect digitally. The program computes a vertical ramp from the growing tip (bright) to the root (dark) and subtracts it from the base luma value. The gradient strength is quantized to four levels controlled by the top two bits of the **Color Grd** parameter, keeping the logic simple and avoiding a full multiplier.
 
 
 ---
 
 ## Signal Flow
 
-Register Decode → Timing Generator → LFSR Noise → ... → Sync Delay Pipeline → Bypass Mux
+### Signal Flow Notes
 
-```
-Video Input (YUV 4:4:4)
-│
-├── Register Decode ────────────────────────────────────────────
-│   ├─ growth_speed = registers_in(0) → s_grow_inc (1..8 px/frame)
-│   ├─ thickness    = registers_in(1) → s_thick_val (2..33 px)
-│   ├─ density      = registers_in(2) → s_spacing_val (60..571 px)
-│   ├─ color_grad   = registers_in(3) → 4-level gradient strength
-│   ├─ split_rate   = registers_in(4) → LFSR split threshold
-│   ├─ intensity    = registers_in(5) → 4-level overlay opacity
-│   └─ toggles: direction, color_mode, reset, bypass
-│       mix_amount  = registers_in(7)
-│
-├── Timing Generator ───────────────────────────────────────────
-│   └─ video_timing_generator → s_h_count, s_v_count
-│
-├── LFSR Noise ─────────────────────────────────────────────────
-│   └─ lfsr16 (seed 0xC0A1) → s_lfsr_q (16 bits)
-│
-├── Branch Growth + Split (per vsync) ──────────────────────────
-│   ├─ 8 branches: height += grow_inc (clamped at 1079)
-│   ├─ Split: if LFSR(9:0) < split_rate then
-│   │     src = LFSR(15:13), dir = LFSR(12)
-│   │     dst.height += src.height >> 2 + grow_inc
-│   ├─ X positions: 120 + i × spacing_val
-│   └─ Tip: bottom − height (up) or height (down)
-│
-├── Clock 1: Input Register ────────────────────────────────────
-│   └─ Latch Y, U, V from data_in
-│
-├── Clock 2: 8-Branch Parallel Hit Detection ───────────────────
-│   └─ For each branch i:
-│       |h_count − xpos(i)| < thick_val AND v_count in range
-│       → s_coral_hit OR of all 8
-│
-├── Clock 3: Coral Color Compose ───────────────────────────────
-│   ├─ Depth gradient: v_gradient = v_count >> 1 (or inverted)
-│   ├─ Scale gradient by color_grad (4 thresholds)
-│   ├─ Color mode 0: warm coral (Y=700, U=400, V=650)
-│   │   Color mode 1: cool blue  (Y=600, U=650, V=350)
-│   └─ Coral Y = base_y − gradient_dim (clamped ≥ 64)
-│
-├── Clock 4: Composite Output ──────────────────────────────────
-│   ├─ Hit + intensity > 768: 100% coral
-│   ├─ Hit + intensity > 512:  75% coral + 25% source
-│   ├─ Hit + intensity > 256:  50% coral + 50% source
-│   ├─ Hit + intensity ≤ 256:  25% coral + 75% source
-│   └─ No hit: pass source through
-│
-├── Clocks 5–8: Interpolator (wet/dry Mix) ─────────────────────
-│   └─ lerp(dry, wet, mix_amount) ×3 channels (4 clocks)
-│
-├── Sync Delay Pipeline (8 clocks) ─────────────────────────────
-│   └─ hsync, vsync, field, Y, U, V delayed to match
-│
-└── Bypass Mux ─────────────────────────────────────────────────
-    └─ Select delayed source or processed signal
-```
+The most important architectural feature is the ***separation between frame-level and pixel-level processing***. All growth, splitting, and position computations happen once per frame at the vsync trigger. The per-pixel pipeline then simply tests whether each pixel falls within any branch's pre-computed bounds: a fast parallel range check with no per-pixel arithmetic beyond comparison.
 
-The computational heart of Coral is the frame-level growth-and-split update that executes once per vertical sync. All eight branch heights are incremented by the same growth constant, but the LFSR-driven split creates asymmetry: when a split fires, the destination column receives both the normal growth increment and a quarter of the source column's accumulated height, causing it to surge ahead. This positive-feedback mechanism means that once a column receives a split, it becomes taller and therefore a more attractive source for future splits — a rich-get-richer dynamic that produces the characteristic uneven canopy of a natural reef. The per-pixel rendering in Clocks 1–4 is purely combinational: each of the eight branches is tested in parallel for horizontal and vertical containment, requiring no BRAMs and keeping the pipeline at a compact 8 clocks total including the interpolator mix stage.
+The hit detection tests all four branches simultaneously in a single clock cycle. Pre-computed horizontal bounds (xleft and xright) eliminate the need for per-pixel subtraction, keeping the critical path short. The vertical test checks whether the pixel's line number is within the branch's extent, accounting for growth direction.
+
+:::note
+Because branch positions and bounds are updated only at vsync, the reef structure is rock-stable within each frame. There is no mid-frame tearing or partial update (every pixel sees the same branch geometry.)
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={coral_control_panel} alt="Videomancer front panel with Coral loaded"/>
-*Videomancer's front panel with Coral active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises explore Coral's growth dynamics, from slow single-column emergence to rapid screen-filling reef cascades. Because Coral is a synthesis program, no specific source material is required (any input signal (or none) works.)
+### Exercise 1: Slow Growth Study
 
-### Rotary Potentiometers (Knobs 1–6)
+![Slow Growth Study result](/img/instruments/videomancer/coral/coral_ex1_s1.png)
+*Slow Growth Study — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Grow Spd
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-Sets the vertical growth increment applied to all eight branch columns on each frame. At the low end, each column gains a single pixel of height per frame — the reef builds over hundreds of frames, allowing you to observe the branching dynamics in slow motion. At the high end, columns gain eight pixels per frame and race toward the opposite edge of the screen within seconds. The growth increment is uniform across all columns; differentiation arises entirely from the LFSR split events that boost selected columns above their peers.
+#### Learning Outcomes
 
----
+A slow, meditative growth sequence where four thin branches emerge from the bottom edge over thirty seconds, shaded from dark roots to bright tips.
 
-#### Knob 2 — Branch D
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+#### Key Concepts
 
-Controls the horizontal thickness of each branch column in pixels, determining how wide the coral bands appear on screen. At the minimum setting, branches are thin two-pixel lines — skeletal scaffolding that emphasizes the vertical growth structure. At maximum, each branch widens to over thirty pixels, producing fat pillar-like columns that overlap and merge into a solid reef wall when spacing is tight. The thickness value is computed as a fixed base plus a scaled portion of the register value, ensuring that branches never collapse to sub-pixel invisibility.
+- Growth rate and branch width define the visual weight
+- The depth gradient adds three-dimensional shading
+- Resetting clears all branches for a fresh start
 
----
+#### Steps
 
-#### Knob 3 — Branch Th
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+1. Flip **Current** (Toggle 9) to On, then back to Off (this resets all branches to zero.)
+2. Set **Grow Spd** (Knob 1) fully counterclockwise for the slowest growth rate.
+3. Set **Branch D** (Knob 2) to about 20% for narrow columns.
+4. Turn **Color Grd** (Knob 4) fully clockwise for maximum depth shading.
+5. Set **Max Hght** (Knob 5) fully counterclockwise to suppress splits (each branch grows independently.)
+6. Watch the four columns creep upward. Notice how the roots darken while the tips stay bright.
+7. After about thirty seconds, flip **Species** (Toggle 7) to **Pillar** and reset with **Current**. Now growth descends from the top.
 
-Determines the horizontal spacing between adjacent branch columns, controlling how densely packed the reef appears. At the minimum setting, columns are separated by only sixty pixels and their broad strokes overlap into a continuous mass. At maximum spacing, columns spread across the full width of the frame with wide gaps between them, creating an open lattice structure. The eight column X positions are computed sequentially starting from a fixed offset of 120 pixels, so the rightmost columns may extend off-screen at high spacing values — a deliberate design that prevents the reef from appearing artificially centered.
+#### Settings
 
----
-
-#### Knob 4 — Color Grd
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the strength of the depth-based luminance gradient that darkens branches near their root. At the maximum setting, the gradient subtracts significant luminance from pixels near the growth origin (the bottom of the screen when growing upward), creating a dramatic light-to-dark transition from tip to base. At the minimum, the gradient is barely perceptible and all parts of each column share roughly the same brightness. The gradient operates through a four-level threshold system — the register value selects between full, half, quarter, or eighth strength attenuation — producing distinct visual steps rather than a smooth continuum.
-
----
-
-#### Knob 5 — Max Hght
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Sets the LFSR split probability threshold, governing how frequently branch columns donate growth to their neighbors. The low 10 bits of the LFSR output are compared against this value on each frame: higher values increase the probability that any given frame triggers a split event. At zero, no splits occur and all columns grow uniformly as independent parallel lines. At moderate values, occasional splits create gentle asymmetries — some columns grow taller than others, and the canopy develops natural variation. At maximum, splits fire almost every frame, rapidly transferring height between neighbors and producing a chaotic, turbulent growth pattern where individual columns surge and plateau unpredictably.
+| Control | Value |
+|---------|-------|
+| Grow Spd | 0% |
+| Branch D | 20% |
+| Branch Th | 50% |
+| Color Grd | 100% |
+| Max Hght | 0% |
+| Angle Sp | 100% |
+| Species | Staghorn |
+| Palette | Reef |
+| Current | Off |
+| Animate | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-#### Knob 6 — Angle Sp
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+### Exercise 2: Split Cascade
 
-Controls the opacity of the coral overlay relative to the incoming source video, using a four-level blending scheme. At the highest setting, coral pixels completely replace the source with the synthesized coral color. At three-quarter intensity, the coral dominates but a ghost of the source bleeds through. At half, coral and source contribute equally. At the lowest setting, the coral is a subtle tint over the source. This parameter is distinct from the Mix fader — it controls the blending *within* hit pixels, while Mix crossfades the entire processed output against the unprocessed delayed source.
+![Split Cascade result](/img/instruments/videomancer/coral/coral_ex2_s1.png)
+*Split Cascade — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-### Toggle Switches (Switches 7–11)
+#### Learning Outcomes
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Species** | Staghorn | Pillar |
-| **8 — Palette** | Reef | Neon |
-| **9 — Current** | Off | On |
-| **10 — Animate** | Off | On |
-| **11 — Bypass** | Off | On |
+A fast-growing reef where frequent splits cause branches to race each other across the screen, creating an unpredictable cascade pattern.
 
-The five toggles configure independent aspects of the coral rendering. Species (7) selects the growth direction — whether the reef builds upward from the bottom edge or downward from the top. Palette (8) switches the coral's chromatic identity between warm and cool palettes. Current (9) provides a reset function that clears all branch heights on activation. Animate (10) is reserved for future use and has no visible effect in the current implementation. Bypass (11) is the standard signal bypass. Each toggle operates independently; combining an upward warm reef with periodically triggered resets produces a rhythmic growth animation cycle.
+#### Key Concepts
 
----
+- Split rate controls how often growth transfers between branches
+- Spacing affects how many branches are visible on screen
+- The LFSR makes every growth sequence unique
 
-### Linear Potentiometer (Fader 12)
+#### Steps
 
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
+1. Reset branches via **Current** (Toggle 9).
+2. Set **Grow Spd** (Knob 1) to about 40% for moderate growth.
+3. Turn **Max Hght** (Knob 5) to about 80%. Splits will fire frequently, transferring growth energy between neighbors.
+4. Set **Branch Th** (Knob 3) to about 30% so all four branches cluster together on screen.
+5. Watch the branches compete: one surges ahead, donates growth sideways, and its neighbor catches up. The pattern is different every time because the LFSR sequence determines split timing and direction.
+6. Now widen **Branch D** (Knob 2) to about 60%. The thick columns overlap, merging into a solid curtain where branches are close together.
+7. Switch **Palette** (Toggle 8) to **Neon** and reset. Observe the same cascade in cool blue tones.
 
-Wet/dry crossfade at the final stage of the pipeline. At maximum (default), the output is the fully processed coral composite. At minimum, the output is the unprocessed input video delayed by the 8-clock pipeline. Intermediate values produce a smooth blend via the three-channel interpolator. Use moderate mix levels to overlay the coral structure as a translucent texture on live video, or pull to minimum for a clean pass-through that preserves the coral growth state for later recall.
+#### Settings
 
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Coral processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises explore Coral's synthesis capabilities from basic reef construction through dynamic splitting to layered compositions. Each builds on the previous, revealing how growth speed, split probability, and column spacing interact to shape the emergent branching structure.
-
-### Exercise 1: Static Reef Foundation
-
-<img src={coral_exercise1_result} alt="Static Reef Foundation result"/>
-*Static Reef Foundation — simulated result across source images.*
-**What You'll Create**: Build a basic coral reef from the bottom of the screen and observe how thickness and spacing control the visual density of the structure.
-
-1. Set Growth Speed to about 40% and wait for columns to grow halfway up the screen.
-2. Sweep Branch Thickness from minimum to maximum — watch columns expand from hairlines to fat pillars.
-3. Sweep Branch Spacing from minimum to maximum — watch columns spread apart or compress into a wall.
-4. Set Color Gradient to about 70% and observe the tip-to-root darkening.
-5. Set Growth Speed to 0% to freeze the reef and examine the static structure.
-6. Try the cool blue palette — toggle Palette to the third or fourth position.
-
-**Key concepts**: Growth speed is uniform across all columns without splits, thickness and spacing define the reef's visual density, the depth gradient creates a natural light attenuation effect, freezing growth allows static analysis of the structure.
+| Control | Value |
+|---------|-------|
+| Grow Spd | 40% |
+| Branch D | 60% |
+| Branch Th | 30% |
+| Color Grd | 50% |
+| Max Hght | 80% |
+| Angle Sp | 50% |
+| Species | Staghorn |
+| Palette | Neon |
+| Current | Off |
+| Animate | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: LFSR-Driven Branching
+### Exercise 3: Translucent Reef Overlay
 
-<img src={coral_exercise2_result} alt="LFSR-Driven Branching result"/>
-*LFSR-Driven Branching — simulated result across source images.*
-**What You'll Create**: Enable split events and observe how the LFSR creates organic asymmetry in the coral canopy.
+![Translucent Reef Overlay result](/img/instruments/videomancer/coral/coral_ex3_s1.png)
+*Translucent Reef Overlay — simulated result across source images.*
+#### Exercise Illustration
 
-1. Toggle Current On then Off to reset all branch heights.
-2. Set Growth Speed to about 30% for slow, visible growth.
-3. Gradually increase Split Rate from 0% to about 60%. Watch for sudden height jumps in individual columns as split events fire.
-4. Notice how some columns surge ahead of their neighbors — this is the rich-get-richer feedback where taller columns donate more height via splits.
-5. Increase Split Rate to maximum and observe the chaotic, turbulent canopy.
-6. Reset again and try with very wide spacing to see the split dynamics between isolated columns.
+***A description of the exercise illustration.***
 
-**Key concepts**: The LFSR provides deterministic pseudo-randomness for split events, split probability controls branching frequency, the quarter-height transfer creates positive feedback, column spacing affects the visual impact of neighbor-to-neighbor transfers.
+#### Learning Outcomes
+
+A layered composition where translucent coral branches float over the input video, visible but not obscuring the source entirely.
+
+#### Key Concepts
+
+- Coral composites on top of the input signal
+- The Angle Sp and Mix controls work together to set final opacity
+- Wide spacing reveals the source between branches
+
+#### Steps
+
+1. Feed an interesting video source into the chain: a camera feed, a pattern generator, or another Videomancer program upstream.
+2. Reset branches via **Current** (Toggle 9).
+3. Set **Angle Sp** (Knob 6) below 50% so coral pixels blend fifty-fifty with the source.
+4. Set **Mix** (Fader 12) to about 70%. The crossfade further reduces coral opacity, making the reef ghostly and translucent.
+5. Increase **Branch Th** (Knob 3) to spread branches apart, leaving gaps where the source video shows through clearly.
+6. Set **Color Grd** (Knob 4) to about 60% so the roots fade into the source image while the tips remain distinct.
+7. Slowly sweep **Grow Spd** (Knob 1) from low to moderate. The reef unfurls over the source, creating a layered double-exposure effect.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Grow Spd | 30% |
+| Branch D | 40% |
+| Branch Th | 70% |
+| Color Grd | 60% |
+| Max Hght | 50% |
+| Angle Sp | 30% |
+| Species | Staghorn |
+| Palette | Reef |
+| Current | Off |
+| Animate | On |
+| Bypass | Off |
+| Mix | 70% |
 
 ---
-
-### Exercise 3: Inverted Stalactite Formation
-
-<img src={coral_exercise3_result} alt="Inverted Stalactite Formation result"/>
-*Inverted Stalactite Formation — simulated result across source images.*
-**What You'll Create**: Create a downward-growing cave formation using reversed direction, cool blue palette, and high-intensity overlay.
-
-1. Toggle Species to the third or fourth position (Fan or Pillar) to reverse growth direction.
-2. Switch Palette to the third or fourth position (Blchd or Neon) for cool blue rendering.
-3. Set Growth Speed to about 50% and Split Rate to about 40%.
-4. Set Color Gradient to maximum — the gradient now darkens the top (root) and brightens the tips hanging downward.
-5. Set Branch Thickness to about 60% for substantial stalactite columns.
-6. Set Intensity to maximum for full coral-colored replacement of the source.
-
-**Key concepts**: Direction reversal inverts both the growth origin and the gradient orientation, cool palette evokes deep cave or underwater environments, the same growth and split algorithms produce visually distinct results when the frame of reference is inverted.
-
----
-
-
-## Tips
-
-- **Thickness and spacing interact**: Wide branches at tight spacing merge into a solid wall; narrow branches at wide spacing create an open lattice. Find the balance point where individual columns are distinct but the overall reef reads as a connected structure.
-- **Gradient at maximum for depth**: Strong color gradient makes the flat column rendering feel three-dimensional. The darkened roots imply distance and underwater light absorption.
-- **Mix for overlay compositing**: Pull Mix to 40–60% to overlay the coral structure transparently onto live video, creating a reef that appears to grow through the video content.
-- **Direction reversal for variety**: Switching from upward to downward growth produces stalactite formations that feel fundamentally different from the default reef, despite using identical algorithms.
-- **Periodic resets for animation loops**: Toggle Current on and off rhythmically to create repeating growth cycles — the reef builds, resets, and builds again, producing a looping animation suitable for installations.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Accumulator** | A register that sums an increment on each clock cycle; used here for branch height growth, adding a fixed value per frame until clamped at the screen edge. |
-| **Branch column** | One of eight vertical growth fronts, each defined by an X position, a height accumulator, and a computed tip position. |
-| **Depth gradient** | A vertical luminance attenuation that darkens pixels near the branch root, simulating underwater light absorption with increasing depth. |
-| **Hit detection** | The per-pixel comparison that determines whether a pixel falls within any branch's horizontal thickness and vertical extent. |
-| **L-system** | Lindenmayer system; a formal grammar for modeling branching growth, the theoretical ancestor of Coral's column-based branching model. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used to trigger stochastic split events between adjacent branches. |
-| **Scleractinia** | The order of hard corals that build calcium carbonate skeletons, forming the biological reef structures that the program simulates. |
-| **Split event** | A frame-level transfer of growth energy from one branch column to a neighbor, triggered when the LFSR output falls below the Split Rate threshold. |
-| **Tip** | The growing end of a branch column; computed as the screen bottom minus accumulated height (for upward growth) or the accumulated height itself (for downward growth). |
+- **Clamping**: Limiting a computed value to a fixed range so it cannot overflow or underflow, ensuring stable behavior at parameter extremes.
+
+- **Depth Gradient**: A vertical brightness ramp that darkens coral branches near their origin edge, simulating the way sunlight attenuates with depth in water.
+
+- **Hit Detection**: The per-pixel test that determines whether a given screen coordinate falls within any coral branch's horizontal and vertical bounds.
+
+- **Interpolator**: A hardware crossfade block that smoothly blends between two input values based on a fractional mix parameter.
+
+- **L-System**: A formal grammar for modeling branching growth in biological organisms, simplified here to fixed-rate vertical extension with random splits.
+
+- **LFSR**: Linear Feedback Shift Register: a hardware circuit that generates pseudorandom bit sequences by shifting and XOR-feeding back selected taps.
+
+- **Pseudorandom**: A deterministic sequence that appears random but repeats after a fixed period; the LFSR16 used here cycles every 65,535 steps.
+
+- **Split**: The transfer of growth energy from one coral branch to an adjacent neighbor, triggered by the LFSR when its output falls below the split-rate threshold.
+
+- **Vsync**: The vertical synchronization pulse marking the start of each video frame, used here as the trigger for all frame-level growth and split computations.
+
+- **YUV**: A color encoding that separates brightness (Y) from color information (U and V), used throughout the Videomancer video pipeline.
 
 ---

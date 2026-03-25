@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 276
 slug: /instruments/videomancer/snapshot
@@ -7,361 +7,424 @@ image: /img/instruments/videomancer/snapshot/snapshot_hero_s1.png
 description: "Every photograph taken on a disposable camera or early digital point-and-shoot carries a distinctive look — oversaturated colors, soft corners darkened by vignetting, visible film grain, a warm or cool color cast from the film stock, and the harsh flat light of a built-in flash."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import snapshot_control_panel from '/img/instruments/videomancer/snapshot/snapshot_control_panel.png';
-import snapshot_source1_parrot from '/img/instruments/videomancer/snapshot/snapshot_source1_parrot.png';
-import snapshot_source2_skull from '/img/instruments/videomancer/snapshot/snapshot_source2_skull.png';
-import snapshot_source3_collage from '/img/instruments/videomancer/snapshot/snapshot_source3_collage.png';
-import snapshot_source4_pattern from '/img/instruments/videomancer/snapshot/snapshot_source4_pattern.png';
-import snapshot_source5_girl from '/img/instruments/videomancer/snapshot/snapshot_source5_girl.png';
-import snapshot_source6_paint from '/img/instruments/videomancer/snapshot/snapshot_source6_paint.png';
-import snapshot_hero_s1 from '/img/instruments/videomancer/snapshot/snapshot_hero_s1.png';
-import snapshot_hero_s2 from '/img/instruments/videomancer/snapshot/snapshot_hero_s2.png';
-import snapshot_hero_s3 from '/img/instruments/videomancer/snapshot/snapshot_hero_s3.png';
-import snapshot_hero_s4 from '/img/instruments/videomancer/snapshot/snapshot_hero_s4.png';
-import snapshot_hero_s5 from '/img/instruments/videomancer/snapshot/snapshot_hero_s5.png';
-import snapshot_hero_s6 from '/img/instruments/videomancer/snapshot/snapshot_hero_s6.png';
-import snapshot_ex1_s1 from '/img/instruments/videomancer/snapshot/snapshot_ex1_s1.png';
-import snapshot_ex1_s2 from '/img/instruments/videomancer/snapshot/snapshot_ex1_s2.png';
-import snapshot_ex1_s3 from '/img/instruments/videomancer/snapshot/snapshot_ex1_s3.png';
-import snapshot_ex1_s4 from '/img/instruments/videomancer/snapshot/snapshot_ex1_s4.png';
-import snapshot_ex1_s5 from '/img/instruments/videomancer/snapshot/snapshot_ex1_s5.png';
-import snapshot_ex1_s6 from '/img/instruments/videomancer/snapshot/snapshot_ex1_s6.png';
-import snapshot_ex2_s1 from '/img/instruments/videomancer/snapshot/snapshot_ex2_s1.png';
-import snapshot_ex2_s2 from '/img/instruments/videomancer/snapshot/snapshot_ex2_s2.png';
-import snapshot_ex2_s3 from '/img/instruments/videomancer/snapshot/snapshot_ex2_s3.png';
-import snapshot_ex2_s4 from '/img/instruments/videomancer/snapshot/snapshot_ex2_s4.png';
-import snapshot_ex2_s5 from '/img/instruments/videomancer/snapshot/snapshot_ex2_s5.png';
-import snapshot_ex2_s6 from '/img/instruments/videomancer/snapshot/snapshot_ex2_s6.png';
-import snapshot_ex3_s1 from '/img/instruments/videomancer/snapshot/snapshot_ex3_s1.png';
-import snapshot_ex3_s2 from '/img/instruments/videomancer/snapshot/snapshot_ex3_s2.png';
-import snapshot_ex3_s3 from '/img/instruments/videomancer/snapshot/snapshot_ex3_s3.png';
-import snapshot_ex3_s4 from '/img/instruments/videomancer/snapshot/snapshot_ex3_s4.png';
-import snapshot_ex3_s5 from '/img/instruments/videomancer/snapshot/snapshot_ex3_s5.png';
-import snapshot_ex3_s6 from '/img/instruments/videomancer/snapshot/snapshot_ex3_s6.png';
-
-# Snapshot
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: snapshot_source1_parrot, after: snapshot_hero_s1 },
-    { label: "Skull", before: snapshot_source2_skull, after: snapshot_hero_s2 },
-    { label: "Collage", before: snapshot_source3_collage, after: snapshot_hero_s3 },
-    { label: "Pattern", before: snapshot_source4_pattern, after: snapshot_hero_s4 },
-    { label: "Girl", before: snapshot_source5_girl, after: snapshot_hero_s5 },
-    { label: "Paint", before: snapshot_source6_paint, after: snapshot_hero_s6 },
-  ]}
-/>
-*Snapshot applying disposable-camera color saturation, vignette darkening, and film grain to transform clean digital video into nostalgic lo-fi photography.*
+![Snapshot hero image](/img/instruments/videomancer/snapshot/snapshot_hero_s1.png)
+*Snapshot transforming a live video feed into the oversaturated, vignetted, grain-speckled look of a disposable camera left in a glove box since 1998.*
 
 ---
 
 ## Overview
 
-Every photograph taken on a disposable camera or early digital point-and-shoot carries a distinctive look — oversaturated colors, soft corners darkened by vignetting, visible film grain, a warm or cool color cast from the film stock, and the harsh flat light of a built-in flash. Snapshot recreates this entire aesthetic in real time, treating a live video signal as if it were being captured by a cheap plastic camera from the late 1990s.
+Snapshot is a camera simulation that recreates the look of disposable film cameras and early consumer digital cameras. Think Fujifilm QuickSnap, Kodak FunSaver, and the Sony Mavica: devices that produced images with oversaturated colors, soft plastic lens blur, visible film grain, dark vignetted corners, and warm expired-film color casts. Snapshot layers these imperfections together, transforming any video input into something that looks like it was pulled from a shoebox of forgotten vacation photos.
 
-The program chains eight processing stages together: chroma saturation boost, color shift tinting, cross-processing emulation, radial vignette darkening, film grain noise injection, horizontal soft-focus blur, color temperature warmth adjustment, and optional flash simulation with date stamp and border overlays. The name is literal — a snapshot is the casual, unplanned photograph that these cameras were designed for, and the visual artifacts they produced became an aesthetic in their own right.
+Every parameter in Snapshot targets a different physical flaw of cheap cameras, and they all compound. Crank the saturation to push colors past plausibility. Add vignette to darken the edges where the plastic lens barrel blocked light. Introduce grain to simulate the coarse silver halide crystals of drugstore film. Turn on the flash for that washed-out, deer-in-headlights brightness. Enable the date stamp for the final nostalgic touch: an orange timestamp burned into the corner that screams "00 / 00 / 00."
 
-At subtle settings, Snapshot adds gentle warmth and a slight vignette to clean video, evoking the feel of consumer film photography. At extreme settings, it pushes into oversaturated cross-processed territory with heavy grain and aggressive corner darkening — the look of expired film shot through a scratched plastic lens.
+:::tip
+Snapshot's power comes from layering. Each effect is subtle on its own, but stacking several together produces a convincing analog camera look that's hard to achieve with any single control.
+:::
+
+### What's In a Name?
+
+The word ***snapshot*** originally described an offhand gunshot taken without careful aim: a quick shot, not a precise one. Photography borrowed the term in the 1860s for informal, spontaneous photographs taken without elaborate setup. The disposable cameras that Snapshot emulates are the ultimate snapshot machines: point, click, and hope for the best. The name captures both the spontaneity and the beautiful imperfection of those cameras.
 
 ---
 
 ## Quick Start
 
-1. **No bypass toggle**: This program uses the Cross Proc switch where bypass would normally be. Use the Mix fader at 0% for instant A/B comparison with the unprocessed signal.
-2. **Saturation first**: The saturation boost is the first processing stage, so it affects everything downstream — cross processing, vignette, warmth, and flash all operate on the already-saturated signal.
-3. **Vignette + flash**: These two effects complement each other naturally. Vignette darkens edges; flash brightens the center. Together they create a strong radial focus effect.
+1. Turn **Saturation** (Knob 1) clockwise past the midpoint. Colors push toward that oversaturated drugstore-film look: reds get redder, greens get greener, and skin tones turn a warm amber.
+2. Increase **Vignette** (Knob 3) to about halfway. The corners and edges of the image darken in a soft radial pattern, mimicking the barrel shadow of a cheap plastic lens.
+3. Add **Grain** (Knob 4) to taste. Fine speckles of luminance noise appear across the image, giving it the texture of high-ISO film stock.
+4. Toggle **Flash** (Switch 8) to **On**. The center of the image brightens and the colors wash out slightly, simulating the harsh, flat illumination of a built-in flash.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Snapshot loaded](/img/instruments/videomancer/snapshot/snapshot_control_panel.png)
+*Videomancer's front panel with Snapshot active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Saturation
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Saturation** controls the intensity of the chroma boost, amplifying how far color values deviate from neutral gray. At 0%, colors are present but understated: close to the original input. As you turn the knob clockwise, the U and V channels are progressively stretched away from center, making every hue more vivid and exaggerated. At 100%, the saturation boost reaches its maximum, roughly doubling the chroma departure. This recreates the oversaturated look of cheap color negative film, where chemical dyes tended to overshoot their target colors.
+
+:::note
+Saturation amplifies *existing* color. A perfectly gray pixel has no chroma deviation to boost, so it stays gray regardless of this setting.
+:::
+
+---
+
+### Knob 2 — Color Shift
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Color Shift** applies a directional tint cast to the image by biasing the chrominance channels. At 0%, the shift adds blue: think of an image shot under fluorescent lights with no white balance correction. At the midpoint, no shift is applied. At 100%, the shift moves toward red, evoking the warm cast of expired film or tungsten-balanced stock shot in daylight.
+
+The tint is applied after saturation, so the two controls interact: boosting saturation amplifies whatever color cast Color Shift introduces.
+
+---
+
+### Knob 3 — Vignette
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Vignette** controls the radial darkening of the image corners. At 0%, no vignette is applied and the image brightness is uniform from center to edge. As the value increases, the corners and edges darken progressively, with the center of the image remaining at full brightness. At 100%, the vignette is at maximum strength, producing deep shadows in the corners that trail off rapidly toward the edges.
+
+The darkening follows a squared ***radial falloff*** pattern: the dimming accelerates as you move farther from center, matching the optical behavior of simple plastic lenses where the barrel physically blocks light at steep angles.
+
+---
+
+### Knob 4 — Grain
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 37.5% |
+
+**Grain** adds per-pixel luminance noise to simulate the visible grain structure of cheap film stock. At 0%, no noise is added. As the value increases, random brightness variations appear across the image, with each pixel receiving a different offset on every frame. At 100%, the grain is at full intensity, producing a noisy, textured look reminiscent of high-ISO film pushed beyond its intended exposure range.
+
+The noise source is a 16-bit ***linear feedback shift register*** (LFSR) that produces a pseudo-random sequence. The noise is bipolar: it can make pixels brighter or darker: and it only affects the luminance channel. Color stays clean while brightness gets gritty.
+
+---
+
+### Knob 5 — Soft Focus
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Soft Focus** simulates the optical blur of a cheap plastic lens using a horizontal ***IIR low-pass filter***. At 0%, no blur is applied and the image retains its full sharpness. As the value increases, the filter's feedback coefficient rises, causing each pixel to blend with its horizontal neighbors. The effect is a gentle smearing: bright highlights bleed rightward across the scanline, and fine details dissolve into a soft glow. At 100%, the blur is at maximum strength.
+
+Because the filter operates horizontally within each scanline and resets at the start of each new line, the softness has a directional character: detail is blurred left to right but remains sharp vertically. This asymmetry is characteristic of simple single-element plastic lenses.
+
+:::tip
+Soft Focus combined with high **Saturation** creates a dreamy, glowing look where saturated colors bleed into each other: the classic "vaseline on the lens" aesthetic of 1970s glamour photography.
+:::
+
+---
+
+### Knob 6 — Warmth
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 62.6% |
+
+**Warmth** shifts the perceived color temperature of the image. The direction of the shift depends on the **Film Stock** toggle (Switch 7). In **Warm** mode, increasing Warmth adds to the V (red) channel and subtracts from U (blue), pushing the image toward amber and sunset tones. In **Cool** mode, the shift is reversed: U increases (more blue) while V decreases (less red), producing a cooler, more clinical palette.
+
+At 0%, no temperature shift is applied regardless of the Film Stock setting. At 100%, the shift is at full strength.
+
+---
+
+### Switch 7 — Film Stock
+
+| Property | Value |
+|----------|-------|
+| Off | Cool |
+| On | Warm |
+| Default | Warm |
+
+**Film Stock** selects the direction of the **Warmth** control's color temperature shift. Set to **Warm**, the warmth knob pushes the image toward reds and yellows, simulating expired film or tungsten lighting. Set to **Cool**, it shifts toward blues and cyans, evoking fluorescent lighting or the cold cast of early digital cameras. This toggle has no effect when Warmth is set to 0%.
+
+---
+
+### Switch 8 — Flash
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Flash** enables a simulated on-camera flash effect. When set to **On**, the center of the image receives a radial brightness boost that falls off toward the edges, mimicking the harsh, flat illumination of a built-in flash unit. The flash also slightly desaturates the center of the image, reproducing the washed-out look of flash photography where the intense light overwhelms the film's ability to render color accurately.
+
+The flash boost is applied in three radial zones: a strong boost near the center, a moderate boost in the middle ring, and no boost at the edges. This piecewise falloff creates the characteristic "hot center, dark corners" look of cheap flash photography.
+
+:::note
+Flash and **Vignette** work in opposition: the flash brightens the center while vignette darkens the edges. Together they produce a dramatic spotlight effect with deep corner shadows.
+:::
+
+---
+
+### Switch 9 — Date Stamp
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Date Stamp** enables an orange date overlay in the bottom-right corner of the image, replicating the built-in date-printing feature of 1990s disposable and point-and-shoot cameras. The stamp renders as a fixed-position block pattern in the style of the segmented "00 / 00 / 00" date format. The overlay color is a warm orange: bright luminance with a blue-shifted U channel and a red-shifted V channel.
+
+When set to **Off**, no date overlay is drawn.
+
+---
+
+### Switch 10 — Border
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Border** draws a white frame around the perimeter of the image, 16 pixels wide on the left and right edges and 10 pixels tall on the top and bottom. The border pixels are set to pure white (maximum luminance, neutral chroma), simulating the white border of a printed photograph or instant-film frame.
+
+When set to **Off**, no border is drawn and the full active image area is used for the processed video.
+
+---
+
+### Switch 11 — Cross Proc
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Cross Proc** enables ***cross processing***, a darkroom technique where film is intentionally developed in the wrong chemical bath. When enabled, this toggle inverts the V (red-cyan) chroma channel and boosts the U (blue-yellow) deviation by 50%, producing the surreal shifted-color palette associated with cross-processed film: greens turn magenta, reds shift cyan, and blues become more intense.
+
+Cross processing is the very first stage in the pipeline: it runs before saturation, color shift, and all other effects. This means every downstream parameter reacts to the already-altered color palette, producing wildly different results than when Cross Proc is off.
+
+:::warning
+Enabling Cross Proc with high **Saturation** produces extreme, clipping color values. This is intentional: real cross processing produces aggressive, unpredictable results.
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** controls the wet/dry crossfade between the processed output and the original input signal. At 0%, the output is entirely dry: the unprocessed source passes through unchanged. At 100%, the output is entirely wet: only the processed Snapshot result is visible. Intermediate values blend the two, allowing subtle application of the full effect chain.
+
+The mix is computed by three parallel ***interpolators***, one per YUV channel, ensuring that the crossfade is smooth and artifact-free.
 
 ---
 
 ## Background
 
-### Disposable Camera Optics
+### Disposable cameras and cheap digital
 
-The single-element plastic lens in a disposable camera is deliberately cheap. It produces significant vignetting — light falloff toward the edges and corners of the frame — because the lens cannot evenly illuminate the entire film plane. This darkening is roughly radial, strongest at the corners. Snapshot simulates this with a distance-squared function: the darkening increases with the square of the distance from the image center, producing a smooth, natural-looking falloff that matches the optical behavior of a real plastic lens.
+The disposable camera was a cultural phenomenon. Introduced commercially by Fujifilm in 1986 and quickly followed by Kodak, these cameras were designed to be used once and returned to the lab for processing. The lenses were single-element plastic, the film was mediocre, and the flash was a tiny xenon tube powered by a single AA battery. Everything about them was a compromise (and those compromises created a distinctive look.)
 
-### Film Stock Color Science
+Early consumer digital cameras shared many of the same visual signatures. The Sony Mavica FD series, which saved images directly to floppy disks, had tiny CCD sensors and simple lenses that produced oversaturated colors, visible noise, and soft focus. The JPEG compression added its own artifacts. These cameras didn't produce technically good images, but they captured something that polished modern cameras often miss: a sense of spontaneity and imperfection that feels human.
 
-Consumer color negative film (C-41 process) comes in two broad families: daylight-balanced stocks that render warm tones under sunlight, and tungsten-balanced stocks biased toward cooler blue-green rendition. The Film Stock toggle switches between these two color personalities by adjusting the U and V chrominance channels in opposite directions. Warm stock adds red-orange (positive V, negative U). Cool stock adds blue-cyan (negative V, positive U). The Warmth knob controls the intensity of this color cast.
+### Film grain and noise
 
-### Film Grain Structure
+Real film grain comes from the random distribution of silver halide crystals in the emulsion. Cheaper, faster film stocks use larger crystals for greater light sensitivity, but the tradeoff is visible texture. Snapshot simulates this with a 16-bit LFSR pseudo-random noise generator that adds a different brightness offset to every pixel on every frame. Unlike real film grain, which has spatial correlation (neighboring crystals cluster), Snapshot's grain is per-pixel and uncorrelated: closer to digital sensor noise than true film grain, but visually convincing at moderate settings.
 
-Photographic grain is the visible clumping of silver halide crystals (or dye clouds in color film) that forms the image. Unlike digital sensor noise, which is random per-pixel and per-frame, film grain has a spatial structure tied to the emulsion. Snapshot approximates this with a centered LFSR pseudo-random noise source applied to the luminance channel. The noise amplitude is controlled by the Grain parameter. Because the noise is added only to Y and not to U/V, it mimics the luminance-dominant grain structure of real film.
+### Optical vignetting
 
-### Cross Processing
+***Vignetting*** is the darkening of image corners caused by the physical geometry of a lens system. In a simple single-element plastic lens like those in disposable cameras, light entering at steep angles is partially blocked by the lens barrel, reducing illumination at the edges. Snapshot's vignette uses a piecewise-linear distance approximation: a simplified Manhattan-style calculation that adds the larger axis distance to one-quarter of the smaller: and then squares the result to create an accelerating falloff that mimics natural lens vignetting.
 
-Cross processing is the technique of developing photographic film in the wrong chemical bath — typically running C-41 color negative film through E-6 slide film chemistry, or vice versa. The result is a dramatic shift in color rendering: shadows take on unexpected hues, highlights blow out with unusual tints, and saturation becomes unpredictable. Snapshot emulates this by inverting the V chrominance channel and stretching the U channel deviation by 1.5×, producing the characteristic green-shifted shadows and magenta-shifted highlights of cross-processed film.
+### Cross processing
 
-### Built-In Flash Photography
-
-The tiny flash units in disposable cameras produce a harsh, direct light with rapid falloff. Objects close to the camera are overexposed and desaturated by the flash; objects at medium distance receive moderate fill light; the background falls off to natural (or under-) exposure. Snapshot models this as a three-tier radial brightness boost centered on the frame: a strong boost in the inner zone, moderate boost in the middle zone, and no boost at the edges. The result is the flat, washed-out foreground with dark background that defines flash photography on cheap cameras.
+***Cross processing*** (or "xpro") is the technique of developing photographic film in chemistry intended for a different film type: typically processing slide film (E-6) in color negative (C-41) chemicals, or vice versa. The result is a radical shift in color palette: contrast increases dramatically, colors shift unpredictably, and highlights and shadows take on unusual tints. Snapshot's cross processing inverts the V chroma channel and amplifies U deviation, producing a simplified but recognizable version of the effect.
 
 
 ---
 
 ## Signal Flow
 
-Y/U/V Channels → Sync Signals → Mix
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y/U/V Channels ─────────────────────────────────────────────
-│   │
-│   ├─ 1. Saturation Boost     (U/V deviation × 1.0–2.0)
-│   ├─ 2. Color Shift           (blue/red tint via U/V offset)
-│   ├─ 3. Cross Processing      (optional: invert V, 1.5× U dev)
-│   ├─ 4. Vignette Distance     (Manhattan-ish, squared factor)
-│   ├─ 5. Flash Boost Map       (3-tier radial from center)
-│   ├─ 6. Vignette Darken       (Y × squared distance factor)
-│   ├─ 7. Film Grain            (centered LFSR noise on Y)
-│   ├─ 8. Soft Focus            (horizontal IIR low-pass on Y/U/V)
-│   ├─ 9. Warmth                (+V −U or −V +U from film stock)
-│   ├─ 10. Flash Brightness     (Y boost from flash map)
-│   ├─ 11. Border               (16 px white frame)
-│   └─ 12. Date Stamp           (orange overlay bottom-right)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ Pass-through (hsync, vsync, field, avid)
-│
-└── Mix ────────────────────────────────────────────────────────
-    └─ Interpolate original ↔ processed (linear_potentiometer_12)
-```
+Two key interactions shape the processing:
 
-The processing order places saturation boost and color shift *before* vignette and grain. This means the saturation enhancement applies uniformly across the frame, and then the vignette darkens the already-saturated corners — matching how a real camera lens produces vignetting *after* the film stock's color response. Cross processing, when enabled, dramatically alters the color shift and saturation results because it operates on the already-boosted U/V channels. Note that this program has no bypass toggle — the Cross Proc switch occupies the bit normally used for bypass. The Mix fader provides the only wet/dry control.
+1. **Cross processing runs first.** When enabled, Cross Proc alters the chroma channels *before* saturation and color shift see them. This means the saturation boost amplifies the already-inverted and deviation-boosted colors, compounding the effect. Disabling Cross Proc while keeping saturation high produces a completely different color palette.
 
----
+2. **Grain and vignette affect only luminance.** The vignette darkening and film grain noise are applied exclusively to the Y channel: the U and V chroma channels pass through stages 1 and 2 unchanged. This means vignetted corners retain their color saturation even as they darken. The warmth and flash effects in stage 3 then operate on the chroma channels, so their color shifts apply equally to the bright center and the dark edges.
 
-## Parameter Reference
-
-<img src={snapshot_control_panel} alt="Videomancer front panel with Snapshot loaded"/>
-*Videomancer's front panel with Snapshot active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Saturation
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
-
-Controls the chrominance saturation multiplier applied to U and V channel deviations from neutral. The scaling factor ranges from 1.0× at 0% to approximately 2.0× at 100%. At the default position, the program already adds noticeable color boost, emulating the oversaturated rendering of consumer film stocks. Pushing to maximum produces the hyper-vivid palette typical of cheap cameras shooting in bright sunlight. At minimum, colors pass through at unity — useful for isolating the other effects.
-
----
-
-#### Knob 2 — Color Shift
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-Applies a directional color tint to the image. Below center, the tint shifts toward blue by adding to the U channel; above center, it shifts toward red-orange by adding to the V channel. At dead center, no tint is applied. The shift magnitude is the register deviation divided by four, providing a gentle range suitable for emulating the subtle color casts of different film emulsions. Combined with the Warmth control, Color Shift allows precise tuning of the overall color temperature.
-
----
-
-#### Knob 3 — Vignette
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Controls the intensity of radial vignette darkening. The vignette uses a Manhattan-approximated distance from the image center, squared for a natural falloff curve. At 0%, no darkening occurs. At moderate values, corners dim gently — the classic disposable camera look. At maximum, corners and edges become nearly black, creating a dramatic spotlight effect that isolates the center of the frame. The squared distance function means the darkening accelerates toward the corners rather than increasing linearly.
-
----
-
-#### Knob 4 — Grain
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 37.5% |
-| Suffix | % |
-
-Sets the amplitude of the film grain noise injected into the luminance channel. The noise source is a centered linear-feedback shift register that produces a pseudo-random pattern. At 0%, the image is grain-free. At moderate values, a subtle texture appears that mimics fine-grain consumer film. At high values, the grain becomes coarse and visually dominant, resembling high-ISO or expired film stock. Only the Y channel receives grain; chrominance remains clean.
-
----
-
-#### Knob 5 — Soft Focus
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-Controls a horizontal IIR low-pass filter that softens fine detail. The filter resets at the start of each scan line and accumulates across pixels, so the softening is directional — a subtle horizontal smear that mimics the low MTF of cheap plastic lenses. At 0%, no filtering occurs. At moderate values, fine detail softens without destroying edges. At maximum, the image becomes noticeably blurred horizontally, producing the dreamy soft-focus look associated with Holga and Diana toy cameras.
-
----
-
-#### Knob 6 — Warmth
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 62.6% |
-| Suffix | % |
-
-Controls the intensity of the color temperature shift determined by the Film Stock toggle. The warmth value is divided by eight and applied as a chrominance offset: positive V and negative U for warm stock (amber), or negative V and positive U for cool stock (blue). At 0%, no color temperature shift is applied regardless of the Film Stock toggle setting. At maximum, the entire image takes on a strong warm or cool color cast.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Film Stock** | Cool | Warm |
-| **8 — Flash** | Off | On |
-| **9 — Date Stamp** | Off | On |
-| **10 — Border** | Off | On |
-| **11 — Cross Proc** | Off | On |
-
-The five toggle switches control independent binary processing features. Film Stock selects the direction of the Warmth control. Flash enables a radial brightness boost. Date Stamp and Border add overlay elements. Cross Proc applies a dramatic color transformation. Unlike many programs, there is no bypass toggle — the fader provides wet/dry mixing instead.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Snapshot-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::tip
+**The flash fights the vignette.** Flash adds brightness to the center while vignette removes it from the edges. At matched settings, the center stays roughly normal brightness while the corners get very dark (a dramatic spotlight framing effect.)
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises walk through the Snapshot processing chain from gentle film emulation to extreme lo-fi effects, building up layers of the disposable camera aesthetic.
+These exercises progress from a basic disposable-camera look through cross-processed experimental colors to a stylized combination of all features. Each exercise uses a different subset of Snapshot's processing chain.
+### Exercise 1: Disposable Camera
 
-### Exercise 1: Warm Film Portrait
+![Disposable Camera result](/img/instruments/videomancer/snapshot/snapshot_ex1_s1.png)
+*Disposable Camera — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: snapshot_source1_parrot, after: snapshot_ex1_s1 },
-    { label: "Skull", before: snapshot_source2_skull, after: snapshot_ex1_s2 },
-    { label: "Collage", before: snapshot_source3_collage, after: snapshot_ex1_s3 },
-    { label: "Pattern", before: snapshot_source4_pattern, after: snapshot_ex1_s4 },
-    { label: "Girl", before: snapshot_source5_girl, after: snapshot_ex1_s5 },
-    { label: "Paint", before: snapshot_source6_paint, after: snapshot_ex1_s6 },
-  ]}
-/>
-*Warm Film Portrait — simulated result across source images.*
-**Source**: A portrait or figure against a simple background, ideally with skin tones and some depth.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Build a warm, nostalgic film look with gentle vignette and fine grain — the classic disposable camera aesthetic.
+#### Learning Outcomes
 
-1. **Warm base**: Set Film Stock to Warm and bring Warmth up to about 60%. The image takes on a golden tone.
-2. **Saturate**: Increase Saturation to about 75%. Colors become vivid but not garish.
-3. **Vignette**: Set Vignette to about 50%. Corners darken, drawing the eye to the center.
-4. **Fine grain**: Set Grain to about 35%. A subtle texture appears over the image.
-5. **Gentle softness**: Set Soft Focus to about 25%. Fine detail softens slightly.
-6. **Compare**: Sweep the Mix fader to compare the processed result with the original. The difference should feel like switching between a digital photo and a film snapshot.
+A convincing recreation of the iconic disposable camera look: oversaturated colors, dark corners, visible grain, and soft plastic-lens blur.
 
-**Key concepts**: Warm film stock adds amber tones via V/U offset, vignette uses squared distance for natural falloff, grain is luminance-only noise
+#### Key Concepts
 
----
+- Saturation boost amplifies existing chroma
+- Vignette darkens edges in a radial pattern
+- Grain adds textural noise to the luminance channel
+- Soft focus blurs horizontally per scanline
 
-### Exercise 2: Flash Party Photo
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: snapshot_source1_parrot, after: snapshot_ex2_s1 },
-    { label: "Skull", before: snapshot_source2_skull, after: snapshot_ex2_s2 },
-    { label: "Collage", before: snapshot_source3_collage, after: snapshot_ex2_s3 },
-    { label: "Pattern", before: snapshot_source4_pattern, after: snapshot_ex2_s4 },
-    { label: "Girl", before: snapshot_source5_girl, after: snapshot_ex2_s5 },
-    { label: "Paint", before: snapshot_source6_paint, after: snapshot_ex2_s6 },
-  ]}
-/>
-*Flash Party Photo — simulated result across source images.*
-**Source**: A scene with objects at varying distances from the camera — foreground, midground, and background.
+A live camera feed or recorded footage with recognizable subjects: faces, objects, everyday scenes. The more mundane, the better: disposable cameras made the ordinary look interesting.
 
-**What You'll Create**: Simulate the harsh flash and deep vignette of indoor disposable camera photography.
+#### Steps
 
-1. **Start from Exercise 1 settings** but reduce Warmth to about 40%.
-2. **Enable Flash**: Toggle Flash On. The center of the frame brightens while edges remain dark.
-3. **Heavy vignette**: Increase Vignette to about 70%. Combined with the flash, the center-to-edge contrast is dramatic.
-4. **Max saturation**: Push Saturation to about 90%. Flash-lit areas become vivid; shadowed edges remain muted.
-5. **Add border**: Toggle Border On. The white frame completes the printed photo look.
-6. **Date stamp**: Toggle Date Stamp On. The orange timestamp appears in the corner.
-7. **Grain up**: Increase Grain to about 50% for a grittier, more expired-film appearance.
+1. **Saturate**: Turn **Saturation** (Knob 1) clockwise to about 75%. Colors become more vivid than life.
+2. **Vignette**: Increase **Vignette** (Knob 3) to about 50%. The corners darken in that familiar plastic-lens pattern.
+3. **Add grain**: Set **Grain** (Knob 4) to about 38%. Fine noise texture appears, simulating cheap film stock.
+4. **Soften**: Bring **Soft Focus** (Knob 5) up to about 25%. Details soften horizontally, creating that slightly blurry plastic-lens feel.
+5. **Warm it up**: Set **Warmth** (Knob 6) to about 63% with **Film Stock** (Switch 7) on **Warm**. The image shifts toward amber, like expired film.
+6. **Compare**: Slide **Mix** (Fader 12) between 0% and 100% to compare the processed look with the original input.
 
-**Key concepts**: Flash is a 3-tier radial boost centered on the frame, flash and vignette interact (center brightens while edges darken), border and date stamp are overlay elements
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Saturation | 75.1% |
+| Color Shift | 25.0% |
+| Vignette | 50.0% |
+| Grain | 37.5% |
+| Soft Focus | 25.0% |
+| Warmth | 62.6% |
+| Film Stock | Warm |
+| Flash | Off |
+| Date Stamp | Off |
+| Border | Off |
+| Cross Proc | Off |
+| Mix | 100.0% |
 
 ---
 
-### Exercise 3: Cross-Processed Experimental
+### Exercise 2: Flash Party
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: snapshot_source1_parrot, after: snapshot_ex3_s1 },
-    { label: "Skull", before: snapshot_source2_skull, after: snapshot_ex3_s2 },
-    { label: "Collage", before: snapshot_source3_collage, after: snapshot_ex3_s3 },
-    { label: "Pattern", before: snapshot_source4_pattern, after: snapshot_ex3_s4 },
-    { label: "Girl", before: snapshot_source5_girl, after: snapshot_ex3_s5 },
-    { label: "Paint", before: snapshot_source6_paint, after: snapshot_ex3_s6 },
-  ]}
-/>
-*Cross-Processed Experimental — simulated result across source images.*
-**Source**: High-contrast footage with strong color content — street scenes, neon signs, or nature with saturated greens and reds.
+![Flash Party result](/img/instruments/videomancer/snapshot/snapshot_ex2_s1.png)
+*Flash Party — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore the dramatic color transformations of cross processing combined with film effects.
+***A description of the exercise illustration.***
 
-1. **Clean start**: Set all knobs to center (50%) and all toggles to Off.
-2. **Enable Cross Proc**: Toggle Cross Proc On. Watch the colors shift dramatically — greens and reds swap relationships.
-3. **Boost saturation**: Increase Saturation to about 85%. The cross-processed colors intensify.
-4. **Color shift**: Sweep Color Shift slowly from 0% to 100%. Notice how the tint interacts with the inverted V channel — the shift direction feels reversed compared to non-cross-processed mode.
-5. **Cool stock**: Set Film Stock to Cool and Warmth to about 50%. The cross-processed palette shifts further toward cyan shadows.
-6. **Heavy grain**: Set Grain to about 60% and Soft Focus to about 40%.
-7. **Vignette**: Set Vignette to about 80% for a tunnel-vision effect framing the cross-processed scene.
-8. **Reduce mix**: Pull Mix to about 70% to blend some of the original color back in, tempering the extreme cross-processing.
+#### Learning Outcomes
 
-**Key concepts**: Cross processing inverts V and stretches U deviation by 1.5×, cross processing interacts with all upstream color controls, mix fader is the only bypass mechanism
+A party snapshot with harsh flash, timestamp, and print border: the full disposable camera experience, complete with washed-out flash and a date burned into the corner.
+
+#### Key Concepts
+
+- Flash adds a radial brightness boost with desaturation
+- Date stamp and border add compositional framing elements
+- Flash opposes vignette, creating a spotlight effect
+
+#### Video Source
+
+Footage with people or subjects in a dimly lit environment. The flash effect is most dramatic when the source has visible shadows.
+
+#### Steps
+
+1. **Set up the base**: Use the settings from Exercise 1 as a starting point (Saturation ~90%, Vignette ~70%, Grain ~50%).
+2. **Fire the flash**: Toggle **Flash** (Switch 8) to **On**. The center of the image brightens dramatically and colors wash out: just like a disposable camera flash overwhelming the tiny lens.
+3. **Stamp the date**: Toggle **Date Stamp** (Switch 9) to **On**. An orange date block appears in the bottom-right corner.
+4. **Frame the print**: Toggle **Border** (Switch 10) to **On**. A white border appears around the image, as if the photo were printed.
+5. **Reduce warmth**: Lower **Warmth** (Knob 6) to about 40%. The flash adds its own color cast, so too much warmth can oversaturate the center.
+6. **Observe the spotlight**: Notice how flash brightens the center while vignette darkens the edges: the result is a dramatic falloff from bright center to dark corners.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Saturation | 90.0% |
+| Color Shift | 50.0% |
+| Vignette | 70.0% |
+| Grain | 50.0% |
+| Soft Focus | 25.0% |
+| Warmth | 40.0% |
+| Film Stock | Warm |
+| Flash | On |
+| Date Stamp | On |
+| Border | On |
+| Cross Proc | Off |
+| Mix | 100.0% |
 
 ---
 
+### Exercise 3: Cross-Processed Experiment
 
-## Tips
+![Cross-Processed Experiment result](/img/instruments/videomancer/snapshot/snapshot_ex3_s1.png)
+*Cross-Processed Experiment — simulated result across source images.*
+#### Exercise Illustration
 
-- **Cross processing is dramatic**: The V inversion and 1.5× U stretch produce extreme color shifts. Start with low Saturation and Warmth, then build up — cross processing amplifies everything.
-- **Grain for texture**: Even small amounts of grain add organic texture that softens the digital feel. At very high values, grain becomes a visible effect in its own right.
-- **Soft focus is directional**: The IIR blur runs horizontally only, resetting at each scan line. For uniform softness, combine with a feedback loop or downstream processing.
-- **Film stock sets direction**: The Film Stock toggle only determines whether Warmth adds warm or cool tones. The Warmth knob must be above zero for the toggle to have any visible effect.
-- **Date and border are cosmetic**: These overlays completely replace the video signal in their regions. They do not interact with vignette, flash, or any other processing stage.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A surreal, psychedelic color treatment that recreates the look of cross-processed slide film: shifted hues, exaggerated contrast, and an otherworldly palette where greens become magenta and blues become intense.
+
+#### Key Concepts
+
+- Cross processing inverts V and boosts U deviation before all other stages
+- Saturation amplifies cross-processed colors further
+- Cool film stock with cross processing creates an alien color palette
+
+#### Video Source
+
+Footage with varied, colorful subjects: plants, outdoor scenes, graffiti, or anything with a rich natural palette. Cross processing produces the most striking results when there are many different colors to shift.
+
+#### Steps
+
+1. **Enable cross processing**: Toggle **Cross Proc** (Switch 11) to **On**. Immediately the colors shift: expect greens to turn magenta and reds to shift toward cyan.
+2. **Boost saturation**: Set **Saturation** (Knob 1) to about 70%. The cross-processed colors intensify.
+3. **Add color shift**: Set **Color Shift** (Knob 2) to about 70%. This pushes the tint further into red territory, compounding the cross-processed palette.
+4. **Set cool film stock**: Switch **Film Stock** (Switch 7) to **Cool** and increase **Warmth** (Knob 6) to about 60%. The cool shift applied to already-inverted chroma creates an alien palette.
+5. **Add vignette and grain**: Set **Vignette** (Knob 3) to about 50% and **Grain** (Knob 4) to about 70%. The combination grounds the psychedelic colors in a gritty analog texture.
+6. **Soften**: Set **Soft Focus** (Knob 5) to about 40%. The soft blur blends the extreme cross-processed colors into each other for a painterly look.
+7. **Blend back**: Pull **Mix** (Fader 12) to about 70% to let some of the original color show through, tempering the extremity of the effect.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Saturation | 70.4% |
+| Color Shift | 69.6% |
+| Vignette | 50.4% |
+| Grain | 69.6% |
+| Soft Focus | 40.0% |
+| Warmth | 59.5% |
+| Film Stock | Cool |
+| Flash | Off |
+| Date Stamp | Off |
+| Border | Off |
+| Cross Proc | On |
+| Mix | 70.0% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **BT.601** | ITU-R Recommendation 601; the color matrix standard used to convert between RGB and YUV color spaces in standard-definition video. |
-| **C-41** | The standard chemical process for developing color negative film; produces the familiar orange-masked negatives used in consumer photography. |
-| **Chrominance** | The color difference information in a video signal, represented as U (blue-difference) and V (red-difference) components. |
-| **Cross Processing** | Deliberately developing photographic film in chemistry intended for a different film type, producing shifted colors and increased contrast. |
-| **E-6** | The standard chemical process for developing color reversal (slide) film; produces positive transparencies. |
-| **Film Grain** | The visible clumping of light-sensitive particles in photographic emulsion, producing a textured noise pattern. |
-| **IIR** | Infinite Impulse Response; a filter type where the output feeds back into the calculation, producing exponential-decay smoothing. |
-| **LFSR** | Linear Feedback Shift Register; a digital circuit that produces a deterministic pseudo-random binary sequence. |
-| **Luminance** | The brightness component (Y) of a YUV video signal. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage for brightness and contrast adjustment. |
-| **Vignette** | Darkening of image corners and edges caused by optical limitations of the lens, or applied intentionally for artistic effect. |
+- **Chroma**: The color information in a video signal, encoded as U and V channels in YUV color space, representing blue-yellow and red-cyan axes respectively.
+
+- **Color Temperature**: A measure of the warmth or coolness of light, expressed in Kelvins. Low color temperatures (warm) appear amber; high temperatures (cool) appear blue.
+
+- **Cross Processing**: A photographic technique where film is developed in chemistry intended for a different film type, producing radical color shifts and increased contrast.
+
+- **IIR Filter**: Infinite impulse response filter; a feedback-based filter where the output feeds back into the input, creating a smoothing or blurring effect that persists across samples.
+
+- **LFSR**: Linear feedback shift register; a simple digital circuit that generates a pseudo-random bit sequence by feeding back XOR combinations of its own state bits.
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color.
+
+- **Saturation**: The intensity or purity of a color; how far a color departs from neutral gray. Zero saturation is gray; high saturation is vivid color.
+
+- **Vignetting**: The gradual darkening of image corners and edges, caused by the physical geometry of a lens system blocking light at steep angles.
 
 ---

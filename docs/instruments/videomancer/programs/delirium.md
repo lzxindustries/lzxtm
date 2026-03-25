@@ -30,7 +30,7 @@ The name ***Delirium*** captures the hallucinatory quality of its output: images
 
 ## Quick Start
 
-1. Turn **Amplitude 1** (Knob 1) to about 25%. The image begins to ripple with soft vertical waves — scanlines shift left and right following a sine curve.
+1. Turn **Amplitude 1** (Knob 1) to about 25%. The image begins to ripple with soft vertical waves (scanlines shift left and right following a sine curve.)
 2. Sweep **Frequency 1** (Knob 2) slowly from low to high. At low values the wave is broad and gentle; at high values the image becomes tightly compressed and stretched in rapid succession.
 3. Increase **Speed 1** (Knob 3) to animate the distortion. The wave pattern scrolls continuously, creating a liquid motion effect.
 4. Now bring **Amplitude 2** (Knob 4) up to 25% and toggle **Layer 2 Mode** (Switch 8) to the opposite of Layer 1. Two perpendicular wave patterns interact, creating compound warping across both axes.
@@ -49,7 +49,7 @@ The name ***Delirium*** captures the hallucinatory quality of its output: images
 | Range | 0.0% – 100.0% |
 | Default | 25.0% |
 
-**Amplitude 1** controls the distortion depth of Layer 1 — how far pixels are displaced from their original position. At 0%, fully counterclockwise, Layer 1 is disabled: there is zero displacement and the image passes through unchanged. As the value increases, the sine wave pushes pixels further left and right, creating deeper ripples. At 100%, the displacement reaches its maximum range, producing dramatic stretching and compression of the image.
+**Amplitude 1** controls the distortion depth of Layer 1: how far pixels are displaced from their original position. At 0%, fully counterclockwise, Layer 1 is disabled: there is zero displacement and the image passes through unchanged. As the value increases, the sine wave pushes pixels further left and right, creating deeper ripples. At 100%, the displacement reaches its maximum range, producing dramatic stretching and compression of the image.
 
 :::note
 Setting Amplitude to 0% effectively disables a layer entirely, since zero displacement equals a passthrough. This is the intended way to use Delirium as a single-layer effect.
@@ -64,7 +64,7 @@ Setting Amplitude to 0% effectively disables a layer entirely, since zero displa
 | Range | 0.0% – 100.0% |
 | Default | 12.5% |
 
-**Frequency 1** sets the spatial frequency of Layer 1's sine wave — how many wave cycles fit across the image. At low values the wave is long and broad, producing gentle tilting or swaying. At high values the wave cycles rapidly, creating tight corrugation patterns. The frequency multiplies against the spatial axis selected by **Layer 1 Mode** (Switch 7): in Vert mode, it multiplies the scanline number; in Horiz mode, it multiplies the pixel position.
+**Frequency 1** sets the spatial frequency of Layer 1's sine wave: how many wave cycles fit across the image. At low values the wave is long and broad, producing gentle tilting or swaying. At high values the wave cycles rapidly, creating tight corrugation patterns. The frequency multiplies against the spatial axis selected by **Layer 1 Mode** (Switch 7): in Vert mode, it multiplies the scanline number; in Horiz mode, it multiplies the pixel position.
 
 ---
 
@@ -112,7 +112,7 @@ At very high speeds, the animation appears to strobe or alias. Try moderate spee
 | Range | 0.0% – 100.0% |
 | Default | 0.0% |
 
-**Speed 2** controls the animation rate of Layer 2. When **Phase Link** (Switch 10) is Off, this operates independently of Speed 1, allowing the two layers to drift at different rates and create evolving phase relationships. When Phase Link is On, this control is overridden — Layer 2 tracks Layer 1's phase instead.
+**Speed 2** controls the animation rate of Layer 2. When **Phase Link** (Switch 10) is Off, this operates independently of Speed 1, allowing the two layers to drift at different rates and create evolving phase relationships. When Phase Link is On, this control is overridden: Layer 2 tracks Layer 1's phase instead.
 
 ---
 
@@ -124,7 +124,7 @@ At very high speeds, the animation appears to strobe or alias. Try moderate spee
 | On | Vert |
 | Default | Vert |
 
-**Layer 1 Mode** selects the spatial axis for Layer 1's sine wave. In **Vert** mode (the default), the sine argument is the scanline number — the displacement varies from line to line, producing horizontal bands that ripple left and right. In **Horiz** mode, the sine argument is the pixel position within each scanline — the displacement varies across each line, creating a corrugated compression pattern that stretches and squeezes the image horizontally.
+**Layer 1 Mode** selects the spatial axis for Layer 1's sine wave. In **Vert** mode (the default), the sine argument is the scanline number: the displacement varies from line to line, producing horizontal bands that ripple left and right. In **Horiz** mode, the sine argument is the pixel position within each scanline: the displacement varies across each line, creating a corrugated compression pattern that stretches and squeezes the image horizontally.
 
 :::note
 Vert mode creates the classic "wavy scanline" look. Horiz mode produces a more unusual accordion-like squeezing within each line.
@@ -140,7 +140,7 @@ Vert mode creates the classic "wavy scanline" look. Horiz mode produces a more u
 | On | Vert |
 | Default | Horiz |
 
-**Layer 2 Mode** selects the spatial axis for Layer 2, independently of Layer 1. Setting the two layers to different modes — one Vert, one Horiz — produces compound distortion across both spatial dimensions. Setting both to the same mode produces layered one-dimensional effects with interference patterns.
+**Layer 2 Mode** selects the spatial axis for Layer 2, independently of Layer 1. Setting the two layers to different modes: one Vert, one Horiz: produces compound distortion across both spatial dimensions. Setting both to the same mode produces layered one-dimensional effects with interference patterns.
 
 ---
 
@@ -152,7 +152,7 @@ Vert mode creates the classic "wavy scanline" look. Horiz mode produces a more u
 | On | L2>L1 |
 | Default | L1>L2 |
 
-**Cascade** selects the order in which the two distortion layers are applied. In **L1>L2** mode, the input feeds Layer 1 first, then Layer 2 distorts Layer 1's output. In **L2>L1** mode, the order reverses: Layer 2 processes the raw input and Layer 1 distorts Layer 2's output. Because sine distortion is nonlinear, the cascade order matters — the layer that goes second distorts an already-warped signal, amplifying certain spatial patterns and suppressing others.
+**Cascade** selects the order in which the two distortion layers are applied. In **L1>L2** mode, the input feeds Layer 1 first, then Layer 2 distorts Layer 1's output. In **L2>L1** mode, the order reverses: Layer 2 processes the raw input and Layer 1 distorts Layer 2's output. Because sine distortion is nonlinear, the cascade order matters: the layer that goes second distorts an already-warped signal, amplifying certain spatial patterns and suppressing others.
 
 ---
 
@@ -199,53 +199,32 @@ Use Phase Lock to freeze a particularly interesting distortion frame, then adjus
 
 ### Sinusoidal distortion
 
-The core technique in Delirium is ***sinusoidal displacement*** — shifting each pixel's read address by a sine wave offset. Instead of reading pixel N from the line buffer, Delirium reads pixel N + A·sin(θ), where A is the amplitude and θ is a function of position and time. This stretches the image where the sine slope is steep and compresses it where the slope is shallow, producing the characteristic rubber-sheet distortion.
+The core technique in Delirium is ***sinusoidal displacement***: shifting each pixel's read address by a sine wave offset. Instead of reading pixel N from the line buffer, Delirium reads pixel N + A·sin(θ), where A is the amplitude and θ is a function of position and time. This stretches the image where the sine slope is steep and compresses it where the slope is shallow, producing the characteristic rubber-sheet distortion.
 
 The sine wave is computed from a ***quarter-wave lookup table*** stored in block RAM. A 64-entry table stores one quarter of the sine cycle; the full wave is reconstructed by mirroring and negating the quarter-wave values. This is a classic FPGA optimization that reduces memory usage by 4× while producing a mathematically complete sine function.
 
 ### Cascaded layers
 
-Running two distortion layers in cascade creates effects far richer than either layer alone. The first layer warps the image, and the second layer warps the warped result. Because sine displacement is nonlinear, the compound effect is not simply the sum of the two individual effects — it produces ***interference fringes***, ***moiré patterns***, and complex undulations that emerge from the interaction between the two wave fields.
+Running two distortion layers in cascade creates effects far richer than either layer alone. The first layer warps the image, and the second layer warps the warped result. Because sine displacement is nonlinear, the compound effect is not simply the sum of the two individual effects: it produces ***interference fringes***, ***moiré patterns***, and complex undulations that emerge from the interaction between the two wave fields.
 
 The cascade order matters. The layer that goes second distorts a signal that already has spatial non-uniformities introduced by the first layer. This means the same amplitude and frequency settings produce visually different results depending on which layer leads.
 
 ### Animation and phase
 
-Each layer has its own ***phase accumulator*** — a counter that advances by the Speed value on every video frame (at the vertical sync pulse). This phase offset is added to the sine argument, causing the entire wave pattern to scroll through the image over time. The result is continuous, looping animation that gives Delirium its characteristic liquid motion.
+Each layer has its own ***phase accumulator***: a counter that advances by the Speed value on every video frame (at the vertical sync pulse). This phase offset is added to the sine argument, causing the entire wave pattern to scroll through the image over time. The result is continuous, looping animation that gives Delirium its characteristic liquid motion.
 
 **Phase Link** forces Layer 2 to inherit Layer 1's accumulated phase, creating coordinated animation. **Phase Lock** resets both accumulators to zero, freezing all motion for static distortion composition.
 
-### Signal Flow
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Processing Path ────────────────────────────────────────────
-│   │
-│   ├─ 1. Parameter Latch       (register inputs on clock edge)
-│   ├─ 2. Sine Argument         (freq × axis + phase, per layer)
-│   ├─ 3. Sine LUT Read         (quarter-wave lookup → full sine)
-│   ├─ 4. Amplitude Scaling     (sine × amplitude → pixel offset)
-│   ├─ 5. Line Buffer A Read    (stage 1: read input with offset)
-│   ├─ 6. Line Buffer B Read    (stage 2: read stage 1 with offset)
-│   └─ 7. Wet Output            (cascaded distortion result)
-│
-├── Cascade Order Mux ──────────────────────────────────────────
-│   └─ L1>L2: stage1=L1, stage2=L2
-│      L2>L1: stage1=L2, stage2=L1
-│
-├── Sync Delay Pipeline ────────────────────────────────────────
-│   └─ Match processing latency (14 clocks sync, 10 clocks data)
-│
-└── Wet/Dry Mix ────────────────────────────────────────────────
-    └─ interpolator_u × 3 (Y, U, V) → blended output
-```
+---
+
+## Signal Flow
 
 ### Signal Flow Notes
 
 Two line buffers form the backbone of the cascade. **Line Buffer A** stores the raw input. Stage 1 reads from Buffer A with a displaced address, producing the first layer of distortion. **Line Buffer B** stores the output of Stage 1. Stage 2 reads from Buffer B with its own displaced address, applying the second layer of distortion to the already-warped signal.
 
-The ***cascade order mux*** swaps which layer's offset feeds Stage 1 versus Stage 2. This allows the artist to hear the difference in cascade ordering without reassigning all the per-layer controls. Edge clamping ensures that displaced read addresses never fall outside the valid pixel range — out-of-bounds reads clamp to the nearest edge pixel rather than wrapping or producing garbage.
+The ***cascade order mux*** swaps which layer's offset feeds Stage 1 versus Stage 2. This allows the artist to hear the difference in cascade ordering without reassigning all the per-layer controls. Edge clamping ensures that displaced read addresses never fall outside the valid pixel range: out-of-bounds reads clamp to the nearest edge pixel rather than wrapping or producing garbage.
 
 :::tip
 **No bypass switch?** Delirium uses the **Mix** fader instead. Pull Mix to 0% for a clean A/B comparison against the dry input.
@@ -261,13 +240,25 @@ These exercises progress from single-layer basics to complex compound distortion
 
 ![Single-Layer Ripple result](/img/instruments/videomancer/delirium/delirium_ex1_s1.png)
 *Single-Layer Ripple — simulated result across source images.*
-**Key Concepts**: - Sine displacement shifts pixel read addresses
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Learn how amplitude, frequency, and mode interact to shape a single sine distortion layer.
+
+#### Key Concepts
+
+- Sine displacement shifts pixel read addresses
 - Vert mode varies displacement per scanline; Horiz mode varies per pixel
 - Amplitude controls wave depth; Frequency controls wave spacing
 
-**What You'll Create**: Learn how amplitude, frequency, and mode interact to shape a single sine distortion layer.
+#### Video Source
 
-**Source**: A live camera feed or recorded footage with strong vertical and horizontal lines (architecture, text, grids).
+A live camera feed or recorded footage with strong vertical and horizontal lines (architecture, text, grids).
+
+#### Steps
 
 1. **Disable Layer 2**: Set **Amplitude 2** (Knob 4) to 0%.
 2. **Gentle ripple**: Set **Amplitude 1** (Knob 1) to about 15% and **Frequency 1** (Knob 2) to about 20%. The image ripples softly with broad, slow waves.
@@ -275,7 +266,7 @@ These exercises progress from single-layer basics to complex compound distortion
 4. **Switch mode**: Toggle **Layer 1 Mode** (Switch 7) from Vert to Horiz. The distortion changes from horizontal bands rippling left/right to an accordion-like squeeze within each scanline.
 5. **Animate**: Increase **Speed 1** (Knob 3) to set the wave in motion. The distortion scrolls continuously.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -298,21 +289,33 @@ These exercises progress from single-layer basics to complex compound distortion
 
 ![Compound Cascade result](/img/instruments/videomancer/delirium/delirium_ex2_s1.png)
 *Compound Cascade — simulated result across source images.*
-**Key Concepts**: - Cascaded nonlinear distortion produces interference patterns
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Explore how two cascaded distortion layers interact to create complex warping.
+
+#### Key Concepts
+
+- Cascaded nonlinear distortion produces interference patterns
 - Perpendicular modes (one Vert, one Horiz) create two-dimensional warping
 - Cascade order changes the result even with identical settings
 
-**What You'll Create**: Explore how two cascaded distortion layers interact to create complex warping.
+#### Video Source
 
-**Source**: Footage with recognizable geometry — faces, architecture, or text. The distortion is most legible when the source has clear structure to warp.
+Footage with recognizable geometry: faces, architecture, or text. The distortion is most legible when the source has clear structure to warp.
+
+#### Steps
 
 1. **Two perpendicular layers**: Keep Layer 1 in **Vert** mode. Set **Layer 2 Mode** (Switch 8) to **Horiz**. Set both amplitudes to about 20% and both frequencies to about 30%.
-2. **Observe compound warping**: The image warps in two dimensions — scanlines ripple left/right *and* each scanline is also squeezed and stretched internally.
+2. **Observe compound warping**: The image warps in two dimensions: scanlines ripple left/right *and* each scanline is also squeezed and stretched internally.
 3. **Animate both**: Set **Speed 1** to ~20% and **Speed 2** to ~15%. The two wave patterns drift at different rates, creating continuously evolving distortion.
 4. **Swap cascade order**: Toggle **Cascade** (Switch 9) from L1>L2 to L2>L1. Notice how the visual character changes even though the per-layer settings haven't moved.
-5. **Phase Link**: Enable **Phase Link** (Switch 10). Both layers now animate in lockstep — the pattern becomes more coherent and symmetrical.
+5. **Phase Link**: Enable **Phase Link** (Switch 10). Both layers now animate in lockstep (the pattern becomes more coherent and symmetrical.)
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -335,13 +338,25 @@ These exercises progress from single-layer basics to complex compound distortion
 
 ![EarthBound Battle Screen result](/img/instruments/videomancer/delirium/delirium_ex3_s1.png)
 *EarthBound Battle Screen — simulated result across source images.*
-**Key Concepts**: - High amplitude + moderate frequency creates intense rubber-sheet distortion
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Recreate the iconic psychedelic battle background distortion from *EarthBound*.
+
+#### Key Concepts
+
+- High amplitude + moderate frequency creates intense rubber-sheet distortion
 - Two layers at different speeds produce evolving kaleidoscopic patterns
 - Phase Lock can freeze a striking frame for examination
 
-**What You'll Create**: Recreate the iconic psychedelic battle background distortion from *EarthBound*.
+#### Video Source
 
-**Source**: Abstract video, colorful gradients, or synthesized patterns. Bold shapes and saturated colors showcase the distortion most dramatically.
+Abstract video, colorful gradients, or synthesized patterns. Bold shapes and saturated colors showcase the distortion most dramatically.
+
+#### Steps
 
 1. **High amplitude**: Set **Amplitude 1** to ~50% and **Amplitude 2** to ~40%.
 2. **Different frequencies**: Set **Frequency 1** to ~40% and **Frequency 2** to ~60%. The mismatched frequencies produce intricate interference.
@@ -350,7 +365,7 @@ These exercises progress from single-layer basics to complex compound distortion
 5. **Freeze frame**: Toggle **Phase Lock** (Switch 11) to **Lock** to freeze the pattern. Adjust amplitudes and frequencies to sculpt the frozen distortion.
 6. **Wet/dry blend**: Pull **Mix** (Fader 12) down to about 50% to blend the distorted image with the clean original for a ghostly overlay effect.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|

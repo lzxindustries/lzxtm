@@ -16,7 +16,7 @@ description: "STIC transforms incoming video into the restricted visual language
 
 **STIC** is a retro video processor that recreates the display characteristics of the Intellivision's ***Standard Television Interface Chip***, the custom graphics IC that defined the console's visual style. STIC quantizes incoming video to the Intellivision's fixed 16-color palette using ***Manhattan distance*** matching in YUV color space, then renders the result through one of two authentic display modes: **Color Stack** and **Colored Squares**.
 
-In Color Stack mode, each tile is split into foreground and background. The foreground takes the nearest palette color to the input, while the background cycles through a rotating stack of four evenly spaced palette entries. In Colored Squares mode, each tile is subdivided into four quadrants, each independently matched to the palette, producing the ultra-blocky mosaic seen in classic Intellivision titles like *Snafu*. Additional features — tile grid overlay, CRT scanline dimming, and simulated sprite flicker — complete the retro illusion.
+In Color Stack mode, each tile is split into foreground and background. The foreground takes the nearest palette color to the input, while the background cycles through a rotating stack of four evenly spaced palette entries. In Colored Squares mode, each tile is subdivided into four quadrants, each independently matched to the palette, producing the ultra-blocky mosaic seen in classic Intellivision titles like *Snafu*. Additional features: tile grid overlay, CRT scanline dimming, and simulated sprite flicker: complete the retro illusion.
 
 :::tip
 STIC uses zero block RAM. All processing is combinational logic and LUT-based palette ROM, making it one of the most resource-efficient programs in the Videomancer library.
@@ -24,13 +24,13 @@ STIC uses zero block RAM. All processing is combinational logic and LUT-based pa
 
 ### What's In a Name?
 
-The name ***STIC*** stands for ***Standard Television Interface Chip***, the designation Mattel Electronics gave to the custom display processor inside the Intellivision console (officially designated AY-3-8900). The STIC was responsible for generating the console's entire video output — background tiles, sprites, and the Color Stack and Colored Squares rendering modes that STIC recreates.
+The name ***STIC*** stands for ***Standard Television Interface Chip***, the designation Mattel Electronics gave to the custom display processor inside the Intellivision console (officially designated AY-3-8900). The STIC was responsible for generating the console's entire video output: background tiles, sprites, and the Color Stack and Colored Squares rendering modes that STIC recreates.
 
 ---
 
 ## Quick Start
 
-1. Send a video source into Videomancer with **STIC** loaded. The image is immediately quantized to 16 colors — flat, blocky, and unmistakably retro.
+1. Send a video source into Videomancer with **STIC** loaded. The image is immediately quantized to 16 colors (flat, blocky, and unmistakably retro.)
 2. Turn **Stack Hue** (Knob 2) to scroll through the 16 palette entries used as the base color for the cycling background. The background tiles shift through the Intellivision rainbow.
 3. Increase **Stack Rate** (Knob 3) to speed up the Color Stack cycling. The background pattern becomes a shimmering, animated mosaic as the four-entry stack advances faster.
 4. Flip **Mode** (Switch 7) to **ClrSqrs**. Each tile splits into four independently colored quadrants, creating a denser, blockier mosaic reminiscent of early Intellivision puzzle games.
@@ -49,7 +49,7 @@ The name ***STIC*** stands for ***Standard Television Interface Chip***, the des
 | Range | 4px – 35px |
 | Default | 16px |
 
-**Tile Size** sets the width of each tile cell in pixels. At minimum, tiles are 4 pixels wide — small, dense blocks that preserve more spatial detail. As you turn clockwise, tiles grow up to 35 pixels wide, producing large, flat color regions. The tile height tracks the width, so tiles remain roughly square. Smaller tiles reveal more of the source image's structure through the palette quantization; larger tiles produce bold, graphic shapes.
+**Tile Size** sets the width of each tile cell in pixels. At minimum, tiles are 4 pixels wide: small, dense blocks that preserve more spatial detail. As you turn clockwise, tiles grow up to 35 pixels wide, producing large, flat color regions. The tile height tracks the width, so tiles remain roughly square. Smaller tiles reveal more of the source image's structure through the palette quantization; larger tiles produce bold, graphic shapes.
 
 :::note
 In Colored Squares mode, each tile is subdivided into four quadrants, so a 20-pixel tile becomes four 10-pixel blocks. Smaller tile sizes in this mode can approach the source image's original detail level, just palette-quantized.
@@ -75,7 +75,7 @@ In Colored Squares mode, each tile is subdivided into four quadrants, so a 20-pi
 | Range | 0% – 100% |
 | Default | 25% |
 
-**Stack Rate** controls how quickly the Color Stack advances through its four background colors. At 0%, the stack is nearly static — background tiles hold the same color for many tiles before advancing. At maximum, the stack advances every tile, creating a rapid cycling pattern across the screen. The rate is driven by a phase accumulator, so intermediate values produce smoothly varying advance intervals.
+**Stack Rate** controls how quickly the Color Stack advances through its four background colors. At 0%, the stack is nearly static: background tiles hold the same color for many tiles before advancing. At maximum, the stack advances every tile, creating a rapid cycling pattern across the screen. The rate is driven by a phase accumulator, so intermediate values produce smoothly varying advance intervals.
 
 :::tip
 Slow stack rates with large tiles produce broad fields of alternating background color. Fast rates with small tiles create a flickering, animated texture that resembles the scrolling backgrounds of Intellivision sports games.
@@ -90,7 +90,7 @@ Slow stack rates with large tiles produce broad fields of alternating background
 | Range | 0% – 100% |
 | Default | 75% |
 
-**Saturation** controls the chroma intensity of the output. At 0%, the palette-quantized image is rendered in grayscale — only the luminance differences between colors remain visible. At the default position (~75%), colors reproduce at roughly their original intensity. Turning fully clockwise pushes saturation beyond natural levels, creating vivid, oversaturated palette colors.
+**Saturation** controls the chroma intensity of the output. At 0%, the palette-quantized image is rendered in grayscale: only the luminance differences between colors remain visible. At the default position (~75%), colors reproduce at roughly their original intensity. Turning fully clockwise pushes saturation beyond natural levels, creating vivid, oversaturated palette colors.
 
 ---
 
@@ -101,7 +101,7 @@ Slow stack rates with large tiles produce broad fields of alternating background
 | Range | 0% – 100% |
 | Default | 22% |
 
-**Threshold** sets the luminance boundary between foreground and background within each tile. Pixels brighter than the threshold are rendered as the nearest palette color (foreground). Pixels darker than the threshold use the Color Stack background color instead. At 0%, nearly everything is foreground — the entire image is palette-quantized. At 100%, nearly everything becomes background, and the Color Stack pattern dominates the output.
+**Threshold** sets the luminance boundary between foreground and background within each tile. Pixels brighter than the threshold are rendered as the nearest palette color (foreground). Pixels darker than the threshold use the Color Stack background color instead. At 0%, nearly everything is foreground: the entire image is palette-quantized. At 100%, nearly everything becomes background, and the Color Stack pattern dominates the output.
 
 :::warning
 Because Threshold operates on the *input* luminance before palette matching, its effect depends on the brightness of your source. A dark source with a high threshold will be almost entirely background color.
@@ -199,13 +199,13 @@ Scan Str has no visible effect unless Scanlines is enabled. It only modulates th
 
 ### The Intellivision STIC
 
-The ***Standard Television Interface Chip*** (AY-3-8900) was the heart of the Mattel Intellivision console, released in 1979. Unlike the Atari 2600's player/missile system, the STIC provided a true tile-based background display with hardware sprite support. Its most distinctive constraint was a fixed palette of just 16 colors — derived from the NTSC color space — and two unique rendering modes for background tiles: Color Stack and Colored Squares.
+The ***Standard Television Interface Chip*** (AY-3-8900) was the heart of the Mattel Intellivision console, released in 1979. Unlike the Atari 2600's player/missile system, the STIC provided a true tile-based background display with hardware sprite support. Its most distinctive constraint was a fixed palette of just 16 colors: derived from the NTSC color space: and two unique rendering modes for background tiles: Color Stack and Colored Squares.
 
 The Color Stack mode used a four-entry rotating register to assign background colors to tiles, producing animated color patterns without CPU intervention. The Colored Squares mode traded sprite capability for denser color information, subdividing each 8×8 tile into four 4×4 quadrant blocks, each independently colored from a subset of the palette. This produced the characteristic ultra-blocky graphics seen in games like *Snafu*, *Checkers*, and *Triple Action*.
 
 ### Palette Quantization
 
-STIC matches each input pixel (or tile sample) to the nearest of 16 palette colors using ***Manhattan distance*** — the sum of absolute differences across Y, U, and V channels. The distance is computed on 6-bit truncated values to reduce carry chain depth, keeping the matching logic fast enough for pixel-rate processing. All 16 distances are computed in parallel across a single clock cycle, then reduced through a tournament bracket (16→4→1) over three additional clocks to find the winning palette index.
+STIC matches each input pixel (or tile sample) to the nearest of 16 palette colors using ***Manhattan distance***: the sum of absolute differences across Y, U, and V channels. The distance is computed on 6-bit truncated values to reduce carry chain depth, keeping the matching logic fast enough for pixel-rate processing. All 16 distances are computed in parallel across a single clock cycle, then reduced through a tournament bracket (16→4→1) over three additional clocks to find the winning palette index.
 
 :::note
 Manhattan distance (also called L1 or taxicab distance) is computationally cheaper than Euclidean distance because it avoids multiplication and square root operations. On an iCE40 FPGA with no hardware multipliers, this is a critical advantage.
@@ -213,49 +213,12 @@ Manhattan distance (also called L1 or taxicab distance) is computationally cheap
 
 ### Color Stack Mechanics
 
-The Color Stack is a four-entry rotating register that assigns background colors to tiles. The base hue selects a starting palette index, and the stack spreads four entries evenly across the palette by offsetting the index by 0, 4, 8, and 12. A phase accumulator driven by the Stack Rate parameter controls how often the stack advances. At each tile origin (the top-left corner of a new tile), the accumulator is incremented — when it overflows, the stack index advances by one. This creates spatially varying background patterns that shift across the screen.
+The Color Stack is a four-entry rotating register that assigns background colors to tiles. The base hue selects a starting palette index, and the stack spreads four entries evenly across the palette by offsetting the index by 0, 4, 8, and 12. A phase accumulator driven by the Stack Rate parameter controls how often the stack advances. At each tile origin (the top-left corner of a new tile), the accumulator is incremented: when it overflows, the stack index advances by one. This creates spatially varying background patterns that shift across the screen.
 
-### Signal Flow
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Stage 1: Input Register + Timing + Tile Tracking ──────────
-│   ├─ Sync edge detection (hsync/vsync falling edges)
-│   ├─ Cell width from Tile Size (4–35 px)
-│   ├─ Tile-boundary sample-and-hold (whole-tile for ColorStk)
-│   ├─ Quadrant sub-sample (half-cell for ClrSqrs)
-│   ├─ Color Stack advance logic (phase accumulator)
-│   ├─ Foreground/background threshold decision
-│   ├─ Grid, scanline, and sprite flicker flag generation
-│   └─ Frame counter (for 20 Hz flicker cycle)
-│
-├── Stage 2: Palette Distance (all 16 in parallel) ────────────
-│   └─ Manhattan distance per palette entry (6-bit truncated)
-│
-├── Stage 3: 16→4 Group Reduction ─────────────────────────────
-│   └─ Four independent 4-way minimum comparisons
-│
-├── Stage 4: 4→1 Final Reduction ──────────────────────────────
-│   └─ Tournament bracket → winner index (4 bits)
-│
-├── Stage 5: Palette ROM Lookup + Mode Mux ────────────────────
-│   ├─ Foreground: palette color at winner index
-│   └─ Background: Color Stack entry (threshold-based split)
-│
-├── Stages 6–9: Brightness + Saturation + Effects ─────────────
-│   ├─ Brightness multiply (Y × Brightness >> 9)
-│   ├─ Saturation scale ((UV − 512) × Saturation >> 9 + 512)
-│   ├─ Grid overlay (Y=64, neutral UV at tile edges)
-│   ├─ Scanline dimming (75% or 50% on odd lines)
-│   └─ Sprite flicker (50% on every 3rd frame)
-│
-├── Interpolator: Wet/Dry Mix (4 clocks) ──────────────────────
-│   └─ 3× interpolator_u (Y, U, V crossfade)
-│
-└── Sync Delay Pipeline ───────────────────────────────────────
-    └─ 14-clock shift register (avid, hsync, vsync, field, YUV)
-```
+---
+
+## Signal Flow
 
 ### Signal Flow Notes
 
@@ -266,7 +229,7 @@ The pipeline has two key architectural features:
 2. **Dual sample paths**: Stage 1 maintains two independent pixel samples. The whole-tile sample (captured at each tile boundary) feeds Color Stack mode, while the quadrant sub-sample (captured at tile origin and half-cell midpoint) feeds Colored Squares mode. The mode toggle selects which sample enters the palette matching pipeline in Stage 2.
 
 :::tip
-**Threshold is the creative fulcrum.** It doesn't gate the output — it decides which pixels get the palette-matched foreground color versus the cycling Color Stack background. Low threshold = mostly foreground (faithful to source). High threshold = mostly background (Color Stack pattern dominates).
+**Threshold is the creative fulcrum.** It doesn't gate the output: it decides which pixels get the palette-matched foreground color versus the cycling Color Stack background. Low threshold = mostly foreground (faithful to source). High threshold = mostly background (Color Stack pattern dominates).
 :::
 
 
@@ -279,13 +242,25 @@ These exercises explore STIC's two display modes, palette cycling, and CRT simul
 
 ![Color Stack Cycling result](/img/instruments/videomancer/stic/stic_ex1_s1.png)
 *Color Stack Cycling — simulated result across source images.*
-**Key Concepts**: - The Color Stack cycles four palette entries spaced evenly from the base hue
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Learn how the Color Stack background animation interacts with the foreground palette quantization.
+
+#### Key Concepts
+
+- The Color Stack cycles four palette entries spaced evenly from the base hue
 - Stack Rate controls the speed of cycling across tiles
 - Threshold splits each tile into foreground (palette match) and background (stack color)
 
-**What You'll Create**: Learn how the Color Stack background animation interacts with the foreground palette quantization.
+#### Video Source
 
-**Source**: A live camera feed or recorded footage with a mix of bright and dark regions.
+A live camera feed or recorded footage with a mix of bright and dark regions.
+
+#### Steps
 
 1. **Set tile grid**: Set **Tile Size** (Knob 1) to about 50% for medium-sized tiles. The image is immediately quantized to the 16-color palette.
 2. **Cycle background hue**: Turn **Stack Hue** (Knob 2) slowly through the full range. Background colors cycle through the complete Intellivision palette.
@@ -293,7 +268,7 @@ These exercises explore STIC's two display modes, palette cycling, and CRT simul
 4. **Animate the stack**: Increase **Stack Rate** (Knob 3) from 0% toward maximum. The background pattern begins shimmering as the stack advances faster across tiles.
 5. **Denser texture**: Adjust **Tile Size** smaller. The denser tile grid makes the Color Stack cycling more visible as a fine animated texture.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -316,21 +291,33 @@ These exercises explore STIC's two display modes, palette cycling, and CRT simul
 
 ![Colored Squares Mosaic result](/img/instruments/videomancer/stic/stic_ex2_s1.png)
 *Colored Squares Mosaic — simulated result across source images.*
-**Key Concepts**: - Colored Squares subdivides each tile into four independently quantized quadrants
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Explore Colored Squares mode and the grid overlay to create dense, blocky retro mosaics.
+
+#### Key Concepts
+
+- Colored Squares subdivides each tile into four independently quantized quadrants
 - Grid overlay makes tile boundaries explicit
 - Saturation and Brightness shape the palette appearance
 
-**What You'll Create**: Explore Colored Squares mode and the grid overlay to create dense, blocky retro mosaics.
+#### Video Source
 
-**Source**: Footage with varied colors and moderate contrast — nature scenes, painted surfaces, or abstract patterns work well.
+Footage with varied colors and moderate contrast: nature scenes, painted surfaces, or abstract patterns work well.
+
+#### Steps
 
 1. **Quad subdivide**: Switch **Mode** (Switch 7) to **ClrSqrs**. Each tile now shows four independent color blocks instead of one.
 2. **Show tile grid**: Enable **Grid** (Switch 8). Dark lines appear at every tile boundary, giving the image a graph-paper quality.
 3. **Shrink the tiles**: Reduce **Tile Size** (Knob 1) to about 30%. The quadrants become smaller and denser, revealing more of the source image's color structure through the palette.
-4. **Vivid palette**: Push **Saturation** (Knob 4) fully clockwise. The palette colors become vivid and oversaturated — pure retro gameplay aesthetic.
+4. **Vivid palette**: Push **Saturation** (Knob 4) fully clockwise. The palette colors become vivid and oversaturated (pure retro gameplay aesthetic.)
 5. **Maximize foreground**: Lower **Threshold** (Knob 5) toward 0% so nearly all pixels are palette-matched foreground, maximizing the Colored Squares mosaic.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -353,13 +340,25 @@ These exercises explore STIC's two display modes, palette cycling, and CRT simul
 
 ![Full Retro CRT Simulation result](/img/instruments/videomancer/stic/stic_ex3_s1.png)
 *Full Retro CRT Simulation — simulated result across source images.*
-**Key Concepts**: - Scanlines and sprite flicker are multiplicative dimming effects applied after palette processing
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Combine palette quantization with scanlines, sprite flicker, and grid to simulate the complete Intellivision display experience.
+
+#### Key Concepts
+
+- Scanlines and sprite flicker are multiplicative dimming effects applied after palette processing
 - Scan Str controls scanline depth (75% vs 50%)
 - Sprite flicker dims every third frame to simulate hardware multiplexing
 
-**What You'll Create**: Combine palette quantization with scanlines, sprite flicker, and grid to simulate the complete Intellivision display experience.
+#### Video Source
 
-**Source**: High-contrast footage with clear shapes — silhouettes, graphic patterns, or gameplay footage if available.
+High-contrast footage with clear shapes: silhouettes, graphic patterns, or gameplay footage if available.
+
+#### Steps
 
 1. **Bold tile grid**: Set **Tile Size** (Knob 1) to about 60% for large, bold tiles. Enable **Grid** (Switch 8) to see tile boundaries.
 2. **Add scanlines**: Enable **Scanlines** (Switch 9). Every other scan line darkens, adding CRT texture. Toggle **Scan Str** (Switch 11) between **Light** and **Heavy** to compare the two dimming depths.
@@ -368,7 +367,7 @@ These exercises explore STIC's two display modes, palette cycling, and CRT simul
 5. **Darken the display**: Reduce **Brightness** (Knob 6) slightly below 50% to darken the overall image, enhancing the CRT appearance.
 6. **Ghost the original**: Slowly sweep **Mix** (Fader 12) down to see the original image ghost through the retro rendering.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -409,6 +408,5 @@ These exercises explore STIC's two display modes, palette cycling, and CRT simul
 - **Tile**: A fixed-size rectangular cell in a tile-based display system; the fundamental unit of background rendering in the STIC.
 
 - **Tournament Bracket Reduction**: A parallel comparison tree that finds the minimum of N values in O(log N) stages by comparing pairs and advancing winners.
-
 
 ---

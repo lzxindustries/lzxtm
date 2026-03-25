@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 24
 slug: /instruments/videomancer/blueprint
@@ -7,366 +7,403 @@ image: /img/instruments/videomancer/blueprint/blueprint_hero_s1.png
 description: "Blueprint transforms a video signal into a cyanotype-style technical drawing."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import blueprint_control_panel from '/img/instruments/videomancer/blueprint/blueprint_control_panel.png';
-import blueprint_source1_parrot from '/img/instruments/videomancer/blueprint/blueprint_source1_parrot.png';
-import blueprint_source2_field from '/img/instruments/videomancer/blueprint/blueprint_source2_field.png';
-import blueprint_source3_elephant from '/img/instruments/videomancer/blueprint/blueprint_source3_elephant.png';
-import blueprint_source4_pattern from '/img/instruments/videomancer/blueprint/blueprint_source4_pattern.png';
-import blueprint_source5_girl from '/img/instruments/videomancer/blueprint/blueprint_source5_girl.png';
-import blueprint_source6_knit from '/img/instruments/videomancer/blueprint/blueprint_source6_knit.png';
-import blueprint_hero_s1 from '/img/instruments/videomancer/blueprint/blueprint_hero_s1.png';
-import blueprint_hero_s2 from '/img/instruments/videomancer/blueprint/blueprint_hero_s2.png';
-import blueprint_hero_s3 from '/img/instruments/videomancer/blueprint/blueprint_hero_s3.png';
-import blueprint_hero_s4 from '/img/instruments/videomancer/blueprint/blueprint_hero_s4.png';
-import blueprint_hero_s5 from '/img/instruments/videomancer/blueprint/blueprint_hero_s5.png';
-import blueprint_hero_s6 from '/img/instruments/videomancer/blueprint/blueprint_hero_s6.png';
-import blueprint_ex1_s1 from '/img/instruments/videomancer/blueprint/blueprint_ex1_s1.png';
-import blueprint_ex1_s2 from '/img/instruments/videomancer/blueprint/blueprint_ex1_s2.png';
-import blueprint_ex1_s3 from '/img/instruments/videomancer/blueprint/blueprint_ex1_s3.png';
-import blueprint_ex1_s4 from '/img/instruments/videomancer/blueprint/blueprint_ex1_s4.png';
-import blueprint_ex1_s5 from '/img/instruments/videomancer/blueprint/blueprint_ex1_s5.png';
-import blueprint_ex1_s6 from '/img/instruments/videomancer/blueprint/blueprint_ex1_s6.png';
-import blueprint_ex2_s1 from '/img/instruments/videomancer/blueprint/blueprint_ex2_s1.png';
-import blueprint_ex2_s2 from '/img/instruments/videomancer/blueprint/blueprint_ex2_s2.png';
-import blueprint_ex2_s3 from '/img/instruments/videomancer/blueprint/blueprint_ex2_s3.png';
-import blueprint_ex2_s4 from '/img/instruments/videomancer/blueprint/blueprint_ex2_s4.png';
-import blueprint_ex2_s5 from '/img/instruments/videomancer/blueprint/blueprint_ex2_s5.png';
-import blueprint_ex2_s6 from '/img/instruments/videomancer/blueprint/blueprint_ex2_s6.png';
-import blueprint_ex3_s1 from '/img/instruments/videomancer/blueprint/blueprint_ex3_s1.png';
-import blueprint_ex3_s2 from '/img/instruments/videomancer/blueprint/blueprint_ex3_s2.png';
-import blueprint_ex3_s3 from '/img/instruments/videomancer/blueprint/blueprint_ex3_s3.png';
-import blueprint_ex3_s4 from '/img/instruments/videomancer/blueprint/blueprint_ex3_s4.png';
-import blueprint_ex3_s5 from '/img/instruments/videomancer/blueprint/blueprint_ex3_s5.png';
-import blueprint_ex3_s6 from '/img/instruments/videomancer/blueprint/blueprint_ex3_s6.png';
-
-# Blueprint
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: blueprint_source1_parrot, after: blueprint_hero_s1 },
-    { label: "Field", before: blueprint_source2_field, after: blueprint_hero_s2 },
-    { label: "Elephant", before: blueprint_source3_elephant, after: blueprint_hero_s3 },
-    { label: "Pattern", before: blueprint_source4_pattern, after: blueprint_hero_s4 },
-    { label: "Girl", before: blueprint_source5_girl, after: blueprint_hero_s5 },
-    { label: "Knit", before: blueprint_source6_knit, after: blueprint_hero_s6 },
-  ]}
-/>
-*White contour lines trace every edge in the source against a deep Prussian blue ground, turning living video into an engineering drawing.*
+![Blueprint hero image](/img/instruments/videomancer/blueprint/blueprint_hero_s1.png)
+*Blueprint rendering white edge contours on a deep Prussian blue ground with dotted engineering grid overlay and dimension tick marks.*
 
 ---
 
 ## Overview
 
-Blueprint transforms a video signal into a cyanotype-style technical drawing. Every edge in the source image is extracted as a white (or blue) contour line on a deep Prussian blue (or white) background. An optional dotted engineering grid overlays the result with horizontal and vertical reference lines at power-of-two spacings, and dimension tick marks appear at grid intersections when enabled.
+Blueprint transforms live video into the aesthetic of a ***cyanotype*** technical drawing. It extracts horizontal and vertical edges from the luminance channel and renders them as white contour lines on a deep Prussian blue background: the unmistakable look of an architectural blueprint. An optional engineering grid overlay adds dotted reference lines at regular intervals, and small dimension tick marks highlight grid intersections, completing the illusion of a hand-drafted plan.
 
-The edge detection operates on luminance only, computing horizontal differences between adjacent pixels and vertical differences between adjacent lines via a single BRAM line buffer. The two gradient components — horizontal and vertical — are summed, thresholded, and scaled to produce contour luminance. The result is composited with a constant Prussian blue background colour (Y≈180, U=650, V=350), producing the characteristic deep blue of iron-based photographic prints.
+At gentle settings, Blueprint produces clean, minimal contour drawings that trace the shapes in your source material with delicate white lines. Pushing the edge threshold lower and the brightness higher reveals a dense, intricate web of outlines that exposes every tonal boundary in the image. The engineering grid gives the output the structured, measured feeling of a technical document, turning any video signal into something that looks like it belongs on a drafting table.
 
-The name references the cyanotype contact-printing process invented by Sir John Herschel in 1842. Originally used for reproducing architectural and engineering drawings, the "blueprint" became synonymous with technical documentation. Blueprint brings this analogue reproduction process into real-time video, turning any live source into a continuously-updating technical drawing.
+:::tip
+Blueprint is a ***processing*** program. It transforms whatever video you feed it, so the character of the source material directly shapes the output. High-contrast footage with strong geometric shapes produces the crispest, most architectural results.
+:::
+
+### What's In a Name?
+
+The word ***blueprint*** originally referred to a specific photographic reproduction process. In the mid-1800s, the astronomer and chemist Sir John Herschel discovered that paper coated with iron-based chemicals turned deep ***Prussian blue*** when exposed to light: and areas shielded from light remained white. Architects and engineers adopted the process to copy technical drawings: the original was placed on sensitized paper, exposed to sunlight, and then washed, producing white lines on a rich blue ground. The term entered everyday language as a synonym for "a detailed plan," but the visual: white contours on blue: remains iconic. Blueprint recreates that distinctive palette digitally, using edge detection to generate the contour lines that cyanotype chemistry once traced from ink on vellum.
 
 ---
 
 ## Quick Start
 
-1. **Start with Contrast before Threshold**: Boost Contrast (Pot 6) first. This makes faint edges visible without lowering the threshold, reducing noise.
-2. **32-pixel grid for general use**: Grid Space at ~60% (32px period) provides a good balance between density and readability.
-3. **Negative mode for projections**: The blue-on-white "whiteprint" mode is easier to read when projected or overlaid on bright backgrounds.
+1. Feed any video source into Videomancer with **Blueprint** loaded. The image immediately transforms into white edge contours on a deep blue ground. You are looking at the edges of your source material, drawn in light on Prussian blue paper.
+2. Turn **Edge Thr** (Knob 1) counterclockwise to reveal finer edges, or clockwise to filter out everything but the strongest contours. Find the threshold that best captures the shapes in your source.
+3. Increase **Brightness** (Knob 6) past the halfway mark. The contour lines become bolder and more prominent as the edge gain increases.
+4. Flip the **Style** switch (Switch 7) to the "Green" position. A dotted engineering grid appears across the frame, adding the measured, schematic feel of a technical drawing.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Blueprint loaded](/img/instruments/videomancer/blueprint/blueprint_control_panel.png)
+*Videomancer's front panel with Blueprint active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Edge Thr
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Edge Thr** sets the minimum edge strength required for a contour line to appear. At low values, the detector is highly sensitive: subtle gradients and fine textures all produce visible lines, and the output becomes dense with detail. As you increase the threshold, weaker edges are filtered out and only the boldest tonal boundaries survive. At maximum, only the very strongest edges in the image: hard silhouettes, sharp contrasts: generate contour lines. Everything else falls to the blue background.
+
+:::note
+The threshold interacts with **Brightness** (Knob 6). A high threshold with high brightness produces sparse but brilliant white contours. A low threshold with low brightness reveals dense but ghostly faint lines.
+:::
+
+---
+
+### Knob 2 — Line W
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Line W** is reserved for a future firmware update. In the current version, this control does not affect the visual output. Edge contour width can be broadened using the **Ticks** toggle (Switch 9) instead.
+
+---
+
+### Knob 3 — Grid Space
+
+| Property | Value |
+|----------|-------|
+| Range | 8 – 64 |
+| Default | 36 |
+
+**Grid Space** selects the spacing between engineering grid lines. The control steps through five discrete power-of-two pixel spacings as you turn the knob: the tightest setting produces a dense mesh of closely spaced lines, and the widest setting creates an open lattice with generous spacing between lines. The grid is only visible when the **Style** switch (Switch 7) is set to "Green," or when the **Invert** switch (Switch 10) enables dimension tick marks independently.
+
+:::tip
+Wider grid spacing works well with high-resolution or complex source material, keeping the overlay from competing with the edge contours. A tight grid pairs nicely with simple, high-contrast subjects.
+:::
+
+---
+
+### Knob 4 — Grid Opac
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Grid Opac** controls how bright the dotted grid lines appear. At low values, the grid is barely visible: a faint lattice lurking behind the edge contours. As you increase the value, the grid becomes more prominent against the blue background. Dimension tick marks (when enabled via the **Invert** switch) are always slightly brighter than the grid lines at any given setting, so they remain distinguishable.
+
+:::note
+In the inverted color mode (when the **Grid** switch is set to On), grid brightness is fixed and the **Grid Opac** knob has no effect.
+:::
+
+---
+
+### Knob 5 — Blue Depth
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Blue Depth** controls the luminance of the Prussian blue background. At the minimum setting, the background is nearly black, with only the faintest blue tint from the chrominance. As you increase the value, the blue ground brightens to a rich, medium Prussian blue. This is the "paper" of the drawing: darker values produce dramatic, high-contrast blueprints, while brighter values create a lighter, more washed-out look.
+
+---
+
+### Knob 6 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Brightness** controls the gain applied to the edge contour lines, determining how bright or dim they appear. The effect steps through five discrete intensity zones as you turn the knob clockwise. At the lowest setting, edges appear at one-quarter strength: very faint trace lines. Through the midrange, edges brighten to half strength and then full strength. Past the midpoint, edge brightness is boosted to double and then quadruple the detected value, making even subtle edges burn bright white.
+
+:::tip
+Set **Brightness** past the 60% mark and reduce **Edge Thr** for a look where every surface texture in the source material explodes into a blazing web of contour lines.
+:::
+
+---
+
+### Switch 7 — Style
+
+| Property | Value |
+|----------|-------|
+| Off | Blueprint |
+| On | Green |
+| Default | Blueprint |
+
+**Style** selects between two visual modes. In the **Blueprint** position, the output shows clean edge contours on a blue ground without any grid overlay: a pure cyanotype aesthetic. In the **Green** position, a dotted engineering grid appears across the entire frame, adding horizontal and vertical reference lines at the spacing set by **Grid Space** (Knob 3). The grid lines are drawn as dotted lines (alternating pixels), matching the convention used in technical drafting.
+
+---
+
+### Switch 8 — Grid
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Grid** controls the color domain of the drawing. With Grid set to **Off**, white contour lines appear on a deep Prussian blue ground: the classic blueprint look. With Grid set to **On**, the scheme inverts: dark contour lines appear on a near-white ground, and grid lines and dimension marks become bright neutral tones. This "negative" mode resembles a photographic positive print or a whiteprint.
+
+:::note
+When the **Grid** switch is set to On (inverted mode), the **Blue Depth** and **Grid Opac** knobs have no effect (the background and grid brightness values are fixed.)
+:::
+
+---
+
+### Switch 9 — Ticks
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Ticks** broadens the edge contour lines by lowering the detection threshold. When Ticks is set to **Off**, only edges exceeding the full **Edge Thr** threshold are drawn. When Ticks is set to **On**, the effective threshold is halved, allowing weaker edges to pass through. The result is thicker, more prominent contour lines and a denser overall drawing. Use Ticks as a quick way to make contours bolder without adjusting the threshold knob.
+
+---
+
+### Switch 10 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** adds small dimension markers at the intersections of the engineering grid. These markers appear as tiny bright dots where horizontal and vertical grid lines cross, resembling the ***tick marks*** found on architectural and engineering plans. The markers are visible even when the grid itself is hidden (Style set to "Blueprint"), which lets you scatter measurement reference points across the frame without the full grid overlay.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all edge detection, grid overlay, and color processing. The sync delay pipeline still aligns timing, so there is no glitch when switching. Use Bypass for instant A/B comparison between the raw source and the blueprint rendering.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input and the wet (blueprint-processed) output. At 0%, the output is the original unprocessed video. At 100%, the output is the full blueprint effect. Intermediate values blend the two, letting you superimpose the blueprint contours over the original image at any desired strength. The default is 100% (fully wet).
+
+:::tip
+A mix around 30–50% overlays ghost-like blueprint contours onto the original footage, creating a layered, annotated look: as if technical drawings have been projected over live video.
+:::
 
 ---
 
 ## Background
 
-### What Is a Cyanotype?
+### The cyanotype process
 
-The cyanotype is one of the oldest photographic printing processes. A solution of ferric ammonium citrate and potassium ferricyanide is coated onto paper, exposed to ultraviolet light through a negative or transparent drawing, then washed in water. Exposed areas turn Prussian blue (iron hexacyanoferrate), while unexposed areas remain white. The result is a negative image — lines drawn on the original appear white on blue. Blueprints were the standard method for copying technical drawings from the 1870s through the 1940s and remain an iconic visual style.
+The blueprint reproduction technique, properly called the ***cyanotype process***, was invented in 1842 by Sir John Herschel. It relies on the light-sensitivity of iron(III) compounds: a sheet of paper is coated with a solution of potassium ferricyanide and ferric ammonium citrate, dried in the dark, and then exposed to ultraviolet light through a translucent original. Where light passes through, the iron compounds react to form Prussian blue (ferric ferrocyanide). Where the original's ink blocks the light, the coating washes away, leaving white paper. The result is a white-on-blue negative image (the iconic blueprint.)
 
-### Edge Detection by Finite Differences
+For over a century, this was the standard method for copying architectural and engineering drawings. The distinctive blue color was a side effect of the chemistry, not a design choice, but it became so strongly associated with technical plans that "blueprint" entered the language as a metaphor for any detailed scheme.
 
-Blueprint uses the simplest edge detection method: first-order finite differences. The horizontal gradient is |Y(x) − Y(x−1)| — the absolute brightness change between adjacent pixels. The vertical gradient is |Y(line) − Y(line−1)| — the brightness change between adjacent lines, obtained via a one-line BRAM delay. Summing these two components produces an edge strength proportional to the local gradient magnitude. This is computationally equivalent to a simplified Sobel operator without the smoothing kernels.
+### Edge detection
 
-### Power-of-Two Grid Spacing
+Blueprint uses a ***first-order finite difference*** method to detect edges. For each pixel, it computes two differences: the horizontal difference between the current pixel and the previous pixel in the same row, and the vertical difference between the current pixel and the same pixel position on the previous line (stored in a ***block RAM*** line buffer). The absolute values of these two differences are summed to produce an ***edge strength*** value.
 
-Engineering drawings use reference grids at regular intervals. Blueprint implements this using a bitmask AND trick: a pixel is on a grid line when `(position AND mask) == 0`. The mask is a power-of-two minus one (7, 15, 31, 63, 127), creating grid periods of 8, 16, 32, 64, or 128 pixels. This replaces expensive modulo division with a single bitwise AND. The grid lines are "dotted" — only drawn on even-numbered pixels/lines — for a traditional engineering drawing aesthetic.
+This approach is a close relative of the ***Sobel operator*** used in image processing, simplified for real-time FPGA implementation. It responds well to both hard silhouettes and gradual transitions, producing contour lines that thicken naturally around areas of high contrast.
 
-### Shift-Based Contrast Scaling
+### Engineering grid overlay
 
-Rather than using hardware multipliers for edge brightness scaling, Blueprint uses five discrete shift levels: ×0.25 (>>2), ×0.5 (>>1), ×1.0 (none), ×2.0 (`<<`1, clamped), and ×4.0 (`<<`2, clamped). This creates a stepped contrast curve that can boost faint edges into visibility or pull strong edges back to subtle outlines, all without consuming DSP resources.
+The engineering grid uses ***power-of-two bitmask*** comparison to generate evenly spaced reference lines without expensive division or modulo operations. The pixel's horizontal and vertical position counters are bitwise-ANDed with a mask derived from the **Grid Space** parameter. When the result is zero, the pixel falls on a grid boundary. The lines are drawn as dotted patterns: every other pixel is skipped: to match the visual convention of engineering graph paper. Small dimension markers appear as solid dots at grid intersections.
 
 
 ---
 
 ## Signal Flow
 
-```
-                              ┌────────────────────┐
-data_in ─────────────────────►│ Input Register      │
-         Y ─────────────────► │   + line buffer     │
-                              │   write/read (BRAM) │
-                              └──────┬─────────────┘
-                                     │ Stage 1
-                                     ▼
-                              ┌────────────────────┐
-                              │ Horizontal Diff     │
-                              │  |Y(x) - Y(x-1)|   │
-                              │ Vertical Diff       │
-                              │  |Y(line)-Y(prev)|  │
-                              └──────┬─────────────┘
-                                     │ Stage 2
-                                     ▼
-                              ┌────────────────────┐
-                              │ Abs + Sum + Clamp   │
-                              │  edge_strength      │
-                              └──────┬─────────────┘
-                                     │ Stage 3
-                                     ▼
-                              ┌────────────────────┐
-                              │ Threshold + Grid    │
-                              │  + edge luma scale  │
-                              │  + dim markers      │
-                              └──────┬─────────────┘
-                                     │ Stage 4
-                                     ▼
-                              ┌────────────────────┐
-                              │ Composite Output    │
-                              │  edge → white/blue  │
-                              │  bg   → blue/white  │
-                              │  grid → dim lines   │
-                              └──────┬─────────────┘
-                                     │ Stage 5
-                                     ▼
-data_in ──► [sync delay] ──► dry ──► Interpolator ◄── wet
-                                       (4 clk)
-                                          │
-                                          ▼
-                                      data_out
-```
+### Signal Flow Notes
 
-The pipeline has two data paths running in parallel: the processing chain computes edge strength and composites the drawing, while the sync delay chain preserves the original signal for the wet/dry interpolator. The line buffer stores one full line of Y data in BRAM, creating a one-line delay for vertical edge detection. Position counters track horizontal and vertical pixel coordinates for the grid overlay. The grid mask is pre-computed from the Grid Space pot and operates as a combinational bitwise AND — no clocked resources required.
+The key architectural choice in Blueprint is the ***line buffer***. A single block RAM tile stores the previous line's luminance values, enabling the vertical edge difference computation. Without it, only horizontal edges (pixel-to-pixel changes within a row) would be detectable. The line buffer adds the vertical axis, producing contour lines that trace shapes in both dimensions.
 
-The composite stage has a clear priority order: edges take highest priority (white or inverted blue), then dimension marks (slightly brighter grid dots), then grid lines (dim dots), then background fill (Prussian blue or white). The Negative toggle swaps the polarity of the entire composition — edges become blue on a white ground, inverting the traditional cyanotype relationship.
+The composite stage applies a strict priority: edges always draw on top of everything, dimension markers sit above grid lines, and grid lines sit above the background. This means edge contours are never obscured by the grid overlay, even when both are active and overlapping. The Prussian blue chrominance (U=650, V=350 in the 10-bit domain) is hardcoded and always present in the background and in inverted-mode edge lines (it is the signature color of the cyanotype aesthetic.)
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={blueprint_control_panel} alt="Videomancer front panel with Blueprint loaded"/>
-*Videomancer's front panel with Blueprint active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises build from a simple contour drawing to a full technical drawing with grid, markers, and inverted modes. Each one introduces new controls while reinforcing the ones already explored.
+### Exercise 1: Clean Cyanotype Contours
 
-### Rotary Potentiometers (Knobs 1–6)
+![Clean Cyanotype Contours result](/img/instruments/videomancer/blueprint/blueprint_ex1_s1.png)
+*Clean Cyanotype Contours — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Edge Thr
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-Controls the edge detection threshold — the minimum gradient strength required for a pixel to be classified as an edge. The pot value is shifted right by 2 (divided by 4) to produce a threshold from 0 to 255. At low values (0–25%), nearly every pixel with any brightness change appears as a contour line, creating a dense, detailed drawing. At high values (75–100%), only the strongest edges survive, producing a sparse, bold outline. When Thick Lines mode is active, edges at half the threshold strength are also included, broadening the contour lines.
+#### Learning Outcomes
 
----
+A clean, minimal blueprint: white edge contours on deep blue, without any grid or markers. The goal is to find the threshold and brightness sweet spot for your source material.
 
-#### Knob 2 — Line W
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+#### Key Concepts
 
-Controls line width indirectly through the thick lines feature. In the current pipeline implementation, this parameter's value is available to the thick lines logic. The VHDL uses the Thick Lines toggle (Toggle 9) as the primary line broadening control — when active, the edge threshold is halved, allowing weaker gradient pixels adjacent to strong edges to also appear as contour lines, effectively doubling the visual line weight.
+- Edge detection extracts contour lines from luminance differences
+- Edge Thr controls sensitivity; Brightness controls edge gain
+- Blue Depth sets the richness of the Prussian blue background
 
----
+#### Video Source
 
-#### Knob 3 — Grid Space
-| Property | Value |
-|----------|-------|
-| Range | 8 – 64 |
-| Default | 36 |
+A live camera feed or recorded footage with clear geometric shapes: architecture, furniture, or objects with defined edges work best.
 
-Selects the grid spacing from five power-of-two periods. The pot is quantised into 8 steps, but the VHDL decodes five threshold zones: below 205 → 8-pixel grid, 205–409 → 16-pixel, 410–613 → 32-pixel, 614–818 → 64-pixel, 819–1023 → 128-pixel. Smaller grids produce a fine mesh suitable for detailed technical drawings; larger grids create a sparse reference frame.
+#### Steps
 
----
+1. **Load Blueprint** and feed your source. The image immediately becomes white contour lines on a blue ground.
+2. **Sweep Edge Thr** (Knob 1) from minimum to maximum. At the low end, every subtle gradient generates a contour line and the image is dense with detail. At the high end, only the boldest silhouettes survive. Find a middle ground that captures the subject's main shapes without clutter.
+3. **Adjust Brightness** (Knob 6) to the 60–70% range. The contour lines brighten noticeably as the gain shifts from normal to double.
+4. **Adjust Blue Depth** (Knob 5). At low values, the background is nearly black. Increase it until you see a rich, saturated Prussian blue that contrasts well with the white lines.
+5. **Try Ticks** (Switch 9) in the On position. The contour lines thicken as the detection threshold drops by half. Toggle it back and forth to compare thin precision lines versus bold outlines.
 
-#### Knob 4 — Grid Opac
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+#### Settings
 
-Controls the brightness of grid lines and dimension marks. The pot value is halved to produce the grid line luminance (`grid_y_pre`), and the dimension mark luminance is set to 1.5× the grid line level. At low values, grid lines are barely visible — subtle reference marks. At high values, the grid becomes a prominent overlay on the Prussian blue background. In Negative mode, grid lines appear as slightly dimmer white.
-
----
-
-#### Knob 5 — Blue Depth
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the depth of the Prussian blue background. The pot value scales the background luminance: `bg_y = 180 × blue_depth / 1024`. At 0%, the background is black. At 50%, it's a dark navy. At 100%, it's the full Prussian blue colour at Y≈180 with U=650, V=350. This allows the artist to make the background darker for a deeper, more saturated blue or lighter for a more washed-out cyanotype print.
-
----
-
-#### Knob 6 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the edge contrast scaling — how bright the detected contour lines appear. Five shift-based levels are decoded: below 205 → ×0.25 (>>2, very faint lines), 205–409 → ×0.5 (>>1, dim lines), 410–613 → ×1.0 (edge strength as-is), 614–818 → ×2.0 (`<<`1, boosted), 819–1023 → ×4.0 (`<<`2, maximum boost). Higher values make even weak edges appear as bright white lines; lower values produce subtle, faint outlines.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Style** | Blueprint | Green |
-| **8 — Grid** | Off | On |
-| **9 — Ticks** | Off | On |
-| **10 — Invert** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles control the grid overlay, the cyanotype polarity, line thickness, dimension marks, and bypass. Toggle 7 is the VHDL parameter labelled "Style" — in the VHDL it controls whether the engineering grid overlay is visible. Toggle 8 controls the polarity (normal white-on-blue or negative blue-on-white). Toggle 9 enables thick line mode (halved edge threshold). Toggle 10 enables dimension tick marks at grid intersections. Toggle 11 bypasses all processing.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Crossfades between the dry (original) and wet (blueprint) signal using three parallel interpolators. At 0% the output is the unmodified input; at 100% the output is the full cyanotype drawing. Intermediate values superimpose the contour lines over the original video, creating a translucent overlay effect.
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Blueprint processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises progress from basic edge extraction through grid overlay to the complete engineering drawing aesthetic.
-
-### Exercise 1: Simple Edge Drawing
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: blueprint_source1_parrot, after: blueprint_ex1_s1 },
-    { label: "Field", before: blueprint_source2_field, after: blueprint_ex1_s2 },
-    { label: "Elephant", before: blueprint_source3_elephant, after: blueprint_ex1_s3 },
-    { label: "Pattern", before: blueprint_source4_pattern, after: blueprint_ex1_s4 },
-    { label: "Girl", before: blueprint_source5_girl, after: blueprint_ex1_s5 },
-    { label: "Knit", before: blueprint_source6_knit, after: blueprint_ex1_s6 },
-  ]}
-/>
-*Simple Edge Drawing — simulated result across source images.*
-**Source**: Architectural footage or any scene with clear geometric shapes.
-
-**What You'll Create**: Understand the edge detection pipeline and threshold control.
-
-1. **Reveal all edges**: Set Edge Thr to 0%. Every pixel transition appears as a contour line.
-2. **Raise threshold**: Increase Edge Thr to about 50%. Weak textures disappear, leaving only strong contours.
-3. **Maximum threshold**: Push to 90%. Only the boldest edges survive — a very sparse drawing.
-4. **Adjust contrast**: Set Contrast (Pot 6) to about 70%. Faint edges become brighter white.
-5. **Blue depth**: Adjust Blue Depth (Pot 5) from 0% to 80%. Watch the background shift from black to Prussian blue.
-6. **Toggle polarity**: Enable Invert (Toggle 10) to see the negative — blue lines on white.
-
-**Key concepts**: Higher threshold = fewer edges, contrast scaling boosts faint edges, blue depth controls background colour, negative flips the cyanotype polarity
+| Control | Value |
+|---------|-------|
+| Edge Thr | ~40% |
+| Line W | 50% |
+| Grid Space | 32 |
+| Grid Opac | 50% |
+| Blue Depth | 75% |
+| Brightness | 65% |
+| Style | Blueprint |
+| Grid | Off |
+| Ticks | Off |
+| Invert | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
 ### Exercise 2: Engineering Grid Overlay
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: blueprint_source1_parrot, after: blueprint_ex2_s1 },
-    { label: "Field", before: blueprint_source2_field, after: blueprint_ex2_s2 },
-    { label: "Elephant", before: blueprint_source3_elephant, after: blueprint_ex2_s3 },
-    { label: "Pattern", before: blueprint_source4_pattern, after: blueprint_ex2_s4 },
-    { label: "Girl", before: blueprint_source5_girl, after: blueprint_ex2_s5 },
-    { label: "Knit", before: blueprint_source6_knit, after: blueprint_ex2_s6 },
-  ]}
-/>
+![Engineering Grid Overlay result](/img/instruments/videomancer/blueprint/blueprint_ex2_s1.png)
 *Engineering Grid Overlay — simulated result across source images.*
-**Source**: Any footage — the grid is independent of video content.
+#### Exercise Illustration
 
-**What You'll Create**: Explore the grid overlay system, spacing, brightness, and dimension marks.
+***A description of the exercise illustration.***
 
-1. **Enable grid**: Set Grid (Toggle 8) to On. Dotted grid lines appear.
-2. **Adjust spacing**: Turn Grid Space through its 8 steps. Watch the grid period change from 8px to 128px.
-3. **Grid brightness**: Adjust Grid Opac from 0% to 80%. Grid lines become more prominent.
-4. **Dimension marks**: Enable Ticks (Toggle 9). Small marks appear at every grid intersection.
-5. **Combine with edges**: Set Edge Thr to about 40%. Contour lines and grid lines coexist; edges take priority at overlapping pixels.
-6. **Negative mode**: Toggle Invert. Grid lines now appear as slightly dimmer white on the white background.
+#### Learning Outcomes
 
-**Key concepts**: Grid uses power-of-two bitmask spacing, grid brightness is independent of background blue, dimension marks highlight intersections, edges have priority over grid in the compositor
+A full engineering drawing: edge contours with a dotted reference grid and dimension tick marks, resembling a page from an architect's plan set.
 
----
+#### Key Concepts
 
-### Exercise 3: Full Technical Drawing
+- The grid overlay uses power-of-two spacing for hardware-efficient dotted lines
+- Grid Opac controls grid visibility against the blue ground
+- Dimension markers highlight grid intersections
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: blueprint_source1_parrot, after: blueprint_ex3_s1 },
-    { label: "Field", before: blueprint_source2_field, after: blueprint_ex3_s2 },
-    { label: "Elephant", before: blueprint_source3_elephant, after: blueprint_ex3_s3 },
-    { label: "Pattern", before: blueprint_source4_pattern, after: blueprint_ex3_s4 },
-    { label: "Girl", before: blueprint_source5_girl, after: blueprint_ex3_s5 },
-    { label: "Knit", before: blueprint_source6_knit, after: blueprint_ex3_s6 },
-  ]}
-/>
-*Full Technical Drawing — simulated result across source images.*
-**Source**: Mechanical parts, circuit boards, or architectural subjects.
+#### Video Source
 
-**What You'll Create**: Create a complete engineering drawing aesthetic with all features active.
+Footage with a mix of geometric and organic shapes: a tabletop scene, a room interior, or a garden view provides good variety for the grid to interact with.
 
-1. **Moderate edge threshold**: Edge Thr at about 35% — enough detail without clutter.
-2. **Strong contrast**: Brightness (Pot 6) at about 75%. Edges appear as bright, confident lines.
-3. **Full blue**: Blue Depth at about 80%. Deep Prussian blue background.
-4. **Fine grid**: Grid Space at about 25% (16-pixel period). Enable Grid.
-5. **Grid subtle**: Grid Opac at about 30%. Grid is visible but doesn't overpower the contours.
-6. **Dimension marks**: Enable Ticks. Intersection dots add engineering drawing authenticity.
-7. **Thick lines**: Enable Ticks toggle (Toggle 9) for broader contour widths.
-8. **Mix for overlay**: Reduce Mix to about 60%. The blueprint overlays the original source ghostly beneath.
+#### Steps
 
-**Key concepts**: All features combine: edges + grid + dimension marks + blue background produce authentic cyanotype aesthetic, thick lines broaden contours, mix allows ghost overlay
+1. **Start from Exercise 1** settings: moderate Edge Thr, Brightness at 65%, Blue Depth at 75%.
+2. **Flip Style** (Switch 7) to "Green." A dotted grid appears across the frame. The grid lines are faint at the default Grid Opac setting.
+3. **Increase Grid Opac** (Knob 4) until the grid is clearly visible but doesn't overpower the edge contours. Around 60–70% is a good starting point.
+4. **Step through Grid Space** (Knob 3). Turn the knob slowly and notice the grid snapping between five discrete spacings: from very tight to very wide. Choose a spacing that frames your subject well.
+5. **Enable dimension markers**: flip the **Invert** switch (Switch 10) to On. Small bright dots appear at the intersections of the grid lines, completing the technical drawing look.
+6. **Experiment**: try disabling the grid overlay (Style back to "Blueprint") while keeping Invert On. The dimension markers remain visible as scattered reference dots without connecting grid lines.
 
----
+#### Settings
 
-
-## Tips
-
-- **Use Mix for ghost overlay**: Mix at 40–60% superimposes the blueprint contours over the original video, creating a technical drawing analysis view.
-- **Blue Depth sets the mood**: Low Blue Depth (dark background) creates a more dramatic, high-contrast drawing; high Blue Depth is more faithful to real cyanotype prints.
-- **Dimension marks for precision**: Enable Ticks when using the grid as a measurement reference — the intersection dots make counting grid squares easier.
-- **Thick lines + low threshold = poster art**: This combination creates bold, graphic outlines suitable for screen printing or poster imagery.
+| Control | Value |
+|---------|-------|
+| Edge Thr | ~40% |
+| Line W | 50% |
+| Grid Space | 32 |
+| Grid Opac | 65% |
+| Blue Depth | 70% |
+| Brightness | 65% |
+| Style | Green |
+| Grid | Off |
+| Ticks | Off |
+| Invert | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Negative Whiteprint
+
+![Negative Whiteprint result](/img/instruments/videomancer/blueprint/blueprint_ex3_s1.png)
+*Negative Whiteprint — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A "whiteprint": the photographic positive of a blueprint, with dark contour lines on a bright ground, blended back over the original video.
+
+#### Key Concepts
+
+- The Grid switch inverts the color domain: dark contours on a white ground
+- Inverted mode fixes background and grid brightness, overriding Blue Depth and Grid Opac
+- Mix blends the blueprint effect with the original source
+
+#### Video Source
+
+High-contrast footage such as a performer against a bright background, text on a screen, or backlit architecture (anything with strong silhouettes.)
+
+#### Steps
+
+1. **Start with default settings** and feed your source.
+2. **Flip Grid** (Switch 8) to On. The color scheme inverts: the background becomes near-white and the edge contours turn dark blue. This is the "whiteprint" or positive-print mode.
+3. **Enable the grid overlay** by flipping **Style** (Switch 7) to "Green." The dotted grid now appears as bright neutral lines against the white ground (subtle but visible.)
+4. **Lower Edge Thr** (Knob 1) to capture fine detail. In inverted mode, dense contour lines create a delicate pen-and-ink quality.
+5. **Reduce Mix** (Fader 12) to about 40%. The whiteprint contours blend over the original footage, creating a layered look (like technical annotations projected onto live video.)
+6. **Compare**: flip **Bypass** (Switch 11) On and Off to see the source alone versus the blended result.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Edge Thr | ~30% |
+| Line W | 50% |
+| Grid Space | 48 |
+| Grid Opac | 50% |
+| Blue Depth | 70% |
+| Brightness | 60% |
+| Style | Green |
+| Grid | On |
+| Ticks | Off |
+| Invert | Off |
+| Bypass | Off |
+| Mix | 40% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Bitmask** | A binary pattern used with a bitwise AND operation to test whether a pixel coordinate falls on a power-of-two grid line, replacing expensive modulo division. |
-| **Cyanotype** | A photographic contact-printing process using iron salts that produces white imagery on a deep Prussian blue background, invented by Sir John Herschel in 1842. |
-| **Diazo** | A reprographic printing process that produces dark lines on a white or off-white background, the tonal inverse of a cyanotype; also called a whiteprint. |
-| **DSP** | Digital Signal Processor; a dedicated hardware multiplication block within an FPGA, avoided by Blueprint's shift-based contrast scaling. |
-| **Finite difference** | A numerical method that approximates a derivative by computing the difference between adjacent sample values, used here for edge detection. |
-| **Gradient** | The rate of brightness change between adjacent pixels, used as a measure of edge strength in the horizontal or vertical direction. |
-| **Luma** | The brightness component (Y) of a YUV video signal, the only channel used for edge detection in Blueprint. |
-| **LUT** | Look-Up Table; a small memory or combinational logic structure that maps an input index to a pre-computed output value. |
-| **Prussian blue** | Iron hexacyanoferrate; the deep blue pigment produced by the cyanotype chemical reaction, used as the background colour (Y≈180, U=650, V=350). |
-| **Sobel operator** | A standard image processing edge detection kernel that combines horizontal and vertical gradient estimates with smoothing; Blueprint uses a simplified variant without the smoothing kernels. |
+- **Block RAM**: A dedicated memory tile on an FPGA, used here to store one full line of luminance values for vertical edge computation.
+
+- **Cyanotype**: A photographic printing process that produces white images on a Prussian blue background, originally used to copy architectural drawings.
+
+- **Edge Detection**: The process of identifying boundaries in an image where pixel brightness changes abruptly, producing contour lines.
+
+- **Finite Difference**: A mathematical operation that approximates a derivative by subtracting adjacent sample values; used here to detect edges.
+
+- **Interpolator**: A hardware module that crossfades between two values based on a parameter, used for the wet/dry mix.
+
+- **Line Buffer**: A memory buffer that stores the pixel values of the previous scan line, enabling comparisons between vertically adjacent pixels.
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness.
+
+- **Power-of-Two Bitmask**: A technique for detecting evenly spaced positions using bitwise AND instead of expensive division or modulo operations.
+
+- **Prussian Blue**: A deep blue pigment (ferric ferrocyanide) produced by the cyanotype process; the signature color of architectural blueprints.
 
 ---

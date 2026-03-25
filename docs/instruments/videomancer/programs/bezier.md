@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 17
 slug: /instruments/videomancer/bezier
@@ -7,301 +7,426 @@ image: /img/instruments/videomancer/bezier/bezier_hero.png
 description: "Most video synthesis programs generate imagery from simple geometric primitives — grids, circles, straight lines."
 ---
 
-import bezier_hero from '/img/instruments/videomancer/bezier/bezier_hero.png';
-import bezier_animation from '/img/instruments/videomancer/bezier/bezier_animation.gif';
-import bezier_control_panel from '/img/instruments/videomancer/bezier/bezier_control_panel.png';
-import bezier_exercise1_result from '/img/instruments/videomancer/bezier/bezier_exercise1_result.gif';
-import bezier_exercise2_result from '/img/instruments/videomancer/bezier/bezier_exercise2_result.gif';
-import bezier_exercise3_result from '/img/instruments/videomancer/bezier/bezier_exercise3_result.gif';
-
-# Bezier
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={bezier_hero} alt="Bezier hero image"/>
-*Bezier rendering animated cubic parametric curves with glow and rainbow color cycling over a live video source.*
-<img src={bezier_animation} alt="Bezier animated output"/>
-*Bezier output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Bezier hero image](/img/instruments/videomancer/bezier/bezier_hero_s1.png)
+*Bezier rendering four animated cubic curves as glowing calligraphic strokes with rainbow color cycling.*
 
 ---
 
 ## Overview
 
-Most video synthesis programs generate imagery from simple geometric primitives — grids, circles, straight lines. Bezier takes a different approach. It draws curved lines defined by cubic Bézier splines, a mathematical tool borrowed from computer-aided design and digital typography. Each curve is defined by four control points: two endpoints and two interior handles that pull the path into smooth arcs. By animating all sixteen control points — four per curve — the program produces an endlessly evolving tangle of organic, calligraphic strokes.
+Bezier is a parametric curve animator that draws glowing cubic Bézier curves on a black canvas. Each curve is defined by four ***control points*** that orbit the screen in looping patterns, producing continuously evolving shapes. The program evaluates the curves mathematically during vertical blanking, then renders them pixel by pixel during active video using distance-based stroke rendering with soft anti-aliasing.
 
-The curves are evaluated using the De Casteljau algorithm, a recursive sequence of linear interpolations that traces the exact path of a cubic polynomial without ever computing the polynomial itself. The FPGA performs this evaluation during the vertical blanking interval, writing 64 sample points per curve into a block RAM. During active video, each pixel measures its distance to every stored sample and renders a glow or hard-edged stroke based on the closest match. The result is a real-time parametric curve visualizer running entirely in hardware.
+At gentle settings, Bezier draws a single luminous arc that drifts slowly across the frame. Push the controls further and the program weaves up to four simultaneous curves into a tangled, color-cycling tapestry of light. Enable **Calligraphic** mode and the strokes thicken and thin like a nib pen dragged across paper. Turn on **Video Mod** and the curves become an additive overlay on live video, tracing bright paths that follow the animation while the source image shows through beneath.
 
-At gentle settings, Bezier produces a single softly glowing arc drifting across the screen. At extreme settings, four rainbow-colored curves weave and interlace in complex Lissajous-like patterns, their strokes thickened calligraphically at the endpoints and pulsing with color that cycles independently of animation. The Video Mod toggle allows the curves to interact with a live video input, brightening the source wherever curve energy is present.
+:::tip
+Bezier is a ***synthesis*** program: it generates imagery from scratch. No input video is required for standalone use, but the **Video Mod** toggle lets you composite curves over a live signal.
+:::
+
+### What's In a Name?
+
+The name ***Bezier*** honors Pierre Bézier, the French engineer at Renault who published the mathematical framework for parametric curves in 1962. The same curves were independently discovered a few years earlier by Paul de Casteljau at rival automaker Citroën, whose recursive evaluation algorithm: the ***De Casteljau algorithm***: is exactly what this program implements in hardware. Both men were designing tools to describe car body shapes with elegant mathematics. Six decades later, their curves are drawing light on your screen.
 
 ---
 
 ## Quick Start
 
-1. **Freeze and study**: Set Anim Spd to 0% to hold curves in place. This makes it easy to understand how Stroke W, Glow, and Amplitude affect a single configuration before adding motion.
-2. **Mono for structure, Rainbow for spectacle**: Mono mode reveals the pure geometry of the curves. Switch to Rainbow only after you understand the spatial structure — the color can mask the underlying motion patterns.
-3. **Amplitude vs. Anim Spd**: Amplitude controls *where* the curves go; Anim Spd controls *how fast* they get there. Low amplitude with high speed produces tightly vibrating patterns. High amplitude with low speed produces sweeping arcs.
+1. Connect Videomancer's output to a monitor. With default settings, a single luminous arc glides across a dark background. Watch it for a moment (the shape is continuously evolving.)
+2. Turn **Stroke Width** (Knob 2) clockwise. The line thickens into a broad ribbon of light. Turn it counterclockwise and it narrows to a hairline.
+3. Flip the **Curves** toggle (Switch 7) to **4**. Three additional curves appear, each tracing its own path. The screen fills with intersecting arcs.
+4. Increase **Animation Speed** (Knob 1). The curves move faster, weaving complex, ever-changing patterns.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Bezier loaded](/img/instruments/videomancer/bezier/bezier_control_panel.png)
+*Videomancer's front panel with Bezier active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Animation Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Animation Speed** controls how fast the control points orbit, which determines how quickly the curve shapes evolve. At 0%, fully counterclockwise, the curves are frozen in place. As the value increases, the sixteen control points (four per curve) accelerate through their looping paths, and the curves shift and morph more rapidly. At 100%, fully clockwise, the animation runs at maximum speed, producing fast, fluid motion.
+
+Each control point moves along a ***triangle wave*** path with a unique frequency. The frequencies are coprime multiples of the base speed, so the control points never all return to the same position at the same time (the pattern never exactly repeats.)
+
+---
+
+### Knob 2 — Stroke Width
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 37.5% |
+
+**Stroke Width** sets the thickness of the rendered curves. At 0%, the curves are invisible: the distance threshold is zero and no pixels pass the stroke test. As the value increases, more pixels near each curve qualify as "on the curve," widening the visible stroke. At 100%, the strokes are at their maximum width.
+
+:::note
+Stroke Width interacts with **Glow** (Knob 4). When Glow is high, the brightness falloff is gradual, so the effective visual width of the stroke extends beyond the hard threshold set by Stroke Width.
+:::
+
+---
+
+### Knob 3 — Amplitude
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Amplitude** controls the radius of the control point orbits, which determines how far the curves spread across the screen. At 0%, all control points cluster at the center, collapsing the curves into a point. As the value increases, the orbits widen and the curves sweep across a larger area of the frame. At 100%, the control points reach their maximum displacement from center.
+
+---
+
+### Knob 4 — Glow
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Glow** adjusts the softness of the distance falloff around each curve. At 0%, the brightness drops sharply at the edge of the stroke, producing hard-edged lines. As the value increases, the falloff becomes more gradual and the curves appear to emit a soft halo of light. The glow effect is computed by subtracting the pixel's distance from the **Brightness** value: a larger glow setting lets more of that gradient show through.
+
+:::tip
+For the brightest, sharpest lines, keep Glow low and **Brightness** (Knob 6) high. For soft, neon-like trails, increase both Glow and Brightness together.
+:::
+
+---
+
+### Knob 5 — Color Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Color Speed** controls how fast the rainbow gradient cycles along and through the curves. At 0%, the color is static: each point on the curve holds a fixed hue. As the value increases, the color pattern scrolls along each curve and rotates over time, producing a flowing rainbow effect. At 100%, the cycling is at maximum speed. This control has no effect when **Color Mode** (Switch 8) is set to **Mono**.
+
+---
+
+### Knob 6 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Brightness** sets the peak luminance of the rendered curves. At 0%, the curves are completely dark. As the value increases, the maximum brightness of pixels on the curve rises. At 100%, curves render at full white. This value also serves as the ceiling for the **Glow** falloff: a pixel's luminance is computed as Brightness minus its distance to the nearest curve point, so higher Brightness means brighter cores and wider visible halos.
+
+---
+
+### Switch 7 — Curves
+
+| Property | Value |
+|----------|-------|
+| Off | 1 |
+| On | 4 |
+| Default | 1 |
+
+**Curves** selects the number of independent cubic Bézier curves rendered simultaneously. Set to **1**, a single curve traces a graceful arc across the screen. Set to **4**, all four curves are active, each following its own set of control points and producing a denser, more complex weave.
+
+:::note
+The actual number of rendered curves depends on the combination of this toggle and **Color Mode** (Switch 8): see the Toggle Group Notes section below for the full interaction table.
+:::
+
+---
+
+### Switch 8 — Color Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Rainbow |
+| On | Mono |
+| Default | Rainbow |
+
+**Color Mode** selects between **Rainbow** and **Mono** coloring. In Rainbow mode, each curve is colored with a four-quadrant hue palette that shifts along the curve's length and cycles over time via the **Color Speed** control. Cyan, green, magenta, and orange tones blend as the hue phase rotates. In Mono mode, curves are rendered in pure white (neutral chroma), producing clean monochrome strokes.
+
+---
+
+### Switch 9 — Calligraphic
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Calligraphic** enables stroke width modulation based on position along the curve. When set to **Off**, the stroke width is uniform from end to end. When set to **On**, the stroke thickens by fifty percent near the endpoints of each curve (roughly the first and last eighth of the parameter range), emulating the pressure variation of a calligraphy nib lifting off and pressing down on paper.
+
+:::tip
+Calligraphic mode is most visible with moderate **Stroke Width** values. At very thin or very wide settings, the fifty-percent variation is harder to see.
+:::
+
+---
+
+### Switch 10 — Video Mod
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Video Mod** switches between standalone synthesis and additive overlay modes. When set to **Off**, the curves are drawn on a solid black background: Bezier produces a self-contained image with no dependence on the input signal. When set to **On**, the curve's luminance is ***added*** to the input video's brightness (clamped to maximum white), and the input's color is preserved. The result is a luminous overlay effect where curves brighten the underlying image without altering its hue.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Bezier rendering. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the synthesized output.
+
+---
+
+:::note Toggle Group Notes
+
+The **Curves** (Switch 7) and **Color Mode** (Switch 8) toggles share a hardware register field that determines the curve count. The combination of both switches selects the actual number of rendered curves:
+
+| Curves (Switch 7) | Color Mode (Switch 8) | Rendered Curves | Color |
+|---|---|---|---|
+| 1 | Rainbow | 1 | Rainbow |
+| 4 | Rainbow | 2 | Rainbow |
+| 1 | Mono | 3 | Mono |
+| 4 | Mono | 4 | Mono |
+
+In practice, this means switching Color Mode also changes the curve count. To get the maximum four curves with rainbow colors, swap to Mono and back: the curve count and color mode are linked through shared control bits. The labels **1** and **4** on the Curves switch represent the minimum and maximum values across all Color Mode combinations.
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** blends between the delayed input video (dry) and the rendered curve output (wet). At 0%, the output is the unprocessed input. At 100%, the output is entirely the Bezier-rendered image. Intermediate values crossfade between the two. When **Video Mod** is off, the dry signal is black, so Mix fades the curves toward darkness. When Video Mod is on, Mix crossfades between the plain input and the curve-overlaid composite.
 
 ---
 
 ## Background
 
-### Bézier Curves in History
+### Cubic Bézier curves
 
-The cubic Bézier curve was independently developed by Paul de Casteljau at Citroën (1959) and Pierre Bézier at Renault (1962) for automobile body design. The idea — defining a smooth curve by a small number of intuitive control points — proved so powerful that it became the foundation of PostScript fonts, vector graphics editors, and motion paths in animation software. A cubic Bézier is defined by four points: P0 (start), P1 (first handle), P2 (second handle), P3 (end). The curve passes through P0 and P3 and is pulled toward P1 and P2 without necessarily touching them. Moving a single handle reshapes the curve smoothly — there are no discontinuities or sharp corners unless two control points coincide.
+A cubic ***Bézier curve*** is defined by four points: two endpoints (P0 and P3) and two interior control points (P1 and P2) that pull the curve away from a straight line. As a parameter *t* sweeps from 0 to 1, the curve traces a smooth path from P0 to P3, bending toward P1 and P2 without necessarily passing through them. The control points act like magnets (they attract the curve but don't pin it down.)
 
-### The De Casteljau Algorithm
+Mathematically, the curve is a weighted blend of the four points, with the weights determined by cubic polynomials evaluated at each value of *t*. Move a control point, and the curve reshapes smoothly. This property made Bézier curves the foundation of modern vector graphics, font design, and CAD/CAM tools.
 
-To find a point on the curve at parameter t ∈ [0, 1], the De Casteljau algorithm performs three levels of linear interpolation. First, it interpolates between each pair of adjacent control points: Q0 = lerp(P0, P1, t), Q1 = lerp(P1, P2, t), Q2 = lerp(P2, P3, t). Then it interpolates between consecutive Q values: R0 = lerp(Q0, Q1, t), R1 = lerp(Q1, Q2, t). Finally, the point on the curve is B(t) = lerp(R0, R1, t). This cascade of six lerps is numerically stable and maps directly to the FPGA's fixed-point multiply-accumulate pipeline. The VHDL implementation uses 10-bit fixed-point lerp: `a + ((b - a) * t) >> 10`, which fits within the iCE40's DSP multiplier resources.
+### The De Casteljau algorithm
 
-### DDS-Based Control Point Animation
+Rather than evaluating the cubic polynomial directly, this program uses ***De Casteljau's algorithm***: a recursive process that reduces a cubic curve to a sequence of simple linear interpolations (lerps). For each value of *t*:
 
-Each of the 16 control points has two independent phase accumulators — one for its x coordinate and one for its y coordinate. The phase accumulators increment every vertical blanking interval at rates determined by coprime frequency multipliers: x uses `i*3 + 2` and y uses `i*5 + 3`, where i is the control point index (0–15). Because these multipliers are coprime, no two control points ever synchronize — the curves continuously evolve without repeating. The accumulated phase is folded through a triangle wave function (quadrant-based folding of the upper bits) to produce a smooth oscillation that maps the phase ramp into a position coordinate via the Amplitude control.
+1. Lerp between adjacent control points: P0↔P1, P1↔P2, P2↔P3 → three intermediate points
+2. Lerp between those intermediates → two points
+3. Lerp between those two → the final curve point
 
-### Calligraphic Stroke Rendering
+Three stages, six lerps, one output. The algorithm is numerically stable and maps naturally to FPGA pipeline stages. Bezier evaluates 64 samples per curve during vertical blanking and stores the results in ***block RAM***, then uses those stored points for pixel-by-pixel rendering during active video.
 
-In hand lettering, the width of a stroke varies with pen pressure. Bezier simulates this with its Calligraphic mode. Near the endpoints of each curve (where t approaches 0 or 63 in the 64-sample table), the effective stroke width is increased. The implementation uses the distance from the nearest endpoint scaled by the stroke width parameter, creating strokes that are thick at the tips and thin in the middle — like a broad-nib pen drawn across paper. This subtle effect transforms uniform-width vector curves into organic, hand-drawn marks.
+### Distance-based rendering
 
-### Glow and Distance Field Rendering
+Unlike a CPU-based vector renderer that rasterizes curve segments into pixel spans, this program takes a brute-force approach suited to parallel hardware. For each pixel on screen, the renderer computes the ***Manhattan distance*** (the sum of horizontal and vertical offsets) to nearby stored curve points. If the distance falls within the stroke threshold, the pixel is lit.
 
-Rather than rendering curves as hard-edged one-pixel lines, Bezier computes a distance field. During active video, each pixel's coordinates are compared against all stored curve samples using Manhattan distance (|Δx| + |Δy|), which is cheaper than Euclidean distance but produces a diamond-shaped falloff. The closest distance across all samples determines the pixel brightness. If the distance is below the Stroke Width threshold, the pixel gets full brightness. Beyond that, the Glow control applies a gradual falloff — a soft halo that surrounds each curve. The result is that curves appear to emit light, fading smoothly into the background rather than ending at a sharp edge.
+Manhattan distance is cheaper than true Euclidean distance: no square root needed: and produces slightly diamond-shaped strokes instead of perfectly round ones. The visual difference is subtle at typical stroke widths.
+
+### Animation via DDS
+
+The sixteen control points (four per curve, four curves) are animated using ***direct digital synthesis*** (DDS) phase accumulators. Each control point has independent X and Y phase accumulators that increment at coprime rates derived from the **Animation Speed** parameter. The phase drives a triangle wave function that produces smooth, bounded oscillation. Because the frequency ratios are coprime, the combined motion is quasi-periodic (the pattern evolves continuously without exact repetition.)
 
 
 ---
 
 ## Signal Flow
 
-Phase Accumulators → Triangle Wave Folding → De Casteljau Evaluation → BRAM Scan → Stroke / Glow Rendering → Color Mapping
+### Signal Flow Notes
 
-```
-VERTICAL BLANKING INTERVAL
-│
-├── Phase Accumulators (16 CPs × 2 axes)
-│   └── Increment by coprime DDS rates × Anim Spd
-│
-├── Triangle Wave Folding
-│   └── Phase → position via quadrant fold × Amplitude
-│
-├── De Casteljau Evaluation (4 curves × 64 t-values)
-│   ├── Stage 0: lerp(P0,P1), lerp(P1,P2), lerp(P2,P3)
-│   ├── Stage 1: lerp(Q0,Q1), lerp(Q1,Q2)
-│   └── Stage 2: lerp(R0,R1) → BRAM[curve*64+t]
-│
-ACTIVE VIDEO (per pixel)
-│
-├── BRAM Scan (up to 256 entries)
-│   ├── Manhattan Distance: |px-bx| + |py-by|
-│   ├── Calligraphic Width (optional endpoint thickening)
-│   └── Track Minimum Distance + associated t, curve_id
-│
-├── Stroke / Glow Rendering
-│   ├── dist < stroke_w → full brightness
-│   └── dist ≥ stroke_w → brightness × exp(-glow × dist)
-│
-├── Color Mapping
-│   ├── Rainbow: t + color_phase → 4-quadrant UV hue
-│   └── Mono: Y-only, neutral UV
-│
-├── Video Mod (optional)
-│   └── curve_luma + input_Y → output_Y (additive)
-│
-├── Brightness Scaling
-│   └── output × Bright
-│
-├── Mix Crossfade
-│   └── lerp(input, processed, Mix)
-│
-└── Bypass Mux
-    └── Bypass toggle → pass input unchanged
-```
+The program operates in two distinct phases each frame. During ***vertical blanking***, the control point positions are updated via DDS animation and all curve sample points are recalculated using De Casteljau evaluation. The results are written to a 256-entry block RAM (4 curves × 64 samples, with each entry packing a 10-bit X and 10-bit Y coordinate). During ***active video***, the renderer reads from this RAM for each pixel, computing distances to find the closest curve point and determining stroke membership, color, and brightness.
 
-The pipeline is split across two time domains. During vertical blanking, the FPGA runs a 3-stage state machine that evaluates De Casteljau for all four curves, writing 256 sample points into a single 256×20-bit BRAM. During active video, each pixel reads through the entire BRAM to find its closest curve sample — a brute-force distance scan that trades memory bandwidth for simplicity. The glow rendering means that even pixels far from any curve still receive some brightness contribution, which creates the characteristic soft-edged luminous appearance. The rainbow color mode derives hue from the t parameter of the closest sample plus a continuously cycling color phase accumulator, so colors shift both along each curve and over time.
+Two key interactions govern the visual output:
+
+1. **Glow and Brightness coupling**: The pixel luminance is computed as Brightness minus distance. A high Brightness value with moderate Glow produces bright cores with soft halos. A low Brightness with high Glow produces dim, diffuse strokes.
+
+2. **Video Mod compositing**: When Video Mod is on, curve luminance is *added* to the input video's Y channel (clamped at maximum), while the input's chroma passes through unchanged. This means curves always brighten: they cannot darken the source. When Video Mod is off, pixels not on a curve render as black with neutral chroma.
+
+:::note
+The curve evaluation must complete during vertical blanking before active video begins. With four curves at 64 samples each and three pipeline stages per sample, evaluation takes 4 × 64 × 3 = 768 clock cycles. At 74.25 MHz with roughly 2,000 blanking clocks per field, this fits comfortably.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={bezier_control_panel} alt="Videomancer front panel with Bezier loaded"/>
-*Videomancer's front panel with Bezier active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises explore Bezier's curve rendering from a single delicate arc to dense, animated weaves and video overlays.
+### Exercise 1: Luminous Arc
 
-### Rotary Potentiometers (Knobs 1–6)
+![Luminous Arc result](/img/instruments/videomancer/bezier/bezier_ex1_s1.png)
+*Luminous Arc — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Animation Speed
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-Animation speed. Controls the increment rate of all 16 phase accumulators during each vertical blanking interval. At 0%, the curves freeze in place — useful for examining a single frame or for static overlays. At 100%, the curves move rapidly, their Lissajous-like paths sweeping across the full screen. Because each control point has coprime frequency multipliers, increasing the speed amplifies all 16 oscillations proportionally while maintaining their relative phase relationships.
+#### Learning Outcomes
 
----
+A single glowing arc that drifts smoothly across a dark background, demonstrating the fundamental curve rendering.
 
-#### Knob 2 — Stroke Width
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 37.5% |
-| Suffix | % |
+#### Key Concepts
 
-Stroke width. Sets the hard-edge threshold in the distance field. Pixels closer than this distance to a curve sample are rendered at full brightness. At 0%, curves are nearly invisible hairlines — only the glow component is visible. At 100%, strokes are wide bands that fill large areas of the screen. In Calligraphic mode, this parameter sets the base width that gets modulated by endpoint proximity.
+- A single cubic Bézier curve is defined by four animated control points
+- Stroke Width and Glow together control the visual thickness and softness
+- Brightness sets the peak luminance
 
----
+#### Steps
 
-#### Knob 3 — Amplitude
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
+1. Start with default settings. A single curve traces a slow arc across the screen.
+2. Turn **Stroke Width** (Knob 2) clockwise to about 50%. The line broadens into a visible ribbon.
+3. Increase **Glow** (Knob 4) to about 60%. The edges of the stroke soften and the curve appears to emit a dim halo.
+4. Set **Brightness** (Knob 6) to about 70%. The arc brightens, and the glow halo extends further.
+5. Slowly increase **Amplitude** (Knob 3). The curve's control points sweep wider and the arc stretches across more of the screen.
+6. Now increase **Animation Speed** (Knob 1) to about 30%. The arc begins to drift and reshape as its control points orbit.
 
-Amplitude. Controls how far the animated control points spread from the screen center. At 0%, all control points collapse to the center and curves degenerate to a point. At 100%, control points sweep across the full screen dimensions. This parameter scales the output of the triangle wave function applied to each phase accumulator. Moderate values (40–60%) produce curves that stay within the visible area; higher values allow control points to move off-screen, creating curves that enter and exit the frame.
+#### Settings
 
----
-
-#### Knob 4 — Glow
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-Glow falloff. Controls the rate at which brightness decreases beyond the stroke width threshold. At 0%, there is no glow — pixels beyond the stroke edge are black. At 100%, the glow extends far from the curve, creating broad luminous halos. The falloff is applied as a distance-dependent attenuation: larger values produce more gradual falloff, making the curves appear to radiate light over a wider area.
+| Control | Value |
+|---------|-------|
+| Animation Speed | ~30% |
+| Stroke Width | ~50% |
+| Amplitude | 50% |
+| Glow | ~60% |
+| Color Speed | 25% |
+| Brightness | ~70% |
+| Curves | 1 |
+| Color Mode | Rainbow |
+| Calligraphic | Off |
+| Video Mod | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-#### Knob 5 — Color Speed
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
+### Exercise 2: Calligraphic Weave
 
-Color cycling speed. Controls the increment rate of the color phase accumulator, which offsets the hue derived from the t parameter. At 0%, colors along each curve are static (though they still vary spatially along the curve length). At 100%, the rainbow pattern shifts rapidly along and between curves. This control is independent of animation speed — you can freeze curve positions while cycling colors, or animate positions with static colors.
+![Calligraphic Weave result](/img/instruments/videomancer/bezier/bezier_ex2_s1.png)
+*Calligraphic Weave — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-#### Knob 6 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
+#### Learning Outcomes
 
-Overall brightness. Scales the final luminance of all rendered curve pixels before the mix stage. At 0%, curves are invisible regardless of glow or stroke settings. At 100%, maximum brightness. This control acts as a master intensity, useful for balancing curve brightness against a video input when using Video Mod.
+A dense tapestry of four calligraphic strokes with flowing rainbow colors, continuously weaving and overlapping.
 
----
+#### Key Concepts
 
-### Toggle Switches (Switches 7–11)
+- Multiple curves create layered, intersecting patterns
+- Calligraphic mode adds nib-like thickness variation
+- Color Speed animates the rainbow hue cycling
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Curves** | 1 | 4 |
-| **8 — Color Mode** | Rainbow | Mono |
-| **9 — Calligraphic** | Off | On |
-| **10 — Video Mod** | Off | On |
-| **11 — Bypass** | Off | On |
+#### Steps
 
-Switches 7 and 8 configure curve count and color mode as two independent selectors. Switch 9 enables a calligraphic stroke variation. Switch 10 activates video modulation for blending with input. Switch 11 is the standard bypass. Together, 7 and 8 define the visual character of the output (how many curves, what color), while 9 and 10 add optional rendering and compositing refinements.
+1. Set **Curves** (Switch 7) to **4** and **Color Mode** (Switch 8) to **Mono**. Four white curves appear, each following its own animation path.
+2. Switch **Color Mode** back to **Rainbow**. The curves reduce to two, now rendered in cycling hues.
+3. Return to **Mono** to restore four curves, then enable **Calligraphic** (Switch 9). The strokes develop visible thickness variation (thicker at the ends, thinner in the middle.)
+4. Increase **Stroke Width** (Knob 2) to about 40% to make the calligraphic variation more pronounced.
+5. Set **Amplitude** (Knob 3) to about 60% so the curves span most of the frame.
+6. Increase **Color Speed** (Knob 5) to about 50%. Switch **Color Mode** to **Rainbow** (now 2 curves). Watch the hue pattern scroll along each curve and rotate over time.
+7. Increase **Animation Speed** (Knob 1) to about 40%. The curves weave around each other in a continuously evolving pattern.
 
----
+#### Settings
 
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Mix crossfade between the unprocessed input video and the rendered curve output. At 0%, only the input is visible. At 100%, only the curve rendering is visible. Intermediate values blend the two proportionally. When Video Mod is active, this fader controls how much of the curve-brightened composite is mixed with the dry input.
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Bezier processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises progress from a single static curve to a full multi-curve animated composition with video interaction. Each exercise enables more of the parameter space.
-
-### Exercise 1: A Single Glowing Arc
-
-<img src={bezier_exercise1_result} alt="A Single Glowing Arc result"/>
-*A Single Glowing Arc — simulated result across source images.*
-**What You'll Create**: Understand the basic curve rendering: one curve, glow, and brightness controls.
-
-1. **Single curve**: Set Curves to 1 (Switch 7 position 1). One cubic Bézier is drawn on screen.
-2. **Freeze animation**: Turn Anim Spd to 0%. The curve holds its current shape.
-3. **Stroke width**: Slowly increase Stroke W from 0%. A thin hairline thickens into a visible band.
-4. **Glow**: Increase Glow to ~60%. The hard-edged stroke acquires a soft luminous halo.
-5. **Brightness**: Sweep Bright from 0% to 100%. The entire curve brightens uniformly.
-6. **Animate**: Slowly increase Anim Spd. The curve begins to drift and reshape. Note how the four control points move at different rates — the curve never repeats.
-
-**Key concepts**: De Casteljau evaluation produces smooth cubic curves, glow creates distance-field halos, coprime DDS rates ensure non-repeating animation
+| Control | Value |
+|---------|-------|
+| Animation Speed | ~40% |
+| Stroke Width | ~40% |
+| Amplitude | ~60% |
+| Glow | ~25% |
+| Color Speed | ~50% |
+| Brightness | ~75% |
+| Curves | 4 |
+| Color Mode | Mono |
+| Calligraphic | On |
+| Video Mod | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Rainbow Weave
+### Exercise 3: Video Overlay
 
-<img src={bezier_exercise2_result} alt="Rainbow Weave result"/>
-*Rainbow Weave — simulated result across source images.*
-**What You'll Create**: Explore multi-curve rendering with rainbow color cycling and calligraphic strokes.
+![Video Overlay result](/img/instruments/videomancer/bezier/bezier_ex3_s1.png)
+*Video Overlay — simulated result across source images.*
+#### Exercise Illustration
 
-1. **Four curves**: Set Curves to 4 (Switch 7 position 4). Four independent Bézier curves interleave on screen.
-2. **Rainbow**: Switch Color Mode to Rainbow (Switch 8). Each curve displays a spectrum of colors that varies along its length.
-3. **Color cycling**: Increase Color Spd to ~50%. The rainbow shifts along the curves over time.
-4. **Calligraphic**: Enable Calligraphic (Switch 9 On). Notice the strokes thicken at their endpoints — a subtle pen-pressure effect.
-5. **Amplitude**: Sweep Amplitude from 20% to 80%. At low amplitude, curves cluster near center. At high amplitude, they sweep across the full frame.
-6. **Speed**: Increase Anim Spd to ~60%. The four curves weave through each other in complex patterns.
+***A description of the exercise illustration.***
 
-**Key concepts**: Coprime frequency multipliers prevent curve synchronization, rainbow hue derives from t parameter plus phase, calligraphic mode thickens endpoints
+#### Learning Outcomes
+
+Glowing curves composited over a live video feed, producing a luminous overlay effect.
+
+#### Key Concepts
+
+- Video Mod adds curve luminance to the input signal
+- Mix crossfades between input and the curve-overlaid composite
+- Curves act as additive light sources on live video
+
+#### Steps
+
+1. Connect a video source to Videomancer's input.
+2. Set **Video Mod** (Switch 10) to **On**. The curves now brighten the input image wherever they pass.
+3. Reduce **Brightness** (Knob 6) to about 40% so the curves add a subtle glow rather than blowing out the highlights.
+4. Set **Curves** (Switch 7) to **4** and **Color Mode** (Switch 8) to **Mono** for four white overlaid curves.
+5. Enable **Calligraphic** (Switch 9) for varied stroke weight that gives the overlay organic character.
+6. Increase **Stroke Width** (Knob 2) to about 20%. Thin strokes look like light trails over the video.
+7. Set **Mix** (Fader 12) to about 75% to blend the overlay with the unprocessed input, softening the effect.
+8. Adjust **Animation Speed** (Knob 1) to taste. Slow speeds produce drifting highlights; faster speeds create rapid flickering trails.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Animation Speed | ~25% |
+| Stroke Width | ~20% |
+| Amplitude | 50% |
+| Glow | ~70% |
+| Color Speed | ~25% |
+| Brightness | ~40% |
+| Curves | 4 |
+| Color Mode | Mono |
+| Calligraphic | On |
+| Video Mod | On |
+| Bypass | Off |
+| Mix | ~75% |
 
 ---
-
-### Exercise 3: Video Overlay Composition
-
-<img src={bezier_exercise3_result} alt="Video Overlay Composition result"/>
-*Video Overlay Composition — simulated result across source images.*
-**What You'll Create**: Use Video Mod to composit animated curves over live video and balance brightness.
-
-1. **Prepare curves**: Set Curves to 3, Anim Spd ~40%, Amplitude ~50%, Stroke W ~20%.
-2. **Enable Video Mod**: Turn on Video Mod (Switch 10 On). The curve luminance now adds to the input video — bright areas of the video become brighter where curves pass.
-3. **Balance brightness**: Reduce Bright to ~40%. Too much curve brightness washes out the video. Find a balance where curves are visible but the source image remains readable.
-4. **Mix fader**: Sweep Mix from 0% to 100%. At intermediate values, the curve-on-video composite fades against the dry input — useful for subtle overlay effects.
-5. **Glow interaction**: Increase Glow to ~70%. The soft halo wraps around video content, creating a luminous veil over the source.
-6. **Color over video**: Switch to Rainbow mode and adjust Color Spd. Colored curves overlay the video, adding chromatic energy.
-
-**Key concepts**: Additive blending brightens video at curve locations, brightness control balances curve vs. source, mix fader composites the result against dry input
-
----
-
-
-## Tips
-
-- **Video Mod balance**: When using Video Mod, reduce Bright to 30–40% to prevent the curves from washing out the source. The Mix fader gives an additional intensity control for the composite.
-- **Calligraphic subtlety**: The endpoint thickening is most visible with moderate Stroke W (30–50%). Too thin and the variation is invisible; too thick and the entire curve appears uniformly wide.
-- **Glow as atmosphere**: Even with Stroke W at 0%, the Glow parameter alone can render soft, nebula-like shapes. No hard edges — just luminous clouds following the curve paths.
-- **Curve count and density**: Start with 1 curve to understand the motion, then increase. At 4 curves with high Amplitude, the overlapping glow fields create complex interference patterns.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Calligraphic stroke** | A rendering style where line width varies along the curve, thickening at endpoints to simulate pressure from a broad-nib pen. |
-| **Coprime** | Two integers sharing no common factor greater than 1; used for DDS frequency multipliers to prevent control point synchronization. |
-| **DDS** | Direct Digital Synthesis; a technique that generates a waveform by incrementing a phase accumulator at a fixed rate, here driving control point animation. |
-| **De Casteljau algorithm** | A recursive sequence of linear interpolations that evaluates a point on a Bézier curve without computing the polynomial directly. |
-| **Distance field** | A scalar field where each pixel stores the distance to the nearest curve sample, used to render soft-edged glow and stroke thickness. |
-| **Lerp** | Linear interpolation; computing a weighted blend between two values based on a parameter t in the range [0, 1]. |
-| **Lissajous pattern** | A complex curve formed by two perpendicular sinusoidal oscillations at different frequencies, here approximated by the multi-DDS animation system. |
-| **Manhattan distance** | The sum of the absolute horizontal and vertical differences between two points (|Δx| + |Δy|); cheaper than Euclidean distance to compute in hardware. |
-| **Phase accumulator** | A register that increments by a fixed step each cycle, wrapping at overflow to produce a continuous ramp for animation timing. |
-| **Triangle wave** | A periodic waveform that ramps linearly up and down, used to fold phase into smooth oscillating position coordinates. |
+- **Block RAM (BRAM)**: A dedicated memory block inside the FPGA used to store precomputed curve sample points for pixel-by-pixel rendering.
+
+- **Bézier Curve**: A parametric curve defined by a set of control points, widely used in computer graphics for smooth shape representation.
+
+- **Calligraphic**: A rendering style where stroke width varies along the curve, emulating the natural pressure variation of a pen nib.
+
+- **Control Point**: One of four points that define the shape of a cubic Bézier curve; the curve bends toward its control points without necessarily passing through them.
+
+- **DDS (Direct Digital Synthesis)**: A technique for generating periodic waveforms by incrementing a phase accumulator at a fixed rate; used here to animate control point positions.
+
+- **De Casteljau Algorithm**: A recursive method for evaluating Bézier curves using repeated linear interpolation, noted for numerical stability.
+
+- **Lerp (Linear Interpolation)**: A blend between two values controlled by a parameter *t*, producing the value a + (b − a) × t.
+
+- **Manhattan Distance**: The sum of horizontal and vertical offsets between two points, used as a computationally cheap approximation to Euclidean distance.
+
+- **Synthesis Program**: An FPGA program that generates imagery from scratch, independent of any input video signal.
+
+- **Triangle Wave**: A periodic waveform that ramps linearly up and down, used here as a smooth bounded oscillator for control point animation.
 
 ---

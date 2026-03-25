@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 277
 slug: /instruments/videomancer/spectra
@@ -7,352 +7,419 @@ image: /img/instruments/videomancer/spectra/spectra_hero_s1.png
 description: "Scientific instruments often visualize invisible phenomena by mapping measured values to color — thermal cameras paint heat as a spectrum from cool blue to hot white, weather radar maps rainfall intensity to a green-yellow-red gradient, and medical imaging uses false color to highlight tissue density."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import spectra_control_panel from '/img/instruments/videomancer/spectra/spectra_control_panel.png';
-import spectra_source1_house from '/img/instruments/videomancer/spectra/spectra_source1_house.png';
-import spectra_source2_runner from '/img/instruments/videomancer/spectra/spectra_source2_runner.png';
-import spectra_source3_collage from '/img/instruments/videomancer/spectra/spectra_source3_collage.png';
-import spectra_source4_pattern from '/img/instruments/videomancer/spectra/spectra_source4_pattern.png';
-import spectra_source5_girl from '/img/instruments/videomancer/spectra/spectra_source5_girl.png';
-import spectra_source6_wood from '/img/instruments/videomancer/spectra/spectra_source6_wood.png';
-import spectra_hero_s1 from '/img/instruments/videomancer/spectra/spectra_hero_s1.png';
-import spectra_hero_s2 from '/img/instruments/videomancer/spectra/spectra_hero_s2.png';
-import spectra_hero_s3 from '/img/instruments/videomancer/spectra/spectra_hero_s3.png';
-import spectra_hero_s4 from '/img/instruments/videomancer/spectra/spectra_hero_s4.png';
-import spectra_hero_s5 from '/img/instruments/videomancer/spectra/spectra_hero_s5.png';
-import spectra_hero_s6 from '/img/instruments/videomancer/spectra/spectra_hero_s6.png';
-import spectra_ex1_s1 from '/img/instruments/videomancer/spectra/spectra_ex1_s1.png';
-import spectra_ex1_s2 from '/img/instruments/videomancer/spectra/spectra_ex1_s2.png';
-import spectra_ex1_s3 from '/img/instruments/videomancer/spectra/spectra_ex1_s3.png';
-import spectra_ex1_s4 from '/img/instruments/videomancer/spectra/spectra_ex1_s4.png';
-import spectra_ex1_s5 from '/img/instruments/videomancer/spectra/spectra_ex1_s5.png';
-import spectra_ex1_s6 from '/img/instruments/videomancer/spectra/spectra_ex1_s6.png';
-import spectra_ex2_s1 from '/img/instruments/videomancer/spectra/spectra_ex2_s1.png';
-import spectra_ex2_s2 from '/img/instruments/videomancer/spectra/spectra_ex2_s2.png';
-import spectra_ex2_s3 from '/img/instruments/videomancer/spectra/spectra_ex2_s3.png';
-import spectra_ex2_s4 from '/img/instruments/videomancer/spectra/spectra_ex2_s4.png';
-import spectra_ex2_s5 from '/img/instruments/videomancer/spectra/spectra_ex2_s5.png';
-import spectra_ex2_s6 from '/img/instruments/videomancer/spectra/spectra_ex2_s6.png';
-import spectra_ex3_s1 from '/img/instruments/videomancer/spectra/spectra_ex3_s1.png';
-import spectra_ex3_s2 from '/img/instruments/videomancer/spectra/spectra_ex3_s2.png';
-import spectra_ex3_s3 from '/img/instruments/videomancer/spectra/spectra_ex3_s3.png';
-import spectra_ex3_s4 from '/img/instruments/videomancer/spectra/spectra_ex3_s4.png';
-import spectra_ex3_s5 from '/img/instruments/videomancer/spectra/spectra_ex3_s5.png';
-import spectra_ex3_s6 from '/img/instruments/videomancer/spectra/spectra_ex3_s6.png';
-
-# Spectra
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: spectra_source1_house, after: spectra_hero_s1 },
-    { label: "Runner", before: spectra_source2_runner, after: spectra_hero_s2 },
-    { label: "Collage", before: spectra_source3_collage, after: spectra_hero_s3 },
-    { label: "Pattern", before: spectra_source4_pattern, after: spectra_hero_s4 },
-    { label: "Girl", before: spectra_source5_girl, after: spectra_hero_s5 },
-    { label: "Wood", before: spectra_source6_wood, after: spectra_hero_s6 },
-  ]}
-/>
-*Spectra decomposing video luminance into discrete spectral bands and false-coloring each zone with configurable rainbow, heat, cool, or earth palettes.*
+![Spectra hero image](/img/instruments/videomancer/spectra/spectra_hero_s1.png)
+*Spectra decomposing a video signal into spectral bands, mapping each luminance zone to a vivid false color.*
 
 ---
 
 ## Overview
 
-Scientific instruments often visualize invisible phenomena by mapping measured values to color — thermal cameras paint heat as a spectrum from cool blue to hot white, weather radar maps rainfall intensity to a green-yellow-red gradient, and medical imaging uses false color to highlight tissue density. Spectra brings this visualization technique to live video, decomposing the brightness of each pixel into discrete bands and assigning each band a color from a selectable palette.
+**Spectra** is a false-color analysis program that slices the luminance range of a video signal into discrete bands, then paints each band with a color from a configurable palette. The result resembles the displays of scientific instruments: thermal cameras, topographic maps, weather radar: where color encodes magnitude rather than appearance. Feed any video source into Spectra, and it reveals the hidden structure of brightness as a vivid rainbow zone map.
 
-The program quantizes the luminance (or chrominance) signal into 2, 4, 8, or 16 discrete zones, then maps each zone to a color from one of four built-in palettes: Rainbow, Heat, Cool, or Earth. A hue offset rotates the palette assignment, a spread control expands contrast before banding, and optional contour lines mark the transitions between zones. The name comes from the Latin *spectrum* — the band of colors produced when white light is dispersed by a prism.
+The number of bands, the choice of palette, and the spread of tones are all adjustable in real time. At low band counts, the image collapses into bold, poster-like zones. At high band counts, the zones become narrow slivers that trace subtle gradations in the source. Enabling contour mode draws black outlines at every band transition, transforming the image into something resembling a stained-glass window or a topographic chart.
 
-At low band counts, Spectra reduces an image to bold, poster-like color zones — two bands creates a stark binary split, four bands a topographic map. At sixteen bands with a heat palette, the output closely resembles a thermal imaging camera. The contour mode turns the band boundaries into black outlines, transforming the video into a topographic elevation map.
+:::tip
+Spectra is classified as an ***Analysis*** program because it reveals information about the video signal that is invisible in the original image. The colors you see are not the colors of the source (they are a map of its brightness structure.)
+:::
+
+### What's In a Name?
+
+The name ***Spectra*** refers to the electromagnetic spectrum: the full range of wavelengths that includes visible light. Just as a prism splits white light into a rainbow of colors, Spectra splits a monochrome brightness range into a rainbow of false-color zones. The plural form (spectra, not spectrum) suggests the multiple bands, the multiple colors, and the multiple palettes available.
 
 ---
 
 ## Quick Start
 
-1. **Start with Heat + 16 bands**: This combination most closely resembles a thermal camera and is the most immediately recognizable false-color visualization.
-2. **Spread is essential for low-contrast sources**: Without spread enhancement, a flat or low-contrast input may fall entirely within one or two bands, producing a nearly uniform color output.
-3. **Contour lines need space**: Contour mode is most legible with 2–4 bands, where the lines are widely spaced. At 16 bands, contour lines become a dense texture.
+1. Feed a video signal into Videomancer and load **Spectra**. The image immediately appears false-colored: each brightness zone mapped to a different hue from the Rainbow palette.
+2. Turn **Bands** (Knob 1) to see the band count change. Counterclockwise gives you 2 wide zones; clockwise gives you up to 16 narrow zones. Watch how the color boundaries shift with the tonal structure of your source.
+3. Rotate **Hue Offs** (Knob 3) to spin the palette, cycling which colors correspond to which brightness levels. The entire rainbow rotates through the zones.
+4. Flip **Contour** (Switch 8) to **On**. Black outlines appear at every band boundary, giving the image a stained-glass or topographic look.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Spectra loaded](/img/instruments/videomancer/spectra/spectra_control_panel.png)
+*Videomancer's front panel with Spectra active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Bands
+
+| Property | Value |
+|----------|-------|
+| Range | 2 – 16 |
+| Default | 9 |
+
+**Bands** sets the number of spectral zones that the luminance range is divided into. The control selects among four discrete band counts: 2, 4, 8, and 16. At the lowest setting, the range is split into two broad zones: a simple bright/dark division. At the highest setting, the range is carved into 16 narrow slivers, each painted with its own palette color.
+
+With a low band count, the color boundaries are bold and dramatic. Increasing the count reveals progressively finer tonal structure in the source. The number of distinct colors visible at any moment depends on both this setting and the tonal range of the input signal: a flat, low-contrast source may not contain enough variation to fill all 16 zones.
+
+---
+
+### Knob 2 — Saturate
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 75% |
+
+**Saturate** controls the chroma intensity of the false colors applied to each band. At low values, the palette colors are muted and pastel: the chroma differences from neutral gray are halved. At moderate values, colors reach roughly three-quarters intensity. At high values, the full palette chroma is applied, producing vivid, saturated bands.
+
+:::tip
+Reducing **Saturate** while keeping a high band count creates a subtle, pastel zone map that encodes brightness without overwhelming the image. This is useful when stacking Spectra in a signal chain where downstream programs add their own color.
+:::
+
+---
+
+### Knob 3 — Hue Offs
+
+| Property | Value |
+|----------|-------|
+| Range | 0deg – 360deg |
+| Default | 0deg |
+
+**Hue Offs** rotates the palette assignment around the band index. At zero, band 0 maps to the first palette color, band 1 to the second, and so on. As **Hue Offs** increases, the mapping shifts: colors cycle to different bands. The offset wraps around, so rotating fully through the range returns to the starting assignment.
+
+This is Spectra's most expressive control. Because the palette is a fixed sequence of colors, rotating the offset changes which brightness levels receive which colors. A sunset scene might shift from cool blues in the shadows to warm reds at the highlights, or the reverse (all without changing the structure of the bands themselves.)
+
+---
+
+### Knob 4 — Spread
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Spread** enhances the contrast of the source signal before it is quantized into bands. Below the midpoint, no spread adjustment is applied. Above the midpoint, values above mid-gray are pushed brighter and values below mid-gray are pushed darker, increasing the separation between tonal zones. This expands the effective range of the banding, causing more of the palette colors to appear even in low-contrast source material.
+
+At minimum, the source passes through unmodified. At maximum, the contrast enhancement is strongest: shadows deepen and highlights brighten before banding occurs. This processing happens *before* band quantization, so it changes which band each pixel falls into without changing the palette itself.
+
+---
+
+### Knob 5 — Bright
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Bright** offsets the luminance of the false-color output. At the midpoint (50%), no offset is applied: the palette's native luminance values are used. Turning counterclockwise darkens the entire output; turning clockwise brightens it. The offset is added to the palette luminance after the band lookup, so it shifts the overall brightness of the false-color image without changing which band each pixel belongs to.
+
+:::note
+**Bright** affects only the luminance of the false-color output, not the source signal. Band assignments are determined before brightness is applied. Pushing **Bright** to extremes can clip the output to full black or full white.
+:::
+
+---
+
+### Knob 6 — Gamma
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Gamma** is reserved for a future update. In the current version, adjusting this control has no visible effect on the output.
+
+---
+
+### Switch 7 — Palette
+
+| Property | Value |
+|----------|-------|
+| Off | Rainbow |
+| On | Earth |
+| Default | Rainbow |
+
+**Palette** selects the color scheme used to paint the spectral bands. Set to **Rainbow**, the palette cycles through the visible spectrum: reds, oranges, yellows, greens, cyans, blues, and magentas: distributing maximum color contrast between adjacent bands. Set to **Earth**, the palette progresses through warm tones: near-black through dark reds, oranges, and yellows toward white, resembling a thermal imaging or heat-map display.
+
+The Rainbow palette is suited for general-purpose visualization, where you want every band to be immediately distinguishable from its neighbors. The Earth palette is better suited for thermal-style imagery, where the color scale is perceived as a continuous temperature gradient from cold to hot.
+
+---
+
+### Switch 8 — Contour
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Contour** enables band-boundary edge detection. When set to **On**, any pixel whose band index differs from its horizontal neighbor is rendered as black (Y = 0, U = 512, V = 512). This draws a one-pixel-wide black line at every transition between spectral zones, outlining each colored region.
+
+The contour lines trace ***isocontours*** of the source luminance: lines of equal brightness, like elevation lines on a topographic map. With a low band count, the contour lines are sparse and sweeping. With a high band count, they cluster tightly around gradients, revealing fine tonal structure.
+
+:::tip
+Turn **Saturate** to zero and enable **Contour** to produce a pure contour-line drawing: black outlines on a gray field, with no false color. This is useful for analyzing tonal structure without the distraction of color.
+:::
+
+---
+
+### Switch 9 — Source
+
+| Property | Value |
+|----------|-------|
+| Off | Luma |
+| On | Chroma |
+| Default | Luma |
+
+**Source** selects which component of the input signal drives the band decomposition. Set to **Luma**, the luminance (Y) channel is analyzed: brightness determines zone assignment. Set to **Chroma**, the U chrominance channel drives the banding instead.
+
+In Luma mode, the zone map reveals brightness structure. In Chroma mode, the zone map reveals color information: regions of similar U-channel chrominance fall into the same band, regardless of brightness.
+
+---
+
+### Switch 10 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** reverses the luminance of the false-color output. When enabled, bright palette colors become dark and dark palette colors become bright. The inversion is applied after all other processing: palette lookup, saturation scaling, and brightness offset: so it flips the final result. Chroma values are not affected by inversion.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the original input signal directly to the output, disabling all Spectra processing. The sync delay pipeline ensures clean switching with no timing glitch. Use Bypass for instant A/B comparison between the raw input and the false-color result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the original input signal and the processed false-color output. At 0% (fully left), the output is the unprocessed source. At 100% (fully right), the output is the full false-color result. Intermediate positions blend the two using per-channel linear interpolation.
+
+A moderate Mix setting can create a tinted overlay effect: the original image visible beneath a translucent wash of false color. This is especially effective in Chroma source mode, where the overlay reveals color structure within the original scene.
 
 ---
 
 ## Background
 
-### False Color Imaging
+### False-Color Imaging
 
-False color is any visualization technique where colors are assigned to data values that have no inherent color of their own. Thermal cameras are the most familiar example: they measure infrared radiation (invisible to the human eye) and display it using a color gradient — typically blue for cold, red for hot, white for hottest. Spectra applies the same principle to video luminance: dark areas of the image get one color, bright areas get another, and the gradient between them is divided into discrete bands. The result turns brightness information into a color map that makes tonal structure immediately visible.
+***False-color imaging*** is a visualization technique that replaces the natural colors of an image with an artificial palette designed to reveal information that would otherwise be invisible or difficult to perceive. The technique originated in remote sensing and scientific imaging: weather satellites color-code cloud temperatures, medical scanners map tissue density to color, and thermal cameras render heat as a rainbow.
+
+The core principle is simple: take a single-channel measurement: brightness, temperature, altitude, intensity: and map its range onto a color palette. The human eye can distinguish far more colors than shades of gray, so false-coloring dramatically increases the perceptual resolution of the data. Spectra applies this same principle to video in real time.
 
 ### Band Quantization
 
-The core operation in Spectra is **quantization** — reducing a continuous range of values to a small number of discrete levels. The input luminance (10 bits, 1024 possible values) is quantized to 2, 4, 8, or 16 bands by discarding lower-order bits. With 2 bands, only the MSB matters: the image splits into "dark" and "light." With 16 bands, the top 4 bits are preserved, creating fine tonal gradations. This is the same mathematical operation as posterization, but instead of reducing bit depth for visual effect, Spectra uses the quantized level as an index into a color palette.
+Spectra divides the source range into ***bands***: discrete zones of equal width. This is a form of ***uniform quantization***: the full 10-bit range (0 to 1023) is divided into N equal segments, and every pixel within a segment receives the same palette color. The number of segments (2, 4, 8, or 16) determines the coarseness of the zone map.
+
+Band quantization is implemented by right-shifting the source value. A 10-bit value shifted right by 1 bit yields 2 zones. Shifted right by 2 bits yields 4 zones, by 3 bits yields 8, and by 4 bits yields 16. This is computationally efficient: no multiplication or division is required, just a bit shift. The result is a 4-bit band index that drives the palette lookup.
+
+### Contour Detection
+
+Spectra's contour mode detects boundaries between adjacent bands by comparing each pixel's band index to its horizontal predecessor. When a transition is detected: the current pixel falls in a different band than the pixel before it: the output is forced to black. This draws a thin edge line at every ***isocontour*** of the source signal.
+
+This technique is closely related to ***edge detection*** in image processing, but operates on the quantized band index rather than the raw signal. The result is a set of contour lines that trace the boundaries of equal-brightness zones, much like the elevation contour lines on a topographic map. Because the comparison is horizontal only, contour lines emphasize vertical structures in the source.
 
 ### Palette Design
 
-Each of Spectra's four palettes is an 8-entry lookup table of YUV color triplets. The band index (plus a configurable hue offset) addresses this table, wrapping around for band counts greater than 8. Rainbow cycles through spectral hues — red, orange, yellow, green, cyan, blue, magenta. Heat maps the intensity gradient of a blackbody — black, dark red, red, orange, yellow, white. Cool runs from deep blue through cyan to white, emulating cryogenic or underwater visualization. Earth uses natural tones — browns, greens, tans, and creams — for a topographic map aesthetic.
+Each palette in Spectra is a lookup table of eight YUV color entries, indexed by the low 3 bits of the hue-offset-adjusted band index. The Rainbow palette distributes entries across the full hue circle for maximum contrast between adjacent bands. The Earth palette arranges entries along a single warm gradient: dark neutrals through reds and oranges toward bright whites: producing a perceptual temperature scale.
 
-### Contour Lines
-
-In cartography, contour lines connect points of equal elevation, making the shape of terrain visible on a flat map. Spectra's contour mode applies the same principle to video: whenever a pixel's band index differs from its neighbor's, the output is forced to black. The result is a network of dark lines tracing the boundaries between brightness zones — a real-time topographic map of the video signal's luminance surface.
-
-### Spread and Contrast Enhancement
-
-Before quantization, the spread control pushes luminance values away from the midpoint, expanding the deviation from center. This is effectively a contrast enhancement that makes the full range of bands visible even in low-contrast source material. Without spread, a low-contrast input might fall entirely within one or two bands; with spread at maximum, the input is stretched to use all available bands.
+The hue offset control adds a constant to the band index before lookup, rotating the color assignment. Because the index wraps modulo 8, the palette repeats cyclically across all 16 bands. Two adjacent bands always receive different colors (within the same 8-entry cycle), ensuring visual separation.
 
 
 ---
 
 ## Signal Flow
 
-Source Selection → Processing Chain → Sync Signals → Bypass → Mix
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Source Selection ────────────────────────────────────────────
-│   └─ Select Y, U, or V channel as analysis input
-│
-├── Processing Chain ────────────────────────────────────────────
-│   │
-│   ├─ 1. Optional Invert     (1023 − value)
-│   ├─ 2. Spread Enhancement   (push values from mid, contrast boost)
-│   ├─ 3. Band Quantization    (top 1/2/3/4 bits → 2/4/8/16 bands)
-│   ├─ 4. Hue Offset           (rotate palette index)
-│   ├─ 5. Palette Lookup       (band index → YUV color from LUT)
-│   ├─ 6. Contour Detection    (band ≠ prev pixel → black)
-│   ├─ 7. Saturation Scaling   (4 levels from saturate control)
-│   └─ 8. Brightness Offset    (Y ± offset centered at 512)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ Pass-through (hsync, vsync, field, avid)
-│
-├── Bypass ─────────────────────────────────────────────────────
-│   └─ Select original or processed signal
-│
-└── Mix ────────────────────────────────────────────────────────
-    └─ Interpolate original ↔ processed (linear_potentiometer_12)
-```
+The pipeline has two key structural properties. First, band quantization operates on the *modified* source: after Spread has enhanced the contrast. This means Spread changes which band each pixel falls into, altering the zone boundaries without touching the palette. Second, contour detection compares adjacent band indices in the horizontal (pixel) direction only. The contour line is drawn at the current pixel when its band differs from the previous pixel, producing a one-pixel-wide edge.
 
-The source selection at the top of the chain determines which component of the input signal drives the analysis. In Luma mode, the Y channel is used — the most common choice. In Chroma mode, the chrominance magnitude is used instead, analyzing color saturation rather than brightness. The spread enhancement occurs *before* quantization, so it determines how much of the input range maps to the available bands. The contour detector compares each pixel's band index to its left neighbor, inserting black lines at every transition — this is a horizontal-only edge detector driven by the quantized signal, not the raw input.
+:::note
+Because contour detection is a horizontal-neighbor comparison, contour lines appear at vertical edges in the source image (where brightness steps between adjacent pixels). Horizontal edges: where brightness changes from one scan line to the next: do not produce contour lines.
+:::
+
+The wet/dry mix uses three `interpolator_u` instances to independently crossfade each channel (Y, U, V). The mix blends the delayed original signal with the processed output, so at Mix = 0% the original passes through unchanged. The delay pipeline ensures the original and processed signals are time-aligned before mixing.
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={spectra_control_panel} alt="Videomancer front panel with Spectra loaded"/>
-*Videomancer's front panel with Spectra active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Bands
-| Property | Value |
-|----------|-------|
-| Range | 2 – 16 |
-| Default | 9 |
-
-Selects the number of spectral bands: 2, 4, 8, or 16. With 2 bands, the image splits into a simple binary — every pixel falls into either the "low" or "high" zone. With 4 bands, the image resembles a simple topographic map. With 8 bands, fine tonal gradations become visible. With 16 bands, the output approaches a continuous gradient — especially useful with the Heat palette for thermal camera emulation. The band count is selected by register thresholds, creating four discrete steps.
-
----
-
-#### Knob 2 — Saturate
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 75% |
-| Suffix | % |
-
-At full saturation, the palette colors are vivid and fully chromatic. Reducing saturation progressively desaturates the output, ultimately producing a grayscale banded image that resembles a simple posterization. The four levels are derived from the top two bits of the register, creating coarse but predictable saturation steps. Internally, controls the chroma saturation of the false-color output at four discrete levels.
-
----
-
-#### Knob 3 — Hue Offs
-| Property | Value |
-|----------|-------|
-| Range | 0deg – 360deg |
-| Default | 0deg |
-| Suffix | deg |
-
-Rotates the palette color assignment by adding an offset to the band index before the lookup table. At 0°, band 0 maps to the first palette entry. Rotating the offset shifts which color corresponds to which brightness zone — dark areas might start as blue (Rainbow) and rotate through green, yellow, red as the offset increases. The offset wraps around the 8-entry palette, so a full rotation cycles through all available colors. This allows fine-tuning the color-to-brightness mapping without changing the palette itself.
-
----
-
-#### Knob 4 — Spread
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-At 0%, no enhancement — the input maps directly to bands based on its raw luminance. At 100%, values are pushed away from the midpoint, stretching the input to fill the full 0–1023 range. This is essential for low-contrast sources that might otherwise fall within only one or two bands. High spread values ensure all bands are populated, producing a full-spectrum false-color output. Internally, controls the spread (contrast) enhancement applied before band quantization.
-
----
-
-#### Knob 5 — Bright
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Applies a brightness offset to the false-colored output. The offset is centered at the register midpoint — 50% means no change. Below center, the entire output darkens; above center, it brightens. This is a global Y adjustment applied *after* palette lookup, so it shifts the overall brightness of the false-color image without affecting which band each pixel falls into.
-
----
-
-#### Knob 6 — Gamma
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Reserved for gamma correction in the register mapping, but not actively used in the current VHDL pipeline. Adjusting this control has no visible effect on the output. Future firmware revisions may implement gamma curve reshaping before quantization.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Palette** | Rainbow | Earth |
-| **8 — Contour** | Off | On |
-| **9 — Source** | Luma | Chroma |
-| **10 — Invert** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles control palette selection (4 palettes via 2 bits), contour overlay, analysis source selection, luminance inversion, and bypass. The Palette and Source toggles use non-standard multi-bit encoding — Palette uses two bit positions to select among four options, and Source uses two bits for four channel options (though the TOML exposes only Luma and Chroma as labels).
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Controls the wet/dry mix between the false-color processed output and the original input signal via three parallel interpolator units. At 100%, the output is fully false-colored. At 0%, the original input passes through unaltered. Intermediate positions blend the false-color overlay with the source video, creating a semi-transparent analysis overlay — useful for seeing the false-color bands superimposed on the original image content.
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Spectra processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises progress from simple two-band analysis to complex multi-palette visualization, building familiarity with Spectra's band decomposition and false-color mapping.
-
+These exercises progress from basic false-color visualization through contour mapping to creative palette design. Each exercise explores a different aspect of Spectra's spectral decomposition.
 ### Exercise 1: Thermal Camera
 
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: spectra_source1_house, after: spectra_ex1_s1 },
-    { label: "Runner", before: spectra_source2_runner, after: spectra_ex1_s2 },
-    { label: "Collage", before: spectra_source3_collage, after: spectra_ex1_s3 },
-    { label: "Pattern", before: spectra_source4_pattern, after: spectra_ex1_s4 },
-    { label: "Girl", before: spectra_source5_girl, after: spectra_ex1_s5 },
-    { label: "Wood", before: spectra_source6_wood, after: spectra_ex1_s6 },
-  ]}
-/>
+![Thermal Camera result](/img/instruments/videomancer/spectra/spectra_ex1_s1.png)
 *Thermal Camera — simulated result across source images.*
-**Source**: A scene with a wide range of brightness — a person against a bright window, or outdoor footage with sky, foliage, and shadows.
+#### Exercise Illustration
 
-**What You'll Create**: Create a convincing thermal camera visualization that maps brightness to the Heat palette.
+***A description of the exercise illustration.***
 
-1. **Heat palette**: Set Palette to Heat. The default band count may already show color zones.
-2. **Band count**: Set Bands to 16 for the finest thermal-like gradation.
-3. **Full saturation**: Ensure Saturate is at maximum for vivid thermal colors.
-4. **Spread**: Adjust Spread until all bands are populated — you should see the full gradient from black through red to yellow to white.
-5. **Brightness**: Adjust Bright to center the thermal range on the most interesting part of the scene.
-6. **Contour lines**: Enable Contour to add isothermal lines at band boundaries, resembling a real thermal measurement overlay.
+#### Learning Outcomes
 
-**Key concepts**: Band count determines resolution of the thermal map, spread ensures full palette utilization, Heat palette mimics blackbody radiation gradient
+A thermal-camera-style visualization where brightness maps to a heat scale, revealing the tonal structure of a live video signal.
+
+#### Key Concepts
+
+- False-color mapping reveals brightness structure invisible in the original
+- Band count controls the granularity of the zone map
+- Palette selection changes the visual language of the analysis
+
+#### Video Source
+
+A live camera feed or recorded footage with a range of brightness levels (faces, landscapes, or indoor scenes work well.)
+
+#### Steps
+
+1. Load **Spectra** and set **Palette** (Switch 7) to **Earth**. The image shifts from rainbow bands to a warm dark-to-red-to-yellow-to-white progression.
+2. Turn **Bands** (Knob 1) fully clockwise to set 16 bands. The image is sliced into many narrow thermal zones.
+3. Increase **Saturate** (Knob 2) fully clockwise for vivid thermal colors.
+4. Adjust **Spread** (Knob 4) to approximately 80%. This pushes the tonal range apart, ensuring that even low-contrast sources fill all available thermal zones.
+5. Try rotating **Hue Offs** (Knob 3) slowly. The thermal palette slides through the bands (previously hot regions become cold-colored and vice versa.)
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Bands | 100% (16 bands) |
+| Saturate | 100% |
+| Hue Offs | 0 deg |
+| Spread | 80% |
+| Bright | 50% |
+| Gamma | 50% |
+| Palette | Earth |
+| Contour | Off |
+| Source | Luma |
+| Invert | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
 ### Exercise 2: Topographic Map
 
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: spectra_source1_house, after: spectra_ex2_s1 },
-    { label: "Runner", before: spectra_source2_runner, after: spectra_ex2_s2 },
-    { label: "Collage", before: spectra_source3_collage, after: spectra_ex2_s3 },
-    { label: "Pattern", before: spectra_source4_pattern, after: spectra_ex2_s4 },
-    { label: "Girl", before: spectra_source5_girl, after: spectra_ex2_s5 },
-    { label: "Wood", before: spectra_source6_wood, after: spectra_ex2_s6 },
-  ]}
-/>
+![Topographic Map result](/img/instruments/videomancer/spectra/spectra_ex2_s1.png)
 *Topographic Map — simulated result across source images.*
-**Source**: A slowly moving camera across a textured surface — landscape, architecture, or a face.
+#### Exercise Illustration
 
-**What You'll Create**: Create a contour-line topographic map visualization of the brightness surface.
+***A description of the exercise illustration.***
 
-1. **Earth palette**: Set Palette to Earth for a natural cartographic look.
-2. **Few bands**: Set Bands to 4 for widely-spaced contour zones.
-3. **Contour on**: Enable Contour. Black lines appear at every band boundary, dividing the image into topographic zones.
-4. **Spread**: Set Spread to about 60% so the bands correspond to visible brightness differences.
-5. **Saturate**: Try reducing Saturate. At low saturation, the zones become pastel — more like a real topographic map.
-6. **Increase bands**: Switch Bands to 8. The contour lines become denser, creating a finer elevation map.
-7. **Hue rotation**: Sweep Hue Offs slowly. Watch the color assignments rotate through the palette — dark zones change from brown to green to tan.
+#### Learning Outcomes
 
-**Key concepts**: Contour mode detects band transitions and renders them as black lines, fewer bands create bolder zones, hue offset rotates which color maps to which brightness level
+A topographic-map-style image with contour lines outlining regions of equal brightness, like elevation lines on a terrain map.
 
----
+#### Key Concepts
 
-### Exercise 3: Chroma Analysis with Overlay
+- Contour lines trace isocontours of equal brightness
+- Low band counts produce bold, map-like regions
+- Contour with reduced saturation creates analytical line drawings
 
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: spectra_source1_house, after: spectra_ex3_s1 },
-    { label: "Runner", before: spectra_source2_runner, after: spectra_ex3_s2 },
-    { label: "Collage", before: spectra_source3_collage, after: spectra_ex3_s3 },
-    { label: "Pattern", before: spectra_source4_pattern, after: spectra_ex3_s4 },
-    { label: "Girl", before: spectra_source5_girl, after: spectra_ex3_s5 },
-    { label: "Wood", before: spectra_source6_wood, after: spectra_ex3_s6 },
-  ]}
-/>
-*Chroma Analysis with Overlay — simulated result across source images.*
-**Source**: Footage with strong, varied colors — a color chart, fruit market, or painted mural.
+#### Video Source
 
-**What You'll Create**: Analyze the chrominance structure of the source using false color, blended as a semi-transparent overlay on the original video.
+Footage with smooth tonal gradients: sky at sunset, slowly moving water, or a gradient test pattern.
 
-1. **Rainbow palette**: Set Palette to Rainbow for maximum color differentiation.
-2. **Source to Chroma**: Switch Source to Chroma. The analysis now responds to color saturation rather than brightness.
-3. **8 bands**: Set Bands to 8 for a useful number of chrominance zones.
-4. **Full spread**: Set Spread to 100% to stretch the chroma range across all bands.
-5. **Overlay blend**: Reduce Mix to about 50%. The false-color analysis appears superimposed on the original video.
-6. **Invert**: Toggle Invert On. The mapping reverses — saturated areas now receive the colors that previously mapped to desaturated areas.
-7. **Hue offset sweep**: Slowly rotate Hue Offs while watching the overlay. Different palette rotations emphasize different parts of the chrominance spectrum.
+#### Steps
 
-**Key concepts**: Source toggle selects chroma analysis instead of luma, Mix fader creates analysis overlay, invert reverses the color mapping direction
+1. Set **Bands** (Knob 1) to a moderate value (about 25%, yielding 4 bands). The image breaks into four broad color zones.
+2. Enable **Contour** (Switch 8). Black outlines appear at every boundary between zones, drawing the topography of the brightness field.
+3. Reduce **Saturate** (Knob 2) to approximately 40%. The colors soften to pastels, letting the contour lines dominate.
+4. Slowly increase **Bands** toward 8 or 16 bands. More contour lines appear as the zone boundaries become finer, revealing progressively subtler tonal gradients.
+5. Try setting **Palette** (Switch 7) to **Earth** for a terrain-chart aesthetic, then back to **Rainbow** for a weather-map look.
 
----
+#### Settings
 
-
-## Tips
-
-- **Hue offset is palette rotation**: It does not add new colors — it shifts which existing palette entry maps to which band. Use it to align the most visually important palette colors with the brightness zones you want to highlight.
-- **Chroma mode reveals color structure**: Switching Source to Chroma analyzes saturation rather than brightness, making color patterns visible that are invisible in luminance-only analysis.
-- **Mix for overlay analysis**: Reducing the Mix fader below 100% superimposes the false-color analysis on the original video, creating a transparent overlay useful for alignment and study.
-- **Gamma is reserved**: The Gamma knob is defined in the register map but does not affect the current pipeline. Adjusting it has no visible effect.
+| Control | Value |
+|---------|-------|
+| Bands | ~25% (4 bands) |
+| Saturate | 40% |
+| Hue Offs | 0 deg |
+| Spread | 60% |
+| Bright | 50% |
+| Gamma | 50% |
+| Palette | Rainbow |
+| Contour | On |
+| Source | Luma |
+| Invert | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Chroma Spectroscopy
+
+![Chroma Spectroscopy result](/img/instruments/videomancer/spectra/spectra_ex3_s1.png)
+*Chroma Spectroscopy — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+An overlay that reveals the chrominance structure of a color image, blending false-color chroma analysis with the original footage.
+
+#### Key Concepts
+
+- Source selection switches from luminance to chrominance analysis
+- Hue offset rotates the palette assignment around the bands
+- Mix crossfade blends false color with the original image
+
+#### Video Source
+
+Colorful footage: flowers, painted walls, neon signs, or any scene with strong saturated colors. Avoid monochrome sources, which have no chroma structure to analyze.
+
+#### Steps
+
+1. Set **Source** (Switch 9) to **Chroma**. The spectral bands now map to the U chrominance channel rather than luminance. Regions with similar chroma values fall into the same band, regardless of brightness.
+2. Set **Bands** (Knob 1) to approximately 50% (8 bands) and **Saturate** (Knob 2) to 100%.
+3. Rotate **Hue Offs** (Knob 3) slowly through its full range. Because the palette is rotating over the chroma values, the colors cycle through the chrominance structure of the image.
+4. Pull **Mix** (Fader 12) down to approximately 50%. The original image becomes visible beneath the false-color overlay, creating a tinted X-ray effect that shows both the original content and its chroma structure.
+5. Enable **Contour** (Switch 8) to draw chroma isocontours: outlines around regions of equal chrominance, independent of brightness.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Bands | ~50% (8 bands) |
+| Saturate | 100% |
+| Hue Offs | 0 deg |
+| Spread | 100% |
+| Bright | 50% |
+| Gamma | 50% |
+| Palette | Rainbow |
+| Contour | On |
+| Source | Chroma |
+| Invert | Off |
+| Bypass | Off |
+| Mix | 50% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Band** | A discrete brightness zone produced by quantizing the luminance signal; each band maps to one palette color. |
-| **BT.601** | ITU-R Recommendation 601; the color matrix standard used for YUV conversions in standard-definition video. |
-| **Contour** | A line marking the boundary between two adjacent bands, rendered as black pixels at band transitions. |
-| **False Color** | A visualization technique that maps non-visual data values to arbitrary colors for analysis and display. |
-| **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **LUT** | Lookup Table; a fixed array of pre-computed values (here, palette YUV triplets) addressed by an index. |
-| **Palette** | An ordered set of colors used to visualize quantized data; Spectra offers Rainbow, Heat, Cool, and Earth. |
-| **Quantization** | Reducing a continuous range to discrete levels; here, mapping 1024 brightness values to 2–16 bands. |
-| **Spread** | Contrast enhancement applied before quantization, pushing values away from the midpoint to populate more bands. |
+- **Band**: A discrete zone within the luminance or chrominance range, defined by uniform quantization of the source signal.
+
+- **Chrominance**: The color information in a video signal, encoded as U and V components in YUV color space, independent of brightness.
+
+- **Contour**: A line drawn at the boundary between adjacent bands, analogous to elevation lines on a topographic map.
+
+- **False Color**: A visualization technique that replaces natural image colors with an artificial palette to reveal information encoded in a single channel.
+
+- **Interpolation**: Blending between two values using a fractional mixing coefficient; used here for the wet/dry crossfade.
+
+- **Isocontour**: A line connecting points of equal value: in Spectra, points at the boundary between two spectral bands.
+
+- **Luminance**: The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color.
+
+- **Palette**: A fixed table of colors assigned to spectral bands; Spectra offers Rainbow and Earth palettes.
+
+- **Quantization**: Mapping a continuous range of values to a smaller set of discrete levels, producing visible steps or zones in gradients.
+
+- **Saturation**: The intensity or purity of a color; high saturation produces vivid hues, low saturation approaches neutral gray.
+
+- **Spread**: Contrast enhancement applied to the source signal before band quantization, pushing values away from the midpoint to fill more zones.
 
 ---

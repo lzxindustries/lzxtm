@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 58
 slug: /instruments/videomancer/colorgan
@@ -7,289 +7,391 @@ image: /img/instruments/videomancer/colorgan/colorgan_hero.png
 description: "Colorgan transforms incoming video luminance into a three-band colour organ display reminiscent of 1970s CEL Chromascope disco lighting units."
 ---
 
-import colorgan_hero from '/img/instruments/videomancer/colorgan/colorgan_hero.png';
-import colorgan_animation from '/img/instruments/videomancer/colorgan/colorgan_animation.gif';
-import colorgan_control_panel from '/img/instruments/videomancer/colorgan/colorgan_control_panel.png';
-import colorgan_exercise1_result from '/img/instruments/videomancer/colorgan/colorgan_exercise1_result.gif';
-import colorgan_exercise2_result from '/img/instruments/videomancer/colorgan/colorgan_exercise2_result.gif';
-import colorgan_exercise3_result from '/img/instruments/videomancer/colorgan/colorgan_exercise3_result.gif';
-
-# Colorgan
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={colorgan_hero} alt="Colorgan hero image"/>
-*Three pulsing colour zones — red bass wash, green mid glow, and blue treble flash — merge additively in concentric rings driven by video luminance.*
-<img src={colorgan_animation} alt="Colorgan animated output"/>
-*Colorgan output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Colorgan hero image](/img/instruments/videomancer/colorgan/colorgan_hero_s1.png)
+*Colorgan projecting warm concentric zones of bass red, mid green, and treble blue that pulse and bloom in response to input video luminance.*
 
 ---
 
 ## Overview
 
-Colorgan transforms incoming video luminance into a three-band colour organ display reminiscent of 1970s CEL Chromascope disco lighting units.  The program analyses the average brightness of each frame through a pair of IIR envelope followers running at different speeds.  A slow integrator extracts the "bass" — the broad, lazy drift of overall scene brightness — while a faster integrator catches the "mid" range.  The difference between the fast integrator and the instantaneous frame average yields "treble" — the sharp spikes of flickering detail and motion edges.
+Colorgan is a three-band color organ synthesizer that transforms input video luminance into pulsing, colored zones. It works like a disco light show for video: the overall brightness of the incoming picture is analyzed frame by frame, split into slow-moving "bass," medium-moving "mid," and fast-changing "treble" frequency bands, and each band drives a colored region of the screen. Where the bass is strong, warm reds bloom; where the mid band rises, greens glow; where high-frequency changes spike, cool blues flash.
 
-Each frequency band drives a coloured zone on screen.  In Concentric mode the zones form nested rings expanding outward from the screen centre: treble at the core, mid in a surrounding annulus, bass as the outermost wash.  In Layered mode the zones stack horizontally in thirds: treble at the top, mid in the middle, bass at the bottom.  Per-band sensitivity knobs let the operator emphasise or mute any frequency, the Zone Width control sets the spatial extent of each region, and two palette switches choose between warm (red/magenta bass, green mid, blue treble) and cool (cyan bass, green mid, magenta treble) colour mappings.
+The program offers two spatial layouts. In ***concentric*** mode, the zones radiate outward from the center of the screen like a target, with treble at the core and bass at the rim. In ***layered*** mode, the screen is divided into three horizontal bands: treble at the top, mid in the middle, bass at the bottom: like stacked light panels. A palette switch flips between warm and cool color schemes, and a dry/wet mix fader lets you blend the synthesized light show with the original input video.
 
-When no video is present the organ falls silent — a dark screen.  Feed it a flickering candle and the bass zone breathes gently; feed it a strobing pattern and the treble zone fires in rapid pulses while the bass barely moves.  The Decay knob controls an animation phase accumulator, adding slow drift to the envelope followers' temporal smoothing, while the React toggle switches between the full IIR response (smooth) and a sharper, more percussive feel.
+:::tip
+Colorgan responds to ***changes*** in brightness, not absolute brightness levels. A static image produces a fixed color field. Feed it footage with motion, flashing lights, or rhythmic edits, and the zones come alive.
+:::
+
+### What's In a Name?
+
+The name ***Colorgan*** is a portmanteau of ***color*** and ***organ***, paying homage to the ***color organ***: an instrument that translates sound into light. The earliest color organs date to the eighteenth century, but the concept reached its peak in the 1970s disco era with devices like the CEL Chromascope, which split audio into frequency bands and drove colored light bulbs accordingly. Colorgan applies the same principle to video: instead of bass guitar driving a red floodlight, it's the slow-moving average brightness of the video frame that makes the red zone glow.
 
 ---
 
 ## Quick Start
 
-1. **Start with one band:** Solo each frequency band by setting the other two sensitivities to zero — this reveals what each IIR filter is actually tracking.
-2. **Match decay to tempo:** For rhythmic sources, lower Decay values keep the colour organ tight and punchy; for ambient footage, higher values produce a slow, meditative glow.
-3. **Concentric for projection:** The radial geometry works particularly well when projected onto a wall or screen, where the expanding rings create a stadium-spotlight effect.
+1. Connect a video source with visible motion: a camera feed, music video, or footage with rhythmic brightness changes works best.
+2. Turn **Bass Zone** (Knob 1), **Mid Zone** (Knob 2), and **Treble Zone** (Knob 3) to their midpoints. You should see colored zones appear: reds and blues pulsing gently with the video's brightness changes.
+3. Flip the **Layout** switch (Switch 7) to compare **Concentric** (rings radiating from center) and **Layered** (horizontal stripes). Concentric places treble at the center; Layered stacks bass at the bottom and treble at the top.
+4. Adjust the **Mix** fader (Fader 12) to blend the color organ output with your original video. At 100%, only the synthesized light show is visible. Pull it back toward 0% to overlay the color organ onto your source footage.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Colorgan loaded](/img/instruments/videomancer/colorgan/colorgan_control_panel.png)
+*Videomancer's front panel with Colorgan active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Bass Zone
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Bass Zone** controls the sensitivity of the lowest frequency band: the slow-moving luminance envelope. This band tracks the overall average brightness of the video frame through a slow ***IIR filter*** with a time constant of roughly sixteen frames. When the input video makes gradual brightness shifts, the bass level rises and falls in a slow, breathing rhythm. Turning Bass Zone clockwise increases the gain applied to this slow envelope, making the bass-colored region brighter and more dominant. At 0%, the bass band contributes nothing. At 100%, even subtle shifts in average brightness produce vivid color.
+
+:::note
+Because the bass filter is so slow, it responds to sustained brightness changes rather than quick flashes. Pan across a bright scene and the bass zone will swell; cut rapidly between shots and it barely flinches.
+:::
+
+---
+
+### Knob 2 — Mid Zone
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Mid Zone** controls the sensitivity of the middle frequency band. This band uses a faster IIR filter with a time constant of roughly four frames, making it responsive to moderate-speed brightness changes: scene cuts, camera moves, and lighting transitions. Turning Mid Zone clockwise increases the gain, causing the mid-colored region (green in the warm palette, cyan-shifted in the cool palette) to glow more intensely. At 0%, the mid band is silent. At high values, even moderate brightness fluctuations produce strong color.
+
+---
+
+### Knob 3 — Treble Zone
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Treble Zone** controls the sensitivity of the highest frequency band. The treble signal is derived from the instantaneous difference between the current frame's average brightness and the fast IIR filter: it spikes when the video makes sudden brightness jumps (flash cuts, strobe effects, rapid motion). Turning Treble Zone clockwise amplifies these spikes, producing sharp, brief flashes of treble color. At 0%, fast changes are ignored. At 100%, every brightness transient fires the treble zone.
+
+:::tip
+Feed Colorgan a video with rhythmic edits or strobe effects and crank **Treble Zone** to maximum. The center of the screen (in concentric mode) or the top band (in layered mode) will flash in sync with each cut.
+:::
+
+---
+
+### Knob 4 — Zone Width
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 38% |
+
+**Zone Width** controls the spatial extent of the colored zones on screen. In concentric mode, this sets the radius of the concentric rings: small values compress the zones into a tight cluster at the center, while large values spread them across the full screen. In layered mode, the zones occupy fixed horizontal bands regardless of this setting, so Zone Width has its most dramatic effect in concentric layout. The minimum effective width is clamped to prevent the zones from collapsing to zero.
+
+---
+
+### Knob 5 — Hue Offset
+
+| Property | Value |
+|----------|-------|
+| Range | 0d – 360d |
+| Default | 0d |
+
+**Hue Offset** is intended to rotate the base hue of the color palette, shifting the color assignments of all three bands simultaneously around the color wheel. This parameter is reserved for a future update and does not currently affect the output.
+
+---
+
+### Knob 6 — Decay
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 59% |
+
+**Decay** is intended to control the temporal smoothing rate of the envelope followers, adjusting how quickly the band levels rise and fall in response to brightness changes. This parameter is reserved for a future update. The built-in IIR filter time constants provide the temporal smoothing: the bass band decays over approximately sixteen frames, and the mid band over approximately four frames.
+
+---
+
+### Switch 7 — Layout
+
+| Property | Value |
+|----------|-------|
+| Off | Concentric |
+| On | Layered |
+| Default | Concentric |
+
+**Layout** selects the spatial arrangement of the three frequency zones. Set to **Concentric**, the zones radiate outward from the center of the screen: the treble zone occupies the innermost area, the mid zone forms a ring around it, and the bass zone fills the outer ring. The distance metric is ***Manhattan distance*** (sum of horizontal and vertical offsets from center), which gives the concentric zones a diamond-like shape rather than perfect circles. Set to **Layered**, the screen is divided into three equal horizontal bands: treble at the top, mid in the middle, bass at the bottom.
+
+:::note
+In concentric mode the zones are defined by the **Zone Width** parameter. In layered mode the band boundaries are fixed at one-third intervals of the screen height.
+:::
+
+---
+
+### Switch 8 — Palette
+
+| Property | Value |
+|----------|-------|
+| Off | Warm |
+| On | Cool |
+| Default | Warm |
+
+**Palette** switches between two color schemes. Set to **Warm**, the bass zone glows red (positive V chroma), the mid zone glows green (negative U chroma), and the treble zone glows blue-magenta (positive U chroma). Set to **Cool**, the color assignments shift: bass becomes blue (positive U), mid becomes cyan (negative V), and treble shifts toward a red-violet blend (negative U, positive V). The warm palette produces fire-like washes; the cool palette produces underwater or neon tones.
+
+---
+
+### Switch 9 — React
+
+| Property | Value |
+|----------|-------|
+| Off | Smooth |
+| On | Sharp |
+| Default | Smooth |
+
+**React** is intended to switch between smooth and sharp envelope response curves. This parameter is reserved for a future update. The current IIR filter time constants are fixed regardless of this switch position.
+
+---
+
+### Switch 10 — Video Mod
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Video Mod** is intended to enable input-video modulation of the generated zones, allowing the source video to influence the spatial pattern of the color organ beyond its role as a luminance envelope source. This parameter is reserved for a future update.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** is intended to route the unprocessed input directly to the output, skipping the color organ rendering entirely. This parameter is reserved for a future update. To achieve bypass behavior, set the **Mix** fader (Fader 12) to 0%, which crossfades fully to the dry input.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** controls the dry/wet crossfade between the original input video and the synthesized color organ output. At 0%, the output is a clean pass-through of the input: no color organ is visible. At 100%, the output is entirely the synthesized light show. Intermediate values overlay the pulsing color zones onto the source footage, creating a tinted, modulated composite.
+
+:::tip
+At low Mix values (10–30%), Colorgan acts as a subtle color wash that tints your footage in time with brightness changes: a gentle, ambient effect. At high Mix values (70–100%), the color organ dominates and the source becomes a ghost beneath the pulsing zones.
+:::
 
 ---
 
 ## Background
 
-### Colour Organs and Lumia
+### Color organs
 
-The concept of translating sound — or, more broadly, changing stimuli — into coloured light dates to the 18th century clavier à lumières.  Thomas Wilfred's Clavilux (1919) elevated the idea into an art form called Lumia, projecting slowly evolving colour fields from hand-operated mechanisms.  By the 1960s, electronic colour organs like the CEL Chromascope analysed audio frequency bands and drove coloured lamp circuits: bass → red, mid → green, treble → blue.
+A ***color organ*** is an instrument that translates a signal into colored light. The concept dates back to Louis Bertrand Castel's *ocular harpsichord* in the 1720s, which mapped musical notes to colored panels. By the 1960s and 1970s, electronic color organs had become staples of the disco and psychedelic music scenes. Devices like the CEL Chromascope split an audio signal into frequency bands: bass, mid, and treble: and drove colored light bulbs or projectors proportionally. A thumping bass line would make a red floodlight swell; a guitar solo would pulse a green spotlight; a cymbal crash would flash a blue strobe.
 
-### IIR Envelope Followers
+Colorgan applies this principle to video instead of audio. The "signal" is the average luminance of each video frame, and the "lights" are colored zones rendered directly onto the screen. The metaphor is the same: slow-moving energy drives warm colors, fast transients drive cool flashes.
 
-Colorgan borrows the colour organ's band-splitting concept but applies it spatially and temporally to video luminance.  A first-order IIR low-pass filter `y[n] = (1−α)·y[n-1] + α·x[n]` with α=1/16 provides bass (very slow tracking), while α=1/4 gives the mid band faster response.  Treble is the residual: the absolute difference between the fast IIR output and the instantaneous frame average.  These digital envelope followers are the same topology used in analogue VU meters and automatic gain controls.
+### IIR envelope followers
 
-### Concentric Zone Mapping
+The bass and mid bands are extracted using ***infinite impulse response*** (IIR) filters: a common technique in digital signal processing for smoothing a signal over time. An IIR filter computes its output as a weighted sum of the current input and its own previous output:
 
-In Concentric mode, the screen is divided into nested regions defined by Manhattan distance from centre.  This rectangular distance metric (|Δx|+|Δy|) produces diamond-shaped contours on a raster display — a deliberate aesthetic nod to early video synthesisers that favoured integer-only arithmetic and axis-aligned geometry.  Zone Width scales the boundary thresholds, making the concentric rings larger or smaller.
+$$y[n] = (1 - \alpha) \cdot y[n-1] + \alpha \cdot x[n]$$
 
-### Additive Colour Mixing
+A small $\alpha$ (like 1/16 for the bass filter) means the output changes very slowly: it "remembers" past values for many frames. A larger $\alpha$ (like 1/4 for the mid filter) lets the output track the input more quickly. The treble band bypasses filtering entirely and uses the instantaneous difference between the frame average and the fast filter output, capturing only rapid changes.
 
-Each band generates a luminance contribution proportional to its envelope level multiplied by its sensitivity knob.  The three contributions are summed additively into a single Y channel, while each band shifts the U/V chroma plane toward its assigned colour.  Where zones overlap, colours blend — bass red meeting mid green produces yellow; treble blue meeting mid green produces cyan.  This additive model mirrors the RGB phosphor mixing of CRT displays and theatrical stage lighting.
+### Additive color mixing
 
-### Warm and Cool Palettes
-
-The two palette modes remap the chroma assignments.  Warm palette pushes bass toward red (+V), mid toward green (−U), and treble toward blue (+U).  Cool palette rotates the assignments: bass → cyan (+U), mid → green (−V), treble → magenta (−U, +V).  Switching palettes mid-performance can dramatically shift the mood from firelit intimacy to cold electronic precision.
+Colorgan uses ***additive color mixing*** in the YUV color space. Each frequency band contributes independently to the U and V chroma channels. Where two or more bands overlap spatially, their color contributions sum, producing blended hues. Bass red plus mid green yields yellow; bass red plus treble blue yields magenta. The warm palette is arranged so that bass occupies the warm end of the spectrum (red/orange), while the cool palette shifts the mapping toward blues and cyans. The luminance channel (Y) receives the sum of all band contributions, so brighter zones correspond to areas where more bands are active simultaneously.
 
 
 ---
 
 ## Signal Flow
 
-```
-               Input Video (Y/U/V)
-                       │
-            ┌──────────┴──────────┐
-            │   Frame Average     │
-            │   (accumulate Y,    │
-            │    divide at vsync) │
-            └──────────┬──────────┘
-                       │
-         ┌─────────────┼─────────────┐
-         ▼             ▼             ▼
-   ┌──────────┐  ┌──────────┐  ┌──────────┐
-   │ Slow IIR │  │ Fast IIR │  │ Residual │
-   │  α=1/16  │  │  α=1/4   │  │ |fast−avg|│
-   │  (bass)  │  │  (mid)   │  │ (treble) │
-   └────┬─────┘  └────┬─────┘  └────┬─────┘
-        │              │              │
-        ▼              ▼              ▼
-   ┌──────────┐  ┌──────────┐  ┌──────────┐
-   │ × Sens 1 │  │ × Sens 2 │  │ × Sens 3 │
-   └────┬─────┘  └────┬─────┘  └────┬─────┘
-        │              │              │
-        └──────────────┼──────────────┘
-                       │
-         ┌─────────────▼─────────────┐
-         │    Zone Mapping           │
-         │  (Concentric / Layered)   │
-         │  per-pixel contribution   │
-         └─────────────┬─────────────┘
-                       │
-         ┌─────────────▼─────────────┐
-         │  Additive Y + Colour Map  │
-         │  (Warm / Cool palette)    │
-         └─────────────┬─────────────┘
-                       │
-         ┌─────────────▼─────────────┐
-         │     Interpolator Mix      │
-         │     (dry/wet fader)       │
-         └─────────────┬─────────────┘
-                       │
-                    Output Y/U/V
-```
+### Signal Flow Notes
 
-The pipeline is unusual in that no per-pixel source data flows through the processing chain — only aggregate statistics.  The entire frame's luminance is averaged during active video, then at each vsync the IIR filters update their band levels.  All pixels in a given frame share the same bass/mid/treble levels; spatial variation comes entirely from the zone geometry (distance from centre or vertical position).  This means the output image for any single frame is a static colour pattern whose brightness modulates frame-to-frame — much like a real colour organ lamp panel, where bulbs glow uniformly but pulse at different rates.
+The signal path splits into two timescales. The ***luminance analysis*** stage runs once per frame at the vertical sync boundary: it computes the average brightness of the entire frame, feeds it through two IIR filters with different time constants, and derives three band levels (bass, mid, treble). These levels persist for the duration of the next frame.
 
-The Video Mod toggle provides a way to re-inject source video structure by blending the generated zones with the delayed input via the mix interpolators.
+The ***zone rendering*** stage runs every pixel clock. It computes each pixel's Manhattan distance from the center of the screen, determines which spatial zone the pixel falls within (based on the Layout toggle and Zone Width parameter), and multiplies the appropriate band level by the corresponding sensitivity knob. The three band contributions are summed into luminance and mapped to chroma using the selected palette. Finally, the rendered zones are crossfaded with the delayed input video via the Mix fader.
 
----
-
-## Parameter Reference
-
-<img src={colorgan_control_panel} alt="Videomancer front panel with Colorgan loaded"/>
-*Videomancer's front panel with Colorgan active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Bass Zone
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Bass Zone controls the sensitivity of the low-frequency band.  At zero the bass zone contributes no light; as the knob increases, the outer ring (or bottom strip in Layered mode) glows more brightly in response to slow luminance drift.  High settings cause even modest scene-average changes to saturate the bass zone, producing a constant warm wash.  Moderate settings around 50 % let the bass breathe naturally.
-
----
-
-#### Knob 2 — Mid Zone
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Mid Zone sets the sensitivity of the medium-frequency band.  This band responds to luminance changes that are faster than the bass IIR but slower than instantaneous flicker.  Boosting Mid Zone fills the middle ring (or centre strip) with green-tinted light that follows scene dynamics at a conversational pace.  When all three bands are set equally the colour organ responds uniformly across the spectrum; pulling Mid Zone down isolates bass and treble for a more dramatic two-colour contrast.
-
----
-
-#### Knob 3 — Treble Zone
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Treble Zone controls the high-frequency band — the sharp edges and rapid flicker extracted as the residual between the fast IIR and the frame average.  At high settings even subtle motion produces bright treble flashes in the centre zone.  At low settings only dramatic cuts or strobing sources trigger the treble.  Treble tends to produce the most visually percussive effect, adding sparkle and rhythm to the colour organ display.
-
----
-
-#### Knob 4 — Zone Width
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 38% |
-| Suffix | % |
-
-Zone Width adjusts the spatial extent of each colour zone.  At low values the zones are tightly packed around the centre (Concentric) or compressed into thin horizontal slices (Layered).  Increasing Zone Width spreads the regions outward, allowing broader overlap and more additive blending between adjacent bands.  Very wide settings push the outer bass zone well off-screen, effectively turning the entire display into a mid/treble field.
-
----
-
-#### Knob 5 — Hue Offset
-| Property | Value |
-|----------|-------|
-| Range | 0d – 360d |
-| Default | 0d |
-| Suffix | d |
-
-Hue Offset rotates the base hue through 360 degrees of the colour wheel.  While the Palette toggle sets the fundamental colour assignments, Hue Offset lets the operator fine-tune the tint — shifting warm reds toward orange or magenta, for example.  Because the offset is applied uniformly to all three bands, relative colour relationships are preserved; the entire organ simply rotates around the colour wheel.
-
----
-
-#### Knob 6 — Decay
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 59% |
-| Suffix | % |
-
-Decay controls temporal smoothing via the animation phase accumulator.  Higher values advance the phase faster, adding a subtle drift to the envelope response.  At minimum the IIR filters dominate, producing smooth, predictable band tracking.  At maximum the phase accumulator introduces visible undulation, giving the colour zones a slow organic pulse even when the input luminance is static.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Layout** | Concentric | Layered |
-| **8 — Palette** | Warm | Cool |
-| **9 — React** | Smooth | Sharp |
-| **10 — Video Mod** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles divide into functional pairs: Layout and Palette control geometry and colour mapping; React adjusts temporal dynamics; Video Mod re-injects source imagery.  Bypass disables all processing.  Layout and Palette can be switched freely during performance to shift between radial and striped geometries or warm and cool colour schemes.  React is best toggled during high-energy source material where the difference between smooth IIR tracking and sharp response is most audible — that is, most visible.  Video Mod provides a quick way to ground the abstract colour zones in recognisable source structure without adjusting the mix fader.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Mix crossfades between the dry input signal and the wet colour organ output.  At zero the output is pure dry video; at maximum it is entirely the generated colour zones.  Intermediate positions blend the two, allowing the colour organ to function as a translucent overlay.  When Video Mod is active, the mix fader provides an additional layer of control over how much source structure bleeds into the colour zones.
-
-
-
+:::tip
+Because the band levels update only once per frame (at vsync), the color zones hold steady within each frame and transition smoothly from frame to frame. This gives Colorgan its characteristic slow, breathing quality rather than pixel-level jitter.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises demonstrate Colorgan's three-band spectral separation, zone geometry, and palette selection.  Each produces a distinct visual character from the same underlying luminance analysis.
+These exercises progress from a simple color pulse to a full three-band light show. Each one adds layers of interaction between the frequency bands, spatial layout, and color palette.
+### Exercise 1: Single-Band Pulse
 
-### Exercise 1: Warm Concentric Rings
+![Single-Band Pulse result](/img/instruments/videomancer/colorgan/colorgan_ex1_s1.png)
+*Single-Band Pulse — simulated result across source images.*
+#### Exercise Illustration
 
-<img src={colorgan_exercise1_result} alt="Warm Concentric Rings result"/>
-*Warm Concentric Rings — simulated result across source images.*
-**What You'll Create**: Produce nested concentric colour rings that pulse gently with broad luminance changes.
+***A description of the exercise illustration.***
 
-1. Set Bass Zone to 70 %, Mid Zone to 50 %, and Treble Zone to 30 % to emphasise low-frequency response.
-2. Set Zone Width to 60 % to give the rings generous spacing.
-3. Confirm Layout is Concentric and Palette is Warm.
-4. Feed a slowly moving source — a candle flame or lava lamp works well.
-5. Observe the outer red ring breathing with overall brightness while the centre flickers blue with motion edges.
-6. Sweep Hue Offset through 360° and note how all three ring colours rotate together.
+#### Learning Outcomes
 
-**Key concepts**: - IIR time constants create band separation from a single luminance signal
-- Concentric geometry uses Manhattan distance from screen centre
-- Additive colour mixing where zones overlap
+A single pulsing red zone that breathes with the video's overall brightness (the simplest possible color organ configuration.)
 
----
+#### Key Concepts
 
-### Exercise 2: Layered Stroboscope
+- The bass band tracks slow brightness changes via IIR filtering
+- Zone Width controls the spatial footprint
+- The warm palette maps bass to red
 
-<img src={colorgan_exercise2_result} alt="Layered Stroboscope result"/>
-*Layered Stroboscope — simulated result across source images.*
-**What You'll Create**: Create horizontal colour bands that respond percussively to rapid flicker.
+#### Steps
 
-1. Set all three band sensitivities to 80 % for uniform response.
-2. Set Zone Width to 50 % and Decay to 20 % for tight, fast zones.
-3. Switch Layout to Layered and React to Sharp.
-4. Feed a strobe or rapidly editing source.
-5. Observe how the three horizontal bands flash independently — treble fires first, mid follows, bass last.
-6. Switch Palette to Cool and compare the colour temperature shift.
+1. Connect a video source with gradual brightness changes (a camera panning across a room, or footage of clouds).
+2. Turn **Bass Zone** (Knob 1) fully clockwise to maximum sensitivity.
+3. Set **Mid Zone** (Knob 2) and **Treble Zone** (Knob 3) to 0% (fully counterclockwise. Only the bass band is active now.)
+4. Set **Zone Width** (Knob 4) to about 75% so the bass zone fills most of the screen.
+5. Make sure **Layout** (Switch 7) is set to **Concentric** and **Palette** (Switch 8) is set to **Warm**.
+6. Set **Mix** (Fader 12) to 100%. You should see a red glow that slowly swells and fades as the video's average brightness changes.
+7. Switch **Palette** (Switch 8) to **Cool**. The red glow becomes blue.
 
-**Key concepts**: - Layered geometry divides the screen into three horizontal strips
-- Sharp React reduces IIR smoothing for percussive response
-- Cool palette reassigns bass to cyan and treble to magenta
+#### Settings
 
----
-
-### Exercise 3: Video Mod Overlay
-
-<img src={colorgan_exercise3_result} alt="Video Mod Overlay result"/>
-*Video Mod Overlay — simulated result across source images.*
-**What You'll Create**: Blend colour organ zones with recognisable source video to create a tinted composite.
-
-1. Set Bass Zone to 60 %, Mid Zone to 40 %, Treble Zone to 50 %.
-2. Set Zone Width to 80 % for broad coverage.
-3. Enable Video Mod and set Mix to 70 %.
-4. Feed a camera source with strong foreground-background contrast.
-5. Observe how source shapes appear within the colour zones, tinted by bass/mid/treble activity.
-6. Adjust Decay upward to add slow undulation to the overlay.
-
-**Key concepts**: - Video Mod re-injects delayed source luminance into the colour output
-- Mix fader controls the blend ratio between generated zones and source
-- Decay adds animation phase drift for organic pulsing
+| Control | Value |
+|---------|-------|
+| Bass Zone | 100% |
+| Mid Zone | 0% |
+| Treble Zone | 0% |
+| Zone Width | 75% |
+| Hue Offset | 0d |
+| Decay | 0% |
+| Layout | Concentric |
+| Palette | Warm |
+| React | Smooth |
+| Video Mod | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 2: Three-Band Light Show
 
-## Tips
+![Three-Band Light Show result](/img/instruments/videomancer/colorgan/colorgan_ex2_s1.png)
+*Three-Band Light Show — simulated result across source images.*
+#### Exercise Illustration
 
-- **Layered for installations:** Horizontal bands pair naturally with wide-format displays and multi-screen setups where each band occupies a distinct physical zone.
-- **Video Mod for narrative:** When you want the audience to still see what is happening in the source material, Video Mod overlays the colour organ as a tinted filter rather than replacing the image entirely.
-- **Hue Offset for variety:** Even small rotations of 30–60° shift the perceived warmth/coolness dramatically, providing palette variety without switching the Warm/Cool toggle.
-- **Chain with effects:** Feed Colorgan's output into a feedback or blur program to smear the sharp zone boundaries into soft, painterly gradients.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A full three-band color organ with all zones visible, using both layout modes.
+
+#### Key Concepts
+
+- Three frequency bands occupy different spatial zones
+- Concentric mode places treble at center, bass at rim
+- Layered mode stacks bands as horizontal stripes
+- Additive mixing creates blended hues where zones overlap
+
+#### Steps
+
+1. Set **Bass Zone** (Knob 1), **Mid Zone** (Knob 2), and **Treble Zone** (Knob 3) all to about 80%.
+2. Set **Zone Width** (Knob 4) to about 50% and **Mix** (Fader 12) to 100%.
+3. Feed the program a video with mixed content: scene cuts, camera motion, and brightness variation. You should see three colored zones pulsing at different rates: bass (red) breathes slowly at the edges, mid (green) flickers in the middle ring, and treble (blue) flashes at the center with each cut or sudden brightness change.
+4. Flip **Layout** (Switch 7) to **Layered**. The concentric target becomes three horizontal stripes: treble at top, mid in the middle, bass at bottom.
+5. Switch **Palette** (Switch 8) to **Cool**. The color mapping shifts (bass becomes blue, treble shifts toward violet.)
+6. Adjust **Zone Width** (Knob 4) while watching the concentric mode. Smaller values compress the rings; larger values spread them across the screen.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Bass Zone | 80% |
+| Mid Zone | 80% |
+| Treble Zone | 80% |
+| Zone Width | 50% |
+| Hue Offset | 0d |
+| Decay | 59% |
+| Layout | Concentric |
+| Palette | Warm |
+| React | Sharp |
+| Video Mod | Off |
+| Bypass | Off |
+| Mix | 100% |
+
+---
+
+### Exercise 3: Color Wash Overlay
+
+![Color Wash Overlay result](/img/instruments/videomancer/colorgan/colorgan_ex3_s1.png)
+*Color Wash Overlay — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A gentle color wash overlay on top of your source footage, using the color organ as a tinting layer rather than a standalone pattern.
+
+#### Key Concepts
+
+- Low Mix values blend the color organ subtly over input video
+- Different sensitivity ratios emphasize different bands
+- The combined effect creates a tinted, rhythmic overlay
+
+#### Steps
+
+1. Set **Mix** (Fader 12) to about 70%: enough to see the color organ clearly while the source video remains visible underneath.
+2. Set **Bass Zone** (Knob 1) to about 50%, **Mid Zone** (Knob 2) to about 40%, and **Treble Zone** (Knob 3) to about 30%. This creates a bass-dominant wash that tints the video warmly during sustained brightness.
+3. Set **Zone Width** (Knob 4) to about 80% so the zones spread broadly, creating an even wash rather than a tight spotlight.
+4. Set **Layout** (Switch 7) to **Concentric** and **Palette** (Switch 8) to **Warm**. The video now has a warm, pulsing color cast that responds to its own brightness.
+5. Try pulling **Mix** down to 20%. The effect becomes very subtle: a barely perceptible warm tint that shifts with scene changes.
+6. Push **Treble Zone** (Knob 3) to 100% while leaving **Mix** at 20%. Even with the subtle mix, sharp cuts in the video now produce brief flashes of blue at the center of the screen.
+7. Flip **Palette** (Switch 8) to **Cool**. The warm wash becomes an icy blue-cyan tint.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Bass Zone | 50% |
+| Mid Zone | 40% |
+| Treble Zone | 30% |
+| Zone Width | 80% |
+| Hue Offset | 33d |
+| Decay | 70% |
+| Layout | Concentric |
+| Palette | Warm |
+| React | Smooth |
+| Video Mod | Off |
+| Bypass | Off |
+| Mix | 70% |
+
+---
+## Glossary
+
+- **Additive Mixing**: Combining color contributions by summing their values; overlapping zones produce brighter, blended hues.
+
+- **Chroma**: The color information in a video signal, encoded as U and V components in YUV color space.
+
+- **Color Organ**: An instrument that translates a signal (originally audio, here video) into colored light by splitting it into frequency bands.
+
+- **Envelope Follower**: A circuit or algorithm that tracks the amplitude of a signal over time, producing a smooth curve that rises and falls with the signal's energy.
+
+- **IIR Filter**: Infinite impulse response filter; a digital filter whose output depends on both the current input and its own previous output, producing exponential smoothing.
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness.
+
+- **Manhattan Distance**: The sum of horizontal and vertical offsets between two points, producing diamond-shaped contours rather than circles.
+
+- **Time Constant**: The duration over which an IIR filter's impulse response decays to approximately 37% of its initial value; longer time constants mean slower, smoother tracking.
 
 ---

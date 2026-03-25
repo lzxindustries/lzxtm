@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 48
 slug: /instruments/videomancer/chladni
@@ -7,321 +7,390 @@ image: /img/instruments/videomancer/chladni/chladni_hero.png
 description: "In 1787, the German physicist Ernst Chladni drew a violin bow across the edge of a metal plate dusted with fine sand."
 ---
 
-import chladni_hero from '/img/instruments/videomancer/chladni/chladni_hero.png';
-import chladni_animation from '/img/instruments/videomancer/chladni/chladni_animation.gif';
-import chladni_control_panel from '/img/instruments/videomancer/chladni/chladni_control_panel.png';
-import chladni_exercise1_result from '/img/instruments/videomancer/chladni/chladni_exercise1_result.gif';
-import chladni_exercise2_result from '/img/instruments/videomancer/chladni/chladni_exercise2_result.gif';
-import chladni_exercise3_result from '/img/instruments/videomancer/chladni/chladni_exercise3_result.gif';
-
-# Chladni
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={chladni_hero} alt="Chladni hero image"/>
-*Chladni projecting standing-wave nodal patterns onto a cathedral interior, revealing the hidden resonant geometry of the architecture.*
-<img src={chladni_animation} alt="Chladni animated output"/>
-*Chladni output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Chladni hero image](/img/instruments/videomancer/chladni/chladni_hero_s1.png)
+*Chladni generating luminous standing wave nodal patterns with high-harmonic mode numbers and superposition morphing.*
 
 ---
 
 ## Overview
 
-In 1787, the German physicist Ernst Chladni drew a violin bow across the edge of a metal plate dusted with fine sand. The sand migrated away from the vibrating regions and collected along the still lines — the *nodes* — where the plate's standing waves cancelled to zero. The patterns that emerged were intricate, symmetrical, and eerily beautiful: geometric lattices that depended only on the plate's shape and the frequency of excitation. For the first time, the invisible architecture of sound was made visible.
+**Chladni** conjures the ethereal geometry of vibrating plates, drawing the invisible lines where sound becomes shape. Its engine evaluates a pair of ***standing wave*** functions across the screen, superimposes them, and highlights the ***nodal lines***: the places where the vibration amplitude crosses zero. The result is a family of intricate, symmetrical patterns that shift and bloom as you dial through harmonic mode numbers. It's like sprinkling sand on a singing plate, except the sand is light and the plate is your display.
 
-Chladni recreates this phenomenon in the pixel domain. Two triangle-wave oscillators — one horizontal, one vertical — sweep across the frame at independently controllable frequencies. Their absolute values are summed to produce a two-dimensional standing-wave field. Where the combined amplitude falls below a threshold, the program draws a nodal line; where it exceeds the threshold, the field is open. The result is a lattice of curves that tile the screen in patterns ranging from simple grids to complex interlocking diamonds, depending on the frequency ratio between the two axes. These patterns can overlay the input video as a white-on-black mask (Draw mode) or sculpt it by multiplying the video signal against the standing-wave field, selectively suppressing pixels that fall on the antinodes.
+At low mode numbers, Chladni produces bold, simple divisions of the screen: broad arcs, crosses, and diamond grids. As you raise the harmonics, the figures multiply into dense lattices of fine lines reminiscent of lace, circuit boards, or the veins of a leaf. The **Superpose** control blends two mathematically degenerate modes together, morphing between fundamentally different symmetries in a single sweep. Enable **Animate** and the pattern drifts through mode space on its own, cycling through an endless gallery of figures.
 
-The frequency controls are continuous — not quantized to integer multiples — so the patterns evolve smoothly as you turn the knobs, passing through rational ratios (where the lattice locks into perfect periodicity) and irrational ratios (where the lattice drifts without repeating). Phase rotation and animation add temporal dimension, making the nodal lines sweep and breathe like the sand on Chladni's vibrating plate.
+:::tip
+Chladni is a ***synthesis*** program: it generates its own imagery from scratch. You can also overlay its patterns onto a live video signal using the **Render** switch, turning any input into a stained-glass window of nodal geometry.
+:::
+
+### What's In a Name?
+
+The program is named after ***Ernst Chladni***, an eighteenth-century German physicist who pioneered the study of acoustics. Chladni discovered that sprinkling fine sand on a vibrating metal plate reveals striking geometric patterns: the sand collects along the ***nodal lines*** where the plate doesn't move, tracing the standing wave structure of each resonant mode. These ***Chladni figures*** are among the oldest visualizations of wave physics, and they remain a staple of physics demonstrations to this day.
 
 ---
 
 ## Quick Start
 
-1. **Rational frequency ratios are musical**: When Freq X and Freq Y are in simple integer ratios (1:1, 1:2, 2:3), the Chladni pattern locks into a perfectly repeating lattice. Irrational ratios produce quasi-periodic patterns that drift without repeating — visually richer but less stable.
-2. **Width is your graphic weight control**: Thin Width values produce delicate filigree; thick values produce bold, graphic masks. In sculpt mode, Width determines how much of the source video survives through each nodal window.
-3. **Draw mode is a pattern generator**: With Draw On, Chladni becomes a standalone synthesis program producing geometric overlays. Route its output into another Videomancer module for compositing, keying, or modulation.
+1. Turn **Mode M** (Knob 1) and **Mode N** (Knob 2) to different positions. A lattice of bright lines and dark regions fills the screen (you've summoned a Chladni figure.)
+2. Sweep **Superpose** (Knob 3) from one end to the other. Watch the figure morph between two different symmetries, as if the plate were vibrating in two ways at once.
+3. Flip the **Animate** switch (Switch 8) to **Morph** and adjust **Speed** (Knob 5). The pattern drifts continuously through harmonic modes like a slow-motion kaleidoscope.
+4. Experiment with **Threshold** (Knob 4) to widen or narrow the nodal lines. Thin lines create delicate filigree; thick lines produce bold stencil shapes.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Chladni loaded](/img/instruments/videomancer/chladni/chladni_control_panel.png)
+*Videomancer's front panel with Chladni active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Mode M
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 8 |
+| Default | 3 |
+
+**Mode M** selects the horizontal harmonic number, stepping through eight discrete modes. At mode 1, the pattern has a single broad division across the width of the screen. Each higher mode adds another harmonic fold, doubling and redoubling the figure's horizontal complexity. By mode 8, the screen is filled with a dense grid of fine vertical subdivisions. Mode M determines one axis of the standing wave pair: changing it reshapes the figure along the horizontal direction while leaving the vertical structure untouched.
+
+---
+
+### Knob 2 — Mode N
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 8 |
+| Default | 4 |
+
+**Mode N** selects the vertical harmonic number, stepping through eight discrete modes. It works identically to Mode M but along the vertical axis. At mode 1, the pattern has a single broad vertical division; at mode 8, it fills the screen with many horizontal subdivisions. The interplay between Mode M and Mode N defines the overall geometry of the Chladni figure: equal values produce symmetric, diagonally balanced patterns, while unequal values create elongated or lopsided structures.
+
+:::tip
+Try setting **Mode M** and **Mode N** to the same value. The resulting figure is perfectly square-symmetric: like the classic textbook Chladni pattern for a square plate.
+:::
+
+---
+
+### Knob 3 — Superpose
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Superpose** controls the blending coefficient between two ***degenerate modes***: two standing wave patterns that share the same resonant frequency but have different spatial orientations. At 0%, only the first mode orientation contributes. At 50%, both orientations are equally mixed, producing the most symmetric figure. At 100%, the second orientation dominates. Sweeping Superpose smoothly morphs the figure between these two extremes, rotating and reshaping the nodal lines. This is the most expressive control on the panel: a single sweep can transform a grid of diamonds into a mesh of circles.
+
+---
+
+### Knob 4 — Threshold
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Threshold** adjusts the width of the detected nodal lines. At low values the program highlights only the thinnest sliver where the wave function crosses zero, producing fine, delicate tracery. As you increase the value, the detection band widens, painting broader strokes around each nodal line. At high values, wide swaths of the screen are classified as "on the node," and the figure becomes bold and blocky. Threshold is essentially a sensitivity dial: it controls how close to zero the wave amplitude must be to count as a nodal line.
+
+---
+
+### Knob 5 — Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Speed** controls the rate of animation when **Animate** (Switch 8) is set to **Morph**. At 0%, the pattern is frozen even with Animate enabled. As you increase Speed, the horizontal mode number drifts faster, cycling the figure through a continuous sequence of harmonic shapes. At high values the pattern flows rapidly, producing a mesmerizing, ever-changing display. When Animate is set to **Static**, Speed has no visible effect.
+
+:::note
+Animation morphs only the horizontal mode (M). The vertical mode (N) remains fixed. This creates a characteristic horizontal "breathing" as the pattern evolves.
+:::
+
+---
+
+### Knob 6 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Brightness** scales the luminance of the generated pattern. At 0%, the pattern areas between nodal lines are dark, and only the nodal lines themselves are visible. Increasing Brightness reveals the contour shading of the wave function: brighter areas represent higher wave amplitude. At maximum, the full amplitude range maps to peak white, producing a high-contrast, glowing figure. Brightness does not affect the nodal line detection itself, only the luminance of the surrounding pattern.
+
+---
+
+### Switch 7 — Shape
+
+| Property | Value |
+|----------|-------|
+| Off | Square |
+| On | Cross |
+| Default | Square |
+
+**Shape** selects between two different plate geometries. In the **Square** position, the program evaluates the classical Chladni superposition formula for a square plate, adding two standing wave products with a blending coefficient. In the **Cross** position, the two products are multiplied instead of added, producing a denser, more intricate interference pattern with narrower, more numerous nodal lines. The Cross mode tends to produce lace-like textures that fill the screen more uniformly.
+
+---
+
+### Switch 8 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Static |
+| On | Morph |
+| Default | Static |
+
+**Animate** enables or disables automatic mode morphing. In the **Static** position, the figure is frozen at whatever Mode M and Mode N values you've selected. In the **Morph** position, an internal oscillator continuously offsets the horizontal mode number, causing the pattern to drift through a sequence of harmonic figures. The rate of change is controlled by **Speed** (Knob 5).
+
+---
+
+### Switch 9 — Render
+
+| Property | Value |
+|----------|-------|
+| Off | Overlay |
+| On | Replace |
+| Default | Overlay |
+
+**Render** selects how the Chladni pattern is composited with the input video. In the **Overlay** position, the pattern modulates the incoming video: nodal lines appear as bright white lines over the image, and the wave amplitude darkens or brightens the video between the lines. Colors from the input video are preserved between lines but desaturated at the nodes. In the **Replace** position, the input video is ignored entirely: the output is a monochrome rendering of the Chladni figure with neutral gray chrominance.
+
+:::tip
+In **Overlay** mode, feed Chladni a colorful video source. The nodal lines act like a luminous web laid over the image, creating a stained-glass effect where colors are framed by glowing white geometry.
+:::
+
+---
+
+### Switch 10 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** reverses the pattern. When set to **On**, nodal lines become dark gaps instead of bright highlights, and the wave amplitude rendering is complemented: the bright and dark regions swap. Invert also flips the nodal line detection, so areas that were previously considered "on the node" become "off the node" and vice versa. Combined with Overlay mode, this turns the luminous web into a dark lattice that carves shadows into the video.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all Chladni processing. The sync delay pipeline still aligns timing, so switching between processed and bypassed output is glitch-free. Use Bypass for instant A/B comparison.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the original input video and the Chladni-processed output. At 0%, the output is the unmodified input. At 100%, the output is the fully processed Chladni pattern. Intermediate values blend the two, allowing you to dial in subtle pattern overlays or ghostly texture layers. Mix operates independently of the **Render** switch: in Replace mode, it fades between the source video and the monochrome pattern; in Overlay mode, it fades between the source and the composited overlay.
 
 ---
 
 ## Background
 
-### Ernst Chladni and the Vibrating Plate
+### Chladni Figures and Vibrating Plates
 
-Ernst Florens Friedrich Chladni (1756–1827) is sometimes called the father of experimental acoustics. His plate experiments were a sensation across Europe — Napoleon himself attended a demonstration in 1809 and offered a prize for a mathematical explanation of the patterns. The key insight was that a vibrating surface does not move uniformly: it divides into regions of maximum displacement (antinodes) and regions of zero displacement (nodes), separated by curves whose geometry is determined by the boundary conditions and the excitation frequency. Higher frequencies produce more nodal lines and more complex patterns. Chladni catalogued hundreds of these figures, each a fingerprint of a specific vibrational mode.
+In 1787, Ernst Chladni published a method for visualizing the vibration modes of rigid surfaces. He drew a violin bow across the edge of a thin metal plate dusted with sand. The plate vibrated at one of its resonant frequencies, and the sand migrated to the ***nodal lines***: the curves where the plate remained stationary. The result was a beautiful, symmetric pattern unique to each resonant mode.
 
-### Standing Waves and Nodal Patterns
+These patterns arise from ***standing waves***: two traveling waves moving in opposite directions combine to create a fixed pattern of alternating peaks and nodes. On a two-dimensional plate, the standing wave is described by a pair of mode numbers (m, n) that count the number of half-wavelengths in each direction. Low mode numbers produce simple figures with a few broad divisions; high mode numbers produce intricate lattices of fine lines.
 
-A standing wave arises when two waves of equal frequency and amplitude travel in opposite directions through the same medium. Their superposition creates a pattern that appears stationary — fixed positions of constructive interference (antinodes, where the amplitude is maximum) and destructive interference (nodes, where the amplitude is always zero). On a two-dimensional plate, the nodal lines form curves that divide the surface into vibrating cells. The mathematical description involves solutions to the wave equation on a bounded domain — Bessel functions for circular plates, products of trigonometric functions for rectangular ones. Chladni's video implementation uses the rectangular case: independent oscillators along X and Y, whose combined absolute values define the nodal field.
+### Standing Wave Mathematics
 
-### Triangle Wave Approximation
+The Chladni program approximates the vibration of a rectangular plate using the formula:
 
-A pure sine wave is the natural basis function for standing-wave analysis, but sine computation is expensive in digital hardware. The triangle wave is a first-order approximation: it shares the periodicity and symmetry of a sine wave, rising linearly to a peak, then falling linearly to a trough. Its absolute value produces a V-shaped waveform that closely resembles |sin(x)| in its zero crossings and general shape, while requiring only a binary fold of an accumulator's most significant bits — no lookup table, no multiplier, no BRAM. The Chladni program exploits this by running a frequency accumulator per axis and folding the top bits into a triangle function, yielding a computationally cheap approximation to the sinusoidal standing-wave field at the cost of slightly sharper nodal line profiles.
+*f(x, y) = tri(m · x) · tri(n · y) + k · tri(n · x) · tri(m · y)*
 
-### Digital Frequency Synthesis (DDS)
+Here, *tri()* is a ***triangle wave***: a piecewise-linear function that rises and falls like a zigzag. It approximates the cosine function used in the true wave equation, but can be computed on an FPGA with simple shift-and-fold logic instead of expensive trigonometric hardware. The variables *m* and *n* are the mode numbers (selected by Knobs 1 and 2), and *k* is the ***superposition coefficient*** (Knob 3).
 
-Direct Digital Synthesis is the standard technique for generating periodic waveforms in digital hardware. A phase accumulator increments by a fixed frequency word on each clock cycle. The accumulator's most significant bits represent the instantaneous phase angle, which can be mapped to any desired waveform shape. In Chladni, two accumulators run per pixel — one accumulating phase proportional to the horizontal pixel position times the Freq X parameter, the other accumulating proportional to the vertical position times Freq Y. The phase offset knob adds a constant to the Y accumulator, rotating the entire pattern. When the Animate toggle is on, a separate frame-rate DDS advances the phase offset automatically, causing the nodal lines to drift across the screen.
+The two terms in the formula represent two ***degenerate modes***: standing wave patterns that share the same resonant frequency but are rotated 90° relative to each other. The coefficient *k* blends between them. When *k* = 0, only the first orientation appears. When *k* = ±1, the second orientation contributes fully. Sweeping *k* morphs the nodal pattern continuously between the two orientations.
 
-### Video Sculpting with Amplitude Masks
+### Triangle Waves and Efficient Hardware
 
-The Chladni mask — a binary or graded field of nodal lines — can be applied to the input video in two ways. In Draw mode, the mask replaces the video entirely, rendering the standing-wave pattern as white lines on a black background — a pure visualization of the mathematical field. With Draw off, the mask *multiplies* the video signal: pixels on the nodal lines pass through at full brightness, while pixels on the antinodes are attenuated or suppressed. This sculpting technique is analogous to amplitude modulation in audio — the carrier (input video) is modulated by the envelope (Chladni field), producing spatial patterns that follow the video content's brightness structure while being shaped by the standing-wave geometry.
+Computing a true cosine function in hardware requires either a lookup table stored in ***block RAM*** or a complex polynomial approximation. Chladni avoids both by using a ***triangle wave***: a piecewise-linear approximation of cosine that can be computed entirely with combinational logic. The algorithm folds a linear phase counter using a bitwise XOR and a shift, producing a zigzag waveform that closely tracks the zero crossings of a cosine at a fraction of the hardware cost. The result is zero BRAM usage and a compact pipeline of roughly 800 logic cells.
+
+### Nodal Line Detection
+
+The visual heart of a Chladni figure is the nodal line: the curve where the wave function crosses zero. In the physical experiment, sand accumulates here because the plate isn't moving. In the digital version, the program computes the absolute value of the wave function at each pixel and compares it to a ***threshold***. If the magnitude is below the threshold, the pixel is classified as "on the node" and rendered as a bright highlight. The **Threshold** knob adjusts how wide this detection band is, controlling whether the lines appear as hairline traces or broad ribbons.
 
 
 ---
 
 ## Signal Flow
 
-Clock 0: Register Decode → Clock 1: Frequency → Clock 2: Triangle Wave → ... → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Clock 0: Register Decode ───────────────────────────────────
-│   ├─ freq_x = registers_in(0)
-│   ├─ freq_y = registers_in(1)  [or freq_x if XY Link on]
-│   ├─ phase = registers_in(2)
-│   ├─ width = registers_in(3)
-│   ├─ contrast = registers_in(4)
-│   ├─ y_bright = registers_in(5)
-│   └─ toggles: draw, invert, xy_link, animate, bypass
-│
-├── Clock 1: Frequency Accumulators ────────────────────────────
-│   ├─ acc_x = pixel_x × freq_x  (20-bit horizontal accumulator)
-│   ├─ acc_y = pixel_y × freq_y  (20-bit vertical accumulator)
-│   └─ acc_y += phase + frame_phase  (phase offset + animation)
-│
-├── Clock 2: Triangle Wave Fold ────────────────────────────────
-│   ├─ tri_x = fold(acc_x MSBs)  → |triangle| value
-│   └─ tri_y = fold(acc_y MSBs)  → |triangle| value
-│
-├── Clock 3: Standing Wave Sum + Threshold ─────────────────────
-│   ├─ wave = |tri_x| + |tri_y|
-│   ├─ mask = (wave < width) ? 1 : 0  (nodal line threshold)
-│   └─ mask ^= invert  (optional polarity flip)
-│
-├── Clock 4: Draw / Sculpt Mux ────────────────────────────────
-│   ├─ Draw On:  Y = mask × 1023, U = 512, V = 512
-│   └─ Draw Off: Y = Y_in × mask, U = U_in, V = V_in
-│
-├── Clock 5: Contrast (proc_amp) ───────────────────────────────
-│   └─ Y = (Y − 512) × contrast / 512 + 512
-│
-├── Clock 6: Brightness ────────────────────────────────────────
-│   └─ Y = Y + (y_bright − 512)
-│
-├── Clock 7: Clamp + Output ────────────────────────────────────
-│   └─ Clamp Y, U, V to [0, 1023]
-│
-├── Clocks 4–7: Interpolator (wet/dry Mix) ─────────────────────
-│   └─ lerp(dry, wet, Mix)  ×3 channels  (4 clocks)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ 8-stage delay pipeline (hsync, vsync, field)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The pattern generation pipeline runs in four clock stages followed by a four-clock interpolator, totaling eight clocks of latency. The sync delay shift register compensates by delaying the input sync signals and video data by the same eight clocks, keeping everything aligned at the output.
 
-The heart of the algorithm is the pair of frequency accumulators in Clock 1 and their triangle-wave fold in Clock 2. Because multiplication by position is linear, the accumulated phase increases steadily across the screen — producing evenly spaced oscillation cycles whose spatial frequency is directly proportional to the Freq X and Freq Y register values. The standing-wave sum in Clock 3 adds the two triangle magnitudes, creating a 2D field whose zero crossings trace the characteristic Chladni figures. The Width parameter determines how much of the field near these crossings is classified as a nodal line — low Width yields hair-thin lines, high Width yields broad bands. The entire pipeline uses zero BRAMs and roughly 800 logic cells, making it one of the more resource-efficient programs despite its visually complex output.
+The most important interaction is between **Superpose** and **Shape**. In Square mode, Superpose controls the linear blend coefficient *k* between two degenerate standing wave orientations: this is the classical Chladni formula. In Cross mode, the two wave products are multiplied instead of added, and Superpose is bypassed. This produces a fundamentally different class of figures with denser, more intricate nodal networks.
 
----
-
-## Parameter Reference
-
-<img src={chladni_control_panel} alt="Videomancer front panel with Chladni loaded"/>
-*Videomancer's front panel with Chladni active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Mode M
-| Property | Value |
-|----------|-------|
-| Range | 1 – 8 |
-| Default | 3 |
-
-At zero the horizontal oscillator is frozen — no variation across the X axis, producing only horizontal bands driven by the Y oscillator. As Freq X increases, vertical nodal lines appear, spaced more closely together at higher values. The interaction with Freq Y determines the overall pattern geometry: equal frequencies produce diamond lattices, integer ratios produce regular tilings, and irrational ratios produce quasi-periodic patterns that never exactly repeat. Sweeping this knob slowly reveals the pattern locking and unlocking as it passes through harmonic ratios — a visual analog of musical intervals. Internally, controls the horizontal spatial frequency of the standing-wave pattern.
-
----
-
-#### Knob 2 — Mode N
-| Property | Value |
-|----------|-------|
-| Range | 1 – 8 |
-| Default | 4 |
-
-Controls the vertical spatial frequency. Behaves identically to Freq X but along the Y axis. At zero, only vertical bands from the X oscillator are visible. Increasing Freq Y introduces horizontal nodal lines. The most visually rich patterns occur when both frequencies are moderate and slightly detuned from each other — the near-rational ratio produces a slowly evolving moire of interlocking curves. When XY Link is engaged, this control is overridden by Freq X, forcing both axes to the same frequency and producing strictly diagonal nodal patterns.
-
----
-
-#### Knob 3 — Superpose
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Adds a constant phase offset to the vertical accumulator. At 0°, the pattern is symmetric about the frame origin. Rotating the phase shifts the entire nodal lattice vertically — the lines slide up or down the screen as if the virtual plate were being tilted. At 180°, the pattern inverts its vertical alignment relative to 0°. This parameter interacts strongly with the Animate toggle: when Animate is off, Phase provides manual positional control; when Animate is on, Phase sets the starting offset for the automatic sweep.
-
----
-
-#### Knob 4 — Threshold
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-Threshold width for nodal line detection. The standing-wave field value (|tri_x| + |tri_y|) is compared against this threshold to determine which pixels lie on a nodal line. At 0%, only the mathematical zero crossings are captured — infinitely thin lines that may flicker or alias. At 50%, a substantial band around each zero crossing is included, producing thick, painterly strokes. At 100%, nearly the entire field qualifies as a nodal line, collapsing the pattern into a nearly uniform mask. The Width control is the primary tool for adjusting the visual weight and graphic density of the Chladni pattern.
-
----
-
-#### Knob 5 — Speed
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-Scales the luminance channel using proc_amp-style multiplication centered on mid-gray. At 50% (default), contrast is unity — the sculpted or drawn pattern retains its native brightness range. Below 50%, contrast compresses toward mid-gray, softening the edges of the nodal lines and reducing the visual punch of the pattern. Above 50%, contrast expands, pushing the pattern toward stark black-and-white with harder transitions. In Draw mode, this control adjusts the brightness of the white lines and the depth of the black background. In sculpt mode, it adjusts how aggressively the mask modulates the video signal's luminance.
-
----
-
-#### Knob 6 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
-
-Adds a DC brightness offset to the luminance channel after contrast scaling. At 50% (default), no offset is applied. Below 50%, the entire image darkens — useful for sinking the black regions of the mask to true black when contrast has lifted them. Above 50%, the image brightens — useful for revealing shadow detail in the sculpted regions or creating a luminous glow effect in Draw mode where the nodal lines appear as bright outlines on a gray background rather than stark white on black.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Shape** | Square | Cross |
-| **8 — Animate** | Static | Morph |
-| **9 — Render** | Overlay | Replace |
-| **10 — Invert** | Off | On |
-| **11 — Bypass** | Off | On |
-
-Switches 7–10 configure four orthogonal aspects of the Chladni engine. Draw (7) selects between mask overlay and video sculpting. Invert (8) flips the mask polarity. XY Link (9) locks both frequency axes together for diagonal patterns. Animate (10) enables continuous phase rotation. These toggles are independent — each controls a single binary decision in the pipeline — and all sixteen combinations produce distinct visual results. Switch 11 is the standard bypass.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Chladni processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
-
----
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Chladni-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::note
+In **Overlay** mode, the Y channel of the input video is modulated by the wave amplitude while the U and V channels are desaturated at nodal lines. This means nodal lines always appear as desaturated white regardless of the input color. Between the lines, the original colors of the input video are preserved but their brightness is scaled by the wave function.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from pure mathematical visualization through subtle video sculpting to dynamic animated resonance. Each reveals a different facet of the standing-wave geometry and its interaction with the input signal.
+These exercises progress from basic pattern exploration to animated compositions. Each exercise builds on the previous, introducing more of the Chladni engine's capabilities.
+### Exercise 1: Exploring Harmonic Modes
 
-### Exercise 1: Static Chladni Plate
+![Exploring Harmonic Modes result](/img/instruments/videomancer/chladni/chladni_ex1_s1.png)
+*Exploring Harmonic Modes — simulated result across source images.*
+#### Exercise Illustration
 
-<img src={chladni_exercise1_result} alt="Static Chladni Plate result"/>
-*Static Chladni Plate — simulated result across source images.*
-**What You'll Create**: Visualize the Chladni figure as a white-on-black pattern, exploring how frequency ratios and phase determine the geometry of nodal lines.
+***A description of the exercise illustration.***
 
-1. **Enable Draw mode**: Toggle Draw On. The input video disappears, replaced by the standing-wave pattern rendered as white curves on black.
-2. **Set baseline frequencies**: Set Freq X and Freq Y to ~50%. A diamond-grid lattice should appear.
-3. **Explore frequency ratios**: Slowly detune Freq Y while leaving Freq X fixed. Watch the pattern shift from regular diamonds through elongated rectangles to complex, non-repeating moires.
-4. **Adjust Width**: Increase Width from 0% to see the nodal lines thicken from hairlines to broad bands.
-5. **Rotate Phase**: Sweep Phase from 0° to 360° and observe the entire pattern sliding vertically.
-6. **Try XY Link**: Toggle XY Link On. Both axes lock to Freq X, producing perfect diagonal symmetry regardless of Freq Y.
+#### Learning Outcomes
 
-**Key concepts**: Frequency ratio determines pattern geometry, Width thresholds the standing wave into visible lines, Phase shifts the pattern position, XY Link forces diagonal symmetry
+Explore the family of Chladni figures by sweeping through harmonic modes and superposition.
 
----
+#### Key Concepts
 
-### Exercise 2: Video Sculpting with Nodal Lines
+- Mode numbers control the spatial frequency of the standing wave pattern
+- Equal mode numbers produce square-symmetric figures
+- Superpose morphs between degenerate mode orientations
 
-<img src={chladni_exercise2_result} alt="Video Sculpting with Nodal Lines result"/>
-*Video Sculpting with Nodal Lines — simulated result across source images.*
-**What You'll Create**: Use the Chladni mask to sculpt the input video, allowing it to pass only through the nodal lines — creating a lattice window into the source material.
+#### Steps
 
-1. **Disable Draw mode**: Toggle Draw Off. The Chladni mask now multiplies the input video — the image is visible only where the standing wave has a node.
-2. **Set a medium pattern**: Freq X ~40%, Freq Y ~60% for a slightly asymmetric lattice. Width ~35% for moderate line thickness.
-3. **Observe sculpting**: The source video appears segmented into curved strips following the nodal geometry. Dark areas of the video vanish where they coincide with antinodes; bright areas survive on the nodal lines.
-4. **Adjust Contrast**: Push Contrast above 50% to sharpen the sculpted edges, or below 50% to soften them into a gentle lattice overlay.
-5. **Try Invert**: Toggle Invert On. The previously dark antinode regions now pass the video, and the nodal lines suppress it — the positive/negative of the sculpted image.
-6. **Blend with Mix**: Pull the Mix fader to ~60% for a subtle lattice texture overlaid on the full video.
+1. **Simple figure**: Set **Mode M** (Knob 1) and **Mode N** (Knob 2) to the same value: around the middle of their range. A symmetric lattice of nodal lines fills the screen.
+2. **Asymmetric figure**: Turn Mode M to a low value and Mode N to a high value. The figure stretches: few divisions horizontally, many divisions vertically.
+3. **Superposition sweep**: With Mode M and Mode N at different values, slowly sweep **Superpose** (Knob 3) from one end to the other. The nodal lines rotate and reshape, morphing between two distinct symmetries.
+4. **Line width**: Adjust **Threshold** (Knob 4). Low values produce hairline traces; high values produce broad, bold nodal bands.
+5. **Brightness**: Increase **Brightness** (Knob 6) to reveal the wave amplitude contours between the lines (brighter areas represent higher wave magnitude.)
 
-**Key concepts**: Sculpt mode multiplies video by the standing-wave mask, Invert swaps figure and ground, Mix blends sculpted and original for subtlety
+#### Settings
 
----
-
-### Exercise 3: Animated Resonance
-
-<img src={chladni_exercise3_result} alt="Animated Resonance result"/>
-*Animated Resonance — simulated result across source images.*
-**What You'll Create**: Activate phase animation and explore how the Chladni pattern behaves as a living resonance field sweeping across the video.
-
-1. **Start from Exercise 2 settings**: Sculpt mode, moderate frequencies, Width ~35%.
-2. **Enable Animate**: Toggle Animate On. The nodal lines begin drifting steadily across the frame, as if the virtual plate were being continuously excited at a changing frequency.
-3. **Adjust Phase as starting point**: The Phase knob now sets the initial phase offset for the animation. Sweep it to choose where the continuous motion begins.
-4. **Increase Width for flow**: Set Width to ~55%. The thicker lines produce a flowing, liquid quality as they sweep and reform.
-5. **Combine with Draw**: Toggle Draw On. The animated pattern renders as a pure white-on-black visualization — mesmerizing geometric choreography suitable for projection or overlay compositing.
-6. **Push frequencies**: Set both Freq X and Freq Y to high values (~80%) for a dense, rapidly cycling pattern, then drop them to low values (~15%) for slow, monumental wave sweeps.
-
-**Key concepts**: Animate drives continuous phase evolution via DDS, Phase sets animation start offset, high Width creates fluid motion quality, Draw mode isolates the mathematical field for visual analysis
+| Control | Value |
+|---------|-------|
+| Mode M | 3 |
+| Mode N | 5 |
+| Superpose | ~50% |
+| Threshold | ~25% |
+| Speed | 0% |
+| Brightness | ~75% |
+| Shape | Square |
+| Animate | Static |
+| Render | Replace |
+| Invert | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 2: Animated Morphing
 
-## Tips
+![Animated Morphing result](/img/instruments/videomancer/chladni/chladni_ex2_s1.png)
+*Animated Morphing — simulated result across source images.*
+#### Exercise Illustration
 
-- **XY Link for simplicity**: When you want clean, symmetric patterns without fussing over two frequency knobs, engage XY Link. The resulting diagonal lattices are the simplest Chladni figures — good starting points for sculpting.
-- **Phase + Animate for choreography**: Set Animate On for continuous motion, then adjust Phase to choose the starting position. For rhythmic effects, momentarily toggle Animate On and Off to advance the pattern in controlled bursts.
-- **Contrast and Brightness are post-mask**: These controls operate after the Chladni sculpting stage. Use Contrast to sharpen or soften the sculpted edges. Use Y Bright to lift the dark regions of the mask for a more translucent overlay effect.
-- **Mix at 30–50% for texture**: Full-strength sculpting can obliterate the source image. For subtle integration, pull the Mix fader to 30–50% — the Chladni lattice becomes a translucent geometric texture overlaid on the full video.
-- **Feedback creates fractal resonance**: Route Chladni's output back to its input. Each pass through the mask compounds the lattice geometry, producing dense, self-similar patterns reminiscent of cymbal plate vibration modes.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Set the Chladni pattern in motion and compare square and cross plate geometries.
+
+#### Key Concepts
+
+- The animation oscillator continuously offsets the horizontal mode number
+- Speed controls the morphing rate
+- Cross mode produces denser, lace-like interference patterns
+
+#### Steps
+
+1. **Enable animation**: Flip **Animate** (Switch 8) to **Morph**. The pattern begins drifting through harmonic modes (the figure breathes and evolves.)
+2. **Speed control**: Adjust **Speed** (Knob 5). At low values the morphing is glacial and meditative. At high values the figure flows rapidly, producing strobing transitions.
+3. **Cross mode**: Flip **Shape** (Switch 7) to **Cross**. The pattern transforms from broad arcs into a dense, lace-like mesh. The animation takes on a more chaotic, shimmering character.
+4. **Thick lines**: Increase **Threshold** (Knob 4) to about 75%. The nodal lines become wide ribbons, and the animated morphing looks like ink spreading across paper.
+5. **Invert**: Toggle **Invert** (Switch 10) to **On**. The bright lines become dark voids, and the formerly dark regions glow (a photographic negative of the vibration pattern.)
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Mode M | 2 |
+| Mode N | 4 |
+| Superpose | ~50% |
+| Threshold | ~75% |
+| Speed | ~50% |
+| Brightness | ~75% |
+| Shape | Cross |
+| Animate | Morph |
+| Render | Replace |
+| Invert | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Video Overlay Composition
+
+![Video Overlay Composition result](/img/instruments/videomancer/chladni/chladni_ex3_s1.png)
+*Video Overlay Composition — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Combine Chladni's generated pattern with a video signal to create a luminous geometric overlay.
+
+#### Key Concepts
+
+- Overlay mode composites the Chladni pattern onto a live video input
+- Nodal lines appear as bright geometry over the video
+- Mix allows subtle blending of pattern and source
+
+#### Steps
+
+1. **Connect a source**: Route a video signal into Videomancer. Any colorful footage works well (nature scenes, abstract video feedback, or camera input.)
+2. **Switch to Overlay**: Set **Render** (Switch 9) to **Overlay**. The Chladni pattern appears as a web of bright white lines over the video. Between the lines, the video is visible but its brightness is modulated by the wave amplitude.
+3. **Dial the mix**: Lower **Mix** (Fader 12) to about 60%. The pattern becomes a ghostly overlay, blending with the source.
+4. **High harmonics**: Increase both **Mode M** (Knob 1) and **Mode N** (Knob 2) to high values. The overlay becomes a fine mesh of intersecting lines (like looking at the video through a luminous screen.)
+5. **Animate the web**: Enable **Animate** (Switch 8) and set **Speed** (Knob 5) to a low value. The geometric overlay slowly shifts and evolves, adding organic motion to the composition.
+6. **Brightness balance**: Adjust **Brightness** (Knob 6) to balance the intensity of the wave-amplitude modulation against the source video.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Mode M | 6 |
+| Mode N | 7 |
+| Superpose | ~50% |
+| Threshold | ~25% |
+| Speed | ~25% |
+| Brightness | ~50% |
+| Shape | Square |
+| Animate | Morph |
+| Render | Overlay |
+| Invert | Off |
+| Bypass | Off |
+| Mix | ~60% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Amplitude modulation** | A technique where one signal (the carrier) is multiplied by another (the modulator), used in Sculpt mode to shape video brightness with the standing-wave field. |
-| **Antinode** | A point on a standing wave where the oscillation amplitude is at its maximum, the complement of a node. |
-| **Bessel function** | A family of mathematical functions that describe standing-wave patterns on circular plates; rectangular plates use trigonometric products instead. |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator, used here to animate the Chladni pattern over time. |
-| **Moire** | An interference pattern produced when two periodic structures overlap at slightly different frequencies or angles. |
-| **Node** | A point on a standing wave where the oscillation amplitude is always zero; nodal lines on a Chladni plate are where sand collects. |
-| **Standing wave** | A wave pattern formed by the superposition of two waves traveling in opposite directions, producing fixed nodes and antinodes. |
-| **Triangle wave** | A periodic waveform that rises and falls linearly, used as a computationally cheap approximation to a sine wave in hardware. |
+- **Chladni Figure**: A geometric pattern formed by the nodal lines of a vibrating surface, named after physicist Ernst Chladni.
+
+- **DDS**: Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator at a controlled rate.
+
+- **Degenerate Modes**: Two or more vibration patterns that share the same resonant frequency but differ in spatial orientation.
+
+- **Harmonic**: A whole-number multiple of a fundamental frequency; higher harmonics produce finer spatial subdivisions.
+
+- **Mode Number**: An integer (m or n) that specifies how many half-wavelengths fit across one dimension of the vibrating plate.
+
+- **Nodal Line**: A curve on a vibrating surface where the displacement is always zero; sand collects here in the classic Chladni experiment.
+
+- **Standing Wave**: A wave pattern that remains stationary in space, formed by the superposition of two traveling waves moving in opposite directions.
+
+- **Superposition**: The principle that two or more waves can be combined by adding their amplitudes at each point in space.
+
+- **Triangle Wave**: A piecewise-linear waveform that rises and falls in a zigzag; used here as a computationally efficient approximation of the cosine function.
 
 ---

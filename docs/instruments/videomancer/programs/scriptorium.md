@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 260
 slug: /instruments/videomancer/scriptorium
@@ -7,365 +7,440 @@ image: /img/instruments/videomancer/scriptorium/scriptorium_hero_s1.png
 description: "Before the printing press and before movable type, every book in Europe was made by hand."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import scriptorium_control_panel from '/img/instruments/videomancer/scriptorium/scriptorium_control_panel.png';
-import scriptorium_source1_house from '/img/instruments/videomancer/scriptorium/scriptorium_source1_house.png';
-import scriptorium_source2_fruit from '/img/instruments/videomancer/scriptorium/scriptorium_source2_fruit.png';
-import scriptorium_source3_elephant from '/img/instruments/videomancer/scriptorium/scriptorium_source3_elephant.png';
-import scriptorium_source4_pattern from '/img/instruments/videomancer/scriptorium/scriptorium_source4_pattern.png';
-import scriptorium_source5_boy from '/img/instruments/videomancer/scriptorium/scriptorium_source5_boy.png';
-import scriptorium_source6_knit from '/img/instruments/videomancer/scriptorium/scriptorium_source6_knit.png';
-import scriptorium_hero_s1 from '/img/instruments/videomancer/scriptorium/scriptorium_hero_s1.png';
-import scriptorium_hero_s2 from '/img/instruments/videomancer/scriptorium/scriptorium_hero_s2.png';
-import scriptorium_hero_s3 from '/img/instruments/videomancer/scriptorium/scriptorium_hero_s3.png';
-import scriptorium_hero_s4 from '/img/instruments/videomancer/scriptorium/scriptorium_hero_s4.png';
-import scriptorium_hero_s5 from '/img/instruments/videomancer/scriptorium/scriptorium_hero_s5.png';
-import scriptorium_hero_s6 from '/img/instruments/videomancer/scriptorium/scriptorium_hero_s6.png';
-import scriptorium_ex1_s1 from '/img/instruments/videomancer/scriptorium/scriptorium_ex1_s1.png';
-import scriptorium_ex1_s2 from '/img/instruments/videomancer/scriptorium/scriptorium_ex1_s2.png';
-import scriptorium_ex1_s3 from '/img/instruments/videomancer/scriptorium/scriptorium_ex1_s3.png';
-import scriptorium_ex1_s4 from '/img/instruments/videomancer/scriptorium/scriptorium_ex1_s4.png';
-import scriptorium_ex1_s5 from '/img/instruments/videomancer/scriptorium/scriptorium_ex1_s5.png';
-import scriptorium_ex1_s6 from '/img/instruments/videomancer/scriptorium/scriptorium_ex1_s6.png';
-import scriptorium_ex2_s1 from '/img/instruments/videomancer/scriptorium/scriptorium_ex2_s1.png';
-import scriptorium_ex2_s2 from '/img/instruments/videomancer/scriptorium/scriptorium_ex2_s2.png';
-import scriptorium_ex2_s3 from '/img/instruments/videomancer/scriptorium/scriptorium_ex2_s3.png';
-import scriptorium_ex2_s4 from '/img/instruments/videomancer/scriptorium/scriptorium_ex2_s4.png';
-import scriptorium_ex2_s5 from '/img/instruments/videomancer/scriptorium/scriptorium_ex2_s5.png';
-import scriptorium_ex2_s6 from '/img/instruments/videomancer/scriptorium/scriptorium_ex2_s6.png';
-import scriptorium_ex3_s1 from '/img/instruments/videomancer/scriptorium/scriptorium_ex3_s1.png';
-import scriptorium_ex3_s2 from '/img/instruments/videomancer/scriptorium/scriptorium_ex3_s2.png';
-import scriptorium_ex3_s3 from '/img/instruments/videomancer/scriptorium/scriptorium_ex3_s3.png';
-import scriptorium_ex3_s4 from '/img/instruments/videomancer/scriptorium/scriptorium_ex3_s4.png';
-import scriptorium_ex3_s5 from '/img/instruments/videomancer/scriptorium/scriptorium_ex3_s5.png';
-import scriptorium_ex3_s6 from '/img/instruments/videomancer/scriptorium/scriptorium_ex3_s6.png';
-
-# Scriptorium
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: scriptorium_source1_house, after: scriptorium_hero_s1 },
-    { label: "Fruit", before: scriptorium_source2_fruit, after: scriptorium_hero_s2 },
-    { label: "Elephant", before: scriptorium_source3_elephant, after: scriptorium_hero_s3 },
-    { label: "Pattern", before: scriptorium_source4_pattern, after: scriptorium_hero_s4 },
-    { label: "Boy", before: scriptorium_source5_boy, after: scriptorium_hero_s5 },
-    { label: "Knit", before: scriptorium_source6_knit, after: scriptorium_hero_s6 },
-  ]}
-/>
-*Scriptorium compositing live video into the pictorial field of a procedurally generated illuminated manuscript with knotwork borders and mineral pigment quantization.*
+![Scriptorium hero image](/img/instruments/videomancer/scriptorium/scriptorium_hero_s1.png)
+*Scriptorium rendering a live video feed as an illuminated manuscript page with knotwork borders, mineral palette quantization, and gold leaf highlights.*
 
 ---
 
 ## Overview
 
-Before the printing press and before movable type, every book in Europe was made by hand. Monks and scribes working in the *scriptorium* — the writing room of a monastery — copied texts letter by letter onto prepared animal skins, embellishing important pages with ornamental borders, decorated initial capitals, and miniature paintings set into frames of gold leaf and mineral pigments. Scriptorium recreates this visual world inside the Videomancer pipeline.
+Scriptorium transforms your video into a page from a medieval illuminated manuscript. The incoming image is framed within a procedurally generated ornamental border, its colors reduced to a palette of eight historical mineral pigments, and its brightest areas optionally replaced with shimmering gold leaf. A subtle parchment grain texture blankets the entire composition, as though the image were painted onto vellum.
 
-The program divides the output frame into three concentric zones: an outer ornamental border filled with procedurally generated patterns, a thin frame line (optionally gilded), and a central pictorial field — the *miniature* — where the input video appears. The video in the miniature zone is quantized to a palette of eight medieval mineral pigments, collapsing continuous color into the flat, jewel-toned hues of a hand-painted manuscript. Bright areas can be replaced with gold leaf, and the entire output receives a subtle LFSR-driven parchment texture.
+The program divides the screen into three zones: the border ornament, a narrow frame line separating border from image, and the central ***miniature***: the manuscript term for the pictorial field where your video appears. Four border ornament styles are available, drawn from the traditions of Insular, Classical, and Islamic manuscript decoration. Inside the miniature, palette quantization maps every pixel to its nearest match in an eight-color set inspired by the actual mineral pigments used by medieval scribes.
 
-Four ornament algorithms are available — Insular knotwork, acanthus scroll, geometric fret, and diaper tiling — each generated procedurally from pixel-coordinate modular arithmetic. No BRAM is used; every visual element is computed from position and parameter values alone. The name references both the medieval writing room and the Latin *scriptor* — one who writes — placing the video artist in the role of illuminator.
+At gentle settings, Scriptorium adds a warm, hand-painted quality to any video source. At extreme settings, it reduces the image to flat blocks of ultramarine, vermillion, malachite, ochre, ivory, gold, lamp black, and lead white: surrounded by ornate geometric borders: creating a striking fusion of ancient craft and electronic signal.
+
+:::tip
+Scriptorium uses ***zero block RAM***. Every pattern: knotwork, scrollwork, fret, and diaper tiling: is generated procedurally from coordinate arithmetic, so the entire FPGA memory budget remains free for other programs in the signal chain.
+:::
+
+### What's In a Name?
+
+A ***scriptorium*** was the dedicated writing room in a medieval monastery where monks copied and illustrated manuscripts by hand. Every page was a collaboration: scribes lettered the text, and ***illuminators*** painted the decorative borders and miniature illustrations using pigments ground from minerals, plants, and precious metals. The name places you in that quiet workshop, transforming your video signal the way an illuminator transforms a blank page (one brushstroke of color at a time.)
 
 ---
 
 ## Quick Start
 
-1. **Border Width is your page layout**: Small borders create a picture-frame effect; large borders fill the screen with ornament and reduce the miniature to a small window.
-2. **Gold Threshold shapes the gilding**: Use high thresholds for subtle highlight-only gilding; use low thresholds for lavish all-over gold leafing.
-3. **Ornament Scale interacts with Border Width**: Narrow borders may not have enough pixels to show the ornament pattern clearly — use smaller ornament scales with narrow borders.
+1. Turn **Border Width** (Knob 1) clockwise to about 40%. A colored ornamental border appears around the edges of the screen, framing your video in a rectangular margin filled with interlaced knotwork.
+2. Slowly turn **Color Depth** (Knob 3) counterclockwise. The colors in your video snap to a smaller and smaller set of flat mineral tones: you are watching the palette shrink from eight pigments down to four.
+3. Turn **Gold Threshold** (Knob 4) counterclockwise until bright areas of the image flash to a rich gold. You have just applied gold leaf to the highlights of your miniature.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Scriptorium loaded](/img/instruments/videomancer/scriptorium/scriptorium_control_panel.png)
+*Videomancer's front panel with Scriptorium active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Border Width
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 39.1% |
+
+**Border Width** controls the size of the ornamental margin surrounding the central miniature. At 0%, the border vanishes and the miniature fills the entire screen. As you turn the knob clockwise, the border grows inward from all four edges, steadily shrinking the pictorial field. At 100%, the border is at its widest, leaving a small window of processed video in the center.
+
+The border zone is filled with one of four procedural ornament patterns (selected by toggles 7 and 8). A narrow frame line: two pixels wide: separates the ornament from the miniature, drawn in gold when **Gold Leaf** is enabled or tinted by the **Frame Color** hue when gold is disabled.
+
+:::note
+Border Width is resolution-adaptive. The same knob position produces a visually proportional margin at both SD and HD resolutions.
+:::
+
+---
+
+### Knob 2 — Ornament Scale
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Ornament Scale** controls the repetition frequency of the border ornament pattern. At low values, the pattern tiles are large and the ornament appears coarse. Increasing the knob clockwise makes the tiles smaller and more numerous, producing denser, more intricate decoration. The underlying tile period ranges from about 8 pixels to 48 pixels.
+
+This control also influences the band width within each tile: the visible thickness of the interlaced strands in knotwork mode, the vine width in scroll mode, and the line weight in geometric fret mode.
+
+---
+
+### Knob 3 — Color Depth
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 4 |
+| Default | 3 |
+
+**Color Depth** selects how many entries from the medieval mineral palette are used to quantize the miniature. The knob sweeps through four stepped values. At step 1, only four pigments are available: ultramarine, vermillion, malachite, and ochre. At step 2, ivory is added. At step 3, gold joins the set. At step 4, all eight pigments are active: including lamp black and lead white: giving the widest tonal range.
+
+Each pixel in the miniature is matched to the nearest palette entry by ***Manhattan distance*** in YUV color space. Reducing the palette produces flat, poster-like areas of color reminiscent of actual manuscript painting, where the illuminator had only a handful of pigments on the palette.
+
+:::tip
+Dropping **Color Depth** to step 1 while feeding a colorful source creates bold, graphic results: every pixel is forced to one of four mineral tones.
+:::
+
+---
+
+### Knob 4 — Gold Threshold
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 68.4% |
+
+**Gold Threshold** determines the luminance level above which pixels in the miniature are replaced with gold leaf. At 0%, even moderately bright pixels receive gold treatment. At 100%, only the absolute brightest peaks are gilded. The default position sits high, applying gold sparingly to specular highlights and white regions.
+
+When **Gold Leaf** (Toggle 9) is set to Off, this control has no visible effect (the gold substitution stage is bypassed entirely.)
+
+---
+
+### Knob 5 — Vellum
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 29.3% |
+
+**Vellum** controls the intensity of a parchment grain texture applied to the entire output: border, frame, and miniature alike. The texture is generated by a 16-bit ***linear feedback shift register*** (LFSR) producing pseudo-random noise, which modulates the luminance channel with a warm, organic randomness.
+
+At 0%, the texture is imperceptible. Increasing the knob introduces subtle brightness variations that simulate the irregular surface of animal-skin parchment. At high values, the grain becomes coarse and visible as splotchy, sandy noise.
+
+:::note
+Vellum also applies a gentle warm tint to the chrominance channels, shifting the entire image slightly toward the creamy tone of aged parchment (even at low settings.)
+:::
+
+---
+
+### Knob 6 — Frame Color
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 360 |
+| Default | 60 |
+
+**Frame Color** sets the accent hue of the narrow frame line that separates the border ornament from the miniature. This control is active only when **Gold Leaf** (Toggle 9) is set to Off; when gold is enabled, the frame line is drawn in gold regardless of this knob's position.
+
+The hue sweeps through 360° of color. The frame line itself is drawn at a fixed low luminance (dark), so the result is a deeply saturated accent line: think of the thin colored rules that separate text columns and illustrations in medieval manuscripts.
+
+---
+
+### Switch 7 — Pattern A
+
+| Property | Value |
+|----------|-------|
+| Off | Knot |
+| On | Scroll |
+| Default | Knot |
+
+**Pattern A** selects between two ornament families for the border region. Set to **Knot**, the border displays an Insular-style ***knotwork*** pattern: horizontal and vertical bands interlace in a woven grid, with an over-under crossing effect created by toggling color between warm and cool bands at each cell parity. Set to **Scroll**, the border displays an ***acanthus scroll***: an undulating vine that snakes vertically through the margin, created by a piecewise-linear sine approximation.
+
+Pattern A combines with **Pattern B** (Toggle 8) to select one of four ornament modes.
+
+---
+
+### Switch 8 — Pattern B
+
+| Property | Value |
+|----------|-------|
+| Off | Geo |
+| On | Diaper |
+| Default | Geo |
+
+**Pattern B** selects the second ornament family pair. Set to **Geo**, the border displays a ***geometric fret***: a stepped, angular meander inspired by Greek key patterns. Set to **Diaper**, the border fills with a ***diaper pattern***: a repeating lattice of diamond lozenges in alternating colors, common in Gothic manuscript backgrounds.
+
+---
+
+### Switch 9 — Gold Leaf
+
+| Property | Value |
+|----------|-------|
+| Off | On |
+| On | Off |
+| Default | On |
+
+**Gold Leaf** enables or disables the gold leaf substitution stage. When set to **On**, two things happen: bright pixels in the miniature that exceed the **Gold Threshold** are replaced with a rich gold color, and the frame line surrounding the miniature is drawn in gold. When set to **Off**, the miniature passes through ungilded, and the frame line color is determined by the **Frame Color** knob instead.
+
+Gold leaf was the single most expensive material in a medieval scriptorium. Sheets of real gold were hammered impossibly thin and applied to the page with gum arabic before the surrounding pigments were painted. Scriptorium's digital gold leaf captures that sense of precious, luminous accent.
+
+---
+
+### Switch 10 — Aging
+
+| Property | Value |
+|----------|-------|
+| Off | New |
+| On | Aged |
+| Default | New |
+
+**Aging** simulates the visual deterioration of an ancient manuscript. When set to **New**, the output retains its full brightness and saturation. When set to **Aged**, luminance is reduced to 75% of its original value and chrominance is pushed halfway toward neutral, producing the faded, desaturated appearance of a page that has spent centuries in a monastery library.
+
+The aging effect also introduces a subtle warm bias to the chrominance, shifting the overall color cast toward the yellowed tone of oxidized vellum.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all Scriptorium processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant comparison between the raw source and the illuminated result.
+
+---
+
+:::note Toggle Group Notes
+
+Toggles 7 and 8 combine as a two-bit binary selector to choose one of four ornament modes:
+
+| Pattern A | Pattern B | Ornament |
+|-----------|-----------|----------|
+| Knot | Geo | Insular knotwork (interlaced horizontal and vertical bands) |
+| Scroll | Geo | Acanthus scroll (sinusoidal vine) |
+| Knot | Diaper | Geometric fret (Greek key meander) |
+| Scroll | Diaper | Diaper pattern (repeating diamond tiling) |
+
+:::tip
+Each ornament mode has its own color identity: knotwork alternates warm and cool bands, scroll uses malachite green, fret uses ochre, and diaper alternates purple and vermillion. Try each one to find the palette that best complements your source material.
+:::
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) and wet (fully processed) signals. At 0%, the output is the original input: identical to Bypass. At 100%, the output is fully illuminated. Intermediate positions blend the two, creating a ghostly overlay of the manuscript page on the original footage.
+
+:::tip
+Setting **Mix** around 50% lets the original video show through the manuscript treatment like a translucent palimpsest (a ghostly double-exposure of the modern and the medieval.)
+:::
 
 ---
 
 ## Background
 
-### The Illuminated Manuscript Tradition
+### Medieval manuscript illumination
 
-From roughly the 6th through the 15th century, the most elaborate books produced in Europe were *illuminated manuscripts* — texts decorated with gold leaf, painted borders, and miniature illustrations. The word "illuminate" comes from the Latin *illuminare*, meaning "to light up," referring to the way gold leaf catches and reflects light. Major centers of production included Insular monasteries (Ireland and Northumbria), Carolingian scriptoria, and later the courts of Burgundy and France. The Book of Kells, the Lindisfarne Gospels, and the Très Riches Heures du Duc de Berry represent pinnacles of the tradition.
+***Illuminated manuscripts*** are handwritten books decorated with gold, silver, and vivid mineral pigments. Produced primarily between the 5th and 16th centuries in Europe and the Islamic world, they represent some of the most labor-intensive artworks ever created. A single decorated page could take weeks. The illuminator's toolkit was modest: a few brushes, a grinding stone, and a palette of natural pigments extracted from minerals, plants, and insects.
 
-### Mineral Pigment Palettes
+Scriptorium's eight-color palette draws from historically documented pigments: ***ultramarine*** (ground lapis lazuli, the most expensive pigment in the world), ***vermillion*** (mercuric sulfide), ***malachite*** (copper carbonate), ***ochre*** (iron oxide), ***ivory*** (bone ash), ***gold*** (hammered leaf), ***lamp black*** (carbon soot), and ***lead white*** (basic lead carbonate). Each pigment had its own preparation, cost, and cultural significance.
 
-Medieval painters worked with pigments ground from minerals, plants, and animal products. Ultramarine blue was made from lapis lazuli imported from Afghanistan — more expensive than gold. Vermillion came from cinnabar (mercury sulfide). Malachite provided green, yellow ochre came from iron-rich clay, and verdigris was derived from copper acetate. Lead white and lamp black completed the standard palette. These pigments produce saturated, opaque colors with a distinctive matte quality quite unlike modern synthetic paints. Scriptorium's palette quantization maps continuous video color to the nearest of these historical pigments.
+### Ornamental traditions
 
-### Interlace Knotwork
+The four border ornament modes correspond to real decorative traditions:
 
-The Insular art tradition — centered in Ireland, Scotland, and Anglo-Saxon England — developed a distinctive vocabulary of interlaced ribbon patterns, spirals, and zoomorphic forms. Knotwork consists of bands that weave over and under one another in continuous loops with no beginning or end. Geometrically, these patterns arise from a grid of crossing points where each intersection alternates between over and under — precisely the XOR parity logic that Scriptorium implements in hardware.
+- **Knotwork**: From the Insular tradition (Irish and Anglo-Saxon art, 6th–9th century). Interlaced bands weave over and under one another in an endless pattern with no beginning and no end (symbolizing eternity.)
+- **Acanthus scroll**: From Classical and Romanesque traditions. A sinuous vine bearing stylized leaves, representing natural growth and abundance.
+- **Geometric fret**: Inspired by the Greek key or meander pattern, one of the oldest ornamental motifs in the world, symbolizing infinity and the eternal flow of life.
+- **Diaper pattern**: Common in Gothic manuscripts (13th–15th century). A repeating diamond lattice filled with alternating colors, used as a background behind figures and text.
 
-### Gold Leaf Application
+### Palette quantization
 
-In manuscript illumination, gold leaf is applied before pigments in a process called *gilding*. A sticky ground (gesso or gum) is laid down, the gold is pressed onto it, and then burnished with an agate tool to achieve a mirror-like shine. *Flat gilding* produces a uniform matte gold surface, while *burnished gilding* creates a polished reflective surface that varies in brightness with viewing angle. Scriptorium's gold leaf substitution replaces pixels above a brightness threshold with a gold color, and the gilding toggle adds position-based brightness variation to simulate the burnished effect.
+Scriptorium's color reduction works by ***nearest-neighbor quantization*** in YUV color space. For each pixel in the miniature, the program computes the Manhattan distance to every active palette entry and selects the closest match. The computation is split across two pipeline stages: entries 0–3 in one clock, entries 4–7 in the next: to meet timing on the iCE40 FPGA.
 
-### Zone-Based Page Layout
-
-Medieval manuscripts follow strict page layout conventions. The *mise en page* divides the folio into zones: margins (often decorated), a text block, and sometimes a separate pictorial field for the miniature painting. Scriptorium uses a simplified version of this hierarchy — border, frame line, and central miniature — controlled by a single width parameter. This three-zone approach captures the essential structure while remaining computationally tractable in a single-pass pipeline.
+The result is a hard-edged, posterized color field that mirrors the flat, unmixed quality of real tempera painting on vellum. Medieval illuminators did not blend colors on the page; each pigment was applied in discrete, opaque strokes.
 
 
 ---
 
 ## Signal Flow
 
-Zone Classification → Ornament + Palette → Gold Leaf → Vellum + Aging
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Stage 1: Zone Classification ───────────────────────────────
-│   ├─ Compare h_count/v_count vs border_width thresholds
-│   ├─ Zone 0 = border ornament (outside frame line)
-│   ├─ Zone 1 = frame line (2-pixel border at edge of miniature)
-│   └─ Zone 2 = miniature (central pictorial field)
-│
-├── Stage 2: Ornament + Palette ────────────────────────────────
-│   ├─ Border ornament generation (4 algorithms via toggles):
-│   │   ├─ Knotwork: modular position → horizontal/vertical band → XOR parity weave
-│   │   ├─ Acanthus: piecewise-linear sine approximation → vine + leaf lobes
-│   │   ├─ Fret: stepped Greek key from modular position bits
-│   │   └─ Diaper: diagonal sum → repeating diamond/lozenge tiling
-│   └─ Miniature zone: nearest-pigment quantization (Manhattan distance, up to 8 entries)
-│
-├── Stage 3: Gold Leaf + Zone Composite ────────────────────────
-│   ├─ Border → ornament color
-│   ├─ Frame line → gold (if enabled) or hue-tinted accent
-│   └─ Miniature → gold substitution if luma > threshold, else quantized pigment
-│
-├── Stage 4: Vellum + Aging ────────────────────────────────────
-│   ├─ LFSR grain overlay on Y, scaled by vellum amount
-│   ├─ Warm parchment tint blend on U/V
-│   └─ Aging toggle: darken Y by 25%, desaturate UV toward warm neutral
-│
-├── Interpolator: Wet/Dry Mix ──────────────────────────────────
-│   └─ 3× interpolator_u: crossfade original ↔ processed (4 clocks)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The program's architecture is built around the zone classification in Stage 1. Every pixel is sorted into one of three zones: border ornament, frame line, or miniature: and that zone tag follows the pixel through the entire pipeline. The ornament generator and palette quantizer run in parallel on their respective data, and the results are merged in the gold/composite stage according to each pixel's zone.
 
-The pipeline is purely feedforward with no feedback paths. Two key design decisions shape the output: (1) **Zone classification happens first**, so every subsequent stage knows whether it is rendering border, frame, or miniature content. The ornament generator and palette quantizer run in parallel during stage 2, each producing a candidate color for its respective zone. (2) **Vellum texture is applied globally** after zone compositing, so the parchment grain unifies all three zones with a consistent material quality. The aging toggle compounds with vellum — when active, the overall brightness drops by approximately 25% and chrominance is pulled toward a warm neutral, simulating centuries of oxidation and light exposure.
+Two cross-domain interactions are especially worth noting. First, the **Gold Leaf** toggle simultaneously controls both the miniature (bright pixels replaced by gold) and the frame line (rendered in gold vs. the Frame Color hue). This makes the gold effect feel holistic, as though an illuminator applied gold leaf to both the border and the highlights in one pass. Second, the **Vellum** texture is applied after zone compositing, so it unifies the entire composition under a single parchment grain: ornament and miniature share the same surface texture, reinforcing the illusion that everything was painted on the same physical page.
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={scriptorium_control_panel} alt="Videomancer front panel with Scriptorium loaded"/>
-*Videomancer's front panel with Scriptorium active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises progress from simple framing to full manuscript illumination. Each builds on the previous, engaging more of the processing chain.
+### Exercise 1: Bordered Miniature
 
-### Rotary Potentiometers (Knobs 1–6)
+![Bordered Miniature result](/img/instruments/videomancer/scriptorium/scriptorium_ex1_s1.png)
+*Bordered Miniature — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Border Width
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 39.1% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-At zero, the entire frame is miniature — no border or frame line is visible. As the border widens, the central pictorial field shrinks and the ornamental margin grows. The frame line always sits at the inner edge of the border, so widening the border pushes the gold or tinted frame line inward as well. Internally, controls the width of the ornamental border in pixels, mapped from the 10-bit register to a 0–128 pixel range.
+#### Learning Outcomes
 
----
+Frame a video source inside a knotwork border, creating a simple illuminated manuscript page.
 
-#### Knob 2 — Ornament Scale
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
+#### Key Concepts
 
-Sets the spatial frequency of the ornament pattern by controlling the modular tile period. Lower values produce finer, more densely packed ornament — tighter knotwork crossings, smaller acanthus lobes, narrower fret steps. Higher values produce larger, more open patterns. The ornament scale also determines the band width used in knotwork and the leaf lobe size in acanthus scroll mode.
+- Zone classification divides the screen into ornament, frame, and miniature
+- Border Width and Ornament Scale control the ornamental margin
+- Pattern toggles select one of four ornament traditions
 
----
+#### Video Source
 
-#### Knob 3 — Color Depth
-| Property | Value |
-|----------|-------|
-| Range | 1 – 4 |
-| Default | 3 |
+A live camera feed or recorded footage with a clearly visible subject in the center of the frame.
 
-Controls how many entries from the medieval mineral palette are used for miniature zone quantization. At the lowest setting, only four pigments are available — ultramarine, vermillion, malachite, and ochre — producing bold, high-contrast posterization. At the highest setting, all eight pigments (including ivory, gold, lamp black, and lead white) are active, giving a subtler quantization with more tonal range.
+#### Steps
 
----
+1. **Create the border**: Turn **Border Width** (Knob 1) to about 40%. A knotwork border appears around the video.
+2. **Adjust ornament density**: Sweep **Ornament Scale** (Knob 2) from low to high. Watch the knotwork tiles become smaller and more intricate.
+3. **Try each ornament**: Flip **Pattern A** (Toggle 7) to **Scroll**: the knotwork becomes a sinuous vine. Flip **Pattern B** (Toggle 8) to **Diaper**: now you see a diamond lattice. Try all four combinations.
+4. **Adjust the frame width**: Return to knotwork (both toggles in their first position) and sweep Border Width slowly to find a proportional frame for your subject.
 
-#### Knob 4 — Gold Threshold
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 68.4% |
-| Suffix | % |
+#### Settings
 
-At low values, only the very brightest highlights receive gold treatment. At high values, mid-tones and even darker regions are gilded, pushing more of the miniature toward a golden monochrome. When gold leaf is disabled (toggle 9), this parameter has no visible effect. Internally, sets the luminance threshold above which pixels in the miniature zone are replaced with gold leaf color.
-
----
-
-#### Knob 5 — Vellum
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 29.3% |
-| Suffix | % |
-
-At zero, the output is perfectly smooth. As vellum increases, a subtle noise modulates brightness across the entire frame — border, frame line, and miniature alike — simulating the fibrous surface texture of prepared calfskin or goatskin. The noise is broadband and uniform, unlike the structured patterns of the ornament zone. Internally, controls the intensity of the LFSR-driven parchment grain texture overlaid on the Y channel.
+| Control | Value |
+|---------|-------|
+| Border Width | ~40% |
+| Ornament Scale | ~50% |
+| Color Depth | 4 (all 8 pigments) |
+| Gold Threshold | ~70% |
+| Vellum | ~30% |
+| Frame Color | ~170° |
+| Pattern A | Knot |
+| Pattern B | Geo |
+| Gold Leaf | On |
+| Aging | New |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-#### Knob 6 — Frame Color
-| Property | Value |
-|----------|-------|
-| Range | 0 – 360 |
-| Default | 60 |
+### Exercise 2: Gilded Palette
 
-When gold leaf is disabled, this parameter controls the hue of the frame line accent by modulating the U and V channels of the frame line color. Sweeping the control rotates the accent through warm and cool tones. When gold leaf is enabled, the frame line uses gold instead and this parameter has no visible effect on the frame line. The underlying mechanism is a simple bipolar U/V shift derived from the pot position.
+![Gilded Palette result](/img/instruments/videomancer/scriptorium/scriptorium_ex2_s1.png)
+*Gilded Palette — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-### Toggle Switches (Switches 7–11)
+#### Learning Outcomes
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Pattern A** | Knot | Scroll |
-| **8 — Pattern B** | Geo | Diaper |
-| **9 — Gold Leaf** | On | Off |
-| **10 — Aging** | New | Aged |
-| **11 — Bypass** | Off | On |
+Reduce your video to a handful of medieval pigments with gold leaf highlights, creating a richly colored manuscript illumination.
 
-Toggles 7 and 8 combine as a 2-bit selector to choose one of four ornament algorithms (Knotwork, Acanthus Scroll, Geometric Fret, Diaper). Toggle 9 enables or disables gold leaf substitution globally — affecting both the frame line and the miniature zone. Toggle 10 activates the aging effect, and toggle 11 provides bypass.
+#### Key Concepts
 
----
+- Palette quantization maps video to mineral pigments
+- Gold Threshold controls which brightness levels receive gold leaf
+- Color Depth limits the pigment count
 
-### Linear Potentiometer (Fader 12)
+#### Video Source
 
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
+Footage with a range of brightness levels: faces, landscapes, or still life with specular highlights work well.
 
-Crossfades between the dry (original) and wet (processed) signal via three interpolator_u instances. At 100% the full manuscript effect is visible. At 0% the original video passes through unaltered. Intermediate values blend the two, which can produce a ghostly overlay of the manuscript structure on top of recognizable video content.
+#### Steps
 
+1. **Start from Exercise 1 settings** with a knotwork border.
+2. **Reduce the palette**: Turn **Color Depth** (Knob 3) counterclockwise to step 1 (4 pigments). The video snaps to bold blocks of ultramarine, vermillion, malachite, and ochre.
+3. **Apply gold**: Turn **Gold Threshold** (Knob 4) counterclockwise until bright areas: specular highlights, white clothing, sky: turn to gold. Notice how the frame line is also gold.
+4. **Disable gold**: Flip **Gold Leaf** (Toggle 9) to **Off**. The gold vanishes from both the miniature and the frame line. Sweep **Frame Color** (Knob 6) to choose an accent hue for the frame.
+5. **Increase palette**: Slowly step Color Depth back up to step 4. Watch the palette expand: ivory appears, then gold, then black and white. The image gains tonal depth.
 
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
+#### Settings
 
-Routes the unprocessed input signal directly to the output, bypassing all Scriptorium processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises progress from basic page layout to full illuminated manuscript compositions. Each builds on the previous, gradually engaging more ornament modes, palette settings, and surface treatments.
-
-### Exercise 1: Knotwork Page
-
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: scriptorium_source1_house, after: scriptorium_ex1_s1 },
-    { label: "Fruit", before: scriptorium_source2_fruit, after: scriptorium_ex1_s2 },
-    { label: "Elephant", before: scriptorium_source3_elephant, after: scriptorium_ex1_s3 },
-    { label: "Pattern", before: scriptorium_source4_pattern, after: scriptorium_ex1_s4 },
-    { label: "Boy", before: scriptorium_source5_boy, after: scriptorium_ex1_s5 },
-    { label: "Knit", before: scriptorium_source6_knit, after: scriptorium_ex1_s6 },
-  ]}
-/>
-*Knotwork Page — simulated result across source images.*
-**Source**: A slowly moving camera feed with moderate contrast — portraits or architectural subjects work well.
-
-**What You'll Create**: Learn how border width, ornament scale, and basic palette quantization interact to create a framed manuscript page.
-
-1. **Set the border**: Turn Border Width to about 40%. A wide ornamental margin appears around the central video.
-2. **Select knotwork**: Ensure Pattern A is set to Knot and Pattern B to Geo. The border fills with interlaced ribbon bands.
-3. **Adjust scale**: Sweep Ornament Scale slowly. Watch the knotwork tile period change — small values produce dense weaving, large values produce open lattice.
-4. **Reduce palette**: Set Color Depth to its lowest step. The miniature collapses to four pigments — bold, poster-like medieval colors.
-5. **Add vellum**: Increase Vellum to about 30%. A subtle grain appears across the entire page, unifying border and miniature.
-
-**Key concepts**: Zone classification divides the frame into border/frame/miniature, knotwork uses XOR parity for over-under weave, palette quantization maps continuous color to discrete mineral pigments
+| Control | Value |
+|---------|-------|
+| Border Width | ~30% |
+| Ornament Scale | ~50% |
+| Color Depth | 1 (4 pigments) |
+| Gold Threshold | ~50% |
+| Vellum | ~30% |
+| Frame Color | ~170° |
+| Pattern A | Knot |
+| Pattern B | Geo |
+| Gold Leaf | On |
+| Aging | New |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Gilded Miniature
+### Exercise 3: Aged Manuscript
 
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: scriptorium_source1_house, after: scriptorium_ex2_s1 },
-    { label: "Fruit", before: scriptorium_source2_fruit, after: scriptorium_ex2_s2 },
-    { label: "Elephant", before: scriptorium_source3_elephant, after: scriptorium_ex2_s3 },
-    { label: "Pattern", before: scriptorium_source4_pattern, after: scriptorium_ex2_s4 },
-    { label: "Boy", before: scriptorium_source5_boy, after: scriptorium_ex2_s5 },
-    { label: "Knit", before: scriptorium_source6_knit, after: scriptorium_ex2_s6 },
-  ]}
-/>
-*Gilded Miniature — simulated result across source images.*
-**Source**: High-contrast footage with bright highlights — candle flames, sunlit surfaces, or specular reflections.
+![Aged Manuscript result](/img/instruments/videomancer/scriptorium/scriptorium_ex3_s1.png)
+*Aged Manuscript — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore gold leaf substitution and how the threshold control sculpts which parts of the image become gold.
+***A description of the exercise illustration.***
 
-1. **Start with a knotwork border**: Keep Border Width at ~30% with Knotwork pattern.
-2. **Enable gold leaf**: Confirm Gold Leaf toggle is On. Notice the frame line is now gold.
-3. **Sweep Gold Threshold**: Start high (~90%) — only the brightest specular highlights become gold. Slowly lower the threshold. More and more of the miniature turns gold as mid-tones cross the threshold.
-4. **Full palette**: Set Color Depth to its highest step. The non-gilded pigment areas now show the full eight-color palette.
-5. **Add aging**: Toggle Aging to Aged. The entire page darkens and desaturates, giving the gold areas more visual prominence against the muted background.
-6. **Compare toggles**: Switch Gold Leaf off. The frame line changes from gold to the hue accent, and the miniature shows only pigments — no gold anywhere.
+#### Learning Outcomes
 
-**Key concepts**: Gold leaf substitution is threshold-based, the frame line responds to the gold toggle independently, aging compounds with gold to enhance contrast between gilded and painted areas
+Combine all Scriptorium features to produce a weathered, centuries-old manuscript page with visible parchment grain and faded pigments.
 
----
+#### Key Concepts
 
-### Exercise 3: Four Ornament Comparison
+- Vellum texture unifies border and miniature under a single grain
+- Aging desaturates and dims the output
+- Mix blends the manuscript with the original source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "House", before: scriptorium_source1_house, after: scriptorium_ex3_s1 },
-    { label: "Fruit", before: scriptorium_source2_fruit, after: scriptorium_ex3_s2 },
-    { label: "Elephant", before: scriptorium_source3_elephant, after: scriptorium_ex3_s3 },
-    { label: "Pattern", before: scriptorium_source4_pattern, after: scriptorium_ex3_s4 },
-    { label: "Boy", before: scriptorium_source5_boy, after: scriptorium_ex3_s5 },
-    { label: "Knit", before: scriptorium_source6_knit, after: scriptorium_ex3_s6 },
-  ]}
-/>
-*Four Ornament Comparison — simulated result across source images.*
-**Source**: Any slowly changing video — abstract patterns, landscapes, or color bars.
+#### Video Source
 
-**What You'll Create**: Compare all four ornament algorithms and understand how their visual character changes with scale.
+Any footage with moderate color and contrast: portraits or interior scenes create an intimate, personal manuscript page.
 
-1. **Wide border**: Set Border Width to ~60% so the ornament dominates the frame.
-2. **Knotwork** (Knot + Geo): Observe the over-under interlaced bands. Note the two alternating colors at crossings.
-3. **Acanthus Scroll** (Scroll + Geo): Toggle Pattern A to Scroll. The border changes to an undulating vine pattern with piecewise-linear sine approximation.
-4. **Fret** (Knot + Diaper): Toggle Pattern A back to Knot, then set Pattern B to Diaper. A stepped Greek key meander appears in ochre tones.
-5. **Diaper** (Scroll + Diaper): Toggle Pattern A to Scroll. The border fills with repeating diamond lozenges in purple and vermillion.
-6. **Scale sweep**: For each pattern, sweep Ornament Scale through its full range. Each algorithm responds differently — knotwork changes crossing density, acanthus changes lobe width, fret changes step size, diaper changes diamond scale.
-7. **Gold frame**: Toggle Gold Leaf on and off to see how the frame line interacts with each ornament style.
+#### Steps
 
-**Key concepts**: All four ornaments are procedural from coordinate modular arithmetic, pattern toggle bits form a 2-bit selector, ornament scale affects tile period uniformly across all four modes
+1. **Set a wide border**: **Border Width** ~50%, **Ornament Scale** ~40%. Choose the diaper ornament (**Pattern A** to Scroll, **Pattern B** to Diaper).
+2. **Reduce the palette**: Set **Color Depth** to step 2 (5 pigments).
+3. **Add parchment**: Turn **Vellum** (Knob 5) to about 60%. A grainy, sandy texture appears across the entire image.
+4. **Age the page**: Flip **Aging** (Toggle 10) to **Aged**. The brightness drops and the colors fade, as though the page had been locked in a vault for centuries.
+5. **Gold highlights**: Enable **Gold Leaf** (Toggle 9) and set **Gold Threshold** (Knob 4) to about 60%. Only the brightest highlights receive gold (like the restrained gilding on a monastic psalter.)
+6. **Palimpsest blend**: Pull **Mix** (Fader 12) down to about 40%. The original video shows through the manuscript treatment like a ghostly underpainting.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Border Width | ~50% |
+| Ornament Scale | ~40% |
+| Color Depth | 2 (5 pigments) |
+| Gold Threshold | ~60% |
+| Vellum | ~60% |
+| Frame Color | ~90° |
+| Pattern A | Scroll |
+| Pattern B | Diaper |
+| Gold Leaf | On |
+| Aging | Aged |
+| Bypass | Off |
+| Mix | ~40% |
 
 ---
-
-
-## Tips
-
-- **Color Depth controls the historical period**: Fewer pigments evoke early medieval manuscripts (6th–9th century); more pigments suggest the later Gothic and Renaissance styles.
-- **Aging works best with gold**: The desaturation of aging makes gold areas stand out dramatically against muted pigment backgrounds, just as real gold on aged parchment catches the eye.
-- **Vellum unifies the composition**: Even a small amount of vellum texture ties the procedural border ornaments to the quantized miniature, making the whole frame feel like a single material surface.
-- **Mix for overlay effects**: Setting Mix to intermediate values blends the manuscript rendering over the original video, creating a translucent illumination overlay.
-- **Feedback routing**: Sending the output back to the input creates recursive palette quantization — the color palette narrows further with each pass, eventually collapsing to the dominant pigment.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Acanthus** | A thorny Mediterranean plant whose scrolling leaf forms became a dominant ornamental motif in classical and medieval decorative arts. |
-| **Burnished Gilding** | Gold leaf polished with an agate tool to achieve a mirror-like reflective surface, as opposed to flat (matte) gilding. |
-| **Diaper Pattern** | A repeating geometric surface pattern of small diamond or lozenge shapes, common in medieval textiles and architectural decoration. |
-| **Fret** | A continuous geometric border pattern of interlocking right-angle turns; also called Greek key or meander. |
-| **Gilding** | The application of gold leaf or gold paint to a surface, used in manuscripts to highlight important text and borders. |
-| **Insular Art** | The distinctive artistic tradition of early medieval Ireland and Britain, characterized by intricate interlace knotwork, spirals, and carpet pages. |
-| **Knotwork** | Interlaced ribbon patterns that weave over and under in continuous loops, a hallmark of Insular and Celtic art. |
-| **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator used here for vellum grain texture. |
-| **Manhattan Distance** | The sum of absolute differences along each axis (|ΔY| + |ΔU| + |ΔV|); used for nearest-pigment color matching. |
-| **Miniature** | In manuscript terminology, a small painting within the text, derived from the Latin *miniare* (to color with red lead), not from "small." |
-| **Mise en Page** | French term for page layout — the arrangement of text, decoration, and illustration within the margins of a manuscript folio. |
-| **Parchment** | Writing surface prepared from animal skin (calfskin = vellum, sheepskin = parchment proper), with a characteristic fibrous texture. |
-| **Pigment** | A colored powder ground from minerals, plants, or animals, mixed with a binder to make paint. |
-| **Scriptorium** | The writing room of a medieval monastery where manuscripts were copied and illuminated. |
-| **Ultramarine** | A deep blue pigment historically made from ground lapis lazuli; the most expensive pigment in the medieval palette. |
-| **Vellum** | Fine-quality parchment made from calfskin, valued for its smooth writing surface and durability. |
-| **Vermillion** | A brilliant red pigment made from ground cinnabar (mercury sulfide), widely used in medieval illumination. |
+- **Diaper Pattern**: A repeating lattice of diamond or lozenge shapes, common in Gothic manuscript backgrounds.
+
+- **Geometric Fret**: A stepped, angular ornamental border also known as the Greek key or meander pattern.
+
+- **Gold Leaf**: Extremely thin sheets of hammered gold applied to manuscript pages with an adhesive; the most prestigious decorative material in medieval book arts.
+
+- **Illuminated Manuscript**: A handwritten book decorated with gold, silver, and vivid pigments; produced primarily in medieval Europe.
+
+- **Knotwork**: Interlaced band patterns with no beginning or end, characteristic of Insular (Celtic and Anglo-Saxon) art.
+
+- **LFSR**: Linear Feedback Shift Register; a digital circuit that produces a repeating pseudo-random bit sequence, used here for vellum grain.
+
+- **Manhattan Distance**: The sum of absolute differences along each axis; used here as a fast color-distance metric for palette quantization.
+
+- **Miniature**: In manuscript terminology, the pictorial illustration within a decorated page (not a reference to size.)
+
+- **Palette Quantization**: Reducing the colors in an image to a fixed set of entries by mapping each pixel to its nearest palette match.
+
+- **Scriptorium**: The writing room in a medieval monastery where manuscripts were copied and illuminated by hand.
+
+- **Vellum**: Prepared animal skin (usually calf) used as a writing and painting surface for manuscripts.
 
 ---

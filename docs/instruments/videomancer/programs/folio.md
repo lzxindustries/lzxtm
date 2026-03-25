@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 121
 slug: /instruments/videomancer/folio
@@ -7,386 +7,403 @@ image: /img/instruments/videomancer/folio/folio_hero_s1.png
 description: "Folio simulates the page turn transition familiar from presentation software and e-book readers, implemented entirely in scanline-rate FPGA logic."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import folio_control_panel from '/img/instruments/videomancer/folio/folio_control_panel.png';
-import folio_source1_sunset from '/img/instruments/videomancer/folio/folio_source1_sunset.png';
-import folio_source2_house from '/img/instruments/videomancer/folio/folio_source2_house.png';
-import folio_source3_elephant from '/img/instruments/videomancer/folio/folio_source3_elephant.png';
-import folio_source4_pattern from '/img/instruments/videomancer/folio/folio_source4_pattern.png';
-import folio_source5_man from '/img/instruments/videomancer/folio/folio_source5_man.png';
-import folio_source6_paint from '/img/instruments/videomancer/folio/folio_source6_paint.png';
-import folio_hero_s1 from '/img/instruments/videomancer/folio/folio_hero_s1.png';
-import folio_hero_s2 from '/img/instruments/videomancer/folio/folio_hero_s2.png';
-import folio_hero_s3 from '/img/instruments/videomancer/folio/folio_hero_s3.png';
-import folio_hero_s4 from '/img/instruments/videomancer/folio/folio_hero_s4.png';
-import folio_hero_s5 from '/img/instruments/videomancer/folio/folio_hero_s5.png';
-import folio_hero_s6 from '/img/instruments/videomancer/folio/folio_hero_s6.png';
-import folio_ex1_s1 from '/img/instruments/videomancer/folio/folio_ex1_s1.png';
-import folio_ex1_s2 from '/img/instruments/videomancer/folio/folio_ex1_s2.png';
-import folio_ex1_s3 from '/img/instruments/videomancer/folio/folio_ex1_s3.png';
-import folio_ex1_s4 from '/img/instruments/videomancer/folio/folio_ex1_s4.png';
-import folio_ex1_s5 from '/img/instruments/videomancer/folio/folio_ex1_s5.png';
-import folio_ex1_s6 from '/img/instruments/videomancer/folio/folio_ex1_s6.png';
-import folio_ex2_s1 from '/img/instruments/videomancer/folio/folio_ex2_s1.png';
-import folio_ex2_s2 from '/img/instruments/videomancer/folio/folio_ex2_s2.png';
-import folio_ex2_s3 from '/img/instruments/videomancer/folio/folio_ex2_s3.png';
-import folio_ex2_s4 from '/img/instruments/videomancer/folio/folio_ex2_s4.png';
-import folio_ex2_s5 from '/img/instruments/videomancer/folio/folio_ex2_s5.png';
-import folio_ex2_s6 from '/img/instruments/videomancer/folio/folio_ex2_s6.png';
-import folio_ex3_s1 from '/img/instruments/videomancer/folio/folio_ex3_s1.png';
-import folio_ex3_s2 from '/img/instruments/videomancer/folio/folio_ex3_s2.png';
-import folio_ex3_s3 from '/img/instruments/videomancer/folio/folio_ex3_s3.png';
-import folio_ex3_s4 from '/img/instruments/videomancer/folio/folio_ex3_s4.png';
-import folio_ex3_s5 from '/img/instruments/videomancer/folio/folio_ex3_s5.png';
-import folio_ex3_s6 from '/img/instruments/videomancer/folio/folio_ex3_s6.png';
-
-# Folio
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: folio_source1_sunset, after: folio_hero_s1 },
-    { label: "House", before: folio_source2_house, after: folio_hero_s2 },
-    { label: "Elephant", before: folio_source3_elephant, after: folio_hero_s3 },
-    { label: "Pattern", before: folio_source4_pattern, after: folio_hero_s4 },
-    { label: "Man", before: folio_source5_man, after: folio_hero_s5 },
-    { label: "Paint", before: folio_source6_paint, after: folio_hero_s6 },
-  ]}
-/>
-*A photographic image caught mid-page-turn, its right half compressed into a narrow vertical strip against a saturated teal background — the fold edge darkened, the revealed colour field filling the vacated screen space.*
+![Folio hero image](/img/instruments/videomancer/folio/folio_hero_s1.png)
+*Folio simulating a 3D page turn, compressing live video into a narrowing strip while revealing a colored background beneath.*
 
 ---
 
 ## Overview
 
-Folio simulates the page turn transition familiar from presentation software and e-book readers, implemented entirely in scanline-rate FPGA logic. The incoming video frame is treated as a flat page anchored at one edge — the hinge — that rotates away from the viewer to reveal a coloured background. As the turn angle increases, the visible width of the page shrinks according to a cosine function: at zero degrees the page is fully open and fills the screen; at ninety degrees it collapses to a vertical line and vanishes. A Digital Differential Analyzer compresses the full source scanline into the narrowing visible region, maintaining horizontal detail as the page folds.
+Folio is a real-time page turn transition for live video. It simulates a flat page anchored at one edge: the ***hinge***: that folds away from the viewer like a turning book page. As the page turns, the visible portion of the video compresses horizontally and darkens with perspective shading, revealing a solid-colored background behind it. The result is a convincing 3D page turn effect built entirely from 2D scanline manipulation.
 
-The effect operates on every scanline independently, reading from a line buffer and writing compressed pixels into the visible region while filling the remaining screen with a configurable background colour. Fold shading attenuates the luminance of the turning page proportional to the cosine of the turn angle, simulating the way a physical page catches less light as it turns edge-on. An optional sharp shadow near the fold edge adds depth cues. The background is a solid colour field whose hue and luminance are controlled independently, allowing the revealed surface to range from deep black through vivid chromatic fields to bright white.
+The compression is driven by a ***cosine function***: at zero degrees the page faces the viewer straight-on and occupies the full screen width. As the turn angle increases toward ninety degrees, the page narrows according to the cosine curve, eventually collapsing to a thin vertical line. This geometry matches how a flat surface would appear when rotated in perspective: the projected width of a tilted rectangle is proportional to the cosine of its tilt angle.
 
-The name *Folio* refers to a single leaf of a book or manuscript — a page that can be turned to reveal the next surface beneath. In bookbinding, a folio is also the largest standard page format, formed by folding a full press sheet once. Both meanings resonate: the program treats the entire video frame as one large page, folding it away to expose a new field.
+Folio can operate manually, where the turn position is set by a knob, or automatically via an internal oscillator that sweeps the page open and closed in a continuous loop. A configurable background color and fold shadow complete the illusion.
+
+:::tip
+Folio excels as a ***transition effect***. Place it in your signal chain and use the **Turn Pos** knob or auto-animation to wipe between your live video and a colored backdrop. The **Mix** fader lets you blend between the processed and unprocessed signal for subtler reveals.
+:::
+
+### What's In a Name?
+
+A ***folio*** is a large sheet of paper folded once to form two leaves: the basic unit of a bound book. The name evokes the physical act of turning a page: grabbing a corner and swinging it around the spine. In traditional bookbinding, the folio is the grandest format, and the page turn is the most fundamental interaction. Videomancer's Folio translates that gesture into real-time video, folding your signal like a leaf of parchment.
 
 ---
 
 ## Quick Start
 
-1. **Start in Manual mode**: Set Animate to Manual and explore different turn angles with the Turn Pos knob before enabling auto-animation. This builds intuition for the cosine compression curve.
-2. **Shadow depth sets the mood**: Low Shadow values create dramatic contrast between open and closed states — the page darkens significantly as it turns. High values keep the page bright throughout, producing a flatter, more graphic look.
-3. **Fold shadow adds depth**: The 8-pixel crease shadow is subtle but effective. Enable it for realistic page turn simulations; disable it for a cleaner, more abstract wipe effect.
+1. Feed a recognizable video signal into Videomancer with Folio loaded. The image appears normal (the page is fully open at 0°.)
+2. Slowly turn **Turn Pos** (Knob 1) clockwise. The video compresses horizontally from one side, revealing a colored background. You are watching the page fold away.
+3. Toggle **Hinge** (Switch 7) between **Left** and **Right** to change which edge the page is anchored to. The fold reverses direction.
+4. Flip **Animate** (Switch 10) to **Auto** and increase **Anim Spd** (Knob 3). The page begins to oscillate on its own, sweeping open and closed in a continuous loop.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Folio loaded](/img/instruments/videomancer/folio/folio_control_panel.png)
+*Videomancer's front panel with Folio active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Turn Pos
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 90° |
+| Default | 0° |
+
+**Turn Pos** sets the manual turn angle of the page. At 0°, fully counterclockwise, the page faces the viewer head-on and the full input image is visible at its native resolution. As you turn the knob clockwise, the page rotates away from the viewer: the visible width shrinks according to a cosine curve, and the input video is horizontally compressed into the narrowing strip. Around two-thirds of the knob travel, the page reaches its edge-on position: nearly invisible: with the background fully revealed. Continuing past that point, the page begins to reopen as though viewed from behind.
+
+:::note
+**Turn Pos** has no effect when **Animate** (Switch 10) is set to **Auto**. In Auto mode, the internal oscillator controls the turn angle and the knob is ignored.
+:::
+
+---
+
+### Knob 2 — BKG Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 360° |
+| Default | 180° |
+
+**BKG Hue** selects the hue of the background color revealed behind the turning page. The knob sweeps through a full 360° color circle, cycling through reds, yellows, greens, cyans, blues, and magentas. The background is a flat, uniform color: no texture, no gradient. Its brightness is set independently by **BKG Lum** (Knob 6). Together, Hue and Luminance let you dial in any solid color backdrop.
+
+---
+
+### Knob 3 — Anim Spd
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Anim Spd** controls the speed of automatic page turn animation. This parameter only has an effect when **Animate** (Switch 10) is set to **Auto**. At 0%, the page is stationary. As the value increases, the page oscillates faster, sweeping from fully open to edge-on and back in a continuous cycle. At high speeds the motion becomes a rapid flutter; at low speeds it produces a slow, dramatic page turn.
+
+The oscillation is driven by a ***direct digital synthesis*** (DDS) phase accumulator: the same technique used in audio synthesizers to generate precise waveforms. Each frame, the speed value is added to a running phase counter, and the accumulated phase selects a position on the cosine curve.
+
+---
+
+### Knob 4 — Curvatur
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Curvatur** is labeled on the panel but is reserved for a future update. In the current version, adjusting this knob has no visible effect on the output. It is intended to add a bowing or warping curvature to the fold geometry.
+
+---
+
+### Knob 5 — Shadow
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Shadow** controls the intensity of perspective shading applied to the turning page. Shading simulates the way a real page darkens as it angles away from a light source. At 0%, the shading effect is at full strength: a page turned to 90° goes completely black. At the default midpoint of 50%, the page retains about half its brightness when edge-on. At 100%, shading is disabled entirely and the page luminance is unaffected by the turn angle.
+
+The shading formula blends between a brightness floor (set by this knob) and full cosine-driven attenuation. Shading affects only the luminance channel: chrominance passes through unaltered, so colors remain vivid even as the page darkens.
+
+:::tip
+Set **Shadow** low for dramatic, cinematic page turns where the folding edge disappears into darkness. Set it high if you want the compressed video content to remain fully visible regardless of turn angle.
+:::
+
+---
+
+### Knob 6 — BKG Lum
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**BKG Lum** sets the brightness of the background color. At 0%, the background is black regardless of the hue setting. At 100%, the background is at maximum brightness. Combined with **BKG Hue** (Knob 2), this lets you create any solid color from deep dark tones to vivid saturated fields to bright pastels.
+
+---
+
+### Switch 7 — Hinge
+
+| Property | Value |
+|----------|-------|
+| Off | Left |
+| On | Right |
+| Default | Left |
+
+**Hinge** selects which edge of the frame the page is anchored to. When set to **Left**, the page is hinged at the left edge: turning the page reveals the background from the right side, and the compressed video remains anchored to the left. When set to **Right**, the anchor flips: the page folds from the left, revealing background on the left side, with video anchored to the right.
+
+---
+
+### Switch 8 — Axis
+
+| Property | Value |
+|----------|-------|
+| Off | Horiz |
+| On | Vert |
+| Default | Vert |
+
+**Axis** is labeled as **Horiz** / **Vert** on the panel but is reserved for a future update. In the current version, the page turn always operates along the horizontal axis (compressing scanlines horizontally). Toggling this switch has no visible effect. It is intended to add a vertical turn mode that would compress the image vertically instead.
+
+---
+
+### Switch 9 — Fold Shd
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Fold Shd** enables or disables the fold shadow: a darkened crease that appears at the bending edge of the turning page. When set to **On** (the default), an 8-pixel strip along the fold edge receives an additional 50% luminance reduction on top of the normal perspective shading, creating a visible crease line. When set to **Off**, the fold edge blends smoothly with the rest of the page surface.
+
+:::tip
+The fold shadow is a small but important detail for realism. It simulates the way a physical page casts a shadow on itself at the fold. Enable it for convincing page turns; disable it for a cleaner, more abstract compression effect.
+:::
+
+---
+
+### Switch 10 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Manual |
+| On | Auto |
+| Default | Manual |
+
+**Animate** selects between manual and automatic page turn control. In **Manual** mode (default), the turn angle is controlled entirely by **Turn Pos** (Knob 1). In **Auto** mode, an internal oscillator drives the turn angle and the Turn Pos knob is ignored. The oscillation speed is set by **Anim Spd** (Knob 3). Auto mode produces a continuous, hands-free page turn loop: useful for installations, performances, or any situation where you want the effect to run unattended.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Folio processing stages. The sync delay pipeline still aligns timing, so there is no glitch when toggling. Use Bypass for instant A/B comparison between the raw input and the page turn effect.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** crossfades between the dry (unprocessed) input and the wet (page turn) output. At 0%, the output is entirely dry: you see the original video with no page turn effect. At 100% (the default), the output is entirely wet: the full page turn is visible. Intermediate positions blend the two, creating a ghostly overlay where the turning page and the unprocessed image coexist.
 
 ---
 
 ## Background
 
-### Page Turn Transitions in Presentation Software
+### The geometry of a turning page
 
-The page turn is one of the oldest and most recognisable slide transitions, appearing in early Macintosh presentation tools and later becoming a standard effect in PowerPoint, Keynote, and PDF viewers. The visual metaphor is immediately legible: the current content lifts from one edge and curls away, revealing the next slide beneath. Early implementations used simple horizontal wipes or accordion folds; modern versions add perspective distortion, specular highlights, and shadow mapping. Folio distills the effect to its geometric essence — cosine-based width compression and luminance attenuation — producing a convincing page turn without the computational overhead of 3D texture mapping or mesh deformation.
+When a flat sheet of paper rotates around a vertical hinge, its apparent width changes. Viewed head-on, the page occupies its full width. As it turns, the visible width narrows. At 90°: perfectly edge-on: the page is just a thin line. The relationship between the turn angle and the visible width is the ***cosine function***: $W = W_0 \cdot \cos(\theta)$, where $W_0$ is the full width and $\theta$ is the turn angle.
 
-### Cosine-Based Horizontal Compression
+This is the same projection that makes a coin look like an ellipse when tilted, or a door appear to shrink as it swings open. Folio uses a 128-entry cosine lookup table to compute this projection for every frame. The result is a convincing 3D perspective illusion built from simple 1D horizontal compression.
 
-When a flat surface rotates around a vertical axis, its projected width on a frontal plane follows a cosine curve: $W = W_0 \cos(\theta)$. At $\theta = 0°$ (face-on), the full width is visible; at $90°$ (edge-on), the projected width reaches zero. This relationship is exact for orthographic projection and a close approximation for moderate perspective. Folio stores a 128-entry quarter-cosine lookup table covering $0°$ to approximately $180°$ (oscillating), with 10-bit output precision. The table maps the turn angle to a scaling factor that determines how many screen pixels the compressed page occupies. Because the cosine function is smooth and monotonic in the first quadrant, the compression accelerates as the page approaches edge-on — a visually natural behaviour that matches real paper.
+### Horizontal compression via DDA
 
-### DDA Line Drawing and Scanline Resampling
+Once Folio knows how many pixels wide the visible page should be, it needs to compress the full-resolution input scanline into that narrower strip. It does this using a ***Digital Differential Analyzer*** (DDA): a classic algorithm from computer graphics that maps coordinates from one space to another. The DDA maintains a running accumulator that steps through source pixel addresses at a fractional rate, reading from the line buffer at non-integer positions. The step size is computed once per frame via a hardware divider: $\text{step} = W_0 / W_{\text{visible}}$.
 
-The Digital Differential Analyzer is a classic algorithm for rasterising lines and resampling signals at non-integer rates. In Folio, the DDA compresses a full 1280-pixel source scanline into the visible width determined by the cosine lookup. The DDA step size is computed as $\text{step} = \text{source\_width} / \text{visible\_width}$ in 11.10 fixed-point arithmetic. As the output pixel counter traverses the visible region, the DDA accumulator increments by this step, and the integer part of the accumulator selects the source pixel from the line buffer. When the visible width is smaller than the source width, the step exceeds 1.0 and source pixels are skipped — an effective nearest-neighbour decimation that preserves edges and high-contrast features better than linear interpolation at this resolution.
+When the page is fully open, the step size is 1:1: each output pixel reads one input pixel. As the page narrows, the step size increases, skipping source pixels to compress the image. The result is a rescaled version of the input squeezed into the visible region, with the background color filling the remainder of the scanline.
 
-### Fold Shading in 3D Graphics
+### Fold shading and depth cues
 
-In 3D rendering, surfaces that face away from the light source receive less illumination — the classic Lambertian shading model scales brightness by the cosine of the angle between the surface normal and the light direction. Folio applies a simplified version: the shade factor is derived from the same cosine value used for width compression, attenuating the page's luminance as it turns away. An additional shadow depth parameter sets a floor — the minimum brightness the page reaches at $90°$. Near the fold edge (within 8 pixels of the hinge-opposite boundary), an optional extra darkening halves the luminance, simulating the crease shadow where a physical page bends. This two-level shading produces a convincing depth illusion at minimal hardware cost.
-
-### Background Chromakey and Hue Selection
-
-The area behind the turning page is filled with a solid colour determined by two parameters: a hue angle and a luminance value. The hue is resolved through 64-entry sinusoidal U and V lookup tables that map the 10-bit register to a full $360°$ colour wheel at the chroma midpoint. The luminance control sets the Y channel directly. This separation allows the background to take any visible colour — from deep saturated primaries at moderate luminance to pastel tints at high luminance to solid black at zero. The background acts as a chromakey surface: downstream keying programs can isolate the revealed region by colour, making Folio useful as a shaped mask generator in multi-program video chains.
+A real turning page darkens as it angles away from a light source. Folio simulates this with two layers of shading. The first layer is ***perspective shading***: the luminance of every "page" pixel is multiplied by a factor derived from the cosine value and the Shadow knob, so the page gradually darkens as it turns. The second layer is the ***fold shadow***: an 8-pixel strip at the bending edge receives an additional 50% luminance reduction, creating a visible crease. Together, these two shading layers give the flat 2D effect a convincing sense of depth.
 
 
 ---
 
 ## Signal Flow
 
-```
-[Per-Frame (vsync_start)]
-├─ Auto Animate?
-│   ├─ Yes: turn_phase += anim_speed   (16-bit DDS accumulator)
-│   └─ No:  turn_phase = turn_pot << 9 (manual, 7-bit index)
-└─ Cosine LUT: cos_value = COS_LUT[turn_phase[15:9]]
+### Signal Flow Notes
 
-[Per-Pixel Pipeline]
-│
-├─ Stage 0: Input Register + Counter Update
-│   ├─ Write input Y/U/V to line buffer at wr_addr
-│   ├─ h_count++ during AVID
-│   ├─ v_count++ at hsync, lb_ab toggle
-│   └─ ◄── data_in
-│
-├─ Stage 1: Visible Region Geometry
-│   ├─ visible_width = active_width × cos_value / 1024
-│   ├─ Hinge Left:  visible_left=0, visible_right=visible_width
-│   ├─ Hinge Right: visible_left=active_width−visible_width, visible_right=active_width
-│   ├─ DDA step = active_width × 1024 / visible_width  (11.10 fixed-point)
-│   └─ shade_factor = shadow_depth + (1023 − shadow_depth) × cos_value / 1024
-│       ◄── Turn Pos (pot 1), Shadow (pot 5), Hinge (tog 7)
-│
-├─ Stage 2: Region Classification + DDA Address
-│   ├─ in_visible = (h_count ≥ visible_left) ∧ (h_count < visible_right) ∧ (visible_width > 2)
-│   ├─ DDA accumulator: accum += dda_step (reset at visible_left)
-│   ├─ read_addr = accum[20:10]  (integer part)
-│   ├─ Fold zone: 8 pixels from fold edge
-│   │   ├─ Hinge Left:  fold = (visible_right − h_count ≤ 8)
-│   │   └─ Hinge Right: fold = (h_count − visible_left < 8)
-│   └─ Pipeline: in_visible_d1/d2, in_fold_d1/d2
-│
-├─ Stages 3–4: Line Buffer Read (2-clock latency)
-│   ├─ lb_y_out = Y_buffer[read_addr]
-│   ├─ lb_u_out = U_buffer[read_addr]
-│   └─ lb_v_out = V_buffer[read_addr]
-│
-├─ Stage 5: Compositor (fold shading + background)
-│   ├─ Visible pixel:
-│   │   ├─ comp_y = lb_y × shade_factor / 1024
-│   │   ├─ Fold zone + Fold Shadow enabled: comp_y >>= 1
-│   │   ├─ comp_u = lb_u,  comp_v = lb_v
-│   ├─ Background pixel:
-│   │   ├─ comp_y = bkg_lum
-│   │   ├─ comp_u = HUE_U_LUT[bkg_hue[9:4]]
-│   │   └─ comp_v = HUE_V_LUT[bkg_hue[9:4]]
-│   └─ ◄── BKG Hue (pot 2), BKG Lum (pot 6), Fold Shd (tog 9)
-│
-├─ Stages 6–9: Interpolator Mix (×3 channels, 4 clocks)
-│   └─ mix = lerp(delayed_input, composite, mix_amount)
-│       ◄── Mix (fader 12)
-│
-├─ Sync Delay Pipeline (10-clock shift register)
-│
-└─ Output Mux
-    ├─ Bypass Off → mixed Y/U/V + aligned sync
-    └─ Bypass On  → delayed input Y/U/V + aligned sync
-        ◄── Bypass (tog 11)
-```
+The key architectural decision in Folio is the separation of write and read paths through the line buffers. Input pixels are written sequentially at native resolution, one per clock. Output pixels are read at DDA-compressed addresses, so the line buffer acts as a random-access scanline resampler. This allows horizontal compression without a dedicated scaler: the DDA accumulator simply skips ahead through the stored scanline data at the appropriate rate.
 
-The cosine lookup and visible width computation are updated once per frame during vertical blanking. The 7-bit LUT index derived from the turn phase maps onto 128 entries that cover a full oscillation cycle — the first 82 entries span $0°$ to approximately $90°$ (full open to edge-on), and the remaining entries mirror the descent back. In manual mode the pot maps directly to the first quadrant ($0°$–$90°$), while auto-animate mode free-runs through the full oscillation. The DDA step calculation uses a fixed-point division that produces exact nearest-neighbour resampling: each screen pixel in the visible region maps to one or more source pixels, with no interpolation or blending between samples.
+The DDA step divider uses a restoring binary division algorithm that runs during vertical blanking, completing in 24 clock cycles: well within the available blanking time. This avoids any combinational divider on the pixel processing path, keeping the pipeline deterministic and timing-clean.
 
-The fold zone detection identifies the 8 pixels nearest the fold edge — the boundary where the page meets the background. When fold shadow is enabled, these pixels receive an additional 50% luminance reduction on top of the global shade factor, producing a visible dark crease line at the fold. The zone is measured from the hinge-opposite edge: for a left hinge, the fold is at the right boundary of the visible region; for a right hinge, the fold is at the left boundary. This 8-pixel shadow is narrow enough to read as a crease rather than a gradient, adding depth without obscuring content.
-
----
-
-## Parameter Reference
-
-<img src={folio_control_panel} alt="Videomancer front panel with Folio loaded"/>
-*Videomancer's front panel with Folio active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Turn Pos
-| Property | Value |
-|----------|-------|
-| Range | 0° – 90° |
-| Default | 0° |
-| Suffix | ° |
-
-At minimum the page is fully open and fills the entire screen width — no compression or shading is applied. As the knob advances, the visible width narrows according to the cosine curve, reaching approximately half width at $60°$ and collapsing to a thin strip near $90°$. The luminance also dims progressively as the shade factor tracks the same cosine value. This control has no effect when Animate is set to Auto, since the DDS phase accumulator overrides the manual position. The relationship between knob position and visual width is non-linear — the first $45°$ of rotation removes relatively little width, while the final $45°$ compresses the page dramatically. This matches the geometric reality of a cosine curve and produces a natural-feeling turn. Internally, sets the page turn angle in manual mode.
-
----
-
-#### Knob 2 — BKG Hue
-| Property | Value |
-|----------|-------|
-| Range | 0° – 360° |
-| Default | 180° |
-| Suffix | ° |
-
-Selects the hue of the background colour revealed behind the turning page. The 10-bit register indexes into 64-entry sinusoidal U and V lookup tables that sweep through the full $360°$ colour wheel. At $0°$ the background has maximum U (blue-shifted) with neutral V. Sweeping clockwise traverses cyan, green, yellow, red, magenta, and back to blue. The hue control affects only the chrominance of the background — luminance is set independently by BKG Lum. At any hue, the background saturation is fixed at the LUT's peak amplitude; to desaturate, reduce BKG Lum toward zero (which produces dark, near-black tones) or increase it toward maximum (which pushes toward pastel territory as Y rises above the chroma signal).
-
----
-
-#### Knob 3 — Anim Spd
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
-
-Controls the speed of automatic page turn animation. In Auto mode, this value is added to a 16-bit phase accumulator once per frame during vertical blanking. At minimum (0), the accumulator does not advance and the page holds its current position. At moderate values the page turns slowly — completing a full open-close-open oscillation cycle over several seconds. At maximum the page flips rapidly, producing a fast, rhythmic folding and unfolding motion. Because the cosine LUT covers a symmetric oscillation (open → closed → open), the animation appears as a continuous back-and-forth page flip rather than a one-way turn. This parameter has no effect when Animate is set to Manual.
-
----
-
-#### Knob 4 — Curvatur
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
-
-Reserved for fold curvature control. In the current VHDL implementation, this register is read but not connected to any processing logic — the page turn is always a flat fold with no cylindrical curvature. The parameter is exposed for future firmware revisions that may add perspective warping or curved fold geometry. Adjusting this knob has no visible effect on the output.
-
----
-
-#### Knob 5 — Shadow
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At minimum ($0$%), the shade factor allows the page to dim all the way to black at $90°$, creating dramatic contrast between the fully open and fully closed states. At the default midpoint ($50$%), the page retains moderate brightness even when nearly edge-on. At maximum ($100$%), no luminance attenuation occurs regardless of turn angle — the page stays at full brightness throughout the turn. The shade factor is computed as $\text{shadow\_depth} + (1023 - \text{shadow\_depth}) \times \cos(\theta) / 1024$, so higher values raise the floor without affecting the fully-open brightness. This control interacts with Fold Shadow: when both are active, the fold zone receives the shade factor's attenuation plus an additional $50$% cut, which can produce very dark crease lines at low shadow depth settings. Internally, sets the shadow depth — the minimum luminance the page retains at its most edge-on orientation.
-
----
-
-#### Knob 6 — BKG Lum
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Sets the luminance of the background colour field. This value is applied directly as the Y channel for all background pixels — those outside the visible page region. At zero, the background is black regardless of the hue setting. At maximum, the background is a bright pastel or near-white depending on the hue. At the default midpoint, the background sits at a moderate luminance that allows most hue selections to read as saturated colours. This control is independent of the page's own luminance — the page brightness is governed by the shade factor, while the background brightness is set here. The combination of BKG Hue and BKG Lum provides full control over the revealed surface colour.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Hinge** | Left | Right |
-| **8 — Axis** | Horiz | Vert |
-| **9 — Fold Shd** | Off | On |
-| **10 — Animate** | Manual | Auto |
-| **11 — Bypass** | Off | On |
-
-The five toggles divide into three functional groups. Hinge (7) and Axis (8) define the geometric configuration of the page turn — which edge is anchored and which axis the fold operates along. In the current implementation only Hinge is active; Axis is reserved for future use. Fold Shadow (9) and Animate (10) control the rendering and animation behaviour — whether the fold crease is visible and whether the turn angle auto-advances. Bypass (11) overrides all processing. The most common workflow is to set Hinge and Fold Shadow first to define the visual character, then choose Manual or Auto animation, and finally use Bypass for A/B comparison.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Crossfades between the delayed dry input and the processed page turn composite. At $0$% (fader down), the output is the unprocessed input — no page turn is visible. At $100$% (fader up), the output is the full composite with the page turn effect, fold shading, and background colour. Intermediate positions blend the two, allowing the page turn to appear as a semi-transparent overlay. This is useful for softening the transition or for creating ghostly page-fold effects where the background shows through a dimmed, partially visible page. The interpolator operates independently on Y, U, and V channels.
-
-
-
+:::note
+Shading is applied only to the luminance channel. Chrominance (U, V) passes through unmodified from the line buffer. This means colors remain fully saturated even as the page darkens: a deliberate design choice that preserves color vibrancy during the turn.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from a static half-turn through animated oscillation to creative use of the background colour as a shaped mask. Feed a recognisable source image — text, graphics, or camera footage — so the compression and shading effects are clearly visible.
+These exercises explore Folio's page turn from basic manual control through animated transitions to creative signal chain techniques.
+### Exercise 1: Manual Page Turn
 
-### Exercise 1: Static Half Turn
+![Manual Page Turn result](/img/instruments/videomancer/folio/folio_ex1_s1.png)
+*Manual Page Turn — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: folio_source1_sunset, after: folio_ex1_s1 },
-    { label: "House", before: folio_source2_house, after: folio_ex1_s2 },
-    { label: "Elephant", before: folio_source3_elephant, after: folio_ex1_s3 },
-    { label: "Pattern", before: folio_source4_pattern, after: folio_ex1_s4 },
-    { label: "Man", before: folio_source5_man, after: folio_ex1_s5 },
-    { label: "Paint", before: folio_source6_paint, after: folio_ex1_s6 },
-  ]}
-/>
-*Static Half Turn — simulated result across source images.*
-**Source**: A high-contrast image with readable text or geometric patterns — something where horizontal compression is immediately obvious.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Observe the cosine-based width compression and fold shading at a fixed turn angle to understand the geometric relationship between angle and visible width.
+#### Learning Outcomes
 
-1. **Set manual mode**: Ensure Animate is set to Manual.
-2. **Half turn**: Set Turn Pos to approximately 60° (~66%). The page should compress to roughly half its original width.
-3. **Left hinge**: Set Hinge to Left. The visible region occupies the left portion of the screen, with background filling the right.
-4. **Enable fold shadow**: Set Fold Shd to On. A dark crease should be visible at the right edge of the visible page.
-5. **Adjust shadow depth**: Sweep Shadow from 0% to 100%. At 0%, the page is dramatically darkened; at 100%, the page retains full brightness despite the turn angle.
-6. **Switch hinge**: Flip Hinge to Right. The visible region mirrors to the right side of the screen. The fold shadow moves to the left edge of the visible region.
-7. **Full turn**: Advance Turn Pos to 90°. The page collapses to a thin strip and nearly disappears.
+A controlled, cinematic page turn that reveals a colored background behind a live video feed.
 
-**Key concepts**: Cosine curve produces non-linear width compression — the page narrows slowly at first and rapidly near 90°. Fold shadow adds a visible crease at the fold boundary. Shadow depth sets the minimum brightness floor. Hinge selection mirrors the geometry.
+#### Key Concepts
 
----
+- Cosine-based horizontal compression
+- Hinge side selection
+- Perspective shading and fold shadow
 
-### Exercise 2: Animated Page Flip
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: folio_source1_sunset, after: folio_ex2_s1 },
-    { label: "House", before: folio_source2_house, after: folio_ex2_s2 },
-    { label: "Elephant", before: folio_source3_elephant, after: folio_ex2_s3 },
-    { label: "Pattern", before: folio_source4_pattern, after: folio_ex2_s4 },
-    { label: "Man", before: folio_source5_man, after: folio_ex2_s5 },
-    { label: "Paint", before: folio_source6_paint, after: folio_ex2_s6 },
-  ]}
-/>
-*Animated Page Flip — simulated result across source images.*
-**Source**: A video source with moderate motion — camera footage or a slowly changing pattern. The motion helps distinguish the compressed page content from the static background.
+A live camera feed or recorded footage with recognizable subjects and moderate contrast.
 
-**What You'll Create**: Explore automatic page turn animation, observing the oscillating open-close cycle and the interaction between animation speed and shade factor.
+#### Steps
 
-1. **Enable auto animation**: Set Animate to Auto.
-2. **Slow speed**: Set Anim Spd to approximately 20%. The page turns slowly, taking several seconds for a full cycle.
-3. **Watch the cycle**: Observe the page open fully, compress to a thin strip, then open again. The cosine LUT produces a smooth oscillation.
-4. **Increase speed**: Raise Anim Spd to 60%. The page flips rapidly — note how the shading pulses in sync with the width compression.
-5. **Reduce shadow**: Set Shadow to 0%. The page now darkens dramatically at the closed position, creating a strong strobe-like pulse.
-6. **Disable fold shadow**: Set Fold Shd to Off. The crease line disappears, leaving only the global shade attenuation.
-7. **Right hinge**: Switch Hinge to Right. The animation mirrors — the page now folds away from the left.
+1. **Full page**: With **Turn Pos** (Knob 1) fully counterclockwise, the input image fills the screen at native resolution. This is the page at 0°.
+2. **Begin the turn**: Slowly rotate Turn Pos clockwise. The image compresses horizontally from the right side: the page is folding away. A colored background appears where the page retreats.
+3. **Observe shading**: As the page narrows, it darkens. This is perspective shading. Look for the darker crease at the fold edge (the fold shadow.)
+4. **Flip the hinge**: Toggle **Hinge** (Switch 7) to **Right**. The page now folds from the left instead. Try the same slow turn and notice the mirror-image behavior.
+5. **Set the backdrop**: Adjust **BKG Hue** (Knob 2) and **BKG Lum** (Knob 6) to choose the revealed background color.
 
-**Key concepts**: DDS phase accumulator produces continuous oscillation through the cosine LUT. The open-close-open cycle is inherent to the symmetric LUT. Shadow depth modulates the contrast of the animation cycle. Animation speed is additive — higher values complete cycles faster.
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Turn Pos | ~45° |
+| BKG Hue | 180° |
+| Anim Spd | 0% |
+| Curvatur | 0% |
+| Shadow | 50% |
+| BKG Lum | 60% |
+| Hinge | Left |
+| Axis | Vert |
+| Fold Shd | On |
+| Animate | Manual |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Coloured Mask Generation
+### Exercise 2: Automated Page Loop
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: folio_source1_sunset, after: folio_ex3_s1 },
-    { label: "House", before: folio_source2_house, after: folio_ex3_s2 },
-    { label: "Elephant", before: folio_source3_elephant, after: folio_ex3_s3 },
-    { label: "Pattern", before: folio_source4_pattern, after: folio_ex3_s4 },
-    { label: "Man", before: folio_source5_man, after: folio_ex3_s5 },
-    { label: "Paint", before: folio_source6_paint, after: folio_ex3_s6 },
-  ]}
-/>
-*Coloured Mask Generation — simulated result across source images.*
-**Source**: Any video source — the source content is secondary to the background colour field in this exercise.
+![Automated Page Loop result](/img/instruments/videomancer/folio/folio_ex2_s1.png)
+*Automated Page Loop — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Use the page turn as a shaped vertical wipe to create a coloured mask region, exploring the background hue and luminance controls for downstream keying applications.
+***A description of the exercise illustration.***
 
-1. **Set a vivid background**: Set BKG Hue to approximately 120° (green region) and BKG Lum to approximately 70%.
-2. **Half turn**: Set Turn Pos to approximately 45° in Manual mode. The background fills roughly 30% of the screen.
-3. **Full shadow suppression**: Set Shadow to 0%. The page content at the fold edge is very dark, creating a clear boundary between page and background.
-4. **Sweep hue**: Slowly rotate BKG Hue through the full range. The background cycles through the colour wheel — blue, cyan, green, yellow, red, magenta.
-5. **Luminance extremes**: Set BKG Lum to 0% (black background — the mask disappears into darkness). Then set BKG Lum to 100% (bright, pastel background).
-6. **Increase turn angle**: Advance Turn Pos to 75°. The background now dominates the frame — most of the screen is the solid colour field with a narrow strip of compressed page at the hinge.
-7. **Mix reduction**: Pull Mix to 50%. The page turn composite blends with the dry input, creating a partially transparent colour overlay.
+#### Learning Outcomes
 
-**Key concepts**: The background colour field acts as a solid mask region. Hue and luminance are independently controllable. At high turn angles, the background dominates the frame. The sharp boundary between page and background can serve as a vertical key edge for downstream processing.
+A hands-free, continuously looping page turn animation with dramatic shading and a vivid colored background.
+
+#### Key Concepts
+
+- DDS-driven auto-animation
+- Speed control and oscillation behavior
+- Shadow depth tuning for dramatic effect
+
+#### Video Source
+
+Footage with bold colors and clear shapes: geometric patterns, architecture, or abstract video synthesis output.
+
+#### Steps
+
+1. **Enable auto-animation**: Set **Animate** (Switch 10) to **Auto**. The page is stationary because **Anim Spd** is at 0%.
+2. **Start the oscillation**: Slowly increase **Anim Spd** (Knob 3). The page begins to swing open and closed in a continuous loop, like a door in a breeze.
+3. **Tune the speed**: Find a tempo that suits your material. Slow speeds produce stately, cinematic turns. Fast speeds create a rapid flutter.
+4. **Deepen the shadows**: Lower **Shadow** (Knob 5) toward 0%. The page now darkens dramatically as it folds, disappearing into near-black at the edge-on position.
+5. **Color the backdrop**: Set **BKG Hue** (Knob 2) to a warm tone (around 30°) and increase **BKG Lum** (Knob 6) to 80%. The oscillating page now reveals a glowing amber field with each turn.
+6. **Disable fold shadow**: Toggle **Fold Shd** (Switch 9) to **Off**. The crease line vanishes, giving a smoother, more abstract compression effect.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Turn Pos | 0° |
+| BKG Hue | 30° |
+| Anim Spd | ~25% |
+| Curvatur | 0% |
+| Shadow | 15% |
+| BKG Lum | 80% |
+| Hinge | Left |
+| Axis | Vert |
+| Fold Shd | Off |
+| Animate | Auto |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Partial Mix Reveal
 
-## Tips
+![Partial Mix Reveal result](/img/instruments/videomancer/folio/folio_ex3_s1.png)
+*Partial Mix Reveal — simulated result across source images.*
+#### Exercise Illustration
 
-- **Background as chromakey**: Use a vivid, saturated background colour (BKG Hue at a primary, BKG Lum at 50–70%) to create a colour field that downstream keying programs can isolate. The sharp edge between page and background makes an effective key boundary.
-- **Mix fader for overlays**: At 50% Mix, the page turn composite blends with the dry input, creating a ghost-fold effect where both the original and the compressed page are visible simultaneously.
-- **Hinge for directionality**: Left hinge creates a right-to-left reveal (page folds away rightward); right hinge creates a left-to-right reveal. Choose based on the visual flow of your composition.
-- **Auto speed sweet spot**: Moderate Anim Spd values (20–40%) produce graceful, readable page turns. Very high values create a rapid flicker that can serve as a rhythmic strobe effect.
-- **DDA is nearest-neighbour**: The horizontal compression skips source pixels rather than averaging them. Fine horizontal detail may alias at high compression ratios — feed content with bold, high-contrast features for the best visual results.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A partially transparent page turn where the compressed video and the full-frame input coexist as overlapping layers.
+
+#### Key Concepts
+
+- Wet/dry Mix as a compositional tool
+- Page turn as a masking / layering technique
+- Background color as a design element
+
+#### Video Source
+
+Two contrasting video sources if available (swap during the exercise), or a single source with strong visual structure (text, grids, or graphic overlays.)
+
+#### Steps
+
+1. **Set a half turn**: Place **Turn Pos** (Knob 1) at roughly the midpoint: the page should be visibly compressed, with about half the screen showing background.
+2. **Lower the Mix**: Pull **Mix** (Fader 12) down to around 50%. The page turn effect becomes semi-transparent: you see both the compressed page and the full-resolution dry signal simultaneously.
+3. **Adjust the background**: Set **BKG Hue** to a contrasting color and **BKG Lum** to a moderate level. The background now tints the overlay, creating a colored split-screen with a ghostly double exposure.
+4. **Switch hinge and compare**: Toggle **Hinge** to each side and observe how the layered composition changes. Each hinge position creates a different visual balance.
+5. **Try extreme shadow**: Set **Shadow** to 0%. The dark page pixels in the mix create areas of near-transparency where only the dry signal shows through, while the background color bleeds through the open region.
+6. **Enable auto-animation at a slow speed**: Set **Animate** to **Auto** and **Anim Spd** to about 10%. The mixed layers shift continuously as the page oscillates.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Turn Pos | ~45° |
+| BKG Hue | 240° |
+| Anim Spd | ~10% |
+| Curvatur | 0% |
+| Shadow | 0% |
+| BKG Lum | 50% |
+| Hinge | Right |
+| Axis | Vert |
+| Fold Shd | On |
+| Animate | Auto |
+| Bypass | Off |
+| Mix | 50% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **AVID (Active Video ID)** | A timing signal that is high during the active picture area of each scanline, indicating valid pixel data. |
-| **Cosine LUT** | A lookup table storing pre-computed cosine values for 128 angle positions, used to determine the projected width of the turning page. |
-| **DDA (Digital Differential Analyzer)** | An incremental algorithm that maps source pixel positions to output positions at non-integer step sizes, used here to compress a scanline into a narrower visible region. |
-| **DDS (Direct Digital Synthesis)** | A technique for generating cyclical motion using a fixed-width phase accumulator incremented by a tuning word, producing smooth oscillation with automatic wraparound. |
-| **Fixed-point** | A number representation where a fixed number of bits represent the fractional part; the DDA uses 11.10 format (11 integer bits, 10 fractional bits). |
-| **Fold shadow** | A narrow band of extra luminance reduction near the fold edge, simulating the crease shadow where a physical page bends away from the viewer. |
-| **Hinge** | The fixed edge around which the page rotates; determines whether the page folds away from the left or right side of the screen. |
-| **Line buffer** | A dual-port BRAM that stores one scanline of video data, allowing the previous line to be read while the current line is being written. |
-| **Shade factor** | A per-frame luminance multiplier derived from the cosine of the turn angle and the shadow depth parameter, attenuating the page brightness as it rotates away. |
+- **Cosine Function**: A trigonometric function that maps an angle to a ratio between −1 and 1; used here to compute the projected width of a tilted surface.
+
+- **DDA (Digital Differential Analyzer)**: An algorithm that steps through coordinates at a fractional rate, used to resample a scanline into a different number of output pixels.
+
+- **DDS (Direct Digital Synthesis)**: A technique for generating waveforms by accumulating a phase value each cycle and looking up the corresponding amplitude in a table.
+
+- **Fold Shadow**: An additional darkening applied to pixels near the bending edge of the turning page, simulating the crease where a page casts a shadow on itself.
+
+- **Hinge**: The fixed edge around which the page rotates; determines which side of the frame the video remains anchored to during a turn.
+
+- **Interpolator**: A hardware module that performs linear crossfading between two values, used here for the wet/dry mix.
+
+- **Line Buffer**: A block RAM that stores one complete scanline of video data, enabling random-access reads for horizontal resampling.
+
+- **Perspective Shading**: Luminance attenuation proportional to the turn angle, simulating how a surface darkens as it angles away from a light source.
+
+- **Restoring Division**: A binary division algorithm that produces one quotient bit per clock cycle, used here to compute the DDA step size without a combinational divider.
+
+- **Turn Angle**: The rotation of the virtual page, measured in degrees from 0° (fully open) to 90° (edge-on).
 
 ---

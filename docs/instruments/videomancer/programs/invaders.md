@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 146
 slug: /instruments/videomancer/invaders
@@ -7,305 +7,364 @@ image: /img/instruments/videomancer/invaders/invaders_hero.png
 description: "Space Invaders, released by Taito in 1978, is arguably the most important arcade game ever made."
 ---
 
-import invaders_hero from '/img/instruments/videomancer/invaders/invaders_hero.png';
-import invaders_animation from '/img/instruments/videomancer/invaders/invaders_animation.gif';
-import invaders_control_panel from '/img/instruments/videomancer/invaders/invaders_control_panel.png';
-import invaders_exercise1_result from '/img/instruments/videomancer/invaders/invaders_exercise1_result.gif';
-import invaders_exercise2_result from '/img/instruments/videomancer/invaders/invaders_exercise2_result.gif';
-import invaders_exercise3_result from '/img/instruments/videomancer/invaders/invaders_exercise3_result.gif';
-
-# Invaders
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={invaders_hero} alt="Invaders hero image"/>
-*Invaders rendering a 5x11 alien grid descending toward a player ship with shields and score display, evoking classic arcade video synthesis.*
-<img src={invaders_animation} alt="Invaders animated output"/>
-*Invaders output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Invaders hero image](/img/instruments/videomancer/invaders/invaders_hero_s1.png)
+*A formation of alien invaders descends through the darkness as a lone triangular cannon fires upward from behind a row of protective bunkers*
 
 ---
 
 ## Overview
 
-Space Invaders, released by Taito in 1978, is arguably the most important arcade game ever made. Its core mechanic — a grid of aliens marching horizontally and descending toward a lone defender — created the template for the shoot-em-up genre and single-handedly launched the golden age of arcade games. Videomancer's Invaders program implements this iconic gameplay entirely in FPGA logic: a 5x11 grid of 55 aliens, a player-controlled ship, upward-firing bullets, downward-firing alien projectiles, four destructible shields, and a three-digit BCD score — all rendered without a frame buffer or CPU.
+**Invaders** is a fully playable Space Invaders arcade game running entirely inside the FPGA. A formation of fifty-five aliens: arranged in an eleven-column, five-row grid: marches back and forth across the screen, stepping downward each time the block reaches a wall. You control a triangular cannon at the bottom of the frame, sliding it left and right with a knob and firing upward with a toggle switch. Destroy every alien in the wave and they respawn for another round; let them reach your firing line and the game resets.
 
-The player ship position is controlled by Knob 1, providing smooth analog positioning across the bottom of the screen. Toggle 7 (Fire) triggers a bullet launch on its rising edge. Aliens march horizontally as a block, stepping down one row each time the formation reaches a screen edge. The alien speed (Knob 2) controls the march pace, and the fire rate (Knob 3) determines how frequently aliens shoot downward. Knob 4 selects the number of shield blocks (0-3), providing a discrete difficulty setting.
+The entire game: movement logic, collision detection, score tracking, and font rendering: runs in pure combinational and register logic with zero block RAM. A 5×7 bitmap font ROM embedded in the VHDL draws a three-digit score counter in the upper-left corner, scaled four times for visibility. Four protective shield bunkers can absorb incoming alien fire, though each shield is destroyed after a single hit. The aliens choose their attack column at random using a sixteen-bit LFSR, keeping every round unpredictable.
 
-Each destroyed alien increments the score and clears its bit in a 55-bit alive register. When all aliens are destroyed, the game pauses briefly and resets with a fresh wave. If any alien reaches the ship's vertical position, the game also resets. At full mix, the Invaders display renders against black. Reducing the mix fader blends the game with input video, creating an arcade overlay on live footage.
+### What's In a Name?
+
+The name is a direct homage to Taito's 1978 *Space Invaders*, one of the most influential arcade games ever made. By recreating its core mechanics inside a video synthesizer, Videomancer turns the classic defend-the-earth scenario into a live-performance visual instrument: you can overlay the game on any video source using the **Mix** fader, compositing retro arcade graphics onto your signal chain in real time.
 
 ---
 
 ## Quick Start
 
-1. **Lead your shots**: Since only one bullet can be active at a time, position the ship under target aliens before firing. Missed shots waste time while the bullet travels off-screen.
-2. **Work the edges**: Destroy aliens on the formation edges first to slow the descent rate — fewer edge aliens means more horizontal travel before reversal and descent.
-3. **Shield strategy**: Shields protect from alien bullets but block your own shots too. Position your ship offset from shields to maintain a clear firing lane while keeping shields between you and alien fire.
+1. Set **Bypass** to Off and push the **Mix** fader fully clockwise so the game fills the screen.
+2. Turn **Ship Pos** to slide your cannon left and right (find a column of aliens and line up your shot.)
+3. Flip the **Fire** toggle from Ready to Launch. A small white bullet streaks upward; if it hits an alien, that invader disappears and your score increments.
+4. Watch the upper-left corner: the three-digit score counter tracks your kills. Keep firing and dodging the aliens' return fire until the formation is wiped out.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Invaders loaded](/img/instruments/videomancer/invaders/invaders_control_panel.png)
+*Videomancer's front panel with Invaders active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Ship Pos
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Ship Pos** slides your cannon horizontally across the bottom of the screen. At the minimum position the ship hugs the left wall; at maximum it sits against the right wall. The cannon is a sixty-four-pixel-wide triangle whose apex points upward: the classic defender silhouette. Because aiming is entirely positional (bullets always fly straight up), precise knob control is essential for threading shots into tight columns of surviving aliens.
+
+---
+
+### Knob 2 — Alien Spd
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 38% |
+
+**Alien Spd** sets how frequently the alien formation takes a step. At the lowest setting the block drifts lazily, with nearly a full second between moves. Turning clockwise tightens the interval until the aliens march rapidly across the screen. Each step covers eight pixels horizontally; when the formation reaches the edge of the court it reverses direction and drops one row closer to your ship. Faster aliens give you less time to aim but create a more frantic, satisfying rhythm.
+
+:::tip
+Start with **Alien Spd** near the low end while you learn the controls. Once you're comfortable threading shots into the grid, crank it up for a real challenge.
+:::
+
+---
+
+### Knob 3 — Fire Rate
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Fire Rate** controls how often the aliens shoot back. At the lowest setting the aliens lob a bullet downward roughly every ninety frames: about one and a half seconds. Turning clockwise shortens the interval, making the aliens increasingly aggressive. Only one alien bullet can exist on screen at a time, so higher fire rates mainly reduce the pause between volleys rather than flooding the screen.
+
+---
+
+### Knob 4 — Shields
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 4 |
+| Default | 3 |
+
+**Shields** selects how many protective bunkers appear between you and the alien formation. At the lowest notch, no shields appear and you're fully exposed. Stepping through the positions adds up to three shield bunkers spaced evenly across the court. Each shield is eighty pixels wide and forty pixels tall: large enough to absorb a single alien bullet, after which it vanishes entirely. Shields are restored whenever you clear a full wave of aliens.
+
+---
+
+### Knob 5 — Court Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Court Hue** sets the base color for game elements when the **Color** switch is set to Hue mode. In Mono mode this knob has no visible effect. In Hue mode it controls the starting hue applied to the top row of aliens; each row below shifts the color further, creating a rainbow gradient across the formation. The ship, alien bullets, and shields all receive their own fixed hue offsets relative to this base.
+
+---
+
+### Knob 6 — Bright
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 75% |
+
+**Bright** sets the overall brightness of every game element: ship, aliens, bullets, shields, score, and border. At minimum everything fades to black; at maximum each element reaches full intensity. Shields render at half brightness and the border at one-eighth brightness relative to this knob, maintaining a natural visual hierarchy even as you raise or lower the overall level.
+
+---
+
+### Switch 7 — Fire
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Fire** is your trigger. Flipping from Ready to Launch fires one bullet straight up from the center of your ship. You can only have one bullet on screen at a time: if you miss, you must wait for it to leave the top of the frame before firing again. Each shot travels eight pixels per frame, reaching the top row of aliens in roughly a quarter-second at HD rates.
+
+:::note
+The fire toggle is ***edge-detected***: the bullet launches on the transition from Ready to Launch, not while the toggle is held. Flip it back to Ready to rearm.
+:::
+
+---
+
+### Switch 8 — Border
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Border** toggles a thin four-pixel frame around the edges of the court. When On, a dim white border outlines the play area, helping define the edges of the game field against a black background. When Off the border disappears, letting the action bleed to the very edges of the frame (useful when overlaying the game onto video.)
+
+---
+
+### Switch 9 — Score
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Score** toggles the three-digit score counter in the upper-left corner. When On, each alien you destroy increments the counter, rendered in a scaled 5×7 bitmap font. When Off the score display disappears, giving you a cleaner visual if you're using the game purely as a graphic source. The score still tracks internally and resets when the game restarts.
+
+---
+
+### Switch 10 — Color
+
+| Property | Value |
+|----------|-------|
+| Off | Mono |
+| On | Hue |
+| Default | Mono |
+
+**Color** selects between Mono and Hue rendering. In Mono mode, every game element is white against a black background: a faithful recreation of the original arcade's monochrome display. In Hue mode, each row of aliens gets a different color derived from the **Court Hue** knob. The player ship glows warm, alien bullets glow cool, and shields take on a muted midtone, giving the game a vivid rainbow-arcade look.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** switches the output between the processed game video and the unmodified input. When On, the input signal passes through unchanged regardless of the Mix fader position.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry input signal and the game overlay. At minimum you see only the input; at maximum you see only the game. Intermediate positions blend the two, letting you superimpose the alien formation and bullets over live camera footage, pattern generators, or any other source in your signal chain.
+
+:::tip
+Try the "Arcade Overlay" preset: it sets Mix to about 60% so the game graphics float transparently over your input video, creating a playable heads-up display.
+:::
 
 ---
 
 ## Background
 
-### The 1978 Revolution
+### The Original Invaders
 
-Tomohiro Nishikado designed Space Invaders during 1977-1978, implementing the game on custom hardware based on the Intel 8080 processor. The game was so phenomenally popular in Japan that it allegedly caused a nationwide shortage of 100-yen coins. Its impact on Western culture was equally profound — it was the first game to track and display a high score, the first to use a continuous background soundtrack (the iconic four-note descending march), and the first to demonstrate that video games could be a mass-market entertainment medium.
+Taito's *Space Invaders* (1978) was among the first video games to feature destructible enemies, an escalating difficulty curve, and a persistent high score. Its simple mechanics: move, shoot, dodge: proved endlessly compelling. The hardware used a bitmapped framebuffer (a luxury at the time) to render rows of alien sprites that advanced toward the player. Invaders recreates this formula inside a Videomancer FPGA program, replacing the framebuffer with pure register-based rendering.
 
-### Block Movement and Descending Threat
+### Shift-Based Game Arithmetic
 
-The original Space Invaders used a clever trick: aliens moved one at a time in sequence, creating the illusion of synchronized block movement while requiring only a single sprite update per frame. Videomancer's FPGA implementation takes the opposite approach — all aliens share a common block offset that advances each tick, so the entire formation moves simultaneously. The march direction reverses and the formation drops one row when any live alien reaches the screen boundary. This descent mechanic creates increasing tension as the aliens approach the ship's position.
+Because the iCE40 FPGA has no hardware multiplier or divider, all game math uses bit shifts and additions. Ship positioning multiplies the knob value by the screen width using a shift-and-subtract approximation of `× 1856`. Alien speed converts the pot into a frame-count interval via a right-shift. Score rendering uses a hardcoded 5×7 font ROM: ten characters × eight rows × five columns: with integer division by the scale factor to select the correct pixel. Even the LFSR that picks the alien firing column avoids multiplication, using a four-tap XOR polynomial (`x^16 + x^14 + x^13 + x^11 + 1`) to generate pseudorandom selection.
 
-### Sprite-Based Rendering
+### Resolution Awareness
 
-Unlike grid-based games, Invaders uses sprite rendering: each alien is an 8x8 pixel bitmap, and the player ship is a 16x8 pixel bitmap. The rasterizer checks each pixel against all potentially visible sprites — the alien grid, the player ship, active bullets, and shield blocks. Priority ordering determines which sprite wins when they overlap. This per-pixel sprite test is computationally straightforward on FPGA hardware, where all comparisons execute in parallel within a single clock cycle.
-
-### Shield Destruction
-
-The original Space Invaders featured four shield bunkers that could absorb both player and alien bullets, gradually eroding with each hit. Videomancer implements simplified shields as rectangular blocks that disappear entirely when hit by any bullet. The Shields knob (steps_4 mode) selects 0-3 shields, providing a discrete difficulty control: 3 shields offers maximum protection, 0 shields leaves the player fully exposed.
-
-### LFSR Alien Fire
-
-Aliens fire downward at pseudo-random intervals determined by a 16-bit LFSR and the Fire Rate knob. Each frame, the LFSR advances, and if the least significant bits fall below the fire rate threshold, the lowest alive alien in a randomly selected column fires a bullet downward. This creates an organic, unpredictable barrage that increases in danger as more aliens are active — a challenging inversion of the original game's increasing speed mechanic.
+Invaders uses the Videomancer ABI's resolution package to adapt its geometry to whatever video standard is active. The ship's vertical position, court boundaries, and alien start coordinates all derive from runtime resolution lookups, so the game plays correctly in both SD and HD modes. The HD clock divisor is set to 2, slowing the pixel clock by half in HD mode to keep the game logic running at a manageable rate.
 
 
 ---
 
 ## Signal Flow
 
-```
-Synthesis Engine
-|
-+-- Parameter Mapping ------------------------------------------------
-|   +- registers_in(0)  -> Ship Position (horizontal)
-|   +- registers_in(1)  -> Alien Speed (march interval)
-|   +- registers_in(2)  -> Fire Rate (alien bullet frequency)
-|   +- registers_in(3)  -> Shields (0-3 shield blocks)
-|   +- registers_in(4)  -> Court Hue (chroma offset)
-|   +- registers_in(5)  -> Brightness (foreground Y level)
-|   +- registers_in(6)  -> Toggles (fire, border, score, color, bypass)
-|   +- registers_in(7)  -> Mix
-|
-+-- Game Logic (per vsync) -------------------------------------------
-|   +- 1. Ship Position   (pot → pixel X coordinate)
-|   +- 2. Fire Edge       (rising edge on toggle 7 → spawn bullet)
-|   +- 3. Bullet Update   (advance player bullet upward by step size)
-|   +- 4. Alien March     (move block offset, reverse + descend at edges)
-|   +- 5. Alien Fire      (LFSR-driven downward bullet spawn)
-|   +- 6. Collision Detect (bullet vs alien grid → clear alive bit + score)
-|   +- 7. Shield Collision (bullet vs shield → destroy shield)
-|   +- 8. Ship Collision   (alien bullet vs ship → game reset)
-|   +- 9. Wave Reset       (all aliens dead → reset alive register)
-|
-+-- Rasterizer (per pixel) -------------------------------------------
-|   +- 10. Alien Sprite    (8x8 bitmap per grid cell, alive check)
-|   +- 11. Ship Sprite     (16x8 bitmap at ship X, bottom of screen)
-|   +- 12. Bullet Render   (2x6 pixel rectangles for player + alien bullets)
-|   +- 13. Shield Render   (rectangular blocks, 4 positions)
-|   +- 14. Border Render   (optional screen-edge border)
-|   +- 15. Score Digits    (5x7 font at 4x scale, 3-digit BCD)
-|   +- 16. Color Mux       (priority: bullet > ship > alien > shield > border > score > bg)
-|
-+-- Output Stage ----------------------------------------------------
-|   +- 17. Interpolator Mix  (3x interpolator_u wet/dry)
-|
-+-- Sync Pipeline ---------------------------------------------------
-|   +- 6-clock shift register (hsync, vsync, avid, field)
-|
-+-- Bypass ----------------------------------------------------------
-    +- Select processed or input signal
-```
+### Signal Flow Notes
 
-The game logic pipeline processes all collision detection during vsync blanking. Player bullet position is stored as a (X, Y) coordinate pair; alien bullet position is similarly tracked. The alien grid uses a 55-bit alive register where each bit corresponds to one alien in the 5x11 grid. When a player bullet overlaps an alien's bounding box and that alien's bit is set, the bit is cleared and the score increments. When all 55 bits are clear, a new wave resets the alive register to all ones and repositions the formation at the top.
+The game logic updates once per frame at the vertical sync pulse, making all movement, collision detection, and scoring run at the video field rate. The rendering pipeline then paints every pixel at full pixel-clock speed by testing each screen coordinate against the current positions of the ship, aliens, bullets, shields, border, and score glyphs. A priority chain in the color mux ensures that the score always renders on top, followed by the ship, aliens, and bullets in descending order (this avoids visual artifacts when game elements overlap.)
 
-The rasterizer evaluates each pixel against all sprite types in priority order. Alien sprites use a static 8x8 bitmap ROM — the classic two-frame animation of the original game is simplified to a single sprite pattern. The player ship uses a 16x8 bitmap positioned at the X coordinate from Knob 1. Bullets are simple 2x6 pixel rectangles that move vertically each frame.
-
----
-
-## Parameter Reference
-
-<img src={invaders_control_panel} alt="Videomancer front panel with Invaders loaded"/>
-*Videomancer's front panel with Invaders active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Ship Pos
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Ship Pos controls the horizontal position of the player ship at the bottom of the screen. The full pot range maps to the playable screen width, with clamping to prevent the ship from exiting the visible area. This provides smooth, proportional ship control similar to the original arcade game's analog paddle. The ship position updates every frame, so sweeping the knob produces fluid lateral movement.
-
----
-
-#### Knob 2 — Alien Spd
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 38% |
-| Suffix | % |
-
-Alien Spd controls the march speed of the alien formation. At low values, aliens move very slowly, giving the player ample time to aim and fire. At high values, the formation races across the screen, descending rapidly and leaving little time to react. The speed pot maps inversely to the frame count between march steps — higher pot values produce shorter intervals and faster alien movement.
-
----
-
-#### Knob 3 — Fire Rate
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Fire Rate controls how frequently aliens fire downward bullets. At low values, alien fire is rare and the player faces minimal return fire. At high values, aliens shoot frequently, creating a dense barrage of descending projectiles. The fire rate interacts with the number of alive aliens — more active columns mean more potential shooters per LFSR trigger, creating organic difficulty scaling.
-
----
-
-#### Knob 4 — Shields
-| Property | Value |
-|----------|-------|
-| Range | 0 – 4 |
-| Default | 3 |
-
-Shields selects the number of shield blocks present on the field (0-3), using the steps_4 control mode for discrete selection. Zero shields leaves the player fully exposed to alien fire. Each additional shield provides a destructible barrier that absorbs one hit from either a player bullet or an alien bullet (player bullets should avoid hitting shields). Shields are positioned evenly across the screen above the ship's patrol zone.
-
----
-
-#### Knob 5 — Court Hue
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Court Hue shifts the chroma values applied to all game elements when Color mode is active. Sweeping this knob rotates through the YUV color wheel, changing aliens, ship, bullets, and shields collectively. Different hue values evoke different arcade aesthetics — green for classic monochrome CRT, blue for ice-themed variants, orange for warm retro tones. In Mono mode, this knob has no visible effect.
-
----
-
-#### Knob 6 — Bright
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 75% |
-| Suffix | % |
-
-Bright controls the luminance (Y channel) of all foreground game elements. Aliens, ship, bullets, shields, score digits, and border all reference this brightness value at various fractions. Higher brightness produces vivid, high-contrast sprites against the dark background. Lower brightness creates a dim, atmospheric display that blends more subtly when mixed with input video.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Fire** | Off | On |
-| **8 — Border** | Off | On |
-| **9 — Score** | Off | On |
-| **10 — Color** | Mono | Hue |
-| **11 — Bypass** | Off | On |
-
-The five toggles partition into gameplay action (Fire), display options (Border, Score, Color), and signal routing (Bypass). Fire is a momentary action toggle — the game detects its rising edge to fire a bullet. Border, Score, and Color are persistent display modes. Bypass routes the input signal past the game overlay while the simulation continues running internally.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Mix controls the wet/dry blend between the game overlay and the input video. At full mix, only the Invaders game is visible against black. Reducing mix fades in the input video behind the game elements, creating an arcade overlay on live footage. At zero mix, the game is invisible and only the input signal passes through. The mix engages three interpolator_u instances for Y, U, and V channels independently.
-
-
-
+The interpolator stage at the end crossfades between the delayed input video and the rendered game output based on the Mix fader, letting the game serve as either a standalone video source or a transparent overlay on existing footage.
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises explore the core shoot-em-up mechanics, the interaction between fire rate, alien speed, and shield configuration, and the use of the game as a retro-styled video overlay.
+Below are three exercises exploring Invaders as a video performance tool. Each exercise specifies all twelve controls to reproduce the starting configuration.
+### Exercise 1: Solo Defense
 
-### Exercise 1: First Defence
+![Solo Defense result](/img/instruments/videomancer/invaders/invaders_ex1_s1.png)
+*Solo Defense — simulated result across source images.*
+#### Exercise Illustration
 
-<img src={invaders_exercise1_result} alt="First Defence result"/>
-*First Defence — simulated result across source images.*
-**What You'll Create**: Destroy a complete wave of 55 aliens using the ship position knob and fire toggle.
+***A description of the exercise illustration.***
 
-1. Set Ship Pos to center (~50%).
-2. Set Alien Spd to about 20% for slow alien march.
-3. Set Fire Rate to about 15% for minimal return fire.
-4. Set Shields to 3 for full protection.
-5. Enable Score to track kills.
-6. Toggle Fire (Off→On) to launch a bullet upward.
-7. Aim by adjusting Ship Pos before each shot.
-8. Wait for the bullet to resolve (hit or miss) before firing again.
-9. Clear all 55 aliens to see the wave reset.
+#### Learning Outcomes
 
-**Key concepts**: Single-bullet-at-a-time, ship positioning, alien alive register, wave reset, score tracking
+A classic monochrome arcade session (white aliens against black, shields up, score ticking.)
+
+#### Key Concepts
+
+Basic gameplay, shield placement, score tracking
+
+#### Steps
+
+1. Load the default preset or dial in the settings below.
+2. Turn **Ship Pos** to center your cannon under the alien formation.
+3. Flip the **Fire** toggle to Launch and take your first shot. Watch the score increment when you hit an alien.
+4. Move **Ship Pos** to dodge the alien bullet (it falls from a random column) while lining up your next shot.
+5. Try to clear the entire wave. When the last alien dies, the grid respawns at the top and your shields are restored.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Ship Pos | 50% |
+| Alien Spd | 20% |
+| Fire Rate | 30% |
+| Shields | 75% |
+| Court Hue | 50% |
+| Bright | 80% |
+| Fire | Launch |
+| Border | On |
+| Score | On |
+| Color | Mono |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Speed Run
+### Exercise 2: Arcade Overlay
 
-<img src={invaders_exercise2_result} alt="Speed Run result"/>
-*Speed Run — simulated result across source images.*
-**What You'll Create**: Survive a fast alien formation with high return fire and no shields.
-
-1. Set Alien Spd to about 65% for an aggressive march speed.
-2. Set Fire Rate to about 60% for frequent alien bullets.
-3. Set Shields to 0 for maximum danger.
-4. Position the ship using Knob 1 and fire rapidly, toggling Fire after each bullet resolves.
-5. Watch for descending alien bullets — move the ship to dodge.
-6. The formation descends faster and reaches the ship sooner at high speed.
-7. Try to clear as many aliens as possible before the wave reaches you.
-
-**Key concepts**: High-speed march, alien bullet dodging, no-shield exposure, descent pressure, rapid fire discipline
-
----
-
-### Exercise 3: Arcade Overlay
-
-<img src={invaders_exercise3_result} alt="Arcade Overlay result"/>
+![Arcade Overlay result](/img/instruments/videomancer/invaders/invaders_ex2_s1.png)
 *Arcade Overlay — simulated result across source images.*
-**What You'll Create**: Blend the Invaders game over input video at partial mix for a retro arcade overlay composition.
+#### Exercise Illustration
 
-1. Set Mix to about 55% to blend game and input video.
-2. Switch Color to Hue and sweep Court Hue to find a retro-styled color (try greenish ~30% for classic CRT look).
-3. Set Bright to about 90% for vivid sprites visible through the mix.
-4. Set Alien Spd to about 30% for smooth visual march.
-5. Set Fire Rate to about 25% for occasional alien bullets adding visual interest.
-6. Enable Score for a persistent score counter overlay.
-7. Let the game play as a visual element, firing occasionally to add bullet animation.
+***A description of the exercise illustration.***
 
-**Key concepts**: Partial mix compositing, retro CRT color, overlay transparency, game as visual element
+#### Learning Outcomes
+
+The alien formation floating semi-transparently over a live video source (a playable heads-up display composited in real time.)
+
+#### Key Concepts
+
+Video compositing, transparent game overlay, performance integration
+
+#### Steps
+
+1. Patch a camera feed or pattern generator into the Videomancer input.
+2. Set **Mix** to about 60% so the game graphics blend with the input.
+3. Turn **Border** Off to remove the frame lines (they'll interfere with the underlying image.)
+4. Play a round with the aliens ghosting over the video. Notice how brighter game elements (ship, bullets) punch through while darker areas let the input show.
+5. Experiment with **Bright** to adjust how much the game elements dominate the composite.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Ship Pos | 50% |
+| Alien Spd | 25% |
+| Fire Rate | 30% |
+| Shields | 75% |
+| Court Hue | 50% |
+| Bright | 70% |
+| Fire | Launch |
+| Border | Off |
+| Score | Off |
+| Color | Mono |
+| Bypass | Off |
+| Mix | 60% |
 
 ---
 
+### Exercise 3: Rainbow Armada
 
-## Tips
+![Rainbow Armada result](/img/instruments/videomancer/invaders/invaders_ex3_s1.png)
+*Rainbow Armada — simulated result across source images.*
+#### Exercise Illustration
 
-- **Speed is the threat**: Alien speed determines how quickly the formation descends. At high speeds, you have very few rounds to thin the formation before it reaches you.
-- **Fire rate awareness**: High alien fire rate creates a dense curtain of descending bullets. Keep the ship moving laterally to dodge between alien shots.
-- **Mix for retro aesthetics**: Reduce Mix to blend the game over CRT-scanned video input for an authentic retro arcade-on-TV look.
-- **Color for classic feel**: Set Color to Hue with Court Hue at ~30% (greenish) to evoke the classic green-phosphor CRT aesthetic of early arcade monitors.
-- **Bypass for dramatic reveals**: Hide the game with Bypass during a video performance, then reveal the active game state at a dramatic moment.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A vivid color arcade field where each row of aliens glows in a different hue, creating a rainbow gradient that shifts as you change the base color.
+
+#### Key Concepts
+
+Hue mode, row-based alien coloring, visual composition
+
+#### Steps
+
+1. Set **Color** to Hue and turn **Court Hue** to about 25%: the top row of aliens takes the base hue and each successive row shifts further through the color wheel.
+2. Turn **Bright** to maximum. Notice how the ship glows warm, alien bullets glow cool, and shields sit at a muted midtone.
+3. Slowly sweep **Court Hue** clockwise while playing. The entire color palette rotates: reds become blues become greens, cycling the formation through rainbow after rainbow.
+4. Try raising **Alien Spd** to about 50% for a faster, more visually dynamic game where the colored formation sweeps rapidly back and forth.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Ship Pos | 50% |
+| Alien Spd | 50% |
+| Fire Rate | 40% |
+| Shields | 50% |
+| Court Hue | 25% |
+| Bright | 100% |
+| Fire | Launch |
+| Border | On |
+| Score | On |
+| Color | Hue |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Alive Register** | A 55-bit register where each bit represents one alien in the 5x11 grid. A set bit means the alien is alive and rendered; cleared means destroyed. |
-| **BCD** | Binary-Coded Decimal; each decimal digit is stored in 4 bits, used for the three-digit score display. |
-| **Formation** | The 5x11 alien grid that moves as a unified block, sharing horizontal and vertical offsets. |
-| **LFSR** | Linear Feedback Shift Register; generates pseudo-random values used to determine which alien fires and when. |
-| **March** | The horizontal movement of the alien formation. The formation reverses direction and descends one row at each screen edge. |
-| **Rising Edge** | The transition from Off to On on the Fire toggle, used as the trigger to launch a player bullet. |
-| **Shield** | A destructible rectangular barrier that absorbs one bullet (player or alien), providing temporary protection. |
-| **Sprite** | A small bitmap image (8x8 for aliens, 16x8 for the ship) rendered at a specific screen position by pixel comparison. |
-| **Vsync** | Vertical synchronization pulse marking the start of a new video frame, used as the game tick clock. |
-| **Wave** | A complete set of 55 aliens. When all are destroyed, a new wave spawns at the top of the screen. |
+- **AABB**: Axis-aligned bounding box: the rectangular hit-detection region used for collision checks between bullets and sprites.
+
+- **BCD**: Binary-coded decimal: a way of storing each decimal digit (0–9) in four bits, used here for the three-digit score counter.
+
+- **DDS**: Direct digital synthesis: a technique for generating periodic waveforms from a phase accumulator, used in other Videomancer programs but not in Invaders itself.
+
+- **Edge detection**: Detecting the instant a signal transitions from low to high (or vice versa), used here to fire the player bullet on the toggle-switch transition rather than while it's held.
+
+- **Font ROM**: A read-only lookup table storing the pixel pattern for each character, here a 5×7 bitmap for digits 0–9.
+
+- **Formation**: The rectangular grid of aliens that moves as a single block, reversing direction and stepping down when any member reaches a wall.
+
+- **LFSR**: Linear-feedback shift register: a simple pseudorandom number generator that picks which alien column fires next.
+
+- **Priority mux**: A multiplexer chain that selects which game element's color to display when multiple sprites overlap at the same pixel.
+
+- **Sprite**: A small graphical element positioned independently on screen (here the ship, aliens, bullets, and shields.)
+
+- **Wave**: One complete set of fifty-five aliens; clearing a wave respawns the grid and restores shields.
 
 ---

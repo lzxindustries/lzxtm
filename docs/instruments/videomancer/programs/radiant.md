@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 239
 slug: /instruments/videomancer/radiant
@@ -7,369 +7,405 @@ image: /img/instruments/videomancer/radiant/radiant_hero_s1.png
 description: "Radiant generates concentric colored rings that radiate outward from an adjustable center point, creating a tunnel-like wash of color that composites with the incoming video signal."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import radiant_control_panel from '/img/instruments/videomancer/radiant/radiant_control_panel.png';
-import radiant_source1_fruit from '/img/instruments/videomancer/radiant/radiant_source1_fruit.png';
-import radiant_source2_field from '/img/instruments/videomancer/radiant/radiant_source2_field.png';
-import radiant_source3_turtle from '/img/instruments/videomancer/radiant/radiant_source3_turtle.png';
-import radiant_source4_pattern from '/img/instruments/videomancer/radiant/radiant_source4_pattern.png';
-import radiant_source5_girl from '/img/instruments/videomancer/radiant/radiant_source5_girl.png';
-import radiant_source6_wood from '/img/instruments/videomancer/radiant/radiant_source6_wood.png';
-import radiant_hero_s1 from '/img/instruments/videomancer/radiant/radiant_hero_s1.png';
-import radiant_hero_s2 from '/img/instruments/videomancer/radiant/radiant_hero_s2.png';
-import radiant_hero_s3 from '/img/instruments/videomancer/radiant/radiant_hero_s3.png';
-import radiant_hero_s4 from '/img/instruments/videomancer/radiant/radiant_hero_s4.png';
-import radiant_hero_s5 from '/img/instruments/videomancer/radiant/radiant_hero_s5.png';
-import radiant_hero_s6 from '/img/instruments/videomancer/radiant/radiant_hero_s6.png';
-import radiant_ex1_s1 from '/img/instruments/videomancer/radiant/radiant_ex1_s1.png';
-import radiant_ex1_s2 from '/img/instruments/videomancer/radiant/radiant_ex1_s2.png';
-import radiant_ex1_s3 from '/img/instruments/videomancer/radiant/radiant_ex1_s3.png';
-import radiant_ex1_s4 from '/img/instruments/videomancer/radiant/radiant_ex1_s4.png';
-import radiant_ex1_s5 from '/img/instruments/videomancer/radiant/radiant_ex1_s5.png';
-import radiant_ex1_s6 from '/img/instruments/videomancer/radiant/radiant_ex1_s6.png';
-import radiant_ex2_s1 from '/img/instruments/videomancer/radiant/radiant_ex2_s1.png';
-import radiant_ex2_s2 from '/img/instruments/videomancer/radiant/radiant_ex2_s2.png';
-import radiant_ex2_s3 from '/img/instruments/videomancer/radiant/radiant_ex2_s3.png';
-import radiant_ex2_s4 from '/img/instruments/videomancer/radiant/radiant_ex2_s4.png';
-import radiant_ex2_s5 from '/img/instruments/videomancer/radiant/radiant_ex2_s5.png';
-import radiant_ex2_s6 from '/img/instruments/videomancer/radiant/radiant_ex2_s6.png';
-import radiant_ex3_s1 from '/img/instruments/videomancer/radiant/radiant_ex3_s1.png';
-import radiant_ex3_s2 from '/img/instruments/videomancer/radiant/radiant_ex3_s2.png';
-import radiant_ex3_s3 from '/img/instruments/videomancer/radiant/radiant_ex3_s3.png';
-import radiant_ex3_s4 from '/img/instruments/videomancer/radiant/radiant_ex3_s4.png';
-import radiant_ex3_s5 from '/img/instruments/videomancer/radiant/radiant_ex3_s5.png';
-import radiant_ex3_s6 from '/img/instruments/videomancer/radiant/radiant_ex3_s6.png';
-
-# Radiant
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: radiant_source1_fruit, after: radiant_hero_s1 },
-    { label: "Field", before: radiant_source2_field, after: radiant_hero_s2 },
-    { label: "Turtle", before: radiant_source3_turtle, after: radiant_hero_s3 },
-    { label: "Pattern", before: radiant_source4_pattern, after: radiant_hero_s4 },
-    { label: "Girl", before: radiant_source5_girl, after: radiant_hero_s5 },
-    { label: "Wood", before: radiant_source6_wood, after: radiant_hero_s6 },
-  ]}
-/>
-*Radiant projecting concentric expanding color rings from a movable center point, composited over live video via additive blending.*
+![Radiant hero image](/img/instruments/videomancer/radiant/radiant_hero_s1.png)
+*Radiant projecting concentric rainbow rings outward from a drifting center point, tinting and illuminating a live video feed with animated spectral color.*
 
 ---
 
 ## Overview
 
-Radiant generates concentric colored rings that radiate outward from an adjustable center point, creating a tunnel-like wash of color that composites with the incoming video signal. The effect is inspired by the Fairlight CVI's colour wash modes — procedural gradient generation that interacts with live imagery to produce color fields, spotlight effects, and pulsing radial animations.
+Radiant is a concentric color ring generator inspired by the legendary Fairlight CVI's Colour Tunnel effect. It paints expanding rings of rainbow color onto the screen, radiating outward from a movable center point. The rings scroll continuously, creating the illusion of an endless tunnel of light rushing toward or away from you. Each ring carries its own hue from a smoothly cycling color palette, and the whole pattern composites over your input video: adding luminous color, or gating brightness through the ring structure.
 
-The program computes an octagonal distance approximation from each pixel to the center point, then maps that distance through a scrolling color palette to determine ring hue and brightness. The distance-to-color mapping wraps cyclically, producing repeating bands of color that appear to expand or contract when the frame scroll DDS advances. Three `interpolator_u` instances handle the wet/dry crossfade. The entire pipeline uses zero BRAM — all color generation is procedural, computed per-pixel from distance, hue wheel position, and saturation scaling.
+The center of the ring pattern is adjustable with two knobs, and an optional orbit mode sends the center drifting through a quasi-Lissajous path, weaving the rings across the frame in a hypnotic dance. A separate auto-hue mode slowly rotates the color palette over time, so the rings shift through the entire spectrum without touching a single control.
 
-At default settings Radiant produces gently colored concentric rings centered on the frame. Orbit mode animates the center in a quasi-Lissajous triangular-wave pattern. Auto Hue mode slowly rotates the palette over time. The Multiply toggle switches between additive compositing (rings add brightness to the source) and gated multiplication (rings modulate the source brightness), producing either luminous overlays or shadow-like vignettes.
+At subtle settings, Radiant adds a soft color vignette or gentle tinting. At full strength, it transforms any input into a psychedelic tunnel of pulsing, scrolling rainbow light.
+
+### What's In a Name?
+
+***Radiant*** describes both the visual effect and the geometry. The rings ***radiate*** outward from a central point, like light emanating from a source. The word also evokes warmth and brilliance: fitting for a program that bathes video in luminous, saturated color. In optics, a ***radiant point*** is the apparent origin from which light appears to spread, which is exactly what the adjustable center parameter defines.
 
 ---
 
 ## Quick Start
 
-1. **Octagonal, not circular**: The rings are slightly octagonal due to the `max + 3*min/8` distance approximation — look for the faceting when rings are large and static.
-2. **Speed drives orbit too**: The orbit rate is linked to the Speed pot, so faster expansion also means faster center movement when Orbit is enabled.
-3. **Saturation has four levels**: The sat_shift is derived from 2 bits, so saturation changes in discrete steps rather than continuously — there are effectively four saturation positions.
+1. Turn **Speed** (Knob 1) to about 25%. Concentric rings begin scrolling outward from the center of the frame, painting rainbow bands over your input.
+2. Increase **Saturation** (Knob 3) clockwise. The rings become more vivid and colorful, shifting from pale tints to full spectral saturation.
+3. Sweep **Hue** (Knob 2) slowly. The entire color palette rotates: greens become blues, reds become yellows: cycling through the full spectrum as you turn.
+4. Enable **Orbit** (Switch 7). The center of the ring pattern begins drifting in a looping path, sweeping the rings across the frame automatically.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Radiant loaded](/img/instruments/videomancer/radiant/radiant_control_panel.png)
+*Videomancer's front panel with Radiant active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Speed** controls how fast the rings scroll outward from the center. At 0%, the rings are frozen in place: a static pattern of concentric color bands. As you increase Speed, the rings begin to expand, creating the illusion of a tunnel rushing toward you. Higher values produce faster scrolling. Speed also controls the rate of the center orbit animation when **Orbit** is enabled: faster expansion means faster orbital drift.
+
+:::tip
+Even at very low Speed values, the ring pattern is always present. Set Speed to 0% and use **Hue** and **Center X/Y** manually to position a static color target or vignette over your video.
+:::
+
+---
+
+### Knob 2 — Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 360° |
+| Default | 0° |
+
+**Hue** rotates the base color of the ring palette. At 0°, the palette begins at its default starting color. Sweeping Hue through 360° cycles through the entire spectrum. Because the rings already cycle through hue as a function of distance, this control shifts *where* in the spectrum the cycle begins: think of it as rotating a color wheel that the rings are painted from.
+
+---
+
+### Knob 3 — Saturaton
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Saturation** controls the color intensity of the rings. At low values, the rings carry very little chrominance: they appear as near-neutral brightness variations. As Saturation increases, the U and V color components depart further from the neutral axis, and the rings become vividly colored. At maximum, the rings carry the strongest chroma the 10-bit signal allows.
+
+The saturation control works by scaling the distance of the U and V values from the midpoint (512) using a power-of-two shift. This produces four discrete saturation levels internally, but the visual transition between them is smooth because the ring index itself varies continuously across the screen.
+
+---
+
+### Knob 4 — Value
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Value** sets the brightness of the ring pattern. In additive mode, this determines how much luminance the rings add to the input video: low Value produces dim, subtle rings; high Value produces bright, overdriven rings that can wash out the input. In multiply mode, Value controls the depth of the brightness gating: low Value allows the ring pattern to suppress the input almost to black, while high Value lets more of the input through.
+
+---
+
+### Knob 5 — Center X
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Center X** positions the horizontal origin of the ring pattern. At 50%, the center is in the middle of the frame. Turning counterclockwise shifts the center leftward; turning clockwise shifts it rightward. When **Orbit** is enabled, Center X sets the resting position around which the orbital animation oscillates.
+
+---
+
+### Knob 6 — Center Y
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Center Y** positions the vertical origin of the ring pattern. At 50%, the center is in the middle of the frame. Turning counterclockwise shifts the center upward; turning clockwise shifts it downward. Like **Center X**, this sets the resting position for the orbit animation.
+
+:::note
+The orbit animation adds a triangular-wave offset to both Center X and Center Y. The X and Y oscillators run at slightly different speeds, creating a quasi-***Lissajous*** figure that never quite repeats the same path.
+:::
+
+---
+
+### Switch 7 — Orbit
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Orbit** enables the automatic center animation. When set to **Off**, the ring center stays wherever **Center X** and **Center Y** place it. When set to **On**, the center drifts in a looping triangular-wave path. The orbit speed is tied to the **Speed** parameter: faster ring expansion means faster orbital motion. Even at very low Speed values, a small constant offset keeps the orbit creeping slowly.
+
+---
+
+### Switch 8 — Auto Hue
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Auto Hue** enables automatic palette rotation. When set to **Off**, the ring colors depend only on the **Hue** knob and the distance from center. When set to **On**, the base hue increments by a small amount each frame, causing the entire ring palette to slowly drift through the spectrum. The rotation is slow and steady: it takes many seconds to complete a full cycle. Auto Hue combines additively with the manual **Hue** knob, so you can set a starting point and let the palette wander from there.
+
+---
+
+### Switch 9 — Multiply
+
+| Property | Value |
+|----------|-------|
+| Off | Add |
+| On | Mult |
+| Default | Add |
+
+**Multiply** selects the compositing method. When set to **Add**, the ring color is added to the input video: ring brightness is summed with input brightness, and ring chroma is summed with input chroma, with clamping at the signal limits. When set to **Mult**, the ring pattern gates the input video: ring brightness controls how much of the input signal passes through (darker ring regions suppress the input toward black), and ring chroma tints the input via averaging.
+
+:::tip
+***Multiply mode is the vignette tool.*** Position the center over your subject, lower the Value, and the ring pattern creates a natural spotlight-to-shadow falloff. The octagonal distance metric gives the vignette a subtly faceted, gem-like shape rather than a perfect circle.
+:::
+
+---
+
+### Switch 10 — Wide Ring
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Wide Ring** doubles the width of each color ring. When set to **Off**, the ring index is derived directly from the full-precision radial distance, producing narrow, tightly packed rings. When set to **On**, the distance value is halved before the ring index is computed, effectively stretching each ring to twice its normal width. Wide rings are easier to see at a distance and produce a bolder, more graphic look.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input directly to the output, skipping all ring generation and compositing. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the processed result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry input and the wet (ring-composited) output. At 0%, the output is entirely dry: no ring effect is visible. At 100%, the output is fully wet: the complete ring composite is active. Intermediate values blend the two proportionally, allowing you to dial in a subtle ring tint or overlay without committing to the full effect.
 
 ---
 
 ## Background
 
-### Octagonal Distance Approximation
+### Color Tunnels and the Fairlight CVI
 
-Computing true Euclidean distance ($\sqrt{dx^2 + dy^2}$) requires a multiplier and square root — expensive on an iCE40. Radiant uses an octagonal approximation: $d \approx \max(|dx|, |dy|) + \frac{3}{8} \min(|dx|, |dy|)$. Specifically, the VHDL computes `max + min/4 + min/8`, which equals `max + 3*min/8`. This produces an octagon-shaped equidistant contour rather than a circle, but the visual difference is subtle, especially when the rings are scrolling. The approximation requires only addition and bit-shifting.
+The Fairlight CVI (Computer Video Instrument), released in 1984, was one of the earliest real-time digital video effects processors. Among its many effects was the ***Colour Tunnel***: a concentric ring pattern that could be overlaid on live video to create the illusion of flying through a tube of colored light. The effect became iconic in 1980s music videos and broadcast television, lending a distinctly futuristic, electronic aesthetic to everything it touched.
 
-### Hue Wheel Color Generation
+Radiant is a direct homage to this effect. It uses the same fundamental technique: computing a radial distance from a center point and mapping it through a scrolling color palette: but takes advantage of modern FPGA resources to add adjustable parameters, automatic animation, and flexible compositing options that the original hardware couldn't offer.
 
-The ring color is generated from a hue index that wraps cyclically through the 10-bit range. The ring hue value is split into U and V components with a 90-degree (256-count) phase offset: U derives from `hue - 512` and V from `(hue + 256) - 512`. This produces a simple two-channel color wheel where the hue rotates through complementary color pairs. Saturation is applied by shifting U and V offsets toward zero via a variable right-shift (0–3 positions), controlled by the upper 2 bits of the Saturation register. The Value pot sets ring luma brightness directly.
+### Octagonal Distance
 
-### DDS Frame Scrolling
+True circular distance requires a square root, which is expensive in hardware. Radiant uses an ***octagonal approximation***: a well-known technique in digital signal processing where the distance is estimated as:
 
-A 16-bit Direct Digital Synthesis accumulator advances by `speed << 4` each frame at vertical sync. The upper 10 bits of this accumulator become the frame scroll offset added to the ring index. Faster speed values cause the rings to expand more rapidly. Because the accumulator wraps at 16 bits, the scroll is periodic — after enough frames, the pattern repeats. The expansion rate is proportional to the Speed pot value.
+$$d \approx \max(|dx|, |dy|) + \frac{3}{8} \cdot \min(|dx|, |dy|)$$
 
-### Triangular-Wave Orbit
+This produces iso-distance contours that are octagonal rather than circular, which is how the rings get their characteristic subtly faceted shape. The approximation is accurate to within a few percent of the true Euclidean distance and costs only a handful of additions and shifts (no multiplier or square root required.)
 
-When Orbit mode is active, two independent 16-bit DDS accumulators advance at slightly different rates each frame (speed + 32 for X, speed + 48 for Y), creating a quasi-Lissajous pattern. Each accumulator is converted to a triangular wave by inverting its lower bits when the MSB is set. The resulting 10-bit offsets are added to the Center X and Center Y pot values, causing the ring center to meander across the frame in a smooth, non-repeating figure.
+### Hue-to-UV Mapping
 
-### Composite Modes
-
-Radiant offers two compositing strategies. **Additive** mode adds the ring Y to the input Y with clamping, and adds ring U/V to input U/V with a midpoint offset (ring chroma is centered at 512, so the operation is `input + ring - 512` clamped to [0, 1023]). **Multiply** mode uses the ring Y value to gate the input brightness via a variable right-shift (0–7 positions derived from the ring brightness), and averages ring and input chroma. Additive produces luminous overlays; multiply produces vignette and shadow effects.
+The ring color is generated by treating the ***ring index*** (a combination of distance, scroll position, and hue offset) as a hue value and converting it to YUV color space. The U and V components are derived by offsetting the ring index by 90 degrees (a quarter of the 10-bit range, or 256 counts), creating a quadrature pair. Saturation is applied by shifting U and V toward or away from the neutral midpoint (512). This is a simplified, hardware-efficient form of ***HSV-to-YUV*** conversion that produces a smooth, continuous color cycle without requiring lookup tables or trigonometric functions.
 
 
 ---
 
 ## Signal Flow
 
-Input Register → Distance Computation → Ring Color Generation → Composite
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Stage 1: Input Register + Sync + Counters + DDS ────────────
-│   ├─ Capture Y, U, V
-│   ├─ Sync edge detection (hsync_fall, vsync_fall)
-│   ├─ Pixel/line counters → pixel_x [10-bit], pixel_y [10-bit]
-│   ├─ Frame scroll DDS: acc += speed << 4 at vsync
-│   ├─ Orbit DDS: x_acc += speed + 32, y_acc += speed + 48
-│   │   └─ Triangular wave → orbit offsets
-│   ├─ Hue auto-rotation DDS: hue_acc += 2 at vsync
-│   └─ Effective center = pot + orbit_offset (wrapping add)
-│
-├── Stage 2: Distance Computation ──────────────────────────────
-│   ├─ abs_dx = |pixel_x - eff_center_x|
-│   ├─ abs_dy = |pixel_y - eff_center_y|
-│   ├─ max_d, min_d = sort(abs_dx, abs_dy)
-│   └─ radial_dist = max_d + min_d/4 + min_d/8  (octagonal)
-│
-├── Stage 3: Ring Color Generation ─────────────────────────────
-│   ├─ ring_index = dist[wide?>>1:full] + frame_scroll + eff_hue
-│   ├─ ring_y = Value pot (direct)
-│   ├─ sat_shift = 3 - saturation[9:8]
-│   ├─ U_offset = (ring_hue - 512) >> sat_shift + 512
-│   └─ V_offset = ((ring_hue + 256) - 512) >> sat_shift + 512
-│
-├── Stage 4: Composite ─────────────────────────────────────────
-│   ├─ Additive mode:
-│   │   ├─ comp_y = clamp(y_in + ring_y)
-│   │   ├─ comp_u = clamp(u_in + ring_u - 512)
-│   │   └─ comp_v = clamp(v_in + ring_v - 512)
-│   └─ Multiply mode:
-│       ├─ atten = 7 - ring_y[9:7]
-│       ├─ comp_y = y_in >> atten
-│       ├─ comp_u = (u_in + ring_u) / 2
-│       └─ comp_v = (v_in + ring_v) / 2
-│
-├── Mix (3× interpolator_u, 4 clocks) ─────────────────────────
-│   └─ lerp(dry, wet, mix_amount) per channel
-│
-└── Output ─────────────────────────────────────────────────────
-    └─ bypass ? delayed_input : mixed_output
-```
+The pipeline is eight clocks deep: four processing stages followed by a four-clock interpolator for wet/dry crossfading. The input video passes through a matching eight-stage delay line so that the dry signal arrives at the interpolator at the same time as the wet signal.
 
-The key interaction is the additive ring index construction: `distance + frame_scroll + effective_hue`. Distance provides the spatial structure (concentric rings), frame scroll provides temporal animation (expanding/contracting), and hue provides the color starting point. Because all three are added modulo 1024, the rings seamlessly wrap in all three domains — spatially at the frame edges, temporally over the DDS period, and chromatically through the full color wheel. The Wide Ring toggle halves the distance contribution by right-shifting it one bit, which doubles the apparent ring width.
+Three independent ***direct digital synthesis*** (DDS) accumulators drive the animation. The frame scroll DDS controls ring expansion speed, accumulating once per vertical sync. The orbit DDS controls center position, also accumulating per vsync with slightly different X and Y rates to produce the Lissajous-like drift. The hue auto-rotation DDS increments by a small fixed value per frame when Auto Hue is enabled, providing the slow palette rotation. Because all three accumulators update only on vsync, the ring pattern is rock-stable within each frame.
 
----
-
-## Parameter Reference
-
-<img src={radiant_control_panel} alt="Videomancer front panel with Radiant loaded"/>
-*Videomancer's front panel with Radiant active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Speed
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
-
-Controls the ring expansion speed — how fast the concentric rings appear to move outward or inward. The 10-bit register value is left-shifted by 4 bits and added to a 16-bit DDS accumulator once per frame at vsync. At zero, the rings are static. At maximum, they scroll rapidly. The same speed value also influences the orbit rate when Orbit mode is enabled, as it is added to fixed offsets for the X and Y orbit accumulators.
-
----
-
-#### Knob 2 — Hue
-| Property | Value |
-|----------|-------|
-| Range | 0° – 360° |
-| Default | 0° |
-| Suffix | ° |
-
-Sets the base hue of the ring color palette. The 10-bit value rotates the starting position on the color wheel. At 0 the rings begin from one end of the hue cycle; sweeping to 1023 rotates through the full spectrum. When Auto Hue is enabled, this value is summed with a slowly incrementing DDS accumulator, so the pot sets the starting point of an automatically rotating palette.
-
----
-
-#### Knob 3 — Saturaton
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
-
-Controls the color saturation of the generated rings. The upper two bits of the 10-bit register select a right-shift amount (0–3) applied to the U and V chroma offsets. At maximum saturation (shift = 0), ring colors are vivid. At minimum (shift = 3), U and V offsets are divided by 8, producing near-neutral rings that appear as luminance-only bands. Intermediate positions provide increasingly pastel coloring.
-
----
-
-#### Knob 4 — Value
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
-
-Sets the brightness (Y value) of the ring signal. This value is used directly as the ring luma in additive mode and as the attenuation selector in multiply mode. In additive mode, higher values produce brighter rings that wash out the source. In multiply mode, the value controls how much the ring darkens the source — at maximum the ring passes the source through nearly unattenuated; at minimum it crushes the signal to black.
-
----
-
-#### Knob 5 — Center X
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Sets the horizontal position of the ring center. At 512 (midpoint) the center is approximately at the middle of the frame. Lower values move it left; higher values move it right. The 10-bit value maps to the same coordinate space as the pixel counter (roughly 0–1023 across the active picture width). When Orbit mode is active, a triangular-wave DDS offset is added to this value, so the pot sets the center of the orbit path.
-
----
-
-#### Knob 6 — Center Y
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Sets the vertical position of the ring center. At 512 the center is approximately mid-frame. Lower values move it upward; higher values move it downward. Combined with Center X, this positions the origin point from which all rings radiate. Like Center X, the orbit DDS adds a triangular-wave offset when Orbit mode is enabled.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Orbit** | Off | On |
-| **8 — Auto Hue** | Off | On |
-| **9 — Multiply** | Add | Mult |
-| **10 — Wide Ring** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles control animation, color behavior, compositing style, and ring geometry. Orbit and Auto Hue enable two independent DDS-driven animations (center position and palette rotation). Multiply switches the compositing math. Wide Ring doubles the ring width by halving the distance contribution. Bypass passes the input through unprocessed.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Controls the wet/dry crossfade between the composited ring signal and the original input. At 0 the output is entirely dry (original video); at 1023 it is entirely wet (full ring overlay). Three parallel `interpolator_u` instances handle the crossfade on Y, U, and V independently. Intermediate positions create semi-transparent ring overlays.
-
-
-
+:::note
+The orbit DDS uses triangular waves (formed by conditionally complementing the upper bits of the accumulator) rather than sinusoidal waves. This gives the orbit an angular, bouncing character instead of smooth curves. The X and Y oscillators have slightly different base frequencies (offsets of 32 and 48, respectively), so the path forms an open Lissajous-like figure that never perfectly repeats.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises explore Radiant's core capabilities — from static centered gradients to animated orbiting rings to multiplicative video gating.
+These exercises progress from a static color target to a fully animated, orbiting rainbow tunnel. Each one layers additional controls to explore more of Radiant's capabilities.
+### Exercise 1: Color Vignette
 
-### Exercise 1: Centered Rainbow Spotlight
+![Color Vignette result](/img/instruments/videomancer/radiant/radiant_ex1_s1.png)
+*Color Vignette — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: radiant_source1_fruit, after: radiant_ex1_s1 },
-    { label: "Field", before: radiant_source2_field, after: radiant_ex1_s2 },
-    { label: "Turtle", before: radiant_source3_turtle, after: radiant_ex1_s3 },
-    { label: "Pattern", before: radiant_source4_pattern, after: radiant_ex1_s4 },
-    { label: "Girl", before: radiant_source5_girl, after: radiant_ex1_s5 },
-    { label: "Wood", before: radiant_source6_wood, after: radiant_ex1_s6 },
-  ]}
-/>
-*Centered Rainbow Spotlight — simulated result across source images.*
-**Source**: A moderately bright video source with recognizable content — a face, an object, or a graphic with visible structure.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Create a static bulls-eye of concentric rainbow rings centered on the frame, additively overlaid on the source video.
+#### Learning Outcomes
 
-1. Set Speed to 0% for static rings
-2. Set Hue to 0° for default palette starting point
-3. Set Saturaton to 75% for vivid ring colors
-4. Set Value to 60% for moderate ring brightness
-5. Set Center X to 50% to center horizontally
-6. Set Center Y to 50% to center vertically
-7. Switch Orbit to Off for static center
-8. Switch Auto Hue to Off for fixed palette
-9. Switch Multiply to Add for additive compositing
-10. Switch Wide Ring to Off for tight rings
-11. Confirm Bypass is Off
-12. Set Mix to 100% for full effect
+A colored spotlight vignette that highlights the center of the frame and dims the edges: a classic broadcast framing technique, reimagined with Radiant's faceted geometry.
 
-**Key concepts**: With Speed at zero the rings are frozen in place, revealing the octagonal distance approximation as a subtle octagonal faceting of the ring contours. The additive composite brightens the source wherever ring luma is nonzero.
+#### Key Concepts
 
----
+- Radial distance creates concentric rings from a center point
+- Multiply mode gates input brightness with ring pattern
+- Center X and Center Y position the ring origin
 
-### Exercise 2: Orbiting Color Tunnel
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: radiant_source1_fruit, after: radiant_ex2_s1 },
-    { label: "Field", before: radiant_source2_field, after: radiant_ex2_s2 },
-    { label: "Turtle", before: radiant_source3_turtle, after: radiant_ex2_s3 },
-    { label: "Pattern", before: radiant_source4_pattern, after: radiant_ex2_s4 },
-    { label: "Girl", before: radiant_source5_girl, after: radiant_ex2_s5 },
-    { label: "Wood", before: radiant_source6_wood, after: radiant_ex2_s6 },
-  ]}
-/>
-*Orbiting Color Tunnel — simulated result across source images.*
-**Source**: A dark or low-contrast video source — a dimly lit scene or abstract dark texture that will serve as a backdrop for the vivid ring overlay.
+A live camera feed or recorded footage with a subject centered in the frame.
 
-**What You'll Create**: Create an animated color tunnel with the ring center orbiting across the frame and the palette slowly rotating through the spectrum.
+#### Steps
 
-1. Set Speed to 40% for moderate expansion rate
-2. Set Hue to 180° for starting midway through palette
-3. Set Saturaton to 100% for maximum color intensity
-4. Set Value to 80% for bright luminous rings
-5. Set Center X to 50% as orbit center
-6. Set Center Y to 50% as orbit center
-7. Switch Orbit to On for animated center
-8. Switch Auto Hue to On for palette rotation
-9. Switch Multiply to Add for additive blending
-10. Switch Wide Ring to On for broad ring bands
-11. Confirm Bypass is Off
-12. Set Mix to 85% for slight source visibility
+1. Set **Speed** (Knob 1) to a low value, around 10%. Slow-moving rings should be visible.
+2. Switch **Multiply** (Switch 9) to **Mult**. The ring pattern now gates the input rather than adding to it (edges of the frame darken.)
+3. Enable **Wide Ring** (Switch 10). The rings spread out, creating a broader, smoother vignette rather than tightly packed bands.
+4. Lower **Value** (Knob 4) to about 75%. The gating becomes gentler, letting more of the input show through.
+5. Set **Hue** (Knob 2) to about 60°. A warm tint colors the ring structure. Adjust **Saturation** (Knob 3) to control how strongly the color tints the image.
+6. Use **Center X** (Knob 5) and **Center Y** (Knob 6) to reposition the bright center over your subject.
+7. Pull back **Mix** (Fader 12) to about 85% to blend the vignette gently with the original.
 
-**Key concepts**: The quasi-Lissajous orbit creates asymmetric ring patterns as the center moves — rings bunch up on one side of the frame and spread out on the other. Auto Hue ensures the color palette evolves continuously. Wide Ring mode makes the bands broad enough to see the hue gradient within each ring.
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Speed | 10% |
+| Hue | 60° |
+| Saturation | 50% |
+| Value | 75% |
+| Center X | 50% |
+| Center Y | 50% |
+| Orbit | Off |
+| Auto Hue | Off |
+| Multiply | Mult |
+| Wide Ring | On |
+| Bypass | Off |
+| Mix | 85% |
 
 ---
 
-### Exercise 3: Vignette Gating
+### Exercise 2: Rainbow Tunnel
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: radiant_source1_fruit, after: radiant_ex3_s1 },
-    { label: "Field", before: radiant_source2_field, after: radiant_ex3_s2 },
-    { label: "Turtle", before: radiant_source3_turtle, after: radiant_ex3_s3 },
-    { label: "Pattern", before: radiant_source4_pattern, after: radiant_ex3_s4 },
-    { label: "Girl", before: radiant_source5_girl, after: radiant_ex3_s5 },
-    { label: "Wood", before: radiant_source6_wood, after: radiant_ex3_s6 },
-  ]}
-/>
-*Vignette Gating — simulated result across source images.*
-**Source**: A well-lit, colorful video source with good dynamic range — the multiply mode will selectively darken regions, so the source needs visible brightness variation.
+![Rainbow Tunnel result](/img/instruments/videomancer/radiant/radiant_ex2_s1.png)
+*Rainbow Tunnel — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Use multiply compositing mode to create a spotlight/vignette effect where the ring pattern selectively attenuates the source video.
+***A description of the exercise illustration.***
 
-1. Set Speed to 10% for slow, subtle ring expansion
-2. Set Hue to 90° for a warm color bias
-3. Set Saturaton to 30% for subdued, near-neutral ring tint
-4. Set Value to 70% for moderate gating depth
-5. Set Center X to 50% to center the spotlight
-6. Set Center Y to 40% to position slightly above center
-7. Switch Orbit to Off for stable center position
-8. Switch Auto Hue to Off for consistent coloring
-9. Switch Multiply to Mult for gated multiplication
-10. Switch Wide Ring to On for broad attenuation bands
-11. Confirm Bypass is Off
-12. Set Mix to 100% for full gating effect
+#### Learning Outcomes
 
-**Key concepts**: In multiply mode, the ring Y value controls brightness attenuation via right-shift — bright ring regions pass the source through, dark ring regions crush it toward black. With low saturation, the ring's chroma influence is subtle, producing a nearly monochrome vignette that gradually reveals and conceals the source.
+A classic color tunnel effect: concentric rainbow rings expanding outward from a central vanishing point, composited additively over the input.
+
+#### Key Concepts
+
+- Ring index maps distance to hue, creating a rainbow cycle
+- Speed controls expansion rate
+- Auto Hue rotates the palette over time
+
+#### Video Source
+
+Dark or low-contrast footage works best: the additive rings will be most visible against darker backgrounds.
+
+#### Steps
+
+1. Set **Speed** (Knob 1) to about 25%. Rings expand steadily outward.
+2. Increase **Saturation** (Knob 3) to about 75%. The rings become vividly colored.
+3. Set **Value** (Knob 4) to about 75%. The rings are bright but not overwhelming.
+4. Make sure **Multiply** (Switch 9) is set to **Add**. The rings add color and brightness to the input.
+5. Sweep **Hue** (Knob 2) slowly through 360° to see the palette rotate. Park it wherever the color combination looks best.
+6. Enable **Auto Hue** (Switch 8). The palette begins rotating on its own (watch the colors slowly shift through the spectrum.)
+7. Toggle **Wide Ring** (Switch 10) on and off to compare narrow and wide ring spacing.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Speed | 25% |
+| Hue | 0° |
+| Saturation | 75% |
+| Value | 75% |
+| Center X | 50% |
+| Center Y | 50% |
+| Orbit | Off |
+| Auto Hue | On |
+| Multiply | Add |
+| Wide Ring | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Orbiting Spectrum
 
-## Tips
+![Orbiting Spectrum result](/img/instruments/videomancer/radiant/radiant_ex3_s1.png)
+*Orbiting Spectrum — simulated result across source images.*
+#### Exercise Illustration
 
-- **Multiply darkens**: In multiply mode, the ring attenuates the source rather than adding to it — low Value settings crush the image to black at the ring center.
-- **Auto Hue is slow**: The fixed increment of 2 per frame means full palette rotation takes many seconds — be patient when evaluating color cycling.
-- **Orbit is quasi-random**: The X and Y orbit rates differ by design (offsets of 32 vs 48), so the center path never repeats exactly within a typical viewing session.
-- **Wide Ring halves density**: Enabling Wide Ring right-shifts the distance, doubling apparent ring width — useful for broad color washes rather than tight interference patterns.
-- **Additive clips to white**: In additive mode with high Value, source highlights will clip to peak white — reduce Value or Mix to preserve source dynamic range.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A fully animated, self-running color tunnel with the center drifting across the frame, painting sweeping arcs of rainbow light over the input.
+
+#### Key Concepts
+
+- Orbit mode animates the center in a quasi-Lissajous triangular path
+- Speed controls both ring expansion and orbit rate simultaneously
+- Combining orbit with auto-hue produces a fully self-animating effect
+
+#### Video Source
+
+Any video feed: abstract material, camera footage, or even a static image. The orbit animation provides all the motion.
+
+#### Steps
+
+1. Start from the Exercise 2 settings: Speed 25%, Saturation 75%, Value 75%, Add mode.
+2. Enable **Orbit** (Switch 7). The ring center begins tracing a looping path across the frame.
+3. Increase **Speed** (Knob 1) to about 40%. Both the ring expansion and the orbital motion accelerate.
+4. Enable **Auto Hue** (Switch 8) if not already on. The palette rotates continuously.
+5. Offset the center: set **Center X** (Knob 5) to about 30% and **Center Y** (Knob 6) to about 60%. The orbit now sweeps around an off-center origin, creating asymmetric patterns.
+6. Enable **Wide Ring** (Switch 10) for a bolder, more graphic look.
+7. Lower **Mix** (Fader 12) to about 85%. The ring pattern blends with the input rather than dominating it (the orbiting rings become a dynamic color overlay.)
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Speed | 40% |
+| Hue | 180° |
+| Saturation | 100% |
+| Value | 60% |
+| Center X | 30% |
+| Center Y | 60% |
+| Orbit | On |
+| Auto Hue | On |
+| Multiply | Add |
+| Wide Ring | On |
+| Bypass | Off |
+| Mix | 85% |
+
+---
+## Glossary
+
+- **Additive Composite**: A blending method where the ring signal's brightness and color values are summed with the input, producing brighter results.
+
+- **DDS (Direct Digital Synthesis)**: A technique for generating waveforms by incrementing an accumulator once per update cycle; used here to animate ring expansion, orbit, and hue rotation.
+
+- **Hue**: The attribute of color that distinguishes red from blue from green (the position on the color wheel.)
+
+- **Lissajous Figure**: A geometric curve formed by combining two oscillations at different frequencies; Radiant's orbit mode approximates this with triangular waves.
+
+- **Multiply Composite**: A blending method where the ring signal gates the input brightness, darkening areas where the ring value is low.
+
+- **Octagonal Distance**: A hardware-efficient approximation of Euclidean distance that produces octagonal iso-distance contours instead of perfect circles.
+
+- **Radial Distance**: The distance from a pixel to the center point, used to determine which ring a pixel belongs to.
+
+- **Ring Index**: A computed value combining radial distance, frame scroll, and hue offset that maps each pixel to a position in the color palette.
+
+- **Saturation**: The intensity or purity of a color; low saturation approaches neutral gray, high saturation approaches vivid, pure color.
+
+- **Triangular Wave**: A waveform that rises and falls linearly, forming a zigzag shape; used for the orbit animation to create angular, bouncing motion.
+
+- **YUV**: A color model separating brightness (Y) from color difference signals (U, V); the native format of the Videomancer video pipeline.
 
 ---

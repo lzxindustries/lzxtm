@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 164
 slug: /instruments/videomancer/lascaux
@@ -7,374 +7,404 @@ image: /img/instruments/videomancer/lascaux/lascaux_hero_s1.png
 description: "Thirty-two thousand years ago, artists crouched in the darkness of limestone caves and painted animals, handprints, and abstract symbols onto rough stone walls using nothing but mineral pigments and firelight."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import lascaux_control_panel from '/img/instruments/videomancer/lascaux/lascaux_control_panel.png';
-import lascaux_source1_sunset from '/img/instruments/videomancer/lascaux/lascaux_source1_sunset.png';
-import lascaux_source2_parrot from '/img/instruments/videomancer/lascaux/lascaux_source2_parrot.png';
-import lascaux_source3_clouds from '/img/instruments/videomancer/lascaux/lascaux_source3_clouds.png';
-import lascaux_source4_pattern from '/img/instruments/videomancer/lascaux/lascaux_source4_pattern.png';
-import lascaux_source5_woman from '/img/instruments/videomancer/lascaux/lascaux_source5_woman.png';
-import lascaux_source6_berries from '/img/instruments/videomancer/lascaux/lascaux_source6_berries.png';
-import lascaux_hero_s1 from '/img/instruments/videomancer/lascaux/lascaux_hero_s1.png';
-import lascaux_hero_s2 from '/img/instruments/videomancer/lascaux/lascaux_hero_s2.png';
-import lascaux_hero_s3 from '/img/instruments/videomancer/lascaux/lascaux_hero_s3.png';
-import lascaux_hero_s4 from '/img/instruments/videomancer/lascaux/lascaux_hero_s4.png';
-import lascaux_hero_s5 from '/img/instruments/videomancer/lascaux/lascaux_hero_s5.png';
-import lascaux_hero_s6 from '/img/instruments/videomancer/lascaux/lascaux_hero_s6.png';
-import lascaux_ex1_s1 from '/img/instruments/videomancer/lascaux/lascaux_ex1_s1.png';
-import lascaux_ex1_s2 from '/img/instruments/videomancer/lascaux/lascaux_ex1_s2.png';
-import lascaux_ex1_s3 from '/img/instruments/videomancer/lascaux/lascaux_ex1_s3.png';
-import lascaux_ex1_s4 from '/img/instruments/videomancer/lascaux/lascaux_ex1_s4.png';
-import lascaux_ex1_s5 from '/img/instruments/videomancer/lascaux/lascaux_ex1_s5.png';
-import lascaux_ex1_s6 from '/img/instruments/videomancer/lascaux/lascaux_ex1_s6.png';
-import lascaux_ex2_s1 from '/img/instruments/videomancer/lascaux/lascaux_ex2_s1.png';
-import lascaux_ex2_s2 from '/img/instruments/videomancer/lascaux/lascaux_ex2_s2.png';
-import lascaux_ex2_s3 from '/img/instruments/videomancer/lascaux/lascaux_ex2_s3.png';
-import lascaux_ex2_s4 from '/img/instruments/videomancer/lascaux/lascaux_ex2_s4.png';
-import lascaux_ex2_s5 from '/img/instruments/videomancer/lascaux/lascaux_ex2_s5.png';
-import lascaux_ex2_s6 from '/img/instruments/videomancer/lascaux/lascaux_ex2_s6.png';
-import lascaux_ex3_s1 from '/img/instruments/videomancer/lascaux/lascaux_ex3_s1.png';
-import lascaux_ex3_s2 from '/img/instruments/videomancer/lascaux/lascaux_ex3_s2.png';
-import lascaux_ex3_s3 from '/img/instruments/videomancer/lascaux/lascaux_ex3_s3.png';
-import lascaux_ex3_s4 from '/img/instruments/videomancer/lascaux/lascaux_ex3_s4.png';
-import lascaux_ex3_s5 from '/img/instruments/videomancer/lascaux/lascaux_ex3_s5.png';
-import lascaux_ex3_s6 from '/img/instruments/videomancer/lascaux/lascaux_ex3_s6.png';
-
-# Lascaux
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: lascaux_source1_sunset, after: lascaux_hero_s1 },
-    { label: "Parrot", before: lascaux_source2_parrot, after: lascaux_hero_s2 },
-    { label: "Clouds", before: lascaux_source3_clouds, after: lascaux_hero_s3 },
-    { label: "Pattern", before: lascaux_source4_pattern, after: lascaux_hero_s4 },
-    { label: "Woman", before: lascaux_source5_woman, after: lascaux_hero_s5 },
-    { label: "Berries", before: lascaux_source6_berries, after: lascaux_hero_s6 },
-  ]}
-/>
-*Lascaux transforming a video portrait into earth-tone cave pigments illuminated by a flickering torch drifting across rough stone.*
+![Lascaux hero image](/img/instruments/videomancer/lascaux/lascaux_hero_s1.png)
+*Lascaux rendering a live camera feed as a torchlit Paleolithic cave painting with earth-tone pigments and charcoal contour lines scored into rough stone.*
 
 ---
 
 ## Overview
 
-Thirty-two thousand years ago, artists crouched in the darkness of limestone caves and painted animals, handprints, and abstract symbols onto rough stone walls using nothing but mineral pigments and firelight. The results — preserved at Lascaux, Altamira, and Chauvet — remain among the most powerful images ever created. Lascaux recreates this primal visual world by processing modern video through a four-stage pipeline that mimics the materials and conditions of Paleolithic cave art.
+**Lascaux** transforms any video signal into a Paleolithic cave painting. Your input is recast through a four-pigment earth-tone palette derived from the mineral pigments found in actual prehistoric art, dark charcoal contour lines are etched over the image, and a rough stone surface texture is applied beneath the paint. An animated torch casts a circle of warm light across the cave wall, dimming the surrounding stone to near-darkness. The result is something that looks like it was painted by firelight onto limestone thirty thousand years ago (and then discovered yesterday.)
 
-First, the input video is reduced to a palette of two, three, or four earth-tone pigments — charcoal black, yellow ochre, red ochre, and raw sienna — derived from spectroscopic analysis of actual Lascaux paint samples. Second, charcoal contour lines are extracted from the edges of the palettized image using horizontal and vertical gradient detection, darkening the boundaries between color regions the way a cave artist would outline a figure with a charcoal stick. Third, stone surface grain is applied via LFSR noise, adding the rough texture of limestone or basalt walls. Finally, a virtual torch illuminates a circular region of the frame with radial falloff, leaving the rest of the image in cave darkness. The torch drifts slowly across the frame on a Lissajous-like path, its brightness flickering with the organic randomness of a fat lamp or pine resin flame.
+At gentle settings, Lascaux adds a warm, weathered quality to footage: like a candlelit oil painting on rough canvas. At extreme settings, it reduces the image to stark charcoal outlines scratched onto flickering stone, barely visible outside the torch's narrow cone. Every control pushes the image deeper into the cave.
 
-The program is named after the Lascaux cave complex in the Dordogne region of southwestern France, discovered in 1940 by four teenagers and their dog. The cave contains over 600 paintings and 1,500 engravings dating to approximately 17,000 BCE, including the famous Hall of the Bulls — one of the most celebrated works of prehistoric art.
+:::tip
+***The torch is the signature effect.*** It's not a simple vignette: the torch drifts across the frame, its flame flickers randomly, and the darkness actually desaturates the color channels. When you turn it on and crank the radius down, it feels like you're holding a real torch in a real cave.
+:::
+
+### What's In a Name?
+
+The name ***Lascaux*** refers to the cave complex in southwestern France's Dordogne region discovered in 1940, famous for its Paleolithic paintings dating to approximately 17,000 BC. The Hall of the Bulls at Lascaux contains some of the finest examples of prehistoric art ever found: large-scale animal figures rendered in mineral pigments on limestone walls. This program recreates the material qualities of that art: the ochre and sienna palette, the charcoal contour drawing, the rough stone substrate, and the flickering torchlight that would have been the only way to see it.
 
 ---
 
 ## Quick Start
 
-1. **Torch Color is a stub**: The Fat Lamp / Pine Resin toggle is wired but unused. Don't waste time tweaking it — it has no visible effect.
-2. **Start with uniform lighting**: Set Torch Radius to 100%, Flicker to 0%, Torch Lock to Center to see the palette and contour stages clearly before adding torch effects.
-3. **2-pigment mode for maximum drama**: Reducing to 2 pigments (charcoal + ochre) creates the most prehistoric-looking result — stark, high-contrast, and unmistakably ancient.
+1. Feed any video signal into Videomancer and load **Lascaux**. Your image immediately shifts into warm earth tones: the mineral pigment palette replaces the original colors. You're painting on cave walls now.
+2. Turn **Contour Wt** (Knob 3) clockwise. Dark charcoal outlines appear along edges in the image, as if someone traced the shapes with a burnt stick. The heavier the weight, the thicker and darker the outlines.
+3. Turn **Torch Radius** (Knob 4) down to about 40%. A circle of light appears on the cave wall, dimming everything outside its reach. Watch the torch drift slowly across the frame (it's alive.)
+4. Increase **Flicker** (Knob 6). The torch flame becomes unsteady, and the light intensity pulses randomly. The cave breathes.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Lascaux loaded](/img/instruments/videomancer/lascaux/lascaux_control_panel.png)
+*Videomancer's front panel with Lascaux active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Torch Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Torch Speed** controls how quickly the torch drifts across the cave wall. The torch position is driven by a pair of ***direct digital synthesis*** oscillators: one for horizontal drift and one for vertical: tracing a slow, looping figure on the frame. At the minimum setting, the torch barely moves: it creeps across the wall almost imperceptibly. As you turn the knob clockwise, the drift speed increases, and the torch traces its path more quickly. At maximum, the torch sweeps briskly across the image.
+
+:::note
+If **Torch Lock** (Switch 10) is set to **Center**, Torch Speed has no visible effect: the torch is pinned to the center of the frame regardless of this setting.
+:::
+
+---
+
+### Knob 2 — Pigments
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 3 |
+| Default | 2 |
+
+**Pigments** selects how many of the four mineral pigments are active in the ***palette quantization*** stage. Lascaux classifies every input pixel by calculating the ***Manhattan distance*** in YUV color space to each pigment and snapping to the nearest match. At the lowest setting, only two pigments are available: charcoal black and yellow ochre. Adding a third pigment introduces red ochre. At the maximum setting, all four pigments are active: charcoal, yellow ochre, red ochre, and raw sienna: providing the richest earth-tone palette. Fewer pigments produce starker, more graphic results; more pigments produce subtler tonal gradation.
+
+---
+
+### Knob 3 — Contour Wt
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Contour Wt** controls the darkness of the charcoal contour lines overlaid on the palette-quantized image. The contour detector measures brightness differences between neighboring pixels: both horizontally (pixel to pixel) and vertically (line to line, using a ***BRAM line buffer***): and darkens the output proportionally. At the minimum setting, no contour darkening is applied. As you increase the weight, edges in the image are progressively outlined in dark charcoal. At maximum, even subtle edges produce heavy black lines, and the image takes on the look of a charcoal rubbing.
+
+:::tip
+Contour extraction traces the ***luminance*** channel of the original input, not the palette-quantized output. This means contours respond to fine detail in the source even when the palette has reduced the image to a few flat tones.
+:::
+
+---
+
+### Knob 4 — Torch Radius
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Torch Radius** sets the size of the illuminated area around the torch. The torch applies a radial brightness falloff based on ***Manhattan distance*** from the torch center: pixels inside the radius are bright, and pixels outside the radius drop to a dim ambient level. At the minimum setting, the torch illuminates only a small spot. At maximum, the torch floods most of the frame with light. A large radius creates a gentle vignette; a small radius turns the program into a focused spotlight on the cave wall.
+
+---
+
+### Knob 5 — Stone Grain
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 38% |
+
+**Stone Grain** controls the roughness of the simulated stone surface. A ***linear feedback shift register*** generates pseudo-random noise that is mixed into the luminance channel, producing a gritty, granular texture. At the minimum setting, the stone surface is smooth: no grain is visible. As you increase the knob, the surface becomes progressively rougher, with pixel-level noise that simulates the irregular texture of limestone or basalt. At maximum, the grain is heavy and dominant, obscuring fine image detail beneath a thick layer of rock texture.
+
+---
+
+### Knob 6 — Flicker
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 38% |
+
+**Flicker** controls how much the torch flame intensity varies from frame to frame. The LFSR noise source modulates the torch brightness on every vertical sync pulse, creating a random intensity wobble that simulates the unsteady light of an open flame. At the minimum setting, the torch burns steadily with no variation. As you increase the knob, the light becomes more erratic: the flame gutters and surges. At maximum, the torch swings between near-darkness and bright flare, producing a dramatic, unsettling strobe.
+
+:::warning
+High flicker combined with a small torch radius can produce rapid brightness changes. Use caution for photosensitive viewers.
+:::
+
+---
+
+### Switch 7 — Cave Type
+
+| Property | Value |
+|----------|-------|
+| Off | Limestone |
+| On | Basalt |
+| Default | Limestone |
+
+**Cave Type** selects the color of the stone surface. **Limestone** produces warm, yellowish cave walls with a subtle amber tint: the classic look of the Lascaux and Altamira caves. **Basalt** produces cool, neutral gray walls reminiscent of volcanic rock formations. The cave type affects both the grain texture tint and the stone color visible in **Edges Only** mode. Limestone is warmer; basalt is cooler and more austere.
+
+---
+
+### Switch 8 — Torch Color
+
+| Property | Value |
+|----------|-------|
+| Off | Fat Lamp |
+| On | Pine Resin |
+| Default | Fat Lamp |
+
+**Torch Color** selects the character of the torch illumination. **Fat Lamp** simulates a ***wick lamp*** burning animal fat: the type of lamp found in Lascaux, producing a warm, steady amber glow. **Pine Resin** simulates a resinous torch: brighter and more volatile, with a cooler, smokier quality.
+
+---
+
+### Switch 9 — Edges Only
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Edges Only** switches the program into a pure contour drawing mode. When enabled, the palette quantization and pigment coloring are bypassed: the output shows only the charcoal contour lines drawn on a plain stone background. Edges above a fixed threshold appear as dark charcoal; everything else is rendered as bare stone in the selected **Cave Type** color. This mode produces stark, graphic results that look like cave wall etchings or charcoal sketches.
+
+---
+
+### Switch 10 — Torch Lock
+
+| Property | Value |
+|----------|-------|
+| Off | Drift |
+| On | Center |
+| Default | Drift |
+
+**Torch Lock** controls whether the torch drifts or stays fixed. In **Drift** mode, the torch position is animated by the DDS oscillators, tracing a slow figure across the frame at a speed set by **Torch Speed** (Knob 1). In **Center** mode, the torch is locked to the center of the frame and does not move. Center mode is useful when you want a stable vignette or when the torch drift would be distracting.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Lascaux processing stages. The sync delay pipeline still aligns timing, so there is no glitch when toggling. Use Bypass for instant A/B comparison between the raw input and the cave painting effect.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** controls the crossfade between the dry (unprocessed) input and the wet (fully processed) cave painting output. At the minimum setting, you hear only the dry signal: the original video passes through unchanged. At maximum, the output is entirely the processed cave painting. Intermediate values blend the two, allowing you to dial in a subtle warmth or weathering effect without committing to the full prehistoric treatment.
 
 ---
 
 ## Background
 
-### Paleolithic Pigments and Color Science
+### Paleolithic cave painting
 
-The cave painters of Lascaux had access to a remarkably limited palette: manganese dioxide and lamp black for dark tones, iron oxide minerals (goethite, haematite, limonite) for yellows, reds, and browns, and occasionally kaolin clay for white. Spectroscopic analysis of paint samples from Lascaux has identified these as the primary constituents. Lascaux's four-entry palette is modeled directly on these minerals: charcoal (Y=80, neutral chroma) represents manganese dioxide, yellow ochre (Y=620, warm amber) represents goethite, red ochre (Y=380, red-orange) represents haematite, and raw sienna (Y=520, earth brown) represents mixed iron oxides. The palette quantizer uses Manhattan distance in YUV space to classify each input pixel to the nearest pigment.
+The cave paintings at Lascaux, Altamira, and Chauvet are among the oldest known works of art, dating from roughly 32,000 to 15,000 BC. Prehistoric artists worked with a limited palette of mineral pigments: charcoal and ***manganese dioxide*** for black, ***goethite*** for yellow ochre, ***haematite*** for red ochre, and various iron oxides for earth browns. These pigments were ground, mixed with animal fat or water, and applied to cave walls using fingers, fur pads, and reed brushes. Outlines were drawn with sticks of charcoal or manganese crayons.
 
-### Contour Extraction and Charcoal Outlines
+Lascaux's four-pigment palette is modeled on ***spectroscopic analysis*** of actual paint samples recovered from the Lascaux cave complex. The program maps every input pixel to the perceptually nearest pigment using Manhattan distance in YUV color space: a computationally efficient approximation of color similarity.
 
-The cave artists at Lascaux frequently outlined their figures with charcoal sticks before filling areas with pigment — a technique visible in the engraved and drawn outlines that underlie many of the painted animals. Lascaux simulates this by computing the gradient magnitude at each pixel: the absolute difference between adjacent pixels horizontally (from a one-pixel delay) and vertically (from a one-line BRAM delay buffer). The sum of these gradients, scaled by the Contour Weight parameter, is subtracted from the palettized luminance to darken edge regions. In Edges Only mode, the program shows just the contour lines against a plain stone-colored background — a pure charcoal drawing without pigment fill.
+### Edge detection and contour drawing
 
-### LFSR Noise and Stone Texture
+The charcoal contour lines in Lascaux are generated by a simple ***gradient magnitude*** edge detector. For each pixel, the detector computes two differences: the horizontal gradient (brightness difference between the current pixel and the previous pixel on the same line) and the vertical gradient (brightness difference between the current pixel and the same position on the previous line, stored in a BRAM line buffer). The sum of these two gradients approximates the edge strength at each point.
 
-Real cave walls are not smooth — they are rough, pitted, and irregularly textured. Lascaux adds stone surface grain using a 16-bit linear feedback shift register (LFSR) as a pseudorandom noise source. The LFSR output is converted to a signed offset and scaled by the Stone Grain parameter before being added to the luminance channel. Because the LFSR runs freely at pixel rate (one shift per clock), the noise pattern is different on every pixel and every frame, simulating the granular irregularity of natural stone. The noise interacts with the palette quantization: since the palette has already reduced the image to a few discrete colors, the grain appears as a speckled texture within each pigment region rather than as smooth film grain.
+This result is scaled by the **Contour Wt** parameter and subtracted from the palette-quantized luminance, darkening edges proportionally. The technique is similar to a ***Sobel filter*** but simplified to use absolute differences rather than convolution kernels, saving FPGA resources while still producing visually convincing outlines.
 
-### Torch Lighting and Firelight Physics
+### Torch illumination and radial falloff
 
-Before electric lights, the only way to see cave paintings was by the light of animal-fat lamps or pine resin torches — small, flickering point sources that illuminated a limited area while leaving the rest of the cave in total darkness. Lascaux simulates this with a radial falloff function centered on a moving torch position. The torch brightness decreases linearly with Manhattan distance from the center, reaching a minimum ambient level (Y≈30) at the torch radius boundary. The torch position drifts on a Lissajous-like path using cosine and sine lookup tables driven by DDS phase accumulators, creating smooth organic wandering. Flicker is applied per-frame using the LFSR to modulate the overall torch intensity, simulating the guttering of a real flame. The torch also desaturates the chroma channels in shadow — colors fade to neutral in the darkness, matching how firelight suppresses color perception at low intensities.
+The torch simulation combines three elements: position animation, radial brightness falloff, and random flicker. The torch position is driven by two DDS phase accumulators: one for horizontal motion (cosine) and one for vertical motion (sine): each looking up a 32-entry waveform table. This produces a smooth, looping trajectory across the frame.
 
-### Cave Wall Materials
+Brightness at each pixel is determined by Manhattan distance from the torch center. Pixels inside the torch radius receive brightness proportional to their proximity; pixels outside the radius receive a low ambient value (approximately 3% of full scale), simulating distant cave darkness. Finally, the torch brightness is modulated per frame by an LFSR-generated random value, producing a natural flame flicker.
 
-Lascaux offers two cave wall types: Limestone (warm yellowish, matching the Dordogne cave walls where the real Lascaux is located) and Basalt (cool gray, matching volcanic cave systems like those in the Auvergne region or Iceland). The selection affects the chroma tint applied in the stone grain stage — the U/V channels are blended toward the wall color constants, shifting the overall color temperature of the scene. Limestone mode produces the warm, amber-lit atmosphere of the real Lascaux cave; Basalt mode produces a cooler, more austere environment.
+In the darkest regions, the program also desaturates the color channels by pulling U and V toward neutral. This simulates the way human vision loses color perception in low light (a phenomenon called ***scotopic vision***.)
 
 
 ---
 
 ## Signal Flow
 
-Clock 1: Palette → Clock 2: Contour → Clock 3: Stone Surface → ... → Torch Position → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Clock 1: Palette Quantization ──────────────────────────────
-│   ├─ Manhattan distance in YUV space to each pigment
-│   ├─ Select nearest of 2/3/4 pigments (controlled by Pigments)
-│   ├─ Output: palettized Y, U, V
-│   └─ Store original Y for edge detection
-│
-├── Clock 2: Contour Extraction ────────────────────────────────
-│   ├─ Horizontal gradient: |Y(x) − Y(x−1)|
-│   ├─ Vertical gradient:   |Y(x,line) − Y(x,line−1)|  (BRAM)
-│   ├─ Edge magnitude = (gx + gy) × Contour Wt >> 10
-│   ├─ Normal mode: palette_Y − edge_scaled  (darken edges)
-│   └─ Edges Only:  edge > 40 → charcoal, else → stone color
-│
-├── Clock 3: Stone Surface Grain ───────────────────────────────
-│   ├─ LFSR noise → signed offset (−128 .. +127)
-│   ├─ noise × Stone Grain >> 8  → scaled grain
-│   ├─ Y += grain  (clamp 0–1023)
-│   └─ U/V blended 75/25 toward cave wall color
-│
-├── Clock 4: Torch Lighting ────────────────────────────────────
-│   ├─ Manhattan distance from torch center
-│   ├─ Radial falloff: light = (radius − dist) × 1023 >> 10
-│   ├─ Below threshold: ambient darkness (Y≈30)
-│   ├─ Apply flicker: light × flicker_val >> 8
-│   ├─ Y = grain_Y × light >> 10
-│   └─ U/V desaturated toward 512 by light level
-│
-├── Clocks 5–8: Interpolator (wet/dry Mix) ─────────────────────
-│   └─ lerp(dry, wet, Mix)  ×3 channels  (4 clocks)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ 8-stage delay pipeline (hsync, vsync, field)
-│
-├── Torch Position (per-frame update at vsync) ─────────────────
-│   ├─ DDS phase accumulators × Torch Speed
-│   ├─ Cosine/Sine LUT → X/Y position
-│   ├─ Torch Lock: override to center (960, 540)
-│   └─ Flicker: LFSR × Flicker Depth → per-frame intensity
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+Three key interactions define Lascaux's visual character:
 
-The four processing stages (palette → contour → grain → torch) execute sequentially in a single monolithic process, each stage reading the previous stage's registered outputs. The line buffer for vertical edge detection is a 2048×10-bit BRAM tile — the only memory resource the program consumes. The torch position and flicker updates happen once per frame at vsync, so the torch motion is smooth at the video frame rate but does not vary within a single frame. The LFSR that drives both stone grain and torch flicker is a single 16-bit register running at pixel rate, meaning the grain pattern changes every pixel while the flicker value is sampled once per frame from whatever LFSR state happens to coincide with the vsync edge.
+1. **Palette before contour**: The edge detector in stage 2 operates on the ***original*** input luminance (stored as `s_orig_y_s1`), not the palette-quantized output. This means contours track the source image detail even when the palette has flattened the tonal range to just two or three pigments. The contour darkness is then subtracted from the palette output, overlaying fine charcoal lines onto coarse pigment blocks.
 
----
+2. **Stone tint on color channels**: Stage 3 doesn't just add grain to luminance: it also blends the U and V channels 75% toward the cave surface color constant (limestone warm amber or basalt cool gray). This pulls all colors toward a unified stone palette, reinforcing the material illusion.
 
-## Parameter Reference
+3. **Torch desaturation**: In stage 4b, the torch brightness multiplies Y directly, but U and V are offset from neutral (512) before multiplication and then re-centered. In dark areas (low light value), this collapses U/V toward neutral, simulating the loss of color perception in dim light. The result is that only the torchlit region retains vivid pigment color; the surrounding darkness fades to warm gray.
 
-<img src={lascaux_control_panel} alt="Videomancer front panel with Lascaux loaded"/>
-*Videomancer's front panel with Lascaux active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Torch Speed
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-Controls the speed of the torch drift when Torch Lock is set to Drift mode. The register value feeds the DDS phase accumulator increment — higher values make the torch traverse its Lissajous path more quickly, while lower values produce a slow, contemplative wander. At zero, the torch position freezes at its current location in the drift cycle. The X and Y phase accumulators use different multipliers (full speed and half speed), so the torch traces an asymmetric figure-eight-like path rather than a simple circle. This control has no effect when Torch Lock is set to Center.
-
----
-
-#### Knob 2 — Pigments
-| Property | Value |
-|----------|-------|
-| Range | 0 – 3 |
-| Default | 2 |
-
-Selects how many pigments are available to the palette quantizer. The steps_4 control mode divides the 10-bit range into three zones: below 256 selects 2 pigments (charcoal and yellow ochre), 256–511 selects 3 pigments (adding red ochre), and 512 and above selects all 4 pigments (adding raw sienna). Fewer pigments create a more austere, charcoal-and-ochre palette reminiscent of older cave art; more pigments produce a richer, polychrome result like the painted ceilings of Altamira. At 2 pigments, the image reduces to a stark binary of dark and light earth tones.
-
----
-
-#### Knob 3 — Contour Wt
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the darkness of the charcoal contour outlines. The edge magnitude (sum of horizontal and vertical gradients) is multiplied by this value and shifted right by 10, then subtracted from the palettized luminance. At zero, no contour darkening is applied — the palette output passes through cleanly. At maximum, even gentle gradients produce strong dark outlines, and the image takes on a heavily drawn, engraved quality. In Edges Only mode, this control scales the threshold sensitivity for what qualifies as an edge — higher values cause more of the image to register as contour.
-
----
-
-#### Knob 4 — Torch Radius
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Sets the radius of the torch illumination circle. The register value is scaled to a pixel range of 64 to 960 — from a tight spotlight that reveals only a small patch of cave wall to a wide flood that illuminates most of the frame. The falloff within the illuminated circle is linear with Manhattan distance from the torch center, so the light is brightest at the center and fades steadily toward the edge. Beyond the radius, only a minimal ambient glow (Y≈30) remains, simulating the deep darkness of an unlit cave.
-
----
-
-#### Knob 5 — Stone Grain
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 38% |
-| Suffix | % |
-
-Controls the intensity of the stone surface grain noise. The LFSR noise output (signed, ±128) is multiplied by this value and divided by 256, then added to the luminance. At zero, the stone surface is smooth — only the palette colors and contour lines are visible. At moderate values, a subtle speckled texture appears within each pigment region, imitating the natural roughness of limestone. At high values, the noise becomes aggressive and begins to break up the palette colors themselves, producing a heavily weathered, eroded appearance.
-
----
-
-#### Knob 6 — Flicker
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 38% |
-| Suffix | % |
-
-Controls the depth of the torch flicker effect. The LFSR provides a random 8-bit value each frame, which is scaled by this parameter and added to a base intensity of 192. At zero, the torch burns with a steady, unwavering brightness — useful for analytical viewing. At moderate values, a gentle organic flicker animates the torch, simulating the natural guttering of a fat lamp. At maximum, the flicker is dramatic and intense — the torch seems to be buffeted by cave drafts, rapidly alternating between bright flare-ups and near-darkness.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Cave Type** | Limestone | Basalt |
-| **8 — Torch Color** | Fat Lamp | Pine Resin |
-| **9 — Edges Only** | Off | On |
-| **10 — Torch Lock** | Drift | Center |
-| **11 — Bypass** | Off | On |
-
-Five toggles provide binary mode selections. Cave Type selects the wall material (warm limestone vs. cool basalt). Torch Color is wired to a register but not referenced in the pipeline — it has no visible effect. Edges Only replaces the full painted output with a pure contour-line drawing. Torch Lock pins the torch to center or allows free drift. Bypass routes the input directly to the output.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Lascaux-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::tip
+**Order matters.** Palette quantization sees the original input colors. Contour extraction sees original luminance. Stone grain and torch lighting see the palette output. This means changes to **Pigments** affect the colors you see, but not the contour lines (those always follow the source detail.)
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from minimal palette restriction through full cave-painting immersion, exploring how the four pipeline stages interact to evoke Paleolithic art.
-
+These exercises progress from basic palette restriction to full cave painting simulation, gradually engaging more of the processing chain. Each one builds on the previous, layering effects until the image looks like it was painted thirty millennia ago.
 ### Exercise 1: Earth-Tone Palette
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: lascaux_source1_sunset, after: lascaux_ex1_s1 },
-    { label: "Parrot", before: lascaux_source2_parrot, after: lascaux_ex1_s2 },
-    { label: "Clouds", before: lascaux_source3_clouds, after: lascaux_ex1_s3 },
-    { label: "Pattern", before: lascaux_source4_pattern, after: lascaux_ex1_s4 },
-    { label: "Woman", before: lascaux_source5_woman, after: lascaux_ex1_s5 },
-    { label: "Berries", before: lascaux_source6_berries, after: lascaux_ex1_s6 },
-  ]}
-/>
+![Earth-Tone Palette result](/img/instruments/videomancer/lascaux/lascaux_ex1_s1.png)
 *Earth-Tone Palette — simulated result across source images.*
-**Source**: A portrait or landscape with a range of skin tones, foliage, and sky — material with varied hue and luminance.
+#### Exercise Illustration
 
-**What You'll Create**: Explore how the palette quantizer reduces modern video to Paleolithic pigments, and how the pigment count changes the character of the image.
+***A description of the exercise illustration.***
 
-1. **Disable torch and grain**: Set Torch Radius to 100% and Flicker to 0% for uniform lighting. Set Stone Grain to 0%, Contour Wt to 0%.
-2. **Full palette**: Set Pigments to maximum (~100%, all 4 pigments). The image reduces to four earth tones. Notice how faces become patches of ochre and sienna.
-3. **Reduce pigments**: Sweep Pigments downward. At 3 pigments, sienna disappears. At 2 pigments, the image reduces to a stark charcoal-and-ochre duotone.
-4. **Add contour**: Slowly increase Contour Wt. Charcoal outlines emerge at the boundaries between pigment regions, giving the image a drawn quality.
-5. **Edges Only**: Toggle Edges Only On. The pigment fill vanishes — only the charcoal contour lines remain on a stone-colored background. Compare Limestone vs. Basalt cave types.
+#### Learning Outcomes
 
-**Key concepts**: Manhattan distance palette quantization in YUV, fewer pigments create starker images, contour extraction darkens palette edges, Edges Only isolates the line drawing
+A warm, posterized image rendered in mineral pigments with subtle charcoal outlines (like an illustrated plate from an archaeology book.)
 
----
+#### Key Concepts
 
-### Exercise 2: Stone Surface and Torch
+- Palette quantization snaps every pixel to its nearest pigment
+- Fewer pigments produce bolder, more graphic results
+- Contour lines overlay the palette with charcoal edge darkening
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: lascaux_source1_sunset, after: lascaux_ex2_s1 },
-    { label: "Parrot", before: lascaux_source2_parrot, after: lascaux_ex2_s2 },
-    { label: "Clouds", before: lascaux_source3_clouds, after: lascaux_ex2_s3 },
-    { label: "Pattern", before: lascaux_source4_pattern, after: lascaux_ex2_s4 },
-    { label: "Woman", before: lascaux_source5_woman, after: lascaux_ex2_s5 },
-    { label: "Berries", before: lascaux_source6_berries, after: lascaux_ex2_s6 },
-  ]}
-/>
-*Stone Surface and Torch — simulated result across source images.*
-**Source**: Same portrait or landscape from Exercise 1.
+#### Video Source
 
-**What You'll Create**: Add stone texture and torch lighting to complete the cave-painting simulation.
+A live camera feed or recorded footage with recognizable subjects and moderate contrast. Faces, plants, or animals work well because the pigment palette emphasizes warm skin tones and organic shapes.
 
-1. **Start from Exercise 1**: Pigments ~100%, Contour Wt ~40%, uniform lighting.
-2. **Stone Grain**: Increase Stone Grain to ~40%. A speckled texture appears within each pigment region, breaking the flat color into rough stone.
-3. **Torch Radius**: Set Torch Radius to ~50%. A circular illumination pool appears, with the surrounding area falling to near-black.
-4. **Torch Lock**: Set Torch Lock to Drift and increase Torch Speed to ~30%. The torch begins wandering across the frame, sequentially illuminating different parts of the painting.
-5. **Flicker**: Increase Flicker to ~40%. The torch brightness begins to pulse and gutter organically, simulating a real flame in a cave draft.
-6. **Cave Type**: Toggle between Limestone and Basalt. Notice how the color temperature of the entire scene shifts — warm amber vs. cool gray.
+#### Steps
 
-**Key concepts**: LFSR grain adds per-pixel noise within pigment regions, torch uses radial Manhattan-distance falloff, flicker is per-frame LFSR-driven, cave type shifts the chroma blend target
+1. Load **Lascaux** and set **Mix** (Fader 12) to maximum. The image shifts immediately into earth tones.
+2. Turn **Pigments** (Knob 2) fully counter-clockwise. Only two pigments are active: charcoal black and yellow ochre. The image becomes a stark two-tone graphic.
+3. Slowly turn Pigments clockwise to add red ochre, then raw sienna. Watch the image gain warmth and tonal nuance as more pigments join the palette.
+4. Increase **Contour Wt** (Knob 3) to about 50%. Dark charcoal lines appear along edges, defining the shapes in the image.
+5. Toggle **Cave Type** (Switch 7) between **Limestone** and **Basalt**. The underlying stone tint shifts between warm amber and cool gray.
 
----
+#### Settings
 
-### Exercise 3: Charcoal Study
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: lascaux_source1_sunset, after: lascaux_ex3_s1 },
-    { label: "Parrot", before: lascaux_source2_parrot, after: lascaux_ex3_s2 },
-    { label: "Clouds", before: lascaux_source3_clouds, after: lascaux_ex3_s3 },
-    { label: "Pattern", before: lascaux_source4_pattern, after: lascaux_ex3_s4 },
-    { label: "Woman", before: lascaux_source5_woman, after: lascaux_ex3_s5 },
-    { label: "Berries", before: lascaux_source6_berries, after: lascaux_ex3_s6 },
-  ]}
-/>
-*Charcoal Study — simulated result across source images.*
-**Source**: High-contrast footage — strong directional lighting, clear silhouettes, or figure-ground separation.
-
-**What You'll Create**: Use Edges Only mode with stone grain and torch lighting to create an animated charcoal drawing on stone.
-
-1. **Edges Only**: Toggle Edges Only On. The image reduces to charcoal contour lines on stone.
-2. **Contour Wt**: Sweep Contour Wt through its range. Low values produce only the strongest edges. High values fill in finer detail, producing a denser drawing.
-3. **Stone Grain**: Increase Stone Grain to ~50%. The background stone acquires a gritty, pitted texture.
-4. **Torch**: Set Torch Radius ~40%, Torch Lock to Drift, Torch Speed ~25%. The charcoal drawing is revealed section by section as the torch wanders past.
-5. **Flicker**: Add Flicker at ~50%. The flickering torchlight makes the charcoal lines seem to dance and shift — exactly the experience of viewing a Chauvet cave engraving by firelight.
-6. **Cave Type**: Switch to Basalt for a cooler, more austere background. Notice how the contour lines stand out more sharply against the neutral gray.
-
-**Key concepts**: Edges Only isolates contour extraction as a standalone effect, high-contrast source material produces the strongest edges, torch + flicker animate the line drawing like real firelight
+| Control | Value |
+|---------|-------|
+| Torch Speed | 25% |
+| Pigments | 3 (step 3 of 4) |
+| Contour Wt | 50% |
+| Torch Radius | 100% |
+| Stone Grain | 0% |
+| Flicker | 0% |
+| Cave Type | Limestone |
+| Torch Color | Fat Lamp |
+| Edges Only | Off |
+| Torch Lock | Center |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 2: Torchlit Stone
 
-## Tips
+![Torchlit Stone result](/img/instruments/videomancer/lascaux/lascaux_ex2_s1.png)
+*Torchlit Stone — simulated result across source images.*
+#### Exercise Illustration
 
-- **Stone Grain interacts with palette quantization**: Since the palette has already reduced colors to a few discrete values, grain appears as speckle *within* each color region rather than as smooth noise — this is what makes it look like stone texture rather than film grain.
-- **Torch drift speed vs. radius**: Large radius + slow speed = gentle, contemplative exploration. Small radius + fast speed = dramatic, flickering searchlight effect. Match the drift speed to the content's emotional tone.
-- **Edges Only for overlay compositing**: Use Edges Only mode with the Mix fader at 50–70% to overlay charcoal contours on the original video — a subtle "pencil sketch" effect without the full cave-painting treatment.
-- **Feedback creates cave echo**: Routing Lascaux's output back to its input compounds the palette quantization and contour extraction, progressively reducing the image to fewer, bolder strokes — like successive generations of cave artists painting over each other's work.
-- **Basalt for monochrome subjects**: Cool gray basalt walls look best with already-desaturated source material. Limestone's warm amber enhances the earth-tone pigments when working with colorful sources.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A cave painting illuminated by a wandering torch: bright warm color in the spotlight, fading to dark gray stone in the periphery.
+
+#### Key Concepts
+
+- The torch applies radial brightness falloff from a drifting center point
+- Flicker randomizes torch intensity per frame
+- Darkness desaturates the color channels toward neutral
+
+#### Video Source
+
+High-contrast footage with strong shapes: dancers, architecture, or geometric patterns. The torch spotlight isolates and reveals portions of the image as it drifts.
+
+#### Steps
+
+1. Start from the Exercise 1 settings. Ensure **Pigments** is at step 3 or 4 and **Contour Wt** is at about 50%.
+2. Set **Torch Lock** (Switch 10) to **Drift** and turn **Torch Radius** (Knob 4) down to about 40%. A cone of light appears, and the surrounding image dims to near-darkness.
+3. Increase **Torch Speed** (Knob 1) to about 30%. The torch begins drifting across the frame, illuminating different parts of the painting as it moves.
+4. Turn up **Flicker** (Knob 6) to about 40%. The torch flame becomes unsteady, pulsing and guttering randomly.
+5. Increase **Stone Grain** (Knob 5) to about 30%. The stone surface becomes visibly rough, especially in the torchlit area where you can see the grain texture clearly.
+6. Watch the periphery of the torch radius. Notice how the color drains from the image in the dim areas (only the spotlight region retains full pigment saturation.)
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Torch Speed | 30% |
+| Pigments | 3 (step 3 of 4) |
+| Contour Wt | 50% |
+| Torch Radius | 40% |
+| Stone Grain | 30% |
+| Flicker | 40% |
+| Cave Type | Limestone |
+| Torch Color | Fat Lamp |
+| Edges Only | Off |
+| Torch Lock | Drift |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Charcoal Etching
+
+![Charcoal Etching result](/img/instruments/videomancer/lascaux/lascaux_ex3_s1.png)
+*Charcoal Etching — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A stark charcoal drawing etched into rough stone, illuminated by a flickering pine resin torch: the kind of image archaeologists might find deep in a cave chamber.
+
+#### Key Concepts
+
+- Edges Only mode bypasses palette quantization and shows pure contour lines
+- Stone grain adds texture to the bare stone background
+- Cave Type and torch work together to create atmosphere
+
+#### Video Source
+
+Footage with strong, distinct edges: silhouettes, architectural details, text, or high-contrast line art. Subjects with clear outlines produce the best charcoal etchings.
+
+#### Steps
+
+1. Enable **Edges Only** (Switch 9). The image strips down to pure contour lines on a stone background. Only the edge information remains.
+2. Set **Contour Wt** (Knob 3) to about 60%. The charcoal lines become bold and dark.
+3. Set **Cave Type** (Switch 7) to **Basalt** and increase **Stone Grain** (Knob 5) to about 50%. The background becomes rough, cool gray stone with visible granular texture.
+4. Set **Torch Color** (Switch 8) to **Pine Resin** for a cooler, smokier light.
+5. Set **Torch Radius** (Knob 4) to about 35% and **Torch Lock** to **Drift**. The torch wanders across the stone face, revealing sections of the charcoal drawing as it passes.
+6. Increase **Flicker** (Knob 6) to about 60%. The torch gutters and surges, making the drawing appear and disappear in rhythmic pulses.
+7. Slowly reduce **Torch Speed** (Knob 1) until the torch barely moves. The scene becomes meditative: a single guttering flame, a stone wall, and ancient marks slowly emerging from darkness.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Torch Speed | 10% |
+| Pigments | 3 (step 3 of 4) |
+| Contour Wt | 60% |
+| Torch Radius | 35% |
+| Stone Grain | 50% |
+| Flicker | 60% |
+| Cave Type | Basalt |
+| Torch Color | Pine Resin |
+| Edges Only | On |
+| Torch Lock | Drift |
+| Bypass | Off |
+| Mix | 100% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Contour extraction** | Detection of edges in an image by computing gradient magnitudes between adjacent pixels, used to simulate charcoal outlines. |
-| **DDS** | Direct Digital Synthesis; a technique using phase accumulators to generate periodic waveforms, used here to animate the torch position along a Lissajous path. |
-| **Goethite** | An iron oxyhydroxide mineral (FeOOH) that produces yellow-ochre pigment, one of the primary colorants used at Lascaux. |
-| **Haematite** | An iron oxide mineral (Fe₂O₃) that produces red-ochre pigment, widely used in Paleolithic cave art. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used here for both stone surface grain and torch flicker. |
-| **Lissajous figure** | A parametric curve traced when two perpendicular sinusoidal oscillations are combined, used to describe the torch drift path. |
-| **Manhattan distance** | The sum of absolute differences along each axis, used as a computationally cheap alternative to Euclidean distance for palette matching and torch falloff. |
-| **Palette quantization** | Reducing a continuous-color image to a limited set of discrete colors by mapping each pixel to the nearest palette entry. |
+- **BRAM**: Block RAM; a dedicated memory tile on the FPGA used here to store one scanline of luminance for vertical edge detection
+
+- **DDS**: Direct Digital Synthesis; a technique for generating waveforms by stepping through a lookup table at a controlled rate, used here to animate the torch position
+
+- **Goethite**: An iron oxyhydroxide mineral (FeOOH) that produces yellow ochre pigment, one of the primary colors used in Paleolithic cave art
+
+- **Haematite**: An iron oxide mineral (Fe₂O₃) that produces red ochre pigment, widely used in prehistoric painting and body decoration
+
+- **LFSR**: Linear Feedback Shift Register; a digital circuit that generates a pseudo-random bit sequence, used here for stone grain noise and torch flicker
+
+- **Manhattan distance**: A distance metric that sums the absolute differences along each axis, used here to classify pixels to their nearest palette pigment and to compute torch falloff
+
+- **Palette quantization**: The process of mapping each pixel's color to the nearest entry in a restricted set of allowed colors, reducing the image to a fixed palette
+
+- **Scotopic vision**: Human visual perception in low-light conditions, characterized by loss of color sensitivity; simulated here by the torch's desaturation of U/V channels in darkness
+
+- **Sobel filter**: An edge detection algorithm that computes image gradients using convolution kernels; Lascaux uses a simplified variant based on absolute pixel differences
 
 ---

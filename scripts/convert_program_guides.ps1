@@ -2,15 +2,15 @@
 # Convert ingest program guides to Docusaurus format
 # Preserves existing frontmatter, converts image paths to existing static assets
 
-$programs = @(
-    'bitcullis','colorbars','corollas','delirium','elastica','faultplane',
-    'fauxtress','glorious','howler','isotherm','kintsugi','lumarian',
-    'moire','mycelium','perlin','pinwheel','pong','sabattier',
-    'scramble','shadebob','stic','stipple','yuv_amplifier','yuv_phaser'
-)
-
 $docsDir = "c:\Users\lars\lzxtm\docs\instruments\videomancer\programs"
 $ingestDir = "c:\Users\lars\lzxtm\ingest\videomancer\docs\programs"
+
+# Dynamically find all programs that have both a doc file and an ingest guide
+$programs = Get-ChildItem $ingestDir -Directory |
+    Where-Object { Test-Path (Join-Path $_.FullName "$($_.Name)_program_guide.md") } |
+    Where-Object { Test-Path (Join-Path $docsDir "$($_.Name).md") } |
+    ForEach-Object { $_.Name } |
+    Sort-Object
 
 foreach ($prog in $programs) {
     $existingFile = Join-Path $docsDir "$prog.md"

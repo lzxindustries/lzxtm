@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 188
 slug: /instruments/videomancer/massif
@@ -7,72 +7,183 @@ image: /img/instruments/videomancer/massif/massif_hero_s1.png
 description: "In 1973, Steve Rutt and Bill Etra built a video instrument that did something no other machine could do: it took a standard television signal and deflected each scan line vertically by an amount proportional to its brightness."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import massif_control_panel from '/img/instruments/videomancer/massif/massif_control_panel.png';
-import massif_source1_fruit from '/img/instruments/videomancer/massif/massif_source1_fruit.png';
-import massif_source2_runner from '/img/instruments/videomancer/massif/massif_source2_runner.png';
-import massif_source3_clouds from '/img/instruments/videomancer/massif/massif_source3_clouds.png';
-import massif_source4_pattern from '/img/instruments/videomancer/massif/massif_source4_pattern.png';
-import massif_source5_man from '/img/instruments/videomancer/massif/massif_source5_man.png';
-import massif_source6_knit from '/img/instruments/videomancer/massif/massif_source6_knit.png';
-import massif_hero_s1 from '/img/instruments/videomancer/massif/massif_hero_s1.png';
-import massif_hero_s2 from '/img/instruments/videomancer/massif/massif_hero_s2.png';
-import massif_hero_s3 from '/img/instruments/videomancer/massif/massif_hero_s3.png';
-import massif_hero_s4 from '/img/instruments/videomancer/massif/massif_hero_s4.png';
-import massif_hero_s5 from '/img/instruments/videomancer/massif/massif_hero_s5.png';
-import massif_hero_s6 from '/img/instruments/videomancer/massif/massif_hero_s6.png';
-import massif_ex1_s1 from '/img/instruments/videomancer/massif/massif_ex1_s1.png';
-import massif_ex1_s2 from '/img/instruments/videomancer/massif/massif_ex1_s2.png';
-import massif_ex1_s3 from '/img/instruments/videomancer/massif/massif_ex1_s3.png';
-import massif_ex1_s4 from '/img/instruments/videomancer/massif/massif_ex1_s4.png';
-import massif_ex1_s5 from '/img/instruments/videomancer/massif/massif_ex1_s5.png';
-import massif_ex1_s6 from '/img/instruments/videomancer/massif/massif_ex1_s6.png';
-import massif_ex2_s1 from '/img/instruments/videomancer/massif/massif_ex2_s1.png';
-import massif_ex2_s2 from '/img/instruments/videomancer/massif/massif_ex2_s2.png';
-import massif_ex2_s3 from '/img/instruments/videomancer/massif/massif_ex2_s3.png';
-import massif_ex2_s4 from '/img/instruments/videomancer/massif/massif_ex2_s4.png';
-import massif_ex2_s5 from '/img/instruments/videomancer/massif/massif_ex2_s5.png';
-import massif_ex2_s6 from '/img/instruments/videomancer/massif/massif_ex2_s6.png';
-import massif_ex3_s1 from '/img/instruments/videomancer/massif/massif_ex3_s1.png';
-import massif_ex3_s2 from '/img/instruments/videomancer/massif/massif_ex3_s2.png';
-import massif_ex3_s3 from '/img/instruments/videomancer/massif/massif_ex3_s3.png';
-import massif_ex3_s4 from '/img/instruments/videomancer/massif/massif_ex3_s4.png';
-import massif_ex3_s5 from '/img/instruments/videomancer/massif/massif_ex3_s5.png';
-import massif_ex3_s6 from '/img/instruments/videomancer/massif/massif_ex3_s6.png';
-
-# Massif
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: massif_source1_fruit, after: massif_hero_s1 },
-    { label: "Runner", before: massif_source2_runner, after: massif_hero_s2 },
-    { label: "Clouds", before: massif_source3_clouds, after: massif_hero_s3 },
-    { label: "Pattern", before: massif_source4_pattern, after: massif_hero_s4 },
-    { label: "Man", before: massif_source5_man, after: massif_hero_s5 },
-    { label: "Knit", before: massif_source6_knit, after: massif_hero_s6 },
-  ]}
-/>
-*Massif displacing video scanlines by luminance to sculpt a phosphor-glow terrain landscape from a camera image, evoking the Rutt/Etra Video Synthesizer.*
+![Massif hero image](/img/instruments/videomancer/massif/massif_hero_s1.png)
+*Massif transforming a live camera feed into a luminance-displaced scanline terrain with amber phosphor glow and perspective foreshortening.*
 
 ---
 
 ## Overview
 
-In 1973, Steve Rutt and Bill Etra built a video instrument that did something no other machine could do: it took a standard television signal and deflected each scan line vertically by an amount proportional to its brightness. A face became a mountain range. A hand became a landscape. The flat raster of broadcast television was transformed into a undulating three-dimensional terrain, drawn in glowing phosphor lines on a CRT monitor. The Rutt/Etra Video Synthesizer became one of the most iconic instruments in the history of video art.
+Massif is a scanline terrain synthesizer that converts video into three-dimensional landscapes made of light. Each horizontal scanline is vertically displaced by an amount proportional to its brightness, turning flat pictures into undulating topographic surfaces. Bright regions push scanlines upward (or downward), creating peaks and ridges. Dark regions sink into valleys. The result looks like a wire-frame mountain range rendered on a vector display, with the video content itself sculpting the terrain.
 
-Massif is an FPGA reimagining of that concept. It samples the luminance of each input pixel, calculates a vertical displacement proportional to brightness, and writes the pixel data into a column buffer at the displaced position using max-brightness compositing. The column buffer accumulates a vertical slice of the terrain, and inter-frame decay creates phosphor persistence — bright lines glow and slowly fade like a long-persistence CRT. Perspective foreshortening makes mountains appear to recede toward the horizon. Scanline spacing creates the characteristic raster-line gaps of a CRT display. Edge enhancement brightens contour lines where luminance changes rapidly.
+Between frames, the column buffer ***decays*** rather than clearing: each pixel fades gradually, leaving ghostly trails when the terrain shifts. This simulates the phosphor persistence of a cathode-ray tube, where bright areas linger for a moment after they've moved. Combined with edge enhancement that brightens contour lines and a tint control that colors the monochrome output, Massif produces imagery that evokes the analog video synthesis experiments of the 1970s.
 
-The name *Massif* refers to a compact group of mountains — a geological term for the terrain formations that this program sculpts from video signals. At moderate settings, it produces recognizable luminance-displaced portraits. At extreme settings, it generates abstract phosphor landscapes, oscilloscope-like waveform displays, and neon terrain visualizations.
+:::tip
+Massif is a ***processing*** program. It needs a video input to generate terrain: the input image *is* the landscape. Try a camera pointed at your hands, a face, or any high-contrast subject.
+:::
+
+### What's In a Name?
+
+A ***massif*** is a compact group of mountain peaks formed from a single geological structure: a distinct, self-contained block of elevated terrain. The name suits this program perfectly: the displaced scanlines form ridgelines and valleys that resemble a mountain range viewed from a distance, and the column buffer architecture literally builds the terrain column by column, like the geological forces that raise a massif from the earth's crust. The word also carries the connotation of something massive and imposing, which describes the visual presence of a full-screen scanline displacement effect.
 
 ---
 
 ## Quick Start
 
-1. **No bypass toggle**: Like Marquee, Massif uses Toggle 11 for Invert rather than bypass. Set the Mix fader to 0% for instant A/B comparison.
-2. **Start with moderate deflection**: High deflection values create extreme terrain that can be hard to read. Start at 30–50% and increase gradually.
-3. **Green phosphor for authenticity**: Set Tint Hue to ~0° and Color to Mono for a classic P1 CRT phosphor look. Amber (~90°) evokes warm vintage monitors.
+1. Feed a live camera or recorded footage into Videomancer. Turn **Deflection** (Knob 1) clockwise to about 40%. The image tears apart vertically: bright areas push scanlines upward, forming peaks above the dark areas that remain flat.
+2. Toggle **Direction** (Switch 8) to **Down**. The displacement reverses: bright regions now push downward, and the terrain flips. Switch back to **Up** for a classic Rutt/Etra look where brightness rises.
+3. Increase **Decay** (Knob 3) past 75%. The terrain develops glowing trails: scanlines linger as phosphor ghosts, blurring motion into luminous streaks. Move your hand in front of the camera and watch the afterglow.
+4. Enable **Perspective** (Switch 9, set to **On**) and turn **Perspective** (Knob 2) clockwise. Lines near the bottom of the screen displace more than lines near the top, simulating depth foreshortening. The flat terrain suddenly looks three-dimensional.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Massif loaded](/img/instruments/videomancer/massif/massif_control_panel.png)
+*Videomancer's front panel with Massif active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Deflection
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 39% |
+
+**Deflection** controls how much each scanline is vertically displaced by its brightness. At 0%, fully counterclockwise, scanlines remain in their original positions and the image passes through with no terrain effect. As the value increases, brighter pixels push scanlines farther from their home position. At 100%, fully clockwise, the displacement reaches its maximum range of approximately 128 lines: bright regions are flung far from their origin, creating dramatic peaks and deep canyons in the terrain.
+
+:::note
+High Deflection values cause scanlines from different parts of the image to overlap and interleave. The column buffer overwrites each target position, so the last scanline to land at a given line wins. This creates a natural occlusion effect where foreground terrain hides background terrain.
+:::
+
+---
+
+### Knob 2 — Perspective
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Perspective** controls the amount of depth foreshortening applied to the displacement. When **Perspective** (Switch 9) is enabled, scanlines near the bottom of the frame receive more displacement than scanlines near the top, simulating a camera looking across a landscape toward the horizon. At 0%, the bottom scanlines receive minimal foreshortening. At 100%, the perspective gradient is at maximum strength, creating a dramatic sense of depth where foreground terrain looms large and distant terrain flattens toward the horizon.
+
+:::tip
+Perspective works by scaling the displacement by the current scanline's vertical position. Disable Perspective (Switch 9 to **Off**) for a flat, orthographic view where all scanlines displace equally regardless of vertical position.
+:::
+
+---
+
+### Knob 3 — Decay
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 75% |
+
+**Decay** controls inter-frame phosphor persistence: how much of the previous frame's terrain survives into the next frame. At 0%, fully counterclockwise, the column buffer clears completely between frames, producing a sharp, flicker-free terrain with no trails. As the value increases, previous frames fade more slowly, creating ghostly afterimages that blur motion into luminous streaks. At 100%, the buffer barely decays at all, and the terrain accumulates into a dense, glowing mass where everything that has ever been bright leaves a permanent mark.
+
+---
+
+### Knob 4 — Edge Enh
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 29% |
+
+**Edge Enh** (Edge Enhancement) brightens pixels where the luminance changes rapidly from one pixel to the next. This highlights contour lines and edges in the displaced terrain, making the ridgeline profiles sharper and more visible. At 0%, no edge enhancement is applied. As the value increases, the brightness boost at contour boundaries intensifies. At 100%, edges glow brightly against the surrounding terrain, giving the output a neon wireframe quality.
+
+---
+
+### Knob 5 — Tint Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0deg – 360deg |
+| Default | 123deg |
+
+**Tint Hue** selects the phosphor color used in monochrome mode. The control sweeps through a circular color map: starting from green at the far left, passing through yellow and red at the midpoint, continuing to blue, and returning through magenta toward green at the far right. Classic phosphor tones include green (far left), amber (roughly 33%), and cool blue (roughly 70%). This control has no effect when the **Color** toggle (Switch 7) is set to **Source**.
+
+---
+
+### Knob 6 — Line Gap
+
+| Property | Value |
+|----------|-------|
+| Range | 0ln – 16ln |
+| Default | 4ln |
+
+**Line Gap** controls the spacing between drawn scanlines. At 0%, every scanline is drawn, producing a solid terrain surface. As the value increases, scanlines are drawn less frequently: only every second, third, or fourth line: creating visible horizontal gaps between the terrain strokes. At 100%, only every sixteenth line is drawn, producing a sparse wireframe of widely spaced scanlines. The gaps between drawn lines are filled according to the **Fill Mode** toggle (Switch 10).
+
+---
+
+### Switch 7 — Color
+
+| Property | Value |
+|----------|-------|
+| Off | Mono |
+| On | Source |
+| Default | Mono |
+
+**Color** selects between monochrome and source color modes. In **Mono** mode, the terrain is rendered in a single hue controlled by **Tint Hue** (Knob 5), with brightness determined by the displaced luminance. In **Source** mode, the original color information from the input video is preserved: each displaced scanline carries its original chrominance values, producing a full-color terrain.
+
+---
+
+### Switch 8 — Direction
+
+| Property | Value |
+|----------|-------|
+| Off | Up |
+| On | Down |
+| Default | Up |
+
+**Direction** controls whether bright pixels push scanlines upward or downward. In **Up** mode, bright areas rise above dark areas, creating the classic Rutt/Etra look where a face or hand appears as a luminous mountain range. In **Down** mode, the displacement is inverted: bright areas push downward, creating an inverted terrain where highlights sink into valleys.
+
+---
+
+### Switch 9 — Perspect
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Perspect** (Perspective) enables or disables the perspective foreshortening effect controlled by the **Perspective** knob (Knob 2). When set to **Off**, all scanlines displace by the same amount regardless of their vertical position, producing a flat orthographic view. When set to **On**, displacement is scaled by vertical position so that lines near the bottom of the frame displace more than lines near the top, simulating depth.
+
+---
+
+### Switch 10 — Fill Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Black |
+| On | Hold |
+| Default | Black |
+
+**Fill Mode** determines what appears in the gaps between displaced scanlines. In **Black** mode, gaps are filled with black (Y=0, neutral chroma), creating dark valleys between the bright terrain strokes. In **Hold** mode, the last non-zero pixel value is held through the gap, filling empty regions with a repeating copy of the nearest terrain stroke above. Hold mode creates a solid, painted look; Black mode creates a more traditional wireframe.
+
+---
+
+### Switch 11 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Normal |
+| On | Invert |
+| Default | Normal |
+
+**Invert** reverses the luminance of the input before displacement is calculated. In **Normal** mode, bright pixels receive the most displacement. In **Invert** mode, dark areas receive the most displacement and bright areas remain flat. This flips the terrain: valleys become peaks and peaks become valleys. Inversion occurs at the very first pipeline stage, so it affects displacement, edge enhancement, and all downstream processing.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** crossfades between the dry (original) and wet (terrain) signals. At 0%, fully down, only the original video is visible. At 100%, fully up, only the terrain output is visible. Intermediate positions blend the two, superimposing the displaced terrain over the source image. This is useful for creating transparent terrain overlays or for quickly comparing the processed and unprocessed signals.
 
 ---
 
@@ -80,286 +191,216 @@ The name *Massif* refers to a compact group of mountains — a geological term f
 
 ### The Rutt/Etra Video Synthesizer
 
-The original Rutt/Etra (1973) was an analog instrument that manipulated the horizontal and vertical deflection signals of a CRT monitor. By mixing video luminance into the vertical deflection path, each scan line was physically displaced on the monitor — bright areas pushed the electron beam upward, creating peaks, while dark areas left the beam at its resting position, creating valleys. The result was captured by pointing a camera at the monitor, creating a feedback loop between the input video and the terrain display. Massif reproduces the luminance-to-vertical-displacement core of this instrument digitally, using BRAM column buffers instead of analog deflection circuits.
+In 1973, Steve Rutt and Bill Etra built one of the most iconic instruments in the history of video art. The ***Rutt/Etra Video Synthesizer*** displayed video as a grid of deflected scanlines on a vector display, where the vertical position of each line was controlled by the brightness of the corresponding pixel. Faces became landscapes. Hands became mountains. The machine turned the flat television image into a sculptural, three-dimensional form rendered entirely in light.
 
-### Column Buffer Architecture
+The visual language of the Rutt/Etra: glowing scanline ridges against a black void: became synonymous with electronic art and science-fiction graphics throughout the 1970s and 1980s. Massif recreates this aesthetic digitally, using a column buffer in FPGA block RAM to simulate the vector display's ability to place scanlines at arbitrary vertical positions.
 
-Unlike a frame buffer (which stores every pixel of every line), Massif uses a **column buffer** — a 1024-entry vertical memory that stores one pixel-column of the terrain. During each pixel clock, the displaced target address is written (if the new pixel is brighter than what's already stored, using max-brightness compositing) and the current output line is read simultaneously. This dual-port BRAM architecture allows the terrain to accumulate with each new input scan line. Three separate column buffers store Y, U, and V independently.
+### Column buffer architecture
 
-### Phosphor Decay
+Massif's displacement engine works fundamentally differently from a pixel-by-pixel filter. Instead of transforming each pixel in place, it writes each input scanline into a ***column buffer*** at a displaced vertical address. The column buffer is a 1024-line memory that represents a single column of the output frame. For every input pixel, the algorithm calculates a target line number based on that pixel's brightness and writes the result into the buffer at that address. When it's time to output the frame, the buffer is read line by line from top to bottom.
 
-Real CRT phosphors have a characteristic persistence — after the electron beam excites them, they glow brightly and then gradually fade. Massif simulates this with an inter-frame decay sweep: during vertical blanking, the entire column buffer is traversed and each stored luminance value is multiplied by the Decay parameter, attenuating it toward black. High decay values produce long glowing trails; low decay values make the terrain refresh quickly with each new frame.
+This architecture means that multiple input scanlines can land on the same output line: the last one written wins, creating a natural front-to-back ***occlusion*** effect. It also means that some output lines may never be written at all, creating the characteristic gaps between terrain strokes.
 
-### Perspective Foreshortening
+### Phosphor persistence and decay
 
-In a real three-dimensional landscape, objects closer to the viewer appear larger and more displaced, while distant objects appear compressed. Massif's Perspective control scales the vertical displacement by the current scan line position — lines near the bottom of the frame (closer to the "viewer") get more displacement than lines near the top (further away). This creates a convincing illusion of depth as the terrain recedes toward a vanishing point.
+Real cathode-ray tubes don't go dark instantly when the electron beam moves on. The phosphor coating continues to glow for a brief period, creating a fading afterimage. Massif simulates this behavior by ***decaying*** the column buffer between frames rather than clearing it. During vertical blanking, every value in the buffer is multiplied by the decay factor, shrinking it toward zero. A high decay value means the buffer retains most of its previous content, and moving objects leave luminous trails. A low decay value means the buffer clears almost completely, and each frame is drawn fresh.
 
-### Max-Brightness Compositing
-
-When multiple input scan lines displace to the same target position in the column buffer, Massif uses **max-brightness compositing** — only the brightest value is retained. This prevents darker scan lines from overwriting bright peaks, preserving the mountain silhouette. The result is that the terrain accumulates the brightest features of each input frame, creating a luminous relief map of the video content.
+The decay process operates in a two-phase cycle: on the first clock, the current value is read from BRAM; on the second clock, the decayed value is written back. This two-phase approach ensures clean BRAM inference on the iCE40 FPGA.
 
 
 ---
 
 ## Signal Flow
 
-Input Register → Displacement Calculation → Perspective + Target Line → Column Buffer → Output Mux
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Stage 1: Input Register + Luma Invert ──────────────────────
-│   └─ input_y = invert ? (1023 - Y) : Y
-│
-├── Stage 2: Displacement Calculation ──────────────────────────
-│   ├─ disp_raw = input_y × deflection
-│   ├─ disp_signed = disp_raw[19:13]  (max ±128 lines)
-│   ├─ direction: bright-up = −disp, bright-down = +disp
-│   └─ luma_gradient = |input_y − prev_pixel_y|
-│
-├── Stage 3: Perspective + Target Line ─────────────────────────
-│   ├─ persp_factor = (v_count × perspective) >> 10
-│   ├─ scaled_disp = displacement × persp_factor
-│   ├─ target_line = v_count + scaled_disp
-│   ├─ target_valid = (target_line ≥ 0 AND < 1024)
-│   └─ edge_boost = gradient × edge_enhance, clamped
-│
-├── Stage 4: Column Buffer (Dual-Port BRAM) ────────────────────
-│   ├─ Write port: col[target_addr] = max(existing, brightness)
-│   │   └─ Writes Y + (mono ? tint_UV : source_UV)
-│   ├─ Read port: col[v_count] → col_rd_y/u/v
-│   └─ Decay sweep (vblank): col[addr] *= decay >> 10
-│
-├── Stage 5: Output Mux ───────────────────────────────────────
-│   ├─ col_rd_y > 0 → show terrain pixel (update hold state)
-│   └─ col_rd_y = 0 → fill_mode ? hold : black
-│
-├── Interpolator (4 clk) ──────────────────────────────────────
-│   └─ Mix: lerp(dry_input, wet_terrain, mix_amount)
-│
-└── Output ─────────────────────────────────────────────────────
-    └─ data_out.y / u / v + delayed sync
-```
+Two architectural features define Massif's character:
 
-The column buffer is the heart of the program. It operates as a dual-port BRAM: each pixel clock simultaneously writes at the displaced target address and reads at the current output address. The max-brightness write policy means the terrain accumulates the brightest features — multiple input scan lines can "paint" into the same column position, but only the brightest pixel survives. The decay sweep runs during vertical blanking, gradually attenuating the entire buffer so that the terrain refreshes with each new frame rather than building up indefinitely. The line gap mask operates upstream of the column write, skipping lines to create the CRT raster-line spacing effect.
+1. **Column buffer compositing.** Unlike pixel-in/pixel-out effects, Massif writes input scanlines to *displaced* addresses in a 1024-line column buffer. The write-port overwrites any previous contents at the target address, creating natural front-to-back occlusion: when two scanlines map to the same output line, the one processed last wins. Gaps appear wherever no input scanline was displaced to a given output line.
 
----
+2. **Decay as persistence.** The column buffer is not cleared between frames. Instead, during vertical blanking, a two-phase sweep reads each address, multiplies the luminance by the decay factor, and writes the result back. This creates phosphor-like persistence: terrain from previous frames fades gradually, and moving subjects leave glowing trails. Chrominance values are preserved through the decay sweep (only luminance fades.)
 
-## Parameter Reference
-
-<img src={massif_control_panel} alt="Videomancer front panel with Massif loaded"/>
-*Videomancer's front panel with Massif active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Deflection
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 39% |
-| Suffix | % |
-
-Controls the vertical displacement gain — how far each scan line is pushed by its luminance value. The displacement is calculated as `input_y × deflection / 1024`, yielding a maximum of approximately 128 lines of displacement at full gain with a white input signal. At zero, all scan lines remain at their original positions and the terrain is flat. At moderate values, the video resolves into gentle rolling hills. At maximum, the terrain becomes extreme — bright areas push far from their original positions, creating dramatic mountain peaks and deep valleys.
-
----
-
-#### Knob 2 — Perspective
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the perspective foreshortening amount. When Perspective is enabled (Toggle 9), this scales the displacement by scan line position: lines near the bottom of the frame get more displacement than lines near the top. At 50%, the scaling is moderate — a gentle sense of depth. At 100%, the foreshortening is extreme — the bottom of the frame shows towering peaks while the top is nearly flat, creating a strong vanishing-point perspective. When Perspective is disabled, this control has no effect.
-
----
-
-#### Knob 3 — Decay
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 75% |
-| Suffix | % |
-
-At 0%, the buffer clears completely every frame, showing only the current frame's terrain with no persistence. At 100%, the buffer barely decays, creating long glowing trails where bright features persist across many frames. At moderate values (50–70%), the terrain shows smooth phosphor-like persistence where peaks glow brightly and fade gradually, closely matching the look of a long-persistence CRT phosphor. Internally, controls the phosphor decay rate — how quickly the column buffer attenuates between frames.
-
----
-
-#### Knob 4 — Edge Enh
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 29% |
-| Suffix | % |
-
-Controls the edge enhancement intensity. The edge detector computes the absolute difference between adjacent horizontal pixels, and this gradient is multiplied by the Edge Enhancement parameter to boost contour brightness. At zero, no enhancement — the terrain brightness matches the raw input luminance. At moderate values, contour edges glow more brightly than flat areas, creating a wire-frame-like outline effect over the terrain. At maximum, the enhancement can dominate, producing a purely contour-driven terrain where only edges are visible.
-
----
-
-#### Knob 5 — Tint Hue
-| Property | Value |
-|----------|-------|
-| Range | 0deg – 360deg |
-| Default | 123deg |
-| Suffix | deg |
-
-Selects the phosphor tint color for monochrome mode. The pot maps through a piecewise hue circle: green (0°) → yellow → red → blue → magenta → green (360°). Classic CRT phosphor colors include green (~0°) for P1 phosphor, amber (~90°) for P3, and blue-white (~200°) for P4. In Source color mode, this control has no effect — the original video chroma is preserved.
-
----
-
-#### Knob 6 — Line Gap
-| Property | Value |
-|----------|-------|
-| Range | 0ln – 16ln |
-| Default | 4ln |
-| Suffix | ln |
-
-Controls the scanline spacing — how many lines apart the terrain raster is drawn. The top 4 bits of the register select a gap divisor from 1 (every line drawn) to 16 (every 16th line drawn). At 1, the terrain is a dense continuous surface. At moderate values (4–8), the classic CRT raster-line look appears with visible gaps between scan lines. At 16, the terrain becomes very sparse — widely spaced horizontal lines floating in black space, evoking an oscilloscope trace rather than a filled surface.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Color** | Mono | Source |
-| **8 — Direction** | Up | Down |
-| **9 — Perspect** | Off | On |
-| **10 — Fill Mode** | Black | Hold |
-| **11 — Invert** | Normal | Invert |
-
-The five toggles control fundamental display characteristics rather than compositing layers. Color selects between monochrome tinted output and full-color source passthrough. Direction flips the displacement polarity, completely changing the terrain character. Perspective enables the depth foreshortening effect. Fill Mode controls what appears in the gaps between terrain lines — black space or held values. Invert flips the luminance before displacement, swapping peaks and valleys. Note that there is no bypass toggle — set Mix to 0% to pass the original signal through unchanged.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Crossfades between the original dry input and the wet terrain output. At 0%, the output is 100% dry — effectively bypassing all processing. At 100%, the output is fully wet — the complete terrain visualization. Intermediate values blend the flat video with the displaced terrain, creating a ghostly overlay where the original image is visible beneath the terrain peaks. Since there is no dedicated bypass toggle, this fader is the primary bypass control.
-
-
-
+:::tip
+**Edge enhancement and displacement interact.** The edge gradient is computed *before* displacement, from the horizontal difference between adjacent input pixels. This means edge brightening follows the contours of the original image, not the displaced terrain. Steep luminance transitions in the source create bright ridgelines in the output.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from basic luminance displacement to full terrain visualization with phosphor persistence and perspective depth.
+These exercises progress from basic terrain displacement to full Rutt/Etra landscapes with phosphor persistence and perspective depth.
+### Exercise 1: First Terrain
 
-### Exercise 1: Basic Terrain Displacement
+![First Terrain result](/img/instruments/videomancer/massif/massif_ex1_s1.png)
+*First Terrain — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: massif_source1_fruit, after: massif_ex1_s1 },
-    { label: "Runner", before: massif_source2_runner, after: massif_ex1_s2 },
-    { label: "Clouds", before: massif_source3_clouds, after: massif_ex1_s3 },
-    { label: "Pattern", before: massif_source4_pattern, after: massif_ex1_s4 },
-    { label: "Man", before: massif_source5_man, after: massif_ex1_s5 },
-    { label: "Knit", before: massif_source6_knit, after: massif_ex1_s6 },
-  ]}
-/>
-*Basic Terrain Displacement — simulated result across source images.*
-**Source**: A portrait or face — any image with clear luminance structure and recognizable features.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Learn how luminance displacement transforms flat video into a terrain surface.
+#### Learning Outcomes
 
-1. **Initial setup**: Set Deflection to about 40%. The face should visibly distort — bright areas push upward.
-2. **Observe displacement**: Bright cheeks, forehead, and highlights become peaks. Dark eye sockets and shadows become valleys.
-3. **Increase deflection**: Push Deflection to 80%. The terrain becomes more extreme — features stretch and overlap.
-4. **Flip direction**: Toggle Direction from Up to Down. The entire terrain inverts — peaks become valleys and vice versa.
-5. **Invert luminance**: Toggle Invert. Now dark features produce the peaks. Compare the four combinations of Direction × Invert.
+A simple scanline terrain from a live camera feed, with glowing contour edges.
 
-**Key concepts**: Luminance maps to vertical displacement, displacement gain controls terrain height, direction flips the polarity, invert swaps which features drive the displacement
+#### Key Concepts
+
+- Luminance displacement converts brightness to vertical position
+- Direction toggle flips the terrain
+- Edge enhancement highlights contour ridges
+
+#### Video Source
+
+A live camera feed pointed at a face or hand, or recorded footage with strong contrast.
+
+#### Steps
+
+1. **Displace**: Turn **Deflection** (Knob 1) slowly clockwise to about 40%. The image breaks apart vertically (bright areas rise (or fall) from dark areas.)
+2. **Flip direction**: Toggle **Direction** (Switch 8) between **Up** and **Down**. Watch the terrain invert (peaks become valleys. Set it to **Up** for a classic look.)
+3. **Sharpen edges**: Increase **Edge Enh** (Knob 4) to about 30%. Contour lines brighten, giving the terrain a glowing wireframe quality.
+4. **Tint the phosphor**: With **Color** (Switch 7) set to **Mono**, sweep **Tint Hue** (Knob 5) to find an amber tone (about 33%). The terrain glows like a 1970s vector display.
+5. **Add gaps**: Increase **Line Gap** (Knob 6) slightly. Visible horizontal gaps appear between scanlines, reinforcing the wireframe aesthetic.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Deflection | ~40% |
+| Perspective | 50% |
+| Decay | 0% |
+| Edge Enh | ~30% |
+| Tint Hue | ~120 deg |
+| Line Gap | ~4 ln |
+| Color | Mono |
+| Direction | Up |
+| Perspect | Off |
+| Fill Mode | Black |
+| Invert | Normal |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Phosphor Persistence Display
+### Exercise 2: Phosphor Persistence
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: massif_source1_fruit, after: massif_ex2_s1 },
-    { label: "Runner", before: massif_source2_runner, after: massif_ex2_s2 },
-    { label: "Clouds", before: massif_source3_clouds, after: massif_ex2_s3 },
-    { label: "Pattern", before: massif_source4_pattern, after: massif_ex2_s4 },
-    { label: "Man", before: massif_source5_man, after: massif_ex2_s5 },
-    { label: "Knit", before: massif_source6_knit, after: massif_ex2_s6 },
-  ]}
-/>
-*Phosphor Persistence Display — simulated result across source images.*
-**Source**: Slow-moving or static footage — a slowly rotating object, a dimly lit scene, or a slow pan across a landscape.
+![Phosphor Persistence result](/img/instruments/videomancer/massif/massif_ex2_s1.png)
+*Phosphor Persistence — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore the decay and persistence behavior of the column buffer, creating CRT phosphor glow effects.
+***A description of the exercise illustration.***
 
-1. **Set moderate deflection**: Deflection ~50% to create a clear terrain.
-2. **Enable phosphor tint**: Set Color to Mono. Choose a green tint (~0°) for classic P1 phosphor or amber (~90°) for P3.
-3. **Increase decay**: Set Decay to ~80%. Previously bright terrain peaks now persist across frames, creating glowing trails.
-4. **Add line gaps**: Set Line Gap to ~6 lines. The raster-line spacing creates the characteristic CRT scan-line look.
-5. **Add edge enhancement**: Increase Edge Enh to ~40%. Contour edges glow more brightly, creating a wireframe overlay on the terrain.
-6. **Maximum persistence**: Push Decay to ~95%. The terrain accumulates bright features over many frames, building up a luminous relief map.
+#### Learning Outcomes
 
-**Key concepts**: Decay controls phosphor persistence via per-frame buffer attenuation, max-brightness compositing accumulates the brightest features, line gaps create CRT raster-line spacing, tint hue simulates phosphor color
+A glowing, persistent terrain with luminous motion trails.
+
+#### Key Concepts
+
+- Decay creates inter-frame persistence (phosphor glow)
+- High decay values accumulate terrain across multiple frames
+- Hold fill mode creates solid surfaces instead of gaps
+
+#### Video Source
+
+A live camera feed with slow hand or body movement, or footage with gradual motion.
+
+#### Steps
+
+1. **Start with terrain**: Set **Deflection** to ~50%, **Edge Enh** to ~40%, **Color** to **Mono**, **Tint Hue** to amber (~33%).
+2. **Add persistence**: Increase **Decay** (Knob 3) slowly from 0% toward 75%. The terrain begins to leave afterimages. Move your hand slowly and watch the trails linger.
+3. **High persistence**: Push Decay above 85%. The terrain accumulates into a dense, glowing mass. Fast movement creates long streaks; slow movement builds up bright ridges.
+4. **Solid fill**: Toggle **Fill Mode** (Switch 10) to **Hold**. The gaps between scanlines fill with the nearest terrain value, creating a solid painted surface instead of a wireframe.
+5. **Source color**: Toggle **Color** (Switch 7) to **Source**. The terrain now carries the original video's color, creating a chromatic landscape with persistent color trails.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Deflection | ~50% |
+| Perspective | 50% |
+| Decay | ~85% |
+| Edge Enh | ~40% |
+| Tint Hue | ~120 deg |
+| Line Gap | ~4 ln |
+| Color | Mono |
+| Direction | Up |
+| Perspect | Off |
+| Fill Mode | Hold |
+| Invert | Normal |
+| Mix | 100% |
 
 ---
 
 ### Exercise 3: Perspective Landscape
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: massif_source1_fruit, after: massif_ex3_s1 },
-    { label: "Runner", before: massif_source2_runner, after: massif_ex3_s2 },
-    { label: "Clouds", before: massif_source3_clouds, after: massif_ex3_s3 },
-    { label: "Pattern", before: massif_source4_pattern, after: massif_ex3_s4 },
-    { label: "Man", before: massif_source5_man, after: massif_ex3_s5 },
-    { label: "Knit", before: massif_source6_knit, after: massif_ex3_s6 },
-  ]}
-/>
+![Perspective Landscape result](/img/instruments/videomancer/massif/massif_ex3_s1.png)
 *Perspective Landscape — simulated result across source images.*
-**Source**: Wide-angle footage — a cityscape, landscape, or any image with content distributed across the full frame height.
+#### Exercise Illustration
 
-**What You'll Create**: Build a full perspective terrain with foreshortening, creating a vanishing-point 3D landscape from flat video.
+***A description of the exercise illustration.***
 
-1. **Start with Exercise 2 settings**: Moderate deflection, green phosphor tint, some decay.
-2. **Enable perspective**: Toggle Perspect to On. Immediately the bottom of the frame shows more displacement than the top.
-3. **Increase perspective amount**: Push the Perspective knob to ~70%. The foreshortening becomes dramatic — towering peaks at the bottom, compressed ridges at the top.
-4. **Enable fill hold**: Toggle Fill Mode to Hold. The gaps between terrain lines fill with the held value, creating a solid surface instead of a raster-line display.
-5. **Try source color**: Switch Color to Source. The terrain retains the original video colors, creating a colorful 3D landscape.
-6. **Combine with edge enhancement**: Add Edge Enh ~50% to highlight the contour ridges in the perspective terrain.
+#### Learning Outcomes
 
-**Key concepts**: Perspective scales displacement by vertical position for vanishing-point depth, hold fill mode creates solid terrain surfaces, source color preserves original chrominance through the column buffer
+A three-dimensional terrain landscape with depth foreshortening, phosphor trails, and visible scanline gaps.
+
+#### Key Concepts
+
+- Perspective foreshortening creates depth by scaling displacement with vertical position
+- Combining perspective, decay, and line gaps produces immersive 3D terrain
+- The Mix fader blends terrain with the dry source
+
+#### Video Source
+
+Footage of clouds, water, or landscape scenery. Alternatively, any footage with gradual brightness transitions.
+
+#### Steps
+
+1. **Enable perspective**: Set **Perspect** (Switch 9) to **On**. Turn **Perspective** (Knob 2) to about 70%. Lines near the bottom of the screen now displace more than lines near the top, creating a strong sense of depth.
+2. **Set terrain**: **Deflection** to ~70%, **Decay** to ~70%, **Edge Enh** to ~60%.
+3. **Widen gaps**: Increase **Line Gap** (Knob 6) to about 6 ln. The terrain resolves into widely spaced, glowing scanlines (a convincing wireframe landscape.)
+4. **Color landscape**: Set **Color** (Switch 7) to **Source** for color terrain, or keep **Mono** and set **Tint Hue** to a cool blue (~250 deg) for an icy mountain range.
+5. **Invert the terrain**: Toggle **Invert** (Switch 11) to **Invert**. The terrain flips: dark areas now rise and bright areas sink. Experiment with switching Direction as well for different orientations.
+6. **Overlay**: Lower **Mix** (Fader 12) to about 60%. The terrain superimposes over the source image, creating a translucent holographic landscape floating over the original footage.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Deflection | ~70% |
+| Perspective | ~70% |
+| Decay | ~70% |
+| Edge Enh | ~60% |
+| Tint Hue | ~250 deg |
+| Line Gap | ~6 ln |
+| Color | Source |
+| Direction | Up |
+| Perspect | On |
+| Fill Mode | Black |
+| Invert | Normal |
+| Mix | ~60% |
 
 ---
-
-
-## Tips
-
-- **Decay shapes the persistence**: Low decay clears the buffer quickly, showing each frame in isolation. High decay builds up cumulative terrain over many frames — ideal for slow-moving material.
-- **Perspective needs Perspect toggle**: The Perspective knob only takes effect when the Perspect toggle is On. Without the toggle, displacement is uniform across all scan lines.
-- **Fill Hold for solid surfaces**: Toggle Fill Mode to Hold to eliminate the raster-line gaps, creating a solid terrain surface instead of individual scan lines floating in black space.
-- **Four displacement polarities**: Combine Direction (Up/Down) × Invert (Normal/Invert) for four distinct terrain characters from the same source material.
-- **Feedback creates layered terrain**: Route the output back to the input for recursive displacement — each pass deepens the terrain, creating multi-layered mountain formations.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Column Buffer** | A vertical memory array (1024 × 10-bit) storing one pixel-column of the displaced terrain. Three buffers store Y, U, and V independently. |
-| **CRT** | Cathode Ray Tube; the display technology whose electron-beam deflection and phosphor persistence Massif emulates digitally. |
-| **Decay** | Inter-frame attenuation of the column buffer, simulating the gradual fading of CRT phosphor after excitation. |
-| **Deflection** | Vertical displacement of a scan line based on its luminance value, the core operation of the Rutt/Etra technique. |
-| **Foreshortening** | Perspective scaling where objects closer to the viewer appear larger and more displaced, creating depth illusion. |
-| **Luminance** | The brightness component (Y) of a YUV video signal; in Massif, the primary driver of vertical displacement. |
-| **Max-Brightness Compositing** | A write policy where only the brightest pixel value is retained when multiple sources target the same buffer address. |
-| **Persistence** | The visual afterglow of CRT phosphor, simulated by high Decay values that slow the buffer attenuation. |
-| **Raster** | The pattern of horizontal scan lines that compose a video frame; Line Gap controls the spacing of these lines in the terrain display. |
-| **Rutt/Etra** | A 1973 analog video synthesizer by Steve Rutt and Bill Etra that deflected CRT scan lines by luminance, creating terrain-like video displays. |
+- **Column Buffer**: A per-column memory storing one vertical slice of the output frame; scanlines are written at displaced addresses and read back sequentially for display.
+
+- **Decay**: The gradual fading of stored pixel values between frames, simulating cathode-ray phosphor persistence.
+
+- **Displacement**: The vertical shifting of a scanline from its original position, proportional to its brightness value.
+
+- **Edge Enhancement**: Brightening of pixels where luminance changes rapidly between adjacent horizontal pixels, emphasizing contour ridgelines.
+
+- **Foreshortening**: A perspective technique that makes distant objects appear smaller; in Massif, lines near the top of the frame displace less than lines near the bottom.
+
+- **Occlusion**: The hiding of background geometry behind foreground geometry; when two displaced scanlines land on the same output line, the last one written prevails.
+
+- **Phosphor**: The luminescent coating inside a cathode-ray tube that glows when struck by an electron beam and fades gradually afterward.
+
+- **Rutt/Etra**: A pioneering analog video synthesizer (1973) by Steve Rutt and Bill Etra that displayed video as vertically deflected scanlines on a vector display.
+
+- **Scanline**: A single horizontal row of pixels in a video frame, traced left to right by the electron beam (or pixel clock).
+
+- **Terrain**: The visual result of scanline displacement (an undulating surface where brightness maps to height.)
+
+- **Tint**: A uniform chrominance applied to the monochrome terrain output, simulating the color of a CRT phosphor.
+
+- **Vector Display**: A display that draws arbitrary lines by steering an electron beam to specific coordinates, rather than scanning a fixed raster grid.
 
 ---

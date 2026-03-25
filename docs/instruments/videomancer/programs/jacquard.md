@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 150
 slug: /instruments/videomancer/jacquard
@@ -7,366 +7,401 @@ image: /img/instruments/videomancer/jacquard/jacquard_hero_s1.png
 description: "The Jacquard loom, invented in 1804 by Joseph Marie Jacquard, was the first machine to use punched cards for controlling the pattern of a weave."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import jacquard_control_panel from '/img/instruments/videomancer/jacquard/jacquard_control_panel.png';
-import jacquard_source1_parrot from '/img/instruments/videomancer/jacquard/jacquard_source1_parrot.png';
-import jacquard_source2_fruit from '/img/instruments/videomancer/jacquard/jacquard_source2_fruit.png';
-import jacquard_source3_clouds from '/img/instruments/videomancer/jacquard/jacquard_source3_clouds.png';
-import jacquard_source4_pattern from '/img/instruments/videomancer/jacquard/jacquard_source4_pattern.png';
-import jacquard_source5_boy from '/img/instruments/videomancer/jacquard/jacquard_source5_boy.png';
-import jacquard_source6_berries from '/img/instruments/videomancer/jacquard/jacquard_source6_berries.png';
-import jacquard_hero_s1 from '/img/instruments/videomancer/jacquard/jacquard_hero_s1.png';
-import jacquard_hero_s2 from '/img/instruments/videomancer/jacquard/jacquard_hero_s2.png';
-import jacquard_hero_s3 from '/img/instruments/videomancer/jacquard/jacquard_hero_s3.png';
-import jacquard_hero_s4 from '/img/instruments/videomancer/jacquard/jacquard_hero_s4.png';
-import jacquard_hero_s5 from '/img/instruments/videomancer/jacquard/jacquard_hero_s5.png';
-import jacquard_hero_s6 from '/img/instruments/videomancer/jacquard/jacquard_hero_s6.png';
-import jacquard_ex1_s1 from '/img/instruments/videomancer/jacquard/jacquard_ex1_s1.png';
-import jacquard_ex1_s2 from '/img/instruments/videomancer/jacquard/jacquard_ex1_s2.png';
-import jacquard_ex1_s3 from '/img/instruments/videomancer/jacquard/jacquard_ex1_s3.png';
-import jacquard_ex1_s4 from '/img/instruments/videomancer/jacquard/jacquard_ex1_s4.png';
-import jacquard_ex1_s5 from '/img/instruments/videomancer/jacquard/jacquard_ex1_s5.png';
-import jacquard_ex1_s6 from '/img/instruments/videomancer/jacquard/jacquard_ex1_s6.png';
-import jacquard_ex2_s1 from '/img/instruments/videomancer/jacquard/jacquard_ex2_s1.png';
-import jacquard_ex2_s2 from '/img/instruments/videomancer/jacquard/jacquard_ex2_s2.png';
-import jacquard_ex2_s3 from '/img/instruments/videomancer/jacquard/jacquard_ex2_s3.png';
-import jacquard_ex2_s4 from '/img/instruments/videomancer/jacquard/jacquard_ex2_s4.png';
-import jacquard_ex2_s5 from '/img/instruments/videomancer/jacquard/jacquard_ex2_s5.png';
-import jacquard_ex2_s6 from '/img/instruments/videomancer/jacquard/jacquard_ex2_s6.png';
-import jacquard_ex3_s1 from '/img/instruments/videomancer/jacquard/jacquard_ex3_s1.png';
-import jacquard_ex3_s2 from '/img/instruments/videomancer/jacquard/jacquard_ex3_s2.png';
-import jacquard_ex3_s3 from '/img/instruments/videomancer/jacquard/jacquard_ex3_s3.png';
-import jacquard_ex3_s4 from '/img/instruments/videomancer/jacquard/jacquard_ex3_s4.png';
-import jacquard_ex3_s5 from '/img/instruments/videomancer/jacquard/jacquard_ex3_s5.png';
-import jacquard_ex3_s6 from '/img/instruments/videomancer/jacquard/jacquard_ex3_s6.png';
-
-# Jacquard
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: jacquard_source1_parrot, after: jacquard_hero_s1 },
-    { label: "Fruit", before: jacquard_source2_fruit, after: jacquard_hero_s2 },
-    { label: "Clouds", before: jacquard_source3_clouds, after: jacquard_hero_s3 },
-    { label: "Pattern", before: jacquard_source4_pattern, after: jacquard_hero_s4 },
-    { label: "Boy", before: jacquard_source5_boy, after: jacquard_hero_s5 },
-    { label: "Berries", before: jacquard_source6_berries, after: jacquard_hero_s6 },
-  ]}
-/>
-*Jacquard weaving video pixels into interlaced textile patterns with warp and weft hue tinting.*
+![Jacquard hero image](/img/instruments/videomancer/jacquard/jacquard_hero_s1.png)
+*Jacquard weaving a herringbone textile pattern over a live video feed, with copper warp threads and indigo weft threads casting soft shadows at each crossing.*
 
 ---
 
 ## Overview
 
-The Jacquard loom, invented in 1804 by Joseph Marie Jacquard, was the first machine to use punched cards for controlling the pattern of a weave. It is often cited as a conceptual ancestor of digital computing — each card row encoded a binary instruction (raise thread / lower thread) that determined whether a warp or weft thread appeared on the fabric surface at each intersection. Jacquard applies this idea to video: it divides the image into a grid of cells, and at each cell, a binary pattern lookup determines whether the pixel belongs to a warp thread (running vertically) or a weft thread (running horizontally).
+**Jacquard** turns your video into woven cloth. It overlays a programmable textile grid onto the input image, sampling pixels at warp and weft intersection points and tinting each thread with its own hue. The result looks like video has been printed onto fabric: warp threads run vertically, weft threads run horizontally, and the two interlock in one of four classic weave patterns. Threads that pass behind the weave are darkened with a configurable shadow, giving the illusion of three-dimensional depth.
 
-The four available weave patterns — Plain, Twill, Satin, and Herringbone — are stored as 8×8 bit arrays and tiled across the frame. Warp threads can be tinted toward one hue while weft threads are tinted toward another, with an adjustable tint strength. Under-threads (the ones that pass behind at each crossing) are darkened by a configurable shadow amount, simulating the depth of a real woven fabric. An LFSR noise generator adds subtle per-pixel irregularity that mimics the imperfections of physical thread.
+At subtle settings, Jacquard adds a gentle canvas-like texture that makes video look like it was shot through a screen door or projected onto linen. At extreme settings, it transforms the image into bold, colorful plaid and tartan patterns where the original video peeks through as dyed fiber. Because the weave grid is driven by pixel-position counters, the pattern locks perfectly to the raster and never drifts.
 
-At full tint with contrasting warp and weft hues, Jacquard transforms video into a vivid tartan or plaid-like textile. At low tint with high shadow, it creates a subtle canvas or linen texture overlaid on the source. The Grid Show toggle reveals the underlying cell boundaries, exposing the digital loom structure.
+:::tip
+Try feeding a static image and slowly sweeping **Thread W** through its eight steps. You'll see the weave scale jump between discrete sizes (just like choosing different thread gauges on a real loom.)
+:::
+
+### What's In a Name?
+
+The name ***Jacquard*** honors Joseph Marie Jacquard, the French weaver who invented the ***Jacquard loom*** in 1804. His loom used punched cards to control individual warp threads, enabling complex patterns like brocade, damask, and tapestry to be woven automatically. It was one of the earliest examples of a programmable machine: a direct ancestor of the computer. In Videomancer, Jacquard's punched-card logic lives on as 8×8 pattern lookup tables stored in FPGA fabric.
 
 ---
 
 ## Quick Start
 
-1. **Start with shadow**: Shadow is the control that most clearly reveals the weave pattern. Set it to 40–60% before adjusting other parameters.
-2. **Plain for texture, Twill for stripes**: Plain creates uniform background texture; Twill creates more directional, fabric-like diagonal ridges.
-3. **Herringbone is the showstopper**: The V-zigzag pattern is the most visually distinctive and immediately reads as "woven fabric."
+1. Feed a video source with recognizable shapes and colors. Set **Thread W** (Knob 1) to a medium value: around step 4 or 5. A grid of interlocking threads appears over the video.
+2. Turn **Warp Hue** (Knob 3) and **Weft Hue** (Knob 4) to contrasting positions. The vertical warp threads take on one color and the horizontal weft threads take on another (the image now looks like a two-tone tartan.)
+3. Increase **Shadow** (Knob 6). The threads that pass *beneath* the weave darken, creating the illusion that one set of threads sits on top of the other.
+4. Flip the **Pattern** switch (Switch 7) to **Herring**. The interlacing pattern changes from a simple checkerboard to a V-shaped ***herringbone*** (named for the skeleton of a herring fish.)
+
+---
+
+## Parameters
+
+![Videomancer front panel with Jacquard loaded](/img/instruments/videomancer/jacquard/jacquard_control_panel.png)
+*Videomancer's front panel with Jacquard active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Thread W
+
+| Property | Value |
+|----------|-------|
+| Range | 2 – 16 |
+| Default | 7 |
+
+**Thread W** sets the width of each thread in the weave grid, controlling how many pixels wide each warp or weft band is. This parameter is quantized into eight discrete steps, producing thread widths of 2, 3, 4, 5, 6, 8, 10, or 16 pixels. At the narrowest setting, the weave is a fine mesh: almost like a window screen. At the widest, each thread is a thick ribbon spanning 16 pixels. Because the steps are discrete, turning the knob produces distinct jumps between sizes rather than a smooth sweep.
+
+:::note
+Thread width is uniform for both warp and weft (horizontal and vertical threads are always the same gauge.)
+:::
+
+---
+
+### Knob 2 — Density
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Density** controls the coverage ratio of the thread grid, adjusting how much of the source image is visible between threads. At low values, the weave is loose and open: more of the original video shows through the gaps. As Density increases, threads become tighter and more opaque, filling more of the frame with the woven pattern. At maximum, the weave covers the entire image.
+
+---
+
+### Knob 3 — Warp Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 360° |
+| Default | 60° |
+
+**Warp Hue** selects the color tint applied to warp (vertical) threads. The hue sweeps around the color wheel in eight quantized steps, visiting red, orange, yellow-green, green, cyan, blue, purple, and magenta. Warp threads that are "on top" in the current weave pattern receive this tint, blended with the source video according to the **Tint Amt** control.
+
+---
+
+### Knob 4 — Weft Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 360° |
+| Default | 240° |
+
+**Weft Hue** selects the color tint applied to weft (horizontal) threads, independent of **Warp Hue**. The same eight-position color wheel applies. Setting Warp Hue and Weft Hue to contrasting positions: say red and cyan: produces a vivid two-tone tartan. Setting them to the same hue creates a monochrome weave where only the shadow gives depth cues.
+
+:::tip
+Complementary hue pairs (0° and 180°, or 90° and 270°) produce the most dramatic tartan effects. Try red warp with cyan weft, or yellow-green warp with purple weft.
+:::
+
+---
+
+### Knob 5 — Tint Amt
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Tint Amt** controls the strength of the hue tint applied to each thread. At zero, no tint is applied: threads carry the original color of the source video, and Warp Hue and Weft Hue have no visible effect. As Tint Amt increases, threads shift further toward their assigned hue. At maximum, the tint dominates and the original color is largely overridden.
+
+---
+
+### Knob 6 — Shadow
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 37.5% |
+
+**Shadow** controls how much weft-under (beneath) threads are darkened at each crossing point. At zero, all threads are equally bright: there is no depth illusion. As Shadow increases, the threads that pass beneath the weave grow darker, creating the appearance that warp threads are physically stacked on top of weft threads. At maximum, under-threads are nearly black, producing a dramatic relief.
+
+:::note
+Shadow is ***one-sided***: it always darkens weft threads. Warp-over threads remain at full brightness regardless of the Shadow setting.
+:::
+
+---
+
+### Switch 7 — Pattern
+
+| Property | Value |
+|----------|-------|
+| Off | Plain |
+| On | Herring |
+| Default | Plain |
+
+**Pattern** selects the weave interlacing pattern. In the **Plain** position, the pattern is a simple checkerboard: warp and weft threads alternate over and under at every crossing, like a basic basket weave. In the **Herring** position, the interlacing follows a ***herringbone*** pattern: a V-shaped zigzag where the diagonal direction reverses at the midpoint of the repeat. Herringbone creates a more complex, textured appearance reminiscent of tweed and tailored suiting fabrics.
+
+---
+
+### Switch 8 — Noise
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Noise** injects per-pixel randomness from a ***linear feedback shift register*** (LFSR) into the luminance channel. When set to **Off**, the weave pattern is perfectly clean and uniform. When set to **On**, a small random offset is added to each pixel's brightness, simulating the natural irregularity of hand-woven cloth: slight variations in thread tension, dye absorption, and fiber alignment.
+
+:::tip
+Noise is most visible at low Thread W settings where the weave is fine. At wide thread widths, each thread spans so many pixels that the per-pixel noise reads as gentle texture rather than grain.
+:::
+
+---
+
+### Switch 9 — Color Src
+
+| Property | Value |
+|----------|-------|
+| Off | Tint |
+| On | Video |
+| Default | Tint |
+
+**Color Src** selects the source of thread coloring. In the **Tint** position, threads are colored by blending toward the Warp Hue and Weft Hue values: the weave looks like dyed fabric. In the **Video** position, threads carry the original video's chrominance, and the Warp Hue, Weft Hue, and Tint Amt controls have no effect. Video mode is useful when you want the weave texture and shadow depth without altering the color palette.
+
+---
+
+### Switch 10 — Grid Show
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Grid Show** enables a visible grid overlay at thread boundaries. When set to **Off**, the weave pattern blends smoothly. When set to **On**, dark lines are drawn at the edges of each thread cell, making the grid structure explicitly visible. Grid lines are rendered as darkened, desaturated pixels at the cell boundaries: like the gaps between tiles in a mosaic. This is useful for understanding the grid geometry or for creating a stained-glass window aesthetic.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the original, unprocessed input signal directly to the output. When set to **On**, all Jacquard processing is skipped and the clean video passes through. The sync delay pipeline still aligns timing, so switching Bypass produces no glitch. Use it for instant A/B comparison between the raw input and the woven result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (original) and wet (woven) signals. At 0%, only the original video appears. At 100%, only the fully processed weave is visible. Intermediate positions blend the two: useful for dialing in a subtle fabric texture without overwhelming the source content. Mix operates on all three channels (Y, U, V) simultaneously via matched interpolators.
 
 ---
 
 ## Background
 
-### Weave Patterns and Binary Matrices
+### Textile weaving
 
-In real weaving, the pattern of a fabric is defined by which thread goes over and which goes under at every crossing point. This can be described as a binary matrix: a 1 means the warp thread is on top, a 0 means the weft thread is on top. A plain weave alternates 1-0-1-0 in both directions like a checkerboard. A twill weave offsets the pattern diagonally, producing characteristic diagonal ridges (think denim). A satin weave scatters the crossover points to minimise visible texture, creating a smooth surface. Herringbone is a twill variant where the diagonal direction reverses at regular intervals, producing a V-shaped zigzag.
+Woven fabric is created by interlacing two perpendicular sets of threads. The ***warp*** threads run vertically on the loom (lengthwise), held taut by the frame. The ***weft*** threads are passed horizontally through the warp (crosswise), going alternately over and under warp threads according to a pattern. The specific sequence of over-and-under crossings defines the weave structure.
 
-### The Jacquard Loom and Computing History
+Four fundamental weave patterns exist, each producing a distinctive surface texture. ***Plain weave*** (also called tabby) is the simplest: each weft thread goes over one warp thread, then under the next, creating a tight checkerboard. ***Twill weave*** offsets the crossings diagonally, creating a characteristic ribbed texture used in denim and gabardine. ***Satin weave*** spaces the crossings far apart, producing a smooth, lustrous surface with few visible interlacings. ***Herringbone*** is a twill variant where the diagonal direction reverses periodically, creating V-shaped zigzags.
 
-Joseph Marie Jacquard's 1804 loom used punched cards to automate the selection of warp threads. Each hole in the card corresponded to a hook that lifted a specific thread, creating complex patterns without manual intervention. Charles Babbage recognised the significance of this mechanism and adapted the concept for his Analytical Engine. Ada Lovelace described the connection explicitly: "The Analytical Engine weaves algebraical patterns, just as the Jacquard loom weaves flowers and leaves." Jacquard brings this full circle — using digital binary logic to simulate the loom that inspired digital computing.
+### Jacquard looms and programmability
 
-### Hue Tinting via UV Offset
+The Jacquard loom, invented in 1804 Lyon, France, was the first machine to use punched cards for automatic pattern control. Each card encoded one row of the weave pattern: holes allowed specific warp threads to be raised, creating the desired interlacing sequence. Complex patterns like brocade and damask, previously requiring skilled hand labor, could be produced mechanically. Charles Babbage and Ada Lovelace were directly inspired by Jacquard's punched-card mechanism when designing the Analytical Engine: making the Jacquard loom a genuine ancestor of modern computing.
 
-In YUV colour space, hue is determined by the angle of the (U, V) vector around the neutral point (512, 512). Jacquard uses an 8-entry lookup table that maps hue angles (0°, 45°, 90°, …, 315°) to (U, V) offset pairs. The Tint Amount control scales these offsets before they are added to each pixel's native chrominance. At zero tint, the original video colours are preserved. At full tint, the colours shift strongly toward the selected hue. Since warp and weft threads use independent hue lookups, two-tone colourisation follows the weave pattern automatically.
+In Videomancer's Jacquard program, the punched cards are replaced by 8×8 lookup tables stored as constants in the FPGA logic. Each table encodes a different weave pattern: plain, twill, satin, or herringbone. The pixel's position on the grid indexes into the table to determine whether the warp or weft thread is on top at that crossing.
 
-### Shadow and Depth Perception
+### Color and depth in woven media
 
-The illusion of three-dimensional weave structure comes from darkening the thread that passes underneath at each crossing. In a real fabric, the under-thread is partially occluded by the over-thread and receives less light. Jacquard simulates this by multiplying the Y (luma) channel of under-thread pixels by a shadow factor: at zero shadow, both threads have equal brightness; at maximum shadow, under-threads are rendered dramatically darker, creating strong depth contrast at every crossing point.
-
-### LFSR Noise as Textile Irregularity
-
-Real textiles are never perfectly uniform. Thread thickness varies, dye absorption is uneven, and mechanical tension fluctuates during weaving. Jacquard adds a 16-bit Linear Feedback Shift Register (LFSR) pseudo-random noise source that injects small brightness perturbations on a per-pixel basis. The noise amplitude is fixed at ±8 luma levels — subtle enough to add organic texture without disrupting the weave pattern. The LFSR is seeded with a fixed value (0xCAFE) so the noise pattern is deterministic and repeatable.
+Real woven fabrics derive their visual richness from two phenomena: thread color and crossing depth. Threads dyed different colors create patterns: tartan, plaid, gingham: while the physical stacking of threads at each crossing creates subtle shadows. Jacquard simulates both: the Warp Hue and Weft Hue controls assign colors to each thread direction, while the Shadow control darkens threads that pass beneath the weave. The combination produces the illusion of three-dimensional textile on a flat video signal.
 
 
 ---
 
 ## Signal Flow
 
-Grid Coordinate → Tint + Shadow → Composite → Output Registration
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Stage 1: Grid Coordinate Extraction ────────────────────────
-│   ├─ Divide pixel position by Thread Width → cell coordinates
-│   ├─ Cell (x mod 8, y mod 8) → pattern lookup
-│   ├─ Pattern LUT: Plain / Twill / Satin / Herringbone
-│   └─ Output: is_warp_over flag + boundary detection
-│
-├── Stage 2: Tint + Shadow ────────────────────────────────────
-│   ├─ Warp-over: apply Warp Hue tint to U/V, full brightness
-│   ├─ Weft-over: apply Weft Hue tint to U/V, darkened by Shadow
-│   ├─ Tint Amount scales hue offset strength
-│   └─ Color Src toggle: Tint mode or Video passthrough
-│
-├── Stage 3: Composite ────────────────────────────────────────
-│   ├─ Grid Show: draw dark lines at cell boundaries
-│   ├─ Noise: add LFSR jitter to Y channel
-│   └─ Clamp outputs to 0–1023
-│
-├── Stage 4: Output Registration ──────────────────────────────
-│
-├── 4-Clock Interpolator (wet/dry mix per channel) ────────────
-│
-├── Sync Signals ──────────────────────────────────────────────
-│   └─ 8-clock delay pipeline (hsync, vsync, field)
-│
-└── Bypass ────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The pipeline has two key structural features:
 
-The weave pattern is stateless and purely combinational — there is no frame buffer or memory of previous pixels. The cell coordinates are derived from running horizontal and vertical position counters, and the pattern lookup is an instantaneous ROM read from one of four 8×8 bit arrays. This means the pattern tiles seamlessly across the frame regardless of resolution, and Thread Width changes take effect immediately on the next pixel.
+1. **Pattern lookup is purely combinational**: The 8×8 weave pattern tables are implemented as constants: no BRAM is consumed. The FPGA evaluates grid position and pattern in a single clock cycle using only LUT logic. This is how Jacquard achieves zero BRAM usage while still providing four weave patterns.
 
-The colour tinting path has an important toggle: Color Src selects whether the U/V channels are modified by the hue LUT (Tint mode) or passed through from the input (Video mode). In Video mode, the original video colours are preserved — only the luma channel is affected by the weave shadow pattern, producing a contrast-texture overlay rather than a colour remapping.
+2. **Shadow is asymmetric**: The shadow darkening is applied by multiplying Y by `(1023 − shadow) / 1024`. This multiplication only happens when the weft thread is on top (pattern bit = 0). Warp-over threads always multiply by `1023 / 1024`: effectively full brightness. This asymmetry gives the weave its characteristic depth: one thread direction always appears to sit above the other.
 
----
-
-## Parameter Reference
-
-<img src={jacquard_control_panel} alt="Videomancer front panel with Jacquard loaded"/>
-*Videomancer's front panel with Jacquard active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Thread W
-| Property | Value |
-|----------|-------|
-| Range | 2 – 16 |
-| Default | 7 |
-
-Selects the thread width — the number of pixels per weave cell — from an 8-step lookup table. The available widths are 2, 3, 4, 5, 6, 8, 10, and 16 pixels. Small widths create a fine, dense textile texture; large widths create coarse, blocky weave patterns. At width 2, the weave is just barely visible as a fine grid. At width 16, individual threads are clearly distinguishable as wide bars. The weave pattern tiles across the frame based on this width, so the total number of visible cells depends on both the thread width and the frame resolution.
-
----
-
-#### Knob 2 — Density
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Controls the density of thread coverage. Higher density values produce tighter, more solid-looking fabric; lower values create a looser, more open weave appearance. Density interacts with the shadow system — denser weaves show more continuous colour from the over-thread, while sparser weaves reveal more of the darkened under-thread, increasing the visual depth of the texture.
-
----
-
-#### Knob 3 — Warp Hue
-| Property | Value |
-|----------|-------|
-| Range | 0° – 360° |
-| Default | 60° |
-| Suffix | ° |
-
-Selects the hue for warp (vertical) threads. The control maps through an 8-entry lookup table covering eight hues spaced at 45° intervals around the colour wheel: red, orange, yellow-green, green, cyan, blue, purple, and magenta. The selected hue is applied as a UV offset scaled by the Tint Amount control. When Color Src is set to Video, this control has no visible effect — the original chrominance is preserved.
-
----
-
-#### Knob 4 — Weft Hue
-| Property | Value |
-|----------|-------|
-| Range | 0° – 360° |
-| Default | 240° |
-| Suffix | ° |
-
-Selects the hue for weft (horizontal) threads, using the same 8-entry hue lookup table as Warp Hue. Choosing contrasting warp and weft hues (e.g., red warp + cyan weft) produces vivid tartan-like patterns. Similar hues (e.g., blue warp + purple weft) produce subtler tonal variation within the weave. Setting both to the same hue produces a monochromatic tint with only shadow depth distinguishing the threads.
-
----
-
-#### Knob 5 — Tint Amt
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-At zero, no colour shifting occurs — the original video chrominance is preserved (equivalent to Color Src = Video). At maximum, the UV channels are shifted fully toward the selected hue values. Intermediate values produce a partial blend between the original colours and the thread hues. Internally, controls the strength of the hue tint applied to both warp and weft threads.
-
----
-
-#### Knob 6 — Shadow
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 37.5% |
-| Suffix | % |
-
-At zero, all threads (over and under) have equal brightness — the weave pattern is visible only through colour differences. As shadow increases, under-threads become progressively darker, creating the illusion of three-dimensional interlacing. At maximum, under-threads are rendered as deep shadows, producing high-contrast weave structures that look almost embossed. Internally, controls the depth of shadow applied to under-threads.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Pattern** | Plain | Herring |
-| **8 — Noise** | Off | On |
-| **9 — Color Src** | Tint | Video |
-| **10 — Grid Show** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggle switches control qualitatively different aspects of the program. Pattern is a 2-bit selector (using bits 0 and 1 of the toggle register) that chooses among four weave structures. Noise enables LFSR-based texture irregularity. Color Src selects between hue-tinted and video-passthrough colour modes. Grid Show overlays cell boundary lines for diagnostic visibility. Bypass is at bit 5 (shifted from the standard bit 4 position), routing the input directly to the output. Note the non-standard bypass bit position — this is specific to Jacquard.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Jacquard-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::tip
+**Hue quantization**: Both Warp Hue and Weft Hue are quantized to eight positions around the color wheel (0°, 45°, 90°, 135°, 180°, 225°, 270°, 315°). The knob position is divided by the top 3 bits to select one of eight entries from an approximate UV lookup table. You won't get every possible hue: but the eight available positions are evenly spaced and cover the full spectrum.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises explore Jacquard's textile simulation from basic weave patterns to complex colourised fabrics. Each builds on the previous, introducing more of the program's parameter interactions.
+These exercises progress from basic weave textures through colored tinting to full tartan-style compositions. Each one builds on the previous, adding more of Jacquard's processing chain.
+### Exercise 1: Plain Canvas Texture
 
-### Exercise 1: Basic Weave Patterns
+![Plain Canvas Texture result](/img/instruments/videomancer/jacquard/jacquard_ex1_s1.png)
+*Plain Canvas Texture — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: jacquard_source1_parrot, after: jacquard_ex1_s1 },
-    { label: "Fruit", before: jacquard_source2_fruit, after: jacquard_ex1_s2 },
-    { label: "Clouds", before: jacquard_source3_clouds, after: jacquard_ex1_s3 },
-    { label: "Pattern", before: jacquard_source4_pattern, after: jacquard_ex1_s4 },
-    { label: "Boy", before: jacquard_source5_boy, after: jacquard_ex1_s5 },
-    { label: "Berries", before: jacquard_source6_berries, after: jacquard_ex1_s6 },
-  ]}
-/>
-*Basic Weave Patterns — simulated result across source images.*
-**Source**: A static image or live camera feed with varied colour and contrast — a face, landscape, or still life.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Compare the four weave patterns and understand thread width scaling.
+#### Learning Outcomes
 
-1. **Plain weave**: Set Pattern to Plain. Set Thread Width to step 4 (width = 5 pixels). The image breaks into a checkerboard of lighter and darker squares.
-2. **Increase shadow**: Sweep Shadow to ~60%. The under-thread squares darken, making the weave structure clearly visible.
-3. **Twill diagonal**: Switch Pattern to Twill. The checkerboard is replaced by diagonal stripes running lower-left to upper-right.
-4. **Satin smooth**: Switch to Satin. The crossover points scatter — the texture appears smoother and less structured.
-5. **Herringbone V**: Switch to Herringbone. The diagonal reverses at the midpoint, creating a V-shaped zigzag.
-6. **Scale up**: Increase Thread Width to step 8 (width = 16). Each pattern becomes very coarse — individual threads are thick bars.
-7. **Scale down**: Decrease Thread Width to step 1 (width = 2). The weave becomes an almost imperceptibly fine texture.
+A subtle linen-like texture overlaid on video, as if the source were projected onto canvas.
 
-**Key concepts**: Four binary weave patterns tiled as 8×8 matrices, thread width controls cell size, shadow reveals the over/under structure
+#### Key Concepts
 
----
+- Thread width controls weave scale
+- Shadow creates depth at crossings
+- Noise adds organic irregularity
 
-### Exercise 2: Tartan Colourisation
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: jacquard_source1_parrot, after: jacquard_ex2_s1 },
-    { label: "Fruit", before: jacquard_source2_fruit, after: jacquard_ex2_s2 },
-    { label: "Clouds", before: jacquard_source3_clouds, after: jacquard_ex2_s3 },
-    { label: "Pattern", before: jacquard_source4_pattern, after: jacquard_ex2_s4 },
-    { label: "Boy", before: jacquard_source5_boy, after: jacquard_ex2_s5 },
-    { label: "Berries", before: jacquard_source6_berries, after: jacquard_ex2_s6 },
-  ]}
-/>
-*Tartan Colourisation — simulated result across source images.*
-**Source**: A well-lit face or portrait — skin tones provide a good neutral base for colour tinting.
+A portrait or still life with smooth gradients and distinct subjects (skin tones, soft lighting, or a landscape with sky.)
 
-**What You'll Create**: Use contrasting warp and weft hues to create tartan-like two-tone fabric.
+#### Steps
 
-1. **Contrasting hues**: Set Warp Hue to ~60° (red) and Weft Hue to ~240° (cyan-blue). Set Tint Amount to ~70%.
-2. **Increase shadow**: Shadow to ~50%. The under-thread darkening creates clear depth between the two coloured thread sets.
-3. **Twill pattern**: Switch to Twill. The diagonal ridges now show alternating colour bands — a tartan effect.
-4. **Reduce scale**: Set Thread Width to step 3 (width = 4). The tartan becomes finer, resembling a dress fabric scale.
-5. **Add noise**: Enable Noise. Subtle irregularity appears in the thread brightness, adding organic texture.
-6. **Show grid**: Enable Grid Show. Dark boundary lines appear at every cell edge, revealing the digital loom structure beneath the colour.
+1. Set **Thread W** (Knob 1) to a narrow value: step 2 or 3. A fine grid of tiny threads appears over the video.
+2. Set **Color Src** (Switch 9) to **Video** so threads carry the original video color.
+3. Set **Tint Amt** (Knob 5) fully counterclockwise (no hue tinting.)
+4. Increase **Shadow** (Knob 6) to about 40%. Notice how alternating threads darken slightly at each crossing, creating a visible weave texture.
+5. Enable **Noise** (Switch 8). The perfectly clean grid gains a subtle organic irregularity (like unevenly dyed thread.)
+6. Adjust **Mix** (Fader 12) to about 40–50%. The canvas texture blends gently with the source image.
 
-**Key concepts**: 8-entry hue LUT maps register position to colour wheel angle, warp and weft hues are independent, tint amount scales UV offset
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Thread W | Step 3 (~4 px) |
+| Density | 50% |
+| Warp Hue | — (ignored) |
+| Weft Hue | — (ignored) |
+| Tint Amt | 0% |
+| Shadow | 40% |
+| Pattern | Plain |
+| Noise | On |
+| Color Src | Video |
+| Grid Show | Off |
+| Bypass | Off |
+| Mix | 40% |
 
 ---
 
-### Exercise 3: Canvas Texture Overlay
+### Exercise 2: Two-Tone Tartan
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Parrot", before: jacquard_source1_parrot, after: jacquard_ex3_s1 },
-    { label: "Fruit", before: jacquard_source2_fruit, after: jacquard_ex3_s2 },
-    { label: "Clouds", before: jacquard_source3_clouds, after: jacquard_ex3_s3 },
-    { label: "Pattern", before: jacquard_source4_pattern, after: jacquard_ex3_s4 },
-    { label: "Boy", before: jacquard_source5_boy, after: jacquard_ex3_s5 },
-    { label: "Berries", before: jacquard_source6_berries, after: jacquard_ex3_s6 },
-  ]}
-/>
-*Canvas Texture Overlay — simulated result across source images.*
-**Source**: Any footage where you want to add a subtle fabric texture — landscapes, abstract video, or recorded material.
+![Two-Tone Tartan result](/img/instruments/videomancer/jacquard/jacquard_ex2_s1.png)
+*Two-Tone Tartan — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Create a subtle canvas or linen overlay that preserves the original video colours.
+***A description of the exercise illustration.***
 
-1. **Video colour mode**: Set Color Src to Video. The original colours are now preserved — only luma is affected.
-2. **Fine weave**: Set Thread Width to step 2 (width = 3). The texture is fine and dense.
-3. **Subtle shadow**: Set Shadow to ~25%. A gentle darkening at under-thread crossings creates the impression of canvas grain.
-4. **Plain weave**: Use Plain pattern for the most uniform canvas texture.
-5. **Partial mix**: Set Mix to ~40%. The canvas texture blends with the source, adding a painted-on-fabric quality.
-6. **Add noise**: Enable Noise for additional organic irregularity. The result resembles video projected onto a linen surface.
+#### Learning Outcomes
 
-**Key concepts**: Video colour mode preserves original chrominance, partial mix blends texture with source, fine thread width creates canvas grain
+A vivid tartan-style pattern where warp and weft threads carry contrasting colors over the source video.
+
+#### Key Concepts
+
+- Warp and weft hues tint threads independently
+- Tint Amount controls color saturation
+- Herringbone pattern adds visual complexity
+
+#### Video Source
+
+High-contrast footage with strong shapes: bold graphics, architectural details, or a dancer silhouette.
+
+#### Steps
+
+1. Set **Thread W** (Knob 1) to a wide value: step 6 or 7 (8–10 px). The threads are thick enough to see color clearly.
+2. Set **Color Src** (Switch 9) to **Tint** so thread color comes from the hue controls.
+3. Turn **Warp Hue** (Knob 3) to approximately 0° (red). Turn **Weft Hue** (Knob 4) to approximately 180° (cyan). The warp threads glow red and the weft threads glow cyan.
+4. Increase **Tint Amt** (Knob 5) to about 70%. The colors intensify.
+5. Increase **Shadow** (Knob 6) to 60%. The weft (under) threads darken noticeably, giving the tartan real depth.
+6. Switch **Pattern** (Switch 7) from **Plain** to **Herring**. The simple checkerboard becomes a V-shaped zigzag (the tartan now looks like herringbone suiting fabric.)
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Thread W | Step 7 (~10 px) |
+| Density | 50% |
+| Warp Hue | 0° (red) |
+| Weft Hue | 180° (cyan) |
+| Tint Amt | 70% |
+| Shadow | 60% |
+| Pattern | Herring |
+| Noise | Off |
+| Color Src | Tint |
+| Grid Show | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Stained Glass Grid
 
-## Tips
+![Stained Glass Grid result](/img/instruments/videomancer/jacquard/jacquard_ex3_s1.png)
+*Stained Glass Grid — simulated result across source images.*
+#### Exercise Illustration
 
-- **Video mode for subtlety**: Set Color Src to Video and use shadow only for a subtle canvas-grain overlay that preserves the original colour.
-- **Small widths disappear at low res**: At SD resolution (720 pixels wide), thread width 2 is essentially invisible. Use width 4+ for visible texture at SD.
-- **Noise adds realism**: The LFSR noise is very subtle (±8 levels on a 1024 scale) but adds perceptible organic quality, especially at larger thread widths.
-- **Bypass is at bit 5**: If writing automation, note that Jacquard's bypass bit is shifted to position 5 rather than the standard position 4.
-- **Feedback creates plaid layers**: Routing the output back into the input with a different pattern selection creates layered weave-on-weave structures.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A stained-glass window effect where dark leading lines separate colored panes of video.
+
+#### Key Concepts
+
+- Grid Show draws visible lines at thread boundaries
+- Combining Grid Show with shadow and tinting creates a stained-glass effect
+- Mix blends the processed result with the source for compositing
+
+#### Video Source
+
+Footage with vivid, saturated colors: flowers, neon signs, colorful murals, or kaleidoscopic graphics.
+
+#### Steps
+
+1. Set **Thread W** (Knob 1) to the widest setting: step 8 (16 px). Each "pane" of glass is wide enough to see the source content clearly.
+2. Enable **Grid Show** (Switch 10). Dark lines appear at every thread boundary, dividing the image into a grid of rectangular cells.
+3. Set **Color Src** (Switch 9) to **Tint**. Set **Warp Hue** (Knob 3) to ~90° (yellow-green) and **Weft Hue** (Knob 4) to ~270° (purple).
+4. Set **Tint Amt** (Knob 5) to 50%. The "glass panes" take on alternating warm and cool tones.
+5. Increase **Shadow** (Knob 6) to about 70%. The panes that sit behind the weave darken dramatically, like tinted glass catching less light.
+6. Enable **Noise** (Switch 8). Subtle per-pixel variation makes the color within each pane shimmer, as if light were passing through textured glass.
+7. Set **Mix** (Fader 12) to ~80%. The source video remains faintly visible beneath the stained-glass overlay.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Thread W | Step 8 (16 px) |
+| Density | 50% |
+| Warp Hue | 90° (yellow-green) |
+| Weft Hue | 270° (purple) |
+| Tint Amt | 50% |
+| Shadow | 70% |
+| Pattern | Plain |
+| Noise | On |
+| Color Src | Tint |
+| Grid Show | On |
+| Bypass | Off |
+| Mix | 80% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Herringbone** | A weave pattern where the twill diagonal reverses direction at regular intervals, producing a V-shaped zigzag. |
-| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, generating pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
-| **Plain Weave** | The simplest weave structure, alternating over-under like a checkerboard. |
-| **Satin Weave** | A weave where crossover points are scattered to minimise visible texture, creating a smooth fabric surface. |
-| **Shadow** | Darkening applied to threads that pass underneath at each crossing, simulating depth in the weave. |
-| **Tint** | A colour shift applied to the U and V channels, steering a pixel's hue toward a target colour. |
-| **Twill Weave** | A weave where diagonal ridges are formed by offsetting the over/under pattern one position per row. |
-| **UV Offset** | A signed displacement applied to the chrominance channels (U, V) to shift the pixel's hue. |
-| **Warp** | Threads running vertically in a weave; in Jacquard, associated with the Warp Hue control. |
-| **Weft** | Threads running horizontally in a weave; in Jacquard, associated with the Weft Hue control. |
+- **Herringbone**: A weave pattern where the diagonal direction of the twill reverses periodically, creating V-shaped zigzags resembling the skeleton of a herring fish.
+
+- **Jacquard Loom**: A mechanical loom invented in 1804 that used punched cards to automate complex weave patterns, a precursor to programmable computing.
+
+- **LFSR**: Linear Feedback Shift Register; a simple digital circuit that generates a repeating sequence of pseudo-random bits, used here for noise texture.
+
+- **Plain Weave**: The simplest weave structure where warp and weft threads alternate over-under at every crossing, creating a checkerboard interlacing.
+
+- **Satin Weave**: A weave structure where crossings are widely spaced, producing a smooth, lustrous surface with minimal visible interlacing.
+
+- **Twill Weave**: A weave structure where the interlacing point shifts diagonally on each successive row, creating a characteristic ribbed texture.
+
+- **Warp**: The set of vertical threads held taut on a loom, through which the weft is woven.
+
+- **Weft**: The horizontal thread that is passed over and under the warp threads to create fabric.
 
 ---

@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 324
 slug: /instruments/videomancer/viewfinder
@@ -7,332 +7,404 @@ image: /img/instruments/videomancer/viewfinder/viewfinder_hero_s1.png
 description: "Every camcorder from the late 1980s through the early 2000s shipped with a tiny electronic viewfinder — a monochrome CRT barely an inch across, pressed against the operator's eye."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import viewfinder_control_panel from '/img/instruments/videomancer/viewfinder/viewfinder_control_panel.png';
-import viewfinder_source1_boat from '/img/instruments/videomancer/viewfinder/viewfinder_source1_boat.png';
-import viewfinder_source2_fruit from '/img/instruments/videomancer/viewfinder/viewfinder_source2_fruit.png';
-import viewfinder_source3_clouds from '/img/instruments/videomancer/viewfinder/viewfinder_source3_clouds.png';
-import viewfinder_source4_pattern from '/img/instruments/videomancer/viewfinder/viewfinder_source4_pattern.png';
-import viewfinder_source5_man from '/img/instruments/videomancer/viewfinder/viewfinder_source5_man.png';
-import viewfinder_source6_knit from '/img/instruments/videomancer/viewfinder/viewfinder_source6_knit.png';
-import viewfinder_hero_s1 from '/img/instruments/videomancer/viewfinder/viewfinder_hero_s1.png';
-import viewfinder_hero_s2 from '/img/instruments/videomancer/viewfinder/viewfinder_hero_s2.png';
-import viewfinder_hero_s3 from '/img/instruments/videomancer/viewfinder/viewfinder_hero_s3.png';
-import viewfinder_hero_s4 from '/img/instruments/videomancer/viewfinder/viewfinder_hero_s4.png';
-import viewfinder_hero_s5 from '/img/instruments/videomancer/viewfinder/viewfinder_hero_s5.png';
-import viewfinder_hero_s6 from '/img/instruments/videomancer/viewfinder/viewfinder_hero_s6.png';
-import viewfinder_ex1_s1 from '/img/instruments/videomancer/viewfinder/viewfinder_ex1_s1.png';
-import viewfinder_ex1_s2 from '/img/instruments/videomancer/viewfinder/viewfinder_ex1_s2.png';
-import viewfinder_ex1_s3 from '/img/instruments/videomancer/viewfinder/viewfinder_ex1_s3.png';
-import viewfinder_ex1_s4 from '/img/instruments/videomancer/viewfinder/viewfinder_ex1_s4.png';
-import viewfinder_ex1_s5 from '/img/instruments/videomancer/viewfinder/viewfinder_ex1_s5.png';
-import viewfinder_ex1_s6 from '/img/instruments/videomancer/viewfinder/viewfinder_ex1_s6.png';
-import viewfinder_ex2_s1 from '/img/instruments/videomancer/viewfinder/viewfinder_ex2_s1.png';
-import viewfinder_ex2_s2 from '/img/instruments/videomancer/viewfinder/viewfinder_ex2_s2.png';
-import viewfinder_ex2_s3 from '/img/instruments/videomancer/viewfinder/viewfinder_ex2_s3.png';
-import viewfinder_ex2_s4 from '/img/instruments/videomancer/viewfinder/viewfinder_ex2_s4.png';
-import viewfinder_ex2_s5 from '/img/instruments/videomancer/viewfinder/viewfinder_ex2_s5.png';
-import viewfinder_ex2_s6 from '/img/instruments/videomancer/viewfinder/viewfinder_ex2_s6.png';
-import viewfinder_ex3_s1 from '/img/instruments/videomancer/viewfinder/viewfinder_ex3_s1.png';
-import viewfinder_ex3_s2 from '/img/instruments/videomancer/viewfinder/viewfinder_ex3_s2.png';
-import viewfinder_ex3_s3 from '/img/instruments/videomancer/viewfinder/viewfinder_ex3_s3.png';
-import viewfinder_ex3_s4 from '/img/instruments/videomancer/viewfinder/viewfinder_ex3_s4.png';
-import viewfinder_ex3_s5 from '/img/instruments/videomancer/viewfinder/viewfinder_ex3_s5.png';
-import viewfinder_ex3_s6 from '/img/instruments/videomancer/viewfinder/viewfinder_ex3_s6.png';
-
-# Viewfinder
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: viewfinder_source1_boat, after: viewfinder_hero_s1 },
-    { label: "Fruit", before: viewfinder_source2_fruit, after: viewfinder_hero_s2 },
-    { label: "Clouds", before: viewfinder_source3_clouds, after: viewfinder_hero_s3 },
-    { label: "Pattern", before: viewfinder_source4_pattern, after: viewfinder_hero_s4 },
-    { label: "Man", before: viewfinder_source5_man, after: viewfinder_hero_s5 },
-    { label: "Knit", before: viewfinder_source6_knit, after: viewfinder_hero_s6 },
-  ]}
-/>
-*Viewfinder overlaying zebra exposure stripes, red focus peaking, safe-area guides, and a blinking REC indicator onto a live camera feed — the complete 1990s camcorder EVF experience.*
+![Viewfinder hero image](/img/instruments/videomancer/viewfinder/viewfinder_hero_s1.png)
+*Viewfinder overlaying zebra stripes, focus peaking highlights, and a blinking REC indicator on a desaturated camcorder-style image.*
 
 ---
 
 ## Overview
 
-Every camcorder from the late 1980s through the early 2000s shipped with a tiny electronic viewfinder — a monochrome CRT barely an inch across, pressed against the operator's eye. That miniature screen was the operator's entire world: composition, exposure, and focus all judged through a low-resolution, high-contrast black-and-white display decorated with overlay graphics. Viewfinder recreates the full EVF experience as a real-time video effect.
+Viewfinder simulates the electronic viewfinder (EVF) found in 1990s prosumer camcorders: the tiny monochrome CRT that operators peered into while shooting with a Sony CCD, Canon UC, or Panasonic NV-series. That small screen didn't just show the image. It overlaid critical shooting aids: diagonal zebra stripes warning of blown highlights, colored edge outlines showing what was in focus, a safe-area rectangle, a center crosshair, and the blinking red REC dot that confirmed tape was rolling. Viewfinder reproduces all of these aids and applies them to any video signal passing through Videomancer.
 
-The program chains eight processing stages together — desaturation, brightness scaling, diagonal zebra stripe exposure warnings, colored focus peaking via horizontal edge detection, broadcast safe-area rectangle guides, a center crosshair alignment marker, a blinking REC indicator dot, and a final wet/dry mix. Every feature can be independently enabled or configured, so Viewfinder can serve as a subtle monitoring aid or a heavy-handed aesthetic filter that makes any footage look like it was shot through a late-model Sony Handycam.
+Beyond its utility as a real exposure and focus monitor, Viewfinder is a powerful aesthetic tool. The desaturation control drains color from the image until it looks like a genuine black-and-white viewfinder CRT. The brightness knob pushes the image into hot, bloomed whites. Focus peaking paints vivid color outlines onto edges, turning any footage into a neon-traced sketch. Stack the overlays together and Viewfinder becomes a living, blinking broadcast-control-room display (part technical instrument, part visual art.)
 
-The name is literal — a *viewfinder* is the optical or electronic device through which a camera operator composes a shot. By turning the monitoring tool itself into a visible effect, Viewfinder collapses the distinction between the image and the apparatus used to observe it.
+:::tip
+Viewfinder actually works as a real exposure and focus tool. Feed it a camera signal and use **Zebra** and **Peaking** the same way a professional camera operator would: to check exposure levels and confirm focus before recording.
+:::
+
+### What's In a Name?
+
+A ***viewfinder*** is the optical or electronic device on a camera that the operator looks through to frame and focus a shot. In film cameras, viewfinders were optical prisms. In video cameras from the 1980s and 1990s, the viewfinder was a tiny ***electronic viewfinder*** (EVF): a miniature monochrome CRT built into the camera body. These EVFs displayed not just the image, but a suite of overlay indicators: zebra stripes, safe-area guides, and the iconic blinking REC dot. The name Viewfinder pays tribute to that small screen and the entire visual language it created.
 
 ---
 
 ## Quick Start
 
-1. **No bypass toggle**: Viewfinder uses all five toggles for features. Use the Mix fader at 0% for an unprocessed signal, or reduce it for a subtle overlay blend.
-2. **Zebra + peaking together**: Both overlays paint directly onto the image. Peaking overrides zebra in regions where both conditions are met (edge above threshold AND luma above zebra level), because peaking is processed after zebra in the pipeline.
-3. **Desaturate first**: For the most authentic EVF look, set Desat to 100% before enabling overlays. The monochrome base makes colored peaking highlights pop dramatically.
+1. Feed a video source into Videomancer with Viewfinder loaded. Turn **Desat** (Knob 6) fully clockwise to drain all color, producing a monochrome viewfinder look. The image should resemble a black-and-white CRT.
+2. Confirm that **Zebra** (Switch 7) is set to **On**. Diagonal stripes should appear on the brightest parts of the image. Adjust **Zebra Level** (Knob 1) to control how much of the image triggers the stripes.
+3. Confirm that **Peaking** (Switch 8) is set to **On**. Colored outlines appear along sharp edges. Adjust **Peaking** (Knob 2) to control sensitivity: turn it counterclockwise for thicker, more visible outlines.
+4. Turn on **Safe Area** (Switch 9), **Center Mark** (Switch 10), and **REC** (Switch 11). A white rectangle, crosshair, and blinking red dot now overlay the image. You are looking through a fully dressed 1990s camcorder viewfinder.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Viewfinder loaded](/img/instruments/videomancer/viewfinder/viewfinder_control_panel.png)
+*Videomancer's front panel with Viewfinder active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Zebra Level
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Zebra Level** sets the luminance threshold above which zebra stripes appear. At 0%, fully counterclockwise, the threshold is at its lowest: almost the entire image is covered in diagonal hatching. As you rotate clockwise, the threshold rises and fewer pixels qualify as "overexposed." At 100%, only the very brightest highlights trigger zebra. This control has no effect when **Zebra** (Switch 7) is set to **Off**.
+
+:::note
+In professional video production, zebra stripes at the 70% IRE level indicate properly exposed skin tones, while stripes at 100% IRE warn of clipped highlights. Viewfinder lets you set the threshold anywhere in between.
+:::
+
+---
+
+### Knob 2 — Peaking
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 37.5% |
+
+**Peaking** controls the sensitivity of the focus peaking edge detector. At 0%, fully counterclockwise, the edge detection threshold is at its lowest: even the faintest texture triggers a colored highlight. As you turn clockwise, the threshold rises and only the sharpest, highest-contrast edges display peaking color. At 100%, only the most extreme edges are highlighted. This control has no effect when **Peaking** (Switch 8) is set to **Off**.
+
+The edge detector computes a horizontal gradient across a three-pixel window. When the absolute difference between the current pixel and the pixel two positions earlier exceeds the threshold, the pixel is replaced with the selected peak color.
+
+---
+
+### Knob 3 — Peak Color
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 1023 |
+| Default | 0 |
+
+**Peak Color** selects the color used for focus peaking highlights. The four choices are **Red**, **Green**, **Blue**, and **Yellow**. Red is the default and the most common choice in professional cameras because it stands out against most natural scenes. Green is useful against red or warm-toned footage. Blue works well against skin tones and earth tones. Yellow provides a high-visibility option for dark or blue-heavy scenes.
+
+:::tip
+Choose a peaking color that contrasts with your source material. If you're shooting a sunset, switch from Red to **Blue** or **Green** so the peaking outlines don't get lost in the warm tones.
+:::
+
+---
+
+### Knob 4 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Brightness** adjusts the overall luminance of the processed image. At 0%, the image is at its darkest. As the knob turns clockwise, brightness increases, scaling luminance values upward. The brightness is applied as a multiplier: it can push bright areas into clipping, producing a bloomed, hot look reminiscent of a viewfinder CRT running at high voltage. At 50%, the image is near its original brightness. Above 50%, the image becomes progressively brighter and can clip to pure white.
+
+---
+
+### Knob 5 — Guide Opac
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Guide Opac** sets the brightness of the overlay guide lines: the safe-area rectangle and center crosshair. At 0%, the guides are invisible (black). At 100%, the guides are at maximum brightness (white). This does not affect the REC indicator, which has its own fixed color.
+
+---
+
+### Knob 6 — Desat
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Desat** controls the desaturation of the image. At 0%, fully counterclockwise, the image retains its original color. As you turn clockwise, the color drains away: chroma is blended toward neutral gray. At 100%, the image is fully desaturated, producing pure black-and-white output that mimics the monochrome CRT of a camcorder viewfinder.
+
+The desaturation algorithm blends each chroma channel (U and V) toward the midpoint value of 512. At full desaturation, U and V are both locked at 512, which is neutral gray in YUV color space.
+
+---
+
+### Switch 7 — Zebra
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Zebra** enables or disables the zebra stripe overlay. When set to **On**, diagonal hatching appears on all pixels whose luminance exceeds the **Zebra Level** threshold. The zebra pattern is a 45-degree diagonal stripe generated by XOR-ing the two lowest bits of the horizontal and vertical position counters. In the zebra region, luminance is inverted by ±256 to guarantee visibility against both bright and dark backgrounds. When set to **Off**, no zebra stripes are drawn regardless of the Zebra Level setting.
+
+---
+
+### Switch 8 — Peaking
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Peaking** enables or disables the focus peaking overlay. When set to **On**, pixels where the horizontal edge magnitude exceeds the **Peaking** threshold are replaced with the color selected by **Peak Color**. This produces vivid colored outlines along sharp edges in the image. When set to **Off**, no peaking highlights are drawn.
+
+---
+
+### Switch 9 — Safe Area
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Safe Area** enables or disables the safe-area rectangle overlay. When set to **On**, a thin white rectangle (two pixels wide) is drawn showing the 90% safe area of the frame. This is the broadcast-standard ***action-safe area***: the region of the frame guaranteed to be visible on all displays. Content outside this rectangle may be cropped by consumer televisions. The rectangle is drawn at a brightness determined by **Guide Opac** (Knob 5). When set to **Off**, no rectangle is drawn.
+
+---
+
+### Switch 10 — Center Mark
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Center Mark** enables or disables the center crosshair overlay. When set to **On**, a white crosshair is drawn at the exact center of the frame. The crosshair has 40-pixel arms and is two pixels wide. It uses resolution-adaptive centering, so it remains accurate across different video standards. The crosshair brightness is determined by **Guide Opac** (Knob 5). When set to **Off**, no crosshair is drawn.
+
+---
+
+### Switch 11 — REC
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**REC** enables or disables the blinking REC indicator. When set to **On**, a small red dot (12×12 pixels) appears in the upper-left corner of the frame. The dot blinks at approximately 1.5 Hz: it is visible for about 0.5 seconds, then hidden for about 0.5 seconds, repeating continuously. The REC indicator uses the same red color as the Red peaking option (Y=300, U=350, V=900). When set to **Off**, no recording indicator is displayed.
+
+:::note
+The REC dot blinks based on a frame counter. Bit 4 of a 6-bit counter toggles the dot's visibility, producing a blink rate of approximately every 16 frames: roughly once per second at 30 fps, with equal on and off periods.
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input and the wet (fully processed) output. At 0%, the output is the original input signal with no Viewfinder processing visible. At 100%, the output is the fully processed result with all active overlays. Intermediate values blend between the two, allowing you to dial in a subtle overlay effect or fade the viewfinder look in and out during a performance.
 
 ---
 
 ## Background
 
-### Electronic Viewfinder History
+### Electronic viewfinders
 
-The electronic viewfinder (EVF) replaced optical reflex viewfinders in video cameras during the 1970s. Early broadcast cameras used small CRTs fed by the camera's own video output, giving the operator a real-time preview of the recorded signal. Consumer camcorders adopted the same principle in miniature — Sony's CCD-TR series, Canon's UC line, and Panasonic's NV series all featured 0.5-inch monochrome CRT viewfinders with approximately 240 TV lines of resolution. The low resolution and high phosphor contrast of these tiny screens gave EVF images a distinctive look: sharp edges, crushed blacks, and a slight greenish-white tint.
+The ***electronic viewfinder*** (EVF) became standard equipment on consumer and prosumer camcorders throughout the 1980s and 1990s. Unlike an optical viewfinder that shows the scene directly through a lens, an EVF displays the camera sensor's output on a miniature screen: originally a tiny monochrome cathode ray tube, typically less than one inch across. Because they were black-and-white, EVFs relied on overlay graphics to communicate critical information: zebra patterns for exposure, edge enhancement for focus confirmation, frame guides for composition, and status indicators like the recording state.
 
-### Zebra Stripes and Exposure Monitoring
+Professional broadcast cameras from Sony, Ikegami, and Panasonic featured sophisticated EVFs with adjustable zebra levels, peaking intensity, and multiple overlay modes. These overlays were generated by dedicated hardware circuits within the camera's viewfinder module. Consumer camcorders offered simpler versions of the same features: a single zebra level, basic peaking, and the iconic blinking REC dot.
 
-Professional video cameras overlay diagonal stripe patterns on overexposed regions of the viewfinder image — a feature called *zebra stripes* or *zebra patterns*. Two standard thresholds exist: 70 IRE (warning zone) and 100 IRE (hard clip). The diagonal hatching is generated by XOR-ing horizontal and vertical position counters, creating a 45-degree repeating pattern that is visually distinct from image content. Camera operators use zebras to set exposure without external monitors — if zebra stripes appear on a subject's face, the highlights are approaching or exceeding the recording medium's capacity.
+### Zebra stripes
 
-### Focus Peaking
+***Zebra stripes*** are the primary exposure aid in video production. They overlay a diagonal hatching pattern on any region of the image that exceeds a configurable luminance threshold. The name comes from the resemblance to the stripes on a zebra's hide. Camera operators use zebra at two standard levels: 70 IRE (to monitor skin tone exposure) and 100 IRE (to detect clipped highlights). The pattern must be visually distinct from the underlying image, so it uses a high-contrast design: typically alternating bright and dark diagonal lines. Viewfinder implements this by inverting luminance by ±256 in the striped pixels, ensuring the pattern is visible whether overlaid on bright highlights or mid-tones.
 
-Focus peaking highlights in-focus edges in the viewfinder by detecting regions of high spatial frequency — sharp transitions in luminance — and overlaying a colored highlight. Sony introduced peaking displays in their Betacam SP line, and the technique migrated to prosumer cameras and eventually mirrorless still cameras. The VHDL implementation uses a simple 3-pixel horizontal gradient (current pixel minus two-pixels-prior) as an edge magnitude detector, then substitutes a configurable highlight color (red, green, blue, or yellow) wherever the gradient exceeds the sensitivity threshold. The result is a real-time edge map painted over the image.
+### Focus peaking
 
-### Broadcast Safe Areas
+***Focus peaking*** highlights in-focus edges by overlaying them with a bright color. The technique originated in Sony's professional camera viewfinders in the late 1980s. The camera's viewfinder circuit detected horizontal edges using a simple high-pass filter and replaced those pixels with a user-selectable color: typically red, green, or white. This gave the operator an immediate visual confirmation of the plane of focus without needing to judge sharpness on a tiny, low-resolution CRT. Viewfinder's edge detector uses a three-pixel horizontal gradient: the absolute difference between the current pixel's luminance and the luminance of the pixel two positions earlier. This simple approach produces clean, responsive edge outlines without requiring line-buffer memory.
 
-Television sets of the CRT era overscanned the image — the edges of the transmitted frame extended beyond the visible screen area. Broadcasters defined two safety zones: the *action-safe area* (90% of the frame, within which all significant action should occur) and the *title-safe area* (80%, within which all text must remain). Camera operators used rectangular overlay guides in the viewfinder to frame shots within these boundaries. Viewfinder draws the 90% action-safe rectangle as a thin white border with configurable opacity.
+### Broadcast safe areas
+
+Television cathode-ray tubes used ***overscan***: the edges of the transmitted image were larger than the visible screen area, and some of the picture was hidden behind the bezel. To ensure critical content remained visible, broadcasters established ***safe areas***: a 90% action-safe zone where all important visual action should occur, and an 80% title-safe zone where all text and graphics should be placed. Although modern flat-panel displays show the full raster, safe-area guides remain standard practice in professional production. Viewfinder draws the 90% action-safe rectangle as a reference guide.
 
 
 ---
 
 ## Signal Flow
 
-Desaturation → Brightness → Zebra Overlay → ... → REC Indicator → Wet/Dry Mix
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├─ 1. Desaturation ────────── UV blend toward 512 (monochrome fade)
-├─ 2. Brightness ──────────── Y channel gain/scale
-├─ 3. Zebra Overlay ───────── diagonal stripes on pixels ≥ threshold
-├─ 4. Focus Peaking ───────── edge detect → colored overlay on strong edges
-├─ 5. Safe Area Guide ─────── 90% action-safe rectangle (white, opacity-scaled)
-├─ 6. Center Crosshair ────── center-of-frame alignment bars
-├─ 7. REC Indicator ───────── blinking red dot in top-left corner
-├─ 8. Wet/Dry Mix ─────────── interpolator crossfade with delayed dry signal
-│
-└── Output Video (YUV 4:4:4)
-```
+The processing pipeline runs in a single clocked process with several key interactions:
 
-The desaturation and brightness stages modify the underlying image before any overlays are applied, establishing the monochrome EVF look as a base layer. Zebra and peaking overlays then paint directly onto the adjusted image — zebras invert luma in overexposed regions for visibility, while peaking replaces both luma and chroma with the selected highlight color at strong edges. The guide overlays (safe area, center mark, REC) are drawn last, ensuring they sit on top of all image processing and are always visible regardless of image content. The final mix stage crossfades between this fully processed signal and the delayed original input, allowing the effect intensity to be dialed from subtle monitoring aid to full aesthetic overlay.
+1. **Desaturation before overlays.** Chroma is blended toward neutral *before* any overlay is applied. This means the zebra stripes and focus peaking highlights appear on a desaturated image, just as they would on a real monochrome viewfinder CRT. The overlays are drawn on top of the already-desaturated picture.
 
----
+2. **Zebra before peaking.** Zebra stripes are applied first. If a pixel is both over-exposed (triggering zebra) and on a sharp edge (triggering peaking), the peaking color wins: it overwrites whatever the zebra stage produced. In practice this is uncommon because zebra regions tend to be large, clipped areas with few internal edges.
 
-## Parameter Reference
+3. **Guides override everything.** The safe-area rectangle, center crosshair, and REC indicator are the last processing stage before the mix. A pixel on a guide line shows the guide color regardless of what the underlying image looks like. The guide lines are achromatic white (U=V=512) at a brightness set by Guide Opac, while the REC dot is a fixed red.
 
-<img src={viewfinder_control_panel} alt="Videomancer front panel with Viewfinder loaded"/>
-*Videomancer's front panel with Viewfinder active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Zebra Level
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
-
-At low values zebra stripes appear on most of the image; at high values only the brightest highlights trigger the pattern. Professional cameras typically offer 70% and 100% IRE presets — this continuous control lets you sweep through the entire range. The stripes become most useful when set just below the clipping point of your source, where they highlight exactly which regions are approaching overexposure. Internally, sets the luminance threshold above which zebra stripes appear.
-
----
-
-#### Knob 2 — Peaking
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 37.5% |
-| Suffix | % |
-
-At zero, no edges are highlighted. As you increase the value, progressively weaker edges trigger the colored overlay. At maximum sensitivity even gentle gradients produce peaking highlights, flooding the image with color. The sweet spot depends on the source material — high-contrast footage needs less sensitivity than soft, low-contrast scenes. Internally, controls the sensitivity threshold for focus peaking.
-
----
-
-#### Knob 3 — Peak Color
-| Property | Value |
-|----------|-------|
-| Range | 0 – 1023 |
-| Default | 0 |
-
-Selects the color of the focus peaking highlight from four options: Red, Green, Blue, and Yellow. Each color is defined as a fixed YUV constant — Red uses high V (warm), Green uses low U and low V, Blue uses high U, and Yellow uses low U and high V. Choose a peaking color that contrasts well with the dominant colors in your source material so the highlights remain visible.
-
----
-
-#### Knob 4 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Scales the overall brightness of the processed image. At the midpoint the image passes at unity gain. Lower values dim the image toward black; higher values brighten it, simulating the brightness knob found on every camcorder viewfinder. Pushing brightness high while desaturating creates the blown-out, high-contrast monochrome look characteristic of worn EVF phosphors.
-
----
-
-#### Knob 5 — Guide Opac
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-At zero the guides are invisible even when enabled; at maximum they are drawn at full white. This lets you keep guides enabled but subtly visible, or push them to high contrast for precise framing. Internally, controls the opacity of overlay guide graphics — specifically the safe-area rectangle border and the center crosshair lines.
-
----
-
-#### Knob 6 — Desat
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
-
-Blends the chrominance channels toward neutral (U=512, V=512), progressively removing color from the image. At zero the image retains full color; at maximum it is pure monochrome. Partial desaturation creates the washed-out, low-saturation look of color LCD viewfinders from the early 2000s, while full desaturation recreates the classic B&W CRT EVF.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Zebra** | Off | On |
-| **8 — Peaking** | Off | On |
-| **9 — Safe Area** | Off | On |
-| **10 — Center Mark** | Off | On |
-| **11 — REC** | Off | On |
-
-The five toggles independently enable or disable overlay features. Unlike programs where toggles form a combined mode selector, each Viewfinder toggle controls a separate visual layer. All five overlays can be active simultaneously. Toggle 11 is the REC indicator — there is no bypass toggle; use the Mix fader to blend with the dry signal instead.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Crossfades between the original dry signal and the fully processed wet signal. At 0% the output is the unmodified input; at 100% the output is the complete EVF simulation with all active overlays. Intermediate positions blend the two, allowing subtle viewfinder aesthetics over the original image.
-
-
-
+:::tip
+Because desaturation happens early in the chain, you can use Viewfinder as a monochrome monitor with colored overlays: the image is black-and-white but the peaking highlights and REC dot remain in vivid color. This is exactly how a real camcorder EVF worked.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from basic exposure monitoring to full EVF aesthetic simulation. Each builds on the previous, gradually enabling more overlay features.
+These exercises progress from basic exposure monitoring to building a fully dressed camcorder viewfinder simulation suitable for live performance.
+### Exercise 1: Exposure Monitor
 
-### Exercise 1: Exposure Monitoring with Zebras
+![Exposure Monitor result](/img/instruments/videomancer/viewfinder/viewfinder_ex1_s1.png)
+*Exposure Monitor — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: viewfinder_source1_boat, after: viewfinder_ex1_s1 },
-    { label: "Fruit", before: viewfinder_source2_fruit, after: viewfinder_ex1_s2 },
-    { label: "Clouds", before: viewfinder_source3_clouds, after: viewfinder_ex1_s3 },
-    { label: "Pattern", before: viewfinder_source4_pattern, after: viewfinder_ex1_s4 },
-    { label: "Man", before: viewfinder_source5_man, after: viewfinder_ex1_s5 },
-    { label: "Knit", before: viewfinder_source6_knit, after: viewfinder_ex1_s6 },
-  ]}
-/>
-*Exposure Monitoring with Zebras — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with a mix of highlights and shadows — outdoor scenes with sky and foreground work well.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Learn how zebra stripes reveal exposure levels in the source material.
+#### Learning Outcomes
 
-1. Enable the Zebra toggle and set Zebra Level to about 75%.
-2. Observe which parts of the image show diagonal stripes — these are areas above the threshold.
-3. Slowly lower Zebra Level and watch the stripes expand to cover more of the image.
-4. Raise Zebra Level until stripes appear only on the brightest highlights (near 90–100%).
-5. Toggle Zebra off and on to compare the overlay against the clean image.
+A functional exposure monitoring display that highlights blown highlights with zebra stripes, just like a real camera operator's viewfinder.
 
-**Key concepts**: Zebra stripes indicate luminance above a configurable threshold, lower thresholds reveal more of the tonal range, the stripe pattern is generated from position counter XOR logic
+#### Key Concepts
+
+- Zebra stripes mark overexposed regions
+- The threshold controls what counts as "overexposed"
+- Desaturation simulates a monochrome viewfinder
+
+#### Video Source
+
+A live camera feed or recorded footage with a mix of bright highlights and mid-tone detail: a window in a room, a lamp against a wall, or sunlit objects with shadows.
+
+#### Steps
+
+1. Turn **Desat** (Knob 6) to about 75% to partially desaturate the image, giving it a viewfinder feel.
+2. Confirm **Zebra** (Switch 7) is **On**. Lower **Zebra Level** (Knob 1) until diagonal stripes appear on the brightest areas.
+3. Slowly raise **Zebra Level** to narrow the stripes to only the most overexposed highlights. Find the sweet spot where the stripes mark only the regions you consider too bright.
+4. Adjust **Brightness** (Knob 4) and observe how raising brightness pushes more of the image above the zebra threshold, causing stripes to spread.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Zebra Level | ~50% |
+| Peaking | 37.5% |
+| Peak Color | Red |
+| Brightness | 50% |
+| Guide Opac | 50% |
+| Desat | ~75% |
+| Zebra | On |
+| Peaking | Off |
+| Safe Area | Off |
+| Center Mark | Off |
+| REC | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Focus Peaking and Desaturation
+### Exercise 2: Focus Peaking Sketch
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: viewfinder_source1_boat, after: viewfinder_ex2_s1 },
-    { label: "Fruit", before: viewfinder_source2_fruit, after: viewfinder_ex2_s2 },
-    { label: "Clouds", before: viewfinder_source3_clouds, after: viewfinder_ex2_s3 },
-    { label: "Pattern", before: viewfinder_source4_pattern, after: viewfinder_ex2_s4 },
-    { label: "Man", before: viewfinder_source5_man, after: viewfinder_ex2_s5 },
-    { label: "Knit", before: viewfinder_source6_knit, after: viewfinder_ex2_s6 },
-  ]}
-/>
-*Focus Peaking and Desaturation — simulated result across source images.*
-**Source**: Close-up footage with a shallow depth of field — partially focused subjects with soft backgrounds.
+![Focus Peaking Sketch result](/img/instruments/videomancer/viewfinder/viewfinder_ex2_s1.png)
+*Focus Peaking Sketch — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore focus peaking as an edge-detection overlay and combine it with desaturation for the classic B&W EVF look.
+***A description of the exercise illustration.***
 
-1. Enable the Peaking toggle and set sensitivity to about 40%.
-2. Observe colored highlights appearing on in-focus edges. Out-of-focus areas remain clean.
-3. Cycle through Peak Color options (Red, Green, Blue, Yellow) to find the best contrast against your source.
-4. Increase Desat to about 80% to create a near-monochrome base image with colored peaking highlights.
-5. Adjust Brightness up slightly to simulate the high-contrast look of a CRT viewfinder.
-6. Fine-tune Peaking sensitivity until only the sharpest edges are highlighted.
+#### Learning Outcomes
 
-**Key concepts**: Focus peaking uses horizontal gradient magnitude to locate sharp edges, desaturation creates the monochrome EVF base, peaking color should contrast with the source for visibility
+A neon-outlined sketch effect where sharp edges in the image glow in vivid color against a nearly monochrome background.
+
+#### Key Concepts
+
+- Focus peaking highlights in-focus edges with color
+- Sensitivity determines how faint an edge must be to trigger peaking
+- Different peak colors suit different scenes
+
+#### Video Source
+
+Footage with strong texture and detail: tree bark, fabric, architectural lines, or a face in good lighting. Avoid flat, featureless content.
+
+#### Steps
+
+1. Set **Desat** (Knob 6) to 100% for a fully monochrome background.
+2. Turn on **Peaking** (Switch 8). Colored outlines should appear along edges. If not, lower **Peaking** (Knob 2) to increase sensitivity.
+3. Sweep **Peaking** (Knob 2) from 0% to 100%. At low values, the image is flooded with color on even the smallest texture. At high values, only the boldest edges light up.
+4. Rotate **Peak Color** (Knob 3) through all four settings: **Red**, **Green**, **Blue**, **Yellow**: and choose the color that contrasts best with your source.
+5. Turn off **Zebra** (Switch 7) to isolate the peaking effect and appreciate the clean neon-outline look.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Zebra Level | 75% |
+| Peaking | ~25% |
+| Peak Color | Green |
+| Brightness | 50% |
+| Guide Opac | 50% |
+| Desat | 100% |
+| Zebra | Off |
+| Peaking | On |
+| Safe Area | Off |
+| Center Mark | Off |
+| REC | Off |
+| Mix | 100% |
 
 ---
 
 ### Exercise 3: Full EVF Simulation
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: viewfinder_source1_boat, after: viewfinder_ex3_s1 },
-    { label: "Fruit", before: viewfinder_source2_fruit, after: viewfinder_ex3_s2 },
-    { label: "Clouds", before: viewfinder_source3_clouds, after: viewfinder_ex3_s3 },
-    { label: "Pattern", before: viewfinder_source4_pattern, after: viewfinder_ex3_s4 },
-    { label: "Man", before: viewfinder_source5_man, after: viewfinder_ex3_s5 },
-    { label: "Knit", before: viewfinder_source6_knit, after: viewfinder_ex3_s6 },
-  ]}
-/>
+![Full EVF Simulation result](/img/instruments/videomancer/viewfinder/viewfinder_ex3_s1.png)
 *Full EVF Simulation — simulated result across source images.*
-**Source**: Any footage — documentary, narrative, or abstract. The complete EVF look transforms everything.
+#### Exercise Illustration
 
-**What You'll Create**: Combine all overlay features with desaturation and brightness to create a convincing 1990s camcorder viewfinder aesthetic.
+***A description of the exercise illustration.***
 
-1. Set Desat to 100% for full monochrome.
-2. Set Brightness to about 60% for a slightly bright, contrasty EVF look.
-3. Enable Zebra at about 85% threshold. Enable Peaking at about 35% with Red color.
-4. Enable Safe Area and Center Mark. Set Guide Opac to about 40% for subtle guide lines.
-5. Enable REC. Watch the red dot blink in the corner.
-6. Pull Mix back to about 80% to let a hint of the original color bleed through the monochrome EVF.
-7. Slowly sweep controls to find your preferred balance between monitoring utility and aesthetic effect.
+#### Learning Outcomes
 
-**Key concepts**: All five overlay layers stack independently, desaturation plus brightness creates the EVF phosphor look, the mix fader serves as the bypass control for this program
+A fully dressed 1990s camcorder viewfinder display with every overlay active: zebra, peaking, safe area, center crosshair, and the blinking REC dot.
+
+#### Key Concepts
+
+- Layered overlays combine into a complete viewfinder display
+- Guide opacity balances visibility against distraction
+- Mix allows gradual blending of the viewfinder aesthetic
+
+#### Video Source
+
+A live camera feed, handheld for authenticity. Moving subjects add to the camcorder feel.
+
+#### Steps
+
+1. Start from the **Full EVF Sim** preset or dial in similar settings: **Desat** (Knob 6) at 100%, **Brightness** (Knob 4) slightly elevated to about 60%.
+2. Turn on all five overlay switches: **Zebra** (Switch 7), **Peaking** (Switch 8), **Safe Area** (Switch 9), **Center Mark** (Switch 10), and **REC** (Switch 11).
+3. Set **Zebra Level** (Knob 1) to about 85% so only the hottest highlights trigger stripes.
+4. Set **Peaking** (Knob 2) to about 40% for moderate edge detection. Choose **Red** for **Peak Color** (Knob 3).
+5. Dial **Guide Opac** (Knob 5) to about 40% so the safe-area rectangle and crosshair are visible but not overwhelming.
+6. Lower **Mix** (Fader 12) to about 80% to let a hint of the original color bleed through the monochrome viewfinder image.
+7. Watch the blinking REC dot in the upper-left corner. You are now looking through a fully operational 1990s camcorder viewfinder.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Zebra Level | ~85% |
+| Peaking | ~40% |
+| Peak Color | Red |
+| Brightness | ~60% |
+| Guide Opac | ~40% |
+| Desat | 100% |
+| Zebra | On |
+| Peaking | On |
+| Safe Area | On |
+| Center Mark | On |
+| REC | On |
+| Mix | ~80% |
 
 ---
-
-
-## Tips
-
-- **Guide Opac for subtlety**: Keep guide opacity low (20–30%) for functional monitoring overlays that don't dominate the image. Push to 100% for a graphic, on-screen-display aesthetic.
-- **Brightness as contrast**: Pushing Brightness above 50% while desaturated creates the blown-highlight, crushed-black look of a worn CRT phosphor.
-- **Peaking sensitivity**: Start low and increase slowly. Too much sensitivity floods the image with color, obscuring the actual focus information.
-- **Feedback routing**: Feeding the output back to the input creates recursively nested viewfinder overlays — zebra stripes on zebra stripes, peaking on peaking edges.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Action-Safe Area** | The inner 90% of a television frame within which all significant action should be visible on overscanning CRT displays. |
-| **CRT** | Cathode Ray Tube; the display technology used in camcorder viewfinders before LCD panels. |
-| **EVF** | Electronic Viewfinder; a miniature display in a camera eyepiece showing the live camera output. |
-| **Focus Peaking** | A camera monitoring technique that highlights in-focus edges with a colored overlay. |
-| **IRE** | Institute of Radio Engineers unit; a scale for measuring video signal amplitude where 100 IRE is peak white. |
-| **LUT** | Look-Up Table; the basic FPGA logic element. Viewfinder uses approximately 350. |
-| **Sobel** | A gradient-based edge detection operator; Viewfinder uses a simplified 3-pixel horizontal variant. |
-| **Title-Safe Area** | The inner 80% of a television frame within which all on-screen text must remain visible. |
-| **Zebra Stripes** | Diagonal hatching patterns overlaid on overexposed regions of a camera viewfinder display. |
+- **Desaturation**: The process of reducing the color intensity in an image, blending chroma values toward neutral gray. Full desaturation produces a monochrome (black-and-white) image.
+
+- **Edge Detection**: A signal processing technique that identifies boundaries between regions of different brightness. Viewfinder uses a horizontal gradient method comparing pixels separated by two positions.
+
+- **Electronic Viewfinder (EVF)**: A miniature display built into a video camera that shows the sensor's output to the operator. In 1990s camcorders, this was typically a tiny monochrome CRT less than one inch across.
+
+- **Focus Peaking**: A camera aid that highlights in-focus edges by overlaying them with a bright color, allowing the operator to confirm the focal plane without judging sharpness on a small screen.
+
+- **IRE**: A unit of measurement for video signal amplitude, named after the Institute of Radio Engineers. 0 IRE is black, 100 IRE is peak white.
+
+- **Overscan**: The practice in CRT televisions of displaying an image larger than the visible screen area, hiding the edges behind the bezel. Safe-area guides compensate for this.
+
+- **Safe Area**: The region of a video frame guaranteed to be visible on all displays. The 90% action-safe area ensures critical visual content is not cropped by overscan.
+
+- **YUV**: A color model that separates brightness (Y) from color information (U and V). Viewfinder processes each component independently: desaturation affects only U and V, while brightness adjustment affects only Y.
+
+- **Zebra Stripes**: A diagonal hatching pattern overlaid on regions of a video image that exceed a configurable luminance threshold, used by camera operators to monitor exposure levels.
 
 ---

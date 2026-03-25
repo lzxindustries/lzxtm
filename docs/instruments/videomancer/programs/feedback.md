@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 109
 slug: /instruments/videomancer/feedback
@@ -7,355 +7,410 @@ image: /img/instruments/videomancer/feedback/feedback_hero_s1.png
 description: "Feedback is one of the most powerful techniques in analog video synthesis — point a camera at its own monitor, and the image folds into itself endlessly, creating spiraling tunnels, ghost trails, and self-similar fractal structures."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import feedback_control_panel from '/img/instruments/videomancer/feedback/feedback_control_panel.png';
-import feedback_source1_skull from '/img/instruments/videomancer/feedback/feedback_source1_skull.png';
-import feedback_source2_runner from '/img/instruments/videomancer/feedback/feedback_source2_runner.png';
-import feedback_source3_clouds from '/img/instruments/videomancer/feedback/feedback_source3_clouds.png';
-import feedback_source4_pattern from '/img/instruments/videomancer/feedback/feedback_source4_pattern.png';
-import feedback_source5_girl from '/img/instruments/videomancer/feedback/feedback_source5_girl.png';
-import feedback_source6_knit from '/img/instruments/videomancer/feedback/feedback_source6_knit.png';
-import feedback_hero_s1 from '/img/instruments/videomancer/feedback/feedback_hero_s1.png';
-import feedback_hero_s2 from '/img/instruments/videomancer/feedback/feedback_hero_s2.png';
-import feedback_hero_s3 from '/img/instruments/videomancer/feedback/feedback_hero_s3.png';
-import feedback_hero_s4 from '/img/instruments/videomancer/feedback/feedback_hero_s4.png';
-import feedback_hero_s5 from '/img/instruments/videomancer/feedback/feedback_hero_s5.png';
-import feedback_hero_s6 from '/img/instruments/videomancer/feedback/feedback_hero_s6.png';
-import feedback_ex1_s1 from '/img/instruments/videomancer/feedback/feedback_ex1_s1.png';
-import feedback_ex1_s2 from '/img/instruments/videomancer/feedback/feedback_ex1_s2.png';
-import feedback_ex1_s3 from '/img/instruments/videomancer/feedback/feedback_ex1_s3.png';
-import feedback_ex1_s4 from '/img/instruments/videomancer/feedback/feedback_ex1_s4.png';
-import feedback_ex1_s5 from '/img/instruments/videomancer/feedback/feedback_ex1_s5.png';
-import feedback_ex1_s6 from '/img/instruments/videomancer/feedback/feedback_ex1_s6.png';
-import feedback_ex2_s1 from '/img/instruments/videomancer/feedback/feedback_ex2_s1.png';
-import feedback_ex2_s2 from '/img/instruments/videomancer/feedback/feedback_ex2_s2.png';
-import feedback_ex2_s3 from '/img/instruments/videomancer/feedback/feedback_ex2_s3.png';
-import feedback_ex2_s4 from '/img/instruments/videomancer/feedback/feedback_ex2_s4.png';
-import feedback_ex2_s5 from '/img/instruments/videomancer/feedback/feedback_ex2_s5.png';
-import feedback_ex2_s6 from '/img/instruments/videomancer/feedback/feedback_ex2_s6.png';
-import feedback_ex3_s1 from '/img/instruments/videomancer/feedback/feedback_ex3_s1.png';
-import feedback_ex3_s2 from '/img/instruments/videomancer/feedback/feedback_ex3_s2.png';
-import feedback_ex3_s3 from '/img/instruments/videomancer/feedback/feedback_ex3_s3.png';
-import feedback_ex3_s4 from '/img/instruments/videomancer/feedback/feedback_ex3_s4.png';
-import feedback_ex3_s5 from '/img/instruments/videomancer/feedback/feedback_ex3_s5.png';
-import feedback_ex3_s6 from '/img/instruments/videomancer/feedback/feedback_ex3_s6.png';
-
-# Feedback
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: feedback_source1_skull, after: feedback_hero_s1 },
-    { label: "Runner", before: feedback_source2_runner, after: feedback_hero_s2 },
-    { label: "Clouds", before: feedback_source3_clouds, after: feedback_hero_s3 },
-    { label: "Pattern", before: feedback_source4_pattern, after: feedback_hero_s4 },
-    { label: "Girl", before: feedback_source5_girl, after: feedback_hero_s5 },
-    { label: "Knit", before: feedback_source6_knit, after: feedback_hero_s6 },
-  ]}
-/>
-*Feedback applying recursive pixel-buffer accumulation with zoom, color rotation, and decay to produce self-referencing tunnel and trail effects.*
+![Feedback hero image](/img/instruments/videomancer/feedback/feedback_hero_s1.png)
+*Feedback simulating an infinite camera-monitor tunnel with color-shifted recursion and kaleidoscopic mirroring.*
 
 ---
 
 ## Overview
 
-Feedback is one of the most powerful techniques in analog video synthesis — point a camera at its own monitor, and the image folds into itself endlessly, creating spiraling tunnels, ghost trails, and self-similar fractal structures. This recursive loop, where the output becomes the input, generates visual complexity far beyond what any single-pass effect can produce.
+**Feedback** recreates the mesmerizing visual phenomenon that occurs when a camera points at its own monitor: an infinite tunnel of self-similar images stretching into the distance. Rather than requiring physical equipment, Feedback achieves this digitally by writing each scanline into a circular line buffer and simultaneously reading from a spatially displaced position. The read data is blended with the incoming video and written back, creating ***iterative recursion*** where each pixel carries traces of its own past.
 
-Feedback implements a digital approximation of this analog process using circular pixel buffers. Each channel (Y, U, V) writes incoming pixels into a 512-sample ring buffer and simultaneously reads from an offset position, creating a spatial displacement. The read offset grows linearly across the scanline, producing a perspective-like zoom effect where the displaced image converges toward or diverges from a vanishing point. The read-back value is mixed with the current input, and the result is written back into the buffer — creating the essential recursive loop that accumulates information over time.
+The result is a living, breathing tunnel of imagery that zooms, rotates in color, and decays over time. At subtle settings, Feedback produces gentle echo trails and ghostly afterimages. At extreme settings, it generates swirling psychedelic tunnels, kaleidoscopic symmetry patterns, and self-exciting color explosions that bear little resemblance to the original source.
 
-Color Shift rotates the chroma toward its complement during each feedback pass, causing successive iterations to cycle through hues. Gain amplifies the luminance of the feedback signal, intensifying bright elements with each pass. Decay controls how quickly old information fades, setting the trail length of the recursive accumulation. The result spans a wide range — from subtle ghosting trails to deep recursive tunnels with rainbow color evolution.
+:::tip
+Feedback is one of the few programs where ***the output feeds back into itself***. Small changes in Gain or Decay can push the system from gentle trails into runaway self-excitation. That instability is a feature (lean into it.)
+:::
+
+### What's In a Name?
+
+The name ***Feedback*** refers directly to the optical phenomenon of ***video feedback***: an early staple of video art pioneered in the 1960s and '70s. Artists like Nam June Paik and the Vasulkas discovered that pointing a camera at its own monitor creates recursive, fractal-like imagery. The signal feeds back into itself, each pass amplifying, rotating, and distorting the image. Videomancer's Feedback program captures this spirit in a single scanline-based FPGA effect, giving you all the expressiveness of a camera-monitor loop without the physical setup.
 
 ---
 
 ## Quick Start
 
-1. **Decay is the memory knob**: Think of Decay as how long the system "remembers." Low decay = short memory (quick trails). High decay = long memory (deep tunnels).
-2. **Gain excites the system**: Gain above center causes self-amplification. Start with moderate gain and increase slowly — the system can quickly bloom into saturation.
-3. **Color Shift for psychedelia**: Even small amounts of Color Shift create rainbow trails. Maximum shift produces a full spectrum cycle every ~8 feedback generations.
+1. Feed a video source into Videomancer. Turn **Decay** (Knob 4) clockwise to about 70%. You should see a ghostly trail following any motion (the signal is now feeding back into itself.)
+2. Slowly increase **Zoom** (Knob 1). The echo shifts spatially, and the image begins to develop a tunnel-like streak. Move the source and watch the streaks follow.
+3. Turn up **Color Shift** (Knob 3) to about 40%. The feedback trail rotates through hues with each pass, creating rainbow echoes trailing behind every moving element.
+4. Flip **Mirror** (Switch 8) to **On**. The tunnel becomes bilateral: a symmetrical kaleidoscope that mirrors the feedback pattern across the horizontal axis.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Feedback loaded](/img/instruments/videomancer/feedback/feedback_control_panel.png)
+*Videomancer's front panel with Feedback active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Zoom
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 20% |
+
+**Zoom** controls the spatial offset between the current pixel and its feedback read position. Think of it as how far the "camera" is zoomed into the "monitor." At 0%, the offset is minimal: feedback reads from nearly the same pixel, producing subtle ghosting. As Zoom increases, the displacement grows, and the image develops pronounced streaks and tunnel perspective. At 100%, the offset is at its maximum, creating wide spatial displacement between iterations.
+
+Zoom interacts with **X Offset** (Knob 5) to define the overall horizontal displacement. Zoom contributes the upper bits of the offset (coarser steps), while X Offset contributes finer positioning.
+
+---
+
+### Knob 2 — Gain
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 39% |
+
+**Gain** controls the brightness amplification applied to the feedback signal before it is blended with the incoming video. At 0%, the feedback data receives minimal amplification: trails fade rapidly. As Gain increases, each pass through the buffer gets brighter, causing trails to persist longer and glow more intensely. At high values, the system enters ***self-excitation***: the feedback amplifies itself faster than it decays, and the image floods with saturated light.
+
+:::warning
+High Gain combined with high Decay can cause the image to blow out to pure white. This is the intended behavior: the system is self-exciting. Reduce Gain or Decay to bring it back under control.
+:::
+
+---
+
+### Knob 3 — Color Shift
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 20% |
+
+**Color Shift** rotates the U and V chrominance channels of the feedback signal with each pass through the buffer. At 0%, no color rotation occurs: trails maintain the original hue. As Color Shift increases, each feedback iteration rotates the color further, producing rainbow-hued trails that cycle through the spectrum. At 100%, the rotation is at full strength, and feedback trails shift aggressively through complementary colors.
+
+The rotation is implemented as a weighted crossfade between the U and V channels: U picks up some of V's energy, while V picks up the inverse of U, creating a smooth hue rotation rather than a hard swap.
+
+---
+
+### Knob 4 — Decay
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 68% |
+
+**Decay** controls the blend ratio between the feedback buffer and the incoming video. At 0%, the output is entirely new input: no feedback is visible, and the buffer receives only fresh pixels. As Decay increases, the feedback signal dominates: more of the old buffer content persists, and less of the new input breaks through. At 100%, the output is nearly pure feedback with almost no new input entering the system.
+
+:::note
+Decay is the master control for feedback intensity. It determines how many "generations" of the image remain visible. Low Decay creates a single faint echo. High Decay creates deep, persistent tunnels where dozens of iterations stack on top of each other.
+:::
+
+---
+
+### Knob 5 — X Offset
+
+| Property | Value |
+|----------|-------|
+| Range | -100% – 100% |
+| Default | 0% |
+
+**X Offset** sets a base horizontal displacement added to the read address computation. At the center position (displayed as 0%), there is no additional offset: the feedback reads from the position determined solely by Zoom. Turning counterclockwise shifts the read position in one direction; turning clockwise shifts it the other way. Together with Zoom, X Offset defines where on the scanline the feedback buffer looks to read its recursive data.
+
+---
+
+### Knob 6 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Brightness** applies an overall brightness offset to the processed output after the feedback blend. At center (displayed as 50%), no adjustment is applied. Turning counterclockwise darkens the output; turning clockwise brightens it. This is a simple additive offset: it shifts the entire luminance range up or down without affecting chroma.
+
+---
+
+### Switch 7 — Direction
+
+| Property | Value |
+|----------|-------|
+| Off | Right |
+| On | Left |
+| Default | Right |
+
+**Direction** selects whether the spatial offset is subtracted from or added to the write pointer when computing the feedback read address. Set to **Right**, the feedback reads from pixels behind the current write position, creating trails that flow rightward. Set to **Left**, it reads from pixels ahead of the write position, reversing the tunnel direction. Direction fundamentally changes the character of the feedback pattern: the same Zoom and X Offset settings produce mirrored spatial behavior depending on this toggle.
+
+---
+
+### Switch 8 — Mirror
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Mirror** enables horizontal bilateral symmetry in the feedback path. When set to **Off**, the feedback read address is used directly. When set to **On**, the read address is averaged with its horizontal complement, causing the left and right halves of the feedback pattern to reflect each other. The result is a ***kaleidoscope*** effect where the recursive tunnel develops symmetrical structure.
+
+:::tip
+Mirror combined with high Color Shift creates spectacular symmetrical color wheels. The bilateral symmetry organizes the color rotation into structured, mandala-like patterns.
+:::
+
+---
+
+### Switch 9 — Freeze
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Freeze** holds the contents of the line buffers, preventing new input from being written. When set to **Off**, each pixel's blended result is written back to the buffer normally, and the feedback evolves continuously. When set to **On**, the write enable is suppressed: the buffer retains its last written state, and the feedback reads stale data. The output still processes and displays the frozen buffer contents blended with the current input, but the buffer itself no longer updates.
+
+---
+
+### Switch 10 — Invert Y
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert Y** applies a bitwise complement to the luminance channel of the incoming video before it enters the feedback pipeline. This inverts the brightness of the input signal on its way into the buffer. Because the inversion occurs before the feedback blend, it affects the data that gets recursively fed back (dark regions become bright in the buffer, and vice versa.)
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Feedback processing. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the feedback-processed result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** controls the wet/dry blend between the processed feedback output and the original input signal. At 0% (fader fully down), only the delayed dry signal passes through: no feedback is audible. At 100% (fader fully up), only the processed feedback signal appears in the output. Intermediate positions blend the two, allowing you to layer the feedback effect over the clean source at any desired intensity.
 
 ---
 
 ## Background
 
-### What Is Video Feedback?
+### Video feedback as art
 
-**Video feedback** occurs when a video camera's output is routed back to its own input — either optically (pointing a camera at its monitor) or electronically (routing the output signal back to the input). Each frame contains the previous frame, which contains the frame before that, ad infinitum. With each pass through the system, the image is slightly transformed by the camera's and monitor's imperfections — zoom, pan, brightness shifts, color drift. This recursive process generates self-similar structures reminiscent of fractals, and it became a foundational technique in video art during the 1960s and 1970s, pioneered by artists like Nam June Paik and the Vasulkas.
+Video feedback: the phenomenon of pointing a camera at its own monitor: has been a cornerstone of video art since the medium's earliest days. In the late 1960s, artists discovered that the recursive loop between camera and screen could generate complex, organic patterns without any external input. The image feeds into itself, and each pass through the loop transforms the signal: zooming, rotating, shifting colors, and accumulating distortion.
 
-### What Is a Circular Buffer?
+The results are strikingly similar to fractal geometry, though they predate the widespread use of that term in art. ***Mandelbrot sets***, Julia sets, and other iteratively defined mathematical shapes share the same fundamental principle: a function is applied to its own output, over and over, and the resulting patterns exhibit ***self-similarity*** at multiple scales.
 
-A **circular buffer** (or ring buffer) is a fixed-size memory that wraps around — when the write pointer reaches the end, it returns to the beginning, overwriting the oldest data. Feedback uses three 512-sample circular buffers (one per YUV channel). Each pixel is written at the current write address and read from an offset address behind the write pointer. Because the buffer wraps, the read address can lag the write address by any amount up to the buffer's full length, accessing pixels from earlier on the current scanline. The offset determines the spatial displacement — how far "back" in the scanline the feedback reaches.
+### Line-buffer recursion
 
-### What Is Recursive Accumulation?
+Feedback implements iterative self-reference using three horizontal ***line buffers***: one each for the Y, U, and V channels. Each buffer is a 512-entry circular memory (BRAM). As pixels arrive on a scanline, they are written into the buffer at the current write pointer. Simultaneously, pixels are read from a different position in the same buffer, determined by the Zoom and X Offset controls.
 
-In Feedback's architecture, the value written to the buffer is not simply the current input — it is a weighted mixture of the current input and the value read from the buffer. This creates a **recursive accumulation**: each buffer cell contains a blend of the new pixel and whatever was there before from previous scanlines and frames. Over time, with decay less than 100%, old information gradually fades while new information accumulates. The decay rate determines the "trail length" — how many iterations of feedback are visible before they fade to invisibility.
+The read data: which contains the accumulated result of all previous feedback passes on this scanline: is then blended with the fresh input according to the Decay ratio. The blended result is written back into the buffer, completing the feedback loop. On the next frame, the buffer already contains traces of previous iterations, so those traces are read, amplified, rotated, and blended again.
+
+:::note
+Because the feedback operates within a single scanline buffer, the recursion is ***horizontal only***. There is no vertical feedback: each line is processed independently. This is what gives Feedback its characteristic horizontal streak/tunnel appearance rather than the full two-dimensional zoom seen in optical camera-monitor feedback.
+:::
+
+### Gain and self-excitation
+
+The Gain parameter amplifies the feedback signal before it enters the blend. At moderate levels, this compensates for the natural decay and keeps trails visible longer. But above a certain threshold: when Gain × Decay exceeds unity: the system becomes ***self-exciting***. Each pass through the loop adds more energy than was lost, and the image rapidly saturates to white.
+
+Self-excitation is not a failure mode; it's a creative tool. The boundary between stable feedback and runaway saturation is a narrow, dynamic region where the image is maximally responsive to parameter changes. Small adjustments to Gain, Decay, or Color Shift can push the system in and out of self-excitation, producing dramatic visual transitions.
+
+### Color rotation
+
+The Color Shift parameter implements a weighted crossfade between the U and V chroma channels on each feedback pass. This is a simplified form of ***hue rotation*** in YUV space. Rather than performing a true trigonometric rotation (which would require sine/cosine tables), Feedback uses a linear cross-mix: U picks up a portion of V's energy proportional to the Color Shift setting, and V picks up the complement of U. The result approximates a smooth color wheel rotation that accumulates with each recursive pass through the buffer.
 
 
 ---
 
 ## Signal Flow
 
-Y/U/V Channels → Y Post-Processing → Control → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y/U/V Channels ─────────────────────────────────────────────
-│   │
-│   ├─ 1. Write to Buffer       (circular 512×10 BRAM, write at wr_addr)
-│   ├─ 2. Read from Buffer      (offset = grows across scanline for zoom)
-│   ├─ 3. Gain (Y only)         (amplify feedback luminance)
-│   ├─ 4. Color Shift (UV only) (rotate toward complement: blend UV ↔ neg-UV)
-│   ├─ 5. Decay Mix             (blend: input × (1−decay) + feedback × decay)
-│   └─ 6. Write-Back            (mixed result → buffer for next iteration)
-│
-├── Y Post-Processing ──────────────────────────────────────────
-│   │
-│   └─ 7. Brightness Offset     (DC shift)
-│
-├── Control ────────────────────────────────────────────────────
-│   │
-│   ├─ X Offset                 (shifts read-address origin left/right)
-│   └─ Freeze                   (holds frame counter and buffer content)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ Pass-through (hsync, vsync, field, avid)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The critical interaction is the ***feedback loop***: step 5 reads from the buffers, processes the data, and writes the result *back* to the same buffers. This creates iterative recursion: each frame's output becomes the next frame's feedback input. The loop gain is controlled by two parameters: Gain amplifies the feedback signal, and Decay determines how much of it persists versus being replaced by fresh input. When their product exceeds unity, the system self-excites.
 
-The recursive loop is the defining feature: each pixel written into the buffer is already a mixture of the current input and the previous buffer contents. This means every pixel in the buffer contains echoes of all previous inputs, decaying geometrically over time. The zoom effect arises because the read offset increases linearly across the scanline — at the left edge, the offset is small (reading nearby pixels), and at the right edge, the offset is large (reading pixels from much earlier in the line). This creates a perspective convergence effect. The Direction toggle flips the direction of the offset growth, changing whether the zoom converges to the left or right side of the screen.
+Color Shift operates exclusively on the feedback path: it rotates only the U/V data read from the buffer, not the incoming signal. This means color rotation accumulates: the first pass shifts slightly, the second pass shifts further, and so on. Deep tunnels cycle through the entire color wheel.
 
----
-
-## Parameter Reference
-
-<img src={feedback_control_panel} alt="Videomancer front panel with Feedback loaded"/>
-*Videomancer's front panel with Feedback active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Zoom
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 20% |
-| Suffix | % |
-
-At 0%, no offset growth occurs and the feedback reads from the same relative position at every pixel (no spatial zoom). As Zoom increases, the offset grows faster, creating a stronger perspective convergence. At high values, the image is dramatically pulled toward the vanishing point, with each recursive pass producing increasingly compressed copies of the original. Internally, controls the zoom factor — how quickly the read offset grows across the scanline.
-
----
-
-#### Knob 2 — Gain
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 39% |
-| Suffix | % |
-
-Amplifies the luminance of the feedback signal before it is mixed back into the buffer. At center, the feedback Y passes at unity. Above center, bright elements get amplified with each recursive pass, causing them to intensify and eventually saturate. Below center, the feedback luminance is attenuated, producing dimmer trails. High Gain combined with high Decay creates self-exciting bright regions that persist and grow across frames.
-
----
-
-#### Knob 3 — Color Shift
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 20% |
-| Suffix | % |
-
-Rotates the chrominance of the feedback signal toward its complement. At 0%, the UV channels are unchanged during each feedback pass — colors remain stable across iterations. As Color Shift increases, the UV values are progressively blended toward their negatives (inverted U and V), causing the color to drift toward the complementary hue with each recursive pass. Multiple iterations create a rainbow cycling effect as the feedback color rotates through the spectrum.
-
----
-
-#### Knob 4 — Decay
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 68% |
-| Suffix | % |
-
-At 0%, the output is entirely the live input — no feedback accumulation occurs. At 100%, the output is dominated by the buffer contents — new input barely registers, and old information persists indefinitely. Moderate values create a balance where new input gradually replaces old information, producing ghostly trails of adjustable length. Decay is the primary control for the visual "memory" of the feedback system. Internally, controls the mixing ratio between the current input and the feedback buffer.
-
----
-
-#### Knob 5 — X Offset
-| Property | Value |
-|----------|-------|
-| Range | -100% – 100% |
-| Default | 0% |
-| Suffix | % |
-
-Shifts the starting read-address offset horizontally. The read address begins at `wr_addr − x_offset` and increases from there. This moves the zoom vanishing point left or right across the screen. At center, the zoom is roughly centered. At extreme values, the convergence point shifts to the edges, creating asymmetric tunnel effects.
-
----
-
-#### Knob 6 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Adds a DC offset to the output luminance channel. Use this to lift or lower the overall brightness of the feedback-processed image. Particularly useful when high Gain settings have created overly bright self-exciting regions or when Decay settings have darkened the overall output.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Direction** | Right | Left |
-| **8 — Mirror** | Off | On |
-| **9 — Freeze** | Off | On |
-| **10 — Invert Y** | Off | On |
-| **11 — Bypass** | Off | On |
-
-Switches 7–11 control five independent parameters. Direction sets the zoom convergence direction. Mirror reflects the read addressing. Freeze holds the buffer state. Invert Y provides luminance polarity reversal. Bypass enables instant comparison.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Feedback processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
-
----
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Feedback-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::tip
+**Freeze captures the feedback state.** When you flip Freeze on, the buffer stops updating but the output still blends the frozen buffer with the live input. This lets you "snapshot" a complex tunnel pattern and overlay it on new source material.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from basic spatial displacement to full recursive feedback with color evolution and zoom tunneling.
-
+These exercises progress from gentle trails to full self-exciting feedback tunnels. Each one engages more of the feedback loop's parameters.
 ### Exercise 1: Ghost Trails
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: feedback_source1_skull, after: feedback_ex1_s1 },
-    { label: "Runner", before: feedback_source2_runner, after: feedback_ex1_s2 },
-    { label: "Clouds", before: feedback_source3_clouds, after: feedback_ex1_s3 },
-    { label: "Pattern", before: feedback_source4_pattern, after: feedback_ex1_s4 },
-    { label: "Girl", before: feedback_source5_girl, after: feedback_ex1_s5 },
-    { label: "Knit", before: feedback_source6_knit, after: feedback_ex1_s6 },
-  ]}
-/>
+![Ghost Trails result](/img/instruments/videomancer/feedback/feedback_ex1_s1.png)
 *Ghost Trails — simulated result across source images.*
-**Source**: A slowly moving subject — a hand, a swinging pendulum, or slowly panning footage.
+#### Exercise Illustration
 
-**What You'll Create**: Learn how Decay creates persistence trails from moving objects.
+***A description of the exercise illustration.***
 
-1. **Basic trails**: Set Zoom to 0% (no zoom), Gain to center, Color Shift to 0%, Decay to ~70%. Moving elements leave ghostly trails that fade over ~1 second.
-2. **Trail length**: Increase Decay toward 100%. Trails persist longer. Decrease Decay toward 0%. Trails shorten until they disappear entirely.
-3. **Bright trails**: Increase Gain above center. The trails become brighter with each iteration, creating intensifying echoes.
-4. **Color evolution**: Slowly increase Color Shift. Each trail generation shifts in hue, creating a rainbow gradient across the trail history.
-5. **Freeze capture**: Enable Freeze (Switch 9) during an interesting trail pattern. The trails persist indefinitely, creating a time-exposure composite.
+#### Learning Outcomes
 
-**Key concepts**: Decay sets trail persistence, gain controls trail intensity, color shift creates spectral evolution across iterations
+Soft, ghostly echo trails that follow motion in the source video.
 
----
+#### Key Concepts
 
-### Exercise 2: Zoom Tunnel
+- Decay controls how many feedback iterations remain visible
+- Zoom creates spatial displacement between iterations
+- Direction reverses the displacement polarity
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: feedback_source1_skull, after: feedback_ex2_s1 },
-    { label: "Runner", before: feedback_source2_runner, after: feedback_ex2_s2 },
-    { label: "Clouds", before: feedback_source3_clouds, after: feedback_ex2_s3 },
-    { label: "Pattern", before: feedback_source4_pattern, after: feedback_ex2_s4 },
-    { label: "Girl", before: feedback_source5_girl, after: feedback_ex2_s5 },
-    { label: "Knit", before: feedback_source6_knit, after: feedback_ex2_s6 },
-  ]}
-/>
-*Zoom Tunnel — simulated result across source images.*
-**Source**: Any footage with clear visual elements — faces, geometric shapes, or high-contrast scenes.
+#### Video Source
 
-**What You'll Create**: Create the classic video feedback zoom tunnel effect.
+A live camera feed with a moving subject (a waving hand or slowly panning shot works well.)
 
-1. **Enable zoom**: Set Zoom to ~40%, Decay to ~80%, Gain to ~55%. A converging zoom effect appears as the feedback recursion creates smaller copies of the image nested inside each other.
-2. **Direction**: Toggle Direction (Switch 7) to switch which side of the screen the tunnel converges toward.
-3. **Mirror symmetry**: Enable Mirror (Switch 8). The tunnel becomes symmetric around the center, creating a kaleidoscope-like convergence.
-4. **Color cycling**: Increase Color Shift to ~60%. Each nested copy cycles further through the spectrum, creating a rainbow tunnel.
-5. **Adjust vanishing point**: Sweep X Offset to move the convergence point across the frame.
+#### Steps
 
-**Key concepts**: Zoom creates perspective convergence through linearly growing read offsets, mirror produces bilateral symmetry, each recursive iteration applies all transformations cumulatively
+1. Set **Decay** (Knob 4) to about 50%. Motion in the source leaves a faint afterimage (you're seeing one or two generations of feedback.)
+2. Increase **Zoom** (Knob 1) slightly. The afterimage shifts horizontally, creating a spatial offset between the original and its echo.
+3. Increase Decay to 70%. More generations of the echo become visible, and the trail extends further.
+4. Flip **Direction** (Switch 7) from **Right** to **Left**. The trail reverses (it now extends in the opposite direction.)
+5. Adjust **Brightness** (Knob 6) to compensate if the image is too dark or bright.
 
----
+#### Settings
 
-### Exercise 3: Self-Exciting Feedback
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: feedback_source1_skull, after: feedback_ex3_s1 },
-    { label: "Runner", before: feedback_source2_runner, after: feedback_ex3_s2 },
-    { label: "Clouds", before: feedback_source3_clouds, after: feedback_ex3_s3 },
-    { label: "Pattern", before: feedback_source4_pattern, after: feedback_ex3_s4 },
-    { label: "Girl", before: feedback_source5_girl, after: feedback_ex3_s5 },
-    { label: "Knit", before: feedback_source6_knit, after: feedback_ex3_s6 },
-  ]}
-/>
-*Self-Exciting Feedback — simulated result across source images.*
-**Source**: High-contrast footage or even a blank/black input — the feedback system can generate its own content.
-
-**What You'll Create**: Push the feedback system into self-exciting oscillation where internal noise and gain produce emergent visual structures.
-
-1. **High gain**: Set Gain to ~80%. Set Decay to ~90%. Set Zoom to ~30%.
-2. **Seed it**: Feed a brief flash of bright input (or move a light across the camera). The bright pixels amplify through the recursive loop.
-3. **Watch the build**: Over several seconds, the recursive amplification produces structures that grow, bloom, and evolve on their own.
-4. **Color evolution**: Set Color Shift to ~70%. The self-exciting structures cycle through colors as they evolve.
-5. **Freeze snapshot**: Enable Freeze during a peak moment. The frozen pattern continues to be transformed by the read-offset zoom.
-6. **Remove input**: Lower Mix to see how the feedback system sustains itself even with minimal external input.
-
-**Key concepts**: High gain creates positive feedback loops where noise amplifies, self-exciting systems generate emergent structure, freeze captures transient patterns
+| Control | Value |
+|---------|-------|
+| Zoom | ~20% |
+| Gain | ~40% |
+| Color Shift | 0% |
+| Decay | ~70% |
+| X Offset | 0% |
+| Brightness | 50% |
+| Direction | Right |
+| Mirror | Off |
+| Freeze | Off |
+| Invert Y | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 2: Color Tunnel
 
-## Tips
+![Color Tunnel result](/img/instruments/videomancer/feedback/feedback_ex2_s1.png)
+*Color Tunnel — simulated result across source images.*
+#### Exercise Illustration
 
-- **Mirror for symmetry**: Mirror mode turns asymmetric footage into kaleidoscopic patterns, doubling the visual complexity of the feedback structure.
-- **Freeze for composition**: Use Freeze to capture a moment, then unfreeze to let new content interact with the frozen pattern.
-- **X Offset as composition tool**: Moving the vanishing point creates dramatic asymmetric compositions — the tunnel doesn't have to be centered.
-- **Feed it nothing**: Try feeding black or near-black input with high Gain. Internal noise seeds the feedback, and emergent structures appear from nothing — the system creates its own content.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A symmetrical, color-cycling tunnel with rainbow trails streaming from the source.
+
+#### Key Concepts
+
+- Color Shift rotates hue between feedback iterations
+- Mirror creates bilateral kaleidoscope symmetry
+- Gain controls trail persistence and self-excitation threshold
+
+#### Video Source
+
+A static image or slow-moving footage with strong shapes and moderate contrast.
+
+#### Steps
+
+1. Start from the Exercise 1 settings, then increase **Zoom** (Knob 1) to about 40%.
+2. Turn **Color Shift** (Knob 3) to about 60%. The feedback trail now cycles through hues (each echo is a different color.)
+3. Enable **Mirror** (Switch 8). The tunnel becomes symmetrical, folding the feedback pattern across the horizontal center.
+4. Increase **Gain** (Knob 2) to about 55%. The trails brighten and persist longer. If the image starts to blow out, back off Gain slightly.
+5. Sweep **X Offset** (Knob 5) slowly. The tunnel's center of symmetry shifts left and right.
+6. Toggle **Invert Y** (Switch 10). The brightness relationship reverses: dark areas of the source now drive the bright parts of the tunnel.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Zoom | ~40% |
+| Gain | ~55% |
+| Color Shift | ~60% |
+| Decay | ~80% |
+| X Offset | ~75% |
+| Brightness | 50% |
+| Direction | Right |
+| Mirror | On |
+| Freeze | Off |
+| Invert Y | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Self-Exciting Explosion
+
+![Self-Exciting Explosion result](/img/instruments/videomancer/feedback/feedback_ex3_s1.png)
+*Self-Exciting Explosion — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Push the feedback loop into self-excitation, then freeze the result and overlay it on live video.
+
+#### Key Concepts
+
+- Self-excitation occurs when gain × decay exceeds unity
+- Freeze captures the feedback state for overlay
+- The boundary between stability and runaway saturation is the most expressive region
+
+#### Video Source
+
+Any video source. High-contrast material with strong edges works best for dramatic tunnel structures before self-excitation.
+
+#### Steps
+
+1. Set **Decay** (Knob 4) to about 60% and **Gain** (Knob 2) to about 80%. The system should be on the edge of self-excitation: trails are bright and persistent but the image hasn't blown out yet.
+2. Turn **Color Shift** (Knob 3) to about 40%. Rainbow cycling adds visual interest to the tunnel.
+3. Slowly increase Gain until the image begins to saturate and blow out in places. You've crossed the self-excitation threshold.
+4. Quickly flip **Freeze** (Switch 9) to **On**. The buffer holds the explosive pattern.
+5. Reduce **Decay** to about 30%. The frozen tunnel pattern now overlays the live input at reduced intensity: you can see the source video showing through the frozen feedback.
+6. Adjust **Mix** (Fader 12) to find the blend between the frozen feedback texture and the clean source.
+7. Flip Freeze **Off** to release the buffer and let the feedback evolve again.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Zoom | ~60% |
+| Gain | ~80% |
+| Color Shift | ~40% |
+| Decay | ~60% |
+| X Offset | ~55% |
+| Brightness | ~45% |
+| Direction | Right |
+| Mirror | Off |
+| Freeze | Off |
+| Invert Y | Off |
+| Bypass | Off |
+| Mix | 100% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Circular Buffer** | A fixed-size memory that wraps around: when the write pointer reaches the end, it returns to the beginning. |
-| **Decay** | The rate at which old information fades in a recursive system; governs trail length and feedback depth. |
-| **Feedback** | A signal processing configuration where the output is routed back to the input, creating recursive self-referencing. |
-| **Gain** | Amplification of the feedback signal's luminance; values above unity cause self-excitation. |
-| **Recursive Accumulation** | A process where each new value is mixed with the result of previous iterations, building up information over time. |
-| **Ring Buffer** | Another name for a circular buffer. |
+- **BRAM**: Block RAM; dedicated memory blocks embedded in the FPGA fabric, used here as scanline-wide circular buffers for the Y, U, and V channels.
+
+- **Circular Buffer**: A fixed-size memory where the write pointer wraps around to the beginning when it reaches the end, creating a continuously overwritten loop.
+
+- **Decay**: The blend ratio between the feedback buffer contents and the incoming video; higher decay means more of the old signal persists.
+
+- **Feedback Loop**: A system where the output is routed back to the input, creating iterative self-reference and accumulation of successive transformations.
+
+- **Hue Rotation**: Shifting the color of a signal around the color wheel by cross-mixing the U and V chrominance components.
+
+- **Line Buffer**: A memory that stores one horizontal scanline of video data, enabling pixel-by-pixel read/write operations within the same line.
+
+- **Self-Excitation**: A condition where the feedback loop's gain exceeds its losses, causing the signal to grow without bound until it saturates.
+
+- **Self-Similarity**: A property of patterns that look similar at different scales, characteristic of fractals and iterative feedback systems.
+
+- **Video Feedback**: The optical phenomenon created by pointing a camera at a monitor displaying the camera's own output, producing recursive, fractal-like imagery.
 
 ---

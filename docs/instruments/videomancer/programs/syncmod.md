@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 295
 slug: /instruments/videomancer/syncmod
@@ -7,334 +7,419 @@ image: /img/instruments/videomancer/syncmod/syncmod_hero_s1.png
 description: "Sync Mod rewrites the television raster in real time."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import syncmod_control_panel from '/img/instruments/videomancer/syncmod/syncmod_control_panel.png';
-import syncmod_source1_dog from '/img/instruments/videomancer/syncmod/syncmod_source1_dog.png';
-import syncmod_source2_field from '/img/instruments/videomancer/syncmod/syncmod_source2_field.png';
-import syncmod_source3_clouds from '/img/instruments/videomancer/syncmod/syncmod_source3_clouds.png';
-import syncmod_source4_pattern from '/img/instruments/videomancer/syncmod/syncmod_source4_pattern.png';
-import syncmod_source5_woman from '/img/instruments/videomancer/syncmod/syncmod_source5_woman.png';
-import syncmod_source6_wood from '/img/instruments/videomancer/syncmod/syncmod_source6_wood.png';
-import syncmod_hero_s1 from '/img/instruments/videomancer/syncmod/syncmod_hero_s1.png';
-import syncmod_hero_s2 from '/img/instruments/videomancer/syncmod/syncmod_hero_s2.png';
-import syncmod_hero_s3 from '/img/instruments/videomancer/syncmod/syncmod_hero_s3.png';
-import syncmod_hero_s4 from '/img/instruments/videomancer/syncmod/syncmod_hero_s4.png';
-import syncmod_hero_s5 from '/img/instruments/videomancer/syncmod/syncmod_hero_s5.png';
-import syncmod_hero_s6 from '/img/instruments/videomancer/syncmod/syncmod_hero_s6.png';
-import syncmod_ex1_s1 from '/img/instruments/videomancer/syncmod/syncmod_ex1_s1.png';
-import syncmod_ex1_s2 from '/img/instruments/videomancer/syncmod/syncmod_ex1_s2.png';
-import syncmod_ex1_s3 from '/img/instruments/videomancer/syncmod/syncmod_ex1_s3.png';
-import syncmod_ex1_s4 from '/img/instruments/videomancer/syncmod/syncmod_ex1_s4.png';
-import syncmod_ex1_s5 from '/img/instruments/videomancer/syncmod/syncmod_ex1_s5.png';
-import syncmod_ex1_s6 from '/img/instruments/videomancer/syncmod/syncmod_ex1_s6.png';
-import syncmod_ex2_s1 from '/img/instruments/videomancer/syncmod/syncmod_ex2_s1.png';
-import syncmod_ex2_s2 from '/img/instruments/videomancer/syncmod/syncmod_ex2_s2.png';
-import syncmod_ex2_s3 from '/img/instruments/videomancer/syncmod/syncmod_ex2_s3.png';
-import syncmod_ex2_s4 from '/img/instruments/videomancer/syncmod/syncmod_ex2_s4.png';
-import syncmod_ex2_s5 from '/img/instruments/videomancer/syncmod/syncmod_ex2_s5.png';
-import syncmod_ex2_s6 from '/img/instruments/videomancer/syncmod/syncmod_ex2_s6.png';
-import syncmod_ex3_s1 from '/img/instruments/videomancer/syncmod/syncmod_ex3_s1.png';
-import syncmod_ex3_s2 from '/img/instruments/videomancer/syncmod/syncmod_ex3_s2.png';
-import syncmod_ex3_s3 from '/img/instruments/videomancer/syncmod/syncmod_ex3_s3.png';
-import syncmod_ex3_s4 from '/img/instruments/videomancer/syncmod/syncmod_ex3_s4.png';
-import syncmod_ex3_s5 from '/img/instruments/videomancer/syncmod/syncmod_ex3_s5.png';
-import syncmod_ex3_s6 from '/img/instruments/videomancer/syncmod/syncmod_ex3_s6.png';
-
-# Sync Mod
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: syncmod_source1_dog, after: syncmod_hero_s1 },
-    { label: "Field", before: syncmod_source2_field, after: syncmod_hero_s2 },
-    { label: "Clouds", before: syncmod_source3_clouds, after: syncmod_hero_s3 },
-    { label: "Pattern", before: syncmod_source4_pattern, after: syncmod_hero_s4 },
-    { label: "Woman", before: syncmod_source5_woman, after: syncmod_hero_s5 },
-    { label: "Wood", before: syncmod_source6_wood, after: syncmod_hero_s6 },
-  ]}
-/>
-*Horizontal scanlines warp sinusoidally across the frame, tearing apart a stable image into undulating bands of displaced colour.*
+![Sync Mod hero image](/img/instruments/videomancer/syncmod/syncmod_hero_s1.png)
+*Sync Mod warping a camera feed with sinusoidal horizontal displacement, producing flowing geometric distortions reminiscent of Vasulka-era cathode ray experiments.*
 
 ---
 
 ## Overview
 
-Sync Mod rewrites the television raster in real time. By modulating the horizontal read address with sine or ramp functions that vary along the vertical axis, the program compresses, stretches, and folds each scanline into a new position — producing the controlled geometric distortion that Steina and Woody Vasulka pioneered with modified monitors in the 1970s.
+**Sync Mod** is a raster sync modulation processor that warps video by displacing pixels horizontally along each scanline. It recreates the geometric distortions that Steina and Woody Vasulka achieved in the 1970s by feeding oscillator signals into the sync timing circuits of modified television monitors. Those analog experiments produced images that compressed, expanded, and tore apart in mesmerizing, fluid patterns. Sync Mod brings that technique into the digital domain using BRAM line buffers and ***direct digital synthesis*** (DDS) oscillators.
 
-The core engine stores each incoming scanline in a 1280-sample line buffer and reads it back through a horizontally displaced pointer. The displacement is computed from a DDS-driven sine (or ramp) whose phase rotates per scanline, producing smooth undulations that scroll through the frame in real time. A separate vertical modulation axis selects between the current and previous line, introducing inter-line blending that subtly smears vertical detail. The Tear effect deliberately triples the offset in configurable vertical zones, simulating the violent horizontal discontinuities that occur when a sync signal is interrupted.
+The core mechanism works like this: each row of incoming pixels is written into a line buffer, and then read back at a displaced address. The amount of displacement varies sinusoidally (or linearly, in ramp mode) down the screen, creating a rippling, wave-shaped distortion across the image. The vertical axis adds a second layer of modulation that selects between the current and previous scanline, producing a subtle interline mixing effect. A free-running animation phase keeps the distortion in constant motion, so the image appears to breathe and undulate even when the source is static.
 
-Because the modulation is purely address-based rather than amplitude-based, Sync Mod preserves the brightness and colour of every pixel — only its position changes. The result is a liquid, rubber-sheet image that breathes and folds while retaining all of its original detail.
+At gentle settings, Sync Mod adds subtle waviness: a slight shimmer along edges, a rolling wobble through straight lines. At extreme settings, the image shears apart into ribboned fragments, compresses into narrow slivers, and tears open to reveal repeated or clamped pixel columns. The **Tear** mode amplifies this destruction, tripling the displacement in periodic horizontal bands.
+
+:::tip
+Sync Mod pairs beautifully with high-contrast black-and-white sources. Bold edges and hard transitions make the geometric distortion easy to see and appreciate.
+:::
+
+### What's In a Name?
+
+The name ***Sync Mod*** is shorthand for ***synchronization modulation***. In analog video, the sync signal tells the monitor where each line and each frame begins. When you modulate that timing: feeding it a sine wave or ramp: the display draws each scanline in a slightly different horizontal position, causing the image to warp geometrically. The Vasulkas called this technique "raster manipulation." Sync Mod pays tribute to their pioneering work by implementing the same idea digitally, using displaced buffer reads instead of modified deflection circuits.
 
 ---
 
 ## Quick Start
 
-1. **Start with H only**: Set V Mod Amt to zero when learning the program to isolate horizontal displacement before adding vertical complexity.
-2. **Low Freq, High Amt for drama**: A single large-amplitude arch across the frame creates the most cinematic Vasulka-style compression effect.
-3. **Tear sparingly**: The tear effect is powerful —  a thin tear band (10–20%) adds punctuation without overwhelming the image.
+1. Start with a recognizable source: a camera feed or footage with strong vertical lines. Turn **H Mod Amt** (Knob 1) slowly clockwise to about 50%. The image begins rippling left and right, as if reflected in gently disturbed water.
+2. Sweep **H Mod Freq** (Knob 2) slowly. At low values the ripple is broad and sweeping; at high values it becomes tight and corrugated. Find a frequency that produces three or four visible waves across the screen height.
+3. Watch the distortion drift. That continuous motion comes from the **Speed** knob (Knob 5), which controls how quickly the animation phase advances. Turn Speed fully counterclockwise to freeze the wave in place, or clockwise to make it rush.
+4. Toggle **H Wave** (Switch 7) from **Sine** to **Ramp**. The smooth ripple snaps into angular sawtooth shearing: the image looks sliced and offset rather than gently curved.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Sync Mod loaded](/img/instruments/videomancer/syncmod/syncmod_control_panel.png)
+*Videomancer's front panel with Sync Mod active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — H Mod Amt
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**H Mod Amt** controls the depth of horizontal displacement. At 0%, the image passes through undistorted: no pixels are displaced. As you increase the value, scanlines are read from progressively offset positions in the line buffer, producing wider and wider left-right excursions. At maximum, the displacement can reach nearly half the screen width, causing dramatic compression and stretching of image content.
+
+The displacement amount interacts multiplicatively with the waveform generated by the modulation oscillator, so the actual pixel offset at any given scanline is the product of H Mod Amt and the oscillator's instantaneous value. This means the distortion follows the shape of the selected wave (smooth curves for sine, linear ramps for sawtooth.)
+
+:::note
+When pixels are displaced beyond the edge of the line buffer, the address is clamped to the boundary. This produces the characteristic "smeared edge" look where the first or last pixel column repeats horizontally.
+:::
+
+---
+
+### Knob 2 — H Mod Freq
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**H Mod Freq** sets the spatial frequency of the horizontal modulation waveform. This wave runs vertically down the screen: its value changes from one scanline to the next. At low frequencies, the displacement varies slowly, producing broad, gentle curves. At high frequencies, each scanline receives a noticeably different offset from its neighbors, creating tight, corrugated patterns.
+
+The frequency parameter scales a phase accumulator that multiplies the vertical line counter by the frequency value plus one. This means even at the minimum setting, there is still a small amount of variation across the screen height.
+
+---
+
+### Knob 3 — V Mod Amt
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**V Mod Amt** controls the depth of the vertical modulation effect. Vertical modulation works differently from horizontal: instead of displacing pixel positions within a scanline, it selects which *scanline buffer bank* to read from: the current line or the previous line. When V Mod Amt is at 0%, the processor always reads from the current bank and no vertical effect is visible. As the value increases beyond a small threshold, the vertical oscillator begins switching between the current and previous scanline banks, producing a subtle interline mixing that appears as a vertical ripple or comb-like patterning.
+
+---
+
+### Knob 4 — V Mod Freq
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**V Mod Freq** sets the spatial frequency of the vertical modulation waveform. This wave runs horizontally across the screen: its value changes from one pixel to the next. At low frequencies, large horizontal bands alternate between current and previous line data. At high frequencies, the alternation happens rapidly, creating fine vertical combing.
+
+:::tip
+The vertical modulation is more subtle than horizontal modulation. Think of it as a textural overlay rather than a geometric warp. We recommend setting V Mod Amt to low or moderate values and exploring the frequency range to find interesting interline textures.
+:::
+
+---
+
+### Knob 5 — Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 20% |
+
+**Speed** controls the rate at which the animation phase advances. The animation phase is a free-running accumulator that increments once per video frame. This phase is added to both the horizontal and vertical modulation oscillators, keeping the distortion pattern in constant motion. At 0%, the phase advances minimally: the pattern still drifts, but very slowly. At higher values, the pattern moves faster, producing flowing, animated distortions.
+
+:::note
+Because the phase updates once per frame (at vsync), the animation is smooth and frame-locked. There is no jitter or timing instability in the movement.
+:::
+
+---
+
+### Knob 6 — Tear Width
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 13% |
+
+**Tear Width** controls the size of the tear band when **Tear** mode is enabled. The tear effect triples the horizontal displacement within a repeating horizontal stripe. At 0%, the tear band is so narrow it is nearly invisible. As the value increases, the tear band grows wider, and more of the screen is affected by the amplified displacement. At maximum, almost half the screen height falls within the tear zone.
+
+When Tear mode is disabled, this knob has no visible effect.
+
+---
+
+### Switch 7 — H Wave
+
+| Property | Value |
+|----------|-------|
+| Off | Sine |
+| On | Ramp |
+| Default | Sine |
+
+**H Wave** selects the waveform for horizontal modulation. In **Sine** mode, the displacement follows a smooth sinusoidal curve, modeled by a 64-entry quarter-wave lookup table with symmetry expansion. The result is gentle, organic-looking warps with smooth acceleration at the peaks and zero crossings. In **Ramp** mode, the displacement follows a linear sawtooth shape. The ramp creates angular, shearing distortions where the image appears to be sliced at an oblique angle and offset, rather than smoothly bent.
+
+---
+
+### Switch 8 — V Wave
+
+| Property | Value |
+|----------|-------|
+| Off | Sine |
+| On | Ramp |
+| Default | Sine |
+
+**V Wave** selects the waveform for vertical modulation, using the same sine and ramp shapes as **H Wave** but applied to the vertical bank-select oscillator. In **Sine** mode, the transition between current and previous scanline data follows a smooth curve. In **Ramp** mode, the transition follows a linear ramp, creating more abrupt interline boundaries.
+
+---
+
+### Switch 9 — Tear
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Tear** enables or disables the tear effect. When active, the horizontal displacement is tripled within a repeating horizontal band whose width is set by the **Tear Width** knob. The tear band position is determined by the lower bits of the vertical line counter compared against the tear width value. This creates the appearance of the image being violently ripped apart in periodic horizontal stripes: the classic "sync tear" artifact of analog video pushed beyond its limits.
+
+:::warning
+At high H Mod Amt and Tear Width values, the displaced read address can swing far from the original pixel position, producing large regions of clamped (edge-repeated) pixels. This is intentional and matches the behavior of real analog sync disruption.
+:::
+
+---
+
+### Switch 10 — Phase Link
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Phase Link** couples the vertical modulation phase to the horizontal modulation phase. When disabled, the horizontal and vertical oscillators run independently: each has its own phase accumulator driven by its own frequency parameter plus the shared animation phase. When enabled, the vertical phase accumulator adds the horizontal phase value on top of its own, creating a diagonal coupling between the two modulation axes. This produces more complex, interlocking patterns where the vertical texture follows the rhythm of the horizontal warp.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all Sync Mod processing. The sync delay pipeline still aligns timing, so there is no glitch when toggling. Use Bypass for instant A/B comparison between the original and the warped result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** crossfades between the dry (unprocessed) and wet (modulated) signals. At 0%, the output is identical to the input: no distortion is visible. At 100%, the output is fully processed. Intermediate values blend the two, which can soften the effect and create ghostly double-image overlays where the displaced and original pixel positions are both partially visible.
+
+:::tip
+Try setting Mix to around 50% with moderate H Mod Amt. The blended result shows both the original image and its distorted twin superimposed, creating a dreamy, translucent doubling effect.
+:::
 
 ---
 
 ## Background
 
-### Vasulka Sync Manipulation
+### Raster sync modulation
 
-In the early 1970s, Steina and Woody Vasulka began feeding oscillator signals directly into the horizontal and vertical sync inputs of modified television monitors. The result was controlled geometric distortion — images compressed into narrow bands, expanded beyond the screen edge, or torn into jagged shards. This technique exploited the fact that a CRT's electron beam position is entirely determined by sync timing; altering the timing alters the geometry.
+In a cathode ray tube (CRT) television, the electron beam sweeps across the screen in horizontal lines (the ***raster***), one after another from top to bottom. ***Sync*** signals embedded in the video tell the monitor where each line and each frame begins. The beam's horizontal position at any instant is determined by a sawtooth deflection waveform locked to horizontal sync. When you add an external signal: a sine wave, a ramp, an audio signal: to that deflection circuit, the beam's horizontal position shifts. Each scanline draws in a slightly different place. The result is a geometric transformation of the image: straight lines curve, rectangles become trapezoids, and the image stretches and compresses like a reflection in a funhouse mirror.
 
-### Horizontal Displacement Mapping
+Steina and Woody Vasulka were among the first artists to exploit this behavior systematically, building custom hardware to feed oscillators into modified monitors and document the results. Their work revealed that the raster: the rigid grid of lines we take for granted: is itself a creative medium, as malleable as clay.
 
-Sync Mod approximates the Vasulka technique digitally. Rather than modifying actual sync signals, it stores each scanline in a line buffer and reads back from a displaced address. The displacement varies as a function of vertical position, producing per-line offsets that mirror the effect of feeding an oscillator into horizontal sync. The result is visually identical to hardware sync disruption but fully repeatable and controllable.
+### Digital line buffers
 
-### DDS Phase Accumulation
+Sync Mod recreates the Vasulka technique using ***BRAM line buffers*** with ***ping-pong banking***. Each incoming scanline is written into one bank of a dual-port block RAM while the output reads from the opposite bank. At each horizontal sync pulse, the banks swap roles. This means the read side always has a complete, stable copy of the previous (or current) scanline to read from.
 
-A 16-bit phase accumulator advances per frame, providing the animation clock for both H and V modulation. The modulation frequency knobs scale the phase contribution of position within the frame: higher frequency means more oscillation cycles visible across the screen height (for H mod) or width (for V mod). This is the same DDS architecture used throughout the Videomancer audiovisualizer family.
+The horizontal displacement is implemented by offsetting the read address. Instead of reading pixel 100 at position 100, the processor reads pixel 100 + offset, where the offset varies sinusoidally down the screen. The offset is computed by a ***DDS*** (direct digital synthesis) oscillator: a phase accumulator that generates waveform values from a lookup table. Three YUV channels share the same address, so the color information tracks the luminance displacement perfectly.
 
-### Sine vs Ramp Waveforms
+### Waveform generation
 
-The H Wave and V Wave toggles select between sinusoidal and sawtooth modulation. Sine produces smooth undulating folds; ramp produces linear compression-expansion that abruptly resets, creating a characteristic saw-tooth shearing effect. Both waveforms are derived from the same DDS phase but shaped differently — sine via a 64-entry quarter-wave LUT, ramp via direct phase-to-amplitude mapping.
+The oscillator offers two waveform shapes. The ***sine*** mode uses a 64-entry quarter-wave lookup table stored as signed 10-bit values. Full-wave reconstruction exploits the symmetry of the sine function: bits 6 and 7 of the phase word select the quadrant and negate the output accordingly. This produces a smooth, continuous waveform with peak displacement at the crests and zero displacement at the nodes. The ***ramp*** mode bypasses the lookup table entirely, using the upper bits of the phase accumulator directly as a linear value centered around zero. The ramp produces a sawtooth waveform: a sharp, angular displacement that creates shearing rather than curving.
 
-### Tear Zones
+### The tear effect
 
-The original Vasulka work often produced violent horizontal tears when sync was interrupted mid-frame. Sync Mod reproduces this with the Tear toggle: when enabled, any scanline whose low 8 bits of v_count fall below the Tear Width threshold has its horizontal offset tripled, producing a sudden lateral jump in a band across the frame. The tear band repeats every 256 lines, creating periodic rupture zones.
+The tear mode amplifies the horizontal displacement within a periodic horizontal band. Mathematically, it adds twice the computed offset back onto itself inside the band, tripling the total displacement. Outside the band, displacement is normal. This creates a visual discontinuity: a stripe of extreme distortion cutting across the screen: that evokes the sync tears seen when analog videotape heads lose tracking or when a monitor's hold circuit drifts out of lock.
+
+### Animation and phase coupling
+
+A free-running 16-bit phase accumulator, incremented once per frame at vsync, drives the animation. This phase is added to both the horizontal and vertical modulation oscillators, keeping the distortion pattern in constant motion. The **Phase Link** toggle adds an additional coupling: the horizontal modulation phase feeds forward into the vertical oscillator, so both axes share a common evolving baseline. With Phase Link enabled, changes to the horizontal frequency or amount also influence the vertical texture, producing richer and more interrelated patterns.
 
 
 ---
 
 ## Signal Flow
 
-```
-                    ┌─────────────────────────────────┐
-  data_in ────────► │ Line Buffer Write (1280 × Y/U/V)│
-                    │   ↓ copy at hsync_start          │
-                    │ Previous Line Buffer (1280 × Y/U/V)│
-                    └───────────┬─────────────────────┘
-                                │
-           ┌────────────────────▼────────────────────┐
-           │  DDS Phase (v_count × freq + anim)      │
-           │  ↓ Sine or Ramp waveform                │
-           │  × H Mod Amt → v_h_offset               │
-           │  ↓ Tear: ×3 in tear zones               │
-           │  + h_count → clamped read address        │
-           └───────────┬────────────────────────────┘
-                       │
-           ┌───────────▼────────────────────────────┐
-           │  V Modulation (h_count × freq + anim)   │
-           │  ↓ (+H phase if Phase Link)             │
-           │  Sine or Ramp → blend select            │
-           │  > 0 ? previous_line : current_line     │
-           └───────────┬────────────────────────────┘
-                       │
-           ┌───────────▼──────┐    ┌──────────┐
-           │ wet Y/U/V        ├───►│ Interp   ├──► data_out
-           └──────────────────┘    │ (dry/wet) │
-                                   └──────────┘
-```
+### Signal Flow Notes
 
-The horizontal and vertical modulation axes are computed from independent DDS phases but share the same animation clock, so they drift together. When Phase Link is enabled, the vertical phase accumulates the horizontal phase as an additional contribution, coupling the two axes into a single complex waveform that traces diagonal paths through the image.
+Two important architectural details shape the visual behavior:
 
-The line buffer architecture means that the horizontal modulation is constrained to the current scanline — pixels cannot be displaced vertically by more than one line. Vertical displacement is approximated by switching between the current and previous line based on the V modulation waveform's sign, creating a coarse one-line vertical wobble that complements the smooth horizontal displacement.
+1. **Horizontal displacement is vertical-position-dependent.** The modulation oscillator's phase is derived from the vertical line counter, so the displacement amount changes from scanline to scanline. This is why the image appears to warp as a smooth wave down the screen rather than shifting uniformly. The horizontal pixel counter, by contrast, drives the vertical modulation oscillator, creating a secondary texture that varies across each line.
 
----
+2. **Ping-pong BRAM banking eliminates pipeline bubbles.** The dual-bank scheme means writing and reading happen simultaneously in different banks, swapping at each hsync. Pixels are stored at 8-bit precision (top 8 bits of each 10-bit channel) and expanded back to 10 bits on readout. This truncation introduces a very small quantization noise: roughly 2 LSBs per channel: that is generally invisible but may become apparent on smooth gradients at full wet mix.
 
-## Parameter Reference
-
-<img src={syncmod_control_panel} alt="Videomancer front panel with Sync Mod loaded"/>
-*Videomancer's front panel with Sync Mod active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — H Mod Amt
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-H Mod Amt sets the maximum horizontal pixel displacement. At minimum the image is undistorted. As the knob increases, scanlines begin to shift left and right by increasing amounts, eventually folding back on themselves when the offset exceeds the visible width. The displacement is signed, so the image compresses in some regions and expands in others — a direct analog of feeding a larger-amplitude oscillator into hardware horizontal sync.
-
----
-
-#### Knob 2 — H Mod Freq
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-H Mod Freq controls how many modulation cycles are visible across the screen height. Low values produce a single gentle arch across the entire frame; high values pack many undulations into the vertical extent, creating fine striped patterns where each group of scanlines is offset in alternating directions.
-
----
-
-#### Knob 3 — V Mod Amt
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
-
-V Mod Amt sets the depth of vertical modulation. When non-zero, the engine blends between the current scanline and the previous scanline based on a second DDS waveform that varies across horizontal position. At subtle settings this produces a gentle vertical smear; at higher values it creates distinct bands of line-doubled content.
-
----
-
-#### Knob 4 — V Mod Freq
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-V Mod Freq controls the horizontal density of vertical modulation cycles. Low values cause the entire width to switch between current and previous line together; high values create rapid alternation across the scanline, producing comb-like interleaving of two adjacent lines.
-
----
-
-#### Knob 5 — Speed
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 20% |
-| Suffix | % |
-
-Speed sets the animation rate. The 16-bit DDS animation phase advances by (Speed + 1) per frame, so the modulation pattern scrolls through the image over time. Low speed creates slow breathing motion; high speed produces rapid oscillation that can blur into a shimmering texture.
-
----
-
-#### Knob 6 — Tear Width
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 13% |
-| Suffix | % |
-
-Tear Width defines the vertical extent of the tear band, measured in scanlines (lower 8 bits of v_count). When Tear is enabled, any scanline within this band has its horizontal offset tripled. A narrow Tear Width produces thin shear lines; a wide one creates dramatic lateral jumps across large sections of the frame. The tear bands repeat every 256 lines, so multiple ruptures appear at regular intervals.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — H Wave** | Sine | Ramp |
-| **8 — V Wave** | Sine | Ramp |
-| **9 — Tear** | Off | On |
-| **10 — Phase Link** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles configure waveform shape, special effects, and bypass. H Wave and V Wave independently select sine or ramp for their respective axes, and can be mixed — for example, sine H with ramp V creates smooth horizontal undulation with saw-tooth vertical interleaving. Tear adds the violent horizontal discontinuity that completes the Vasulka aesthetic. Phase Link couples the two modulation axes for diagonal displacement paths. Bypass returns the unprocessed signal.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Mix crossfades between the unprocessed input (dry) and the sync-modulated output (wet). At minimum the original image passes through; at maximum the full distortion is visible. Intermediate positions blend the two, which can produce a ghostly double-image effect as the displaced and undisplaced versions overlay.
-
-
-
+:::tip
+**Phase Link creates diagonal warp.** Normally the horizontal wave varies only vertically and the vertical texture varies only horizontally. Enabling Phase Link feeds the horizontal phase into the vertical oscillator, creating a diagonal coupling where both modulation patterns tilt and interlock.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises demonstrate the range of geometric distortion achievable with Sync Mod, progressing from gentle undulation to violent raster tearing.
+These exercises progress from simple horizontal warping through vertical texture to the distinctive tear effect. Each one builds on the previous, engaging more of the modulation system.
+### Exercise 1: Sinusoidal Ripple
 
-### Exercise 1: Gentle Horizontal Waves
+![Sinusoidal Ripple result](/img/instruments/videomancer/syncmod/syncmod_ex1_s1.png)
+*Sinusoidal Ripple — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: syncmod_source1_dog, after: syncmod_ex1_s1 },
-    { label: "Field", before: syncmod_source2_field, after: syncmod_ex1_s2 },
-    { label: "Clouds", before: syncmod_source3_clouds, after: syncmod_ex1_s3 },
-    { label: "Pattern", before: syncmod_source4_pattern, after: syncmod_ex1_s4 },
-    { label: "Woman", before: syncmod_source5_woman, after: syncmod_ex1_s5 },
-    { label: "Wood", before: syncmod_source6_wood, after: syncmod_ex1_s6 },
-  ]}
-/>
-*Gentle Horizontal Waves — simulated result across source images.*
-**Source**: A high-contrast graphic with strong horizontal and vertical edges (e.g., a title card or grid pattern).
+***A description of the exercise illustration.***
 
-**What You'll Create**: Create slow, smooth sinusoidal displacement that makes the image breathe without tearing.
+#### Learning Outcomes
 
-1. Set H Mod Amt to 30% for moderate displacement.
-2. Set H Mod Freq to 15% for a single gentle arch across the frame.
-3. Set Speed to 20% for slow animation.
-4. Leave V Mod Amt at 0% to isolate horizontal motion.
-5. Observe the image gently undulating — straight lines become sine curves.
-6. Slowly increase H Mod Freq to see the undulations multiply.
+A gentle, flowing sinusoidal ripple through a video image (the fundamental Sync Mod effect.)
 
-**Key concepts**: Sinusoidal displacement preserves image content while reorganising spatial relationships. The number of visible cycles is determined by H Mod Freq.
+#### Key Concepts
 
----
+- Horizontal modulation displaces pixels along each scanline
+- Frequency controls the spatial density of the wave
+- Speed animates the wave pattern over time
 
-### Exercise 2: Ramp Shear with Vertical Blend
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: syncmod_source1_dog, after: syncmod_ex2_s1 },
-    { label: "Field", before: syncmod_source2_field, after: syncmod_ex2_s2 },
-    { label: "Clouds", before: syncmod_source3_clouds, after: syncmod_ex2_s3 },
-    { label: "Pattern", before: syncmod_source4_pattern, after: syncmod_ex2_s4 },
-    { label: "Woman", before: syncmod_source5_woman, after: syncmod_ex2_s5 },
-    { label: "Wood", before: syncmod_source6_wood, after: syncmod_ex2_s6 },
-  ]}
-/>
-*Ramp Shear with Vertical Blend — simulated result across source images.*
-**Source**: A face or recognisable form — the shearing effect is most dramatic when the viewer can detect the spatial disruption.
+A live camera feed or footage with strong vertical lines (architecture, text, window blinds).
 
-**What You'll Create**: Combine ramp H waveform with vertical modulation to create diagonal shearing.
+#### Steps
 
-1. Set H Wave to Ramp, V Wave to Ramp.
-2. Set H Mod Amt to 50%, H Mod Freq to 40%.
-3. Set V Mod Amt to 60%, V Mod Freq to 30%.
-4. Enable Phase Link.
-5. Set Speed to 35%.
-6. Watch the image shear diagonally as the linked ramp waveforms create angled displacement bands.
+1. **Start clean**: Confirm all controls are at defaults. The image should pass through unprocessed.
+2. **Engage horizontal modulation**: Slowly turn **H Mod Amt** (Knob 1) clockwise to about 40%. Vertical lines in the source begin bending into shallow S-curves.
+3. **Set frequency**: Adjust **H Mod Freq** (Knob 2) until you see three or four full wave periods across the screen height. The ripple should look like a flag waving in a gentle breeze.
+4. **Animate**: Watch the wave drift. Now adjust **Speed** (Knob 5): turn it down to slow the drift to a crawl, then up to make the wave rush upward or downward through the frame.
+5. **Mix back**: Pull **Mix** (Fader 12) to around 60%. The ripple softens as the dry signal blends with the displaced signal, creating a ghostly double image.
 
-**Key concepts**: Ramp waveforms create linear compression followed by abrupt reset, producing hard shear lines. Phase Link couples the axes so the shear follows a diagonal path rather than being purely horizontal.
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| H Mod Amt | ~40% |
+| H Mod Freq | ~30% |
+| V Mod Amt | 0% |
+| V Mod Freq | ~25% |
+| Speed | ~20% |
+| Tear Width | 0% |
+| H Wave | Sine |
+| V Wave | Sine |
+| Tear | Off |
+| Phase Link | Off |
+| Bypass | Off |
+| Mix | ~60% |
 
 ---
 
-### Exercise 3: Vasulka Tear Storm
+### Exercise 2: Ramp Shear with Vertical Texture
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: syncmod_source1_dog, after: syncmod_ex3_s1 },
-    { label: "Field", before: syncmod_source2_field, after: syncmod_ex3_s2 },
-    { label: "Clouds", before: syncmod_source3_clouds, after: syncmod_ex3_s3 },
-    { label: "Pattern", before: syncmod_source4_pattern, after: syncmod_ex3_s4 },
-    { label: "Woman", before: syncmod_source5_woman, after: syncmod_ex3_s5 },
-    { label: "Wood", before: syncmod_source6_wood, after: syncmod_ex3_s6 },
-  ]}
-/>
-*Vasulka Tear Storm — simulated result across source images.*
-**Source**: Any video signal — the tear effect is visually compelling regardless of content.
+![Ramp Shear with Vertical Texture result](/img/instruments/videomancer/syncmod/syncmod_ex2_s1.png)
+*Ramp Shear with Vertical Texture — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Create the violent horizontal tearing that characterises the Vasulka aesthetic.
+***A description of the exercise illustration.***
 
-1. Set H Mod Amt to 80%, H Mod Freq to 25%.
-2. Enable Tear and set Tear Width to 50%.
-3. Set Speed to 45% for rapid animation.
-4. Set V Mod Amt to 20% for subtle vertical disruption.
-5. Observe periodic tear bands ripping through the image every 256 lines.
-6. Increase Tear Width to expand the rupture zones.
+#### Learning Outcomes
 
-**Key concepts**: The tear effect triples the horizontal offset in configurable vertical bands, creating discontinuities that repeat every 256 scanlines. Combined with animation, these bands scroll through the frame, producing the characteristic horizontal shredding of early video art.
+A sharp, angular distortion with interline combing (like looking through a prism made of video.)
+
+#### Key Concepts
+
+- Ramp waveform creates angular shearing instead of smooth bending
+- Vertical modulation adds interline texture
+- Phase Link couples the two axes diagonally
+
+#### Video Source
+
+Footage with broad areas of color and recognizable shapes (a face, a landscape, colorful objects).
+
+#### Steps
+
+1. **Switch to ramp**: Set **H Wave** (Switch 7) to **Ramp**. The smooth sine ripple from Exercise 1 snaps into angular slashes.
+2. **Increase H Mod Amt** to about 50% and **H Mod Freq** to about 40%. The image now appears sheared into diagonal strips.
+3. **Add vertical modulation**: Bring **V Mod Amt** (Knob 3) up to about 60%. A subtle combing texture appears: horizontal lines begin alternating between sharp and slightly soft.
+4. **Set vertical frequency**: Sweep **V Mod Freq** (Knob 4) slowly. At low values, large bands of interline mixing appear; at high values, the texture is fine and gritty.
+5. **Link the phases**: Enable **Phase Link** (Switch 10). The horizontal and vertical patterns couple, and fine diagonal interference fringes emerge where the two waves intersect.
+6. **Switch V Wave to Ramp**: Set **V Wave** (Switch 8) to **Ramp**. The vertical texture becomes more angular and mechanical, complementing the horizontal shear.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| H Mod Amt | ~50% |
+| H Mod Freq | ~40% |
+| V Mod Amt | ~60% |
+| V Mod Freq | ~30% |
+| Speed | ~35% |
+| Tear Width | 0% |
+| H Wave | Ramp |
+| V Wave | Ramp |
+| Tear | Off |
+| Phase Link | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Vasulka Tear
 
-## Tips
+![Vasulka Tear result](/img/instruments/videomancer/syncmod/syncmod_ex3_s1.png)
+*Vasulka Tear — simulated result across source images.*
+#### Exercise Illustration
 
-- **Phase Link + Sine for organic motion**: Linked sine waveforms create complex Lissajous-like diagonal paths that feel natural.
-- **Mix for layering**: At 50% mix, the displaced and original images overlay, creating ghostly doubled geometry.
-- **Speed 0 for stills**: With Speed at zero the displacement is static — useful for controlled photographic distortion.
-- **Ramp for retro video art**: Ramp waveforms most closely approximate the hard compression/expansion of real sync disruption.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A violent, full-screen sync disruption with horizontal tear bands (the signature Vasulka aesthetic.)
+
+#### Key Concepts
+
+- Tear mode triples displacement in periodic horizontal bands
+- Tear Width controls the proportion of the screen affected
+- Combining tear with high modulation creates dramatic raster disruption
+
+#### Video Source
+
+Any high-contrast footage. Black-and-white material or silhouettes work especially well.
+
+#### Steps
+
+1. **Set strong modulation**: Turn **H Mod Amt** (Knob 1) to about 80%. The image should be heavily warped.
+2. **Enable tear**: Toggle **Tear** (Switch 9) to **On**. Periodic horizontal stripes of extreme distortion appear across the image.
+3. **Adjust Tear Width**: Sweep **Tear Width** (Knob 6) slowly clockwise. The tear bands grow from thin slivers to broad regions consuming half the screen. Find a width that creates a dramatic rhythmic pattern.
+4. **Speed it up**: Increase **Speed** (Knob 5) to about 45%. The tear bands race through the frame, creating a fast-pulsing flicker of destruction and recovery.
+5. **Add a touch of vertical**: Bring **V Mod Amt** (Knob 3) to about 20%. The interline mixing adds grit and texture within the tear bands.
+6. **Try sine vs. ramp**: Switch **H Wave** (Switch 7) between **Sine** and **Ramp** to compare the character of the tear (smooth rolling tears versus sharp angular rips.)
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| H Mod Amt | ~80% |
+| H Mod Freq | ~25% |
+| V Mod Amt | ~20% |
+| V Mod Freq | ~25% |
+| Speed | ~45% |
+| Tear Width | ~50% |
+| H Wave | Sine |
+| V Wave | Sine |
+| Tear | On |
+| Phase Link | Off |
+| Bypass | Off |
+| Mix | 100% |
+
+---
+## Glossary
+
+- **BRAM**: Block RAM; dedicated memory blocks inside the FPGA used here as scanline buffers.
+
+- **DDS**: Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and mapping its value through a lookup table.
+
+- **Deflection**: The steering of an electron beam in a CRT via magnetic or electric fields. Modulating the deflection circuit causes geometric distortion.
+
+- **Phase Accumulator**: A counter that wraps around at a fixed bit width, producing a rising sawtooth phase value used to drive waveform generation.
+
+- **Ping-Pong Banking**: A dual-buffer scheme where one bank is written while the other is read, swapping roles each scanline to avoid read-write conflicts.
+
+- **Ramp**: A linear sawtooth waveform that rises steadily from minimum to maximum and then resets, producing angular shearing distortions.
+
+- **Raster**: The grid of horizontal scanlines that makes up a video frame. The beam scans left to right, line by line, top to bottom.
+
+- **Sync Tear**: A visual artifact where horizontal lines appear to shift abruptly, caused by disrupted synchronization timing in analog video systems.
 
 ---

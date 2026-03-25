@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 285
 slug: /instruments/videomancer/stereogram
@@ -7,383 +7,420 @@ image: /img/instruments/videomancer/stereogram/stereogram_hero_s1.png
 description: "Stereogram generates a Single Image Random Dot Stereogram (SIRDS) from the input video's luminance channel."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import stereogram_control_panel from '/img/instruments/videomancer/stereogram/stereogram_control_panel.png';
-import stereogram_source1_skull from '/img/instruments/videomancer/stereogram/stereogram_source1_skull.png';
-import stereogram_source2_cat from '/img/instruments/videomancer/stereogram/stereogram_source2_cat.png';
-import stereogram_source3_elephant from '/img/instruments/videomancer/stereogram/stereogram_source3_elephant.png';
-import stereogram_source4_pattern from '/img/instruments/videomancer/stereogram/stereogram_source4_pattern.png';
-import stereogram_source5_woman from '/img/instruments/videomancer/stereogram/stereogram_source5_woman.png';
-import stereogram_source6_paint from '/img/instruments/videomancer/stereogram/stereogram_source6_paint.png';
-import stereogram_hero_s1 from '/img/instruments/videomancer/stereogram/stereogram_hero_s1.png';
-import stereogram_hero_s2 from '/img/instruments/videomancer/stereogram/stereogram_hero_s2.png';
-import stereogram_hero_s3 from '/img/instruments/videomancer/stereogram/stereogram_hero_s3.png';
-import stereogram_hero_s4 from '/img/instruments/videomancer/stereogram/stereogram_hero_s4.png';
-import stereogram_hero_s5 from '/img/instruments/videomancer/stereogram/stereogram_hero_s5.png';
-import stereogram_hero_s6 from '/img/instruments/videomancer/stereogram/stereogram_hero_s6.png';
-import stereogram_ex1_s1 from '/img/instruments/videomancer/stereogram/stereogram_ex1_s1.png';
-import stereogram_ex1_s2 from '/img/instruments/videomancer/stereogram/stereogram_ex1_s2.png';
-import stereogram_ex1_s3 from '/img/instruments/videomancer/stereogram/stereogram_ex1_s3.png';
-import stereogram_ex1_s4 from '/img/instruments/videomancer/stereogram/stereogram_ex1_s4.png';
-import stereogram_ex1_s5 from '/img/instruments/videomancer/stereogram/stereogram_ex1_s5.png';
-import stereogram_ex1_s6 from '/img/instruments/videomancer/stereogram/stereogram_ex1_s6.png';
-import stereogram_ex2_s1 from '/img/instruments/videomancer/stereogram/stereogram_ex2_s1.png';
-import stereogram_ex2_s2 from '/img/instruments/videomancer/stereogram/stereogram_ex2_s2.png';
-import stereogram_ex2_s3 from '/img/instruments/videomancer/stereogram/stereogram_ex2_s3.png';
-import stereogram_ex2_s4 from '/img/instruments/videomancer/stereogram/stereogram_ex2_s4.png';
-import stereogram_ex2_s5 from '/img/instruments/videomancer/stereogram/stereogram_ex2_s5.png';
-import stereogram_ex2_s6 from '/img/instruments/videomancer/stereogram/stereogram_ex2_s6.png';
-import stereogram_ex3_s1 from '/img/instruments/videomancer/stereogram/stereogram_ex3_s1.png';
-import stereogram_ex3_s2 from '/img/instruments/videomancer/stereogram/stereogram_ex3_s2.png';
-import stereogram_ex3_s3 from '/img/instruments/videomancer/stereogram/stereogram_ex3_s3.png';
-import stereogram_ex3_s4 from '/img/instruments/videomancer/stereogram/stereogram_ex3_s4.png';
-import stereogram_ex3_s5 from '/img/instruments/videomancer/stereogram/stereogram_ex3_s5.png';
-import stereogram_ex3_s6 from '/img/instruments/videomancer/stereogram/stereogram_ex3_s6.png';
-
-# Stereogram
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: stereogram_source1_skull, after: stereogram_hero_s1 },
-    { label: "Cat", before: stereogram_source2_cat, after: stereogram_hero_s2 },
-    { label: "Elephant", before: stereogram_source3_elephant, after: stereogram_hero_s3 },
-    { label: "Pattern", before: stereogram_source4_pattern, after: stereogram_hero_s4 },
-    { label: "Woman", before: stereogram_source5_woman, after: stereogram_hero_s5 },
-    { label: "Paint", before: stereogram_source6_paint, after: stereogram_hero_s6 },
-  ]}
-/>
-*Hidden depths emerge from random-dot fields as the classic autostereogram algorithm transforms video luminance into cross-eyed 3D illusions.*
+![Stereogram hero image](/img/instruments/videomancer/stereogram/stereogram_hero_s1.png)
+*Stereogram transforming source video into a random-dot autostereogram pattern where hidden 3D depth emerges from the luma of the original image.*
 
 ---
 
 ## Overview
 
-Stereogram generates a Single Image Random Dot Stereogram (SIRDS) from the input video's luminance channel. The input brightness is interpreted as a depth map — brighter pixels appear closer, darker pixels recede — and the stereogram algorithm encodes this depth information into a repeating pattern of random dots that, when viewed with converged or diverged eyes, produces the illusion of three-dimensional surfaces floating in space. This is the same technique that made Magic Eye posters a worldwide phenomenon in the 1990s.
+Stereogram is a real-time autostereogram generator: the same class of images made famous by the ***Magic Eye*** book series of the 1990s. It converts ordinary video into a field of random dots that conceals a hidden three-dimensional shape. The depth illusion is encoded entirely in the horizontal repeat period of the dot pattern: brighter regions of the source image produce a shorter repeat stride, making those areas appear to float closer to the viewer when the image is viewed with ***divergent*** or ***parallel*** gaze.
 
-The algorithm works by horizontally shifting the repeat boundary of the dot pattern according to the local depth value derived from the input luminance. Where the source video is bright, the repeat period shortens, pulling that region visually closer to the viewer. Where the video is dark, the repeat period lengthens, pushing the region further away. The result is a flat image of apparently random dots that conceals a volumetric scene visible only through binocular disparity.
+Unlike printed autostereograms, Stereogram operates on live video. The hidden depth map changes continuously with the source signal, creating moving three-dimensional shapes embedded inside the noise. At subtle settings, Stereogram adds a shimmering, speckled texture over the source. At extreme settings, the source image vanishes entirely into a field of animated dots that only reveals its secret to viewers who can relax their focus.
 
-The name directly references the stereogram — any flat image that encodes three-dimensional depth information perceivable through binocular vision. The random-dot variant, pioneered by Béla Julesz in 1960, eliminated pictorial depth cues and proved that human stereoscopic perception operates on pure disparity, not on recognisable shapes. Stereogram brings this perceptual experiment to real-time video, turning any camera feed or video source into a depth-encoded illusion.
+:::note
+Viewing a stereogram requires a specific technique. Relax your eyes and look "through" the screen as if focusing on something far behind it. The repeating dot pattern will split into overlapping layers, and the hidden depth shape will emerge. It takes practice!
+:::
+
+### What's In a Name?
+
+The name ***Stereogram*** is a direct reference to the ***autostereogram***, an image that encodes binocular depth without requiring special glasses. The prefix ***stereo-*** means "solid" or "three-dimensional" in Greek, and ***-gram*** means "something drawn or written." A stereogram is, literally, a drawing of solidity (a flat image that tricks the brain into perceiving depth.)
 
 ---
 
 ## Quick Start
 
-1. **Start with guides**: Always enable Guide dots when first learning to view stereograms. They provide the vergence reference needed to "lock on" to the 3D image.
-2. **Narrow repeat width for beginners**: A repeat width of 30–40% is easiest to fuse. Widen only after you can comfortably perceive the depth.
-3. **High-contrast sources encode best**: Stereograms need clear luminance variation to create perceivable depth. Feed high-contrast, slowly-moving sources for the most dramatic 3D effect.
+1. Turn **Depth Rng** (Knob 2) to about 75%. This controls how strongly the source image's brightness drives the hidden depth. You should see random dots overlaid on the image, with their spacing subtly varying across bright and dark areas.
+2. Turn **Dot Dens** (Knob 1) to about 50%. The dot pattern's tile width narrows, creating a tighter repeating pattern. Try relaxing your eyes to see the hidden 3D shape emerge.
+3. Increase **Noise** (Knob 5) clockwise. The dots become higher contrast: brighter whites and deeper blacks: making the pattern more visible and easier to fuse stereoscopically.
+4. Flip **Depth** (Switch 8) to **Flat**. The dots burst into color, with random hues driven by the noise generator. The depth illusion still works, but now the texture is a colorful mosaic instead of monochrome static.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Stereogram loaded](/img/instruments/videomancer/stereogram/stereogram_control_panel.png)
+*Videomancer's front panel with Stereogram active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Dot Dens
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Dot Dens** controls the base repeat stride of the random-dot pattern: the horizontal distance, in pixels, before the pattern tiles and repeats. At 0%, fully counterclockwise, the stride is at its minimum (16 pixels), creating a tightly packed pattern with many narrow repetitions across the screen. As you turn the knob clockwise, the stride widens. At 100%, the stride reaches its maximum (128 pixels), producing broader tiles with fewer repetitions per line.
+
+Narrower strides make the stereoscopic depth easier to fuse because your eyes don't need to diverge as far, but the depth resolution is lower. Wider strides encode finer depth detail but require more eye divergence to perceive.
+
+:::tip
+Start with **Dot Dens** around 30–50% for the easiest stereoscopic viewing experience. Very narrow or very wide strides make the 3D illusion harder to see.
+:::
+
+---
+
+### Knob 2 — Depth Rng
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Depth Rng** controls how strongly the source image's luminance modulates the repeat stride. At 0%, the depth modulation is at its weakest: the repeat stride is nearly uniform across the image, and the hidden shape is barely perceptible. As **Depth Rng** increases, brighter areas of the source produce progressively shorter repeat strides (in SIRDS mode), exaggerating the apparent distance between foreground and background layers.
+
+At 100%, the modulation is at full strength and the depth effect is dramatic. Very high values can cause the pattern to break apart in high-contrast regions where the stride changes abruptly from one pixel to the next.
+
+---
+
+### Knob 3 — Repeat W
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Repeat W** controls the density of visible dots in the pattern: the fraction of the random texture that appears as bright dots versus dark background. At 0%, almost no dots pass the threshold and the output is mostly dark. As **Repeat W** increases, more and more of the random noise crosses the visibility threshold, filling the screen with dots. At 100%, nearly every pixel is a visible dot.
+
+For the clearest stereoscopic illusion, a moderate dot density (around 50%) works best. Too sparse, and the brain lacks enough texture to fuse. Too dense, and the pattern becomes a uniform wash.
+
+---
+
+### Knob 4 — Dot Size
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Dot Size** controls the vertical coarseness of the dot pattern by grouping adjacent scanlines together. At low values, every scanline generates a unique random pattern, producing fine, pixel-scale dots. As **Dot Size** increases, lines are grouped in pairs, then quads, then octets: each group shares the same random seed, producing vertically elongated rectangular dots.
+
+This parameter operates in four discrete steps despite being a continuous knob. Turning it gradually, you'll notice the dots jump from single-pixel height to two, four, and finally eight pixels tall. The coarser settings create a blockier, more textile-like texture.
+
+:::note
+Because only the top two bits of the knob's range select the grouping factor, the transition between steps happens at roughly 25%, 50%, and 75% of the knob's travel.
+:::
+
+---
+
+### Knob 5 — Noise
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Noise** controls the brightness range of the random dots: the contrast between the lightest and darkest values in the pattern. At 0%, all dots converge toward a flat mid-gray, producing a nearly invisible pattern. As **Noise** increases, the bright dots grow brighter and the dark dots grow darker, expanding symmetrically around the midpoint.
+
+At 100%, the full 10-bit range is used: bright dots hit peak white and dark regions fall to black. Higher contrast makes the stereoscopic pattern easier to perceive but also makes the effect more visually aggressive.
+
+---
+
+### Knob 6 — Contrast
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Contrast** is reserved for future use. In the current version, this knob has no effect on the output signal.
+
+---
+
+### Switch 7 — Pattern
+
+| Property | Value |
+|----------|-------|
+| Off | Dots |
+| On | Lines |
+| Default | Dots |
+
+**Pattern** selects between two depth-encoding methods. With the switch set to **Dots**, Stereogram operates in ***SIRDS*** (Single Image Random Dot Stereogram) mode: brighter source regions produce a shorter repeat stride, making those areas appear to float closer to the viewer. This is the classic autostereogram encoding used in Magic Eye images.
+
+With the switch set to **Lines**, the program enters ***wallpaper*** mode: brighter regions produce a longer stride, expanding the tile size rather than compressing it. Wallpaper mode creates a subtler, less distinctly three-dimensional effect: the pattern stretches and compresses like a rubber sheet rather than popping out in discrete depth layers.
+
+---
+
+### Switch 8 — Depth
+
+| Property | Value |
+|----------|-------|
+| Off | Source |
+| On | Flat |
+| Default | Source |
+
+**Depth** toggles the color mode of the dot pattern. With the switch set to **Source**, the dots are monochrome: only the Y (luma) channel carries the random pattern, while U and V are held at neutral gray. The result is a black-and-white noise texture, like television static.
+
+With the switch set to **Flat**, the dots become colorful. The LFSR's bit pattern drives the U and V chroma channels in addition to Y, generating randomly colored dots. The stereoscopic depth illusion still works in color mode: the repeat structure is unchanged: but the visual texture becomes a vibrant confetti of random hues.
+
+:::tip
+Color dots make the stereogram more visually interesting but can make the 3D illusion slightly harder to perceive, because the eye is more easily distracted by the chromatic variation.
+:::
+
+---
+
+### Switch 9 — Color
+
+| Property | Value |
+|----------|-------|
+| Off | Mono |
+| On | Color |
+| Default | Mono |
+
+**Color** toggles the animation of the dot pattern. With the switch set to **Mono**, the random seed is fixed: the same dot pattern repeats identically frame after frame, producing a static texture that holds still while the depth map moves with the source video.
+
+With the switch set to **Color**, the LFSR seed is varied every frame by XORing the frame counter into the line seed. The dot pattern shimmers and crawls, creating a boiling, animated noise texture. The depth illusion remains but the surface texture is in constant motion.
+
+---
+
+### Switch 10 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Animate** is reserved for future use. In the current version, this toggle has no effect on the output signal.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Stereogram processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the stereogram pattern.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (original) and wet (stereogram) signals. At 0%, the output is the unprocessed source video. At 100% (the default), the output is the full stereogram pattern. Intermediate values blend the two, progressively hiding the source image inside the dot texture.
+
+:::tip
+A **Mix** value around 60–80% lets the source image ghost through the dot pattern, giving viewers a visual hint of the hidden depth shape without needing to fuse the stereogram. This is useful for demonstration or performance settings where not everyone in the audience can see autostereograms.
+:::
 
 ---
 
 ## Background
 
-### Random-Dot Stereograms
+### Autostereograms
 
-Béla Julesz created the first computer-generated random-dot stereogram (RDS) at Bell Labs in 1960 to study binocular depth perception. By presenting each eye with a slightly offset pattern of random dots — with no monocular shape cues — Julesz demonstrated that the human visual system extracts depth purely from retinal disparity. The SIRDS (Single Image Random Dot Stereogram) extends this by encoding both eye views into a single image through periodic horizontal repetition, allowing a single printed image to produce a 3D effect when viewed with the correct vergence.
+An ***autostereogram*** is a single flat image that produces a perception of three-dimensional depth without glasses, mirrors, or any other optical aid. The technique exploits ***binocular disparity***: the slight difference between the views from each eye: by hiding repeating patterns at varying intervals across the image. When the viewer relaxes their eyes so that each eye locks onto a different repetition of the pattern, the brain interprets the offset as depth.
 
-### The SIRDS Algorithm
+The most common form is the ***single image random dot stereogram*** (SIRDS), popularized by the Magic Eye franchise in the 1990s. In a SIRDS, the entire image is covered in seemingly random noise that tiles horizontally at a varying repeat period. Objects "closer" to the viewer have a shorter repeat period; objects "farther" have a longer one. The brain fuses the overlapping noise columns and perceives a sculpted surface floating in front of or behind the image plane.
 
-The core algorithm works line by line. A random dot pattern is generated for the leftmost repeat-width columns. Then, for each subsequent column, the pixel value is copied from the column one repeat-width to the left — but shifted by a depth-dependent offset. This offset is derived from the luminance of the source image at that pixel position. Where the luminance is high (bright), the offset reduces the effective repeat width, creating a disparity that the brain interprets as a surface closer to the viewer. Where luminance is low (dark), the offset increases the repeat width, pushing the surface away.
+### Random dot generation
 
-### Depth from Luminance
+Stereogram uses a 16-bit ***linear feedback shift register*** (LFSR) to generate its pseudo-random dot pattern. An LFSR is a shift register whose input bit is a linear function (XOR) of selected output bits. It cycles through a long sequence of seemingly random states before repeating. The lfsr16 module produces a 16-bit output on every clock cycle, providing both the dot brightness (upper 8 bits) and the density test value (lower 8 bits) simultaneously.
 
-In Stereogram's implementation, the input Y channel is directly mapped to depth displacement. The Depth parameter scales this mapping — at low Depth, even bright/dark extremes produce only subtle depth variation; at high Depth, the full luminance range creates dramatic depth excursions. This luminance-to-depth mapping is the same principle used in displacement mapping for 3D rendering, where a grayscale heightmap drives surface deformation.
+The key to the stereogram illusion is that the LFSR is ***re-seeded*** at regular horizontal intervals. Each time the repeat counter wraps to zero, the LFSR is loaded with a seed derived from the current scanline number. Because the same seed always produces the same output sequence, the random pattern tiles perfectly. The depth illusion comes from varying the wrap point: brighter pixels shorten the interval between re-seeds, compressing the tile and shifting the binocular correspondence.
 
-### LFSR Pattern Generation
+### Repeat stride and depth encoding
 
-The random dot pattern is generated by a 16-bit Linear Feedback Shift Register (LFSR), which produces a deterministic pseudo-random sequence. The LFSR cycles through 65535 states before repeating, providing sufficient randomness for the dot field. The Dot Density parameter controls a threshold comparison against the LFSR output, determining what fraction of pixels become visible dots versus background. Higher density creates a denser dot field with finer spatial resolution for depth encoding.
+The repeat stride is the core mechanism of the stereogram illusion. It is computed per pixel as:
 
-### Magic Eye and Popular Culture
+- **SIRDS mode**: stride = base_stride − depth_adjustment
+- **Wallpaper mode**: stride = base_stride + depth_adjustment
 
-The commercial Magic Eye books, first published in 1993 by N.E. Thing Enterprises, brought SIRDS to mass culture. The technique was extended to include coloured patterns and hidden pictorial messages, but the fundamental algorithm remained the same: periodic horizontal repetition with depth-modulated offsets. Stereogram recreates this technique in real-time video, allowing any input signal to be transformed into a continuously-updating depth illusion.
+The depth_adjustment is derived from the source luma, scaled by the **Depth Rng** parameter. In SIRDS mode, brighter values shorten the stride, making those regions appear closer. The minimum stride is clamped to 8 pixels to prevent the pattern from collapsing. In wallpaper mode, brightness increases the stride, creating a stretching effect rather than a depth pop.
 
 
 ---
 
 ## Signal Flow
 
-```
-                              ┌────────────────────┐
-data_in ─────────────────────►│ Stage 0: Y → Depth │
-                              │ (scale by depth pot)│
-                              └──────┬─────────────┘
-                                     │
-                                     ▼
-                              ┌────────────────────┐
-                              │ Stage 1: LFSR      │
-                              │ random pattern gen  │
-                              └──────┬─────────────┘
-                                     │
-                                     ▼
-                              ┌────────────────────┐
-                              │ Stage 2: Horiz.    │
-                              │ repeat + depth     │
-                              │ offset shift       │
-                              └──────┬─────────────┘
-                                     │
-                                     ▼
-                              ┌────────────────────┐
-                              │ Stage 3: Dot dens. │
-                              │ LFSR threshold     │
-                              └──────┬─────────────┘
-                                     │
-                                     ▼
-                              ┌────────────────────┐
-                              │ Stage 4: Dot shape │
-                              │ (Manhattan round)  │
-                              └──────┬─────────────┘
-                                     │
-                                     ▼
-                              ┌────────────────────┐
-                              │ Stage 5: Guide dots│
-                              │ (top of frame)     │
-                              └──────┬─────────────┘
-                                     │
-                                     ▼
-                              ┌────────────────────┐
-                              │ Stage 6: Proc Amp  │
-                              │ contrast/bright    │
-                              └──────┬─────────────┘
-                                     │
-                                     ▼
-                              ┌────────────────────┐
-                              │ Stage 7: Inv + Mix │
-                              └──────┬─────────────┘
-                                     │
-data_in ──► [sync delay] ──► dry ──► Interpolator ◄── wet
-                                       (4 clk)
-                                          │
-                                          ▼
-                                      data_out
-```
+### Signal Flow Notes
 
-The pipeline has a critical horizontal dependency: each pixel's value in Stage 2 depends on a pixel one repeat-width to the left, creating a left-to-right data dependency that cannot be parallelised within a scanline. The LFSR in Stage 1 provides the seed randomness only for the first repeat-width columns; all subsequent columns derive their values from the horizontal repeat with depth-dependent offset. This means the depth illusion quality depends heavily on the Repeat Width parameter — too narrow and the depth resolution is poor, too wide and the viewer's eyes must diverge uncomfortably far to lock on.
+Two mechanisms work together to create the stereogram illusion:
 
-The Dot Density and Dot Shape stages (3–4) are post-filtering operations that modify the appearance of the already-depth-encoded pattern. Reducing dot density creates sparse constellations of dots with more background space; round dot shape softens the square-pixel grid into circular elements. Neither stage affects the underlying depth encoding — they are purely cosmetic modifiers.
+1. **Horizontal tiling via LFSR re-seeding.** The repeat counter wraps at the current stride value and re-seeds the LFSR with a line-dependent seed on every wrap. Because the same seed always produces the same pseudo-random sequence, the dot pattern tiles seamlessly across the scanline. The tiling is what allows the brain to fuse adjacent repetitions into a depth percept.
+
+2. **Luma-driven stride modulation.** The source image's brightness shifts the wrap point of the repeat counter, varying the tile width pixel by pixel. In SIRDS mode, brighter pixels compress the tile (shorter stride), and darker pixels expand it (longer stride). The result is that each scanline contains the same random data repeated at varying intervals that encode a depth profile derived from the source video's luminance.
+
+:::tip
+The vertical pattern scale (**Dot Size**) groups adjacent lines to share the same seed, creating vertically elongated dots. This is important for stereo fusion: very fine single-pixel dots are harder for the brain to match between left and right eye views.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={stereogram_control_panel} alt="Videomancer front panel with Stereogram loaded"/>
-*Videomancer's front panel with Stereogram active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises progress from a simple static stereogram to animated color patterns, building familiarity with the depth encoding and visual texture parameters.
+### Exercise 1: Your First Magic Eye
 
-### Rotary Potentiometers (Knobs 1–6)
+![Your First Magic Eye result](/img/instruments/videomancer/stereogram/stereogram_ex1_s1.png)
+*Your First Magic Eye — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Dot Dens
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-Controls the density of the random dot pattern. Higher values produce more visible dots per unit area, creating a denser field with finer spatial resolution for depth perception. At low values, the dot field becomes sparse — individual dots are clearly separated, making the stereogram harder to "lock on" to but producing a more ethereal, star-field appearance. At high values, the field approaches a continuous texture where nearly every pixel is active, encoding depth with maximum fidelity but creating a visually busier pattern.
+#### Learning Outcomes
 
----
+A classic black-and-white random-dot stereogram with a visible hidden depth shape, using a high-contrast source as the depth map.
 
-#### Knob 2 — Depth Rng
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+#### Key Concepts
 
-At low values, depth variation is subtle and the stereogram appears nearly flat, requiring careful viewing to detect any 3D effect. At high values, the depth excursion is dramatic, creating strongly-layered surfaces that pop out or recede significantly. Excessive depth can cause the pattern to break down, as the horizontal shift exceeds the brain's ability to fuse the binocular disparity. Internally, scales the depth displacement amount — how much the input luminance shifts the horizontal repeat boundary.
+- SIRDS depth encoding hides a 3D shape inside random noise
+- The repeat stride is the key to the illusion
+- Source luminance drives the depth map
 
----
+#### Video Source
 
-#### Knob 3 — Repeat W
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+A still image or slow-moving footage with strong bright-dark contrast: a white shape on a black background works best (geometric shapes, text, or a spotlight on a dark stage).
 
-Sets the base repeat width of the dot pattern — the horizontal distance between identical pattern repetitions. Narrower widths are easier to view (the eyes diverge less) but provide less spatial resolution for the depth encoding. Wider widths create finer depth detail but require the viewer to diverge their eyes further, which is more difficult and fatiguing. The optimal width depends on the viewing distance and the viewer's eye separation.
+#### Steps
 
----
+1. **Set the base pattern**: Turn **Dot Dens** (Knob 1) to about 40%. The repeat stride is now moderate (wide enough to encode depth, narrow enough to fuse easily.)
+2. **Maximize depth**: Turn **Depth Rng** (Knob 2) to about 75%. The source brightness now strongly modulates the repeat stride.
+3. **Fill in the dots**: Set **Repeat W** (Knob 3) to about 50% for a balanced mix of bright and dark dots.
+4. **Enlarge the dots**: Turn **Dot Size** (Knob 4) to about 60% so the dots are two or four pixels tall (easier for your eyes to lock onto.)
+5. **Crank the contrast**: Turn **Noise** (Knob 5) to about 80%. The dots should be clearly visible as black-and-white speckle.
+6. **Try to see it**: Relax your eyes and look through the screen. The white regions of your source should appear to float forward out of the noise field.
 
-#### Knob 4 — Dot Size
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+#### Settings
 
-Injects additional pseudo-random noise into the dot pattern, breaking up the regularity of the LFSR sequence. At zero, the dot pattern is purely deterministic from the LFSR. As Noise increases, additional random perturbation is added, creating a more organic, less regular dot field. This can help disguise the repeating structure of the stereogram at the cost of slightly degrading the depth encoding precision.
-
----
-
-#### Knob 5 — Noise
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Applies contrast scaling to the output signal. The Y channel is centred at 512, scaled by the contrast factor, then re-centred. At the initial midpoint, contrast is unity. Below midpoint, the dots become more gray, reducing the contrast between dot and background. Above midpoint, dots become crisper with deeper blacks and brighter whites. High contrast makes the stereogram easier to see as individual dots but does not affect the depth encoding.
+| Control | Value |
+|---------|-------|
+| Dot Dens | 40% |
+| Depth Rng | 75% |
+| Repeat W | 50% |
+| Dot Size | 60% |
+| Noise | 80% |
+| Contrast | 50% |
+| Pattern | Dots |
+| Depth | Source |
+| Color | Mono |
+| Animate | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-#### Knob 6 — Contrast
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+### Exercise 2: Animated Color Stereogram
 
-Shifts the output brightness after contrast scaling. At the midpoint, no offset is applied. Below midpoint, the overall image darkens; above, it brightens. This is purely a cosmetic adjustment that shifts the tonal centre of the dot pattern without affecting the depth information encoded in the horizontal repetition structure.
+![Animated Color Stereogram result](/img/instruments/videomancer/stereogram/stereogram_ex2_s1.png)
+*Animated Color Stereogram — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-### Toggle Switches (Switches 7–11)
+#### Learning Outcomes
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Pattern** | Dots | Lines |
-| **8 — Depth** | Source | Flat |
-| **9 — Color** | Mono | Color |
-| **10 — Animate** | Off | On |
-| **11 — Bypass** | Off | On |
+A colorful, animated stereogram with the source image faintly visible beneath the dot pattern.
 
-The five toggles control the visual character and accessibility of the stereogram. Color switches between monochrome and colour dot fields. Dot Shape softens the pixel grid. Guide adds convergence guide dots to help the viewer lock on. Invert flips the tonal polarity. Bypass disables all processing. Color and Guide are the most viewer-impactful: colour dots are more visually interesting but can interfere with depth perception, while Guide dots are essential for viewers unfamiliar with the free-viewing technique.
+#### Key Concepts
 
----
+- Color dots add chromatic texture without destroying the depth illusion
+- Animation makes the surface shimmer while the depth shape remains stable
+- Mix blending reveals the source as a ghost image
 
-### Linear Potentiometer (Fader 12)
+#### Video Source
 
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
+A slowly moving video source: a face, a hand, or drifting abstract shapes. Moderate contrast is sufficient.
 
-Crossfades between the dry (original) and wet (stereogram) signal using interpolators. At 0% the output is the unmodified input; at 100% the output is the full stereogram. Intermediate values overlay the dot pattern onto the original image, creating a ghosted effect where the source video shows through the stereogram texture — useful for confirming the depth map correspondence.
+#### Steps
 
+1. **Start from Exercise 1 settings** and verify the depth illusion is working.
+2. **Enable color**: Flip **Depth** (Switch 8) to **Flat**. The monochrome dots explode into random color. Try to fuse the stereogram again: the 3D shape should still be visible, now rendered in a confetti texture.
+3. **Enable animation**: Flip **Color** (Switch 9) to **Color**. The dots begin to shimmer and crawl. The depth shape remains stable because it's encoded in the repeat stride, not the dot values.
+4. **Blend in the source**: Lower **Mix** (Fader 12) to about 70%. The original video ghosts through the dot texture, giving viewers a hint of what the hidden shape is.
+5. **Adjust density**: Sweep **Repeat W** (Knob 3) slowly. Notice how the visual weight of the dot field changes from sparse snow to dense confetti.
 
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
+#### Settings
 
-Routes the unprocessed input signal directly to the output, bypassing all Stereogram processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises progress from basic stereogram generation through depth control to creating viewable 3D depth illusions from live video.
-
-### Exercise 1: First Stereogram
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: stereogram_source1_skull, after: stereogram_ex1_s1 },
-    { label: "Cat", before: stereogram_source2_cat, after: stereogram_ex1_s2 },
-    { label: "Elephant", before: stereogram_source3_elephant, after: stereogram_ex1_s3 },
-    { label: "Pattern", before: stereogram_source4_pattern, after: stereogram_ex1_s4 },
-    { label: "Woman", before: stereogram_source5_woman, after: stereogram_ex1_s5 },
-    { label: "Paint", before: stereogram_source6_paint, after: stereogram_ex1_s6 },
-  ]}
-/>
-*First Stereogram — simulated result across source images.*
-**Source**: Simple high-contrast geometric shapes — a white circle on a black background, or bold text.
-
-**What You'll Create**: Generate a basic random-dot stereogram and learn to perceive the hidden depth.
-
-1. **Default settings**: Start with all controls at their initial values.
-2. **Enable guides**: Toggle Guide On. Two reference dots appear at the top of the frame.
-3. **View the stereogram**: Relax your eyes and look "through" the screen until the guide dots split into three. The hidden shape should emerge as a floating surface.
-4. **Adjust depth**: Increase Depth to about 60%. The shape pops out more dramatically.
-5. **Reduce depth**: Set Depth to about 20%. The shape is still visible but subtler.
-6. **Compare**: Use Bypass to see the original source and correlate bright regions with the perceived depth.
-
-**Key concepts**: Bright regions in the source appear closer in the stereogram, the guide dots help establish the correct vergence angle, depth pot controls the strength of the 3D illusion
+| Control | Value |
+|---------|-------|
+| Dot Dens | 40% |
+| Depth Rng | 75% |
+| Repeat W | 50% |
+| Dot Size | 60% |
+| Noise | 80% |
+| Contrast | 50% |
+| Pattern | Dots |
+| Depth | Flat |
+| Color | Color |
+| Animate | Off |
+| Bypass | Off |
+| Mix | 70% |
 
 ---
 
-### Exercise 2: Depth Control with Video
+### Exercise 3: Wallpaper Mode Textures
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: stereogram_source1_skull, after: stereogram_ex2_s1 },
-    { label: "Cat", before: stereogram_source2_cat, after: stereogram_ex2_s2 },
-    { label: "Elephant", before: stereogram_source3_elephant, after: stereogram_ex2_s3 },
-    { label: "Pattern", before: stereogram_source4_pattern, after: stereogram_ex2_s4 },
-    { label: "Woman", before: stereogram_source5_woman, after: stereogram_ex2_s5 },
-    { label: "Paint", before: stereogram_source6_paint, after: stereogram_ex2_s6 },
-  ]}
-/>
-*Depth Control with Video — simulated result across source images.*
-**Source**: A slowly-moving face or hand — something with natural depth variation and luminance contrast.
+![Wallpaper Mode Textures result](/img/instruments/videomancer/stereogram/stereogram_ex3_s1.png)
+*Wallpaper Mode Textures — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore how real-world luminance maps to perceived stereogram depth in real time.
+***A description of the exercise illustration.***
 
-1. **Set repeat width**: Start with Repeat Width at about 40% for comfortable viewing.
-2. **Moderate depth**: Set Depth to about 50%.
-3. **Observe motion**: As the face/hand moves, the stereogram depth map updates in real time. Bright highlights (forehead, nose tip) project forward; shadows recede.
-4. **Increase repeat width**: Move to about 65%. The depth resolution improves but viewing becomes harder.
-5. **Add noise**: Set Noise to about 30%. The pattern becomes more organic, less regular.
-6. **Round dots**: Toggle Dot Shape to Round. The individual dots become softer.
+#### Learning Outcomes
 
-**Key concepts**: Real-time luminance changes create dynamic depth surfaces, repeat width trades viewing comfort against depth resolution, noise breaks up pattern regularity
+An abstract, pulsating wallpaper texture that stretches and compresses with the source brightness—more of a decorative pattern generator than a hidden-depth illusion.
 
----
+#### Key Concepts
 
-### Exercise 3: Colour Stereogram with Full Processing
+- Wallpaper mode encodes depth as tile expansion rather than compression
+- Extreme settings create abstract, non-stereoscopic textures
+- Combining narrow stride with high depth yields visual breakup
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: stereogram_source1_skull, after: stereogram_ex3_s1 },
-    { label: "Cat", before: stereogram_source2_cat, after: stereogram_ex3_s2 },
-    { label: "Elephant", before: stereogram_source3_elephant, after: stereogram_ex3_s3 },
-    { label: "Pattern", before: stereogram_source4_pattern, after: stereogram_ex3_s4 },
-    { label: "Woman", before: stereogram_source5_woman, after: stereogram_ex3_s5 },
-    { label: "Paint", before: stereogram_source6_paint, after: stereogram_ex3_s6 },
-  ]}
-/>
-*Colour Stereogram with Full Processing — simulated result across source images.*
-**Source**: Any colourful, dynamic footage — music visuals, abstract patterns, or natural scenes.
+#### Video Source
 
-**What You'll Create**: Create a richly textured colour stereogram with optimised contrast and dot density.
+High-contrast footage with motion: a dancer, flickering candle, or oscilloscope pattern. The movement will animate the tile stretching in real time.
 
-1. **Enable colour**: Toggle Color to Color. The dots gain random hues.
-2. **High density**: Set Dot Density to about 75%. The field becomes a dense colour mosaic.
-3. **Moderate depth**: Depth at about 45%.
-4. **Increase contrast**: Set Contrast to about 65%. Dots become crisper.
-5. **Slight brightness lift**: Set Brightness to about 55%. The background lightens slightly.
-6. **Round dots**: Toggle Dot Shape to Round for softer dot appearance.
-7. **Try invert**: Toggle Invert On. The colour dots now sit in a bright field — a different aesthetic.
-8. **Mix to overlay**: Reduce Mix to about 60%. The original video ghosting shows through.
+#### Steps
 
-**Key concepts**: Colour dots add visual interest but may slightly impede depth perception, high contrast and density improve dot visibility, mix blending creates overlay effects, invert changes the figure/ground relationship
+1. **Switch to wallpaper mode**: Flip **Pattern** (Switch 7) to **Lines**. The depth encoding reverses: bright areas now produce wider tiles instead of narrower ones.
+2. **Narrow the base stride**: Turn **Dot Dens** (Knob 1) to about 20%. The tiles become very narrow at baseline.
+3. **Full depth**: Turn **Depth Rng** (Knob 2) to 100%. Bright regions stretch the pattern dramatically while dark regions stay tightly packed.
+4. **Coarsen vertically**: Turn **Dot Size** (Knob 4) to about 80% for wide, blocky dots that emphasize the stretching effect.
+5. **Enable color and animation**: Flip **Depth** (Switch 8) to **Flat** and **Color** (Switch 9) to **Color**. The wallpaper becomes a shimmering, colorful mosaic that breathes with the source video.
+6. **Sweep density**: Turn **Repeat W** (Knob 3) from 0% to 100%. Watch the wallpaper transition from sparse highlights to a saturated textile.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Dot Dens | 20% |
+| Depth Rng | 100% |
+| Repeat W | 65% |
+| Dot Size | 80% |
+| Noise | 70% |
+| Contrast | 50% |
+| Pattern | Lines |
+| Depth | Flat |
+| Color | Color |
+| Animate | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
-
-
-## Tips
-
-- **Mono for depth, Color for show**: Monochrome dot fields are easier to perceive in 3D. Switch to colour for visual interest once you've confirmed the depth structure.
-- **Moderate depth prevents breakdown**: Depth values above 70% can cause pattern tearing where the horizontal shift exceeds the repeat width. Stay at 40–60% for reliable fusion.
-- **Round dots + high density = organic texture**: Round dots at 70%+ density create a rich, stippled look reminiscent of pointillist painting.
-- **Mix for depth overlay**: At 50–60% Mix, the original video ghosts through the stereogram, creating a hybrid visualization where the source and its depth encoding coexist.
-- **Try divergent and convergent**: Some viewers find it easier to diverge (look through the screen) while others converge (cross eyes). Both produce depth, but with inverted polarity.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Binocular disparity** | The slight difference in horizontal position between the images seen by the left and right eyes, which the brain uses to compute depth. |
-| **BT.601** | The ITU-R standard defining the YUV colour encoding used in standard-definition video and as the native colour space in Videomancer. |
-| **Convergence** | The inward rotation of the eyes to fixate on a near object. In stereogram viewing, convergent viewing crosses the eyes to fuse the pattern. |
-| **Depth map** | A grayscale image where pixel brightness represents distance from the viewer, used here to drive the stereogram displacement. |
-| **Divergence** | The outward rotation of the eyes beyond parallel (looking "through" the image). The standard technique for viewing Magic Eye stereograms. |
-| **Free-viewing** | Perceiving stereoscopic depth without optical aids, using either divergent or convergent eye techniques. |
-| **LFSR** | Linear Feedback Shift Register; a shift register producing a pseudo-random bit sequence used for dot pattern generation. |
-| **Manhattan distance** | The sum of absolute horizontal and vertical differences from a point, used here to approximate circular dot shapes from square pixels. |
-| **SIRDS** | Single Image Random Dot Stereogram; a flat image encoding binocular depth information through periodic horizontal repetition of random-dot patterns. |
-| **Vergence** | The simultaneous movement of both eyes to obtain or maintain binocular vision. The angle between the eyes' lines of sight. |
+- **Autostereogram**: A single flat image that produces the illusion of three-dimensional depth when viewed with a specific eye convergence technique, without requiring glasses or other aids.
+
+- **Binocular Disparity**: The slight difference between the images seen by the left and right eyes, which the brain uses to perceive depth.
+
+- **Divergent Gaze**: A viewing technique where the eyes focus on a point behind the image plane, causing each eye to fixate on a different repetition of the pattern; the primary method for viewing autostereograms.
+
+- **LFSR**: Linear Feedback Shift Register: a shift register that generates a deterministic but seemingly random sequence of bits, used here to create the pseudo-random dot texture.
+
+- **Luma**: The brightness component (Y) of a YUV video signal, used by Stereogram as the depth map that modulates the repeat stride.
+
+- **Repeat Stride**: The horizontal distance, in pixels, between re-seeds of the random number generator; the fundamental parameter that encodes stereoscopic depth.
+
+- **SIRDS**: Single Image Random Dot Stereogram: the classic autostereogram format where depth is encoded as variations in the horizontal repeat period of a random dot pattern.
+
+- **Wallpaper Stereogram**: A variant where the repeating pattern is a recognizable motif rather than random dots; in Stereogram's wallpaper mode, the tile size varies with brightness rather than encoding pop-out depth.
 
 ---

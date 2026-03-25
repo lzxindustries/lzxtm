@@ -14,9 +14,9 @@ description: "In the 1970s, a single machine dominated the world of broadcast mo
 
 ## Overview
 
-**Elastica** is a per-scanline horizontal displacement engine inspired by the ***Scanimate***, the legendary analog computer animation system of the 1970s. Its core trick is simple: each line of the image is shifted left or right by an amount determined by a programmable waveshape. The result is a fluid bowing, rippling, shearing, or stacking of the picture that feels organic and alive — the visual equivalent of dragging your fingers across wet ink.
+**Elastica** is a per-scanline horizontal displacement engine inspired by the ***Scanimate***, the legendary analog computer animation system of the 1970s. Its core trick is simple: each line of the image is shifted left or right by an amount determined by a programmable waveshape. The result is a fluid bowing, rippling, shearing, or stacking of the picture that feels organic and alive: the visual equivalent of dragging your fingers across wet ink.
 
-Elastica generates its displacement pattern using a ***direct digital synthesis*** (DDS) phase accumulator that advances once per scanline. Four waveshapes — sine, triangle, sawtooth, and square — create different flavors of distortion. A second DDS handles vertical squeeze and stretch, and the two generators can be cross-modulated for complex two-dimensional warping. When animation is enabled, the phase scrolls continuously, recreating the signature Scanimate "ripple crawl" that made the original hardware so mesmerizing.
+Elastica generates its displacement pattern using a ***direct digital synthesis*** (DDS) phase accumulator that advances once per scanline. Four waveshapes: sine, triangle, sawtooth, and square: create different flavors of distortion. A second DDS handles vertical squeeze and stretch, and the two generators can be cross-modulated for complex two-dimensional warping. When animation is enabled, the phase scrolls continuously, recreating the signature Scanimate "ripple crawl" that made the original hardware so mesmerizing.
 
 :::tip
 Start with a sine wave and low amplitude. Even subtle displacement transforms static video into something that seems to breathe.
@@ -24,13 +24,13 @@ Start with a sine wave and low amplitude. Even subtle displacement transforms st
 
 ### What's In a Name?
 
-The name ***Elastica*** evokes the mathematical concept of the ***elastica curve*** — the shape a flexible rod takes when bent. It also carries a direct, tactile meaning: the image becomes elastic, stretching and compressing as if printed on a rubber sheet. The Scanimate connection adds a layer of history — Elastica brings the spirit of analog computer animation into a modern FPGA pipeline.
+The name ***Elastica*** evokes the mathematical concept of the ***elastica curve***: the shape a flexible rod takes when bent. It also carries a direct, tactile meaning: the image becomes elastic, stretching and compressing as if printed on a rubber sheet. The Scanimate connection adds a layer of history: Elastica brings the spirit of analog computer animation into a modern FPGA pipeline.
 
 ---
 
 ## Quick Start
 
-1. Set **H Amplitude** (Knob 2) to about 50%. The image bows into a smooth sine wave pattern — scanlines shift left and right, bending the picture like a funhouse mirror.
+1. Set **H Amplitude** (Knob 2) to about 50%. The image bows into a smooth sine wave pattern: scanlines shift left and right, bending the picture like a funhouse mirror.
 2. Sweep **H Frequency** (Knob 1) from low to high. Low frequencies produce wide, sweeping bends; high frequencies create tight ripples.
 3. Toggle **Animate** (Switch 11) to **On** and adjust **Anim Speed** (Knob 6). The warp pattern scrolls vertically, creating the classic Scanimate ripple crawl.
 
@@ -59,7 +59,7 @@ The name ***Elastica*** evokes the mathematical concept of the ***elastica curve
 | Range | 0.0% – 100.0% |
 | Default | 0.0% |
 
-**H Amplitude** controls the maximum horizontal pixel displacement. At 0%, there is no displacement — the image passes through unchanged. As the value increases, scanlines shift farther left and right, creating increasingly dramatic warping. At 100%, displacement reaches the full line buffer width, producing extreme distortion where large portions of the image may be pushed off-screen.
+**H Amplitude** controls the maximum horizontal pixel displacement. At 0%, there is no displacement: the image passes through unchanged. As the value increases, scanlines shift farther left and right, creating increasingly dramatic warping. At 100%, displacement reaches the full line buffer width, producing extreme distortion where large portions of the image may be pushed off-screen.
 
 :::warning
 At high amplitudes with **Edge Mode** set to **Clamp**, displaced pixels that fall outside the active area are replaced with black. Set **Edge Mode** to **Wrap** to avoid black borders and instead wrap the image around.
@@ -111,7 +111,7 @@ V Amplitude has no visible effect unless **V-Warp** (Switch 9) is turned **On**.
 | Range | 0.0% – 100.0% |
 | Default | 25.0% |
 
-**Anim Speed** has two behaviors depending on the state of **Animate** (Switch 11). When Animate is **On**, this knob controls the scroll speed of the displacement pattern — the phase accumulator advances each frame, and the speed setting determines how far it moves per frame. Low values produce a slow, hypnotic drift; high values create rapid scrolling. When Animate is **Off**, this knob sets a static phase offset, letting you manually position the wave pattern.
+**Anim Speed** has two behaviors depending on the state of **Animate** (Switch 11). When Animate is **On**, this knob controls the scroll speed of the displacement pattern: the phase accumulator advances each frame, and the speed setting determines how far it moves per frame. Low values produce a slow, hypnotic drift; high values create rapid scrolling. When Animate is **Off**, this knob sets a static phase offset, letting you manually position the wave pattern.
 
 ---
 
@@ -171,7 +171,7 @@ V Amplitude has no visible effect unless **V-Warp** (Switch 9) is turned **On**.
 | On | On |
 | Default | On |
 
-**Animate** enables or disables continuous phase scrolling of the displacement pattern. When **On**, the animation DDS advances each frame, and **Anim Speed** (Knob 6) controls the scroll rate. The warp pattern crawls vertically through the image — this is the signature Scanimate ripple effect. When **Off**, the phase is static and **Anim Speed** sets a fixed phase offset instead.
+**Animate** enables or disables continuous phase scrolling of the displacement pattern. When **On**, the animation DDS advances each frame, and **Anim Speed** (Knob 6) controls the scroll rate. The warp pattern crawls vertically through the image: this is the signature Scanimate ripple effect. When **Off**, the phase is static and **Anim Speed** sets a fixed phase offset instead.
 
 ---
 
@@ -189,7 +189,7 @@ V Amplitude has no visible effect unless **V-Warp** (Switch 9) is turned **On**.
 Each waveshape creates a fundamentally different character of distortion. Sine is the most natural, triangle is sharper at the peaks, sawtooth produces a persistent lean, and square creates hard-edged stacking where scanlines jump between two fixed offsets.
 
 :::tip
-***Sine is the classic Scanimate shape.*** Start there. Triangle and sawtooth add edge and asymmetry. Square is dramatic — entire blocks of the image shift sideways like a deck of cards.
+***Sine is the classic Scanimate shape.*** Start there. Triangle and sawtooth add edge and asymmetry. Square is dramatic: entire blocks of the image shift sideways like a deck of cards.
 :::
 
 :::
@@ -211,67 +211,30 @@ Each waveshape creates a fundamentally different character of distortion. Sine i
 
 ### Scanimate and Analog Video Animation
 
-The ***Scanimate*** was an analog computer built by Computer Image Corporation in the late 1960s. It manipulated video signals in real time by applying mathematical transformations to the deflection circuits of a CRT monitor, then re-scanning the distorted image with a camera. The result was fluid, organic animation of text and graphics — the kind you'd see on 1970s TV show intros, news titles, and advertisements. Scanimate's signature move was per-scanline horizontal displacement: each line of the raster could be independently shifted left or right, creating bowing, rippling, and flowing effects that felt hand-animated.
+The ***Scanimate*** was an analog computer built by Computer Image Corporation in the late 1960s. It manipulated video signals in real time by applying mathematical transformations to the deflection circuits of a CRT monitor, then re-scanning the distorted image with a camera. The result was fluid, organic animation of text and graphics: the kind you'd see on 1970s TV show intros, news titles, and advertisements. Scanimate's signature move was per-scanline horizontal displacement: each line of the raster could be independently shifted left or right, creating bowing, rippling, and flowing effects that felt hand-animated.
 
 Elastica recreates this fundamental technique digitally. Instead of bending electron beams, it reads pixels from a line buffer at displaced addresses. The math is the same; the medium is different.
 
 ### Direct Digital Synthesis
 
-Elastica's warp patterns are generated by a ***DDS phase accumulator*** — a counter that advances by a programmable step (the "tuning word") on each clock event. The upper bits of the accumulator address a waveshape function. Because the accumulator wraps naturally at its word size, the resulting waveshape is inherently periodic. The frequency is set by the tuning word: larger steps mean faster cycling.
+Elastica's warp patterns are generated by a ***DDS phase accumulator***: a counter that advances by a programmable step (the "tuning word") on each clock event. The upper bits of the accumulator address a waveshape function. Because the accumulator wraps naturally at its word size, the resulting waveshape is inherently periodic. The frequency is set by the tuning word: larger steps mean faster cycling.
 
 Elastica uses two independent DDS generators. The horizontal DDS advances once per scanline to generate the spatial displacement pattern. The animation DDS advances once per frame to scroll the pattern over time. Their outputs are summed to produce the final phase, so animation adds a continuously changing offset to the spatial warp.
 
 ### Dual-Bank Line Buffer
 
-The displacement engine needs to read pixels at arbitrary horizontal positions within the current scanline while simultaneously writing new pixels. Elastica solves this with a ***ping-pong buffer*** — two banks of block RAM that alternate roles each line. While one bank captures incoming pixels, the other serves displaced reads. The `mirror_delay_line_slv` module manages this swap, providing single-cycle random-access reads from 2048-pixel banks.
+The displacement engine needs to read pixels at arbitrary horizontal positions within the current scanline while simultaneously writing new pixels. Elastica solves this with a ***ping-pong buffer***: two banks of block RAM that alternate roles each line. While one bank captures incoming pixels, the other serves displaced reads. The `mirror_delay_line_slv` module manages this swap, providing single-cycle random-access reads from 2048-pixel banks.
 
-### Signal Flow
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Per-Line Warp Generator ────────────────────────────────────
-│   │
-│   ├─ 1. H DDS Phase Accumulator  (advances per scanline, resets per field)
-│   ├─ 2. Animation DDS             (advances per frame when Animate=On)
-│   ├─ 3. Combined Phase            (H phase + animation phase)
-│   ├─ 4. Quarter-Wave Sine LUT     (64-entry table, symmetric indexing)
-│   ├─ 5. Waveshape Selection       (sine / triangle / sawtooth / square)
-│   ├─ 6. V DDS + Triangle Wave     (vertical wave for V-warp + cross-mod)
-│   ├─ 7. Amplitude Pre-compute     (abs of V-wave, pipeline registers)
-│   ├─ 8. Cross-Mod Factor          (V-wave abs × Cross-Mod, 10×10 multiply)
-│   ├─ 9. Amplitude Modulation      (H Amplitude × cross-mod factor)
-│   └─ 10. Displacement Scale       (waveshape × modulated amplitude)
-│
-├── Per-Pixel Data Path (14 clk processing) ────────────────────
-│   │
-│   ├─ 1. Read Address Addition     (pixel counter + scaled displacement)
-│   ├─ 2. Read Address Clamp/Wrap   (edge mode selection)
-│   ├─ 3. Delay Line Address Reg    (BRAM address register)
-│   ├─ 4. Delay Line BRAM Read      (ping-pong bank read)
-│   ├─ 5. Delay Line Output Mux     (bank selection)
-│   ├─ 6. Unpack + V-Warp           (YUV unpack, line skip for V-warp)
-│   └─ 7. Wet Path Alignment        (6-clock delay to match dry path)
-│
-├── Wet/Dry Mix (4 clk) ───────────────────────────────────────
-│   └─ 3× interpolator_u            (Y, U, V independent crossfade)
-│
-├── IO Alignment (2 clk) ──────────────────────────────────────
-│   └─ 2 registered output stages
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ 18-clock shift register      (hsync, vsync, field, avid)
-│
-└── V-Warp Decision ───────────────────────────────────────────
-    ├─ Stage 1: V-wave × V Amplitude (threshold multiply)
-    └─ Stage 2: Threshold compare    (> 512 → skip line → black)
-```
+---
+
+## Signal Flow
 
 ### Signal Flow Notes
 
 Two key architectural features define Elastica's behavior:
 
-1. **Line-rate vs. pixel-rate processing.** The warp generator runs at the scanline rate — it computes one displacement value per line, then holds it constant across all pixels in that line. Every pixel on a given scanline is displaced by the same amount. This is fundamental to the Scanimate aesthetic: the distortion is smooth vertically (varying line by line) but uniform horizontally within each line.
+1. **Line-rate vs. pixel-rate processing.** The warp generator runs at the scanline rate: it computes one displacement value per line, then holds it constant across all pixels in that line. Every pixel on a given scanline is displaced by the same amount. This is fundamental to the Scanimate aesthetic: the distortion is smooth vertically (varying line by line) but uniform horizontally within each line.
 
 2. **Cross-modulation path.** The vertical wave's absolute value feeds a multiply chain that modulates the horizontal amplitude. When Cross-Mod is zero, horizontal amplitude is uniform. When Cross-Mod is high, the vertical wave creates zones of strong and weak horizontal displacement, producing two-dimensional warping from two one-dimensional generators.
 
@@ -289,13 +252,25 @@ These exercises progress from basic displacement through animation and cross-mod
 
 ![Classic Scanimate Ripple result](/img/instruments/videomancer/elastica/elastica_ex1_s1.png)
 *Classic Scanimate Ripple — simulated result across source images.*
-**Key Concepts**: - DDS phase accumulator generates periodic displacement
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Recreate the signature horizontal ripple effect of the Scanimate analog animation system.
+
+#### Key Concepts
+
+- DDS phase accumulator generates periodic displacement
 - Sine waveshape produces smooth, organic bowing
 - Animation scrolls the displacement pattern over time
 
-**What You'll Create**: Recreate the signature horizontal ripple effect of the Scanimate analog animation system.
+#### Video Source
 
-**Source**: A live camera feed or recorded footage with strong vertical lines or text.
+A live camera feed or recorded footage with strong vertical lines or text.
+
+#### Steps
 
 1. **Initial displacement**: Set **H Amplitude** (Knob 2) to about 40%. The image bows gently into a sine wave.
 2. **Tune the ripple**: Adjust **H Frequency** (Knob 1) until you see 3–4 complete wave cycles across the frame height.
@@ -303,7 +278,7 @@ These exercises progress from basic displacement through animation and cross-mod
 4. **Deepen the warp**: Slowly increase **H Amplitude** to see the distortion deepen. Notice how vertical lines in the source bend and flow.
 5. **Compare waveshapes**: Change waveshapes: set **Wave Sel A** (Switch 7) to **On** for triangle. Compare the sharper peaks with the smooth sine.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -326,13 +301,25 @@ These exercises progress from basic displacement through animation and cross-mod
 
 ![Cross-Modulated 2D Warp result](/img/instruments/videomancer/elastica/elastica_ex2_s1.png)
 *Cross-Modulated 2D Warp — simulated result across source images.*
-**Key Concepts**: - Cross-modulation multiplies vertical wave into horizontal amplitude
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Combine horizontal and vertical generators for complex two-dimensional warping.
+
+#### Key Concepts
+
+- Cross-modulation multiplies vertical wave into horizontal amplitude
 - V-Warp adds line skipping for vertical squeeze/stretch
 - Wrap edge mode eliminates black borders
 
-**What You'll Create**: Combine horizontal and vertical generators for complex two-dimensional warping.
+#### Video Source
 
-**Source**: Footage with large geometric shapes or a test pattern with both vertical and horizontal lines.
+Footage with large geometric shapes or a test pattern with both vertical and horizontal lines.
+
+#### Steps
 
 1. **Sine baseline**: Start from Exercise 1's sine ripple (H Amplitude ~40%, moderate frequency).
 2. **Engage cross-mod**: Increase **Cross-Mod** (Knob 3) to about 60%. The horizontal displacement becomes stronger in some vertical regions and weaker in others.
@@ -340,7 +327,7 @@ These exercises progress from basic displacement through animation and cross-mod
 4. **Vertical compression**: Enable **V-Warp** (Switch 9) and increase **V Amplitude** (Knob 5) to about 30%. Lines begin to skip, creating vertical compression banding.
 5. **Seamless tiling**: Switch **Edge Mode** (Switch 10) to **Wrap**. The black borders vanish, replaced by a seamlessly tiling distortion.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -363,13 +350,25 @@ These exercises progress from basic displacement through animation and cross-mod
 
 ![Waveshape Exploration result](/img/instruments/videomancer/elastica/elastica_ex3_s1.png)
 *Waveshape Exploration — simulated result across source images.*
-**Key Concepts**: - Four waveshapes: sine, triangle, sawtooth, square
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Compare all four waveshapes and discover how each transforms the image differently.
+
+#### Key Concepts
+
+- Four waveshapes: sine, triangle, sawtooth, square
 - Waveshape selection is a 2-bit binary code (Wave Sel A + B)
 - Each shape creates a fundamentally different distortion character
 
-**What You'll Create**: Compare all four waveshapes and discover how each transforms the image differently.
+#### Video Source
 
-**Source**: A bold graphic or title card with strong horizontal text.
+A bold graphic or title card with strong horizontal text.
+
+#### Steps
 
 1. **Set the canvas**: Set **H Amplitude** (Knob 2) to ~50% and **H Frequency** (Knob 1) to ~30%. Disable animation (**Animate** Switch 11 to **Off**).
 2. **Sine wave**: Both wave switches **Off** (Sine): observe the smooth, organic bowing. Text curves gracefully.
@@ -378,7 +377,7 @@ These exercises progress from basic displacement through animation and cross-mod
 5. **Square stacking**: Set both switches **On** (Square): scanlines jump between two fixed offsets. The image splits into hard-edged horizontal bands that slide sideways like a shuffled deck of cards.
 6. **Animate each shape**: Enable **Animate** and sweep through **Anim Speed** with each waveshape to see how animation character changes.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|

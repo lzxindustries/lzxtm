@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 132
 slug: /instruments/videomancer/grisaille
@@ -7,348 +7,401 @@ image: /img/instruments/videomancer/grisaille/grisaille_hero_s1.png
 description: "Oil painters of the Renaissance did not paint colour directly onto canvas."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import grisaille_control_panel from '/img/instruments/videomancer/grisaille/grisaille_control_panel.png';
-import grisaille_source1_castle from '/img/instruments/videomancer/grisaille/grisaille_source1_castle.png';
-import grisaille_source2_dog from '/img/instruments/videomancer/grisaille/grisaille_source2_dog.png';
-import grisaille_source3_turtle from '/img/instruments/videomancer/grisaille/grisaille_source3_turtle.png';
-import grisaille_source4_pattern from '/img/instruments/videomancer/grisaille/grisaille_source4_pattern.png';
-import grisaille_source5_woman from '/img/instruments/videomancer/grisaille/grisaille_source5_woman.png';
-import grisaille_source6_berries from '/img/instruments/videomancer/grisaille/grisaille_source6_berries.png';
-import grisaille_hero_s1 from '/img/instruments/videomancer/grisaille/grisaille_hero_s1.png';
-import grisaille_hero_s2 from '/img/instruments/videomancer/grisaille/grisaille_hero_s2.png';
-import grisaille_hero_s3 from '/img/instruments/videomancer/grisaille/grisaille_hero_s3.png';
-import grisaille_hero_s4 from '/img/instruments/videomancer/grisaille/grisaille_hero_s4.png';
-import grisaille_hero_s5 from '/img/instruments/videomancer/grisaille/grisaille_hero_s5.png';
-import grisaille_hero_s6 from '/img/instruments/videomancer/grisaille/grisaille_hero_s6.png';
-import grisaille_ex1_s1 from '/img/instruments/videomancer/grisaille/grisaille_ex1_s1.png';
-import grisaille_ex1_s2 from '/img/instruments/videomancer/grisaille/grisaille_ex1_s2.png';
-import grisaille_ex1_s3 from '/img/instruments/videomancer/grisaille/grisaille_ex1_s3.png';
-import grisaille_ex1_s4 from '/img/instruments/videomancer/grisaille/grisaille_ex1_s4.png';
-import grisaille_ex1_s5 from '/img/instruments/videomancer/grisaille/grisaille_ex1_s5.png';
-import grisaille_ex1_s6 from '/img/instruments/videomancer/grisaille/grisaille_ex1_s6.png';
-import grisaille_ex2_s1 from '/img/instruments/videomancer/grisaille/grisaille_ex2_s1.png';
-import grisaille_ex2_s2 from '/img/instruments/videomancer/grisaille/grisaille_ex2_s2.png';
-import grisaille_ex2_s3 from '/img/instruments/videomancer/grisaille/grisaille_ex2_s3.png';
-import grisaille_ex2_s4 from '/img/instruments/videomancer/grisaille/grisaille_ex2_s4.png';
-import grisaille_ex2_s5 from '/img/instruments/videomancer/grisaille/grisaille_ex2_s5.png';
-import grisaille_ex2_s6 from '/img/instruments/videomancer/grisaille/grisaille_ex2_s6.png';
-import grisaille_ex3_s1 from '/img/instruments/videomancer/grisaille/grisaille_ex3_s1.png';
-import grisaille_ex3_s2 from '/img/instruments/videomancer/grisaille/grisaille_ex3_s2.png';
-import grisaille_ex3_s3 from '/img/instruments/videomancer/grisaille/grisaille_ex3_s3.png';
-import grisaille_ex3_s4 from '/img/instruments/videomancer/grisaille/grisaille_ex3_s4.png';
-import grisaille_ex3_s5 from '/img/instruments/videomancer/grisaille/grisaille_ex3_s5.png';
-import grisaille_ex3_s6 from '/img/instruments/videomancer/grisaille/grisaille_ex3_s6.png';
-
-# Grisaille
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Castle", before: grisaille_source1_castle, after: grisaille_hero_s1 },
-    { label: "Dog", before: grisaille_source2_dog, after: grisaille_hero_s2 },
-    { label: "Turtle", before: grisaille_source3_turtle, after: grisaille_hero_s3 },
-    { label: "Pattern", before: grisaille_source4_pattern, after: grisaille_hero_s4 },
-    { label: "Woman", before: grisaille_source5_woman, after: grisaille_hero_s5 },
-    { label: "Berries", before: grisaille_source6_berries, after: grisaille_hero_s6 },
-  ]}
-/>
-*Grisaille applying luminance-dependent oil glaze simulation with craquelure cracks and patina yellowing to a richly textured source.*
+![Grisaille hero image](/img/instruments/videomancer/grisaille/grisaille_hero_s1.png)
+*Grisaille transforming a color video source into a luminance-mapped oil painting with translucent chroma glazes, aged patina, and procedural crack patterns.*
 
 ---
 
 ## Overview
 
-Oil painters of the Renaissance did not paint colour directly onto canvas. They began with a monochrome underpainting — a **grisaille** — that established the tonal structure of the composition in shades of gray. Once dry, they applied thin, translucent layers of pigmented oil called **glazes** over the grisaille, gradually reintroducing colour. Shadows received fewer glaze layers and remained nearly monochrome; highlights received more and bloomed with saturated hue. Grisaille recreates this centuries-old layering process in real time on a live video signal.
+**Grisaille** simulates a classical oil painting technique in real time. In the Renaissance, painters built images in layers: first a monochrome underpainting called a ***grisaille***, then thin translucent color glazes on top, and finally highlights and varnish. Grisaille recreates this layered workflow digitally. Your input video becomes the canvas, its luminance remapped through a tone curve that lifts shadows and compresses highlights: just as an artist would sketch light and dark masses before adding color. Chroma information is then reintroduced as a luminance-dependent glaze: shadows lose their color first, exactly as translucent pigment over a gray ground would behave.
 
-The program chains five processing stages: a piecewise-linear grisaille tone curve (shadow lift, midtone compression, highlight handling), a luminance-dependent chroma glaze with four selectable gamma exponents, an imprimatura ground tint, an aged oil patina that shifts colour toward yellow, and a procedural craquelure crack overlay that darkens pixels along a modular grid. The name *grisaille* comes from the French *gris* (gray) — the monochrome technique that forms the foundation of this program's signal flow.
+Beyond the painting itself, Grisaille offers the passage of time. The **Patina** control simulates the yellowing of aged linseed oil, shifting the color palette toward warm amber. The **Craquelure** control overlays a procedural crack grid that darkens pixels on a modular-arithmetic lattice, as centuries of thermal cycling would fracture dried paint. Together, these controls let you age a painting from freshly varnished to museum antique in one smooth gesture.
 
-At conservative settings — moderate shadow lift, linear glaze curve, no patina — Grisaille produces a subtle desaturation of shadows while preserving full colour in bright areas, much like a well-preserved Vermeer interior. At extreme settings — full grisaille mode, heavy craquelure, deep patina — the image resembles a cracked and yellowed Old Master painting viewed through museum glass.
+:::note
+Grisaille uses zero Block RAM tiles. All processing is purely combinational and registered: tone curves, glaze multiplies, hue shifts, and crack overlays are computed on the fly with no frame storage.
+:::
+
+### What's In a Name?
+
+***Grisaille*** (pronounced "griz-EYE") is a French painting term derived from *gris*, meaning "gray." In the visual arts, a grisaille is a monochrome painting executed entirely in shades of gray, used either as a finished work or: more commonly: as the underpainting layer beneath translucent oil glazes. Artists like Jan van Eyck and Caravaggio used grisaille underpaintings to establish tonal structure before building color in successive layers of thin, transparent pigment. The technique is also known as ***chiaroscuro*** (Italian for "light-dark") when emphasizing dramatic contrasts between illuminated and shadowed forms.
 
 ---
 
 ## Quick Start
 
-1. **Order matters**: Tone curve → Ground tint → Glaze → Patina → Craquelure → Impasto → Mix. The tone curve shapes luminance *before* the glaze uses it to compute colour opacity, so shadow lift directly changes how much colour the glaze restores.
-2. **Gamma 2.0 is the signature effect**: The quadratic glaze curve produces deep shadow desaturation with rich highlight colour — the chiaroscuro look that defines Renaissance oil painting simulation.
-3. **Grisaille mode is an override**: Setting Color Mode to Grisaille forces zero chroma opacity regardless of Knob 2. Use it to preview the tone curve and craquelure without colour distraction.
+1. Turn **Glaze Opacity** (Knob 2) fully counterclockwise. The image collapses to monochrome: you're looking at the grisaille underpainting. Raise **Shadow Lift** (Knob 1) to brighten the darkest tones, as though sketching on tinted paper.
+2. Slowly turn **Glaze Opacity** clockwise. Color seeps back in, starting with the brightest areas first. Dark regions stay gray longest, like translucent pigment pooling over a gray ground.
+3. Sweep **Glaze Curve** (Knob 3) through its four positions. Each setting changes how aggressively shadows desaturate: from gentle roll-off to a dramatic van Eyck look where only highlights carry color.
+4. Increase **Craquelure** (Knob 5) to overlay a procedural crack pattern. Toggle **Crack Scale** (Switch 8) between fine and coarse to change the density of the fracture grid.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Grisaille loaded](/img/instruments/videomancer/grisaille/grisaille_control_panel.png)
+*Videomancer's front panel with Grisaille active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Shadow Lift
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Shadow Lift** sets the floor of the grisaille tone curve. At minimum, the darkest input pixels remain fully black. As you turn the knob clockwise, shadows are lifted toward a mid-gray floor, compressing the tonal range from below. This emulates painting on a toned ground: the darker the ground, the more dramatic the contrast; the lighter the ground, the more the painting floats above its surface.
+
+The tone curve is piecewise linear with three segments: a shadow region below quarter scale, a midtone region in the center, and a highlight region above three-quarter scale. Shadow Lift controls the starting point of all three segments, so increasing it brightens the entire image while compressing the dynamic range.
+
+---
+
+### Knob 2 — Glaze Opacity
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Glaze Opacity** controls the base amount of chrominance that passes through the luminance-dependent glaze. At minimum, effective chroma opacity is zero regardless of luminance: the output is pure monochrome grisaille. As you increase Glaze Opacity, color returns, with the exact distribution controlled by **Glaze Curve** (Knob 3). At maximum, the glaze layer transmits nearly all of the original chroma in bright areas.
+
+:::tip
+For the classic grisaille-to-color transition, start with Glaze Opacity at zero, then sweep it slowly clockwise while feeding a richly colored source. You'll see the image bloom from gray into full color, with shadows lagging behind: exactly as a Renaissance painter would add successive glaze layers.
+:::
+
+---
+
+### Knob 3 — Glaze Curve
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 4 |
+| Default | 3 |
+
+**Glaze Curve** selects one of four gamma exponents that shape how luminance maps to chroma opacity. The four steps approximate different historical glazing techniques:
+
+- **Step 1** (gamma ~0.5): More color survives in shadows. A forgiving, even glaze.
+- **Step 2** (gamma 1.0): Linear falloff (chroma tracks luminance directly.)
+- **Step 3** (gamma ~1.5): Moderate shadow desaturation. Shadows are noticeably grayer than highlights.
+- **Step 4** (gamma 2.0): The "van Eyck" setting: strong quadratic desaturation pushes shadows toward monochrome while highlights retain vivid color.
+
+:::note
+Because the glaze function multiplies ***base opacity × f(luminance)***, the effect of Glaze Curve is only visible when Glaze Opacity is above zero and Color Mode is set to Full.
+:::
+
+---
+
+### Knob 4 — Patina
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**Patina** simulates the yellowing of aged linseed oil. It shifts the U channel downward (toward yellow-amber) and nudges the V channel slightly upward. The effect intensifies as you turn the knob clockwise. At zero, the painted image retains its original hue balance. At maximum, the palette is dragged heavily into warm amber territory, as though the canvas has been hanging in a dimly lit gallery for three hundred years.
+
+---
+
+### Knob 5 — Craquelure
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Craquelure** controls the intensity of a procedural crack pattern overlaid on the image. The crack grid is generated by modular arithmetic on the horizontal and vertical pixel counters: wherever a pixel falls on a crack line, its luminance is darkened. At zero, no cracks appear. As you increase the value, cracks darken more aggressively. At maximum, crack-line pixels are driven close to black, simulating deep fractures in dried oil paint.
+
+:::warning
+Craquelure darkens only the Y channel at crack positions. U and V are ***not*** affected on crack lines, so hairline color streaks may be visible at very high settings on saturated sources. This is by design: real craquelure fractures the paint film, exposing the underpainting, not the chroma layer.
+:::
+
+---
+
+### Knob 6 — Ground Tint
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 360° |
+| Default | 0° |
+
+**Ground Tint** controls the hue of the ***imprimatura***: the tinted ground applied to the canvas before painting. This knob sweeps through 360 degrees of hue angle, shifting the palette of the underpainting. The effect is most visible when **Ground Type** (Switch 7) is set to Warm, which applies an initial U/V offset before the ground tint rotation. At minimum and maximum the hue wraps around, so the control behaves like a continuous rotation.
+
+---
+
+### Switch 7 — Ground Type
+
+| Property | Value |
+|----------|-------|
+| Off | Warm |
+| On | Cool |
+| Default | Warm |
+
+**Ground Type** selects between two imprimatura base tones. When set to **Warm**, the pipeline applies a subtle earth-tone bias: U is shifted down (toward amber) and V is nudged up, producing a warm yellowish ground reminiscent of raw sienna or burnt umber gesso. When set to **Cool**, no tonal bias is applied: the ground is a neutral gray. The warm ground interacts with **Patina** (Knob 4), amplifying the yellowing effect when both are active.
+
+---
+
+### Switch 8 — Crack Scale
+
+| Property | Value |
+|----------|-------|
+| Off | Fine |
+| On | Coarse |
+| Default | Fine |
+
+**Crack Scale** selects between two craquelure grid densities. **Fine** uses a tighter grid with a period of 24 pixels and single-pixel-wide crack lines, producing a delicate web of hairline fractures. **Coarse** uses a wider grid with a period of 48 pixels and two-pixel-wide crack lines, creating bold, widely spaced cracks that suggest deep structural fractures in thick paint. The visual weight of the cracks is then controlled by the **Craquelure** (Knob 5) intensity knob.
+
+---
+
+### Switch 9 — Color Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Full |
+| On | Grisaille |
+| Default | Full |
+
+**Color Mode** switches between full-color output and pure grisaille. When set to **Full**, the luminance-dependent glaze is active and chroma passes through according to the Glaze Opacity and Glaze Curve settings. When set to **Grisaille**, the glaze opacity is forced to zero: all chroma is stripped and the output is monochrome regardless of other settings. This is useful for isolating the tonal structure of the underpainting without distraction from color.
+
+---
+
+### Switch 10 — Impasto
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Impasto** enables a hard highlight clip in the grisaille tone curve. With Impasto **Off**, highlights compress softly toward maximum. With Impasto **On**, any pixel in the highlight region is hard-clipped to full white, simulating the thick, opaque brushstrokes that painters use to build up bright highlights: the ***impasto*** technique. This creates stark, flat highlight planes that contrast with the softer tonal gradations in the shadows and midtones.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed, delay-matched input signal directly to the output, skipping all painting stages. The sync delay pipeline still aligns timing, so toggling Bypass produces a clean A/B comparison between the raw input and the painted result with no glitch on transition.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) and wet (painted) signals. At minimum, the output is the original input video. At maximum, the output is entirely the grisaille-painted result. Intermediate positions blend the two, which can produce a partially painted look: as though the artist has only begun to lay down the underpainting and portions of the original canvas still show through.
 
 ---
 
 ## Background
 
-### What Is Grisaille Underpainting?
+### The Grisaille Technique
 
-In European oil painting from the 14th century onward, artists constructed their images in layers. The first layer was the **grisaille** — a monochrome underpainting in earth tones or pure gray that established the composition's value structure: where light falls, where shadow lies, how forms recede into space. The grisaille was not meant to be seen in the finished work; it was the skeleton beneath the skin of colour. Grisaille uses the same approach: it can optionally strip the video signal down to pure luminance, creating a monochrome underpainting that subsequent stages rebuild with controlled colour.
+The grisaille underpainting method dominated European oil painting from the fifteenth through the eighteenth centuries. Painters like Jan van Eyck, Rogier van der Weyden, and later Caravaggio established tonal values first by working entirely in shades of gray (or gray-green, called ***verdaccio***). Once the monochrome image was complete and dry, the artist applied thin layers of transparent colored pigment: ***glazes***: over the gray base. Because the glazes were translucent, the underlying tonal structure showed through, giving the painting a luminous depth that opaque paint mixing cannot achieve. Each glaze layer could emphasize a different color or temperature, and multiple glazes built up rich, complex hues.
 
-### What Is an Oil Glaze?
+### Chroma Glaze Modeling
 
-An oil **glaze** is a thin, translucent layer of pigment suspended in a slow-drying medium like linseed oil. Because the layer is translucent, the grisaille underpainting shows through, and the perceived colour is a mixture of the glaze hue and the gray value beneath. Crucially, shadows — where the underpainting is dark — absorb most of the glaze light and remain nearly monochrome, while highlights — where the underpainting is bright — reflect the full glaze colour. This luminance-dependent colour saturation is the core of the Grisaille program's Stage 2, where chroma is scaled by a function of luminance using one of four gamma curves.
+Grisaille models the translucent glaze mathematically. The effective chroma opacity at each pixel is `base_opacity × f(Y)`, where `f(Y)` is a luminance-dependent function shaped by one of four gamma exponents. At gamma 2.0 (the van Eyck setting), the function is quadratic: chroma opacity falls off as the square of luminance, so only the brightest areas carry significant color. At gamma 0.5, a square-root-like approximation keeps more color in mid-shadows. The chroma channels (U and V) are scaled toward neutral (the value 512 in 10-bit space) by the complement of the effective opacity: fully opaque = original chroma, fully transparent = gray.
 
-### What Are Gamma Curves?
+### Aging and Patina
 
-A **gamma curve** is a power function that remaps values nonlinearly. In this program, gamma controls how the glaze opacity depends on luminance. A gamma of 0.5 (square root) lifts shadow opacity — more colour survives in dark areas. A gamma of 1.0 is linear — opacity tracks brightness proportionally. A gamma of 1.5 or 2.0 (quadratic) suppresses shadow opacity aggressively — only the brightest areas retain colour, producing the deep chiaroscuro look associated with Flemish painters like Jan van Eyck.
-
-### What Is Craquelure?
-
-Over centuries, the oil medium in a painting dries, shrinks, and cracks. The resulting network of fine fissures is called **craquelure**. Art conservators study crack patterns to date and authenticate paintings — different media, grounds, and climates produce characteristic crack geometries. Grisaille simulates craquelure with a modular-arithmetic grid: pixel coordinates are divided by a period (24 or 48 pixels), and positions near the grid boundaries are darkened proportionally. The result is a regular network of dark lines overlaid on the processed image.
-
-### What Is Patina?
-
-Linseed oil, the most common binding medium in European oil painting, yellows as it ages. This slow chemical shift pushes the colour balance of old paintings toward warm amber — a change conservators call **patina**. In Grisaille, the patina stage shifts the chrominance toward yellow by decreasing U (blue-yellow axis) and slightly increasing V (red-cyan axis). The effect is cumulative with the glaze and ground tint stages.
+Real oil paintings change over time. Linseed oil: the most common binder in oil paint: oxidizes and turns yellow-brown over decades. Dust and varnish layers accumulate. The Patina control simulates this by shifting the U channel downward (toward yellow) and the V channel slightly upward, producing a warm amber cast. Combined with the Warm ground type, which pre-biases the underpainting toward earth tones, the patina effect can push the image into the territory of heavily aged Old Master paintings.
 
 
 ---
 
 ## Signal Flow
 
-Y Channel → U/V Channels → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 1. Grisaille Tone Curve     (piecewise-linear shadow lift + highlight compress)
-│   ├─ 2. Glaze Pass-Through       (Y unchanged; glaze affects only chroma)
-│   ├─ 3. Craquelure Overlay       (darken Y on modular grid crack lines)
-│   └─ 4. Output Composite         (→ interpolator_u mix)
-│
-├── U/V Channels ───────────────────────────────────────────────
-│   │
-│   ├─ 1. Ground Tint              (warm: U−20 V+15 / cool: no offset)
-│   ├─ 2. Luminance-Dependent Glaze (scale chroma toward neutral by f(Y) × opacity)
-│   ├─ 3. Patina                   (shift U down, V up — oil yellowing)
-│   └─ 4. Output Composite         (→ interpolator_u mix)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ 8-clock delay pipeline (matched to processing + interpolator)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The pipeline is a straightforward four-stage chain: input curve, glaze, aging effects, and output mix: with no feedback loops. Two important interactions shape the result:
 
-The critical interaction is between the Y tone curve (Stage 1) and the luminance-dependent glaze (Stage 2). The tone curve reshapes luminance *before* it is used to compute glaze opacity, so raising the shadow floor with Knob 1 changes how much colour the glaze will restore to shadow regions. A second key path is the ground tint, which offsets U/V in Stage 1 *before* the glaze attenuates chroma, so the warm earth tone is partially preserved even when glaze opacity is low. Craquelure operates on the already-glazed luminance, so cracks darken through both the tonal and colour-processed result.
+1. **Luminance drives chroma.** The grisaille tone curve in Stage 1 reshapes the Y channel, and the ***remapped*** Y (not the original input Y) feeds the glaze opacity function in Stage 2. This means Shadow Lift indirectly affects color distribution: lifting shadows gives them higher luminance, which in turn allows more chroma to pass through the glaze. Lowering Shadow Lift darkens shadows further, pushing them deeper into the monochrome zone.
+
+2. **Ground tint stacks with patina.** The Stage 1 ground-type offset and the Stage 3 patina shift both modify U and V, but they act at different pipeline stages. Setting Ground Type to Warm applies a constant shift (U −20, V +15) before the glaze, while Patina applies a second shift after the glaze. When both are active, the two shifts compound, producing a very heavy amber bias. To get patina yellowing without doubling the warmth, set Ground Type to Cool.
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={grisaille_control_panel} alt="Videomancer front panel with Grisaille loaded"/>
-*Videomancer's front panel with Grisaille active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises progress from monochrome underpainting to full aged-painting simulation. Each one introduces additional pipeline stages so you can hear how the layers interact.
+### Exercise 1: The Gray Underpainting
 
-### Rotary Potentiometers (Knobs 1–6)
+![The Gray Underpainting result](/img/instruments/videomancer/grisaille/grisaille_ex1_s1.png)
+*The Gray Underpainting — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Shadow Lift
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-Controls the shadow floor of the grisaille tone curve. The pot value is right-shifted by 2 to produce a floor in the range 0–255. Shadow-region pixels (Y < 256) are lifted toward this floor, compressing the darkest tones upward. The midtone and highlight regions are remapped proportionally above the new floor. At zero, shadows remain black; at maximum, the entire tonal range compresses into the upper half, producing a washed-out, underexposed look. This control has the strongest visible effect on dark source material — faces lit from one side, deep architectural shadows, or nighttime scenes.
+#### Learning Outcomes
 
----
+A dramatic monochrome underpainting with lifted shadows and impasto highlights (the first step of any Classical painting.)
 
-#### Knob 2 — Glaze Opacity
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
+#### Key Concepts
 
-Sets the base chroma opacity for the glaze stage. The glaze multiplies this opacity by a luminance-dependent function (selected by Knob 3) to determine how much original colour survives at each brightness level. At zero, the output is fully monochrome regardless of the gamma curve — no colour passes through the glaze. At maximum, the glaze allows nearly full saturation at bright luminance values. The interaction with the Glaze Curve control is fundamental: opacity sets the *amount* of colour, while the curve sets the *distribution* of colour across the tonal range.
+- Grisaille tone curves remap luminance to emulate painted tonal structure
+- Shadow Lift controls the darkness floor
+- Impasto creates hard highlight planes
 
----
+#### Video Source
 
-#### Knob 3 — Glaze Curve
-| Property | Value |
-|----------|-------|
-| Range | 1 – 4 |
-| Default | 3 |
+Portrait or still life footage with a wide tonal range (faces, draped fabric, and candlelit scenes work well.)
 
-Selects one of four gamma exponents for the luminance-dependent glaze function. The pot range is divided into four equal zones. The lowest zone applies a gamma of approximately 0.5 (square root), which lifts shadow opacity and distributes colour more evenly across the tonal range. The second zone applies gamma 1.0 (linear). The third applies gamma 1.5, and the fourth applies gamma 2.0 (quadratic), which concentrates colour in the highlights and desaturates shadows aggressively. The higher gamma values produce the deep chiaroscuro look of Flemish oil painting.
+#### Steps
 
----
+1. Set **Color Mode** (Switch 9) to **Grisaille** to strip all color.
+2. Start with **Shadow Lift** (Knob 1) at about 25%. Dark areas lift off the floor, as if sketching on warm-toned paper.
+3. Toggle **Impasto** (Switch 10) **On**. Bright highlights snap to full white, creating thick, flat highlight planes.
+4. Sweep Shadow Lift from minimum to maximum and observe how the tonal range compresses. Find the setting that best balances drama and legibility.
+5. Toggle Impasto back **Off** and notice how highlights return to a gentler compression.
 
-#### Knob 4 — Patina
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
+#### Settings
 
-Controls the intensity of the patina (aged oil yellowing) effect. The pot value is right-shifted by 2 and used to decrease U (shifting toward yellow on the blue-yellow axis) and slightly increase V (adding a touch of warmth). At zero, no yellowing is applied. At maximum, the image acquires a strong amber cast reminiscent of centuries-old oil paintings. Patina is applied after the glaze stage, so it yellows whatever chroma the glaze has allowed through — heavily glazed highlights yellow more visibly than desaturated shadows.
-
----
-
-#### Knob 5 — Craquelure
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-Controls the darkness of the procedural craquelure crack overlay. The VHDL computes crack positions using modular arithmetic on the horizontal and vertical pixel counters — pixels whose position modulo the crack period falls below the crack width are identified as crack pixels. For those pixels, luminance is reduced by a fraction proportional to this control: the darkening amount is (craquelure × Y) >> 10. At zero, no cracks are visible. At maximum, crack-line pixels are significantly darkened, creating a visible grid of age lines across the image.
+| Control | Value |
+|---------|-------|
+| Shadow Lift | ~25% |
+| Glaze Opacity | 0% |
+| Glaze Curve | 1 |
+| Patina | 0% |
+| Craquelure | 0% |
+| Ground Tint | 0° |
+| Ground Type | Cool |
+| Crack Scale | Fine |
+| Color Mode | Grisaille |
+| Impasto | On |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-#### Knob 6 — Ground Tint
-| Property | Value |
-|----------|-------|
-| Range | 0° – 360° |
-| Default | 0° |
-| Suffix | ° |
+### Exercise 2: Glazing Color Over Gray
 
-Labelled Ground Tint and configured as a 360° polar control in the TOML. In the current VHDL implementation, this register is mapped to the signal `s_ground_tint` but is not used in any processing stage — the ground tinting is controlled entirely by the Ground Type toggle (Switch 7), which applies fixed warm or cool offsets. This pot is reserved for a future firmware revision that may add continuous imprimatura hue rotation.
+![Glazing Color Over Gray result](/img/instruments/videomancer/grisaille/grisaille_ex2_s1.png)
+*Glazing Color Over Gray — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-### Toggle Switches (Switches 7–11)
+#### Learning Outcomes
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Ground Type** | Warm | Cool |
-| **8 — Crack Scale** | Fine | Coarse |
-| **9 — Color Mode** | Full | Grisaille |
-| **10 — Impasto** | Off | On |
-| **11 — Bypass** | Off | On |
+A richly colored image where shadows remain gray while highlights bloom with full chroma (the classic Old Master glazing effect.)
 
-Switches 7–11 control five independent options. Switch 7 selects a fixed ground tint. Switch 8 changes the craquelure grid resolution. Switch 9 selects between full-colour and pure grisaille (monochrome) output. Switch 10 enables impasto highlight clipping. Switch 11 bypasses all processing. None of the toggles form a combined mode selector — each operates independently on a different stage of the pipeline.
+#### Key Concepts
 
----
+- Chroma glaze is luminance-dependent (shadows desaturate first)
+- Glaze Curve selects the opacity falloff shape
+- Ground Type introduces tonal warmth before the glaze
 
-### Linear Potentiometer (Fader 12)
+#### Video Source
 
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
+Footage featuring saturated colors and mixed lighting: botanical scenes, market stalls, stained glass, or a color bar test pattern.
 
-Controls the wet/dry crossfade via three interpolator_u instances (one per YUV channel). At maximum (default), the output is fully processed. At minimum, the output is the unprocessed input (delayed by 8 clocks to match pipeline latency). Intermediate values produce a proportional blend, which is useful for reducing the intensity of heavy craquelure or patina effects without changing individual control settings.
+#### Steps
 
+1. Switch **Color Mode** back to **Full**. Set **Glaze Opacity** (Knob 2) fully counterclockwise (the image stays monochrome.)
+2. Slowly turn Glaze Opacity clockwise. Color appears in the brightest areas first and gradually fills in toward the shadows.
+3. Step through all four positions of **Glaze Curve** (Knob 3). At Step 1, even moderate shadows retain color. At Step 4, only the brightest highlights carry chroma (the dramatic van Eyck look.)
+4. Set **Ground Type** (Switch 7) to **Warm**. The monochrome base shifts to an amber earth tone. Now the interplay between warm ground and colored glaze adds depth.
+5. Set Glaze Curve to Step 3 and Glaze Opacity to about 75%. This balance gives rich highlights with moody, desaturated shadows.
 
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
+#### Settings
 
-Routes the unprocessed input signal directly to the output, bypassing all Grisaille processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises progress from the foundational grisaille underpainting through glaze layering to the full aged-painting simulation with cracks and patina.
-
-### Exercise 1: The Grisaille Underpainting
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Castle", before: grisaille_source1_castle, after: grisaille_ex1_s1 },
-    { label: "Dog", before: grisaille_source2_dog, after: grisaille_ex1_s2 },
-    { label: "Turtle", before: grisaille_source3_turtle, after: grisaille_ex1_s3 },
-    { label: "Pattern", before: grisaille_source4_pattern, after: grisaille_ex1_s4 },
-    { label: "Woman", before: grisaille_source5_woman, after: grisaille_ex1_s5 },
-    { label: "Berries", before: grisaille_source6_berries, after: grisaille_ex1_s6 },
-  ]}
-/>
-*The Grisaille Underpainting — simulated result across source images.*
-**Source**: A portrait or still life with strong directional lighting — faces, fruit, or architectural details with clear shadow and highlight separation.
-
-**What You'll Create**: Learn how the grisaille tone curve and shadow lift interact to create a monochrome underpainting.
-
-1. **Force monochrome**: Set Color Mode (Switch 9) to Grisaille. The image drops to pure gray — this is the underpainting.
-2. **Observe the tone curve**: With Shadow Lift at its default (~25%), notice that the deepest shadows are not quite black — they have been lifted off the floor.
-3. **Sweep shadow lift**: Turn Shadow Lift slowly from 0% to 100%. Watch the shadow regions compress upward, reducing overall contrast. At maximum, the image becomes flat and washed out.
-4. **Set a moderate floor**: Return Shadow Lift to approximately 20%. The shadows should have visible detail without losing the sense of depth.
-5. **Enable impasto**: Turn on Impasto (Switch 10). Highlights above ~75% brightness snap to pure white — flat, bright plateaus against the modulated shadows.
-
-**Key concepts**: Grisaille underpainting separates tonal structure from colour, shadow lift controls the black point, impasto creates opaque highlight regions
+| Control | Value |
+|---------|-------|
+| Shadow Lift | ~25% |
+| Glaze Opacity | ~75% |
+| Glaze Curve | 3 |
+| Patina | 0% |
+| Craquelure | 0% |
+| Ground Tint | 0° |
+| Ground Type | Warm |
+| Crack Scale | Fine |
+| Color Mode | Full |
+| Impasto | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Glazing the Underpainting
+### Exercise 3: The Aged Painting
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Castle", before: grisaille_source1_castle, after: grisaille_ex2_s1 },
-    { label: "Dog", before: grisaille_source2_dog, after: grisaille_ex2_s2 },
-    { label: "Turtle", before: grisaille_source3_turtle, after: grisaille_ex2_s3 },
-    { label: "Pattern", before: grisaille_source4_pattern, after: grisaille_ex2_s4 },
-    { label: "Woman", before: grisaille_source5_woman, after: grisaille_ex2_s5 },
-    { label: "Berries", before: grisaille_source6_berries, after: grisaille_ex2_s6 },
-  ]}
-/>
-*Glazing the Underpainting — simulated result across source images.*
-**Source**: The same source as Exercise 1, or any footage with a range of skin tones, warm fabrics, and cool shadows.
+![The Aged Painting result](/img/instruments/videomancer/grisaille/grisaille_ex3_s1.png)
+*The Aged Painting — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore how the luminance-dependent glaze reintroduces colour over the monochrome foundation.
+***A description of the exercise illustration.***
 
-1. **Return to full colour**: Set Color Mode (Switch 9) back to Full. Colour returns, modulated by the glaze.
-2. **Set linear glaze**: Turn Glaze Curve to zone 2 (gamma 1.0). Colour is distributed proportionally — bright areas get proportionally more colour.
-3. **Sweep glaze opacity**: Turn Glaze Opacity from 0% (fully monochrome) to 100%. Watch colour fade in from the highlights down through the midtones.
-4. **Try chiaroscuro**: Move Glaze Curve to zone 4 (gamma 2.0). Shadows become deeply desaturated while highlights bloom with full colour. This is the van Eyck look.
-5. **Warm ground**: Ensure Ground Type (Switch 7) is set to Warm. Notice the subtle amber warmth in the midtones — the imprimatura showing through the glaze.
-6. **Compare cool**: Switch Ground Type to Cool. The warmth disappears, replaced by a cooler, more neutral gray.
+#### Learning Outcomes
 
-**Key concepts**: Glaze opacity controls how much colour passes through, gamma curve shapes the luminance-to-colour relationship, ground tint adds a fixed colour bias before the glaze
+A complete aged painting simulation: grisaille underpainting, colored glaze, oil yellowing, and cracking: as though you're looking at a canvas that has hung in a gallery for centuries.
 
----
+#### Key Concepts
 
-### Exercise 3: The Aging Master
+- Patina yellows the image to simulate oxidized linseed oil
+- Craquelure overlays a procedural crack grid
+- All layers combine for a museum-aged painting effect
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Castle", before: grisaille_source1_castle, after: grisaille_ex3_s1 },
-    { label: "Dog", before: grisaille_source2_dog, after: grisaille_ex3_s2 },
-    { label: "Turtle", before: grisaille_source3_turtle, after: grisaille_ex3_s3 },
-    { label: "Pattern", before: grisaille_source4_pattern, after: grisaille_ex3_s4 },
-    { label: "Woman", before: grisaille_source5_woman, after: grisaille_ex3_s5 },
-    { label: "Berries", before: grisaille_source6_berries, after: grisaille_ex3_s6 },
-  ]}
-/>
-*The Aging Master — simulated result across source images.*
-**Source**: Any richly detailed source — landscapes, interiors, or textured surfaces work well.
+#### Video Source
 
-**What You'll Create**: Combine all processing stages to create the appearance of a centuries-old oil painting.
+Portraiture or landscape footage (subjects that evoke classical painting compositions.)
 
-1. **Establish base**: Set Shadow Lift ~25%, Glaze Opacity ~60%, Glaze Curve to zone 3 (gamma 1.5).
-2. **Apply patina**: Turn Patina to approximately 50%. Watch the colour balance shift toward amber-yellow — the image begins to look aged.
-3. **Add fine cracks**: Increase Craquelure to approximately 60%. A grid of dark hairline cracks appears across the image.
-4. **Switch to coarse**: Toggle Crack Scale (Switch 8) to Coarse. The crack network becomes wider and more widely spaced.
-5. **Combine with impasto**: Enable Impasto (Switch 10). The bright highlights clip to white, creating maximum contrast at crack boundaries.
-6. **Reduce mix**: Pull the Mix fader down to approximately 70%. The raw source bleeds back in, softening the effect as if viewing the painting through restoration varnish.
-7. **A/B comparison**: Toggle Bypass (Switch 11) to compare the aged painting with the original source.
+#### Steps
 
-**Key concepts**: Patina yellows the colour balance, craquelure creates age-related crack textures, impasto and craquelure interact at highlight boundaries, mix allows partial blending with the source
+1. Load the settings from Exercise 2 as your starting point (Glaze Opacity ~75%, Glaze Curve Step 3, Ground Type Warm).
+2. Increase **Patina** (Knob 4) to about 50%. The image acquires a warm amber cast, simulating centuries of linseed oil oxidation.
+3. Increase **Craquelure** (Knob 5) to about 60%. A grid of dark crack lines appears across the image.
+4. Toggle **Crack Scale** (Switch 8) between Fine and Coarse. Fine produces delicate hairline fractures; Coarse produces bold, wide cracks.
+5. Push Shadow Lift higher (~40%) so the cracks don't vanish into black shadows.
+6. Finally, pull **Mix** (Fader 12) to about 70% to let some of the original video bleed through, as though the painting is displayed over a rear-lit screen.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Shadow Lift | ~40% |
+| Glaze Opacity | ~60% |
+| Glaze Curve | 3 |
+| Patina | ~50% |
+| Craquelure | ~60% |
+| Ground Tint | 0° |
+| Ground Type | Warm |
+| Crack Scale | Coarse |
+| Color Mode | Full |
+| Impasto | On |
+| Bypass | Off |
+| Mix | ~70% |
 
 ---
-
-
-## Tips
-
-- **Patina stacks with ground tint**: Both shift U/V — patina yellows, ground tint warms. Together they produce a strong amber bias. Use one or the other for subtlety.
-- **Craquelure follows screen coordinates**: The crack grid is locked to pixel position, not video content. Moving the source does not move the cracks — they act as a fixed overlay, like real cracks in a painted canvas.
-- **Pot 6 is reserved**: The Ground Tint potentiometer is mapped in the TOML as a 360° polar control, but the VHDL does not currently use it. Ground tinting is controlled entirely by Switch 7 (Warm/Cool).
-- **Feedback loops**: Routing the output back to the input accumulates shadow lift and patina yellowing frame over frame, progressively aging the image until it saturates.
-- **Bypass for A/B comparison**: Switch 11 instantly shows the unprocessed signal.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Chiaroscuro** | An artistic technique using strong contrast between light and dark to model three-dimensional form. Literally "light-dark" in Italian. |
-| **Craquelure** | The network of fine cracks that forms on the surface of old oil paintings as the medium dries and shrinks over centuries. |
-| **Gamma Curve** | A power function that remaps values nonlinearly; used here to control how glaze opacity depends on luminance. |
-| **Glaze** | A thin, translucent layer of pigment in oil medium applied over an underpainting to build up colour gradually. |
-| **Grisaille** | A monochrome painting technique using shades of gray, used as an underpainting foundation for oil glazing. |
-| **Impasto** | A painting technique where pigment is applied thickly enough to stand up from the canvas surface, creating textured, opaque highlights. |
-| **Imprimatura** | A tinted ground layer applied to the canvas before painting begins, establishing a colour bias that shows through subsequent layers. |
-| **LUT** | Look-Up Table; a fundamental FPGA logic resource used to implement combinational functions. |
-| **Patina** | The gradual yellowing of linseed oil in old paintings, shifting colour balance toward warm amber tones. |
+- **Chiaroscuro**: Italian for "light-dark"; a painting technique that uses strong contrasts between illuminated and shadowed areas to model three-dimensional form.
+
+- **Craquelure**: The network of fine cracks that develops in the surface of an oil painting as layers of paint and varnish dry, shrink, and age over time.
+
+- **Gamma**: A nonlinear function that describes how input values map to output intensity; higher gamma darkens midtones and compresses shadows.
+
+- **Glaze**: A thin, transparent layer of pigment applied over a dried underpainting; the underlying tonal values show through the glaze, creating luminous depth.
+
+- **Grisaille**: A monochrome painting executed in shades of gray, often used as an underpainting layer beneath translucent oil glazes.
+
+- **Impasto**: A painting technique in which thick strokes of opaque paint are applied so that they stand above the surface, creating visible texture and flat highlight planes.
+
+- **Imprimatura**: A toned ground: a thin wash of color applied to the canvas before painting: that unifies the palette and eliminates the stark white of raw gesso.
+
+- **Interpolator**: A hardware module that linearly crossfades between two input values based on a fractional blend parameter; used here for dry/wet mixing.
+
+- **Patina**: The surface appearance of an object that has changed through age or exposure; in painting, often refers to the yellow-brown tone that develops in aged linseed oil.
+
+- **Tone Curve**: A function that remaps input brightness values to output brightness values, reshaping the tonal distribution of an image.
+
+- **Underpainting**: The initial layer of paint applied to a canvas, establishing the composition and tonal values before subsequent layers of color.
+
+- **Verdaccio**: A variant of grisaille underpainting using gray-green tones, common in Italian fresco and tempera painting traditions.
 
 ---

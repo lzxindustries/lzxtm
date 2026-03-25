@@ -16,7 +16,7 @@ description: "In 1972, Atari released Pong — a table tennis simulation so simp
 
 **Pong** is a fully playable recreation of the 1972 arcade classic, synthesized entirely in hardware on Videomancer's FPGA. A ball bounces between two paddles on a bordered court, with scores displayed as dot-matrix digits at the top of the screen. Player 1 controls their paddle with a knob; Player 2 can be an AI opponent or a second human player using the fader.
 
-The game runs its physics at the video frame rate, updating ball position and paddle tracking once per ***vsync***. The ball's bounce angle depends on where it strikes the paddle — center hits return flat, edge hits produce steep angles. Scores count up to 9, then reset. A brief screen flash punctuates each goal.
+The game runs its physics at the video frame rate, updating ball position and paddle tracking once per ***vsync***. The ball's bounce angle depends on where it strikes the paddle: center hits return flat, edge hits produce steep angles. Scores count up to 9, then reset. A brief screen flash punctuates each goal.
 
 Because Pong is a ***synthesis*** program, it generates imagery from scratch rather than processing an input signal. The **Mix** fader blends the synthesized court with whatever video is passing through, letting you overlay a live game on top of any other video source.
 
@@ -26,7 +26,7 @@ Pong is a great way to test your Videomancer's output chain. If the court render
 
 ### What's In a Name?
 
-The name needs no explanation. ***Pong*** is the primordial video game — a table-tennis simulation so iconic that it became synonymous with the concept of electronic gaming itself. The original 1972 Atari coin-op was built entirely from discrete TTL logic, with no CPU or software. Videomancer's version follows that same spirit: the game logic runs as a hardware state machine inside the FPGA, with no processor involved.
+The name needs no explanation. ***Pong*** is the primordial video game: a table-tennis simulation so iconic that it became synonymous with the concept of electronic gaming itself. The original 1972 Atari coin-op was built entirely from discrete TTL logic, with no CPU or software. Videomancer's version follows that same spirit: the game logic runs as a hardware state machine inside the FPGA, with no processor involved.
 
 ---
 
@@ -35,7 +35,7 @@ The name needs no explanation. ***Pong*** is the primordial video game — a tab
 1. With all controls at their defaults, a game is already in progress. Watch the ball bounce between two paddles, with the AI controlling the right-side player. The score digits at the top of the screen track each player's points.
 2. Turn **P1 Pos** (Knob 3) to move the left paddle up and down. Try to intercept the ball before it passes your paddle.
 3. Turn **Ball Spd** (Knob 1) clockwise to increase the ball's speed. The game gets harder quickly.
-4. Flip **P2 Mode** (Switch 7) to **Manual** and hand the **Mix** fader to a friend — the fader now controls Player 2's paddle position. You have a two-player game.
+4. Flip **P2 Mode** (Switch 7) to **Manual** and hand the **Mix** fader to a friend: the fader now controls Player 2's paddle position. You have a two-player game.
 
 ---
 
@@ -51,7 +51,7 @@ The name needs no explanation. ***Pong*** is the primordial video game — a tab
 | Range | 0% – 100% |
 | Default | 38% |
 
-**Ball Spd** sets the ball's travel speed in pixels per frame. At 0%, the ball crawls across the court at 2 pixels per frame. At 100%, it rockets at 9 pixels per frame. The speed pot applies immediately — even mid-rally — so you can ramp up the difficulty on the fly. The default sits at a moderate pace suitable for casual play.
+**Ball Spd** sets the ball's travel speed in pixels per frame. At 0%, the ball crawls across the court at 2 pixels per frame. At 100%, it rockets at 9 pixels per frame. The speed pot applies immediately: even mid-rally: so you can ramp up the difficulty on the fly. The default sits at a moderate pace suitable for casual play.
 
 :::note
 Because the ball moves a fixed number of pixels per ***vsync*** interval, the apparent speed scales with the video standard's frame rate. The ball moves faster at 60 fps than at 50 fps.
@@ -66,7 +66,7 @@ Because the ball moves a fixed number of pixels per ***vsync*** interval, the ap
 | Range | 0% – 100% |
 | Default | 50% |
 
-**Pad Size** controls the height of both paddles simultaneously. At 0%, paddles are small (40 pixels tall) — a narrow target that demands precision. At 100%, paddles grow to 295 pixels, covering a large portion of the screen and making the game much more forgiving. The default is a balanced mid-size.
+**Pad Size** controls the height of both paddles simultaneously. At 0%, paddles are small (40 pixels tall): a narrow target that demands precision. At 100%, paddles grow to 295 pixels, covering a large portion of the screen and making the game much more forgiving. The default is a balanced mid-size.
 
 ---
 
@@ -88,7 +88,7 @@ Because the ball moves a fixed number of pixels per ***vsync*** interval, the ap
 | Range | 0% – 100% |
 | Default | 50% |
 
-**AI Skill** adjusts how quickly the AI opponent tracks the ball. At 0%, the AI moves its paddle by only 1 pixel per frame — sluggish, easily beaten. At 100%, it tracks at 8 pixels per frame, making it nearly impossible to score against. At moderate settings, the AI creates a satisfying rally before occasionally letting a ball slip past.
+**AI Skill** adjusts how quickly the AI opponent tracks the ball. At 0%, the AI moves its paddle by only 1 pixel per frame: sluggish, easily beaten. At 100%, it tracks at 8 pixels per frame, making it nearly impossible to score against. At moderate settings, the AI creates a satisfying rally before occasionally letting a ball slip past.
 
 ---
 
@@ -110,7 +110,7 @@ Because the ball moves a fixed number of pixels per ***vsync*** interval, the ap
 | Range | 0% – 100% |
 | Default | 75% |
 
-**Bright** sets the luminance of foreground objects. At 0%, the ball, paddles, and score are black — invisible against the court. At 100%, they are maximum white. The net renders at half this brightness, and the border at one quarter, maintaining visual hierarchy regardless of the setting.
+**Bright** sets the luminance of foreground objects. At 0%, the ball, paddles, and score are black: invisible against the court. At 100%, they are maximum white. The net renders at half this brightness, and the border at one quarter, maintaining visual hierarchy regardless of the setting.
 
 :::tip
 Turn **Bright** down to create a ghostly, barely visible court. Combine with a colorful input video on the **Mix** fader for a subtle overlay effect.
@@ -138,7 +138,7 @@ Turn **Bright** down to create a ghostly, barely visible court. Combine with a c
 | On | On |
 | Default | On |
 
-**Net** toggles the dashed center line on or off. When **On**, a vertical dashed line divides the court into two halves — the classic Pong aesthetic. When **Off**, the center line disappears, leaving a clean open court. The net is purely cosmetic and has no effect on gameplay.
+**Net** toggles the dashed center line on or off. When **On**, a vertical dashed line divides the court into two halves: the classic Pong aesthetic. When **Off**, the center line disappears, leaving a clean open court. The net is purely cosmetic and has no effect on gameplay.
 
 ---
 
@@ -174,7 +174,7 @@ Turn **Bright** down to create a ghostly, barely visible court. Combine with a c
 | On | On |
 | Default | Off |
 
-**Wide** doubles the base paddle height, resulting in paddles ranging from 80 to 591 pixels tall. This is an accessibility feature — flip it on for a more relaxed, forgiving game. Combined with a large **Pad Size** value, Wide mode can make paddles tall enough to cover half the screen.
+**Wide** doubles the base paddle height, resulting in paddles ranging from 80 to 591 pixels tall. This is an accessibility feature: flip it on for a more relaxed, forgiving game. Combined with a large **Pad Size** value, Wide mode can make paddles tall enough to cover half the screen.
 
 ---
 
@@ -197,7 +197,7 @@ Switching **P2 Mode** to **Manual** overrides the mix function. If you want to b
 
 ### The Original Pong
 
-The original ***Pong*** arcade machine, released by Atari in 1972, was built without a microprocessor. Its entire game logic — ball movement, paddle tracking, scoring, and video generation — was implemented in discrete TTL integrated circuits: counters, comparators, flip-flops, and gates. Videomancer's FPGA implementation echoes that approach. The game runs as a hardware state machine clocked at the video pixel rate, with no CPU, no software, and no frame buffer. Every pixel is computed on the fly as the raster scans across the screen.
+The original ***Pong*** arcade machine, released by Atari in 1972, was built without a microprocessor. Its entire game logic: ball movement, paddle tracking, scoring, and video generation: was implemented in discrete TTL integrated circuits: counters, comparators, flip-flops, and gates. Videomancer's FPGA implementation echoes that approach. The game runs as a hardware state machine clocked at the video pixel rate, with no CPU, no software, and no frame buffer. Every pixel is computed on the fly as the raster scans across the screen.
 
 ### Physics Engine
 
@@ -212,47 +212,12 @@ The ball physics update runs once per frame, triggered by the ***vsync*** pulse.
 7. Check for scoring (ball exits left or right)
 8. Commit all results to game state
 
-The bounce angle is determined by where the ball strikes the paddle. A hit near the center returns nearly flat (vertical velocity ≈ 0). Hits near the edges produce steep angles (vertical velocity ±4) — the classic Pong dynamic where skilled players can aim their returns.
+The bounce angle is determined by where the ball strikes the paddle. A hit near the center returns nearly flat (vertical velocity ≈ 0). Hits near the edges produce steep angles (vertical velocity ±4): the classic Pong dynamic where skilled players can aim their returns.
 
-### Signal Flow
 
-```
-Timing Generator → Pixel Counter → Rendering Pipeline → Interpolator → Output
+---
 
-   ┌─────────────────────────────────────────────────────────────────────┐
-   │  GAME STATE (updated once per vsync)                               │
-   │                                                                     │
-   │  Pots/Toggles ──→ Paddle Target Pre-compute (2-stage pipeline)     │
-   │                         │                                           │
-   │  vsync ──→ Physics FSM (8-phase)                                   │
-   │              │  Phase 0: Register inputs, update paddles            │
-   │              │  Phase 1: Wall bounce                                │
-   │              │  Phase 2-3: P1 hit detect + angle                   │
-   │              │  Phase 4-5: P2 hit detect + angle                   │
-   │              │  Phase 6: Score check                                │
-   │              └─ Phase 7: Commit → ball_x/y, ball_vx/vy, scores    │
-   └───────────────────────────┬─────────────────────────────────────────┘
-                               │ game state signals
-                               ▼
-   ┌─────────────────────────────────────────────────────────────────────┐
-   │  RENDERING PIPELINE (runs every pixel clock, 7 stages)             │
-   │                                                                     │
-   │  Stage 1: Register pixel coordinates + boundary pre-computation    │
-   │  Stage 2: Individual comparison flags (register-to-register)       │
-   │  Stage 3: Combine flags (ball, pad1, pad2, net, border, score Δ)  │
-   │  Stage 4: Score digit font ROM lookup (5×7 at 4× scale)          │
-   │  Stage 5: Color mux (foreground / net / border / background)       │
-   └───────────────────────────┬─────────────────────────────────────────┘
-                               │ rendered YUV
-                               ▼
-   ┌─────────────────────────────────────────────────────────────────────┐
-   │  INTERPOLATOR (4 clocks)                                           │
-   │  Blends rendered court with delayed input video via Mix fader      │
-   └───────────────────────────┬─────────────────────────────────────────┘
-                               │
-                               ▼
-   IO Alignment (2 clocks) → Output YUV 4:4:4
-```
+## Signal Flow
 
 ### Signal Flow Notes
 
@@ -261,7 +226,7 @@ The architecture splits cleanly into two domains. The **game state** domain runs
 The rendering pipeline is fully pipelined at 5 stages, with every comparison broken into individual registered flags in Stage 2 before being combined in Stage 3. This avoids long combinational chains and ensures the design meets timing at 74.25 MHz.
 
 :::note
-The resolution is auto-measured from the incoming timing signals rather than hard-coded. This means Pong adapts correctly to any video standard and clock division factor — the court geometry scales proportionally.
+The resolution is auto-measured from the incoming timing signals rather than hard-coded. This means Pong adapts correctly to any video standard and clock division factor (the court geometry scales proportionally.)
 :::
 
 
@@ -274,19 +239,29 @@ These exercises explore Pong's gameplay and synthesis capabilities, from basic p
 
 ![Your First Rally result](/img/instruments/videomancer/pong/pong_ex1_s1.png)
 *Your First Rally — simulated result across source images.*
-**Key Concepts**: - Paddle position is directly controlled by the knob
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Learn the basic controls and play a game against the AI.
+
+#### Key Concepts
+
+- Paddle position is directly controlled by the knob
 - Ball speed affects difficulty
 - AI skill determines how beatable the opponent is
 
-**What You'll Create**: Learn the basic controls and play a game against the AI.
+#### Steps
 
 1. **Default setup**: Ensure **P2 Mode** (Switch 7) is set to **AI** and all other toggles are at defaults.
 2. **Set ball speed**: Turn **Ball Spd** (Knob 1) to about 40%. The ball should move at a moderate pace.
-3. **Easy opponent**: Set **AI Skill** (Knob 4) to about 30% — a beatable opponent.
+3. **Easy opponent**: Set **AI Skill** (Knob 4) to about 30% (a beatable opponent.)
 4. **Play the ball**: Use **P1 Pos** (Knob 3) to move your paddle. Try to intercept the ball before it passes. Notice how the bounce angle changes depending on where the ball hits your paddle.
 5. **Full match**: Play until the score resets (one player reaches 9). Gradually increase **AI Skill** to challenge yourself.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -309,20 +284,30 @@ These exercises explore Pong's gameplay and synthesis capabilities, from basic p
 
 ![Neon Overlay result](/img/instruments/videomancer/pong/pong_ex2_s1.png)
 *Neon Overlay — simulated result across source images.*
-**Key Concepts**: - The Mix fader blends synthesized graphics with pass-through video
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Blend the Pong court with input video to create a colorful overlay effect.
+
+#### Key Concepts
+
+- The Mix fader blends synthesized graphics with pass-through video
 - Color mode tints game objects with a selectable hue
 - Brightness and mix interact to control overlay visibility
 
-**What You'll Create**: Blend the Pong court with input video to create a colorful overlay effect.
+#### Steps
 
 1. **Connect video**: Feed a video source into Videomancer's input.
-2. **Choose court hue**: Flip **Color** (Switch 10) to **Hue** and set **Court Hue** (Knob 5) to taste — a warm orange or cool blue works well.
+2. **Choose court hue**: Flip **Color** (Switch 10) to **Hue** and set **Court Hue** (Knob 5) to taste (a warm orange or cool blue works well.)
 3. **Boost brightness**: Set **Bright** (Knob 6) to about 90% for vivid game objects.
 4. **Blend overlay**: Pull the **Mix** fader (Fader 12) down to about 60%. The Pong court should overlay your input video as a semi-transparent layer.
 5. **Clean the display**: Disable **Net** (Switch 8) and **Score** (Switch 9) for a cleaner overlay, or leave them on for the full retro aesthetic.
 6. **Play over video**: Play the game while watching the ball and paddles float over your video source.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -345,11 +330,21 @@ These exercises explore Pong's gameplay and synthesis capabilities, from basic p
 
 ![Two-Player Battle result](/img/instruments/videomancer/pong/pong_ex3_s1.png)
 *Two-Player Battle — simulated result across source images.*
-**Key Concepts**: - Manual P2 mode repurposes the fader as a paddle controller
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Set up a competitive two-player game using the knob and fader.
+
+#### Key Concepts
+
+- Manual P2 mode repurposes the fader as a paddle controller
 - Wide mode and paddle size create accessibility options
 - The fader's dual role changes depending on P2 Mode
 
-**What You'll Create**: Set up a competitive two-player game using the knob and fader.
+#### Steps
 
 1. **Enable two players**: Flip **P2 Mode** (Switch 7) to **Manual**. The fader now controls Player 2's paddle.
 2. **Adjust paddle size**: Set **Pad Size** (Knob 2) to about 40% for a balanced challenge. If one player is less experienced, flip **Wide** (Switch 11) to **On** for larger paddles.
@@ -357,7 +352,7 @@ These exercises explore Pong's gameplay and synthesis capabilities, from basic p
 4. **Start the match**: Player 1 uses **P1 Pos** (Knob 3); Player 2 uses the **Mix** fader (Fader 12). Play to 9!
 5. **Increase difficulty**: After a few rounds, increase **Ball Spd** gradually. Notice how the faster ball makes paddle positioning and angle control more critical.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -392,6 +387,5 @@ These exercises explore Pong's gameplay and synthesis capabilities, from basic p
 - **TTL**: Transistor-Transistor Logic; the family of discrete digital integrated circuits used to build the original 1972 Pong arcade machine.
 
 - **Vsync**: Vertical synchronization pulse marking the start of each new video frame; Pong uses this signal to trigger its once-per-frame physics update.
-
 
 ---

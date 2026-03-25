@@ -14,9 +14,9 @@ description: "Every broadcast facility has a processing amplifier — a \"proc a
 
 ## Overview
 
-**YUV Amplifier** is a fundamental color processing tool for Videomancer. It provides independent gain (contrast) and offset (brightness) controls for each of the three YUV channels, along with per-channel inversion and a global fade control. If you think of your video signal as three separate streams of information — one for brightness and two for color — YUV Amplifier gives you a full set of knobs to shape each stream independently.
+**YUV Amplifier** is a fundamental color processing tool for Videomancer. It provides independent gain (contrast) and offset (brightness) controls for each of the three YUV channels, along with per-channel inversion and a global fade control. If you think of your video signal as three separate streams of information: one for brightness and two for color: YUV Amplifier gives you a full set of knobs to shape each stream independently.
 
-At default settings, the signal passes through unchanged. Small adjustments produce subtle color grading: warming or cooling the image, boosting contrast, or shifting the overall brightness. Larger adjustments push the image into bold, stylized territory — saturated hues, solarized tones, and inverted color fields. The fade control lets you blend any processed result smoothly toward black or white.
+At default settings, the signal passes through unchanged. Small adjustments produce subtle color grading: warming or cooling the image, boosting contrast, or shifting the overall brightness. Larger adjustments push the image into bold, stylized territory: saturated hues, solarized tones, and inverted color fields. The fade control lets you blend any processed result smoothly toward black or white.
 
 :::tip
 YUV Amplifier is a workhorse utility. Place it anywhere in a signal chain to fine-tune color balance, correct levels, or create dramatic color shifts before or after other effects.
@@ -24,14 +24,14 @@ YUV Amplifier is a workhorse utility. Place it anywhere in a signal chain to fin
 
 ### What's In a Name?
 
-The name is literal and descriptive. ***YUV*** refers to the color space the program operates in: Y for luminance, U for blue-difference chrominance, and V for red-difference chrominance. ***Amplifier*** describes the core function — a ***processing amplifier***, or proc amp, that scales and shifts each channel. In broadcast engineering, a proc amp is the standard tool for adjusting video levels. YUV Amplifier brings that capability to Videomancer with per-channel precision.
+The name is literal and descriptive. ***YUV*** refers to the color space the program operates in: Y for luminance, U for blue-difference chrominance, and V for red-difference chrominance. ***Amplifier*** describes the core function: a ***processing amplifier***, or proc amp, that scales and shifts each channel. In broadcast engineering, a proc amp is the standard tool for adjusting video levels. YUV Amplifier brings that capability to Videomancer with per-channel precision.
 
 ---
 
 ## Quick Start
 
-1. Feed a video source into Videomancer and load the **YUV Amplifier** program. The image appears unchanged — all controls are at their default, unity-gain positions.
-2. Turn **Y Gain** (Knob 1) clockwise past the midpoint. The image becomes higher contrast — brights get brighter, darks get darker. Turn it counterclockwise toward zero and the image flattens to a uniform gray.
+1. Feed a video source into Videomancer and load the **YUV Amplifier** program. The image appears unchanged (all controls are at their default, unity-gain positions.)
+2. Turn **Y Gain** (Knob 1) clockwise past the midpoint. The image becomes higher contrast: brights get brighter, darks get darker. Turn it counterclockwise toward zero and the image flattens to a uniform gray.
 3. Toggle **Y Invert** (Switch 7) to **On**. The entire image flips to a photographic negative. Toggle it back to **Off** and the image returns to normal.
 4. Pull the **Fade Amount** fader (Fader 12) downward. The image gradually dissolves into black. Flip **Fade Color** (Switch 10) to **White** and the image dissolves into white instead.
 
@@ -49,7 +49,7 @@ The name is literal and descriptive. ***YUV*** refers to the color space the pro
 | Range | 0.0% – 200.0% |
 | Default | 100.1% |
 
-**Y Gain** controls the contrast of the luminance channel. It maps to the ***contrast*** input of the Y proc amp. At 0%, fully counterclockwise, all luminance detail is crushed to the offset value — the image becomes a flat field. At the default position of 100%, the signal passes with unity gain. Turning clockwise toward 200% doubles the contrast, pushing midtones apart and driving highlights and shadows toward their extremes. High gain values can clip the signal, producing hard white and black regions.
+**Y Gain** controls the contrast of the luminance channel. It maps to the ***contrast*** input of the Y proc amp. At 0%, fully counterclockwise, all luminance detail is crushed to the offset value: the image becomes a flat field. At the default position of 100%, the signal passes with unity gain. Turning clockwise toward 200% doubles the contrast, pushing midtones apart and driving highlights and shadows toward their extremes. High gain values can clip the signal, producing hard white and black regions.
 
 :::note
 Gain is applied as multiplication around the midpoint (512). Values above midpoint are pushed higher; values below are pushed lower. The formula is: `(input − 512) × gain / 512 + offset`.
@@ -78,7 +78,7 @@ Gain is applied as multiplication around the midpoint (512). Values above midpoi
 **V Gain** controls the contrast of the red-difference chrominance channel. It behaves identically to **U Gain** but operates on the red-green axis. At 0%, red-green color differences vanish. At 100%, the image is unchanged. At 200%, reds and cyans become intensely saturated. Reducing V Gain while keeping U Gain high shifts the palette toward blue and yellow, suppressing reds and greens.
 
 :::tip
-Setting both **U Gain** and **V Gain** to 0% while keeping **Y Gain** at 100% produces a clean monochrome image — all color is removed, leaving only luminance.
+Setting both **U Gain** and **V Gain** to 0% while keeping **Y Gain** at 100% produces a clean monochrome image (all color is removed, leaving only luminance.)
 :::
 
 ---
@@ -90,7 +90,7 @@ Setting both **U Gain** and **V Gain** to 0% while keeping **Y Gain** at 100% pr
 | Range | -100.0% – 100.0% |
 | Default | 0.1% |
 
-**Y Offset** shifts the overall brightness of the luminance channel. It maps to the ***brightness*** input of the Y proc amp. At the default of 0%, no offset is applied. Turning counterclockwise toward −100% darkens the entire image. Turning clockwise toward +100% brightens the entire image. Unlike gain, offset shifts all values uniformly — darks and lights move together. Combined with high **Y Gain**, offset can reposition the tonal range to expose shadow detail or recover highlights.
+**Y Offset** shifts the overall brightness of the luminance channel. It maps to the ***brightness*** input of the Y proc amp. At the default of 0%, no offset is applied. Turning counterclockwise toward −100% darkens the entire image. Turning clockwise toward +100% brightens the entire image. Unlike gain, offset shifts all values uniformly: darks and lights move together. Combined with high **Y Gain**, offset can reposition the tonal range to expose shadow detail or recover highlights.
 
 ---
 
@@ -128,7 +128,7 @@ Adjusting **U Offset** and **V Offset** together is equivalent to a ***white bal
 | On | On |
 | Default | Off |
 
-**Y Invert** flips the luminance channel by applying a bitwise complement. When set to **On**, every pixel's brightness is reversed: black becomes white and white becomes black, producing a photographic negative effect on the luminance. Inversion is the ***first*** processing step — it happens before gain and offset are applied, so all downstream processing operates on the inverted signal. This means **Y Gain** and **Y Offset** will amplify and shift the inverted values.
+**Y Invert** flips the luminance channel by applying a bitwise complement. When set to **On**, every pixel's brightness is reversed: black becomes white and white becomes black, producing a photographic negative effect on the luminance. Inversion is the ***first*** processing step: it happens before gain and offset are applied, so all downstream processing operates on the inverted signal. This means **Y Gain** and **Y Offset** will amplify and shift the inverted values.
 
 ---
 
@@ -140,7 +140,7 @@ Adjusting **U Offset** and **V Offset** together is equivalent to a ***white bal
 | On | On |
 | Default | Off |
 
-**U Invert** flips the blue-difference chrominance channel. When set to **On**, blue tones become yellow and yellow tones become blue. Like Y Invert, this occurs before the U proc amp, so **U Gain** and **U Offset** operate on the inverted signal. Combining U Invert with V Invert produces a full chroma inversion — all hues rotate by 180 degrees on the color wheel.
+**U Invert** flips the blue-difference chrominance channel. When set to **On**, blue tones become yellow and yellow tones become blue. Like Y Invert, this occurs before the U proc amp, so **U Gain** and **U Offset** operate on the inverted signal. Combining U Invert with V Invert produces a full chroma inversion (all hues rotate by 180 degrees on the color wheel.)
 
 ---
 
@@ -164,7 +164,7 @@ Adjusting **U Offset** and **V Offset** together is equivalent to a ***white bal
 | On | White |
 | Default | Black |
 
-**Fade Color** selects whether the fade target is black or white. When set to **Black**, reducing **Fade Amount** blends the Y channel toward zero (black) and the U and V channels toward neutral. When set to **White**, reducing Fade Amount blends the Y channel toward maximum (white) while U and V still fade toward neutral. In both cases, chrominance fades to gray — only the luminance target changes.
+**Fade Color** selects whether the fade target is black or white. When set to **Black**, reducing **Fade Amount** blends the Y channel toward zero (black) and the U and V channels toward neutral. When set to **White**, reducing Fade Amount blends the Y channel toward maximum (white) while U and V still fade toward neutral. In both cases, chrominance fades to gray (only the luminance target changes.)
 
 :::note
 Because U and V always fade toward 512 (neutral gray), a full fade to black produces a true black frame, while a full fade to white produces a clean white frame. Neither introduces a color cast at full fade.
@@ -191,7 +191,7 @@ Because U and V always fade toward 512 (neutral gray), a full fade to black prod
 | Range | 0.0% – 100.0% |
 | Default | 100.0% |
 
-**Fade Amount** controls the blend between the processed signal and the fade target color. At the default of 100%, fully up, the processed signal passes through with no fading. As you pull the fader toward 0%, the image progressively dissolves into the color selected by **Fade Color**. At 0%, the processed signal is completely replaced by the fade target — a solid black or white frame.
+**Fade Amount** controls the blend between the processed signal and the fade target color. At the default of 100%, fully up, the processed signal passes through with no fading. As you pull the fader toward 0%, the image progressively dissolves into the color selected by **Fade Color**. At 0%, the processed signal is completely replaced by the fade target (a solid black or white frame.)
 
 :::tip
 **Fade Amount** is a ***wet/dry mix*** for the entire program. Use it as a performance control to smoothly blend between your processed look and a solid color, or to dial back the intensity of extreme gain and offset settings without changing them individually.
@@ -203,13 +203,13 @@ Because U and V always fade toward 512 (neutral gray), a full fade to black prod
 
 ### The YUV Color Space
 
-Video signals encode color as three separate channels. ***Y*** (luminance) carries brightness information — it is the grayscale version of the image. ***U*** and ***V*** (chrominance) carry color difference signals: U encodes the blue-versus-yellow axis, and V encodes the red-versus-cyan axis. This separation is not arbitrary; it reflects human vision, which is far more sensitive to brightness detail than to color detail. By splitting the signal this way, each channel can be processed, compressed, or transmitted independently.
+Video signals encode color as three separate channels. ***Y*** (luminance) carries brightness information: it is the grayscale version of the image. ***U*** and ***V*** (chrominance) carry color difference signals: U encodes the blue-versus-yellow axis, and V encodes the red-versus-cyan axis. This separation is not arbitrary; it reflects human vision, which is far more sensitive to brightness detail than to color detail. By splitting the signal this way, each channel can be processed, compressed, or transmitted independently.
 
-In Videomancer's 10-bit YUV 4:4:4 format, each channel spans 0 to 1023. For luminance (Y), 0 is black and 1023 is white. For chrominance (U and V), 512 is the neutral center point — no color difference. Values above 512 push toward blue (U) or red (V); values below 512 push toward yellow (U) or cyan (V).
+In Videomancer's 10-bit YUV 4:4:4 format, each channel spans 0 to 1023. For luminance (Y), 0 is black and 1023 is white. For chrominance (U and V), 512 is the neutral center point: no color difference. Values above 512 push toward blue (U) or red (V); values below 512 push toward yellow (U) or cyan (V).
 
 ### The Proc Amp
 
-A ***processing amplifier*** applies two operations to a signal: gain (multiplication) and offset (addition). Gain controls the contrast — how far values spread from the center point. Offset controls the brightness — shifting all values uniformly up or down. The mathematical formula is:
+A ***processing amplifier*** applies two operations to a signal: gain (multiplication) and offset (addition). Gain controls the contrast: how far values spread from the center point. Offset controls the brightness: shifting all values uniformly up or down. The mathematical formula is:
 
 **output = (input − 512) × gain / 512 + offset**
 
@@ -219,42 +219,14 @@ When gain is at unity (512) and offset is at zero (512), the output equals the i
 
 Each channel can be independently inverted before entering the proc amp. Inversion applies a ***bitwise complement***: each bit is flipped from 0 to 1 or 1 to 0. For a 10-bit value, this transforms value *n* into 1023 − *n*. The result is a mirror image of the tonal range. Because inversion happens *before* the proc amp, the gain and offset stages operate on the inverted signal, which means their behavior is reversed relative to the source.
 
-### Signal Flow
 
-```
-Input Video (YUV 4:4:4 30-bit)
-│
-├── Y Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 1. Y Invert        (optional bitwise complement, 1 clk)
-│   ├─ 2. Proc Amp Y      (gain + offset, 9 clks)
-│   ├─ 3. Fade Interpolator Y  (lerp toward black/white, 4 clks)
-│   └─ 4. IO Align        (output register, 1 clk)
-│
-├── U Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 1. U Invert        (optional bitwise complement, 1 clk)
-│   ├─ 2. Proc Amp U      (gain + offset, 9 clks)
-│   ├─ 3. Fade Interpolator U  (lerp toward neutral 512, 4 clks)
-│   └─ 4. IO Align        (output register, 1 clk)
-│
-├── V Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 1. V Invert        (optional bitwise complement, 1 clk)
-│   ├─ 2. Proc Amp V      (gain + offset, 9 clks)
-│   ├─ 3. Fade Interpolator V  (lerp toward neutral 512, 4 clks)
-│   └─ 4. IO Align        (output register, 1 clk)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ Delay pipeline (hsync, vsync, field — 16 clk delay)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Mux: select delayed original or processed signal
-```
+---
+
+## Signal Flow
 
 ### Signal Flow Notes
 
-All three channels share the same pipeline structure: inversion, proc amp, and fade interpolation. The three channels are processed in parallel — they are three independent instances of the same circuit running simultaneously. The only cross-channel interaction is the **Fade Color** toggle, which sets the Y fade target to black (0) or white (1023) while U and V always fade toward neutral (512).
+All three channels share the same pipeline structure: inversion, proc amp, and fade interpolation. The three channels are processed in parallel: they are three independent instances of the same circuit running simultaneously. The only cross-channel interaction is the **Fade Color** toggle, which sets the Y fade target to black (0) or white (1023) while U and V always fade toward neutral (512).
 
 The proc amp stage dominates the pipeline at 9 clock cycles. Gain and offset are applied in a single compound operation: the input is centered around 512, scaled by the gain value, and then shifted by the offset value. The output is clamped to the valid 0–1023 range, preventing wraparound artifacts.
 
@@ -272,21 +244,33 @@ These exercises explore independent channel control, from basic brightness and c
 
 ![Brightness and Contrast result](/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_ex1_s1.png)
 *Brightness and Contrast — simulated result across source images.*
-**Key Concepts**: - Gain controls contrast (spread around center)
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Learn how gain and offset interact to shape the luminance of an image.
+
+#### Key Concepts
+
+- Gain controls contrast (spread around center)
 - Offset controls brightness (uniform shift)
 - High gain amplifies the effect of offset changes
 
-**What You'll Create**: Learn how gain and offset interact to shape the luminance of an image.
+#### Video Source
 
-**Source**: A camera feed or recorded footage with a mix of highlights, midtones, and shadows.
+A camera feed or recorded footage with a mix of highlights, midtones, and shadows.
 
-1. **Boost contrast**: Turn **Y Gain** (Knob 1) clockwise to about 150%. The image becomes punchier — shadows deepen and highlights brighten.
+#### Steps
+
+1. **Boost contrast**: Turn **Y Gain** (Knob 1) clockwise to about 150%. The image becomes punchier (shadows deepen and highlights brighten.)
 2. **Lift shadows**: Now turn **Y Offset** (Knob 4) clockwise. The entire image brightens, revealing shadow detail. Notice that with high gain, the offset shift is more dramatic.
 3. **Crush blacks**: Turn **Y Offset** counterclockwise past center. Shadows collapse to solid black while highlights remain visible. This is a classic broadcast "setup" adjustment.
 4. **Flat gray**: Turn **Y Gain** counterclockwise to about 10%. The image collapses to a narrow band of grays near the offset value, regardless of content.
 5. **Recover**: Return both controls to center (100% gain, 0% offset). The image returns to its original appearance.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -309,21 +293,33 @@ These exercises explore independent channel control, from basic brightness and c
 
 ![Color Temperature Shift result](/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_ex2_s1.png)
 *Color Temperature Shift — simulated result across source images.*
-**Key Concepts**: - U Offset shifts blue-yellow balance
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Use chrominance offset and gain to create warm and cool color grades.
+
+#### Key Concepts
+
+- U Offset shifts blue-yellow balance
 - V Offset shifts red-cyan balance
 - Combined offsets target any hue on the color wheel
 
-**What You'll Create**: Use chrominance offset and gain to create warm and cool color grades.
+#### Video Source
 
-**Source**: Footage with neutral tones — skin tones, gray walls, or daylight scenes work well.
+Footage with neutral tones (skin tones, gray walls, or daylight scenes work well.)
+
+#### Steps
 
 1. **Cool shift**: Turn **U Offset** (Knob 5) clockwise to about +30%. The image takes on a cool, bluish cast.
-2. **Warm shift**: Return U Offset to center, then turn **V Offset** (Knob 6) clockwise to about +30%. The image shifts warm — reds and magentas appear.
+2. **Warm shift**: Return U Offset to center, then turn **V Offset** (Knob 6) clockwise to about +30%. The image shifts warm (reds and magentas appear.)
 3. **Golden hour**: Set U Offset to about −20% and V Offset to about +15%. The combination of reduced blue and boosted red creates a warm, golden look.
 4. **Desaturate**: Reduce both **U Gain** (Knob 2) and **V Gain** (Knob 3) to about 50%. Colors become muted and pastel. At 0% for both, the image is monochrome.
 5. **Oversaturate**: Push both U Gain and V Gain to 180%. Colors become vivid and almost electric. The image takes on a stylized, hyper-real quality.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -346,21 +342,33 @@ These exercises explore independent channel control, from basic brightness and c
 
 ![Inverted Fade Performance result](/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_ex3_s1.png)
 *Inverted Fade Performance — simulated result across source images.*
-**Key Concepts**: - Per-channel inversion creates complementary color shifts
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Combine channel inversion with the fade control for dramatic, performable color effects.
+
+#### Key Concepts
+
+- Per-channel inversion creates complementary color shifts
 - Fade Amount acts as a global wet/dry mix
 - Fade Color changes the dissolve destination
 
-**What You'll Create**: Combine channel inversion with the fade control for dramatic, performable color effects.
+#### Video Source
 
-**Source**: Any video source — high-contrast material with strong colors works best.
+Any video source (high-contrast material with strong colors works best.)
 
-1. **Negative image**: Toggle all three invert switches — **Y Invert**, **U Invert**, and **V Invert** — to **On**. The image becomes a full photographic negative: all tones and hues are reversed.
+#### Steps
+
+1. **Negative image**: Toggle all three invert switches: **Y Invert**, **U Invert**, and **V Invert**: to **On**. The image becomes a full photographic negative: all tones and hues are reversed.
 2. **Partial fade**: Pull **Fade Amount** (Fader 12) down to about 50%. The negative image blends halfway toward black, creating a dark, eerie half-tone.
-3. **White fade**: Flip **Fade Color** (Switch 10) to **White**. The same negative image now blends toward white — a ghostly, washed-out appearance.
-4. **Selective inversion**: Turn off **Y Invert** and leave U Invert and V Invert on. The brightness returns to normal, but all colors are complementary — blues become yellow, reds become cyan.
+3. **White fade**: Flip **Fade Color** (Switch 10) to **White**. The same negative image now blends toward white (a ghostly, washed-out appearance.)
+4. **Selective inversion**: Turn off **Y Invert** and leave U Invert and V Invert on. The brightness returns to normal, but all colors are complementary (blues become yellow, reds become cyan.)
 5. **Perform**: Slowly sweep **Fade Amount** from 0% to 100% while toggling invert switches. The image transforms fluidly between solid color, inverted, and processed states.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -394,7 +402,7 @@ These exercises explore independent channel control, from basic brightness and c
 
 - **Processing Amplifier**: A gain-and-offset circuit that adjusts the contrast and brightness of a video channel. Abbreviated as "proc amp."
 
-- **Unity Gain**: The gain setting at which the output equals the input — no amplification or attenuation. In YUV Amplifier, this corresponds to 100% (register value 512).
+- **Unity Gain**: The gain setting at which the output equals the input: no amplification or attenuation. In YUV Amplifier, this corresponds to 100% (register value 512).
 
 - **Wet/Dry Mix**: A blend control between a processed signal (wet) and an unprocessed or reference signal (dry).
 

@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 79
 slug: /instruments/videomancer/degauss
@@ -7,382 +7,373 @@ image: /img/instruments/videomancer/degauss/degauss_hero_s1.png
 description: "Every cathode-ray tube shipped from the factory with its electron beams converged — red, green, and blue landing precisely on their respective phosphor dots."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import degauss_control_panel from '/img/instruments/videomancer/degauss/degauss_control_panel.png';
-import degauss_source1_cat from '/img/instruments/videomancer/degauss/degauss_source1_cat.png';
-import degauss_source2_runner from '/img/instruments/videomancer/degauss/degauss_source2_runner.png';
-import degauss_source3_collage from '/img/instruments/videomancer/degauss/degauss_source3_collage.png';
-import degauss_source4_pattern from '/img/instruments/videomancer/degauss/degauss_source4_pattern.png';
-import degauss_source5_woman from '/img/instruments/videomancer/degauss/degauss_source5_woman.png';
-import degauss_source6_paint from '/img/instruments/videomancer/degauss/degauss_source6_paint.png';
-import degauss_hero_s1 from '/img/instruments/videomancer/degauss/degauss_hero_s1.png';
-import degauss_hero_s2 from '/img/instruments/videomancer/degauss/degauss_hero_s2.png';
-import degauss_hero_s3 from '/img/instruments/videomancer/degauss/degauss_hero_s3.png';
-import degauss_hero_s4 from '/img/instruments/videomancer/degauss/degauss_hero_s4.png';
-import degauss_hero_s5 from '/img/instruments/videomancer/degauss/degauss_hero_s5.png';
-import degauss_hero_s6 from '/img/instruments/videomancer/degauss/degauss_hero_s6.png';
-import degauss_ex1_s1 from '/img/instruments/videomancer/degauss/degauss_ex1_s1.png';
-import degauss_ex1_s2 from '/img/instruments/videomancer/degauss/degauss_ex1_s2.png';
-import degauss_ex1_s3 from '/img/instruments/videomancer/degauss/degauss_ex1_s3.png';
-import degauss_ex1_s4 from '/img/instruments/videomancer/degauss/degauss_ex1_s4.png';
-import degauss_ex1_s5 from '/img/instruments/videomancer/degauss/degauss_ex1_s5.png';
-import degauss_ex1_s6 from '/img/instruments/videomancer/degauss/degauss_ex1_s6.png';
-import degauss_ex2_s1 from '/img/instruments/videomancer/degauss/degauss_ex2_s1.png';
-import degauss_ex2_s2 from '/img/instruments/videomancer/degauss/degauss_ex2_s2.png';
-import degauss_ex2_s3 from '/img/instruments/videomancer/degauss/degauss_ex2_s3.png';
-import degauss_ex2_s4 from '/img/instruments/videomancer/degauss/degauss_ex2_s4.png';
-import degauss_ex2_s5 from '/img/instruments/videomancer/degauss/degauss_ex2_s5.png';
-import degauss_ex2_s6 from '/img/instruments/videomancer/degauss/degauss_ex2_s6.png';
-import degauss_ex3_s1 from '/img/instruments/videomancer/degauss/degauss_ex3_s1.png';
-import degauss_ex3_s2 from '/img/instruments/videomancer/degauss/degauss_ex3_s2.png';
-import degauss_ex3_s3 from '/img/instruments/videomancer/degauss/degauss_ex3_s3.png';
-import degauss_ex3_s4 from '/img/instruments/videomancer/degauss/degauss_ex3_s4.png';
-import degauss_ex3_s5 from '/img/instruments/videomancer/degauss/degauss_ex3_s5.png';
-import degauss_ex3_s6 from '/img/instruments/videomancer/degauss/degauss_ex3_s6.png';
-
-# Degauss
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: degauss_source1_cat, after: degauss_hero_s1 },
-    { label: "Runner", before: degauss_source2_runner, after: degauss_hero_s2 },
-    { label: "Collage", before: degauss_source3_collage, after: degauss_hero_s3 },
-    { label: "Pattern", before: degauss_source4_pattern, after: degauss_hero_s4 },
-    { label: "Woman", before: degauss_source5_woman, after: degauss_hero_s5 },
-    { label: "Paint", before: degauss_source6_paint, after: degauss_hero_s6 },
-  ]}
-/>
-*Degauss applying vertical-position-dependent chroma offsets to create rainbow color fringing reminiscent of a CRT degaussing coil sweep.*
+![Degauss hero image](/img/instruments/videomancer/degauss/degauss_hero_s1.png)
+*Degauss applying animated color fringing and rainbow warp to a live camera feed, simulating the chromatic distortion of a degaussing CRT monitor.*
 
 ---
 
 ## Overview
 
-Every cathode-ray tube shipped from the factory with its electron beams converged — red, green, and blue landing precisely on their respective phosphor dots. The earth's magnetic field, nearby speakers, or even the metal chassis of the monitor itself could slowly magnetize the shadow mask, pulling the beams out of alignment. The fix was a degaussing coil — a ring of wire pulsed with alternating current that neutralized the stray magnetism. If you were lucky, the colors snapped back into place. If you triggered the coil at the wrong moment, or the field was particularly strong, you got a spectacular wash of rainbow fringing that rippled across the screen before settling.
+Degauss recreates the mesmerizing color distortion that occurs when a CRT monitor is degaussed: the process of demagnetizing the shadow mask by passing a strong alternating magnetic field across the tube face. On a real CRT, this causes the red, green, and blue electron beams to momentarily misalign, producing vivid rainbow fringes that ripple across the screen. Degauss simulates this by applying opposite chroma offsets to the U and V channels that vary sinusoidally with vertical position and, optionally, animate over time.
 
-Degauss recreates that chromatic misalignment as a deliberate effect. It takes the chroma channels of the input signal — U and V — and offsets them in opposite directions based on a triangle wave derived from vertical screen position. The luminance channel passes through untouched, so the brightness structure of the image remains intact while the color information slides apart, producing bands of saturated hue shift that ripple from top to bottom. The name comes directly from the CRT maintenance procedure that inspired the effect: Karl Friedrich Gauss, whose work on magnetic fields gave us the unit of magnetic flux density, and the prefix *de-* meaning to remove.
+At low settings, Degauss adds gentle color fringing along horizontal gradients: a subtle rainbow shimmer. At extreme settings, the entire image warps into bands of vivid false color that ripple vertically across the frame. The animation can be frozen for a static rainbow warp, or set in continuous motion to recreate the signature CRT degaussing spectacle.
 
-At conservative settings, Degauss produces subtle color fringing at the edges of objects — a gentle chromatic aberration that feels like a slightly misaligned monitor. At extreme settings, the chroma offsets become so large that the image dissolves into horizontal rainbows of pure color, with the original content visible only as luminance structure beneath the shifting hues.
+### What's In a Name?
+
+To ***degauss*** is to remove unwanted magnetism from a device, named after the ***gauss***, the CGS unit of magnetic flux density and its originator, mathematician Carl Friedrich Gauss. Color CRT monitors contained an internal degaussing coil that fired automatically at power-on, producing a brief flash of rainbow distortion as the shadow mask demagnetized. Pressing the degauss button on a studio monitor was a small ritual: a moment of chromatic chaos before the picture snapped back to normal.
 
 ---
 
 ## Quick Start
 
-1. **Intensity is a mask, not a gain**: Because the VHDL uses bitwise AND, low Intensity values produce stepped, quantized offsets rather than smoothly scaled small offsets. This gives the fringing a distinctly digital character at low settings.
-2. **Y is always clean**: The luminance channel passes through completely unprocessed. You can push Intensity to maximum and the brightness structure of the image remains perfectly intact — only the color shifts.
-3. **Complementary colors**: The opposite U/V offsets always produce complementary color fringing. You cannot get same-direction shifts on both channels — the rainbow bands always contain the full hue spectrum.
+1. Turn **Intensity** (Knob 1) to about 60%. Rainbow color fringes appear across the image, varying from top to bottom.
+2. Enable **Animate** (Switch 7) if it isn't already on. The color bands begin to ripple vertically, recreating the CRT degauss waveform in motion.
+3. Adjust **Frequency** (Knob 2) to change how many color bands appear vertically. Lower values produce broad, sweeping bands; higher values create denser ripples.
+4. Use **Speed** (Knob 3) to control how fast the animation scrolls.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Degauss loaded](/img/instruments/videomancer/degauss/degauss_control_panel.png)
+*Videomancer's front panel with Degauss active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Intensity
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 38% |
+
+**Intensity** controls the strength of the chroma offset applied to each pixel. At 0%, no offset is applied and the image passes through with its original color. As the value increases, the U and V channels are pushed further from their original values, creating more vivid and saturated color fringing. At 100%, the offset is at maximum strength, producing bold rainbow bands.
+
+---
+
+### Knob 2 — Frequency
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 38% |
+
+**Frequency** controls the spatial frequency of the sinusoidal warp pattern. At low values, the color bands are broad and span many scanlines, producing gentle, sweeping color shifts across the frame. At high values, the bands become narrow and numerous, creating a dense vertical striping of color. The waveform is a triangle wave derived from the vertical pixel counter, so the pattern repeats at regular intervals down the screen.
+
+---
+
+### Knob 3 — Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Speed** controls the rate of the animation when **Animate** is enabled. At 0%, the pattern is frozen in place: a static rainbow warp. As the value increases, the color bands scroll vertically at increasing rates. The animation is driven by a frame counter that advances the vertical phase offset each frame.
+
+:::tip
+Setting Speed to 0% with Animate enabled still freezes the pattern, but the pattern position depends on which frame the Speed was set to zero. Toggle **Animate** off for a guaranteed static pattern locked to the vertical position.
+:::
+
+---
+
+### Knob 4 — Spread
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Spread** controls the spatial spread of the color distortion. At low values the color shifts are tightly concentrated. At higher values the offset pattern is distributed more broadly across the image, creating a wider zone of chromatic aberration.
+
+---
+
+### Knob 5 — Convergence
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Convergence** adjusts the relative alignment of the color channels. At 50%, the U and V channels receive perfectly opposite offsets, producing symmetrical rainbow fringing. Reducing convergence brings the channels closer together, while increasing it pushes them further apart. This mimics the convergence adjustment on a real CRT, where misaligned electron beams produce colored halos around edges.
+
+---
+
+### Knob 6 — Saturation
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Saturation** controls the overall chroma saturation of the output. At 50%, saturation passes through at unity. Reducing the value desaturates the color fringing toward gray. Increasing it intensifies the colors beyond their natural levels, producing hyper-vivid rainbow bands.
+
+---
+
+### Switch 7 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Animate** enables or disables the frame-by-frame animation of the color warp pattern. With the switch **On**, the frame counter advances each vertical sync, causing the rainbow bands to scroll vertically. With the switch **Off**, the frame counter freezes and the pattern remains static.
+
+---
+
+### Switch 8 — Radial
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Radial** changes the geometry of the warp pattern. With the switch **Off**, the color offset varies only with vertical position, producing horizontal bands of color. With the switch **On**, the offset also varies with horizontal position, creating a radial or circular fringing pattern that emanates from the center of the screen (closer to the way a real degaussing coil affects a CRT.)
+
+---
+
+### Switch 9 — Horizontal
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Horizontal** controls whether the color offset is applied along the horizontal axis. With the switch **On**, per-pixel chroma offsets create visible color fringing that varies across each scanline. With the switch **Off**, the offset pattern depends only on the vertical position and remains constant along each line.
+
+---
+
+### Switch 10 — Persistent
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Persistent** changes how the color offset behaves over time. With the switch **Off**, the animation resets cleanly each frame. With the switch **On**, the offset accumulates frame-over-frame, creating a slowly building, more chaotic color distortion that evolves gradually rather than cycling in a clean loop.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Degauss processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** crossfades between the dry (unprocessed) signal and the wet (Degauss-processed) signal. At 0%, only the dry signal passes through. At 100%, only the processed signal is output. Intermediate values blend the original and degaussed versions, useful for adding a subtle color shimmer without full-strength rainbow distortion.
 
 ---
 
 ## Background
 
-### CRT Degaussing and the Degaussing Coil
+### CRT degaussing
 
-A cathode-ray tube display uses three electron beams — one for each primary color — aimed through a perforated metal sheet called a **shadow mask** or **aperture grille**. For a sharp, color-neutral image, all three beams must land on their correct phosphor dots simultaneously. External magnetic fields can deflect the beams unevenly, causing one color to shift relative to the others. Most CRT monitors included an internal **degaussing coil** — a loop of wire wrapped around the tube face — that automatically pulsed a decaying alternating current at power-on to neutralize accumulated magnetism. The characteristic *thunk* and brief color ripple when turning on an older monitor was the degaussing circuit at work.
+Every color CRT contains a ***shadow mask***: a thin metal screen perforated with hundreds of thousands of tiny holes, precisely aligned so that each of the three electron beams (red, green, blue) strikes only its corresponding phosphor dot. Over time, external magnetic fields from speakers, power supplies, or even the Earth's magnetic field can magnetize the shadow mask, causing the beams to bend slightly and strike the wrong phosphor dots. The result is patches of false color, especially noticeable in white or neutral areas. ***Degaussing*** removes this unwanted magnetism by applying a strong alternating magnetic field that decays to zero, randomizing the magnetic domains back to a neutral state.
 
-### Convergence and Misconvergence
+### Color fringing
 
-**Convergence** describes the condition where all three electron beams meet at the same point on the phosphor screen. A perfectly converged display shows white as a single sharp dot of overlapping red, green, and blue. **Misconvergence** occurs when the beams diverge — typically in a position-dependent pattern that varies from the center to the edges of the screen. Horizontal misconvergence shifts red and blue apart along the scan line; vertical misconvergence shifts them apart between scan lines. The resulting color fringing is most visible on high-contrast edges: white text on a black background develops red and cyan halos. Degauss models vertical-position-dependent misconvergence, where the offset amount varies sinusoidally from top to bottom of the raster.
+During the degaussing process, the rapidly alternating magnetic field temporarily throws all three electron beams off course simultaneously, producing dramatic rainbow ***fringing*** across the screen. The colors appear in roughly sinusoidal bands because the magnetic field strength varies smoothly with distance from the degaussing coil. As the field decays, the bands narrow and fade until the picture snaps back to normal. This transient moment of chromatic chaos is the visual spectacle that Degauss recreates.
 
-### Color Fringing and Chromatic Aberration
+### Chroma offset in YUV
 
-In optics, **chromatic aberration** occurs when a lens fails to focus all wavelengths to the same point. In CRT terminology, the equivalent artifact is **color fringing** — different color channels landing at slightly different spatial positions. The visual effect is similar: high-contrast edges develop rainbow halos. Degauss creates color fringing by offsetting the U and V chroma channels in opposite directions. Because U and V encode color on perpendicular axes in color space (roughly blue-yellow and red-cyan), opposite offsets produce complementary color shifts that create the full-spectrum rainbow characteristic of real CRT misconvergence.
-
-### Shadow Mask and Aperture Grille
-
-The **shadow mask** is a thin metal plate perforated with hundreds of thousands of tiny holes, one for each pixel triad. The **aperture grille** (used in Trinitron-type displays) replaces the holes with vertical wires. Both serve the same purpose: ensuring each electron beam hits only its corresponding phosphor. When the shadow mask becomes magnetized, it acts as a weak lens for the electron beams, bending them differentially by color. The degaussing coil demagnetizes the mask, restoring beam alignment. In severe cases, the residual magnetism creates visible color patches — regions of the screen with a persistent tint — that only a strong external degaussing wand can clear.
-
-### Analog Nostalgia and the Aesthetics of Malfunction
-
-CRT artifacts — misconvergence, color purity errors, phosphor bloom, raster geometry distortion — are increasingly valued as aesthetic elements in video art, music visuals, and retro-styled media. The appeal lies in the tension between order and disorder: the underlying image remains recognizable, but the display's imperfect reproduction adds an organic, unpredictable layer. Degaussing artifacts are particularly photogenic because they produce pure, saturated color in smooth gradients — the rainbow bands have a painterly quality that feels both technical and beautiful. Degauss lets you dial in precisely how much of that beautiful malfunction you want, from barely perceptible to total chromatic dissolution.
+Degauss achieves its color fringing by applying opposite offsets to the U and V chroma channels. In the ***YUV*** color model, U and V represent the color difference signals: U encodes the blue-yellow axis, and V encodes the red-cyan axis. By pushing U in one direction and V in the opposite direction, Degauss rotates the perceived hue of each pixel. The magnitude of the offset varies sinusoidally with vertical position, creating the characteristic banded rainbow pattern.
 
 
 ---
 
 ## Signal Flow
 
-Timing Detection → Triangle Wave Generation → Chroma Offset Calculation → ... → Sync Delay Pipeline → Bypass Mux
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Timing Detection ──────────────────────────────────────────
-│   ├─ Hsync/Vsync edge detection (falling edge)
-│   ├─ X counter (per pixel), Y counter (per line)
-│   └─ Frame counter (16-bit, increments on vsync when Animate=On)
-│
-├── Triangle Wave Generation ──────────────────────────────────
-│   ├─ v_y_phase = y_counter + frame_counter(9:0)
-│   └─ v_mod = v_y_phase(7:0) XOR replicated v_y_phase(8)
-│       (folds ascending ramp into triangle wave, 0–255)
-│
-├── Chroma Offset Calculation ─────────────────────────────────
-│   ├─ v_offset_u = +(v_mod AND Intensity)
-│   └─ v_offset_v = -v_offset_u
-│
-├── Y Channel ─────────────────────────────────────────────────
-│   └─ Pass-through (no processing)
-│
-├── U Channel ─────────────────────────────────────────────────
-│   └─ clamp(data_in.u + v_offset_u, 0, 1023)
-│
-├── V Channel ─────────────────────────────────────────────────
-│   └─ clamp(data_in.v + v_offset_v, 0, 1023)
-│
-├── Wet/Dry Mix (3× interpolator_u, 4 clocks each) ───────────
-│   ├─ mix_y: lerp(dry_y, proc_y, Mix)
-│   ├─ mix_u: lerp(dry_u, proc_u, Mix)
-│   └─ mix_v: lerp(dry_v, proc_v, Mix)
-│
-├── Sync Delay Pipeline (8 clocks) ────────────────────────────
-│   └─ hsync_n, vsync_n, field_n, Y, U, V delayed to match
-│
-├── Bypass Mux ────────────────────────────────────────────────
-│   └─ Bypass=Off → mixed output; Bypass=On → delayed dry
-│
-└── Output (YUV 4:4:4)
-```
+The key interaction is that U and V receive ***opposite*** offsets from the same modulation source. When U is pushed positive (toward blue), V is pushed negative (toward green/cyan), and vice versa. This opposite-sign modulation produces a hue rotation that sweeps through the color wheel as the offset magnitude varies with vertical position.
 
-The core of Degauss is a single interaction: a triangle wave derived from vertical position modulates the chroma channels in opposite directions. The triangle wave is generated by XOR-folding the lower bits of the Y phase counter — when bit 8 is low, the 8-bit value ramps up; when bit 8 is high, the XOR flips all bits, creating a descending ramp. This produces a smooth, repeating triangle that maps directly to screen position. The Intensity parameter acts as a bitwise AND mask on this triangle wave, which means it does not simply scale the amplitude — it quantizes and clips it in a digital, stepped fashion. At low Intensity values, only the most significant bits of the triangle wave pass through, producing coarse, staircase-like offset patterns. At high values, the full triangle shape appears. The frame counter adds a time-varying phase offset to the Y position, causing the triangle wave pattern to scroll vertically when Animate is enabled. Because the offset is applied equally and oppositely to U and V, the color shift is always complementary — pushing toward blue-yellow on one channel while pushing toward red-cyan on the other, producing the characteristic rainbow bands of CRT misconvergence.
+The Y channel passes through completely unmodified: Degauss does not alter brightness or contrast. All visible changes are purely chromatic, which is faithful to the real degaussing phenomenon where luminance remains stable while color goes haywire.
 
----
-
-## Parameter Reference
-
-<img src={degauss_control_panel} alt="Videomancer front panel with Degauss loaded"/>
-*Videomancer's front panel with Degauss active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Intensity
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 38% |
-| Suffix | % |
-
-Controls the amplitude of the chroma offset applied to U and V channels. The VHDL implements this as a bitwise AND between the triangle wave modulator and the Intensity register, so the relationship is not a smooth linear scale — it is a digital masking operation that progressively enables more bits of the triangle wave signal. At 0%, the AND mask is zero and no offset is applied; the image passes through with its original color intact. At 100%, the full triangle wave amplitude drives the chroma offset, creating maximum rainbow fringing. Intermediate values produce stepped, quantized versions of the offset pattern.
-
----
-
-#### Knob 2 — Frequency
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 38% |
-| Suffix | % |
-
-At low values, the color fringing varies slowly from top to bottom of the screen — broad, gentle bands of hue shift. At high values, the pattern oscillates rapidly, producing many narrow rainbow stripes. This parameter modifies the effective wavelength of the vertical modulation, changing how many complete cycles of the triangle wave fit within the visible raster. Internally, controls the spatial frequency of the triangle wave pattern along the vertical axis.
-
----
-
-#### Knob 3 — Speed
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-At 0%, the rainbow pattern is stationary even when Animate is enabled (the accumulator increments by zero). At higher values, the pattern scrolls more rapidly, creating a smooth vertical drift of the color fringing bands. The visual effect resembles a degaussing coil being slowly swept past the screen — the rainbow interference pattern migrates from top to bottom in a hypnotic, continuous motion. Internally, controls the rate at which the animation phase accumulator advances per frame.
-
----
-
-#### Knob 4 — Spread
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the spatial separation between the U and V channel offsets. At 50% (midpoint), the offsets are equal and opposite — symmetric complementary color fringing. Below 50%, the U offset dominates and the fringing shifts toward the blue-yellow axis. Above 50%, the V offset dominates and the fringing shifts toward the red-cyan axis. This parameter adjusts how evenly the chromatic displacement is distributed between the two chroma axes, controlling the overall color temperature of the fringing effect.
-
----
-
-#### Knob 5 — Convergence
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Convergence adjusts how far the chroma offsets pull the U and V channels away from their neutral midpoint (512 in the 10-bit domain). At 50%, the offset is applied symmetrically around center. At lower values, the offset is biased toward convergence — the chroma channels are pulled back toward neutral, reducing the visible color fringing. At higher values, the offset is biased away from center, producing more extreme chromatic displacement. This mimics the convergence adjustment rings on the neck of a CRT — fine-tuning how well the three electron beams align.
-
----
-
-#### Knob 6 — Saturation
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Applies a post-offset saturation adjustment to the chroma channels. At 50%, the chroma signal passes through at unity gain after the offset is applied. Below 50%, the chroma channels are attenuated toward neutral gray, softening the rainbow effect into pastel tints. Above 50%, the chroma channels are amplified, intensifying the color fringing into vivid, saturated bands. This is useful for controlling the visual weight of the effect — subtle pastel washes versus aggressive, poster-like color streaks.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Animate** | Off | On |
-| **8 — Radial** | Off | On |
-| **9 — Horizontal** | Off | On |
-| **10 — Persistent** | Off | On |
-| **11 — Bypass** | Off | On |
-
-Switches 7–11 control five independent binary options. Animate (7) enables or disables the frame-based phase scroll. Radial (8), Horizontal (9), and Persistent (10) modify the spatial character of the triangle wave modulation. Bypass (11) is a global output mux. These toggles can be combined freely — for example, enabling both Radial and Horizontal produces a pattern that varies across both screen axes simultaneously.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Degauss processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
-
----
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Degauss-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::tip
+Because only chroma is modified, Degauss pairs well with programs that process luminance. Chain Degauss before a luma-based effect (like Bitcullis or Contour) to add color dimension to a brightness-driven process.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from static rainbow fringing to animated chromatic dissolution, exploring the interplay between intensity, spatial frequency, and animation.
+These exercises progress from a static color warp to animated chromatic chaos. Each builds on the previous, engaging more of the modulation pipeline.
+### Exercise 1: Static Rainbow
 
-### Exercise 1: Static Rainbow Fringing
+![Static Rainbow result](/img/instruments/videomancer/degauss/degauss_ex1_s1.png)
+*Static Rainbow — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: degauss_source1_cat, after: degauss_ex1_s1 },
-    { label: "Runner", before: degauss_source2_runner, after: degauss_ex1_s2 },
-    { label: "Collage", before: degauss_source3_collage, after: degauss_ex1_s3 },
-    { label: "Pattern", before: degauss_source4_pattern, after: degauss_ex1_s4 },
-    { label: "Woman", before: degauss_source5_woman, after: degauss_ex1_s5 },
-    { label: "Paint", before: degauss_source6_paint, after: degauss_ex1_s6 },
-  ]}
-/>
-*Static Rainbow Fringing — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with high-contrast edges — text on a dark background, architectural lines, or faces against a plain backdrop.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Learn how Intensity and Frequency interact to create position-dependent color fringing, and observe the characteristic rainbow banding of CRT misconvergence.
+#### Learning Outcomes
 
-1. **Initial setup**: Set Intensity to about 40%. Observe the subtle color halos appearing on horizontal edges — blue-cyan on one side, red-yellow on the other.
-2. **Increase Intensity**: Sweep Intensity from 40% up to 80%. Watch the rainbow bands widen and intensify. Note the stepped, digital quality of the offset at lower values versus the smooth triangle wave at higher values.
-3. **Vary Frequency**: Sweep Frequency from low to high. At low values, the color shift varies slowly across the screen — broad washes of tint. At high values, many narrow rainbow stripes appear.
-4. **Combine**: Set Intensity around 60% and Frequency around 50%. This produces a classic CRT misconvergence look — recognizable color fringing that varies smoothly from top to bottom.
-5. **Check Y passthrough**: Toggle Bypass a few times. Note that brightness structure is identical in both states — only the color shifts.
+A frozen rainbow color warp across the frame, like a CRT with a permanently magnetized shadow mask.
 
-**Key concepts**: Intensity controls offset amplitude via bitwise AND masking, Frequency controls the triangle wave spatial period, Y channel passes through unmodified, color fringing comes from opposite U/V offsets
+#### Key Concepts
 
----
+- Chroma offsets create color fringing without altering brightness
+- Vertical position drives the sinusoidal color pattern
+- Intensity controls the strength of the color shift
 
-### Exercise 2: Animated Degauss Sweep
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: degauss_source1_cat, after: degauss_ex2_s1 },
-    { label: "Runner", before: degauss_source2_runner, after: degauss_ex2_s2 },
-    { label: "Collage", before: degauss_source3_collage, after: degauss_ex2_s3 },
-    { label: "Pattern", before: degauss_source4_pattern, after: degauss_ex2_s4 },
-    { label: "Woman", before: degauss_source5_woman, after: degauss_ex2_s5 },
-    { label: "Paint", before: degauss_source6_paint, after: degauss_ex2_s6 },
-  ]}
-/>
-*Animated Degauss Sweep — simulated result across source images.*
-**Source**: Slow-moving or static footage — a still life, a landscape, or a color bar test pattern.
+A camera feed with neutral tones: faces, gray objects, or white walls show the color shift most clearly.
 
-**What You'll Create**: Explore the animation system and observe how the rainbow bands scroll through the image, recreating the visual experience of a degaussing coil sweep.
+#### Steps
 
-1. **Enable animation**: Turn Animate On. Set Speed to about 25% for a slow, gentle scroll.
-2. **Observe the sweep**: The rainbow bands drift vertically through the image. With a color bar input, you can clearly see each band of color shift as it passes through.
-3. **Increase Speed**: Sweep Speed from 25% to 75%. The scrolling accelerates from a stately drift to a rapid flutter.
-4. **Add Horizontal**: Turn Horizontal On. The straight bands develop a diagonal or wavy character as X position contributes to the phase.
-5. **Add Radial**: Turn Radial On (with or without Horizontal). The bands curve into circular arcs radiating from the screen center — this closely mimics the visual effect of waving a degaussing wand near the screen.
-6. **Full sweep**: Set Intensity to about 70%, Speed to about 40%, and watch the complete degauss simulation — bands of saturated color washing smoothly across the image.
+1. **Disable animation**: Turn **Animate** (Switch 7) off. The pattern is now static.
+2. **Set intensity**: Increase **Intensity** (Knob 1) to about 60%. Rainbow bands appear across the image.
+3. **Adjust frequency**: Turn **Frequency** (Knob 2) to about 40%. Broad bands of color sweep from top to bottom.
+4. **Observe**: The image retains its original brightness, but the colors ripple in horizontal bands. White areas show the fringing most clearly.
 
-**Key concepts**: Frame counter adds time-varying phase, Speed controls accumulator rate, Horizontal adds X-axis variation, Radial produces circular field patterns
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Intensity | ~60% |
+| Frequency | ~40% |
+| Speed | ~0% |
+| Spread | ~50% |
+| Convergence | ~50% |
+| Saturation | ~50% |
+| Animate | Off |
+| Radial | Off |
+| Horizontal | On |
+| Persistent | Off |
+| Bypass | Off |
+| Mix | ~100% |
 
 ---
 
-### Exercise 3: Chromatic Dissolution
+### Exercise 2: CRT Degauss Animation
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: degauss_source1_cat, after: degauss_ex3_s1 },
-    { label: "Runner", before: degauss_source2_runner, after: degauss_ex3_s2 },
-    { label: "Collage", before: degauss_source3_collage, after: degauss_ex3_s3 },
-    { label: "Pattern", before: degauss_source4_pattern, after: degauss_ex3_s4 },
-    { label: "Woman", before: degauss_source5_woman, after: degauss_ex3_s5 },
-    { label: "Paint", before: degauss_source6_paint, after: degauss_ex3_s6 },
-  ]}
-/>
-*Chromatic Dissolution — simulated result across source images.*
-**Source**: Any footage with recognizable content — faces, objects, or scenes with a range of saturated and neutral areas.
+![CRT Degauss Animation result](/img/instruments/videomancer/degauss/degauss_ex2_s1.png)
+*CRT Degauss Animation — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Push all controls to extreme settings to dissolve the image into pure chromatic abstraction, then use Mix and Convergence to pull it back toward a usable artistic effect.
+***A description of the exercise illustration.***
 
-1. **Maximum fringing**: Set Intensity to 100%, Frequency to about 60%. The image should show strong, vivid rainbow bands.
-2. **Boost Saturation**: Push Saturation above 70%. The rainbow bands intensify into solid, poster-like color stripes.
-3. **Adjust Spread**: Sweep Spread from 0% to 100%. Watch the color axis tilt — the balance between blue-yellow and red-cyan fringing shifts.
-4. **Convergence extremes**: Sweep Convergence from 0% to 100%. At low values, the fringing collapses back toward neutral; at high values, the offsets become more extreme.
-5. **Mix back**: Now use the Mix fader to blend the processed signal with the dry input. At about 30-40%, you get a subtle chromatic haze layered over the original image — very useful for creating a "vintage monitor" aesthetic.
-6. **Persistent trailing**: Turn Persistent On. The rainbow bands leave ghostly after-images as they scroll, creating a smeared, fluorescent trail effect.
+#### Learning Outcomes
 
-**Key concepts**: Saturation amplifies chroma post-offset, Spread controls U/V balance, Convergence adjusts offset bias, Mix blends processed with dry, Persistent adds temporal trailing
+An animated ripple of rainbow bands scrolling down the screen, recreating the CRT degauss experience.
+
+#### Key Concepts
+
+- The frame counter drives vertical scrolling of the color pattern
+- Speed controls the animation rate
+- The effect simulates real-time CRT degaussing
+
+#### Video Source
+
+Any live camera feed or recorded footage with recognizable content.
+
+#### Steps
+
+1. **Enable animation**: Turn **Animate** (Switch 7) on.
+2. **Set speed**: Increase **Speed** (Knob 3) to about 30%. The rainbow bands begin scrolling downward.
+3. **Increase intensity**: Set **Intensity** (Knob 1) to about 70% for vivid color.
+4. **Tune frequency**: Adjust **Frequency** (Knob 2) to ~50% for a moderate density of color bands.
+5. **Observe the ripple**: Watch as rainbow bands cascade down the frame in smooth vertical motion.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Intensity | ~70% |
+| Frequency | ~50% |
+| Speed | ~30% |
+| Spread | ~50% |
+| Convergence | ~50% |
+| Saturation | ~50% |
+| Animate | On |
+| Radial | Off |
+| Horizontal | On |
+| Persistent | Off |
+| Bypass | Off |
+| Mix | ~100% |
 
 ---
 
+### Exercise 3: Radial Color Chaos
 
-## Tips
+![Radial Color Chaos result](/img/instruments/videomancer/degauss/degauss_ex3_s1.png)
+*Radial Color Chaos — simulated result across source images.*
+#### Exercise Illustration
 
-- **Mix for subtlety**: At 100% Mix and high Intensity, the effect is dramatic. Use Mix at 20-40% to layer subtle chromatic aberration over the original image for a "vintage monitor" look.
-- **Animate for live performance**: With Speed at moderate values, the scrolling rainbow pattern is mesmerizing for live visuals. The pattern repeats every 1024 frames, but the slow drift makes each cycle feel organic.
-- **Feedback loops**: Routing the output back to the input compounds the chroma offset on each pass, producing increasingly extreme rainbow banding that eventually saturates into solid color stripes.
-- **Pair with Cascade or Cathode**: Degauss adds the color fringing of a misaligned CRT. Combine it with scanline effects (Cascade) or phosphor simulation (Cathode) for a complete CRT emulation chain.
-- **Bypass for A/B**: Use Switch 11 to instantly compare the processed and unprocessed signals. Because Y is unchanged, the comparison highlights the chroma effect in isolation.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+An evolving, radial color distortion that builds in intensity over time, producing a psychedelic, unstable CRT look.
+
+#### Key Concepts
+
+- Radial mode creates circular fringing patterns
+- Persistent mode accumulates offsets over time
+- Combining all modulation modes produces the most extreme color distortion
+
+#### Video Source
+
+High-contrast footage with strong edges (text, graphics, or geometric patterns.)
+
+#### Steps
+
+1. **Full settings**: Set **Intensity** to ~80%, **Frequency** to ~60%, **Speed** to ~25%.
+2. **Enable radial**: Turn **Radial** (Switch 8) on. The color pattern gains a circular component.
+3. **Enable persistence**: Turn **Persistent** (Switch 10) on. The color distortion begins accumulating frame over frame.
+4. **Watch the buildup**: Over several seconds, the color warp grows more extreme and chaotic.
+5. **Adjust mix**: Use **Mix** (Fader 12) at ~70% to blend some original color through the chaos.
+6. **Disable horizontal**: Turn **Horizontal** (Switch 9) off to isolate just the vertical and radial components.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Intensity | ~80% |
+| Frequency | ~60% |
+| Speed | ~25% |
+| Spread | ~70% |
+| Convergence | ~70% |
+| Saturation | ~70% |
+| Animate | On |
+| Radial | On |
+| Horizontal | Off |
+| Persistent | On |
+| Bypass | Off |
+| Mix | ~70% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Aperture Grille** | A type of CRT shadow mask using vertical wires instead of holes, used in Trinitron displays; serves the same beam-selection function as a dot-mask. |
-| **BT.601** | ITU-R Recommendation BT.601; the color encoding standard used in standard-definition video, defining the YUV matrix coefficients. |
-| **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **Chromatic Aberration** | An optical artifact where different wavelengths of light focus at different points, causing color fringing at edges. |
-| **Clamp** | A limiting operation that constrains a value to a defined range (0–1023 in the 10-bit domain). |
-| **Convergence** | The condition where all three electron beams in a CRT meet at the same point on the phosphor screen. |
-| **Degaussing** | The process of demagnetizing a CRT shadow mask using an alternating magnetic field to restore color purity. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Misconvergence** | A CRT defect where the three electron beams fail to meet at the same phosphor dot, causing color fringing. |
-| **Shadow Mask** | A perforated metal sheet inside a CRT that ensures each electron beam strikes only its designated phosphor color. |
-| **Triangle Wave** | A periodic waveform that ramps linearly up and then linearly down, generated here by XOR-folding a binary counter. |
+- **Chroma**: The color difference components (U and V) of a YUV video signal, representing hue and saturation independently of brightness.
+
+- **Convergence**: The alignment of the three electron beams (red, green, blue) in a color CRT so they strike the correct phosphor dots through the shadow mask.
+
+- **CRT**: Cathode Ray Tube; a display technology using electron beams to excite phosphor coatings on a glass screen.
+
+- **Degaussing**: The process of demagnetizing a CRT's shadow mask by applying a decaying alternating magnetic field, temporarily producing rainbow color distortion.
+
+- **Fringing**: Colored halos or bands that appear when the color channels of a display are misaligned, either deliberately or due to magnetic interference.
+
+- **Shadow Mask**: A thin perforated metal sheet inside a color CRT that ensures each electron beam strikes only its corresponding phosphor color.
+
+- **YUV**: A color encoding system that separates brightness (Y) from color information (U = blue-yellow axis, V = red-cyan axis).
 
 ---

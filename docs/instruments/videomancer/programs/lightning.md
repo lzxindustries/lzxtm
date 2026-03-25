@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 171
 slug: /instruments/videomancer/lightning
@@ -7,381 +7,395 @@ image: /img/instruments/videomancer/lightning/lightning_hero_s1.png
 description: "Lightning is a processing program that renders one or two bright, jagged bolt paths from the top to the bottom of the frame, overlaid additively onto the input video."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import lightning_control_panel from '/img/instruments/videomancer/lightning/lightning_control_panel.png';
-import lightning_source1_boat from '/img/instruments/videomancer/lightning/lightning_source1_boat.png';
-import lightning_source2_car from '/img/instruments/videomancer/lightning/lightning_source2_car.png';
-import lightning_source3_turtle from '/img/instruments/videomancer/lightning/lightning_source3_turtle.png';
-import lightning_source4_pattern from '/img/instruments/videomancer/lightning/lightning_source4_pattern.png';
-import lightning_source5_man from '/img/instruments/videomancer/lightning/lightning_source5_man.png';
-import lightning_source6_paint from '/img/instruments/videomancer/lightning/lightning_source6_paint.png';
-import lightning_hero_s1 from '/img/instruments/videomancer/lightning/lightning_hero_s1.png';
-import lightning_hero_s2 from '/img/instruments/videomancer/lightning/lightning_hero_s2.png';
-import lightning_hero_s3 from '/img/instruments/videomancer/lightning/lightning_hero_s3.png';
-import lightning_hero_s4 from '/img/instruments/videomancer/lightning/lightning_hero_s4.png';
-import lightning_hero_s5 from '/img/instruments/videomancer/lightning/lightning_hero_s5.png';
-import lightning_hero_s6 from '/img/instruments/videomancer/lightning/lightning_hero_s6.png';
-import lightning_ex1_s1 from '/img/instruments/videomancer/lightning/lightning_ex1_s1.png';
-import lightning_ex1_s2 from '/img/instruments/videomancer/lightning/lightning_ex1_s2.png';
-import lightning_ex1_s3 from '/img/instruments/videomancer/lightning/lightning_ex1_s3.png';
-import lightning_ex1_s4 from '/img/instruments/videomancer/lightning/lightning_ex1_s4.png';
-import lightning_ex1_s5 from '/img/instruments/videomancer/lightning/lightning_ex1_s5.png';
-import lightning_ex1_s6 from '/img/instruments/videomancer/lightning/lightning_ex1_s6.png';
-import lightning_ex2_s1 from '/img/instruments/videomancer/lightning/lightning_ex2_s1.png';
-import lightning_ex2_s2 from '/img/instruments/videomancer/lightning/lightning_ex2_s2.png';
-import lightning_ex2_s3 from '/img/instruments/videomancer/lightning/lightning_ex2_s3.png';
-import lightning_ex2_s4 from '/img/instruments/videomancer/lightning/lightning_ex2_s4.png';
-import lightning_ex2_s5 from '/img/instruments/videomancer/lightning/lightning_ex2_s5.png';
-import lightning_ex2_s6 from '/img/instruments/videomancer/lightning/lightning_ex2_s6.png';
-import lightning_ex3_s1 from '/img/instruments/videomancer/lightning/lightning_ex3_s1.png';
-import lightning_ex3_s2 from '/img/instruments/videomancer/lightning/lightning_ex3_s2.png';
-import lightning_ex3_s3 from '/img/instruments/videomancer/lightning/lightning_ex3_s3.png';
-import lightning_ex3_s4 from '/img/instruments/videomancer/lightning/lightning_ex3_s4.png';
-import lightning_ex3_s5 from '/img/instruments/videomancer/lightning/lightning_ex3_s5.png';
-import lightning_ex3_s6 from '/img/instruments/videomancer/lightning/lightning_ex3_s6.png';
-
-# Lightning
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: lightning_source1_boat, after: lightning_hero_s1 },
-    { label: "Car", before: lightning_source2_car, after: lightning_hero_s2 },
-    { label: "Turtle", before: lightning_source3_turtle, after: lightning_hero_s3 },
-    { label: "Pattern", before: lightning_source4_pattern, after: lightning_hero_s4 },
-    { label: "Man", before: lightning_source5_man, after: lightning_hero_s5 },
-    { label: "Paint", before: lightning_source6_paint, after: lightning_hero_s6 },
-  ]}
-/>
-*Lightning bolt effect overlaid on video, jagged LFSR-driven discharge paths cutting down the screen with distance-based brightness falloff and periodic flash modulation.*
+![Lightning hero image](/img/instruments/videomancer/lightning/lightning_hero_s1.png)
+*A jagged bolt of electric discharge tears down the screen, forking and flashing over the source image like a captured moment of storm.*
 
 ---
 
 ## Overview
 
-Lightning is a processing program that renders one or two bright, jagged bolt paths from the top to the bottom of the frame, overlaid additively onto the input video. Each bolt follows a vertical path whose horizontal position wanders randomly from scanline to scanline, driven by a 16-bit LFSR. The bolt's visual intensity falls off with horizontal distance from its centre, creating a glowing discharge effect. A branch fork splits from the primary bolt partway down the screen, diverging with doubled jitter to simulate the forking structure of real lightning.
+Lightning renders a procedural electrical discharge bolt that strikes vertically down the screen. The bolt's path is a ***random walk***: at each scanline, a pseudo-random offset shifts the bolt's horizontal position left or right, producing the jagged, branching silhouette of a real lightning strike. The bolt glows brightest at its center and fades with distance, creating a soft luminous halo that lights up the source video beneath it.
 
-The entire bolt assembly "flashes" periodically, controlled by a DDS (Direct Digital Synthesis) phase accumulator that increments once per frame. When the upper bits of the accumulator reach a threshold, the bolt fires at full brightness; between flashes, it dims to one quarter intensity. This creates a rhythmic strobe-like discharge pattern. A random flash mode adds LFSR noise to the DDS increment, producing irregular timing that more closely resembles natural electrical discharge.
+The bolt can fork partway down the screen, splitting into a primary trunk and a secondary branch that diverges at double the jitter rate. A second bolt can be added in **Arc** mode, mirroring the primary bolt's jitter in the opposite direction. A ***DDS flash accumulator*** drives periodic bright flashes followed by dimmer inter-flash periods, simulating the staccato rhythm of an electrical storm. The flash timing can be made irregular with pseudo-random perturbation.
 
-At minimum settings, Lightning produces a thin, barely visible line with subtle jitter. At maximum, it creates a wide, bright, violently jagged bolt that floods the screen with light during flash peaks. A colour tint toggle shifts the bolt from pure white to a purple-blue cast, and double bolt mode adds a mirrored second bolt that wanders with inverted jitter.
+Lightning is an additive overlay effect: the bolt's brightness is summed onto the source video rather than replacing it. At full mix, the bolt burns over the source image like a bright scar. Pulling the mix fader back blends the effect gently into the scene. The result ranges from subtle flickers of illumination to full-frame electrical chaos.
+
+:::tip
+Lightning is at its most dramatic over dark footage. The bolt's additive brightness has room to glow against a dark background, whereas a bright source compresses the effect toward white clipping.
+:::
+
+### What's In a Name?
+
+The name ***Lightning*** needs no metaphor. The program generates a procedural lightning bolt: a jagged, branching electrical discharge rendered in real time on every frame. Like its natural counterpart, the bolt follows an unpredictable path from top to bottom, forks into branches, and illuminates its surroundings with sudden, blinding flashes.
 
 ---
 
 ## Quick Start
 
-1. **Labels are scrambled**: The TOML labels for Knobs 2–5 do not match the VHDL signal assignments. Use the hardware behaviour (described above) rather than the panel labels when adjusting controls.
-2. **Dark sources work best**: Lightning uses additive compositing, so the bolt is most visible against dark backgrounds. Against bright sources, the bolt may clip to white and lose definition.
-3. **Jitter accumulates**: Even small per-scanline jitter produces significant wandering over 1080 lines. Start with low Jitter values to understand the accumulation before going extreme.
+1. Send a dark or moderately lit video source into Videomancer and load **Lightning**. A glowing bolt should appear running vertically through the center of the image, flickering over the source.
+2. Turn **Bolt W** (Knob 1) clockwise to widen the bolt's glow. The luminous halo around the bolt's center expands, lighting a broader area of the source image.
+3. Increase **Branch P** (Knob 2) to add more horizontal jitter per scanline. The bolt's path becomes increasingly jagged and erratic: a gentle zigzag at low values, a violent scribble at high values.
+4. Set **Style** (Switch 7) to **Arc**. A second bolt appears, mirroring the first with opposite jitter, as though electricity is arcing between two points.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Lightning loaded](/img/instruments/videomancer/lightning/lightning_control_panel.png)
+*Videomancer's front panel with Lightning active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Bolt W
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Bolt W** controls the width of the bolt's luminous glow. At 0%, the bolt is a thin, tight line just a few pixels wide. As the value increases, the bright core expands outward, illuminating a wider swath of the screen. At 100%, the bolt's halo stretches across a substantial portion of the image, creating a broad wash of additive brightness. The brightness falls off with distance from the bolt's center: pixels near the core are brightest, dimming smoothly toward the edges.
+
+---
+
+### Knob 2 — Branch P
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Branch P** controls the amplitude of horizontal jitter applied to the bolt at each scanline. At 0%, the bolt falls nearly straight down the screen with minimal deviation: a taut wire of light. As the value increases, each scanline's random offset grows larger, making the bolt's path increasingly jagged and erratic. At 100%, the jitter is at maximum amplitude and the bolt whips wildly from side to side across the frame. This jitter is what gives the bolt its characteristic lightning-strike silhouette: the more jitter, the more the bolt resembles a real branching discharge.
+
+:::note
+The jitter is also doubled for the branch fork, so increasing **Branch P** causes branches to diverge from the main trunk more aggressively.
+:::
+
+---
+
+### Knob 3 — Bright
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Bright** controls the bolt's peak luminance: the maximum brightness added to the source at the bolt's center. At 0%, the bolt is invisible. As the value increases, the bolt's core brightens, and the glow halo intensifies proportionally. At 100%, the bolt burns at full intensity, easily clipping to white when added to anything but the darkest source material. This control sets the ceiling that the flash modulation and distance falloff work within.
+
+---
+
+### Knob 4 — Flash Frq
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Flash Frq** controls the rate of the flash cycle. Lightning's brightness alternates between full intensity during a flash and one-quarter intensity between flashes. At 0%, the flash DDS accumulator advances very slowly, producing long, slow pulses. As the value increases, flashes become more rapid and the bolt strobes with increasing urgency. At 100%, the flash cycle is at maximum speed. When **Flash** (Switch 9) is set to **On**, randomness is added to the flash timing, producing irregular, naturalistic flicker.
+
+---
+
+### Knob 5 — Jitter
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Jitter** controls the bolt's peak brightness scaling factor. At 0%, the bolt is completely dark: no glow is rendered. Increasing the value raises the bolt's brightness ceiling. At 100%, the bolt reaches its maximum radiance. This control works in concert with **Bright** (Knob 3) and the flash modulation stage to determine the final visible intensity of each pixel along the bolt's path.
+
+---
+
+### Knob 6 — Tint
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Tint** is reserved for future use. Adjusting this knob has no effect on the output in the current version of Lightning.
+
+---
+
+### Switch 7 — Style
+
+| Property | Value |
+|----------|-------|
+| Off | Bolt |
+| On | Arc |
+| Default | Bolt |
+
+**Style** selects between single-bolt and dual-bolt rendering. With the switch set to **Bolt**, a single lightning bolt descends from the top center of the screen. With the switch set to **Arc**, a second bolt appears, starting from a quarter-screen offset and applying jitter in the opposite direction of the first bolt. The two bolts mirror each other's zigzag motions, creating the visual impression of electricity arcing between two terminals. The closest bolt to any given pixel determines that pixel's brightness contribution.
+
+---
+
+### Switch 8 — Color
+
+| Property | Value |
+|----------|-------|
+| Off | White |
+| On | Gold |
+| Default | White |
+
+**Color** selects the bolt's color rendering. With the switch set to **White**, the bolt is rendered as pure additive luminance: a colorless white glow layered over the source video's existing chrominance. With the switch set to **Gold**, the bolt takes on a blue-purple tint. When the bolt is bright enough, its chrominance channels are shifted above neutral, pushing Cb higher than Cr and producing a cool violet-blue cast along the discharge path. The tint strength scales with bolt brightness: brighter regions are more saturated, while dim inter-flash glow remains close to neutral.
+
+:::tip
+The **Gold** color mode is most visible against desaturated or dark source material. Over colorful footage, the tint blends into the source chrominance and may be subtle.
+:::
+
+---
+
+### Switch 9 — Flash
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Flash** selects between regular and random flash timing. With the switch set to **Off**, the flash DDS accumulator advances by a fixed increment each frame, producing evenly spaced periodic flashes: a steady strobe rhythm. With the switch set to **On**, a pseudo-random value from the LFSR is added to each frame's DDS increment. This breaks the regularity of the flash timing, producing the irregular, unpredictable flicker of a natural electrical storm.
+
+---
+
+### Switch 10 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | On |
+
+**Animate** is reserved for future use. Toggling this switch has no effect on the output in the current version of Lightning.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Lightning processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw source and the lightning-overlaid result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) and wet (bolt-overlaid) signals. At 0%, the output is the original source with no lightning visible. At 100%, the full bolt effect is applied. Intermediate positions blend the bolt into the source at reduced opacity, useful for achieving subtle background flickers or gentle luminous accents rather than a full-intensity discharge.
 
 ---
 
 ## Background
 
-### What Is a Bolt Distance Falloff?
+### Procedural lightning generation
 
-The lightning effect is built on a simple principle: each pixel's brightness contribution from the bolt is determined by its horizontal distance from the bolt's position on that scanline. The VHDL computes the absolute difference $|h\_count - bolt\_x|$ and subtracts a scaled version of this distance from the peak brightness. Pixels at the bolt centre (distance 0–1) receive full brightness. Pixels further away receive progressively less, until the brightness drops to zero at the bolt width limit. This creates the characteristic glow that widens as you increase the Width control.
+Real lightning follows an unpredictable path dictated by the electrical resistance of the atmosphere. Videomancer's Lightning simulates this with a ***random walk***: a mathematical process where each step's position depends on the previous step plus a random offset. At each scanline, the bolt's horizontal position shifts left or right by a small pseudo-random amount drawn from a 16-bit ***linear feedback shift register*** (LFSR). Over the course of a full frame, these accumulated offsets trace a jagged, branching path from the top of the screen to the bottom.
 
-### LFSR Jitter Accumulation
+The bolt resets to the horizontal center at each new frame (on vertical sync), so each frame produces a unique discharge path. The branch fork begins at a vertical position determined by the **Flash Frq** parameter and diverges from the primary bolt with doubled jitter, simulating the way real lightning splits into secondary channels as it propagates.
 
-Instead of computing a bolt path mathematically, Lightning builds it incrementally. At each horizontal sync pulse (start of a new scanline), the VHDL adds a small signed random offset from the LFSR to a running x-position accumulator. The Jitter control selects how many of the LFSR's 8 bits are used by applying a right-shift — more shift means smaller jitter, producing a straighter bolt. Less shift (higher jitter) produces violent horizontal wandering. The accumulator is clamped to the screen width (0–1919) to prevent the bolt from disappearing off-screen.
+### Distance falloff and additive compositing
 
-### DDS Flash Timing
+The bolt's visible glow is computed as a ***distance falloff*** function. For every pixel on screen, Lightning calculates the absolute horizontal distance to the nearest bolt segment (primary, secondary, or branch). If the pixel falls within the bolt's width, its brightness is computed as the peak brightness minus a scaled version of its distance from the bolt center. Pixels at the very core of the bolt receive full brightness. Pixels at the edge of the glow halo receive near-zero brightness. Pixels beyond the bolt width receive nothing.
 
-A 16-bit DDS phase accumulator increments by a scaled version of the Flash Rate control on every vertical sync. The flash fires when the upper 3 bits of the accumulator are all ones (reaching the top 1/8 of the phase cycle). Larger increments advance the phase faster, producing more frequent flashes. Smaller increments slow the accumulation, spacing flashes further apart. The random flash mode adds LFSR noise to the increment value, making the flash timing irregular and unpredictable — closer to natural lightning, which discharges at pseudo-random intervals.
+This brightness value is then ***additively composited*** onto the source video: the bolt's glow is summed with the source luminance and clamped so it cannot exceed maximum white. The addition means the bolt always brightens the image: it never darkens or replaces the source. This additive model is why lightning effects look most dramatic over dark footage.
 
-### Branch Forking
+### Flash modulation
 
-Below a certain scanline (set by the Branch control), a secondary bolt path forks from the primary bolt's position. The branch drifts with doubled jitter — twice the horizontal wandering per scanline — causing it to diverge rapidly from the main bolt. This creates the characteristic Y-shaped or tree-like structure of real lightning discharge. The branch start position varies with the Branch Density parameter, placing the fork higher or lower on screen.
+Natural lightning doesn't glow continuously: it fires in brief, intense flashes separated by dimmer pauses. Lightning models this with a ***direct digital synthesizer*** (DDS) phase accumulator that advances once per frame. When the accumulator's upper three bits equal `111`, the bolt is at full brightness (a flash). Between flashes, the bolt brightness is reduced to one-quarter intensity, producing a faint residual glow.
 
-### Additive Compositing
-
-Lightning uses additive compositing: the bolt brightness is *added* to the source video luma, then clamped at 1023 (maximum white). This means the bolt always brightens the image — it never darkens or replaces the source. Dark areas of the input receive the most visible bolt; bright areas may clip to white. The colour tint mode shifts the bolt's chroma away from neutral white toward purple-blue by increasing U and V above the 512 midpoint proportionally to the bolt brightness.
+The DDS increment maps to the **Flash Frq** parameter, so higher values produce faster flash cycling. Enabling the **Flash** toggle adds a pseudo-random perturbation from the LFSR to each frame's increment, breaking the regularity and producing an organic, unpredictable strobe.
 
 
 ---
 
 ## Signal Flow
 
-Input Register + Distance → Distance Falloff → Flash Modulation → Brightness Add
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Video Timing Generator ──────────────────────────────────
-│   └── h_count, v_count (pixel/line counters)
-│
-├── LFSR(16) ────────────────────────────────────────────────
-│   └── Jitter source (per scanline) + flash noise
-│
-├── DDS Phase Accumulator (vsync-driven) ────────────────────
-│   └── s_dds_phase → s_is_flash (1 when upper 3 bits = 111)
-│
-├── Bolt Position Accumulator (hsync-driven) ────────────────
-│   ├── Primary bolt:  x += LFSR(7:0) >> jitter_shift
-│   ├── Secondary bolt: x -= jitter (opposite direction)
-│   └── Branch:        x += 2× jitter (from fork point)
-│
-├── Stage 1: Input Register + Distance ──────────────────────
-│   ├── dist1 = |h_count - bolt_x_primary|
-│   ├── dist2 = |h_count - bolt_x_secondary|  (if double)
-│   └── dist_branch = |h_count - branch_x|    (if active)
-│
-├── Stage 2: Distance Falloff ───────────────────────────────
-│   ├── min_dx = min(dist1, dist2, dist_branch)
-│   └── bolt_bright = bright_scale - (min_dx << 3)  [clamped]
-│
-├── Stage 3: Flash Modulation ───────────────────────────────
-│   └── flash_bright = bolt_bright (flash) or bolt_bright>>2 (dim)
-│
-├── Stage 4: Brightness Add + Colour Tint + Compose ─────────
-│   ├── Y: source_y + flash_bright  [clamped 0..1023]
-│   ├── U: +flash_bright>>2 toward blue  (if tint on)
-│   └── V: +flash_bright>>3 toward blue  (if tint on)
-│
-├── Interpolator (4 clks): wet/dry mix ──────────────────────
-│   └── lerp(source_delayed, composed, mix_amount)
-│
-└── Output (bypass mux) ─────────────────────────────────────
-```
+Two key architectural features define Lightning's pipeline:
 
-The key architectural feature is that the bolt path is built *incrementally* via a per-scanline accumulator, not computed as a closed-form function. This means the bolt shape is history-dependent — each scanline's position depends on all preceding scanlines' accumulated jitter. The branch fork is particularly interesting: it captures the primary bolt's x-position at the fork point and then diverges with doubled jitter, creating a naturally splitting path. The flash modulation operates frame-by-frame via the DDS, which is independent of the per-pixel pipeline — it gates the overall bolt brightness as a temporal envelope.
+1. **Additive compositing with no feedback.** The bolt's brightness is computed independently from the source video and then added to the source luminance. The bolt path computation depends only on the LFSR, not on the source image content. This means the bolt always looks the same regardless of source material (only the composite result changes.)
 
----
+2. **Per-scanline random walk with per-frame reset.** The bolt position accumulator updates once per horizontal sync, accumulating jitter across scanlines. At vertical sync, the accumulator resets to center (or quarter-screen for the secondary bolt). Each frame therefore produces an entirely new bolt shape, creating the flickering, re-striking character of natural lightning.
 
-## Parameter Reference
-
-<img src={lightning_control_panel} alt="Videomancer front panel with Lightning loaded"/>
-*Videomancer's front panel with Lightning active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Bolt W
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the bolt glow width — the horizontal distance over which the bolt brightness falls off to zero. The VHDL maps this as $4 + \text{pot}>>3$, giving a range from 4 to roughly 131 pixels. At minimum, the bolt is a thin, precise line. At maximum, it produces a wide, diffused glow that can span a significant portion of the screen. The falloff within the width is approximately linear: brightness decreases by 8 units per pixel of distance, so wider bolts have gentler gradients.
-
----
-
-#### Knob 2 — Branch P
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Despite its TOML label "Branch P" (suggesting branch probability), this register actually controls the horizontal jitter amplitude. The VHDL signal `s_jitter_amt` maps to a right-shift selector (0–7) applied to the 8-bit signed LFSR output. At maximum pot value, shift is 0 — full ±127 pixel jitter per scanline, producing an extremely jagged, wildly wandering bolt. At minimum, shift is 7 — jitter of ±1 pixel per scanline, producing a nearly straight vertical line. The jitter accumulates over hundreds of scanlines, so even a small per-line offset creates visible wandering over the full frame height.
-
----
-
-#### Knob 3 — Bright
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Despite its TOML label "Bright" (suggesting brightness), this register controls the flash rate — the DDS phase accumulator increment per frame. The VHDL signal `s_flash_rate` is shifted left by 5 and added to the 16-bit phase accumulator at each vsync. Higher values produce faster accumulation and more frequent flashes. At maximum, flashes occur nearly every frame. At minimum, the accumulator crawls and flashes are separated by many seconds. The DDS architecture means the flash frequency is precisely controllable and repeatable.
-
----
-
-#### Knob 4 — Flash Frq
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Despite its TOML label "Flash Frq" (suggesting flash frequency), this register controls the branch fork density. The VHDL signal `s_branch_density` determines where the branch fork begins on screen: $100 + \text{pot}>>1$ scanlines from the top, placing the branch start between lines 100 and 611. Higher values push the fork further down the screen, giving the branch less vertical distance to diverge. The branch threshold also influences the branch's visual density — a branch that starts earlier has more scanlines to accumulate jitter, creating more dramatic forking.
-
----
-
-#### Knob 5 — Jitter
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Despite its TOML label "Jitter," this register controls the bolt's peak brightness. The VHDL signal `s_bright` directly sets the maximum brightness value at the bolt's centre (distance = 0). Higher values produce a more intense bolt; lower values produce a subtle, dim discharge. This interacts with the flash modulation — during flash, the full brightness is used; between flashes, the brightness is shifted right by 2 (divided by 4). A dim bolt with frequent flashes can produce a pleasant flickering effect.
-
----
-
-#### Knob 6 — Tint
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-This register is mapped to `registers_in(5)` in the TOML as "Tint," but the VHDL does not connect it to any signal. The register is not read, and the value has no effect on the output. The colour tint is controlled by Toggle 8 (a binary on/off), not by this continuous control.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Style** | Bolt | Arc |
-| **8 — Color** | White | Gold |
-| **9 — Flash** | Off | On |
-| **10 — Animate** | Off | On |
-| **11 — Bypass** | Off | On |
-
-Toggles 7 and 8 each use only the lowest bit of their respective 10-bit registers, despite the TOML defining four value labels for each. The VHDL uses `registers_in(6)(0)` and `registers_in(6)(1)` as single-bit selectors. Toggle 9 controls the flash pattern (regular vs random). Toggle 10 ("Animate") is completely unused in the VHDL; the register bit is not connected to any logic.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Lightning processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
-
----
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Lightning-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::note
+The branch fork diverges with *doubled* jitter, so it separates from the primary bolt faster the farther it travels below the fork point. The fork point itself is set by the **Flash Frq** parameter (lower values move the fork higher on screen.)
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from a simple static bolt to complex multi-bolt flashing lightning effects, building familiarity with jitter, branching, flash timing, and colour tinting.
+These exercises progress from a simple single bolt to a full electrical storm composition. Each exercise builds on the previous, engaging more of Lightning's parameter space.
+### Exercise 1: Single Bolt Study
 
-### Exercise 1: Simple Bolt
+![Single Bolt Study result](/img/instruments/videomancer/lightning/lightning_ex1_s1.png)
+*Single Bolt Study — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: lightning_source1_boat, after: lightning_ex1_s1 },
-    { label: "Car", before: lightning_source2_car, after: lightning_ex1_s2 },
-    { label: "Turtle", before: lightning_source3_turtle, after: lightning_ex1_s3 },
-    { label: "Pattern", before: lightning_source4_pattern, after: lightning_ex1_s4 },
-    { label: "Man", before: lightning_source5_man, after: lightning_ex1_s5 },
-    { label: "Paint", before: lightning_source6_paint, after: lightning_ex1_s6 },
-  ]}
-/>
-*Simple Bolt — simulated result across source images.*
-**Source**: A dark background — either black or low-contrast footage.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Understand basic bolt rendering, width control, and jitter.
+#### Learning Outcomes
 
-1. Set Width (Knob 1) to ~50% for a clearly visible glow band.
-2. Set Jitter (Knob 2 — labelled "Branch P") to ~30% for moderate wandering.
-3. Set Brightness (Knob 5 — labelled "Jitter") to ~70% for a bright bolt.
-4. Disable flash: set Flash Rate (Knob 3 — labelled "Bright") to 0% and Flash toggle (Switch 9) to Off.
-5. Observe the bolt: a single jagged vertical line of light wandering down the screen.
-6. Sweep Width from minimum to maximum — watch the glow band widen.
-7. Sweep Jitter from minimum to maximum — watch the bolt path go from nearly straight to violently jagged.
+A single, controllable lightning bolt over dark source material, exploring how width and jitter shape its appearance.
 
-**Key concepts**: Distance falloff creates the glow width, LFSR jitter accumulates per scanline, brightness sets the peak intensity
+#### Key Concepts
+
+- Random walk creates jagged bolt paths
+- Width controls glow radius, not bolt count
+- Jitter amplitude shapes the bolt's character
+
+#### Video Source
+
+Dark or low-key footage (a night sky, a dimly lit room, or black leader.)
+
+#### Steps
+
+1. **Establish the bolt**: With default settings, observe the single bolt flickering down the center of the screen. Notice how its path changes every frame.
+2. **Narrow the bolt**: Turn **Bolt W** (Knob 1) fully counterclockwise. The bolt becomes a thin bright line (sharp and clinical.)
+3. **Widen the glow**: Now sweep **Bolt W** clockwise. The bolt's core stays fixed but its luminous aura expands outward, illuminating a broader swath of the source.
+4. **Add jitter**: Increase **Branch P** (Knob 2) from the default. The bolt's path becomes more erratic, zigzagging aggressively from scanline to scanline.
+5. **Reduce jitter**: Pull **Branch P** back toward zero. The bolt straightens into a nearly vertical column of light.
+6. **Adjust brightness**: Sweep **Jitter** (Knob 5) to control peak intensity. Find the balance where the bolt glows without clipping the source to solid white.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Bolt W | ~50% |
+| Branch P | ~60% |
+| Bright | 50% |
+| Flash Frq | 0% |
+| Jitter | ~70% |
+| Tint | 50% |
+| Style | Bolt |
+| Color | White |
+| Flash | Off |
+| Animate | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Flash and Fork
+### Exercise 2: Arcing and Branching
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: lightning_source1_boat, after: lightning_ex2_s1 },
-    { label: "Car", before: lightning_source2_car, after: lightning_ex2_s2 },
-    { label: "Turtle", before: lightning_source3_turtle, after: lightning_ex2_s3 },
-    { label: "Pattern", before: lightning_source4_pattern, after: lightning_ex2_s4 },
-    { label: "Man", before: lightning_source5_man, after: lightning_ex2_s5 },
-    { label: "Paint", before: lightning_source6_paint, after: lightning_ex2_s6 },
-  ]}
-/>
-*Flash and Fork — simulated result across source images.*
-**Source**: Mid-brightness footage — cityscapes, landscapes, or abstract video.
+![Arcing and Branching result](/img/instruments/videomancer/lightning/lightning_ex2_s1.png)
+*Arcing and Branching — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore flash timing, branching, and the difference between regular and random flash.
+***A description of the exercise illustration.***
 
-1. Set Width to ~40%, Jitter to ~50%, Brightness to ~80%.
-2. Set Flash Rate (Knob 3 — labelled "Bright") to ~50%. Observe periodic flashing.
-3. Toggle Flash mode (Switch 9) between regular and random. Notice how the timing becomes unpredictable in random mode.
-4. Set Branch Density (Knob 4 — labelled "Flash Frq") to ~40%. The fork appears partway down the screen.
-5. Move Branch Density from minimum to maximum — watch the fork point slide from near the top to near the bottom.
-6. With the branch active, increase Jitter — the branch diverges dramatically because it uses doubled jitter.
+#### Learning Outcomes
 
-**Key concepts**: DDS accumulator creates periodic flash, LFSR noise irregularises timing, branch forks from primary bolt and diverges with 2× jitter
+A dual-bolt arc with a forking branch and animated flash strobing, resembling an active electrical discharge between two points.
+
+#### Key Concepts
+
+- Arc mode adds a mirrored second bolt with opposite jitter
+- The branch fork creates a Y-shaped discharge
+- Flash timing animates the bolt's intensity over time
+
+#### Video Source
+
+Medium-brightness footage with visible detail (urban scenery, architectural subjects, or a still life.)
+
+#### Steps
+
+1. **Enable Arc mode**: Set **Style** (Switch 7) to **Arc**. A second bolt appears, offset from center, with jitter mirrored relative to the first.
+2. **Increase jitter**: Raise **Branch P** (Knob 2) to about 70%. Both bolts zigzag aggressively, and you can see how their opposite jitter creates a spreading arc pattern.
+3. **Activate flash**: Increase **Flash Frq** (Knob 4) to add flash cycling. The bolts strobe between full brightness and a dim afterglow.
+4. **Randomize flash**: Set **Flash** (Switch 9) to **On**. The regular strobe breaks into irregular, storm-like flickering.
+5. **Add color tint**: Set **Color** (Switch 8) to **Gold**. The bolt takes on a cool tint visible along its brightest regions.
+6. **Blend**: Pull **Mix** (Fader 12) back to about 60% to let the source image show through the discharge pattern.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Bolt W | ~40% |
+| Branch P | ~70% |
+| Bright | 50% |
+| Flash Frq | ~50% |
+| Jitter | ~60% |
+| Tint | 50% |
+| Style | Arc |
+| Color | Gold |
+| Flash | On |
+| Animate | Off |
+| Bypass | Off |
+| Mix | ~60% |
 
 ---
 
 ### Exercise 3: Electric Storm
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: lightning_source1_boat, after: lightning_ex3_s1 },
-    { label: "Car", before: lightning_source2_car, after: lightning_ex3_s2 },
-    { label: "Turtle", before: lightning_source3_turtle, after: lightning_ex3_s3 },
-    { label: "Pattern", before: lightning_source4_pattern, after: lightning_ex3_s4 },
-    { label: "Man", before: lightning_source5_man, after: lightning_ex3_s5 },
-    { label: "Paint", before: lightning_source6_paint, after: lightning_ex3_s6 },
-  ]}
-/>
+![Electric Storm result](/img/instruments/videomancer/lightning/lightning_ex3_s1.png)
 *Electric Storm — simulated result across source images.*
-**Source**: Any footage — the effect will be dramatic regardless of source content.
+#### Exercise Illustration
 
-**What You'll Create**: Combine double bolts, colour tint, heavy jitter, and random flash for a full storm effect.
+***A description of the exercise illustration.***
 
-1. Enable double bolt (Switch 7 on). Two bolts appear, wandering in opposite directions.
-2. Enable colour tint (Switch 8 on). Bolts shift from white to purple-blue.
-3. Set Width to ~70%, Jitter to ~80%, Brightness to ~90%.
-4. Set Flash Rate to ~60% with random flash (Switch 9 on). Bolts flash irregularly.
-5. Set Branch Density to ~30% so branches fork early and diverge dramatically.
-6. Reduce Mix to ~70% to let some of the source video show through the storm.
-7. Observe how the double bolts, their branches, and the colour tint combine to fill the screen with forking electrical discharge.
+#### Learning Outcomes
 
-**Key concepts**: Double bolt mirrors jitter for symmetric divergence, additive compositing means bolts always brighten, colour tint adds chroma shift proportional to brightness
+A full-intensity electrical storm composite: wide, fast, branching, and tinted, layered over dramatic source footage.
+
+#### Key Concepts
+
+- High jitter + wide bolts + fast flash = chaotic storm energy
+- Mixing back from 100% softens the effect into the source
+- Color tint adds atmospheric mood to the discharge
+
+#### Video Source
+
+High-contrast footage (stormy skies, industrial landscapes, or abstract textures.)
+
+#### Steps
+
+1. **Maximum chaos**: Set **Branch P** (Knob 2) high (~80%), **Bolt W** (Knob 1) to about 70%, and **Jitter** (Knob 5) to about 60%. The bolt becomes a wide, violently jagged discharge.
+2. **Fast random flash**: Set **Flash Frq** (Knob 4) to about 60% and enable **Flash** (Switch 9). The bolt strobes rapidly and irregularly.
+3. **Enable Arc mode**: Set **Style** (Switch 7) to **Arc**. Two bolts tear across the screen simultaneously.
+4. **Color the storm**: Set **Color** (Switch 8) to **Gold** for a tinted discharge.
+5. **Set brightness**: Adjust **Bright** (Knob 3) to about 60%. This controls the overall flash rate (find a tempo that feels like rolling thunder.)
+6. **Composite**: Use **Mix** (Fader 12) at about 70% to blend the storm into the source, preserving enough of the original image to anchor the composition.
+7. **Compare**: Toggle **Bypass** (Switch 11) on and off to feel the difference between the raw source and the storm-overlaid result.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Bolt W | ~70% |
+| Branch P | ~80% |
+| Bright | ~60% |
+| Flash Frq | ~60% |
+| Jitter | ~60% |
+| Tint | 50% |
+| Style | Arc |
+| Color | Gold |
+| Flash | On |
+| Animate | Off |
+| Bypass | Off |
+| Mix | ~70% |
 
 ---
-
-
-## Tips
-
-- **Flash Rate is tempo**: Think of the Flash Rate control as a tempo knob — it sets the rhythm of the lightning flashes. Random flash mode adds syncopation.
-- **Branch = 2× jitter**: The branch forks from the main bolt with doubled jitter amplitude, so it diverges rapidly. Use low Branch Density values (fork near top) for maximum branching drama.
-- **Colour tint is brightness-proportional**: The purple-blue shift only appears where the bolt is bright. Dim inter-flash areas retain their source colour, creating a natural colour gradient along the bolt's falloff.
-- **Mix for subtlety**: At full mix, the bolt overlay is dramatic. Reduce Mix to 40–60% for a more atmospheric, background-lightning effect.
-- **Unused controls**: Knob 6 ("Tint") and Switch 10 ("Animate") have no effect in the current VHDL implementation.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Additive Compositing** | Combining two signals by adding their values, clamping at the maximum. The bolt brightness is added to the source luma. |
-| **DDS** | Direct Digital Synthesis; a technique using a phase accumulator to generate periodic signals at arbitrary frequencies. |
-| **Distance Falloff** | The decrease in brightness with increasing distance from the bolt centre, creating a glow effect. |
-| **LFSR** | Linear Feedback Shift Register; produces pseudo-random bit sequences used for bolt jitter and flash randomisation. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
-| **Manhattan Distance** | The sum of absolute coordinate differences, $|x_1-x_2|+|y_1-y_2|$. |
-| **Phase Accumulator** | A register that increments by a fixed amount each clock cycle, wrapping at its maximum value, used in DDS to control frequency. |
+- **Additive Compositing**: A blending method where the effect's brightness is summed onto the source, always making the result brighter or equal.
+
+- **DDS (Direct Digital Synthesis)**: A technique for generating periodic waveforms by incrementing a phase accumulator at a fixed rate; used here to time the bolt's flash cycle.
+
+- **Distance Falloff**: A brightness curve that decreases with horizontal distance from the bolt center, creating the glowing halo effect.
+
+- **LFSR (Linear Feedback Shift Register)**: A shift register whose input bit is a function of its previous state, producing a pseudo-random sequence used for jitter and flash randomization.
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness.
+
+- **Phase Accumulator**: A counter that wraps around at overflow, used in DDS to generate periodic events at a frequency proportional to the increment value.
+
+- **Random Walk**: A mathematical process where each step's position is the previous position plus a random offset; used to trace the bolt's jagged path.
 
 ---

@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 22
 slug: /instruments/videomancer/blinds
@@ -7,360 +7,385 @@ image: /img/instruments/videomancer/blinds/blinds_hero_s1.png
 description: "Every broadcast engineer knows the venetian blind wipe — a grid of horizontal or vertical slats that open or close to reveal or conceal a video source."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import blinds_control_panel from '/img/instruments/videomancer/blinds/blinds_control_panel.png';
-import blinds_source1_cat from '/img/instruments/videomancer/blinds/blinds_source1_cat.png';
-import blinds_source2_skull from '/img/instruments/videomancer/blinds/blinds_source2_skull.png';
-import blinds_source3_clouds from '/img/instruments/videomancer/blinds/blinds_source3_clouds.png';
-import blinds_source4_pattern from '/img/instruments/videomancer/blinds/blinds_source4_pattern.png';
-import blinds_source5_man from '/img/instruments/videomancer/blinds/blinds_source5_man.png';
-import blinds_source6_wood from '/img/instruments/videomancer/blinds/blinds_source6_wood.png';
-import blinds_hero_s1 from '/img/instruments/videomancer/blinds/blinds_hero_s1.png';
-import blinds_hero_s2 from '/img/instruments/videomancer/blinds/blinds_hero_s2.png';
-import blinds_hero_s3 from '/img/instruments/videomancer/blinds/blinds_hero_s3.png';
-import blinds_hero_s4 from '/img/instruments/videomancer/blinds/blinds_hero_s4.png';
-import blinds_hero_s5 from '/img/instruments/videomancer/blinds/blinds_hero_s5.png';
-import blinds_hero_s6 from '/img/instruments/videomancer/blinds/blinds_hero_s6.png';
-import blinds_ex1_s1 from '/img/instruments/videomancer/blinds/blinds_ex1_s1.png';
-import blinds_ex1_s2 from '/img/instruments/videomancer/blinds/blinds_ex1_s2.png';
-import blinds_ex1_s3 from '/img/instruments/videomancer/blinds/blinds_ex1_s3.png';
-import blinds_ex1_s4 from '/img/instruments/videomancer/blinds/blinds_ex1_s4.png';
-import blinds_ex1_s5 from '/img/instruments/videomancer/blinds/blinds_ex1_s5.png';
-import blinds_ex1_s6 from '/img/instruments/videomancer/blinds/blinds_ex1_s6.png';
-import blinds_ex2_s1 from '/img/instruments/videomancer/blinds/blinds_ex2_s1.png';
-import blinds_ex2_s2 from '/img/instruments/videomancer/blinds/blinds_ex2_s2.png';
-import blinds_ex2_s3 from '/img/instruments/videomancer/blinds/blinds_ex2_s3.png';
-import blinds_ex2_s4 from '/img/instruments/videomancer/blinds/blinds_ex2_s4.png';
-import blinds_ex2_s5 from '/img/instruments/videomancer/blinds/blinds_ex2_s5.png';
-import blinds_ex2_s6 from '/img/instruments/videomancer/blinds/blinds_ex2_s6.png';
-import blinds_ex3_s1 from '/img/instruments/videomancer/blinds/blinds_ex3_s1.png';
-import blinds_ex3_s2 from '/img/instruments/videomancer/blinds/blinds_ex3_s2.png';
-import blinds_ex3_s3 from '/img/instruments/videomancer/blinds/blinds_ex3_s3.png';
-import blinds_ex3_s4 from '/img/instruments/videomancer/blinds/blinds_ex3_s4.png';
-import blinds_ex3_s5 from '/img/instruments/videomancer/blinds/blinds_ex3_s5.png';
-import blinds_ex3_s6 from '/img/instruments/videomancer/blinds/blinds_ex3_s6.png';
-
-# Blinds
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: blinds_source1_cat, after: blinds_hero_s1 },
-    { label: "Skull", before: blinds_source2_skull, after: blinds_hero_s2 },
-    { label: "Clouds", before: blinds_source3_clouds, after: blinds_hero_s3 },
-    { label: "Pattern", before: blinds_source4_pattern, after: blinds_hero_s4 },
-    { label: "Man", before: blinds_source5_man, after: blinds_hero_s5 },
-    { label: "Wood", before: blinds_source6_wood, after: blinds_hero_s6 },
-  ]}
-/>
-*Blinds splitting a broadcast frame into cascading horizontal slats with soft edges, revealing a dimmed background through partially open gaps.*
+![Blinds hero image](/img/instruments/videomancer/blinds/blinds_hero_s1.png)
+*Blinds slicing a video feed into horizontal slats that cascade open in sequence, revealing the source image through a rolling venetian shutter.*
 
 ---
 
 ## Overview
 
-Every broadcast engineer knows the venetian blind wipe — a grid of horizontal or vertical slats that open or close to reveal or conceal a video source. Blinds takes that classic DVE transition and turns it into a continuously controllable instrument. Instead of a one-shot effect triggered between two sources, every parameter is live: the number of slats, how far they open, how the opening cascades across the frame, and how soft the edges are.
+**Blinds** is a broadcast-style transition effect that divides your video into parallel slats: like a set of venetian blinds: and opens or closes them to reveal or conceal the source image. Each slat has an adjustable opening that grows from its center outward. At full open, the video passes through untouched; at full close, each slat collapses to a narrow gap, and the image vanishes behind a configurable background.
 
-The name is literal. The program simulates the mechanics of window blinds: parallel slats that rotate open from their centers, each potentially offset in phase from its neighbors. A cascade control staggers the opening across slats so they peel apart in sequence rather than all at once — precisely the visual language of a broadcast wipe, but frozen at any point and modulated in real time.
+What gives Blinds its character is the ***cascade*** control. Rather than all slats opening at once, a cascade introduces a progressive delay: the first slat opens fully before the next one begins, creating a rolling reveal that sweeps across the frame. Combined with a built-in triangle-wave ***oscillator***, the cascade can animate automatically, producing the classic television wipe effect used in broadcast reveals and live video mixing.
 
-At one extreme, Blinds is a hard geometric mask — solid bars of video separated by solid bars of black. At the other extreme, with high edge softness and cascade, it produces flowing organic reveals where the video seems to breathe through a series of translucent curtains. An auto-animation mode drives the opening with a triangle wave, creating continuous back-and-forth motion without any external control.
+Blinds operates in both horizontal and vertical orientations and offers edge softness for smooth boundaries rather than hard pixel cuts. It can run in manual mode: controlled entirely by knob position: or in auto-animation mode where the opening sweeps back and forth at a configurable speed. The background behind each closed slat is either solid black or a dimmed copy of the source video.
+
+### What's In a Name?
+
+The name ***Blinds*** refers to venetian blinds, the slatted window coverings that tilt open and closed in parallel. The visual analogy is direct: the effect literally slices the image into horizontal or vertical strips and opens them from the center, just as you would twist the rod on a set of window blinds to let in light.
 
 ---
 
 ## Quick Start
 
-1. **Start with Cascade at zero**: Learn the basic open/close geometry first, then add cascade to stagger the slats. Cascade without understanding the base opening can be confusing.
-2. **Edge Soft transforms the effect**: At zero softness, Blinds is a hard geometric mask. At high softness, it becomes an organic luminance modulator. These are almost two different programs controlled by one knob.
-3. **Dim Vid for layered compositions**: Black background gives clean graphic bars. Dim Vid background maintains the source at reduced brightness, creating dual-exposure layered effects.
+1. Turn **Open** (Knob 1) fully counterclockwise. The screen goes dark: all slats are closed. Slowly turn the knob clockwise and watch the image appear through narrow horizontal gaps that widen into full slats.
+2. Increase **Slats** (Knob 2) to raise the count. More slats means more cuts through the image, creating a finely divided shutter grid.
+3. Advance **Cascade** (Knob 3) from zero. The slats no longer open simultaneously: the topmost slat opens first and each successive slat follows with a delay, creating a rolling curtain reveal.
+4. Flip **Animate** (Switch 8) to **Auto**. The opening sweeps back and forth automatically. Adjust **Speed** (Knob 5) to control the animation rate.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Blinds loaded](/img/instruments/videomancer/blinds/blinds_control_panel.png)
+*Videomancer's front panel with Blinds active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Open
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Open** controls how wide each slat's opening is. At minimum, every slat is fully closed: the video is completely hidden behind the background. At maximum, every slat is fully open: the video passes through without interruption. The opening grows symmetrically from the center of each slat, so at intermediate values you see a bright stripe of video in the middle of each slat with background visible at the top and bottom edges.
+
+:::tip
+In manual mode, sweeping Open from minimum to maximum with the cascade set to zero produces a uniform venetian blind wipe: all slats open at the same time, creating even horizontal bars of video.
+:::
+
+---
+
+### Knob 2 — Slats
+
+| Property | Value |
+|----------|-------|
+| Range | 2 – 16 |
+| Default | 7 |
+
+**Slats** sets the number of parallel divisions. The count snaps to even values between 2 and 16. At the lowest setting you get two large panels splitting the frame in half; at the highest setting the frame is divided into sixteen narrow strips. Increasing the slat count makes the grid finer and the individual openings narrower for any given Open percentage.
+
+---
+
+### Knob 3 — Cascade
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Cascade** introduces a per-slat phase offset to the opening. At zero, all slats share the same opening width: they move in unison. As cascade increases, each successive slat receives a larger delay before it begins to open. This creates the characteristic rolling reveal: the first slat opens fully, then the second begins, then the third, and so on. At maximum cascade, only one slat is open at a time while the others remain closed.
+
+:::note
+Cascade subtracts from each slat's effective opening in proportion to its index. A slat near the end of the sequence may remain completely closed even when the first slat is fully open, depending on the cascade amount.
+:::
+
+---
+
+### Knob 4 — Edge Soft
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 6% |
+
+**Edge Soft** smooths the transition at slat boundaries. At minimum, each slat has a hard pixel-perfect cutoff: the video is either fully visible or fully hidden. Increasing Edge Soft introduces a brightness ramp at the edges of each opening, creating a gentle fade between the revealed video and the background rather than an abrupt cut.
+
+---
+
+### Knob 5 — Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Speed** governs the rate of the triangle-wave ***oscillator*** that drives the auto-animation mode. At minimum, the sweep is extremely slow, taking many seconds to complete a full open-close cycle. At maximum, the sweep is fast enough to create a rapid flutter. Speed has no effect when Animate (Switch 8) is set to Manual: in that mode, the Open knob directly controls the opening width.
+
+---
+
+### Knob 6 — Bg Level
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Bg Level** sets the brightness of the background behind closed slat regions. At minimum, closed regions are solid black. Increasing the value raises the background brightness. When Bg Mode (Switch 9) is set to Black, this value is an absolute luminance level applied flat across all hidden areas. When Bg Mode is set to Dim Vid, the value acts as a ***gain multiplier*** applied to the source video itself, producing a dimmed version of the image behind the blinds.
+
+---
+
+### Switch 7 — Orient
+
+| Property | Value |
+|----------|-------|
+| Off | Horiz |
+| On | Vert |
+| Default | Horiz |
+
+**Orient** selects the axis of the slat divisions. In the default **Horiz** position, slats run horizontally across the frame and divide the image into rows: the classic venetian blind look. Flipping to **Vert** rotates the slats ninety degrees so they run vertically, dividing the image into columns. The entire cascade and opening logic follows the chosen orientation.
+
+---
+
+### Switch 8 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Manual |
+| On | Auto |
+| Default | Manual |
+
+**Animate** selects between manual and auto-animation modes. In **Manual** mode, the Open knob directly controls the opening width: what you dial is what you see. In **Auto** mode, the opening sweeps back and forth automatically using a triangle-wave oscillator, and the Speed knob (Knob 5) controls the sweep rate. The Open knob is ignored in Auto mode.
+
+---
+
+### Switch 9 — Bg Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Black |
+| On | Dim Vid |
+| Default | Black |
+
+**Bg Mode** determines what is visible in the hidden regions behind closed slats. In **Black** mode, closed areas show a flat background whose brightness is set by Bg Level (Knob 6). In **Dim Vid** mode, closed areas show a dimmed copy of the source video: the dimming level is controlled by Bg Level. Dim Vid mode preserves the chrominance of the source in hidden areas, while Black mode forces chrominance to neutral gray.
+
+---
+
+### Switch 10 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** swaps the reveal and hide regions of each slat. Normally, the center of each slat is revealed and the edges are hidden. With Invert enabled, the center is hidden and the edges are revealed. This effectively turns the blinds inside-out: instead of strips of video separated by dark gaps, you see strips of darkness separated by video edges.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all Blinds processing. The sync delay pipeline still aligns timing, so switching Bypass on and off does not cause glitches. Use Bypass for instant A/B comparison between the raw input and the blinds effect.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input and the wet (blinds-processed) output. At minimum, the output is entirely dry: the raw input video. At maximum, the output is entirely the blinds effect. Intermediate values blend the two, which can create a ghostly double-exposure where the blinds pattern is superimposed over the original image at reduced opacity.
 
 ---
 
 ## Background
 
-### Venetian Blind Transitions in Broadcast
+### Broadcast wipe effects
 
-The venetian blind wipe is one of the original SMPTE wipe patterns defined in the earliest broadcast standards. It divides the frame into parallel bands and progressively reveals the incoming source by widening each band from its center. Hardware DVE units in the 1980s and 1990s implemented it with dedicated scan-line counters and comparators — the same approach Blinds uses in FPGA logic. Unlike software compositors that render the effect in a frame buffer, Blinds computes the transition per-pixel in real time, at the native video clock rate.
+The venetian blind wipe is one of the oldest transition effects in television production. Early video switchers: hardware mixers used in broadcast studios: included a bank of ***wipe pattern generators*** that could reveal a new video source through geometric shapes: circles, diamonds, boxes, and slats. The venetian blind pattern was popular because it divided the frame evenly and produced a clean, professional reveal. Videomancer's Blinds program recreates this effect digitally, using the FPGA to compute per-pixel reveal masks at full video rate.
 
-### Digital Video Effects History
+### Cascade and phase offset
 
-DVE (Digital Video Effects) processors emerged in the late 1970s with systems like the Quantel DPE 5000 and the Ampex ADO. These machines could squeeze, rotate, and wipe video sources in ways that were impossible with analog switchers. The venetian blind was a staple of every DVE's wipe pattern library, alongside barn doors, iris wipes, and diamond patterns. Blinds distills the venetian blind wipe down to its essential geometry and makes every parameter continuously variable — something the original hardware could not do.
+The cascade feature extends the basic blind wipe into something more dynamic. By introducing a ***phase offset*** that increases with each slat's index, the effect transforms from a simultaneous reveal into a sequential one. This is mathematically simple: each slat's effective opening is calculated as `open - (cascade × slat_index)`, clamped to the valid range. But visually, it produces a compelling rolling motion that can evoke curtains parting, shutters clicking, or dominoes falling.
 
-### Slat Geometry
+### Triangle-wave oscillator
 
-Blinds divides the frame into 2–16 equally-sized slats. The division must be exact to avoid visible seams, which is non-trivial in hardware because integer division by arbitrary numbers requires multiplication by reciprocals. The VHDL implementation uses a lookup table of reciprocal constants (e.g., ×171≫10 for division by 6, ×85≫10 for division by 12) to compute slat boundaries without a hardware divider. Each slat's opening is measured from its center outward — a half-open slat reveals the middle portion and hides the edges, exactly like a physical venetian blind rotating around its center rod.
-
-### Cascade Mechanics
-
-The cascade control adds a per-slat phase offset to the opening value. If cascade is zero, all slats open simultaneously. As cascade increases, each successive slat lags behind the previous one, creating a wave-like reveal that sweeps across the frame. The offset is proportional to the slat index: slat 0 opens first, slat 1 opens slightly later, slat 2 later still, and so on. This produces the classic "peeling" motion of a broadcast blind wipe. Combined with auto-animation, cascade creates a continuous ripple pattern across the slat array.
-
-### Edge Softness
-
-Hard-edged slat boundaries look clean and graphic but can alias harshly on interlaced displays. The edge softness control adds a linear ramp at the boundary between the visible and hidden regions of each slat. Instead of an instantaneous transition from full video to full background, pixels near the boundary fade smoothly. This transforms the hard geometric wipe into an organic curtain effect. At maximum softness with moderate opening, the slats overlap in transparency, creating a layered gauze-like appearance.
+The auto-animation mode uses a ***direct digital synthesis*** (DDS) accumulator to generate a triangle wave. A 16-bit phase register increments once per video field (vsync). The upper bit determines the ramp direction: when it is low, the phase ramps up; when it is high, the phase ramps down (by bit inversion). This produces a smooth, symmetric back-and-forth sweep without any discontinuities. The Speed knob controls how much the phase register advances per field, directly setting the animation frequency.
 
 
 ---
 
 ## Signal Flow
 
-Coordinate Selection & → Cascade Phase Offset → Opening & Edge Softness → Composition
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Stage 1: Coordinate Selection & Slat Division ──────────────
-│   ├─ Select coordinate axis (v_count for Horiz, h_count for Vert)
-│   ├─ Determine frame size (720 or 1280)
-│   ├─ Look up slat count from Slats step table [2,4,6,8,10,12,14,16]
-│   ├─ Compute slat_size = frame_size / num_slats (reciprocal multiply)
-│   └─ Compute slat_idx and position within slat
-│
-├── Stage 2: Cascade Phase Offset ──────────────────────────────
-│   ├─ DDS animation: 16-bit phase accumulator (triangle wave)
-│   ├─ Manual/Auto select (Open pot or triangle wave)
-│   ├─ Cascade offset = (cascade × slat_idx) >> 4
-│   └─ Effective opening = anim_open − cascade_offset (clamped 0–1023)
-│
-├── Stage 3: Opening & Edge Softness ───────────────────────────
-│   ├─ Opening pixels = (slat_size × effective_open) >> 10
-│   ├─ half_open = opening_pixels / 2
-│   ├─ center = slat_size / 2
-│   ├─ Distance from center → reveal mask (1023 inside, 0 outside)
-│   ├─ Edge softness ramp at reveal boundary
-│   └─ Invert toggle swaps reveal polarity
-│
-├── Stage 4: Composition ───────────────────────────────────────
-│   ├─ Y: (video_y × reveal + bg_y × (1023 − reveal)) >> 10
-│   ├─ Background: Black mode → bg_level; Dim Vid → (input_y × bg_level) >> 10
-│   ├─ UV: source chroma if reveal > 512, else bg-mode dependent
-│   └─ 3× interpolator_u for final mix (linear_potentiometer_12)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ Pass-through (hsync, vsync, field, avid)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-```
+The pipeline is a pure registered design with no BRAM: all computation is combinational logic registered through four pipeline stages plus four interpolator clocks, for a total latency of eight clock cycles. The sync delay pipeline shifts the input video data by the same eight clocks so that the dry signal aligns with the processed signal at the mix stage.
 
-The critical interaction is between cascade and edge softness. Cascade distributes the opening offset across slats so they appear to open in sequence; edge softness then blurs the boundary of each individual slat's opening. Together they produce a rippling, semi-transparent curtain effect that would be impossible with either control alone. The background composition in Stage 4 offers two distinct personalities: Black mode produces clean graphic bars against darkness, while Dim Vid mode lets the source bleed through at reduced brightness, maintaining visual continuity during the transition.
+Two key interactions define the visual behavior. First, the ***cascade-to-slat-index*** relationship: the cascade offset scales linearly with each slat's ordinal position, so the last slat in the sequence receives the largest delay. This means the effect naturally flows from one edge of the frame to the other. Second, the ***reveal-to-compose*** path: the reveal value computed in Stage 3 serves double duty: it gates the video luminance (multiplicative blend) and it selects the chrominance source (threshold at 512). This means that partially revealed areas show full-color video while fully hidden areas show either neutral gray or a dimmed version of the source, with no color bleeding at boundaries.
 
----
-
-## Parameter Reference
-
-<img src={blinds_control_panel} alt="Videomancer front panel with Blinds loaded"/>
-*Videomancer's front panel with Blinds active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Open
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls how far each slat opens, measured as a percentage of the slat width. At 0% every slat is fully closed — the entire frame is replaced by the background. At 100% every slat is fully open and the source video passes through unobstructed. In auto-animation mode this control is overridden by the triangle-wave oscillator, but in manual mode it is the primary transition control. Sweeping Open from 0 to 100% performs the classic venetian blind reveal.
-
----
-
-#### Knob 2 — Slats
-| Property | Value |
-|----------|-------|
-| Range | 2 – 16 |
-| Default | 7 |
-
-Selects the number of slats from a fixed set: 2, 4, 6, 8, 10, 12, 14, or 16. Low slat counts produce bold, dramatic bars. High slat counts create a fine-grained lattice. Because the VHDL uses a step-quantized lookup with 128-count thresholds, intermediate pot positions snap to the nearest valid count — there are no in-between values. The slat size is computed as the frame dimension divided by the count, using reciprocal-multiply approximation for non-power-of-two divisors.
-
----
-
-#### Knob 3 — Cascade
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-Adds a progressive phase offset to each slat's opening value. At 0% all slats open and close together. As cascade increases, slat 0 leads and each subsequent slat opens later, creating the signature wave-like reveal of a broadcast blind wipe. At high cascade values with moderate opening, some slats are fully open while others are still closed, producing a staggered bar pattern across the frame.
-
----
-
-#### Knob 4 — Edge Soft
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 6% |
-| Suffix | % |
-
-At 0% the boundary is a hard pixel-level cut — fully visible on one side, fully hidden on the other. As edge softness increases, the transition zone widens into a smooth gradient. This softens the geometric harshness of the slat edges and creates translucent overlap zones when combined with high cascade values. Internally, controls the width of the linear fade ramp at the edge of each slat's opening.
-
----
-
-#### Knob 5 — Speed
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-Sets the rate of the auto-animation triangle-wave oscillator. The DDS phase accumulator advances by this value each vertical sync pulse, so higher values produce faster oscillation. The triangle wave sweeps the effective opening from 0 to 1023 and back, creating continuous blind-open/blind-close motion. This control has no effect when the Animate toggle is set to Manual.
-
----
-
-#### Knob 6 — Bg Level
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
-
-Sets the brightness of the background visible through closed portions of the slats. In Black mode, this directly controls the background luminance — 0% is pure black, 100% is full white. In Dim Vid mode, it acts as a gain multiplier on the input video, so 0% is black and 100% passes the source at full brightness. Low values create a dramatic reveal against darkness; higher values keep the background visible as a dimmed underlay.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Orient** | Horiz | Vert |
-| **8 — Animate** | Manual | Auto |
-| **9 — Bg Mode** | Black | Dim Vid |
-| **10 — Invert** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles control orientation, animation source, background behavior, mask polarity, and bypass. Orient and Animate define the fundamental character of the effect. Bg Mode determines whether the hidden regions are a flat color or dimmed video, which dramatically changes the visual feel. Invert swaps which portions of the slat are visible versus hidden. Bypass provides instant A/B comparison.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Dry/wet mix between the processed blind effect and the original source video. At 100% the full blind effect is visible. At 0% the original video passes through unchanged. Intermediate positions blend the two, which can create interesting semi-transparent overlay effects where the slat structure is ghosted over the source.
-
-
-
+:::note
+The chrominance switching threshold is fixed at reveal = 512 (50%). Below that point in Black mode, UV snaps to neutral gray. This prevents unnatural color artifacts in mostly-hidden slat regions where the luminance multiplication would produce very dark pixels with potentially misleading chrominance.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from a basic manual wipe to animated cascade effects to textured background compositions, exploring Blinds as both a broadcast tool and a creative video instrument.
+These exercises progress from a basic manual wipe to an animated cascade reveal to a creative layered composition. Each builds on the previous one, gradually engaging more of the processing chain.
+### Exercise 1: Manual Venetian Wipe
 
-### Exercise 1: Manual Venetian Blind Wipe
+![Manual Venetian Wipe result](/img/instruments/videomancer/blinds/blinds_ex1_s1.png)
+*Manual Venetian Wipe — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: blinds_source1_cat, after: blinds_ex1_s1 },
-    { label: "Skull", before: blinds_source2_skull, after: blinds_ex1_s2 },
-    { label: "Clouds", before: blinds_source3_clouds, after: blinds_ex1_s3 },
-    { label: "Pattern", before: blinds_source4_pattern, after: blinds_ex1_s4 },
-    { label: "Man", before: blinds_source5_man, after: blinds_ex1_s5 },
-    { label: "Wood", before: blinds_source6_wood, after: blinds_ex1_s6 },
-  ]}
-/>
-*Manual Venetian Blind Wipe — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with recognizable subjects and clear mid-frame structure.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Learn the core slat geometry and opening mechanics by performing a manual blind wipe.
+#### Learning Outcomes
 
-1. **Set up slats**: Set Slats to about 50% to get 8 horizontal bars across the frame.
-2. **Close the blinds**: Set Open to 0%. The entire frame should be replaced by the background (black by default).
-3. **Open gradually**: Slowly sweep Open from 0% to 100%. Watch the slats split open from their centers, progressively revealing the source video.
-4. **Change orientation**: Toggle Orient to Vert. The bars rotate 90° to vertical strips. Sweep Open again and observe the vertical reveal.
-5. **Adjust slat count**: Try 2 slats (Slats at minimum) versus 16 slats (Slats at maximum). Notice how low counts create dramatic wide bars while high counts create a fine louvered texture.
-6. **Invert**: Toggle Invert On. The geometry reverses — now the edges open while centers stay hidden.
+A classic venetian blind wipe that you control by hand, sweeping from fully closed to fully open.
 
-**Key concepts**: Slats open from center outward, slat count is quantized to even values 2–16, orientation swaps the coordinate axis, invert reverses the reveal polarity
+#### Key Concepts
 
----
+- The Open knob controls a center-outward reveal within each slat
+- Slat count and orientation define the grid geometry
+- Manual mode gives you direct, real-time control
 
-### Exercise 2: Cascading Wipe with Soft Edges
+#### Video Source
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: blinds_source1_cat, after: blinds_ex2_s1 },
-    { label: "Skull", before: blinds_source2_skull, after: blinds_ex2_s2 },
-    { label: "Clouds", before: blinds_source3_clouds, after: blinds_ex2_s3 },
-    { label: "Pattern", before: blinds_source4_pattern, after: blinds_ex2_s4 },
-    { label: "Man", before: blinds_source5_man, after: blinds_ex2_s5 },
-    { label: "Wood", before: blinds_source6_wood, after: blinds_ex2_s6 },
-  ]}
-/>
-*Cascading Wipe with Soft Edges — simulated result across source images.*
-**Source**: Footage with a mix of detail and open areas — landscape or studio content.
+Any video source with recognizable content: a camera feed pointed at a colorful subject works well. High contrast between subject and background makes the slat boundaries more visible.
 
-**What You'll Create**: Explore cascade phase offset and edge softness to create flowing, organic wipe motions.
+#### Steps
 
-1. **Prepare**: Set 6 slats (Slats ~35%), Open ~40%, Cascade 0%, Edge Soft 0%.
-2. **Add cascade**: Slowly increase Cascade. Each slat now opens at a different time — slat 0 is widest, and each subsequent slat narrows progressively. The frame shows a gradient from open to closed.
-3. **Sweep with cascade**: Hold Cascade at ~60% and slowly sweep Open from 0% to 100%. Watch the staggered wave of opening roll across the slats.
-4. **Soften edges**: Increase Edge Soft to ~50%. The hard boundaries between visible and hidden regions smooth into gradients. The slats now feel like translucent curtains rather than hard bars.
-5. **Maximum softness**: Push Edge Soft to 100%. Adjacent slats overlap in transparency, creating a layered gauze effect.
-6. **Auto-animate**: Toggle Animate to Auto and set Speed to ~30%. The triangle wave sweeps the opening continuously, and the cascade creates a rippling motion across the frame.
+1. Set **Slats** (Knob 2) to maximum to create a finely divided grid of sixteen horizontal strips.
+2. Turn **Open** (Knob 1) fully counterclockwise. The screen goes black (all slats are closed.)
+3. Slowly turn **Open** clockwise. Watch narrow bright lines appear at the center of each slat and widen symmetrically.
+4. Flip **Orient** (Switch 7) to **Vert**. The slats rotate ninety degrees, creating a vertical blind effect.
+5. Return to **Horiz** and reduce **Slats** to minimum. Two large panels split the frame in half (a simple curtain split.)
 
-**Key concepts**: Cascade offsets opening per-slat by index, edge softness adds a linear ramp at reveal boundaries, combined cascade and softness produce organic flowing reveals, auto-animation drives continuous motion
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Open | Sweep 0 to 100% |
+| Slats | 16 |
+| Cascade | 0% |
+| Edge Soft | 0% |
+| Speed | 0% |
+| Bg Level | 0% |
+| Orient | Horiz |
+| Animate | Manual |
+| Bg Mode | Black |
+| Invert | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Dimmed Video Background Composition
+### Exercise 2: Cascading Reveal
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: blinds_source1_cat, after: blinds_ex3_s1 },
-    { label: "Skull", before: blinds_source2_skull, after: blinds_ex3_s2 },
-    { label: "Clouds", before: blinds_source3_clouds, after: blinds_ex3_s3 },
-    { label: "Pattern", before: blinds_source4_pattern, after: blinds_ex3_s4 },
-    { label: "Man", before: blinds_source5_man, after: blinds_ex3_s5 },
-    { label: "Wood", before: blinds_source6_wood, after: blinds_ex3_s6 },
-  ]}
-/>
-*Dimmed Video Background Composition — simulated result across source images.*
-**Source**: High-contrast footage — strong subjects against distinct backgrounds.
+![Cascading Reveal result](/img/instruments/videomancer/blinds/blinds_ex2_s1.png)
+*Cascading Reveal — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Use Dim Vid background mode with moderate opening to create layered compositions where the source is visible at two brightness levels simultaneously.
+***A description of the exercise illustration.***
 
-1. **Set up**: 10 slats (Slats ~60%), Open ~50%, Cascade ~30%.
-2. **Switch to Dim Vid**: Toggle Bg Mode to Dim Vid.
-3. **Raise background**: Increase Bg Level to ~40%. The closed portions of the slats now show the source video at reduced brightness instead of black. The frame has a striped brightness pattern — full video in the open regions, dimmed video in the closed regions.
-4. **Soften**: Increase Edge Soft to ~40%. The brightness transitions become gradual, creating a rolling luminance pattern across the frame.
-5. **Vertical orientation**: Switch Orient to Vert. The same layered composition now runs in vertical columns.
-6. **Add invert**: Toggle Invert. The bright and dim regions swap — the geometric pattern inverts but the overall composition retains its layered quality.
-7. **Mix back**: Lower Mix to ~60% to blend the effect with the unprocessed source, softening the overall contrast.
+#### Learning Outcomes
 
-**Key concepts**: Dim Vid mode shows the source at two brightness levels simultaneously, Bg Level acts as a gain multiplier on the dimmed copy, edge softness creates gradual brightness transitions across the frame, mix blends the final effect with the dry source
+An animated rolling reveal where slats open one after another in a wave that sweeps across the frame.
+
+#### Key Concepts
+
+- Cascade offsets each slat's opening in sequence
+- Auto-animation sweeps the opening with a triangle wave
+- Edge softness creates gentle transitions at slat boundaries
+
+#### Video Source
+
+Footage with large areas of color and movement (a slow pan across a landscape or a performer on stage.)
+
+#### Steps
+
+1. Set **Slats** (Knob 2) to about eight divisions and **Open** (Knob 1) to roughly 40%.
+2. Increase **Cascade** (Knob 3) until only the first few slats are open and the rest remain closed. Notice how the cascade creates a rolling gradient of openness.
+3. Now flip **Animate** (Switch 8) to **Auto** and set **Speed** (Knob 5) to a moderate value. The cascade washes back and forth across the frame.
+4. Increase **Edge Soft** (Knob 4) to about 70%. The hard slat boundaries soften into gentle gradients.
+5. Flip **Orient** (Switch 7) to **Vert** to see the cascade sweep horizontally instead of vertically.
+6. Try **Invert** (Switch 10): the reveal logic flips inside-out, punching dark stripes through the visible areas.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Open | ~40% |
+| Slats | 8 |
+| Cascade | ~60% |
+| Edge Soft | ~70% |
+| Speed | ~25% |
+| Bg Level | 0% |
+| Orient | Horiz |
+| Animate | Auto |
+| Bg Mode | Black |
+| Invert | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Dimmed Background Layers
 
-## Tips
+![Dimmed Background Layers result](/img/instruments/videomancer/blinds/blinds_ex3_s1.png)
+*Dimmed Background Layers — simulated result across source images.*
+#### Exercise Illustration
 
-- **Auto-animation is hands-free**: Set Animate to Auto, dial in a Speed, and let the triangle wave drive continuous motion. Free up your hands for other controls.
-- **Cascade + auto-animation = ripple**: When both cascade and auto-animation are active, the staggered phase offset creates a ripple wave that rolls across the frame continuously.
-- **Low slat count for drama**: Two or four slats create bold, cinematic bars. Sixteen slats create a fine venetian-blind texture. Match the count to the scale of your composition.
-- **Invert for negative space**: Invert swaps which parts of the frame are visible. Use it to shift the focus from the revealed content to the revealed background.
-- **Mix for ghosting**: Intermediate mix values overlay the slat structure semi-transparently over the source, creating a ghost-bar texture that can be very effective as a subtle overlay.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A layered composition where partially hidden slat regions show a dimmed, ghostly version of the source video behind the bright revealed strips.
+
+#### Key Concepts
+
+- Bg Mode selects between flat black and dimmed video as the hidden-area fill
+- Bg Level controls the brightness of the dimmed video
+- Mix creates a double-exposure blend between processed and dry signals
+
+#### Video Source
+
+Footage with rich color and moderate contrast (a garden scene, an aquarium, or a neon-lit street.)
+
+#### Steps
+
+1. Set **Slats** (Knob 2) to about 12 divisions and **Open** (Knob 1) to roughly 50%.
+2. Flip **Bg Mode** (Switch 9) to **Dim Vid**. The background is no longer black (it shows a dimmed version of the source.)
+3. Increase **Bg Level** (Knob 6) to about 40%. The hidden areas brighten into a soft ghost image of the video.
+4. Add moderate **Cascade** (Knob 3, ~30%) and **Edge Soft** (Knob 4, ~70%) for a rolling, soft-edged reveal.
+5. Pull **Mix** (Fader 12) to about 60%. The blinds effect blends with the raw video, creating a ghostly double-exposure.
+6. Flip **Orient** (Switch 7) to **Vert** and observe how the vertical orientation changes the composition's character.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Open | ~50% |
+| Slats | 12 |
+| Cascade | ~30% |
+| Edge Soft | ~70% |
+| Speed | 0% |
+| Bg Level | ~40% |
+| Orient | Vert |
+| Animate | Manual |
+| Bg Mode | Dim Vid |
+| Invert | Off |
+| Bypass | Off |
+| Mix | ~60% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Cascade** | A progressive phase offset applied to each successive slat so they open or close in sequence rather than simultaneously, producing a wave-like reveal. |
-| **DDS** | Direct Digital Synthesis; a technique that generates periodic waveforms by advancing a phase accumulator by a fixed increment each cycle. |
-| **DVE** | Digital Video Effects; a hardware processor for real-time video transformations such as wipes, squeezes, and rotations, common in broadcast production. |
-| **Phase accumulator** | A register that increments by a fixed step each vertical sync pulse; its value drives the triangle wave oscillator for auto-animation. |
-| **Reciprocal multiply** | A division approximation that replaces expensive hardware division with multiplication by a pre-computed reciprocal constant followed by a right shift. |
-| **Reveal mask** | A per-pixel value (0–1023) indicating the proportion of source video visible versus background at that pixel location. |
-| **Slat** | One horizontal or vertical band in a venetian blind division of the frame, analogous to a single louver in a physical window blind. |
-| **SMPTE** | Society of Motion Picture and Television Engineers; the standards body that defines broadcast wipe patterns, timecode, and video signal formats. |
-| **Triangle wave** | A periodic waveform that ramps linearly up then linearly down, used by the auto-animation oscillator to sweep slat opening back and forth. |
+- **Cascade**: A progressive delay applied to sequential elements, causing them to activate one after another rather than simultaneously.
+
+- **DDS (Direct Digital Synthesis)**: A technique for generating waveforms by incrementing a phase accumulator at a fixed rate; used here to produce the triangle-wave animation.
+
+- **Interpolator**: A circuit that blends between two values based on a mixing coefficient; used for the wet/dry crossfade.
+
+- **Oscillator**: A circuit that produces a repeating waveform; Blinds uses a triangle-wave oscillator for auto-animation.
+
+- **Phase Offset**: A delay added to a periodic signal that shifts its timing relative to a reference; cascade uses per-slat phase offsets.
+
+- **Sample and Hold**: A technique that captures a signal value at a specific moment and holds it constant until the next sample; the slat reveal mask operates frame-by-frame.
+
+- **Slat**: One horizontal or vertical division of the frame in the venetian blind pattern.
+
+- **Triangle Wave**: A periodic waveform that ramps linearly up and then linearly down, producing a symmetric back-and-forth sweep.
+
+- **Wipe**: A video transition where one image is progressively revealed or concealed by a geometric pattern moving across the frame.
 
 ---

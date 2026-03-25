@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 21
 slug: /instruments/videomancer/bleach
@@ -7,367 +7,382 @@ image: /img/instruments/videomancer/bleach/bleach_hero_s1.png
 description: "Bleach simulates the photochemical bleach bypass (also known as skip bleach or ENR) process — a film lab technique where the bleach step in colour negative development is partially or fully omitted, leaving metallic silver in the emulsion alongside the colour dyes."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import bleach_control_panel from '/img/instruments/videomancer/bleach/bleach_control_panel.png';
-import bleach_source1_cat from '/img/instruments/videomancer/bleach/bleach_source1_cat.png';
-import bleach_source2_field from '/img/instruments/videomancer/bleach/bleach_source2_field.png';
-import bleach_source3_clouds from '/img/instruments/videomancer/bleach/bleach_source3_clouds.png';
-import bleach_source4_pattern from '/img/instruments/videomancer/bleach/bleach_source4_pattern.png';
-import bleach_source5_woman from '/img/instruments/videomancer/bleach/bleach_source5_woman.png';
-import bleach_source6_knit from '/img/instruments/videomancer/bleach/bleach_source6_knit.png';
-import bleach_hero_s1 from '/img/instruments/videomancer/bleach/bleach_hero_s1.png';
-import bleach_hero_s2 from '/img/instruments/videomancer/bleach/bleach_hero_s2.png';
-import bleach_hero_s3 from '/img/instruments/videomancer/bleach/bleach_hero_s3.png';
-import bleach_hero_s4 from '/img/instruments/videomancer/bleach/bleach_hero_s4.png';
-import bleach_hero_s5 from '/img/instruments/videomancer/bleach/bleach_hero_s5.png';
-import bleach_hero_s6 from '/img/instruments/videomancer/bleach/bleach_hero_s6.png';
-import bleach_ex1_s1 from '/img/instruments/videomancer/bleach/bleach_ex1_s1.png';
-import bleach_ex1_s2 from '/img/instruments/videomancer/bleach/bleach_ex1_s2.png';
-import bleach_ex1_s3 from '/img/instruments/videomancer/bleach/bleach_ex1_s3.png';
-import bleach_ex1_s4 from '/img/instruments/videomancer/bleach/bleach_ex1_s4.png';
-import bleach_ex1_s5 from '/img/instruments/videomancer/bleach/bleach_ex1_s5.png';
-import bleach_ex1_s6 from '/img/instruments/videomancer/bleach/bleach_ex1_s6.png';
-import bleach_ex2_s1 from '/img/instruments/videomancer/bleach/bleach_ex2_s1.png';
-import bleach_ex2_s2 from '/img/instruments/videomancer/bleach/bleach_ex2_s2.png';
-import bleach_ex2_s3 from '/img/instruments/videomancer/bleach/bleach_ex2_s3.png';
-import bleach_ex2_s4 from '/img/instruments/videomancer/bleach/bleach_ex2_s4.png';
-import bleach_ex2_s5 from '/img/instruments/videomancer/bleach/bleach_ex2_s5.png';
-import bleach_ex2_s6 from '/img/instruments/videomancer/bleach/bleach_ex2_s6.png';
-import bleach_ex3_s1 from '/img/instruments/videomancer/bleach/bleach_ex3_s1.png';
-import bleach_ex3_s2 from '/img/instruments/videomancer/bleach/bleach_ex3_s2.png';
-import bleach_ex3_s3 from '/img/instruments/videomancer/bleach/bleach_ex3_s3.png';
-import bleach_ex3_s4 from '/img/instruments/videomancer/bleach/bleach_ex3_s4.png';
-import bleach_ex3_s5 from '/img/instruments/videomancer/bleach/bleach_ex3_s5.png';
-import bleach_ex3_s6 from '/img/instruments/videomancer/bleach/bleach_ex3_s6.png';
-
-# Bleach
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: bleach_source1_cat, after: bleach_hero_s1 },
-    { label: "Field", before: bleach_source2_field, after: bleach_hero_s2 },
-    { label: "Clouds", before: bleach_source3_clouds, after: bleach_hero_s3 },
-    { label: "Pattern", before: bleach_source4_pattern, after: bleach_hero_s4 },
-    { label: "Woman", before: bleach_source5_woman, after: bleach_hero_s5 },
-    { label: "Knit", before: bleach_source6_knit, after: bleach_hero_s6 },
-  ]}
-/>
-*Desaturated, silver-dense highlights surge through high-contrast shadows, recreating the bleach bypass look of war films and noir thrillers.*
+![Bleach hero image](/img/instruments/videomancer/bleach/bleach_hero_s1.png)
+*Bleach transforming a portrait into a high-contrast, desaturated silver retention look (the hallmark of war films and neo-noir cinema.)*
 
 ---
 
 ## Overview
 
-Bleach simulates the photochemical bleach bypass (also known as skip bleach or ENR) process — a film lab technique where the bleach step in colour negative development is partially or fully omitted, leaving metallic silver in the emulsion alongside the colour dyes. The result is a distinctive high-contrast, desaturated image with dense, luminous highlights and crushed shadows. This look was famously used in *Saving Private Ryan* (1998), *Se7en* (1995), *Minority Report* (2002), and many war and noir films.
+Bleach simulates the photochemical ***bleach bypass*** process (also known as ENR or silver retention), a film developing technique where the bleaching step is partially or fully omitted.  In traditional film processing, the bleach step removes the metallic silver from the emulsion after the color dyes have been formed. By skipping this step, the silver remains in the film alongside the color dyes, acting as a neutral density overlay that simultaneously desaturates and boosts contrast.
 
-The entire processing pipeline uses only shift-based arithmetic — no multiplications — ensuring reliable timing closure on the iCE40 HX4K at 74.25 MHz. This gives the pipeline an angular, stepped character that actually enhances the photochemical feel, since film grain and developing chemistry are inherently nonlinear processes.
+The effect is immediately recognizable from films like *Saving Private Ryan*, *Se7en*, and *Minority Report*: a gritty, desaturated, high-contrast look with deep blacks, muted colors, and an almost metallic quality. Bleach recreates this entirely within the video signal path, offering fine control over the silver density, contrast stretch, film grain, highlight protection, and tonal warmth or coolness.
 
-The name directly references the bleach chemistry step. In standard C-41 film processing, the bleach bath removes the metallic silver after colour dyes have formed, leaving only the transparent dye layers. Omitting or shortening this step retains the opaque silver, which adds density, reduces saturation, and increases perceived contrast. Bleach puts this chemical decision into the hands of the video artist as a bank of real-time controls.
+### What's In a Name?
+
+In a photographic darkroom, the ***bleach*** bath is a chemical step that dissolves the metallic silver from developed film, leaving only the transparent color dyes. To ***bypass*** this step: or use a milder variant called ***ENR*** (named after Ernesto Novelli Rimo, the Technicolor Rome technician who refined the process): means the silver stays, adding density and desaturation. The program name captures the essence of what is removed: the bleach itself.
 
 ---
 
 ## Quick Start
 
-1. **Start with desaturation**: The bleach bypass look is primarily about *reduced colour*, not about contrast. Set Bypass Amt first, then add Silver and Contrast to taste.
-2. **ENR for subtlety, Skip for impact**: ENR mode produces a more controlled lift suitable for narrative filmmaking; Skip mode is more aggressive, better for music videos and stylised work.
-3. **Highlight protection saves detail**: If Silver and Contrast push highlights too hard, Hi Prot at 40–60% brings them back without reducing the impact in midtones and shadows.
+1. Feed any video source into Videomancer with Bleach loaded. The image immediately appears desaturated and slightly higher in contrast.
+2. Increase **Bypass Amt** (Knob 1) to about 75%. Colors drain further and contrast sharpens (the hallmark bleach bypass look.)
+3. Turn **Silver** (Knob 2) up to about 60%. The highlights brighten and take on a metallic, silvery quality.
+4. Add a touch of **Grain** (Knob 4) at about 30% for the organic film texture that completes the look.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Bleach loaded](/img/instruments/videomancer/bleach/bleach_control_panel.png)
+*Videomancer's front panel with Bleach active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Bypass Amt
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 75% |
+
+**Bypass Amt** controls how much of the bleach step is skipped: in other words, how much desaturation is applied to the image. At 0%, chroma passes through unmodified. As the value increases, the U and V channels are pulled progressively toward neutral (512): at low-mid values, 87.5% of the chroma is retained; at mid values, 75%; at high values, only 50%. The result is a controlled drain of color saturation that leaves the image feeling steely and cool.
+
+---
+
+### Knob 2 — Silver
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Silver** controls the density of the retained silver layer. This adds a luminance boost proportional to the existing brightness: bright areas get brighter, amplifying the metallic quality of the image. At low values, the silver deposit is minimal and the image stays dark. As Silver increases, highlights gain a brilliant, almost reflective quality. The ENR vs. Skip process mode changes how aggressively the silver scales with brightness.
+
+:::note
+The silver boost is ***proportional*** to brightness: it amplifies what's already bright. Dark areas receive very little boost. This is different from a simple brightness offset: it specifically enhances the luminous, metallic quality of highlights.
+:::
+
+---
+
+### Knob 3 — Contrast
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 63% |
+
+**Contrast** stretches the luminance range outward from the midpoint (512). At 0%, contrast passes through at unity. As the value increases, the image stretches: at low-mid values, contrast scales to 1.125×; at mid, 1.25×; at high, 1.5×. The expansion is symmetrical around the midpoint, so blacks get darker and whites get brighter simultaneously. Combined with the desaturation from Bypass Amt, this creates the punchy, gritty tonal character of bleach bypass cinema.
+
+---
+
+### Knob 4 — Grain
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Grain** adds LFSR-based film grain noise to the luminance channel. At 0%, no grain is applied. As the value increases, progressively larger random values are added to or subtracted from each pixel's brightness. The grain size (Fine or Coarse) controls the bit depth of the noise, with Coarse mode producing larger, more visible grain clumps.
+
+---
+
+### Knob 5 — Hi Prot
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Hi Prot** (Highlight Protection) prevents the contrast stretch and silver boost from clipping highlight detail. When enabled (values above ~25%), pixels with original brightness above 768 are blended 50/50 with their contrast-stretched counterparts. This preserves detail in very bright areas: skin highlights, reflections, and specular sources: that would otherwise be crushed to pure white by the aggressive contrast processing.
+
+:::tip
+Highlight Protection is essential when processing faces. Skin tones in bright areas tend to blow out with high contrast and silver settings. Setting Hi Prot to ~50% keeps facial detail intact while the rest of the frame gets the full treatment.
+:::
+
+---
+
+### Knob 6 — Black Pt
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 13% |
+
+**Black Pt** (Black Point) sets a minimum brightness floor. At 0%, blacks can reach absolute zero. As the value increases, the darkest possible output is lifted, creating a lifted-blacks look that softens the shadow regions and gives the image a slightly faded, archival quality. The floor is derived by shifting the pot value right by 3, so at full the floor reaches about 128.
+
+---
+
+### Switch 7 — Process
+
+| Property | Value |
+|----------|-------|
+| Off | ENR |
+| On | Skip |
+| Default | ENR |
+
+**Process** selects between two bleach bypass development modes. **ENR** (the default) simulates the Technicolor ENR process, where the silver retention is more controlled and the luminance boost scales gradually with brightness. **Skip** simulates the more aggressive skip-bleach technique, where the silver boost is stronger and more abrupt, producing a harder, more contrasty result.
+
+---
+
+### Switch 8 — Grain Sz
+
+| Property | Value |
+|----------|-------|
+| Off | Fine |
+| On | Coarse |
+| Default | Fine |
+
+**Grain Sz** (Grain Size) controls the visual scale of the film grain. **Fine** uses the lower 6 bits of the LFSR for small, dense grain particles. **Coarse** shifts up to bits 7–2, producing larger, more visible grain clumps that resemble high-speed film stock pushed in development.
+
+---
+
+### Switch 9 — Tone
+
+| Property | Value |
+|----------|-------|
+| Off | Cold |
+| On | Warm |
+| Default | Cold |
+
+**Tone** shifts the overall color temperature of the processed image. **Cold** adds a slight blue push to U (+12) and pulls V back (−8), creating the steely, blue-tinged look of most bleach bypass cinematography. **Warm** reverses this with an amber shift (U −8, V +12), evoking the look of warm-toned print stock or a gold-tinted silver retention process.
+
+---
+
+### Switch 10 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** flips the processed luminance channel. With Invert **On**, highlights become shadows and vice versa. This is applied after all other processing (grain, contrast, silver boost), creating a negative image with the bleach bypass treatment applied in the inverted domain.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Bleach processing stages. Use for instant A/B comparison.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) signal and the wet (Bleach-processed) signal. At 0%, only the original video is output. At 100%, only the fully processed signal passes through. Intermediate values allow a subtle bleach bypass effect that retains more of the original color while adding a hint of the metallic, desaturated character.
 
 ---
 
 ## Background
 
-### The Bleach Bypass Process
+### Bleach bypass history
 
-In conventional photochemical colour film processing, exposed silver halide crystals are developed into metallic silver, colour couplers form transparent dyes around the silver, then the bleach bath dissolves the silver away, leaving only the colour dye image. When the bleach step is skipped or shortened, the metallic silver remains in the emulsion — superimposed on the colour dyes. This silver acts as a neutral-density filter that (1) reduces colour saturation because the opaque silver overlaps the transparent dyes, (2) increases contrast because silver density adds to the existing dye density, and (3) changes highlight character because silver grains have a different reflective quality than dye layers.
+The bleach bypass technique was developed in the 1960s but became widely known through its use in feature films from the 1990s onward. Cinematographer Janusz Kamiński and film lab technician Deluxe developed the look for *Schindler's List* (1993) and refined it further for *Saving Private Ryan* (1998), where it became synonymous with the desaturated, gritty war reality aesthetic. Darius Khondji used the ENR process extensively in *Se7en* (1995), creating the oppressive, rain-soaked darkness that defined the film's visual identity.
 
-### ENR vs Skip Bleach
+### Silver retention photochemistry
 
-Two historical variants exist. The **ENR** process (named after its inventor Ernesto Novelli Rizzoli at Technicolor Rome) uses a secondary silver developer bath to *add* silver rather than skip the bleach entirely. This provides finer control — the silver density can be adjusted by varying the developer time. The **skip bleach** variant simply omits or shortens the bleach bath, producing a more aggressive effect with stronger silver retention. Bleach's Process toggle selects between these two approaches, with ENR applying a more proportional luma boost and Skip applying a stronger fixed boost.
+In conventional color negative processing (***C-41***), the bleach bath converts the metallic silver image back into silver halide salts, which are then dissolved in the fixer bath. Only the transparent color dyes remain. When the bleach is skipped or weakened, the metallic silver particles stay in the emulsion, sitting on top of the color dyes like a permanent neutral density filter. This has three simultaneous effects: desaturation (the silver blocks some light that would otherwise show color), contrast increase (the silver adds density primarily in the highlights and midtones where it was formed during development), and grain emphasis (the retained silver particles add visible texture).
 
-### Shift-Based Arithmetic
+### Shift-based signal processing
 
-The entire pipeline avoids hardware multipliers. Desaturation pulls chroma toward the midpoint by subtracting shifted versions of the offset. Silver boost adds the luma shifted right by 0–4 bits. Contrast stretches the midpoint deviation by adding its own shifted copy. This shift-only approach creates characteristic threshold steps at pot values 256, 512, and 768, producing a stepwise "chemical" feel where the process amount jumps between discrete developing times rather than sliding continuously.
-
-### Film Grain
-
-Real film grain arises from the random spatial distribution of silver halide crystals in the emulsion. Faster film stocks have larger crystals, producing coarser, more visible grain. Bleach's grain injection uses a 16-bit LFSR pseudo-random noise source, with the Fine/Coarse toggle selecting either 6-bit or shifted 6-bit ranges for subtle versus prominent grain textures.
-
-### Tone Shift
-
-Retained silver has a slight colour cast depending on the emulsion chemistry and development temperature. Bleach models this as a fixed additive offset — Cold adds blue (U+12, V−8) and Warm adds amber (U−8, V+12) — creating the characteristic cool steel or warm sepia tone associated with different bleach bypass implementations.
+Bleach implements all arithmetic using ***bit shifts*** and additions: no hardware multiplications. On the iCE40 HX4K FPGA, multipliers consume significant resources, so shift-based approximations are both faster and more area-efficient. For example, the desaturation stage computes "keep 75% of chroma" by computing `chroma - (chroma >> 2)`, which equals `chroma × 0.75` without a multiplier. Similarly, the contrast stretch computes `1.25×` as `value + (value >> 2)`. These approximations sacrifice some precision but maintain the visual character of the effect.
 
 
 ---
 
 ## Signal Flow
 
-```
-                              ┌────────────────────┐
-data_in ─────────────────────►│ Input Register      │
-                              └──────┬─────────────┘
-                                     │ Stage 1
-                                     ▼
-                              ┌────────────────────┐
-                              │ Desaturation        │
-                              │ (shift chroma       │
-                              │  toward 512)        │
-                              └──────┬─────────────┘
-                                     │ Stage 2
-                                     ▼
-                              ┌────────────────────┐
-                              │ Silver Blend        │
-                              │ (shift-add Y boost  │
-                              │  ENR vs Skip)       │
-                              └──────┬─────────────┘
-                                     │ Stage 3
-                                     ▼
-                              ┌────────────────────┐
-                              │ Contrast Stretch    │
-                              │ (shift from         │
-                              │  midpoint 512)      │
-                              └──────┬─────────────┘
-                                     │ Stage 4
-                                     ▼
-                              ┌────────────────────┐
-                              │ Hi Protect + Black  │
-                              │ Pt + Grain + Tone   │
-                              │ + Invert + Output   │
-                              └──────┬─────────────┘
-                                     │ Stage 5
-                                     ▼
-data_in ──► [sync delay] ──► dry ──► Interpolator ◄── wet
-                                       (4 clk)
-                                          │
-                                          ▼
-                                      data_out
-```
+### Signal Flow Notes
 
-The pipeline is strictly serial — each stage modifies the signal and passes it to the next. The desaturation stage reduces chroma saturation before any luma processing, mirroring the chemistry where silver overlaps the dyes. The silver blend stage then boosts luma proportionally to its current value (modelling the density of retained silver, which is proportional to exposure). The contrast stage expands the tonal range around the midpoint. Finally, Stage 5 applies four independent corrections: highlight protection blends bright pixels back toward the original to prevent clipping, black point lift prevents shadows from crushing to zero, grain adds LFSR noise, and tone shift adds a colour cast.
+The pipeline order matters: desaturation happens first, then silver boost, then contrast. This matches the photochemistry: the silver retention changes the density (brightness), and then printing the film on high-contrast stock (the contrast stage) amplifies the density differences. Reversing the order would produce a different look, because the contrast stretch would be applied to the un-silvered brightness values.
 
-The signal path for the original Y value is carried through as `s_y_orig` for the highlight protection blend in Stage 5, creating a parallel data path that preserves the pre-silver, pre-contrast brightness for selective blending in the highlights.
+The highlight protection stage operates as a safety valve, blending the extreme high values back toward the original to prevent detail loss. It's applied after contrast but before grain, so the grain texture is added on top of the protected highlights rather than being amplified by the contrast stretch.
+
+:::warning
+With both Silver and Contrast at high values, the image can easily clip to pure white in highlights. Use Highlight Protection to preserve detail in bright areas, or reduce Mix to blend the effect with the original. The Black Point floor also helps prevent hard black clipping at the bottom of the range.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={bleach_control_panel} alt="Videomancer front panel with Bleach loaded"/>
-*Videomancer's front panel with Bleach active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises progress from a basic bleach bypass look through to a stylized cinematic grade with grain and split toning.
+### Exercise 1: The Saving Private Ryan Look
 
-### Rotary Potentiometers (Knobs 1–6)
+![The Saving Private Ryan Look result](/img/instruments/videomancer/bleach/bleach_ex1_s1.png)
+*The Saving Private Ryan Look — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — Bypass Amt
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 75% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-Controls the amount of bleach bypass (silver retention) applied, affecting primarily the desaturation depth. The pot value is decoded into four threshold zones: at low values (0–255), chroma passes through unaffected; at 256–511, light desaturation removes 12.5% of chroma offset; at 512–767, moderate desaturation removes 25%; at high values (768–1023), strong desaturation removes 50%, leaving only half the original colour saturation. This models the duration of the bleach bath — less bleaching means more retained silver and thus more desaturation.
+#### Learning Outcomes
 
----
+A desaturated, high-contrast image with muted but still present color (the signature look of modern war cinema.)
 
-#### Knob 2 — Silver
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
+#### Key Concepts
 
-Controls the silver density — how much additional luminance is added by the retained metallic silver. The pot is decoded into four zones with shift-based boost amounts. In ENR mode, the boost is proportional to the pixel's own brightness (modelling the chemistry where silver formation tracks exposure). In Skip mode, the boost is approximately twice as strong at each threshold. At low values (0–255), the boost is Y>>4 (about 6%); at high values (768–1023) in ENR mode, the boost is Y>>1 (50%). The result is saturating-added to the current luma.
+- Desaturation via silver retention drains color without eliminating it
+- Contrast stretch amplifies the density differences from the silver layer
+- ENR mode provides the controlled, gradual look used in war cinematography
 
----
+#### Video Source
 
-#### Knob 3 — Contrast
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 63% |
-| Suffix | % |
+Any video with a range of tones (a scene with faces, sky, and dark shadows works best.)
 
-Applies a contrast stretch centred at midpoint 512. The deviation from 512 is calculated, then a shifted copy of that deviation is added back. At low values, no stretch is applied (1.0× gain). At 256–511, a 1.125× stretch; at 512–767, a 1.25× stretch; at high values, a 1.5× stretch. The result is clamped to 0–1023. This models how retained silver increases the gamma of the film stock, pushing shadows darker and highlights brighter.
+#### Steps
 
----
+1. Set **Process** (Switch 7) to ENR.
+2. Set **Bypass Amt** (Knob 1) to ~75% for strong desaturation.
+3. Set **Contrast** (Knob 3) to ~60% for punchy mid-range contrast.
+4. Set **Silver** (Knob 2) to ~50% for a moderate metallic boost.
+5. Enable **Hi Prot** (Knob 5) at ~50% to prevent skin tones from clipping.
+6. Switch **Tone** (Switch 9) to Cold for the steely blue-silver feel.
 
-#### Knob 4 — Grain
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
+#### Settings
 
-Injects film grain noise from the LFSR. Below 256, no grain is added. From 256–511, moderate grain is injected using 5-bit (Fine) or 5-bit shifted (Coarse) LFSR samples. From 512–1023, stronger grain uses 6-bit (Fine) or 6-bit shifted (Coarse) samples. Fine grain produces a tight, subtle texture; Coarse grain produces larger, more prominent speckle. The grain is added as a signed value to luma, creating both bright and dark noise particles.
-
----
-
-#### Knob 5 — Hi Prot
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Protects highlights from clipping. When both the original (pre-silver, pre-contrast) Y value exceeds 768 and this pot exceeds 256, the output luma is averaged with the original brightness. This pulls blown highlights back toward their natural level, preventing the silver boost and contrast stretch from pushing bright areas into hard clipping. At 0%, no protection is applied and highlights may clip aggressively. At higher values, the blend kicks in for any pixel originally brighter than 75% luma.
+| Control | Value |
+|---------|-------|
+| Bypass Amt | ~75% |
+| Silver | ~50% |
+| Contrast | ~60% |
+| Grain | ~0% |
+| Hi Prot | ~50% |
+| Black Pt | ~0% |
+| Process | ENR |
+| Grain Sz | Fine |
+| Tone | Cold |
+| Invert | Off |
+| Bypass | Off |
+| Mix | ~100% |
 
 ---
 
-#### Knob 6 — Black Pt
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 13% |
-| Suffix | % |
+### Exercise 2: Se7en Darkness
 
-Lifts the black point, setting a minimum floor for luma. The pot value shifted right by 3 gives a floor from 0 to 127. At 0%, the floor is zero and deep blacks are preserved. At higher values, the darkest shadows are lifted, reducing contrast in the shadow range. This models the "fog" level in under-bleached prints, where residual silver adds a slight overall density even in unexposed areas.
+![Se7en Darkness result](/img/instruments/videomancer/bleach/bleach_ex2_s1.png)
+*Se7en Darkness — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-### Toggle Switches (Switches 7–11)
+#### Learning Outcomes
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Process** | ENR | Skip |
-| **8 — Grain Sz** | Fine | Coarse |
-| **9 — Tone** | Cold | Warm |
-| **10 — Invert** | Off | On |
-| **11 — Bypass** | Off | On |
+A dark, gritty image with heavy grain and lifted blacks: the claustrophobic feel of neo-noir thriller cinematography.
 
-The five toggles control the chemical variant, grain character, colour tone, inversion, and bypass. Each affects an independent aspect of the bleach bypass simulation. Toggle 7 selects the processing variant (ENR vs Skip), Toggle 8 and Grain pot together control grain texture, Toggle 9 adds a colour cast, Toggle 10 inverts luma, and Toggle 11 bypasses all processing.
+#### Key Concepts
 
----
+- Skip bleach produces a harder, more extreme version of the look
+- Coarse grain adds visible film texture
+- Black point lift creates a faded, oppressive atmosphere
 
-### Linear Potentiometer (Fader 12)
+#### Video Source
 
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
+A dimly lit scene or one with strong shadows. Interior scenes work particularly well.
 
-Crossfades between the dry (original) and wet (processed) signal at the output stage using three parallel interpolators. At 0% the output is the unmodified input; at 100% the output is fully processed with bleach bypass effects. Intermediate values blend the processed look with the original, useful for dialing in a subtle desaturated, contrasty look without fully committing to the bleach bypass aesthetic.
+#### Steps
 
+1. Switch **Process** (Switch 7) to Skip for the harder bleach bypass variant.
+2. Set **Bypass Amt** to ~85% for near-total desaturation.
+3. Push **Contrast** to ~80%. Shadows deepen dramatically.
+4. Add **Grain** at ~60% with **Grain Sz** set to Coarse. Visible film texture appears.
+5. Lift **Black Pt** to ~30%. The deepest blacks soften slightly, preventing total blackness.
+6. Set **Silver** to ~70%. Highlights gain a harsh metallic intensity.
 
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
+#### Settings
 
-Routes the unprocessed input signal directly to the output, bypassing all Bleach processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises progress from basic desaturation through full silver retention to the complete bleach bypass aesthetic with grain and tone.
-
-### Exercise 1: Basic Desaturation
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: bleach_source1_cat, after: bleach_ex1_s1 },
-    { label: "Field", before: bleach_source2_field, after: bleach_ex1_s2 },
-    { label: "Clouds", before: bleach_source3_clouds, after: bleach_ex1_s3 },
-    { label: "Pattern", before: bleach_source4_pattern, after: bleach_ex1_s4 },
-    { label: "Woman", before: bleach_source5_woman, after: bleach_ex1_s5 },
-    { label: "Knit", before: bleach_source6_knit, after: bleach_ex1_s6 },
-  ]}
-/>
-*Basic Desaturation — simulated result across source images.*
-**Source**: Colourful footage — flowers, clothing, or colourful scenery.
-
-**What You'll Create**: Understand how the Bypass Amt control desaturates chroma in stepped thresholds.
-
-1. **Full colour**: Start with Bypass Amt at 0%. The image passes through with no desaturation.
-2. **Light desat**: Increase Bypass Amt past 25%. A subtle reduction in saturation appears.
-3. **Moderate**: Push past 50%. Colours lose about a quarter of their intensity.
-4. **Strong**: Push past 75%. Colours are now only half their original saturation — clearly washed out.
-5. **Compare**: Toggle Bypass on and off to compare the desaturated result with the original.
-6. **Threshold steps**: Move Bypass Amt slowly and notice the step-like transitions at 25%, 50%, 75%.
-
-**Key concepts**: Desaturation pulls chroma toward neutral 512 using shifted offsets, four discrete thresholds model different bleach bath durations, the effect is most visible on saturated colours
+| Control | Value |
+|---------|-------|
+| Bypass Amt | ~85% |
+| Silver | ~70% |
+| Contrast | ~80% |
+| Grain | ~60% |
+| Hi Prot | ~30% |
+| Black Pt | ~30% |
+| Process | Skip |
+| Grain Sz | Coarse |
+| Tone | Cold |
+| Invert | Off |
+| Bypass | Off |
+| Mix | ~100% |
 
 ---
 
-### Exercise 2: Silver Density and Contrast
+### Exercise 3: Warm Silver Print
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: bleach_source1_cat, after: bleach_ex2_s1 },
-    { label: "Field", before: bleach_source2_field, after: bleach_ex2_s2 },
-    { label: "Clouds", before: bleach_source3_clouds, after: bleach_ex2_s3 },
-    { label: "Pattern", before: bleach_source4_pattern, after: bleach_ex2_s4 },
-    { label: "Woman", before: bleach_source5_woman, after: bleach_ex2_s5 },
-    { label: "Knit", before: bleach_source6_knit, after: bleach_ex2_s6 },
-  ]}
-/>
-*Silver Density and Contrast — simulated result across source images.*
-**Source**: A high-dynamic-range scene — a window looking outdoors, or a face lit from one side.
+![Warm Silver Print result](/img/instruments/videomancer/bleach/bleach_ex3_s1.png)
+*Warm Silver Print — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore how Silver and Contrast controls interact to create the signature bleach bypass look.
+***A description of the exercise illustration.***
 
-1. **Set desaturation**: Bypass Amt at about 70%.
-2. **Add silver**: Increase Silver from 0% to 80%. Watch the highlights surge brighter as retained silver adds density.
-3. **ENR vs Skip**: Toggle Process between ENR and Skip. Skip mode is noticeably more aggressive.
-4. **Contrast stretch**: Now increase Contrast from 0% to about 60%. Shadows drop darker while highlights push brighter.
-5. **Highlight blow-out**: Notice that extreme Silver + Contrast clips the highlights. Increase Hi Prot to pull them back.
-6. **Black floor**: Increase Black Pt slightly. The deepest shadows lift off true black, adding a "fog" floor.
+#### Learning Outcomes
 
-**Key concepts**: Silver adds density (luma boost) proportional to brightness, ENR is proportional while Skip is aggressive, Contrast expands the midpoint deviation, Hi Prot prevents highlight clipping
+A warm-toned, moderately desaturated image reminiscent of silver gelatin prints displayed under tungsten lighting.
 
----
+#### Key Concepts
 
-### Exercise 3: Full Film Look
+- Warm tone creates an amber-tinted bleach bypass look
+- Moderate settings produce a more subtle, refined effect
+- Mix allows blending the effect with original color
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: bleach_source1_cat, after: bleach_ex3_s1 },
-    { label: "Field", before: bleach_source2_field, after: bleach_ex3_s2 },
-    { label: "Clouds", before: bleach_source3_clouds, after: bleach_ex3_s3 },
-    { label: "Pattern", before: bleach_source4_pattern, after: bleach_ex3_s4 },
-    { label: "Woman", before: bleach_source5_woman, after: bleach_ex3_s5 },
-    { label: "Knit", before: bleach_source6_knit, after: bleach_ex3_s6 },
-  ]}
-/>
-*Full Film Look — simulated result across source images.*
-**Source**: Any footage — this exercise creates the complete bleach bypass film look.
+#### Video Source
 
-**What You'll Create**: Combine all processing stages for a war-film or noir aesthetic.
+Portraits or vintage-feeling subject matter (book spines, textured fabrics, architectural details.)
 
-1. **Base look**: Bypass Amt ~75%, Silver ~60%, Contrast ~55%.
-2. **Add grain**: Set Grain to about 40%. Fine grain appears as a subtle photographic noise.
-3. **Coarse grain**: Toggle Grain Sz to Coarse. The grain becomes chunkier and more prominent.
-4. **Cold tone**: Ensure Tone is set to Cold. The image takes on a steely blue cast — the *Saving Private Ryan* look.
-5. **Switch to warm**: Toggle Tone to Warm. The cast shifts to amber — more *The Aviator* than *Saving Private Ryan*.
-6. **Hi Prot + Black Pt**: Set Hi Prot to about 50%, Black Pt to about 10%.
-7. **Mix for subtlety**: Reduce Mix to about 70% to blend the processed look with the original.
+#### Steps
 
-**Key concepts**: All stages compound: desaturation + silver + contrast + grain + tone create a unified photochemical aesthetic, Mix blending allows subtle application, tone shift establishes colour temperature
+1. Set **Process** to ENR and **Tone** (Switch 9) to Warm.
+2. Set **Bypass Amt** to ~55% for moderate desaturation that retains some color.
+3. Set **Silver** to ~40% for subtle metallic highlights.
+4. Set **Contrast** to ~45% for gentle contrast enhancement.
+5. Add fine **Grain** at ~25% for a delicate film texture.
+6. Reduce **Mix** to ~70% to let some original color bleed through.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Bypass Amt | ~55% |
+| Silver | ~40% |
+| Contrast | ~45% |
+| Grain | ~25% |
+| Hi Prot | ~50% |
+| Black Pt | ~10% |
+| Process | ENR |
+| Grain Sz | Fine |
+| Tone | Warm |
+| Invert | Off |
+| Bypass | Off |
+| Mix | ~70% |
 
 ---
-
-
-## Tips
-
-- **Black Pt as "film fog"**: A small Black Pt lift (5–15%) adds the look of under-developed print stock — shadows never reach true black.
-- **Fine grain + Mix = photographic subtlety**: Fine grain at 25–35% with Mix at 70–80% creates a naturalistic film look that integrates seamlessly with video.
-- **Cold + desaturated = war film**: The *Saving Private Ryan* look is primarily high desaturation + moderate silver + cold tone.
-- **Use Invert for textures**: Invert + high contrast + grain creates abstract video textures suitable for overlay compositing.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Bleach bypass** | A photochemical film processing technique in which the bleach bath is partially or fully omitted, leaving metallic silver in the emulsion alongside colour dyes to increase contrast and reduce saturation. |
-| **C-41** | The standard chemical process for developing colour negative film, consisting of developer, bleach, and fixer baths. |
-| **Chroma** | The colour-difference components (U and V) of a YUV video signal, representing hue and saturation independently of brightness. |
-| **Clamping** | Limiting a signal value to a fixed range (typically 0–1023 in 10-bit video) to prevent overflow or underflow artifacts. |
-| **ENR** | Ernesto Novelli Rizzoli process; a controlled secondary silver development technique invented at Technicolor Rome that adds metallic silver proportionally to exposure. |
-| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, producing a pseudo-random bit sequence used for film grain noise. |
-| **Luma** | The brightness component (Y) of a YUV video signal, independent of colour information. |
-| **Saturating add** | An addition operation that clamps the result at the maximum representable value rather than wrapping around on overflow. |
-| **Silver halide** | Light-sensitive crystalline compound (such as silver bromide) embedded in photographic film emulsion that forms the latent image upon exposure. |
-| **Skip bleach** | A variant of bleach bypass that omits the bleach bath entirely rather than shortening it, producing a more aggressive high-contrast effect than ENR. |
+- **Bleach Bypass**: A film processing technique where the bleach step is skipped, leaving metallic silver in the emulsion alongside color dyes.
+
+- **C-41**: The standard chemical process for developing color negative film, consisting of developer, bleach, fixer, stabilizer, and wash steps.
+
+- **Desaturation**: The reduction of color intensity toward neutral gray, caused in bleach bypass by the silver layer blocking light.
+
+- **ENR**: A refinement of the bleach bypass process developed at Technicolor Rome, named after technician Ernesto Novelli Rimo. Produces a more controlled, subtle silver retention effect.
+
+- **Film Grain**: Random variations in density across the film surface caused by silver halide crystals of varying sizes. Simulated here with an LFSR-based noise generator.
+
+- **LFSR**: Linear Feedback Shift Register; a deterministic pseudo-random number generator used for film grain noise.
+
+- **Shift-Based Arithmetic**: Using bit shifts (multiply/divide by powers of 2) instead of hardware multipliers to perform approximate calculations, conserving FPGA resources.
+
+- **Silver Retention**: Another term for bleach bypass; the metallic silver particles that remain in the emulsion contribute both density and grain to the image.
 
 ---

@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 266
 slug: /instruments/videomancer/sideband
@@ -7,373 +7,436 @@ image: /img/instruments/videomancer/sideband/sideband_hero_s1.png
 description: "Before cable and digital broadcasting, television reception was an analog adventure."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import sideband_control_panel from '/img/instruments/videomancer/sideband/sideband_control_panel.png';
-import sideband_source1_cat from '/img/instruments/videomancer/sideband/sideband_source1_cat.png';
-import sideband_source2_boat from '/img/instruments/videomancer/sideband/sideband_source2_boat.png';
-import sideband_source3_elephant from '/img/instruments/videomancer/sideband/sideband_source3_elephant.png';
-import sideband_source4_pattern from '/img/instruments/videomancer/sideband/sideband_source4_pattern.png';
-import sideband_source5_woman from '/img/instruments/videomancer/sideband/sideband_source5_woman.png';
-import sideband_source6_paint from '/img/instruments/videomancer/sideband/sideband_source6_paint.png';
-import sideband_hero_s1 from '/img/instruments/videomancer/sideband/sideband_hero_s1.png';
-import sideband_hero_s2 from '/img/instruments/videomancer/sideband/sideband_hero_s2.png';
-import sideband_hero_s3 from '/img/instruments/videomancer/sideband/sideband_hero_s3.png';
-import sideband_hero_s4 from '/img/instruments/videomancer/sideband/sideband_hero_s4.png';
-import sideband_hero_s5 from '/img/instruments/videomancer/sideband/sideband_hero_s5.png';
-import sideband_hero_s6 from '/img/instruments/videomancer/sideband/sideband_hero_s6.png';
-import sideband_ex1_s1 from '/img/instruments/videomancer/sideband/sideband_ex1_s1.png';
-import sideband_ex1_s2 from '/img/instruments/videomancer/sideband/sideband_ex1_s2.png';
-import sideband_ex1_s3 from '/img/instruments/videomancer/sideband/sideband_ex1_s3.png';
-import sideband_ex1_s4 from '/img/instruments/videomancer/sideband/sideband_ex1_s4.png';
-import sideband_ex1_s5 from '/img/instruments/videomancer/sideband/sideband_ex1_s5.png';
-import sideband_ex1_s6 from '/img/instruments/videomancer/sideband/sideband_ex1_s6.png';
-import sideband_ex2_s1 from '/img/instruments/videomancer/sideband/sideband_ex2_s1.png';
-import sideband_ex2_s2 from '/img/instruments/videomancer/sideband/sideband_ex2_s2.png';
-import sideband_ex2_s3 from '/img/instruments/videomancer/sideband/sideband_ex2_s3.png';
-import sideband_ex2_s4 from '/img/instruments/videomancer/sideband/sideband_ex2_s4.png';
-import sideband_ex2_s5 from '/img/instruments/videomancer/sideband/sideband_ex2_s5.png';
-import sideband_ex2_s6 from '/img/instruments/videomancer/sideband/sideband_ex2_s6.png';
-import sideband_ex3_s1 from '/img/instruments/videomancer/sideband/sideband_ex3_s1.png';
-import sideband_ex3_s2 from '/img/instruments/videomancer/sideband/sideband_ex3_s2.png';
-import sideband_ex3_s3 from '/img/instruments/videomancer/sideband/sideband_ex3_s3.png';
-import sideband_ex3_s4 from '/img/instruments/videomancer/sideband/sideband_ex3_s4.png';
-import sideband_ex3_s5 from '/img/instruments/videomancer/sideband/sideband_ex3_s5.png';
-import sideband_ex3_s6 from '/img/instruments/videomancer/sideband/sideband_ex3_s6.png';
-
-# Sideband
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: sideband_source1_cat, after: sideband_hero_s1 },
-    { label: "Boat", before: sideband_source2_boat, after: sideband_hero_s2 },
-    { label: "Elephant", before: sideband_source3_elephant, after: sideband_hero_s3 },
-    { label: "Pattern", before: sideband_source4_pattern, after: sideband_hero_s4 },
-    { label: "Woman", before: sideband_source5_woman, after: sideband_hero_s5 },
-    { label: "Paint", before: sideband_source6_paint, after: sideband_hero_s6 },
-  ]}
-/>
-*Sideband degrading a clean video signal with multipath ghost echoes, herringbone interference, rolling hum bars, and snow noise.*
+![Sideband hero image](/img/instruments/videomancer/sideband/sideband_hero_s1.png)
+*Sideband degrading a clean video signal into the ghosted, snowy, interference-laced texture of 1970s off-air television reception.*
 
 ---
 
 ## Overview
 
-Before cable and digital broadcasting, television reception was an analog adventure. The signal traveled through the air as an RF carrier, arriving at the antenna along multiple paths — direct, reflected off buildings, scattered by terrain. Each path introduced its own delay, creating faint displaced copies of the image called *ghosts*. Adjacent-channel transmitters leaked energy into the tuned channel as herringbone interference patterns. Mains hum from the power supply crept into the signal chain as slowly rolling brightness bars. And when the signal was too weak, random noise replaced the picture as static snow. Sideband recreates all four of these degradation artifacts simultaneously, turning any clean digital video into a convincing simulation of marginal analog reception.
+Sideband is an analog broadcast reception artifact simulator. It recreates the specific imperfections of watching television through an imperfect antenna system: the kind of picture quality that was simply a fact of life before cable and digital broadcasting. Ghost images, herringbone interference bars, rolling hum bands, and snow noise are layered together to transform clean video into something that looks like it traveled through miles of atmosphere, bounced off a few buildings, and arrived at a set of rabbit-ear antennas on top of a portable television.
 
-The program chains five processing stages in series: a BRAM-based ghost delay line produces displaced echo images, a DDS oscillator generates herringbone interference, a triangle-wave modulator adds hum bars, and an LFSR noise generator crossfades between signal and snow. The name *Sideband* refers to the frequency sidebands of a modulated RF carrier — the mechanism by which adjacent-channel interference occurs in analog broadcasting. Every artifact in this program has a direct physical analog in the RF reception chain.
+Each artifact is independently controllable. You can dial in a subtle single ghost for a wistful, nostalgic haze, or stack all four degradation layers at once to bury your signal in a blizzard of analog chaos. The six knobs and five toggles give you fine control over each phenomenon, and the final Mix fader lets you blend the degraded signal with the clean original at any ratio.
 
-At subtle settings — a faint ghost, a hint of hum, high signal strength — Sideband adds a warm analog patina to clean digital video. At extreme settings — deep ghosts, heavy interference, low signal strength — it reduces the signal to near-unintelligible static, evoking late-night UHF reception on a portable television with rabbit-ear antennas.
+:::tip
+Sideband is a ***processing*** program. It transforms an incoming video signal rather than generating imagery from scratch. Feed it a camera, a pattern generator, or the output of another Videomancer program.
+:::
+
+### What's In a Name?
+
+In radio engineering, a ***sideband*** is a band of frequencies adjacent to the main carrier that contains the actual signal information. Analog television transmits video as amplitude-modulated sidebands flanking a carrier frequency. When reception is poor: when the antenna is misaligned, when buildings create reflections, when a neighboring station's carrier bleeds through: it's the sidebands that suffer. The name captures the essence of the program: it simulates what happens when sidebands are corrupted on the journey from transmitter to screen.
 
 ---
 
 ## Quick Start
 
-1. **Isolate each artifact separately first**: Set Ghost Gain to 0, Interference to 0, Hum Level to 0, and Signal Strength to 100 to create a clean baseline. Then introduce one artifact at a time to understand its contribution.
-2. **Negative ghosts for edge enhancement**: A subtle negative ghost at small delay creates a dark outline along vertical edges, similar to a sharpening effect. This can add visual detail rather than degradation.
-3. **Dual ghost for depth**: The cascading echo pattern of dual ghost mode creates a sense of spatial depth — the image appears to recede into layered reflections.
+1. Turn **Ghost Gain** (Knob 2) to about 50%. A faint, displaced copy of the image appears, offset to the right. Adjust **Ghost Delay** (Knob 1) to slide the ghost closer to or farther from the original.
+2. Increase **Interference** (Knob 3). Fine diagonal bars appear across the luminance channel: the telltale herringbone pattern of adjacent-channel interference.
+3. Add **Hum Level** (Knob 4). Soft horizontal brightness bands roll slowly up or down the screen. Adjust **Hum Roll** (Knob 6) to change how fast the bands drift.
+4. Lower **Signal Str** (Knob 5) from its default maximum. Snow noise creeps into the picture, replacing signal with static. The lower the signal strength, the more noise dominates.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Sideband loaded](/img/instruments/videomancer/sideband/sideband_control_panel.png)
+*Videomancer's front panel with Sideband active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Ghost Delay
+
+| Property | Value |
+|----------|-------|
+| Range | 0px – 256px |
+| Default | 32px |
+
+**Ghost Delay** sets the horizontal displacement of the ghost image, measured in pixels. At 0 px, the ghost sits directly on top of the original and is invisible (the two copies overlap perfectly). As the value increases, the ghost slides further to the right, creating a wider gap between the original image and its echo. At the maximum of 256 px, the ghost is displaced by a quarter of the visible line width.
+
+In real-world analog reception, ghost delay depends on the path-length difference between the direct signal and its reflection off a building or hillside. Short delays produce a subtle thickening of edges; long delays create an obvious double image.
+
+---
+
+### Knob 2 — Ghost Gain
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 37.5% |
+
+**Ghost Gain** controls the brightness of the ghost image relative to the original. At 0.0%, the ghost is invisible: no echo is mixed in. Increasing the value makes the ghost progressively brighter and more visible. At 100.0%, the ghost is at full strength, as bright as the direct signal itself.
+
+:::note
+When **Dual Ghost** (Switch 8) is set to **Dual**, a second ghost appears at double the delay and half the gain of the first. This second reflection is automatically derived from the Ghost Delay and Ghost Gain settings (no separate controls are needed.)
+:::
+
+---
+
+### Knob 3 — Interference
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Interference** controls the amplitude of the ***herringbone*** interference pattern overlaid on the luminance channel. At 0.0%, no interference is present. As the value increases, fine bars appear across the image: bright and dark stripes that alternate in a rapid pattern. Higher values also increase the spatial frequency of the pattern, making the bars finer and more numerous. At 100.0%, the interference dominates the luminance channel with aggressive banding.
+
+Herringbone interference is generated by a ***direct digital synthesis*** (DDS) phase accumulator producing a square-ish waveform. The Interference knob simultaneously controls both the amplitude and the frequency of the pattern.
+
+---
+
+### Knob 4 — Hum Level
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Hum Level** controls the strength of ***mains hum*** bars: the slowly rolling horizontal brightness bands caused by power-line interference coupling into the signal path. At 0.0%, no hum bars are visible. As the value increases, broad bands of brighter and darker luminance appear, spanning the full width of the screen. At 100.0%, the hum modulation is at full depth.
+
+The hum bars are generated by a triangle wave whose vertical phase is derived from the scanline counter. Roughly five bars appear per frame, replicating the look of 50 Hz mains pickup in a PAL-region signal chain.
+
+:::tip
+Hum bars affect all three channels (Y, U, V) equally. They modulate overall brightness, not color, which matches the behavior of real power-line hum in an analog receiver's IF amplifier.
+:::
+
+---
+
+### Knob 5 — Signal Str
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Signal Str** (Signal Strength) sets the overall quality of the received signal. At 100.0% (fully clockwise, the default), the signal is clean and noise-free. As the value decreases, ***snow noise***: the familiar analog TV static: progressively replaces the video signal. The crossfade is a linear interpolation: `output = video × strength + noise × (1 − strength)`. At 0.0% (fully counterclockwise), the picture is entirely replaced by noise.
+
+Signal Strength is the "dramatic" control. Everything else adds minor artifacts to a recognizable image; this one can dissolve the picture into nothing.
+
+---
+
+### Knob 6 — Hum Roll
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 12.5% |
+
+**Hum Roll** controls the vertical scrolling speed of the hum bars. At 0.0%, the bars are stationary: locked in place on the screen. As the value increases, the bars drift upward (or downward, depending on the phase relationship) at an increasing rate. At 100.0%, the bars roll rapidly. The roll speed is accumulated frame by frame, so the bars move smoothly rather than jumping.
+
+:::note
+If **Hum Level** (Knob 4) is set to 0.0%, adjusting Hum Roll has no visible effect, because there are no bars to scroll.
+:::
+
+---
+
+### Switch 7 — Ghost Pol
+
+| Property | Value |
+|----------|-------|
+| Off | Pos |
+| On | Neg |
+| Default | Pos |
+
+**Ghost Pol** (Ghost Polarity) switches the ghost echo between positive and negative polarity. With the switch set to **Pos**, the ghost is additive: it brightens the image where it overlaps. With the switch set to **Neg**, the ghost is subtractive: it darkens the image where it overlaps, creating a dark echo.
+
+In real-world reception, the polarity of a ghost depends on the number of reflections in the signal path. An odd number of reflections inverts the signal, producing a negative ghost. Even reflections (or direct-path reflections from a flat surface) produce positive ghosts. Negative ghosts are often more visually distinctive because they create dark outlines around bright objects.
+
+---
+
+### Switch 8 — Dual Ghost
+
+| Property | Value |
+|----------|-------|
+| Off | Single |
+| On | Dual |
+| Default | Single |
+
+**Dual Ghost** adds a second ghost image when set to **Dual**. The second ghost is automatically placed at double the delay and half the gain of the first, simulating a weaker secondary reflection that has traveled a longer path. When set to **Single**, only the primary ghost is active.
+
+The polarity of the second ghost matches the first (both are controlled by **Ghost Pol**). In a real antenna system, multiple reflections at different delays are the norm rather than the exception (a single, clean ghost is actually the unusual case.)
+
+---
+
+### Switch 9 — Color Loss
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Color Loss** simulates the way chrominance information is lost before luminance as signal strength degrades. When set to **On**, the noise level applied to the U and V chroma channels is doubled relative to the Y luminance channel (clamped to the maximum). This means color disappears into static before brightness does: exactly what happens in real analog reception, because the color subcarrier is more fragile than the baseband luminance signal.
+
+When set to **Off**, all three channels receive the same noise level from the **Signal Str** control.
+
+:::tip
+***Color Loss is historically accurate.*** On a real television, a weak signal first turns to black-and-white static before the picture itself disappears. Sideband replicates this behavior.
+:::
+
+---
+
+### Switch 10 — Interf Tilt
+
+| Property | Value |
+|----------|-------|
+| Off | Horiz |
+| On | Diag |
+| Default | Diag |
+
+**Interf Tilt** (Interference Tilt) switches the herringbone interference pattern between horizontal and diagonal orientations. When set to **Horiz**, the interference bars run straight across the screen. When set to **Diag**, the bars tilt diagonally: each new scanline introduces a fixed phase offset, creating the characteristic slanted pattern of adjacent-channel interference.
+
+The diagonal mode is the more realistic of the two. In real reception, the beat frequency between the desired carrier and an interfering carrier drifts in phase from line to line, creating a slowly rotating diagonal pattern.
+
+---
+
+### Switch 11 — Noise Type
+
+| Property | Value |
+|----------|-------|
+| Off | Fine |
+| On | Coarse |
+| Default | Fine |
+
+**Noise Type** selects between fine and coarse snow noise textures. When set to **Fine**, the LFSR noise updates every pixel, producing the characteristic fine-grained static of a detuned television. When set to **Coarse**, the noise uses a sample-and-hold that updates every eight pixels, producing a chunkier, blockier static pattern.
+
+Fine noise is more realistic for standard analog snow. Coarse noise has a grittier, more stylized look that can be useful for artistic effect or for simulating the appearance of a very low-bandwidth signal path.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) and wet (fully processed) signal. At 0.0%, the output is the original input with no artifacts. At 100.0% (the default), the output is the fully degraded signal. Intermediate values blend the two, which is useful for dialing in subtle amounts of analog texture without committing to full degradation.
+
+The Mix control uses a hardware interpolator for smooth, artifact-free blending across all three YUV channels simultaneously.
 
 ---
 
 ## Background
 
-### Multipath Ghost Images
+### Analog broadcast television
 
-When a television signal bounces off a building or hillside before reaching the antenna, it arrives slightly later than the direct signal. The receiver adds the delayed copy to the primary image, creating a *ghost* — a faint, horizontally displaced duplicate. The displacement distance depends on the extra path length (approximately 1 microsecond per 300 meters of additional travel). In severe multipath environments, multiple ghosts can appear at different offsets and intensities. Sideband simulates this using a 1024-pixel BRAM delay line for each of the Y, U, and V channels, with controllable delay offset and echo amplitude.
+Before cable and satellite delivery became universal, most television viewers received their signal through an antenna. The broadcast signal: a radio-frequency carrier modulated with video information in its ***sidebands***: traveled from a transmitter tower to a receiving antenna through open air. Every obstacle between transmitter and receiver introduced degradation.
 
-### Herringbone Interference
+The artifacts Sideband recreates are specific to this ***over-the-air*** (OTA) reception path. They are distinct from the encoding artifacts of a particular color system (NTSC, PAL, SECAM) and distinct from camera or recording artifacts. These are the artifacts of ***propagation*** and ***reception***.
 
-Analog television channels are spaced at fixed frequency intervals (6 MHz in NTSC, 7 or 8 MHz in PAL). When a receiver's selectivity is insufficient to fully reject the adjacent channel, the beat frequency between the two carriers produces a fine diagonal or horizontal stripe pattern across the screen called *herringbone* interference. Sideband generates this using a DDS (direct digital synthesis) phase accumulator that advances per pixel, with an optional per-line offset that tilts the pattern diagonally. The resulting square wave is scaled by the Interference control and added to the luminance channel.
+### Multipath and ghosts
 
-### Mains Hum Bars
+When a broadcast signal bounces off a building, hillside, or aircraft, the reflected copy arrives at the antenna slightly later than the direct signal. Because the reflected path is longer, the delay manifests as a horizontal displacement on screen: the ghost image is shifted to the right by an amount proportional to the extra path length. The brightness of the ghost depends on the reflectivity of the surface and the signal loss along the extra path.
 
-Power supply filtering in consumer television receivers was often imperfect. The 50 Hz or 60 Hz AC mains frequency would leak into the video signal path, producing slowly rolling horizontal bars of brightness variation called *hum bars*. A receiver with severe hum might show 2–5 bars drifting vertically through the picture. Sideband simulates this with a triangle wave whose phase is derived from the vertical line position within each frame, plus a frame-to-frame phase accumulator that controls the scroll speed.
+In cities, multiple reflections were common. A viewer might see two, three, or even four ghost images stacked to the right of the original, each progressively fainter and more delayed. Sideband's **Dual Ghost** mode recreates this layered effect with a primary and secondary reflection.
 
-### Snow Noise
+### Herringbone interference
 
-When the received signal strength drops below the receiver's noise floor, the automatic gain control amplifies both signal and noise equally. At very low signal levels, the random thermal and shot noise in the tuner's front end dominates the picture, producing the characteristic *snow* or *static* — random white and black dots covering the screen. Sideband models this as a crossfade between the processed signal and LFSR pseudo-random noise, controlled by the Signal Strength parameter. The noise can be fine (per-pixel) or coarse (sample-and-hold over several pixels for a blockier, more "analog" texture).
+When two broadcast stations operate on adjacent channels, the carrier frequency of the unwanted station creates a ***beat frequency*** with the desired signal. This beat manifests as a fine pattern of alternating bright and dark bars across the screen: the herringbone pattern. The bars typically tilt diagonally because the beat frequency drifts slightly in phase from one scanline to the next.
 
-### Color Loss in Weak Signals
+Sideband implements this with a DDS phase accumulator that generates a square-ish waveform at a frequency controlled by the **Interference** knob. The diagonal tilt is created by adding a fixed phase offset at each horizontal sync pulse.
 
-In analog NTSC and PAL broadcasting, the chrominance subcarrier sits on top of the luminance signal at a higher frequency. Because higher frequencies attenuate faster in a noisy channel, color information degrades before brightness information as signal strength drops. This is why a weak analog TV signal would often show a recognizable but desaturated or monochrome image before dissolving completely into snow. Sideband's Color Loss toggle doubles the effective noise level for the U/V channels, causing chroma to disappear at higher signal strengths than luminance.
+### Mains hum bars
+
+Power-line hum at 50 Hz (in PAL regions) or 60 Hz (in NTSC regions) was a persistent nuisance in analog television. When mains frequency couples into the signal chain: through a ground loop, a poorly shielded cable, or a failing power supply capacitor: it creates a slow brightness modulation at the mains frequency. Because the mains frequency is close to but not exactly equal to the field rate, the resulting bars drift slowly up or down the screen.
+
+Sideband generates hum bars using a triangle wave whose vertical period creates roughly five bars per frame. The **Hum Roll** control advances the phase of this wave frame by frame, simulating the characteristic slow drift.
+
+### Snow noise
+
+When signal strength drops, the receiver's automatic gain control amplifies everything: including thermal noise from the antenna and the receiver's own front-end circuits. This noise appears on screen as the familiar analog ***snow***: random bright and dark pixels that increasingly obscure the picture.
+
+Sideband models this with two LFSR-based pseudo-random noise generators. One drives the luminance noise; the other drives the chroma noise. The **Signal Str** control crossfades linearly between the clean video and the noise floor. With **Color Loss** enabled, the chroma channels are driven to noise faster than the luminance channel, replicating the real-world behavior where color disappears before the picture does.
 
 
 ---
 
 ## Signal Flow
 
-Input + BRAM Write → Ghost Summation → Herringbone Interference → Hum Bar → Snow Noise Mix
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Stage 1: Input + BRAM Write ────────────────────────────────
-│   ├─ Current pixel → BRAM write (Y, U, V)
-│   ├─ Ghost 1 read at h_count − ghost_delay/4
-│   └─ Ghost 2 read at h_count − ghost_delay/2
-│
-├── Stage 2: Ghost Summation ───────────────────────────────────
-│   ├─ Ghost 1: scale by ghost_gain
-│   ├─ Ghost 2: scale by ghost_gain / 2 (dual mode only)
-│   ├─ Polarity: add or subtract based on Ghost Pol
-│   └─ Clamp Y/U/V to 0..1023
-│
-├── Stage 3: Herringbone Interference ──────────────────────────
-│   ├─ DDS phase accumulator (per pixel)
-│   ├─ Diagonal tilt: +4096/line when enabled
-│   ├─ Square wave: ±256 from MSB of phase
-│   ├─ Scale by interference × interference / 1024
-│   └─ Add to Y only
-│
-├── Stage 4: Hum Bar ───────────────────────────────────────────
-│   ├─ Phase = frame_phase + v_count × 32
-│   ├─ Triangle wave centered at 0
-│   ├─ Scale by hum_level
-│   └─ Add to Y only
-│
-├── Stage 5: Snow Noise Mix ────────────────────────────────────
-│   ├─ noise_level = 1023 − signal_strength
-│   ├─ Y = signal × strength + noise × noise_level
-│   ├─ Color Loss: double chroma noise level
-│   └─ Coarse mode: sample-and-hold noise every N pixels
-│
-├── Interpolator: Wet/Dry Mix (4 clocks) ──────────────────────
-│   └─ Crossfade between delayed dry input and processed output
-│
-└── Output ─────────────────────────────────────────────────────
-    └─ Always through interpolator (no bypass toggle)
-```
+Two critical interactions define Sideband's behavior:
 
-The five degradation stages are chained in the order they would occur in a real analog receiver: the ghost arrives first (it is a property of the RF propagation path), then adjacent-channel interference adds its pattern, then power supply hum modulates the brightness, and finally noise is mixed in based on overall signal quality. Each stage feeds the next, so a ghosted signal also gets hum bars applied to it, and the combined result gets noise mixed in. Herringbone and hum affect luminance only (matching the real-world behavior where these artifacts primarily disturb the baseband video), while snow noise affects all three channels. Note that there is no bypass toggle — toggle_switch_11 controls the noise texture type (fine vs. coarse), and the Mix fader controls the wet/dry blend via the interpolator.
+1. **Herringbone and hum are luminance-only.** The interference pattern and hum bars are added exclusively to the Y channel. The U and V chroma channels pass through these stages unmodified. This matches real analog behavior: herringbone is a baseband luminance artifact, and mains hum modulates the overall brightness of the picture.
 
----
+2. **Snow noise affects all channels, with optional chroma acceleration.** The noise mix stage operates on all three channels, but when **Color Loss** is enabled, the chroma channels receive double the noise level. This creates the characteristic progression of signal degradation: color fades to gray first, then the luminance picture dissolves into snow.
 
-## Parameter Reference
-
-<img src={sideband_control_panel} alt="Videomancer front panel with Sideband loaded"/>
-*Videomancer's front panel with Sideband active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Ghost Delay
-| Property | Value |
-|----------|-------|
-| Range | 0px – 256px |
-| Default | 32px |
-| Suffix | px |
-
-Controls the horizontal displacement of the ghost image in pixels. The top 8 bits of the 10-bit register select a delay from 0 to 255 pixels. At 0, no ghost is visible (the delayed copy overlaps the original exactly). As you increase the delay, a displaced copy of the image appears shifted to the right. In Dual Ghost mode, a second ghost appears at double the delay distance. Large delay values push the ghost far enough that it becomes a clearly separate image rather than a subtle edge echo.
-
----
-
-#### Knob 2 — Ghost Gain
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 37.5% |
-| Suffix | % |
-
-At 0%, the ghost is invisible regardless of delay. At moderate values, the ghost appears as a faint overlay — a semi-transparent displaced copy typical of mild multipath interference. At high values, the ghost becomes as bright as the original signal, creating a strong double-image effect. In Dual Ghost mode, the second ghost receives half this gain, producing a realistic cascading reflection pattern where each successive reflection is weaker than the previous one. Internally, sets the amplitude of the ghost echo.
-
----
-
-#### Knob 3 — Interference
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-At 0%, no interference is visible. As you increase the control, a fine stripe pattern appears across the image. The pattern frequency is determined by the DDS accumulator's increment rate (which is also scaled by this parameter), so higher Interference values produce both a stronger and finer pattern. With Interference Tilt set to Diagonal, the stripes angle across the screen, closely matching real adjacent-channel interference. Internally, controls the amplitude of the herringbone interference pattern.
-
----
-
-#### Knob 4 — Hum Level
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-At 0%, no hum bars are visible. Increasing the control makes slowly rolling horizontal bands of brighter and darker video appear across the frame. The bars come from a triangle wave with approximately 5 cycles per frame (from the v_count × 32 term), creating the characteristic wide horizontal bands of a badly filtered power supply. The hum affects all channels equally through the luminance path. Internally, sets the depth of the hum bar brightness modulation.
-
----
-
-#### Knob 5 — Signal Str
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Controls overall signal quality — the balance between clean video and noise. At 100%, the signal is fully clean with no snow noise. As you decrease the control, random noise begins mixing into the signal. At very low values, the picture dissolves almost entirely into static. This parameter works as an inverse noise level: noise_level = 1023 − signal_strength. When Color Loss is enabled, the chroma channels degrade at twice the rate of luminance, producing a desaturated image before total signal loss.
-
----
-
-#### Knob 6 — Hum Roll
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 12.5% |
-| Suffix | % |
-
-Controls the vertical scroll speed of the hum bars. The register value is added to a 16-bit frame phase accumulator on each vertical sync pulse. At 0%, the hum bars are stationary (frozen in place). As you increase the roll speed, the bars begin drifting vertically through the frame. Higher values create faster rolling, simulating a receiver with increasingly poor power supply regulation. The scroll is continuous and wraps smoothly.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Ghost Pol** | Pos | Neg |
-| **8 — Dual Ghost** | Single | Dual |
-| **9 — Color Loss** | Off | On |
-| **10 — Interf Tilt** | Horiz | Diag |
-| **11 — Noise Type** | Fine | Coarse |
-
-The five toggles modify different aspects of the degradation chain. Ghost Pol (toggle 7) and Dual Ghost (toggle 8) affect the ghost summation stage. Color Loss (toggle 9) modifies the snow noise mix for chroma channels. Interf Tilt (toggle 10) adds diagonal drift to the herringbone pattern. Noise Type (toggle 11) selects between fine per-pixel noise and coarse blocked noise. Unlike many Videomancer programs, there is no bypass toggle — the Mix fader serves as the wet/dry control, and toggle 11 is repurposed for noise texture selection.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Sideband-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::tip
+**Ghost images include chroma.** Unlike herringbone and hum (which are Y-only), the ghost delay operates on all three YUV channels. The ghost carries a full-color copy of the displaced image, which is correct: multipath reflections duplicate the entire signal, not just the luminance component.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from individual artifact exploration through combined degradation to full weak-signal simulation. Each exercise isolates one aspect of the program before combining them.
+These exercises progress from isolated artifacts to a fully layered analog reception simulation. Each one adds a new type of degradation to the signal chain.
+### Exercise 1: Ghost Image Control
 
-### Exercise 1: Ghost Delay and Polarity
+![Ghost Image Control result](/img/instruments/videomancer/sideband/sideband_ex1_s1.png)
+*Ghost Image Control — simulated result across source images.*
+#### Exercise Illustration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: sideband_source1_cat, after: sideband_ex1_s1 },
-    { label: "Boat", before: sideband_source2_boat, after: sideband_ex1_s2 },
-    { label: "Elephant", before: sideband_source3_elephant, after: sideband_ex1_s3 },
-    { label: "Pattern", before: sideband_source4_pattern, after: sideband_ex1_s4 },
-    { label: "Woman", before: sideband_source5_woman, after: sideband_ex1_s5 },
-    { label: "Paint", before: sideband_source6_paint, after: sideband_ex1_s6 },
-  ]}
-/>
-*Ghost Delay and Polarity — simulated result across source images.*
-**Source**: A high-contrast test pattern or graphics-heavy footage with sharp vertical edges — text, geometric shapes, or architectural details.
+***A description of the exercise illustration.***
 
-**What You'll Create**: Understand how ghost delay, gain, polarity, and dual mode interact to create multipath echo effects.
+#### Learning Outcomes
 
-1. Set all controls to neutral: Interference 0%, Hum Level 0%, Signal Strength 100%. This isolates the ghost stage.
-2. Set Ghost Gain to ~50% and slowly increase Ghost Delay from 0. A faint displaced copy of the image appears, shifting rightward.
-3. Increase Ghost Gain to see the echo strengthen. At 100% the ghost is as bright as the original.
-4. Toggle Ghost Pol to Negative. The ghost becomes a dark shadow instead of a bright overlay.
-5. Enable Dual Ghost. A second, weaker ghost appears further displaced. Note the cascading echo pattern.
-6. Sweep Ghost Delay through its full range with Dual Ghost enabled to see both echoes shift in tandem.
+A convincing multipath ghost effect ranging from subtle edge doubling to an obvious hall-of-mirrors displacement.
 
-**Key concepts**: Ghost delay is a BRAM line buffer read at an offset, gain scales the echo amplitude, negative ghosts subtract from the signal, dual ghost adds a second reflection at 2× delay and 0.5× gain
+#### Key Concepts
+
+- Multipath ghosts are horizontally displaced copies of the image
+- Ghost delay controls the displacement; ghost gain controls the echo brightness
+- Polarity and dual-ghost mode add realism
+
+#### Video Source
+
+A high-contrast still image or title card with sharp edges and readable text (these make ghost displacement easy to see.)
+
+#### Steps
+
+1. Set **Ghost Gain** (Knob 2) to about 40%. A faint copy of the image appears, offset to the right.
+2. Sweep **Ghost Delay** (Knob 1) slowly from 0 to 256 px. Watch the ghost slide away from the original.
+3. Increase **Ghost Gain** to 80%. The ghost is now nearly as bright as the original (a strong multipath reflection.)
+4. Toggle **Ghost Pol** (Switch 7) to **Neg**. The ghost becomes a dark shadow instead of a bright echo. Toggle back and forth to compare.
+5. Set **Dual Ghost** (Switch 8) to **Dual**. A second, fainter ghost appears at double the delay. This is the "city reception" look (multiple reflections from different buildings.)
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Ghost Delay | ~128 px |
+| Ghost Gain | 40.0% |
+| Interference | 0.0% |
+| Hum Level | 0.0% |
+| Signal Str | 100.0% |
+| Hum Roll | 0.0% |
+| Ghost Pol | Neg |
+| Dual Ghost | Dual |
+| Color Loss | Off |
+| Interf Tilt | Diag |
+| Noise Type | Fine |
+| Mix | 100.0% |
 
 ---
 
-### Exercise 2: Interference and Hum Bars
+### Exercise 2: Interference and Hum
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: sideband_source1_cat, after: sideband_ex2_s1 },
-    { label: "Boat", before: sideband_source2_boat, after: sideband_ex2_s2 },
-    { label: "Elephant", before: sideband_source3_elephant, after: sideband_ex2_s3 },
-    { label: "Pattern", before: sideband_source4_pattern, after: sideband_ex2_s4 },
-    { label: "Woman", before: sideband_source5_woman, after: sideband_ex2_s5 },
-    { label: "Paint", before: sideband_source6_paint, after: sideband_ex2_s6 },
-  ]}
-/>
-*Interference and Hum Bars — simulated result across source images.*
-**Source**: A flat or slowly varying image — a solid color field, a gentle gradient, or a static scene with minimal detail to make the interference pattern clearly visible.
+![Interference and Hum result](/img/instruments/videomancer/sideband/sideband_ex2_s1.png)
+*Interference and Hum — simulated result across source images.*
+#### Exercise Illustration
 
-**What You'll Create**: Explore herringbone interference patterns and hum bar modulation as independent artifacts.
+***A description of the exercise illustration.***
 
-1. Set Ghost Gain to 0% and Signal Strength to 100% to isolate the interference and hum stages.
-2. Slowly increase Interference from 0%. A fine horizontal stripe pattern appears on the image.
-3. Toggle Interf Tilt to Diagonal. The stripes tilt into a classic herringbone weave pattern.
-4. Return Interference to 0% and increase Hum Level. Broad horizontal brightness bands appear across the frame.
-5. Increase Hum Roll to set the bars in motion — they scroll vertically through the frame.
-6. Combine both: set moderate Interference (~40%) and moderate Hum Level (~40%). The fine herringbone pattern is superimposed on the broader hum bands, creating a layered degradation.
+#### Learning Outcomes
 
-**Key concepts**: Herringbone is a DDS-generated square wave added to Y, diagonal tilt adds phase offset per line, hum bars are a triangle wave modulated by vertical position
+A layered interference and hum bar effect that transforms clean video into the look of a poorly tuned broadcast receiver.
+
+#### Key Concepts
+
+- Herringbone interference is a luminance-only artifact with controllable tilt
+- Hum bars are broad brightness bands that roll vertically
+- Layering both creates a convincing "bad reception" baseline
+
+#### Video Source
+
+Footage with a mix of flat areas and detail: a talking-head interview or a still life works well, because the flat areas make hum bars visible while the detailed areas show herringbone texture.
+
+#### Steps
+
+1. With Ghost Gain at 0.0% (ghosts off), increase **Interference** (Knob 3) to about 40%. Fine bars appear across the image.
+2. Toggle **Interf Tilt** (Switch 10) between **Horiz** and **Diag**. Diagonal is the more realistic orientation for adjacent-channel interference.
+3. Add **Hum Level** (Knob 4) at about 40%. Broad brightness bands appear, rolling slowly.
+4. Adjust **Hum Roll** (Knob 6). At 0.0%, the bars are frozen. Increase the value and they begin to drift. Find a slow, gentle roll speed that looks natural.
+5. Now add a mild ghost: set **Ghost Gain** to about 25% and **Ghost Delay** to about 64 px. The three artifacts: ghost, herringbone, and hum: combine into a convincing "bad reception" look.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Ghost Delay | ~64 px |
+| Ghost Gain | 25.0% |
+| Interference | 40.0% |
+| Hum Level | 40.0% |
+| Signal Str | 100.0% |
+| Hum Roll | 50.0% |
+| Ghost Pol | Pos |
+| Dual Ghost | Single |
+| Color Loss | Off |
+| Interf Tilt | Diag |
+| Noise Type | Fine |
+| Mix | 100.0% |
 
 ---
 
 ### Exercise 3: Weak Signal Simulation
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Cat", before: sideband_source1_cat, after: sideband_ex3_s1 },
-    { label: "Boat", before: sideband_source2_boat, after: sideband_ex3_s2 },
-    { label: "Elephant", before: sideband_source3_elephant, after: sideband_ex3_s3 },
-    { label: "Pattern", before: sideband_source4_pattern, after: sideband_ex3_s4 },
-    { label: "Woman", before: sideband_source5_woman, after: sideband_ex3_s5 },
-    { label: "Paint", before: sideband_source6_paint, after: sideband_ex3_s6 },
-  ]}
-/>
+![Weak Signal Simulation result](/img/instruments/videomancer/sideband/sideband_ex3_s1.png)
 *Weak Signal Simulation — simulated result across source images.*
-**Source**: Any video — this exercise works best with recognizable content so you can judge the degradation level.
+#### Exercise Illustration
 
-**What You'll Create**: Simulate the progressive degradation of a weak analog TV signal, from mild noise through color loss to total snow.
+***A description of the exercise illustration.***
 
-1. Set moderate ghost (Delay ~64 px, Gain ~30%), light interference (~20%), light hum (~20%). This creates a baseline of mild reception artifacts.
-2. Slowly lower Signal Strength from 100% toward 0%. Snow noise begins mixing into the picture.
-3. At ~60% signal strength, the image is still recognizable but noticeably noisy. Enable Color Loss — the image desaturates as chroma noise increases at double rate.
-4. Switch Noise Type from Fine to Coarse. The noise becomes blockier and more "analog" in character.
-5. Continue lowering Signal Strength. At ~20%, the image is barely visible through the snow.
-6. At ~5%, the picture is almost entirely static with only occasional hints of the original content visible through the noise.
-7. Toggle Color Loss off and on at ~40% signal strength to see the dramatic difference in chroma noise.
+#### Learning Outcomes
 
-**Key concepts**: Signal strength inversely controls noise mix ratio, color loss doubles chroma noise rate, coarse mode samples-and-holds noise for blockier texture, all artifacts compound in series
+A full analog reception degradation, progressing from a slightly noisy picture to near-total signal loss.
+
+#### Key Concepts
+
+- Signal Strength crossfades between video and noise
+- Color Loss makes chroma degrade faster than luminance
+- Combining all four artifact layers creates a complete reception simulation
+
+#### Video Source
+
+Any footage with recognizable content: faces, text, or familiar objects help the viewer appreciate the degradation as signal strength drops.
+
+#### Steps
+
+1. Start with the Exercise 2 settings (mild ghost, interference, and hum). The picture should look like mediocre but watchable reception.
+2. Slowly lower **Signal Str** (Knob 5) from 100% toward 50%. Snow noise creeps into the picture, softening detail and adding grain.
+3. Enable **Color Loss** (Switch 9). The chroma channels dissolve into static faster than luminance: the picture fades to a noisy black-and-white image before the luminance itself is lost.
+4. Toggle **Noise Type** (Switch 11) to **Coarse**. The snow becomes blockier and chunkier. Compare with **Fine** to decide which texture you prefer.
+5. Continue lowering **Signal Str** toward 10%. The picture is barely visible through the static. This is the "distant transmitter in a thunderstorm" look.
+6. Use **Mix** (Fader 12) to blend the degraded signal with the clean original. A Mix value around 60–70% preserves the artifacts while keeping the image readable.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Ghost Delay | ~64 px |
+| Ghost Gain | 30.0% |
+| Interference | 20.0% |
+| Hum Level | 20.0% |
+| Signal Str | 40.0% |
+| Hum Roll | 50.0% |
+| Ghost Pol | Pos |
+| Dual Ghost | Dual |
+| Color Loss | On |
+| Interf Tilt | Diag |
+| Noise Type | Coarse |
+| Mix | 100.0% |
 
 ---
-
-
-## Tips
-
-- **Color Loss sells the illusion**: Enabling Color Loss makes weak signal simulation dramatically more convincing. Real analog TV always lost color before luminance, and viewers instinctively recognize this degradation pattern.
-- **Coarse noise for vintage character**: Fine noise looks like modern digital sensor noise. Coarse noise, with its blocked sample-and-hold texture, more closely resembles the bandwidth-limited noise of a real analog tuner.
-- **Hum Roll for animation**: Even a static image comes alive when hum bars are rolling. The slow vertical drift creates constant motion that suggests a live, unstable signal.
-- **Combine with feedback for progressive degradation**: Route the output back to the input. Each pass through the ghost delay, interference, and noise stages compounds the degradation, creating a signal that deteriorates over time — like a VHS tape being copied repeatedly.
-- **Mix as a performance control**: Use the Mix fader to cross-fade between clean and degraded signal in real time. This creates a dramatic reveal effect.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator, used here for herringbone interference generation. |
-| **Ghost** | A displaced, attenuated copy of the video image caused by multipath signal propagation, where the RF signal arrives via both direct and reflected paths. |
-| **Herringbone** | A fine diagonal or horizontal stripe pattern caused by adjacent-channel interference beating against the desired signal's carrier frequency. |
-| **Hum Bar** | A slowly rolling horizontal band of brightness variation caused by AC mains frequency leaking into the video signal path. |
-| **LFSR** | Linear Feedback Shift Register; a hardware pseudo-random number generator that produces noise sequences for the snow effect. |
-| **Multipath** | The simultaneous reception of a signal via multiple propagation paths (direct, reflected, diffracted), causing ghost images. |
-| **Noise Floor** | The level of background noise in a receiver; signals below the noise floor are unrecoverable. |
-| **Sample-and-Hold** | A circuit technique that captures a value and holds it for multiple clock cycles, used in coarse noise mode. |
-| **Sideband** | The frequency components above and below a modulated carrier that contain the signal information; the source of adjacent-channel interference. |
-| **Snow** | Random white-and-black noise visible on an analog TV screen when signal strength is insufficient, caused by thermal noise in the receiver. |
+- **Beat Frequency**: The difference frequency produced when two signals of slightly different frequencies combine; responsible for herringbone interference patterns.
+
+- **DDS (Direct Digital Synthesis)**: A technique for generating waveforms using a phase accumulator and lookup table, used here to create the herringbone interference pattern.
+
+- **Ghost Image**: A displaced, attenuated copy of the picture caused by a reflected signal arriving at the antenna after the direct signal.
+
+- **Herringbone**: A fine diagonal or horizontal bar pattern caused by interference from an adjacent broadcast channel's carrier frequency.
+
+- **LFSR (Linear Feedback Shift Register)**: A digital circuit that generates pseudo-random bit sequences, used to produce snow noise.
+
+- **Mains Hum**: A low-frequency brightness modulation caused by power-line frequency (50 or 60 Hz) coupling into the signal chain.
+
+- **Multipath**: The phenomenon where a broadcast signal reaches the antenna via multiple paths (direct + reflected), causing ghost images.
+
+- **Sideband**: A band of frequencies adjacent to a carrier that contains the modulated signal information in analog broadcasting.
+
+- **Signal-to-Noise Ratio (SNR)**: The ratio of desired signal power to noise power; lower SNR produces more visible snow.
+
+- **Snow**: Random bright and dark pixels caused by thermal noise in the receiver when signal strength is low.
 
 ---

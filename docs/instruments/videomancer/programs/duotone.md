@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 95
 slug: /instruments/videomancer/duotone
@@ -7,348 +7,406 @@ image: /img/instruments/videomancer/duotone/duotone_hero_s1.png
 description: "Most color video processors adjust the colors that already exist in the source signal."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import duotone_control_panel from '/img/instruments/videomancer/duotone/duotone_control_panel.png';
-import duotone_source1_car from '/img/instruments/videomancer/duotone/duotone_source1_car.png';
-import duotone_source2_parrot from '/img/instruments/videomancer/duotone/duotone_source2_parrot.png';
-import duotone_source3_clouds from '/img/instruments/videomancer/duotone/duotone_source3_clouds.png';
-import duotone_source4_pattern from '/img/instruments/videomancer/duotone/duotone_source4_pattern.png';
-import duotone_source5_woman from '/img/instruments/videomancer/duotone/duotone_source5_woman.png';
-import duotone_source6_paint from '/img/instruments/videomancer/duotone/duotone_source6_paint.png';
-import duotone_hero_s1 from '/img/instruments/videomancer/duotone/duotone_hero_s1.png';
-import duotone_hero_s2 from '/img/instruments/videomancer/duotone/duotone_hero_s2.png';
-import duotone_hero_s3 from '/img/instruments/videomancer/duotone/duotone_hero_s3.png';
-import duotone_hero_s4 from '/img/instruments/videomancer/duotone/duotone_hero_s4.png';
-import duotone_hero_s5 from '/img/instruments/videomancer/duotone/duotone_hero_s5.png';
-import duotone_hero_s6 from '/img/instruments/videomancer/duotone/duotone_hero_s6.png';
-import duotone_ex1_s1 from '/img/instruments/videomancer/duotone/duotone_ex1_s1.png';
-import duotone_ex1_s2 from '/img/instruments/videomancer/duotone/duotone_ex1_s2.png';
-import duotone_ex1_s3 from '/img/instruments/videomancer/duotone/duotone_ex1_s3.png';
-import duotone_ex1_s4 from '/img/instruments/videomancer/duotone/duotone_ex1_s4.png';
-import duotone_ex1_s5 from '/img/instruments/videomancer/duotone/duotone_ex1_s5.png';
-import duotone_ex1_s6 from '/img/instruments/videomancer/duotone/duotone_ex1_s6.png';
-import duotone_ex2_s1 from '/img/instruments/videomancer/duotone/duotone_ex2_s1.png';
-import duotone_ex2_s2 from '/img/instruments/videomancer/duotone/duotone_ex2_s2.png';
-import duotone_ex2_s3 from '/img/instruments/videomancer/duotone/duotone_ex2_s3.png';
-import duotone_ex2_s4 from '/img/instruments/videomancer/duotone/duotone_ex2_s4.png';
-import duotone_ex2_s5 from '/img/instruments/videomancer/duotone/duotone_ex2_s5.png';
-import duotone_ex2_s6 from '/img/instruments/videomancer/duotone/duotone_ex2_s6.png';
-import duotone_ex3_s1 from '/img/instruments/videomancer/duotone/duotone_ex3_s1.png';
-import duotone_ex3_s2 from '/img/instruments/videomancer/duotone/duotone_ex3_s2.png';
-import duotone_ex3_s3 from '/img/instruments/videomancer/duotone/duotone_ex3_s3.png';
-import duotone_ex3_s4 from '/img/instruments/videomancer/duotone/duotone_ex3_s4.png';
-import duotone_ex3_s5 from '/img/instruments/videomancer/duotone/duotone_ex3_s5.png';
-import duotone_ex3_s6 from '/img/instruments/videomancer/duotone/duotone_ex3_s6.png';
-
-# Duotone
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: duotone_source1_car, after: duotone_hero_s1 },
-    { label: "Parrot", before: duotone_source2_parrot, after: duotone_hero_s2 },
-    { label: "Clouds", before: duotone_source3_clouds, after: duotone_hero_s3 },
-    { label: "Pattern", before: duotone_source4_pattern, after: duotone_hero_s4 },
-    { label: "Woman", before: duotone_source5_woman, after: duotone_hero_s5 },
-    { label: "Paint", before: duotone_source6_paint, after: duotone_hero_s6 },
-  ]}
-/>
-*Duotone applying luma-driven dual-hue colorization to remap source brightness into cool shadow and warm highlight tones with adjustable threshold and blend.*
+![Duotone hero image](/img/instruments/videomancer/duotone/duotone_hero_s1.png)
+*Duotone splitting a live camera feed into warm shadow tones and cool highlight tones, painting the world in two carefully chosen inks.*
 
 ---
 
 ## Overview
 
-Most color video processors adjust the colors that already exist in the source signal. Duotone discards the original chrominance entirely and rebuilds it from scratch, using only the brightness of each pixel to decide what color it should become. The program assigns one hue to the shadow range and a second hue to the highlight range, then blends between them based on where each pixel falls on the brightness scale.
+Duotone is a two-color tinting effect that remaps the brightness of your video into a blend of two selectable hues. Dark areas take on one color, bright areas take on another, and everything in between is a smooth gradient between the two. The result looks like a photograph printed with two ink colors: a technique that has been a staple of graphic design and fine-art printmaking for over a century.
 
-The name comes directly from the printing technique: a *duotone* print uses two ink colors — typically black plus one spot color — to reproduce a photographic image with richer tonal depth than a single-ink halftone. Duotone extends the concept by allowing independent hue control for both the shadow and highlight ends of the tonal range, creating the video equivalent of split-tone darkroom printing.
+At default settings, Duotone applies a subtle warm-and-cool split that gives ordinary footage a cinematic, stylized look. Pushing the controls further yields bold, poster-like color schemes, hard-edged stencil graphics, or eerie inverted tintypes. Because Duotone preserves the luminance structure of the original image while replacing its color information, faces, textures, and shapes remain recognizable even under extreme color transformations.
 
-At subtle settings the program produces the warm-shadow, cool-highlight aesthetic of traditional photographic toning baths. At extreme settings — maximum hue offsets with hard-edge thresholding — it reduces the image to a stark two-color graphic reminiscent of pop art screen printing or propaganda poster design.
+:::tip
+Duotone is a ***processing*** program: it transforms an incoming video signal. Feed it a camera, a pattern generator, or the output of another Videomancer program for the most interesting results.
+:::
+
+### What's In a Name?
+
+The name ***Duotone*** comes directly from the printmaking world. A ***duotone*** print uses exactly two ink colors: typically black plus one spot color: to reproduce a photographic image. The shadows are rendered in one ink and the highlights in the other, with midtones emerging from the overlap. Videomancer's Duotone program generalizes this idea: you choose both colors freely, and the luma of your video decides how much of each ink to lay down.
 
 ---
 
 ## Quick Start
 
-1. **Soft edge for photography, hard edge for graphics**: Soft-edge mode creates the continuous gradient blend of darkroom split toning. Hard-edge mode creates the flat color zones of screen printing and pop art.
-2. **Hues are complementary**: Shadow and highlight tints sit on opposing UV axes (blue-cyan vs. red-amber). This guarantees a pleasing complementary palette regardless of pot positions.
-3. **Invert flips everything**: Because inversion happens before the blend calculation, it reverses the color assignment *and* the brightness in one toggle — useful for quickly exploring the opposite palette.
+1. Feed a video source into Videomancer and select the **Duotone** program. You'll see your image tinted with two colors: darker areas lean toward one hue, brighter areas toward the other.
+2. Turn **Shadow Hue** (Knob 1) and **Highlight Hue** (Knob 2) slowly. Watch the two tint colors shift independently: shadows and highlights each sweep through different regions of the color wheel.
+3. Toggle **Hard Edge** (Switch 9) to **On**. The smooth gradient between the two tones snaps into a sharp binary split: every pixel is now painted in one color or the other, with nothing in between. Adjust **Threshold** (Knob 3) to slide the dividing line up and down the tonal range.
+4. Toggle **Invert** (Switch 10) to swap which areas receive the shadow hue and which receive the highlight hue. The entire tonal mapping flips.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Duotone loaded](/img/instruments/videomancer/duotone/duotone_control_panel.png)
+*Videomancer's front panel with Duotone active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Shadow Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 13% |
+
+**Shadow Hue** selects the color applied to dark regions of the image. At minimum, the shadow tone is neutral: dark areas remain achromatic. As you turn the knob clockwise, the shadow color sweeps along an arc in the color wheel, introducing progressively stronger tinting. The hue traces a path that moves in one direction through the UV color plane, so different knob positions produce distinctly different colors rather than simply increasing saturation.
+
+At its default position, a gentle warm tint is applied to the shadows. Turning fully clockwise produces a bold, saturated shadow tone.
+
+---
+
+### Knob 2 — Highlight Hue
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 75% |
+
+**Highlight Hue** selects the color applied to bright regions of the image, independently of the shadow hue. The highlight hue traces the opposite arc in the color plane compared to Shadow Hue: when one control produces warm tones, the other naturally produces cool tones at the same knob position. This complementary relationship makes it easy to create classic split-tone color schemes.
+
+At its default position, highlights receive a cool-toned tint that contrasts with the warm shadow default. Fully counterclockwise, highlights are neutral; fully clockwise, they carry a strong saturated color.
+
+---
+
+### Knob 3 — Threshold
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Threshold** controls the crossover point between shadow and highlight tones, but only when **Hard Edge** (Switch 9) is enabled. In hard-edge mode, every pixel whose brightness falls below the threshold receives the shadow hue, and every pixel at or above the threshold receives the highlight hue. Turning the knob clockwise raises the bar, pushing more of the image into shadow territory. Turning it counterclockwise lowers the bar, allowing more of the image to be painted with the highlight color.
+
+:::note
+In soft-blend mode (Hard Edge off), the blend between shadow and highlight is driven directly by the input luminance, and the Threshold knob has no visible effect. Switch Hard Edge on to hear this control speak.
+:::
+
+---
+
+### Knob 4 — Spread
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Spread** is reserved for a future update. In the current version of Duotone, adjusting this knob has no visible effect on the output image. It is intended to control the width of the transition zone between shadow and highlight tones.
+
+---
+
+### Knob 5 — Intensity
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 75% |
+
+**Intensity** is reserved for a future update. In the current version of Duotone, adjusting this knob has no visible effect on the output image. It is intended to control the saturation strength of the applied color tinting.
+
+---
+
+### Knob 6 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Brightness** scales the luminance of the processed output. At midpoint (the default), the original brightness is preserved at roughly half scale. Turning the knob clockwise brightens the image; turning it fully clockwise pushes luminance toward maximum. Turning it counterclockwise dims the image; fully counterclockwise produces black regardless of the input.
+
+Because Brightness operates on the processed luma before the wet/dry mix, it affects only the tinted version of the image. The dry signal retains its original brightness. Use this control to balance the tinted image against the original when blending with the **Mix** fader.
+
+---
+
+### Switch 7 — Swap
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Swap** is reserved for a future update. In the current version of Duotone, toggling this switch has no visible effect. It is intended to exchange the shadow and highlight hue assignments.
+
+---
+
+### Switch 8 — Mono Input
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Mono Input** is reserved for a future update. In the current version of Duotone, toggling this switch has no visible effect. It is intended to strip incoming chroma before processing, forcing a monochrome input into the duotone mapping.
+
+---
+
+### Switch 9 — Hard Edge
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Hard Edge** switches the blend between shadow and highlight hues from a smooth gradient to a sharp binary cut. With Hard Edge **Off** (the default), the input luminance itself serves as the blend factor: dark pixels receive more shadow hue, bright pixels receive more highlight hue, and midtones get a proportional mix of both. The transition is gentle and continuous.
+
+With Hard Edge **On**, the blend snaps to a binary decision controlled by the **Threshold** knob: pixels below the threshold receive the pure shadow hue, and pixels at or above the threshold receive the pure highlight hue. There is no gradient: the image becomes a two-color stencil. This mode is where Duotone produces its most graphic, poster-like results.
+
+---
+
+### Switch 10 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** flips the input luminance before all other processing. Dark becomes bright and bright becomes dark, which reverses the entire tonal mapping: areas that were painted with the shadow hue now receive the highlight hue, and vice versa. In hard-edge mode, Invert effectively swaps which side of the threshold is which. In soft-blend mode, it reverses the gradient direction.
+
+:::tip
+Combining **Invert** with different **Shadow Hue** and **Highlight Hue** settings creates a second set of completely different color splits from the same two hue positions. Think of it as getting two duotone looks for the price of one.
+:::
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all duotone processing. Sync timing is still aligned through the delay pipeline, so switching Bypass on and off does not cause glitches. Use Bypass for instant A/B comparison between the raw video and the tinted result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** crossfades between the original (dry) video and the duotone-processed (wet) video. At maximum (fully right), you see only the processed result. At minimum (fully left), you see only the original input. Intermediate positions blend the two, allowing you to dial in a subtle tint or a half-strength color wash.
+
+Because the mix operates after all other processing stages, it's the final creative control in the signal chain. Pulling the fader back is the quickest way to soften the effect without changing any other settings.
 
 ---
 
 ## Background
 
-### Duotone Printing
+### Duotone printing
 
-In commercial printing, a standard halftone uses a single ink (usually black) to reproduce a photograph. The limitation is obvious: a single ink can only express tonal range, not color richness. Duotone printing solves this by running the paper through the press twice with two different inks — often black for the shadows and a second color (sepia, Pantone blue, warm gray) for the midtones and highlights. The result is a monochromatic image with far greater tonal depth than a single-pass halftone. Tritone and quadtone extend the idea to three and four inks. The Videomancer Duotone program implements the two-color version digitally, replacing the shadow and highlight inks with selectable UV offsets in the YUV color space.
+The ***duotone*** technique dates back to the early twentieth century, when printers discovered that a single black ink couldn't capture the full tonal range of a photograph. By printing the same image twice: once in black and once in a second color: they could extend the dynamic range and add a color mood to the print. Modern graphic designers use digital duotone effects for the same reason: to impose a deliberate, limited palette on photographic imagery.
 
-### Split Toning in Photography
+Videomancer's Duotone program applies this concept in real time. Instead of inks, it uses two positions in the YUV color plane. Instead of a printing press, it uses a blend function driven by the input video's luma channel. The result is the same: a two-tone image where color follows brightness.
 
-Darkroom photographers discovered that chemical toning baths — selenium, sepia, gold, copper — could selectively color different tonal ranges of a silver gelatin print. A selenium-toned print might have cool blue-purple shadows while the highlights remain neutral, or a sepia-toned print might warm only the midtones and highlights while the deepest blacks stay cold. The technique depends on the fact that different tonal densities of silver respond differently to chemical toners. Duotone's soft-edge mode replicates this behavior: the blend between shadow and highlight hues follows the natural brightness gradient of the source, creating the same selective coloring without chemistry.
+### YUV color space
 
-### Pop Art and Two-Color Graphics
+Video signals are encoded in ***YUV*** format, where Y carries luminance (brightness) and U and V carry chrominance (color). The neutral point in the UV plane is (512, 512): this represents achromatic gray, with no color. Moving away from the center in any direction adds color. Duotone generates two points in the UV plane: one for shadows, one for highlights: and blends between them based on luminance.
 
-Andy Warhol's screen prints — Marilyn, Mao, Campbell's Soup — are perhaps the most recognizable application of reduced-color image processing. Warhol photographed his subjects, then used high-contrast lithographic film to separate the image into starkly simplified tonal zones, each printed in a flat ink color. The result strips away photographic subtlety and replaces it with graphic boldness. Duotone's hard-edge mode produces the same effect: a binary threshold divides the image into two zones, each filled with a solid hue. The threshold control sets the cutoff point, determining how much of the image falls into each color zone.
+The **Shadow Hue** and **Highlight Hue** knobs each trace an arc through the UV plane, but in opposite directions. The shadow path increases U while decreasing V; the highlight path decreases U while increasing V. This complementary layout means that when both knobs are at similar positions, the resulting shadow and highlight colors sit on opposite sides of the color wheel (a natural split-tone palette.)
 
-### Hue Mapping in the YUV Domain
+### Blend modes
 
-In BT.601 YUV encoding, color is represented by two chroma components — U (blue-difference) and V (red-difference) — centered at a midpoint of 512 in the 10-bit domain. A pixel with U=512 and V=512 is achromatic (gray). Duotone generates its hues by offsetting U and V from this midpoint in opposite directions: shadow hue pushes U positive and V negative (toward the blue-cyan axis), while highlight hue pushes U negative and V positive (toward the red-amber axis). The two controls determine the *strength* of offset along these complementary axes rather than selecting arbitrary hue angles — this constraint ensures the shadow and highlight tints are always complementary.
+Duotone offers two blend modes, selected by the **Hard Edge** toggle:
 
-### Colorization in Early Cinema and Video Art
+- **Soft blend**: The raw input luma *is* the blend factor. Every pixel gets a proportional mixture of shadow and highlight color based on its brightness. The result is a smooth tonal gradient from one hue to the other.
+- **Hard blend**: A binary threshold divides pixels into two groups. Every pixel is painted with one color or the other (no mixing. The **Threshold** knob sets the dividing line.)
 
-Before the invention of color film, filmmakers applied tints and tones to black-and-white footage. Tinting dyed the entire film base (coloring highlights and midtones), while toning chemically replaced the silver image with a colored compound (coloring shadows and blacks). The combination of tinting and toning produced a two-color effect strikingly similar to modern split toning. Video artists adopted analogous techniques in the analog domain — colorizing monochrome signals by injecting subcarrier reference tones keyed to luminance levels. Duotone is the digital descendant of these practices, applying luma-keyed colorization at 74.25 million pixels per second.
+Soft blend produces cinematic, tonal looks. Hard blend produces flat, graphic, poster-like results. Toggling between them with the same hue settings reveals two completely different aesthetics from the same parameters.
 
 
 ---
 
 ## Signal Flow
 
-Optional Inversion → Brightness Scale → Shadow Hue → UV → Highlight Hue → UV → Blend Factor from Luma → UV Crossfade
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├─ Luma Path ──────────────────────────────────────────────
-│   ├─ 1. Optional Inversion     (bitwise NOT of Y)
-│   └─ 2. Brightness Scale       (luma × Brightness >> 10)
-│         └──→ Processed Y
-│
-├─ Chroma Generation ──────────────────────────────────────
-│   ├─ 1. Shadow Hue → UV        (U = 512 + hue/4, V = 512 − hue/4)
-│   ├─ 2. Highlight Hue → UV     (U = 512 − hue/4, V = 512 + hue/4)
-│   ├─ 3. Blend Factor from Luma
-│   │      ├─ Hard Edge: binary   (luma ≥ threshold → 1023, else 0)
-│   │      └─ Soft Edge: blend = luma value
-│   └─ 4. UV Crossfade
-│          (blend × highlight_UV + (1023 − blend) × shadow_UV) >> 10
-│          └──→ Processed U, V
-│
-├─ Mix (3× interpolator_u) ───────────────────────────────
-│   └─ Dry/wet blend per channel  (original ←→ processed)
-│
-├─ Sync Delay ─────────────────────────────────────────────
-│   └─ 8-clock pipeline           (hsync_n, vsync_n, field_n, Y, U, V)
-│
-└─ Bypass Mux ─────────────────────────────────────────────
-    └─ Select delayed original or mixed output
-```
+The core of the pipeline is the blend computation in stage 3. In soft mode, the input luma itself controls the crossfade between shadow and highlight UV coordinates: no threshold is involved. This creates a continuous tonal mapping where every brightness level corresponds to a unique color. In hard mode, the threshold creates a binary partition, and the entire image is painted with exactly two flat colors.
 
-Two structural details are important. First, the Invert toggle sits at the very beginning of the pipeline — before both the blend factor calculation and the brightness scaler. Inversion does not simply flip the output brightness; it also reverses the shadow/highlight color assignment in soft-edge mode, because the blend is driven by the inverted luma. Dark areas of the source receive the highlight hue and bright areas receive the shadow hue, flipping the entire color map.
+The brightness control (stage 4) scales the output luma independently of the color mapping. This means you can dim or brighten the duotone image without affecting which hue each pixel receives: color assignment depends solely on the *input* luma, not the output.
 
-Second, the hue controls map to fixed complementary UV axes rather than arbitrary hue angles. Shadow Hue pushes U positive and V negative (blue-cyan direction) while Highlight Hue pushes U negative and V positive (red-amber direction). The two pots control the *strength* of tinting along these opposing axes. This means the shadow and highlight colors are always perceptual complements, which is consistent with traditional split-tone aesthetics.
-
----
-
-## Parameter Reference
-
-<img src={duotone_control_panel} alt="Videomancer front panel with Duotone loaded"/>
-*Videomancer's front panel with Duotone active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Shadow Hue
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 13% |
-| Suffix | % |
-
-At 0%, the shadow tint is neutral gray — no color is added to dark areas. As the pot increases, the shadow color shifts along the blue-cyan axis (U increases, V decreases relative to mid). At maximum, dark areas of the image carry a strong cool tint. The offset is computed as the pot value divided by four, giving a maximum chroma displacement of 255 out of 512 from the center — enough for vivid color without wrapping. Internally, controls the chrominance offset applied to the shadow (dark) regions of the image.
-
----
-
-#### Knob 2 — Highlight Hue
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 75% |
-| Suffix | % |
-
-Controls the chrominance offset applied to the highlight (bright) regions. The offset axis is complementary to Shadow Hue: U decreases and V increases relative to mid, producing a warm red-amber tint. At 0%, highlights remain neutral. At maximum, bright areas carry a strong warm tint. With both Shadow Hue and Highlight Hue at maximum, the image splits into a dramatic cool-shadow, warm-highlight duotone — the classic split-tone look.
-
----
-
-#### Knob 3 — Threshold
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Sets the luma cutoff point for hard-edge mode. When Hard Edge (Toggle 9) is active, pixels with brightness at or above this threshold receive the highlight hue and pixels below receive the shadow hue, with no gradual blend between them. This control has no effect in soft-edge mode, where the blend follows the luma gradient directly. At 50% threshold with hard edge, the image splits roughly in half tonally; lower values assign more of the image to the highlight zone, higher values assign more to the shadow zone.
-
----
-
-#### Knob 4 — Spread
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-This parameter is declared in the TOML configuration and mapped to a register but is not connected to the processing pipeline in the current firmware. The label suggests it was intended to control the width of the transition zone between shadow and highlight hues. Adjusting this control has no effect on the output.
-
----
-
-#### Knob 5 — Intensity
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 75% |
-| Suffix | % |
-
-This parameter is declared in the TOML configuration and mapped to a register but is not connected to the processing pipeline in the current firmware. The label suggests it was intended to control the saturation intensity of the applied hue tints. Adjusting this control has no effect on the output.
-
----
-
-#### Knob 6 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Scales the output luminance via a fixed-point multiply. The processing luma (after optional inversion) is multiplied by this register value and the upper 10 bits of the 20-bit product are taken as the result. At maximum (100%), the output brightness roughly matches the input. At 50%, brightness is halved. At 0%, the output goes black. This scaling applies only to the processed luma — the original signal available through the Mix fader is unaffected.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Swap** | Off | On |
-| **8 — Mono Input** | Off | On |
-| **9 — Hard Edge** | Off | On |
-| **10 — Invert** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles control three active features and two reserved parameters. Hard Edge (Toggle 9) selects between soft gradient blending and binary threshold mode. Invert (Toggle 10) applies a bitwise complement to the input luma before all downstream processing. Bypass (Toggle 11) routes the original delayed signal directly to the output. Swap (Toggle 7) and Mono Input (Toggle 8) are declared in the configuration but not connected in the current VHDL pipeline — they have no effect on the output.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Wet/dry crossfade between the original input and the fully processed output, implemented by three parallel interpolator instances (one per YUV channel). At 100% (fully clockwise), the output is entirely the colorized duotone signal. At 0%, the output is the unmodified original. Intermediate positions blend the two, allowing subtle tinting effects where the original color partially shows through the duotone colorization.
-
-
-
+:::note
+The delay pipeline aligns sync signals with processed data across the full 8-clock latency, ensuring the wet/dry mix and bypass switch operate on correctly aligned data.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from gentle split toning to aggressive two-color graphics, demonstrating the full range of Duotone's colorization capabilities.
-
+These exercises progress from basic split-toning to graphic stencil effects and creative inversions. Each exercise highlights a different aspect of the duotone color mapping.
 ### Exercise 1: Classic Split Tone
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: duotone_source1_car, after: duotone_ex1_s1 },
-    { label: "Parrot", before: duotone_source2_parrot, after: duotone_ex1_s2 },
-    { label: "Clouds", before: duotone_source3_clouds, after: duotone_ex1_s3 },
-    { label: "Pattern", before: duotone_source4_pattern, after: duotone_ex1_s4 },
-    { label: "Woman", before: duotone_source5_woman, after: duotone_ex1_s5 },
-    { label: "Paint", before: duotone_source6_paint, after: duotone_ex1_s6 },
-  ]}
-/>
+![Classic Split Tone result](/img/instruments/videomancer/duotone/duotone_ex1_s1.png)
 *Classic Split Tone — simulated result across source images.*
-**Source**: A portrait or landscape with a wide tonal range — skin tones, sky, and shadow detail.
+#### Exercise Illustration
 
-**What You'll Create**: Create a warm-highlight, cool-shadow split-tone look matching traditional photographic toning.
+***A description of the exercise illustration.***
 
-1. **Neutral start**: Set Shadow Hue and Highlight Hue to 0%. Observe that the image retains its original colors through the mix.
-2. **Add shadow tint**: Slowly increase Shadow Hue to ~25%. Dark areas take on a subtle blue-cyan cast.
-3. **Add highlight tint**: Increase Highlight Hue to ~50%. Bright areas warm toward amber.
-4. **Adjust brightness**: Sweep Brightness from 50% upward to find a pleasing overall exposure.
-5. **Blend**: Lower the Mix fader to ~70% to let some original color show through the duotone tint.
+#### Learning Outcomes
 
-**Key concepts**: Split toning is a continuous gradient blend driven by luma, shadow and highlight hues are always complementary, the Mix fader controls the intensity of the effect
+A warm-shadow, cool-highlight split-tone look reminiscent of cyanotype prints or toned silver gelatin photographs.
 
----
+#### Key Concepts
 
-### Exercise 2: Hard-Edge Two-Color Poster
+- Luma drives the blend between two hues
+- Shadow and highlight hues trace complementary arcs in the color plane
+- Soft blend creates a smooth tonal gradient
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: duotone_source1_car, after: duotone_ex2_s1 },
-    { label: "Parrot", before: duotone_source2_parrot, after: duotone_ex2_s2 },
-    { label: "Clouds", before: duotone_source3_clouds, after: duotone_ex2_s3 },
-    { label: "Pattern", before: duotone_source4_pattern, after: duotone_ex2_s4 },
-    { label: "Woman", before: duotone_source5_woman, after: duotone_ex2_s5 },
-    { label: "Paint", before: duotone_source6_paint, after: duotone_ex2_s6 },
-  ]}
-/>
-*Hard-Edge Two-Color Poster — simulated result across source images.*
-**Source**: High-contrast footage — strong backlit silhouettes or graphic shapes against a bright background.
+#### Video Source
 
-**What You'll Create**: Create a stark two-color graphic using hard-edge threshold mode.
+A live camera feed or recorded footage with a mix of light and dark regions (faces, architecture, or landscapes work well.)
 
-1. **Enable hard edge**: Turn on Hard Edge (Toggle 9). The blend snaps to binary.
-2. **Set threshold**: Adjust Threshold to ~50%. The image splits into two flat color zones.
-3. **Maximize hues**: Push Shadow Hue to ~75% and Highlight Hue to ~75% for vivid complementary colors.
-4. **Set brightness**: Set Brightness to ~100% so the light zone is fully bright.
-5. **Sweep the threshold**: Move Threshold slowly from 0% to 100%. Watch the boundary between the two color zones sweep through the tonal range of the source.
-6. **Invert**: Toggle Invert (Toggle 10) to reverse which color goes to shadows and which to highlights.
+#### Steps
 
-**Key concepts**: Hard-edge mode uses a binary threshold to split the image into exactly two color zones, threshold position determines the tonal cutoff, inversion reverses the entire color assignment
+1. Set **Shadow Hue** (Knob 1) to roughly 25%. Dark areas take on a warm, amber tint.
+2. Set **Highlight Hue** (Knob 2) to roughly 75%. Bright areas shift toward a cool complementary tone.
+3. Make sure **Hard Edge** (Switch 9) is **Off**. The transition between the two colors should be smooth and continuous.
+4. Adjust **Brightness** (Knob 6) until the overall exposure looks balanced. Try positions just above and below the midpoint.
+5. Pull the **Mix** fader (Fader 12) to about 75% to let a hint of the original color show through.
 
----
+#### Settings
 
-### Exercise 3: Inverted Duotone with Partial Mix
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: duotone_source1_car, after: duotone_ex3_s1 },
-    { label: "Parrot", before: duotone_source2_parrot, after: duotone_ex3_s2 },
-    { label: "Clouds", before: duotone_source3_clouds, after: duotone_ex3_s3 },
-    { label: "Pattern", before: duotone_source4_pattern, after: duotone_ex3_s4 },
-    { label: "Woman", before: duotone_source5_woman, after: duotone_ex3_s5 },
-    { label: "Paint", before: duotone_source6_paint, after: duotone_ex3_s6 },
-  ]}
-/>
-*Inverted Duotone with Partial Mix — simulated result across source images.*
-**Source**: Any footage with moderate contrast and visible color detail.
-
-**What You'll Create**: Combine luma inversion with partial wet/dry mix to create an unusual tinted negative effect.
-
-1. **Enable invert**: Turn on Invert (Toggle 10). The image brightness reverses.
-2. **Set moderate hues**: Shadow Hue ~40%, Highlight Hue ~60%. The inverted tonal map now assigns warm tones to originally dark areas and cool tones to originally bright areas.
-3. **Reduce brightness**: Lower Brightness to ~40%. The inverted image darkens, creating a moody palette.
-4. **Partial mix**: Set Mix to ~50%. The original colors blend with the inverted duotone, producing a surreal double-exposure effect.
-5. **Compare**: Toggle Bypass on and off to compare the composite with the original source.
-
-**Key concepts**: Inversion reverses the luma before all processing including the blend factor, partial mix creates composites of original and processed signal, brightness scaling operates on the inverted luma
+| Control | Value |
+|---------|-------|
+| Shadow Hue | ~25% |
+| Highlight Hue | ~75% |
+| Threshold | 50% |
+| Spread | 25% |
+| Intensity | 75% |
+| Brightness | ~50% |
+| Swap | Off |
+| Mono Input | Off |
+| Hard Edge | Off |
+| Invert | Off |
+| Bypass | Off |
+| Mix | ~75% |
 
 ---
 
+### Exercise 2: Two-Color Stencil
 
-## Tips
+![Two-Color Stencil result](/img/instruments/videomancer/duotone/duotone_ex2_s1.png)
+*Two-Color Stencil — simulated result across source images.*
+#### Exercise Illustration
 
-- **Brightness controls exposure**: The brightness scaler is a simple multiply, not a proc amp. At 50% (default), output brightness is halved. Push toward 100% for full-level output.
-- **Mix for subtlety**: Reducing the Mix fader lets original chrominance bleed through the duotone tint, creating a less aggressive effect than full wet.
-- **Feedback loops**: Routing the output back to the input creates recursive colorization — the duotone effect deepens with each pass, converging toward the two endpoint hues.
-- **Unused controls**: Spread (Pot 4), Intensity (Pot 5), Swap (Toggle 7), and Mono Input (Toggle 8) are declared but not connected in the current pipeline. They are reserved for future firmware updates.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A bold, flat, two-color graphic that looks like a screen-printed poster or a stencil cutout.
+
+#### Key Concepts
+
+- Hard-edge mode creates a binary threshold
+- The Threshold knob controls the dividing line
+- Invert flips the entire mapping
+
+#### Video Source
+
+High-contrast footage: strong backlighting, silhouettes, or a black-and-white pattern generator output.
+
+#### Steps
+
+1. Enable **Hard Edge** (Switch 9). The smooth gradient snaps into two flat colors.
+2. Set **Shadow Hue** (Knob 1) to about 10% and **Highlight Hue** (Knob 2) to about 60%. You should see a two-color split.
+3. Sweep **Threshold** (Knob 3) slowly from left to right. Watch the dividing line between the two colors slide across the brightness range (like adjusting the exposure of a lithographic print.)
+4. Toggle **Invert** (Switch 10). The two color regions swap. What was shadow is now highlight.
+5. Turn **Brightness** (Knob 6) fully clockwise. The luminance channel opens up, and the stencil edges become crisper against the brighter field.
+6. Set **Mix** (Fader 12) to 100% for the full graphic effect.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Shadow Hue | ~10% |
+| Highlight Hue | ~60% |
+| Threshold | ~50% |
+| Spread | 25% |
+| Intensity | 75% |
+| Brightness | 100% |
+| Swap | Off |
+| Mono Input | Off |
+| Hard Edge | On |
+| Invert | Off |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Inverted Duotone with Wet/Dry Blend
+
+![Inverted Duotone with Wet/Dry Blend result](/img/instruments/videomancer/duotone/duotone_ex3_s1.png)
+*Inverted Duotone with Wet/Dry Blend — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+An eerie, otherworldly image where inverted tonal relationships peek through the original color palette.
+
+#### Key Concepts
+
+- Invert reverses the tonal mapping before all processing
+- Mix blends processed and original signals
+- Combining invert with a partial mix creates complex tonal layering
+
+#### Video Source
+
+Any footage with rich midtone detail (foliage, textiles, or a face with even lighting.)
+
+#### Steps
+
+1. Set **Shadow Hue** (Knob 1) to about 40% and **Highlight Hue** (Knob 2) to about 50% for a subtle, close-hued palette.
+2. Enable **Invert** (Switch 10). The tonal mapping flips: formerly bright areas now receive the shadow hue and vice versa.
+3. Make sure **Hard Edge** (Switch 9) is **Off** for a smooth gradient.
+4. Turn **Brightness** (Knob 6) to about 40%. The dimmer setting enhances the inverted, negative-image quality.
+5. Pull **Mix** (Fader 12) to about 50%. The inverted duotone blends with the unprocessed original, creating a ghostly double-exposed quality.
+6. Slowly sweep **Shadow Hue** and **Highlight Hue** to explore how the inverted color map interacts with the original hues visible through the mix.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Shadow Hue | ~40% |
+| Highlight Hue | ~50% |
+| Threshold | 50% |
+| Spread | 25% |
+| Intensity | 75% |
+| Brightness | ~40% |
+| Swap | Off |
+| Mono Input | Off |
+| Hard Edge | Off |
+| Invert | On |
+| Bypass | Off |
+| Mix | ~50% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **BT.601** | ITU-R Recommendation BT.601; the color encoding standard used by Videomancer, defining how RGB maps to YUV. |
-| **Chroma** | The color information in a video signal, encoded as U and V components offset from a midpoint of 512 in the 10-bit domain. |
-| **Colorization** | The process of adding color to a monochrome or desaturated signal based on a mapping rule (here, luma-to-hue). |
-| **Duotone** | A printing technique using two ink colors to reproduce a photographic image; by extension, any two-color tonal mapping. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Split Toning** | A photographic technique that applies different color tints to the shadow and highlight regions of an image. |
-| **Threshold** | A brightness cutoff value that divides the image into two tonal zones in hard-edge mode. |
+- **Blend Factor**: A value that determines the proportion of two signals mixed together; in Duotone, luminance serves as the blend factor between shadow and highlight colors.
+
+- **Chrominance**: The color component of a video signal, encoded as U and V channels in YUV color space; moving away from the neutral midpoint (512, 512) adds color.
+
+- **Duotone**: A technique originating in printmaking that uses exactly two colors to reproduce a photographic image, with brightness controlling the proportion of each color.
+
+- **Hard Edge**: A binary threshold that divides pixels into two groups with no blend or transition between them, producing flat, graphic color regions.
+
+- **Interpolator**: A hardware module that computes a weighted blend (linear interpolation) between two input values, used here for the wet/dry mix.
+
+- **Luminance**: The brightness component (Y) of a YUV video signal, independent of color information.
+
+- **Split Tone**: A photographic technique where shadows and highlights are tinted with different colors, a specific application of duotone processing.
+
+- **Threshold**: A fixed brightness level that divides pixels into two groups; pixels above and below the threshold receive different treatments.
+
+- **Wet/Dry Mix**: A crossfade between the processed (wet) signal and the original unprocessed (dry) signal, allowing partial-strength effects.
 
 ---

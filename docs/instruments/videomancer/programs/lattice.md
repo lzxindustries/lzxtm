@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 166
 slug: /instruments/videomancer/lattice
@@ -7,302 +7,421 @@ image: /img/instruments/videomancer/lattice/lattice_hero.png
 description: "Lattice is a geometric pattern synthesizer that generates two-dimensional grid structures from a pair of orthogonal frequency accumulators."
 ---
 
-import lattice_hero from '/img/instruments/videomancer/lattice/lattice_hero.png';
-import lattice_animation from '/img/instruments/videomancer/lattice/lattice_animation.gif';
-import lattice_control_panel from '/img/instruments/videomancer/lattice/lattice_control_panel.png';
-import lattice_exercise1_result from '/img/instruments/videomancer/lattice/lattice_exercise1_result.gif';
-import lattice_exercise2_result from '/img/instruments/videomancer/lattice/lattice_exercise2_result.gif';
-import lattice_exercise3_result from '/img/instruments/videomancer/lattice/lattice_exercise3_result.gif';
-
-# Lattice
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<img src={lattice_hero} alt="Lattice hero image"/>
-*Lattice projecting a luminous XOR checkerboard grid — animated phase offsets ripple through interlocking horizontal and vertical bar patterns at high contrast.*
-<img src={lattice_animation} alt="Lattice animated output"/>
-*Lattice output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+![Lattice hero image](/img/instruments/videomancer/lattice/lattice_hero_s1.png)
+*Lattice projecting a scrolling grid of luminous colored bars over a video input, boolean-combined into shifting geometric tile patterns.*
 
 ---
 
 ## Overview
 
-Lattice is a geometric pattern synthesizer that generates two-dimensional grid structures from a pair of orthogonal frequency accumulators. The name evokes the mathematical concept of a lattice — a regular, repeating arrangement of points in space — and the visual output delivers exactly that: clean intersecting lines, moire interference fields, and tessellated checkerboards built from pure arithmetic.
+Lattice is a geometric grid synthesizer that builds two-dimensional bar patterns from horizontal and vertical ***phase accumulators***. Each axis generates a repeating ramp waveform whose frequency you control independently. The ramps can be folded into triangle waves for symmetric bars, then combined with a selectable boolean operation: AND for intersection grids, XOR for alternating checkerboard tiles. The resulting mask keys between a configurable fill color and the input video, with an animation accumulator adding continuous horizontal scrolling.
 
-Two DDS (Direct Digital Synthesis) accumulators run along the horizontal and vertical axes of the video raster. Each produces a sawtooth ramp whose frequency is set by its respective pot. The ramps can optionally be folded into triangle waves via the frequency doubler module, which reflects the upper half of the waveform around the midpoint. The two resulting patterns are then combined through a selectable boolean operation — AND produces grid intersections while XOR produces alternating checkerboard regions. A line width threshold controls the duty cycle of each pattern, determining the ratio of foreground to background. The combined mask keys between a configurable fill color and the input video, and a free-running animation accumulator adds temporal scrolling to the pattern. The final result passes through a wet/dry crossfader.
+At low frequencies, Lattice produces bold stripes and wide tiles. At higher frequencies, the bars multiply into dense lattice structures that shimmer and alias as the accumulators wrap. Adding animation transforms static geometry into scrolling pattern fields: and switching the boolean combine mode from AND to XOR flips the entire visual character from rigid grids to interlocking mosaics.
 
-Despite its apparent simplicity, Lattice occupies a sweet spot between utility and generative art. At integer frequency ratios and narrow line widths it produces pixel-precise test grids. At irrational ratios with XOR combining, it generates complex moire interference patterns that shift continuously under animation — a digital analogue of the optical beat patterns seen when overlapping two fine screens of differing pitch.
+:::tip
+***The fader brings the grid to life.*** At startup the output is pure input video. Increase **Anim Rate** (Fader 12) to crossfade toward the grid composite (this is your master wet/dry control.)
+:::
+
+### What's In a Name?
+
+A ***lattice*** is a framework of regularly spaced, intersecting bars: the criss-crossed wood of a garden trellis, the atomic scaffolding of a crystal, or the repeating tile of a mathematical point grid. The program earns its name by generating exactly that: a two-dimensional array of evenly spaced lines whose intersections form the nodes of a geometric lattice. Flip the boolean combine to XOR and the lattice dissolves into a ***tessellation*** of alternating tiles, like a chessboard built from waveforms.
 
 ---
 
 ## Quick Start
 
-1. **TOML labels are misleading**: The knob labels on the control panel do not match VHDL behavior. "Bar Width" is actually animation speed, "Fill Y" through "Fill V" are actually line width, fill brightness, and fill hue respectively. Refer to this guide for accurate control descriptions.
-2. **Equal H and V frequencies produce square grids**: For pixel-perfect test patterns, match both frequency knobs. Unequal values create rectangular cells.
-3. **XOR creates more pattern density than AND**: If the output looks too sparse, switch from AND to XOR. XOR fills approximately twice the area for the same threshold setting.
+1. Push **Anim Rate** (Fader 12) to about 75%. The grid pattern fades in over the input video.
+2. Turn **Fill Y** (Knob 4) counter-clockwise to roughly 50%. Thick grid bars appear (this control sets the bar thickness threshold.)
+3. Sweep **H Freq** (Knob 1) and **V Freq** (Knob 2) to change the number of horizontal and vertical bars. More bars appear as you turn clockwise.
+4. Flip **H Shape** (Switch 7) to its second position. The grid switches from an AND intersection pattern to an XOR checkerboard (a completely different geometry from the same waveforms.)
+
+---
+
+## Parameters
+
+![Videomancer front panel with Lattice loaded](/img/instruments/videomancer/lattice/lattice_control_panel.png)
+*Videomancer's front panel with Lattice active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — H Freq
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**H Freq** controls the spatial frequency of the horizontal grid pattern. The underlying mechanism is a ***phase accumulator*** that steps through a 16-bit counter once per pixel. Higher values advance the accumulator faster, producing more cycles: and therefore more vertical bar stripes: across the width of the screen. At 0%, fully counter-clockwise, the accumulator barely advances and the pattern shows at most a single broad stripe. At 100%, fully clockwise, the bars multiply into a dense curtain of fine lines. The initial value sits at 25.0%, producing a modest number of evenly spaced bars.
+
+:::note
+The accumulator resets at the start of each active video line, so the horizontal pattern is locked to the screen and does not drift vertically.
+:::
+
+---
+
+### Knob 2 — V Freq
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 25.0% |
+
+**V Freq** controls the spatial frequency of the vertical grid pattern. A second phase accumulator steps once per line (rather than per pixel), producing horizontal bar stripes that tile down the screen. At 0%, you see a single broad horizontal band. Increasing the value adds more horizontal stripes. The initial value is 25.0%.
+
+Together, **H Freq** and **V Freq** define the density and proportions of the lattice. Equal values create roughly square cells; unequal values produce rectangular tiles.
+
+---
+
+### Knob 3 — Bar Width
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Bar Width** controls the speed of a free-running animation accumulator. This accumulator increments once per video field and its output is added to the horizontal grid waveform, causing the entire horizontal pattern to scroll continuously. At 0%, the pattern is perfectly static: no scrolling occurs. As the value increases, the grid scrolls faster. At 100%, the scroll completes a full cycle in just a few frames, producing rapid horizontal motion. The initial value is 50.0%, yielding a moderate, visible scroll.
+
+:::tip
+Because animation offsets only the horizontal axis, **V Freq** bars remain stationary while **H Freq** bars slide across them. This creates mesmerizing moiré interference when both axes have similar frequencies.
+:::
+
+---
+
+### Knob 4 — Fill Y
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Fill Y** sets the bar thickness threshold. Each grid waveform (horizontal and vertical) is compared against this value: wherever the waveform exceeds the threshold, the grid line is "on." At 0%, fully counter-clockwise, the threshold is minimal and nearly the entire waveform exceeds it: the grid fills the screen with solid color. As the value increases, the threshold rises and only the peaks of the waveform pass, producing thinner and thinner bars. At 100%, the threshold is at maximum and the bars vanish almost entirely. The initial value is 100.0%, meaning the grid starts fully transparent.
+
+:::warning
+At default settings the grid bars are invisible because the threshold is at maximum. Turn **Fill Y** counter-clockwise to reveal the pattern.
+:::
+
+---
+
+### Knob 5 — Fill U
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Fill U** controls the luminance (brightness) of the fill color applied to grid bar regions. At 0%, the fill is black. At 100%, the fill is peak white. The initial value is 50.0%, producing a mid-gray fill. Non-grid regions display the delayed input video, so this control determines the brightness contrast between the grid and the underlying image.
+
+---
+
+### Knob 6 — Fill V
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Fill V** controls the hue of the fill color. Internally, the single value derives both chroma channels: U receives the raw value while V receives its complement (1023 minus the value). At 50.0% (the initial value), both channels are near neutral: the fill is achromatic gray, tinted only by the **Fill U** luminance. Turning counter-clockwise shifts the fill toward one color extreme; turning clockwise shifts it toward the complementary hue. At either extreme the fill is strongly saturated.
+
+:::tip
+For a pure white or black grid with no color tint, leave **Fill V** at center (50%). To create colored lattice overlays, push **Fill V** toward either end while adjusting **Fill U** for brightness.
+:::
+
+---
+
+### Switch 7 — H Shape
+
+| Property | Value |
+|----------|-------|
+| Off | Ramp |
+| On | Triangle |
+| Default | Ramp |
+
+**H Shape** selects the boolean operation used to combine the horizontal and vertical grid masks into a single two-dimensional pattern. In its default position (labeled **Ramp**), the combination is AND: a pixel is part of the grid only where *both* the horizontal and vertical bars overlap, producing a classic lattice of intersecting lines. In the second position (labeled **Triangle**), the combination switches to XOR: a pixel belongs to the grid when it falls on *either* axis but not both, generating an alternating checkerboard of rectangular tiles.
+
+AND grids emphasize the crossing points of bars. XOR grids fill the spaces between crossings, producing a complementary pattern that looks like a woven or tiled surface.
+
+---
+
+### Switch 8 — V Shape
+
+| Property | Value |
+|----------|-------|
+| Off | Ramp |
+| On | Triangle |
+| Default | Ramp |
+
+**V Shape** controls the waveform shape of the *horizontal* grid axis. In its default position (labeled **Ramp**), the horizontal frequency doubler is active. The doubler folds the sawtooth ramp at its midpoint, converting it into a symmetric ***triangle wave*** that produces evenly balanced bars. In the second position (labeled **Triangle**), the doubler is bypassed and the raw sawtooth ramp passes through, producing asymmetric bars (a sharp leading edge and a gradual trailing edge.)
+
+:::note
+Despite its label, this switch affects the *horizontal* waveform shape. The label/function mismatch is a known firmware display artifact.
+:::
+
+---
+
+### Switch 9 — Combine
+
+| Property | Value |
+|----------|-------|
+| Off | AND |
+| On | XOR |
+| Default | AND |
+
+**Combine** controls the waveform shape of the *vertical* grid axis. In its default position (labeled **AND**), the vertical frequency doubler is active, producing symmetric triangle-wave bars. In the second position (labeled **XOR**), the doubler is bypassed and the raw sawtooth ramp produces asymmetric vertical bars.
+
+:::note
+Despite its label, this switch affects the *vertical* waveform shape rather than the combine mode. The boolean combine mode is selected by **H Shape** (Switch 7).
+:::
+
+---
+
+### Switch 10 — Soft Edge
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Soft Edge** inverts the polarity of the grid key. In its default position (**Off**), grid bar regions display the fill color and non-bar regions display the input video. When set to **On**, the assignment flips: bars show the input video and the gaps between bars receive the fill color. This effectively swaps foreground and background without changing the grid geometry.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, bypassing all Lattice processing stages. The sync delay pipeline still runs, so there is no glitch or timing jump when toggling. Use Bypass for instant A/B comparison between the raw input and the grid composite.
+
+---
+
+### Fader 12 — Anim Rate
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Anim Rate** is the master wet/dry crossfade between the unprocessed input video and the grid-keyed composite. At 0%, the output is pure input video: the grid is computed but not visible. At 100%, the output is the full grid composite with fill colors keyed over the input. Intermediate values blend the two, producing a semi-transparent overlay. The initial value is 0.0%, so no grid is visible at startup.
+
+:::tip
+Think of **Anim Rate** as your master "grid intensity" control. Start at 0% and slowly increase to bring the lattice into view.
+:::
 
 ---
 
 ## Background
 
-### Direct Digital Synthesis and Phase Accumulators
+### Phase Accumulators and Ramp Generation
 
-A **phase accumulator** is the core of Direct Digital Synthesis. On every clock strobe (once per pixel horizontally, or once per line vertically), the accumulator adds a fixed step value to a running total. When the total overflows, the ramp wraps and a new cycle begins. The step value directly controls the output frequency: larger steps produce higher frequencies with fewer pixels per cycle. Because the accumulator wraps at a power of two, the resulting waveform is always periodic, and its frequency is always a rational fraction of the clock rate. This makes DDS inherently alias-free within its Nyquist band.
+At the heart of Lattice are three ***phase accumulators***: 16-bit counters that add a fixed step value on every tick. A horizontal accumulator advances once per pixel and resets at the start of each active video line, sweeping a sawtooth ramp from left to right. A vertical accumulator advances once per line and resets at the start of each frame, sweeping a ramp from top to bottom. A third accumulator runs freely, advancing once per field without resetting, producing a continuously rolling ramp whose position shifts from frame to frame.
 
-### Frequency Folding and Triangle Waves
+The step size: the value added on each tick: determines how fast the accumulator wraps. Larger steps mean the counter overflows more often within a single line or frame, producing more cycles and denser patterns. Smaller steps produce fewer cycles and wider bars. This is the same principle behind a ***numerically controlled oscillator*** (NCO): the output frequency is proportional to the step size.
 
-A **frequency doubler** (sometimes called a full-wave rectifier or fold circuit) takes a sawtooth ramp and reflects its upper half around the midpoint. Values below half-scale are doubled; values above half-scale are mirrored and doubled. The result is a triangle wave at twice the spatial frequency of the original ramp. In bypass mode, the raw sawtooth passes through unchanged, producing sharp edges where the waveform wraps from maximum to zero.
+### Frequency Folding
+
+A raw phase accumulator produces a ***sawtooth*** (ramp) waveform: a linear sweep from zero to maximum, followed by an abrupt wraparound. The ***frequency doubler*** folds this ramp at its midpoint, reflecting values above the halfway mark back down. The result is a ***triangle wave*** at twice the original spatial frequency, with symmetric rise and fall. Triangle-wave grid bars have equal-width light and dark regions. Raw sawtooth bars are asymmetric, with a gradual ramp on one side and a hard edge on the other.
+
+Lattice provides independent fold bypass switches for the horizontal and vertical axes, so you can mix symmetric and asymmetric bar shapes across the two dimensions.
 
 ### Boolean Mask Operations
 
-When two binary patterns are combined with **AND**, only the pixels where both patterns are active survive — producing isolated grid intersection points or narrow cross-hatch lines. When combined with **XOR**, pixels that are active in exactly one pattern (but not both) survive — producing an alternating checkerboard or tiled mosaic. XOR is its own inverse: applying it twice restores the original, which creates interesting visual symmetry properties.
+Once the horizontal and vertical waveforms are thresholded into binary masks (bar or gap), they are combined with a selectable boolean operation:
 
-### Moire Interference
+- **AND**: a pixel is "on" only where both horizontal *and* vertical bars overlap. The result is a grid of small rectangular patches at the intersections (a classic lattice.)
+- **XOR**: a pixel is "on" where *either* bar is active but not both. The result is an alternating tile pattern: bars without their crossing points, like a woven fabric or chessboard.
 
-When two periodic patterns of slightly different frequency overlap, they produce **moire fringes** — large-scale beat patterns whose spatial frequency equals the difference between the two source frequencies. Lattice generates moire naturally whenever the H and V frequencies differ from simple integer multiples of each other. The animation accumulator shifts these beat patterns over time, creating slowly undulating visual textures reminiscent of watered silk or the iridescence on a compact disc surface.
+AND grids emphasize structure; XOR grids emphasize rhythm. The choice profoundly changes the visual character of the output even though the underlying waveforms are identical.
 
 ### Video Keying
 
-The grid mask acts as a binary key signal. Where the mask is active, the output shows the fill color (a user-defined brightness and hue). Where the mask is inactive, the delayed input video passes through. This keying operation allows the lattice pattern to be overlaid on live footage, creating graphic overlays, scan-line grids, and spatial modulation patterns.
+The boolean grid mask is used as a hard ***key*** signal. Where the mask is active, the output shows a configurable fill color (luminance and hue). Where the mask is inactive, the delayed input video passes through. A key inversion switch swaps these roles. Finally, an ***interpolator*** crossfades between the fully keyed composite and the original dry input, providing a smooth wet/dry mix.
+
+Because the key is binary (hard-edged), the grid bars have crisp pixel boundaries. There is no anti-aliasing or feathering (the bars are pure digital geometry.)
 
 
 ---
 
 ## Signal Flow
 
-```
-┌────────────────────────────────────────────────────────────────────┐
-│  Video Timing Generator (~2 clk)                                   │
-│     └─ Extracts hsync, vsync, avid from input data_in              │
-│                                                                    │
-│  Phase Accumulators (~2 clk each)                                  │
-│     ├─ H Accumulator: 16-bit, resets at line start, adds h_freq   │
-│     │   per pixel → s_h_acc_out                                    │
-│     ├─ V Accumulator: 16-bit, resets at frame start, adds v_freq  │
-│     │   per line → s_v_acc_out                                     │
-│     └─ Anim Accumulator: 16-bit free-running, adds anim_speed     │
-│         per field → s_anim_acc_out                                 │
-│           ◄── H Freq (reg 0), V Freq (reg 1), Anim Speed (reg 2)  │
-│                                                                    │
-│  Ramp Extraction                                                   │
-│     └─ Upper 10 bits of each 16-bit accumulator → 10-bit ramps    │
-│                                                                    │
-│  Frequency Doubler (2 clk each)                                    │
-│     ├─ fold_h: sawtooth → triangle (or bypass) → s_fold_h_result  │
-│     └─ fold_v: sawtooth → triangle (or bypass) → s_fold_v_result  │
-│           ◄── Fold Bypass H (reg 6 bit 1), Fold Bypass V (bit 2)  │
-│                                                                    │
-│  Threshold + Boolean Combine (1 clk)                               │
-│     ├─ v_h_val = fold_h_result + anim_ramp (scrolling offset)     │
-│     ├─ h_line = (v_h_val > line_width) ? 1 : 0                    │
-│     ├─ v_line = (fold_v_result > line_width) ? 1 : 0              │
-│     └─ grid_mask = bool_mode ? (h XOR v) : (h AND v)              │
-│           ◄── Line Width (reg 3), Bool Mode (reg 6 bit 0)         │
-│                                                                    │
-│  Key Compose (1 clk)                                               │
-│     ├─ mask = key_invert ? NOT grid_mask : grid_mask               │
-│     ├─ If mask=1: output fill color (fill_y, fill_u, fill_v)      │
-│     └─ If mask=0: output delayed input video                       │
-│           ◄── Fill Y (reg 4), Fill Hue (reg 5),                   │
-│               Key Invert (reg 6 bit 3)                             │
-│                                                                    │
-│  Interpolator (4 clk, per Y/U/V)                                  │
-│     └─ mix = lerp(input_delayed, composed, mix_amount)             │
-│           ◄── Mix (reg 7)                                          │
-└────────────────────────────────────────────────────────────────────┘
+### Signal Flow Notes
 
- Output = bypass ? input_delayed : mix_result
-           ◄── Bypass (reg 6 bit 4)
-```
+Two key interactions define the Lattice pipeline:
 
-The critical insight in Lattice's pipeline is that the animation offset is added only to the horizontal folded ramp, not to the vertical. This means animation scrolls the horizontal bar pattern sideways while the vertical pattern remains locked in place, producing a distinctive diagonal ripple when both axes are active. The fill chroma is derived from a single Hue parameter: U takes the hue value directly, while V takes its complement (1023 − hue), so sweeping the hue pot rotates through complementary color pairs around the neutral axis. The line width threshold applies identically to both axes, so H and V bars always share the same duty cycle. The key compose stage uses an 8-clock video delay line to align the input data with the grid computation pipeline before keying.
+1. **Animation is horizontal only.** The animation accumulator's ramp is added to the folded horizontal waveform *before* the threshold comparison. The vertical waveform receives no animation offset. This means horizontal bars scroll while vertical bars remain stationary, creating sliding interference patterns when both axes are active.
+
+2. **A single threshold controls both axes.** The same **Fill Y** (Pot 4) value sets the bar/gap boundary for both horizontal and vertical waveforms. Changing it uniformly affects bar thickness on both axes simultaneously: you cannot set independent widths for horizontal and vertical bars.
+
+:::tip
+**Order matters.** The pipeline flows: accumulator → frequency doubler → animation offset (H only) → threshold → boolean combine → key invert → key compose → mix → bypass. Each stage feeds the next, so changes early in the chain (like waveform shape) cascade through all downstream stages.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={lattice_control_panel} alt="Videomancer front panel with Lattice loaded"/>
-*Videomancer's front panel with Lattice active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises progress from a static monochrome grid to animated, colored lattice compositions. Each builds on the controls introduced in the previous exercise.
+### Exercise 1: Static Monochrome Grid
 
-### Rotary Potentiometers (Knobs 1–6)
+![Static Monochrome Grid result](/img/instruments/videomancer/lattice/lattice_ex1_s1.png)
+*Static Monochrome Grid — simulated result across source images.*
+#### Exercise Illustration
 
-#### Knob 1 — H Freq
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
+***A description of the exercise illustration.***
 
-Controls the horizontal pattern frequency. The 10-bit register value is zero-extended to 16 bits and used as the step size for the horizontal phase accumulator, which increments once per pixel clock during active video and resets at each line start. At low values, the horizontal pattern has very few cycles across the screen — wide, slowly varying bars. At high values, many cycles appear per line, creating fine vertical stripes. Because the accumulator is 16 bits wide but only the upper 10 bits are extracted as the ramp, the effective spatial frequency is register_value / 64 cycles per line. Setting this to zero produces a static DC level with no horizontal pattern.
+#### Learning Outcomes
 
----
+A clean, static black-and-white grid (the fundamental lattice structure.)
 
-#### Knob 2 — V Freq
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
+#### Key Concepts
 
-Controls the vertical pattern frequency. Operates identically to H Freq but the accumulator increments once per line (at avid_start) and resets at each field start. Low values produce wide horizontal bands; high values create fine horizontal stripes. The interaction between H Freq and V Freq determines the overall grid geometry: equal values produce square cells, unequal values produce rectangular cells, and non-integer ratios produce complex moire beat patterns.
+- Phase accumulators generate repeating ramp patterns
+- The threshold determines bar thickness
+- AND combining creates a classic lattice at intersections
 
----
+#### Steps
 
-#### Knob 3 — Bar Width
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
+1. Push **Anim Rate** (Fader 12) to maximum. This fully engages the grid composite.
+2. Turn **Fill Y** (Knob 4) to about 30%. Thick grid bars appear as the threshold lowers.
+3. Increase **H Freq** (Knob 1) to about 40%. Several vertical bar stripes appear.
+4. Increase **V Freq** (Knob 2) to about 40%. Horizontal bars join the vertical ones, forming a two-dimensional grid.
+5. Slowly sweep **Fill Y** (Knob 4) from 0% to 100%. Watch the bars go from screen-filling solid to razor-thin lines and finally vanish.
 
-Controls the animation speed. Despite the TOML label "Bar Width," this register actually drives the step size of a free-running animation accumulator that increments once per field and never resets. The upper 10 bits of this accumulator are added to the folded horizontal ramp in the threshold stage, creating a continuously scrolling phase offset on the horizontal bars. At zero, the pattern is static. At low values, the pattern drifts slowly. At high values, it scrolls rapidly, creating a kinetic flickering effect. This control has no effect on bar thickness — that is determined by the Line Width parameter (reg 3).
+#### Settings
 
----
-
-#### Knob 4 — Fill Y
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Controls the grid line thickness. Despite the TOML label "Fill Y," this register is the threshold comparator for both H and V bar patterns. The folded ramp values are compared against this threshold: pixels above the threshold become grid lines, pixels below become background. At 0, the entire field passes the threshold and the screen fills with the foreground color. At maximum, nothing passes and the screen is entirely background. The midpoint (~50%) produces equal-width bars and gaps. Because the same threshold applies to both axes, horizontal and vertical bars always have matching duty cycles.
+| Control | Value |
+|---------|-------|
+| H Freq | 40% |
+| V Freq | 40% |
+| Bar Width | 0% |
+| Fill Y | 30% |
+| Fill U | 100% |
+| Fill V | 50% |
+| H Shape | Ramp |
+| V Shape | Ramp |
+| Combine | AND |
+| Soft Edge | Off |
+| Bypass | Off |
+| Anim Rate | 100% |
 
 ---
 
-#### Knob 5 — Fill U
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
+### Exercise 2: Colored XOR Tiles
 
-Controls the fill luma brightness. Despite the TOML label "Fill U," this register sets the Y (luminance) channel of the fill color used for grid line regions. At 0, grid lines are black. At maximum, grid lines are full brightness. This is independent of the chroma hue — you can have bright colored lines, dim colored lines, or pure black grid lines.
+![Colored XOR Tiles result](/img/instruments/videomancer/lattice/lattice_ex2_s1.png)
+*Colored XOR Tiles — simulated result across source images.*
+#### Exercise Illustration
 
----
+***A description of the exercise illustration.***
 
-#### Knob 6 — Fill V
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
+#### Learning Outcomes
 
-Controls the fill chroma hue. Despite the TOML label "Fill V," this register determines both the U and V chrominance channels of the fill color. U is set directly to the register value, while V is set to its complement (1023 − value). This creates a complementary color sweep: at 0 the fill is warm (low U, high V), at 512 it is neutral gray (both channels at midpoint), and at 1023 it is cool (high U, low V). The sweep passes through a full range of saturated hues as you rotate from one extreme to the other.
+A saturated, tiled mosaic with complementary colors and inverted key regions.
 
----
+#### Key Concepts
 
-### Toggle Switches (Switches 7–11)
+- XOR combining transforms intersection grids into alternating tile patterns
+- The fill hue control creates colored lattice overlays
+- Key inversion swaps grid and background roles
 
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — H Shape** | Ramp | Triangle |
-| **8 — V Shape** | Ramp | Triangle |
-| **9 — Combine** | AND | XOR |
-| **10 — Soft Edge** | Off | On |
-| **11 — Bypass** | Off | On |
+#### Steps
 
-The five toggles each map to a single bit in register 6, but their TOML labels are misleading. In practice: bit 0 selects the boolean combine mode (AND vs XOR), bits 1 and 2 bypass the frequency doubler on the horizontal and vertical axes respectively (letting raw sawtooth through instead of triangle), bit 3 inverts the key mask (swapping foreground and background), and bit 4 is the global bypass. These five binary options combine to produce 16 distinct grid character variations.
+1. Start from the grid in Exercise 1 (or load those settings).
+2. Flip **H Shape** (Switch 7) to **Triangle**. The AND grid transforms into an XOR checkerboard (alternating filled and empty tiles.)
+3. Turn **Fill V** (Knob 6) to about 20%. The fill shifts from neutral gray to a saturated color.
+4. Adjust **Fill U** (Knob 5) to set the brightness of the colored fill. Try about 70% for a vivid result.
+5. Flip **Soft Edge** (Switch 10) to **On**. The key inverts: the tiles that were filled are now transparent, and vice versa. The complementary mosaic appears.
+6. Experiment with different **H Freq** and **V Freq** ratios. Unequal values create rectangular tiles instead of squares.
 
----
+#### Settings
 
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Anim Rate
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the delayed input video and the keyed grid output. Despite the TOML label "Anim Rate," this register controls the interpolator mix amount. At 0% (fully down), the output is pure input video. At 100% (fully up), the output is pure Lattice grid. Intermediate positions blend the grid pattern over the input at variable opacity, useful for creating subtle overlay effects.
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Lattice processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises explore Lattice's geometric capabilities, from basic grid generation through complex moire interference to animated pattern synthesis. Because Lattice is a synthesis program, each exercise produces patterns from scratch — allow a few seconds for the animation to develop.
-
-### Exercise 1: Perfect Cross-Hatch Grid
-
-<img src={lattice_exercise1_result} alt="Perfect Cross-Hatch Grid result"/>
-*Perfect Cross-Hatch Grid — simulated result across source images.*
-**What You'll Create**: Create a clean, high-contrast grid pattern using AND combination and triangle wave folding.
-
-1. **Set equal frequencies**: Set H Freq and V Freq to ~25%, creating a moderate grid density with equal horizontal and vertical spacing.
-2. **Triangle mode**: Ensure both fold bypasses are off (H Shape = Ramp position means doubler active, creating triangles). The waveforms fold smoothly.
-3. **Narrow lines**: Set Line Width (Bar Width knob) to ~70%. Only the peaks of the triangle waves exceed the threshold, producing thin clean grid lines.
-4. **Bright white fill**: Set Fill Y (Fill Y knob) to 100% and Fill Hue (Fill V knob) to ~50% (neutral). The grid lines glow white against black.
-5. **AND combine**: Set Combine to AND. Only intersection points where both H and V bars overlap produce output — a clean rectangular lattice.
-6. **Full mix**: Set Mix (Anim Rate fader) to 100%. No animation — set Anim Speed (Bar Width knob) to 0%.
-
-**Key concepts**: Phase accumulator frequency controls grid density, frequency doubler creates triangle (fold) waveforms from sawtooth, AND combination isolates intersection points, threshold controls line width duty cycle
+| Control | Value |
+|---------|-------|
+| H Freq | 35% |
+| V Freq | 50% |
+| Bar Width | 0% |
+| Fill Y | 40% |
+| Fill U | 70% |
+| Fill V | 20% |
+| H Shape | Triangle |
+| V Shape | Ramp |
+| Combine | AND |
+| Soft Edge | On |
+| Bypass | Off |
+| Anim Rate | 100% |
 
 ---
 
-### Exercise 2: XOR Moire Interference
+### Exercise 3: Animated Moiré Weave
 
-<img src={lattice_exercise2_result} alt="XOR Moire Interference result"/>
-*XOR Moire Interference — simulated result across source images.*
-**What You'll Create**: Generate complex moire beat patterns by combining incommensurate frequencies with XOR logic.
+![Animated Moiré Weave result](/img/instruments/videomancer/lattice/lattice_ex3_s1.png)
+*Animated Moiré Weave — simulated result across source images.*
+#### Exercise Illustration
 
-1. **Mismatched frequencies**: Set H Freq to ~35% and V Freq to ~42%. The non-integer ratio creates spatial beat frequencies.
-2. **XOR combine**: Switch Combine to XOR. The alternating pattern fills more area than AND, making the moire fringes visible.
-3. **Sawtooth mode**: Enable both fold bypasses (H Shape = Triangle, V Shape = Triangle in TOML terms, which actually bypasses the doubler). Raw sawtooth wraps create hard edges that enhance the moire contrast.
-4. **Medium threshold**: Set Line Width to ~50% for equal foreground/background duty cycle.
-5. **Add color**: Set Fill Y to ~80%, Fill Hue to ~20% (warm tint). The colored XOR pattern creates an iridescent tile mosaic.
-6. **Animate slowly**: Set Anim Speed to ~10%. Watch the moire fringes drift horizontally, creating shimmering interference bands.
+***A description of the exercise illustration.***
 
-**Key concepts**: Non-integer frequency ratios produce moire beat patterns, XOR produces alternating checkerboard tiling, sawtooth wrap edges enhance interference contrast, animation shifts the beat pattern over time
+#### Learning Outcomes
+
+A continuously scrolling lattice with moiré beating, colored fills, and mixed waveform shapes (a hypnotic woven-light texture.)
+
+#### Key Concepts
+
+- Animation scrolls the horizontal axis continuously
+- Mixing ramp and triangle waveform shapes creates asymmetric patterns
+- Near-equal H and V frequencies produce moiré interference
+
+#### Steps
+
+1. Set **H Freq** (Knob 1) to about 35% and **V Freq** (Knob 2) to about 37%. The slight mismatch creates subtle moiré interference in the grid.
+2. Turn **Bar Width** (Knob 3) to about 40%. The horizontal grid begins scrolling at moderate speed.
+3. Set **Fill Y** (Knob 4) to about 45% for visible bars.
+4. Push **Fill V** (Knob 6) to about 80% for a strongly colored fill, and **Fill U** (Knob 5) to about 60% for brightness.
+5. Flip **V Shape** (Switch 8) to **Triangle**. The horizontal bars become raw sawtooth ramps (asymmetric and edgier.)
+6. Flip **Combine** (Switch 9) to **XOR**. The vertical bars also switch to raw ramps. Now both axes have asymmetric shapes, creating a woven, directional texture.
+7. Slowly sweep **Fill Y** (Knob 4) while the pattern scrolls. The moiré interference shifts as bar thickness changes.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| H Freq | 35% |
+| V Freq | 37% |
+| Bar Width | 40% |
+| Fill Y | 45% |
+| Fill U | 60% |
+| Fill V | 80% |
+| H Shape | Ramp |
+| V Shape | Triangle |
+| Combine | XOR |
+| Soft Edge | Off |
+| Bypass | Off |
+| Anim Rate | 100% |
 
 ---
-
-### Exercise 3: Scrolling Colored Bars
-
-<img src={lattice_exercise3_result} alt="Scrolling Colored Bars result"/>
-*Scrolling Colored Bars — simulated result across source images.*
-**What You'll Create**: Use animation and key inversion to create a continuously scrolling colored bar pattern.
-
-1. **Horizontal only**: Set H Freq to ~30%, V Freq to 0%. With no vertical frequency, only horizontal bars appear.
-2. **Triangle fold**: Ensure H fold bypass is off. The triangle waveform creates smooth symmetric bars.
-3. **Moderate width**: Set Line Width to ~45% for wide colorful bands.
-4. **Saturated color**: Set Fill Y to ~90% and Fill Hue to ~75% (cool blue-violet).
-5. **Invert key**: Enable Key Invert (Soft Edge toggle). Now the bars show fill color and the gaps show black.
-6. **Fast scroll**: Set Anim Speed to ~60%. The bars scroll continuously across the screen.
-7. **Full mix**: Set Mix to 100%.
-
-**Key concepts**: Setting one frequency to zero creates a 1D bar pattern, animation adds continuous horizontal scrolling, key invert swaps foreground and background, fill hue creates complementary color pairs from single parameter
-
----
-
-
-## Tips
-
-- **Animation only affects horizontal**: The scrolling offset adds to the horizontal ramp only, so vertical bars are always stationary. Use this to create directional motion effects.
-- **Triangle vs sawtooth changes the character**: Triangle mode (fold active) produces smooth, symmetric gradients with soft edges. Sawtooth mode (fold bypassed) produces hard wrap edges with aliased transitions. Triangle generally looks cleaner at low frequencies.
-- **Key invert is the fastest way to swap density**: Rather than adjusting the threshold, toggle key invert to instantly swap filled and empty regions.
-- **Mix fader creates overlay effects**: At partial mix values, the lattice grid appears as a semi-transparent overlay on the input video — useful for calibration grids and graphic overlays.
-- **Moire patterns emerge at irrational frequency ratios**: The most interesting generative textures come from slightly mismatched H and V frequencies combined with XOR and slow animation.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator at a fixed step rate, producing precise frequency control via integer arithmetic. |
-| **Duty cycle** | The ratio of foreground (active) to background (inactive) time within one waveform period, controlled by the line width threshold comparator. |
-| **Frequency doubler** | A circuit that folds a sawtooth ramp into a triangle wave by reflecting the upper half around the midpoint, effectively doubling the spatial frequency. |
-| **Moire** | An interference pattern produced when two periodic structures of slightly different frequency overlap, creating large-scale beat fringes at the difference frequency. |
-| **Phase accumulator** | A digital counter that increments by a configurable step value on each clock strobe and wraps at overflow, producing a repeating sawtooth ramp whose frequency is proportional to the step size. |
-| **Sawtooth** | A waveform that ramps linearly from zero to maximum and then wraps sharply back to zero, produced by the raw phase accumulator output. |
-| **Triangle wave** | A waveform that ramps linearly from zero to maximum and then ramps linearly back to zero, produced by folding a sawtooth through the frequency doubler. |
-| **XOR** | Exclusive OR; a boolean operation that is true when exactly one of two inputs is true, producing an alternating checkerboard pattern when applied to two periodic binary masks. |
+- **Boolean Operation**: A logical combination of two binary values; AND produces output only when both inputs are true, XOR produces output when exactly one input is true.
+
+- **Frequency Doubler**: A circuit that folds a sawtooth ramp at its midpoint, converting it into a triangle wave at twice the spatial frequency.
+
+- **Interpolator**: A crossfade circuit that blends between two signals based on a mix parameter, providing smooth wet/dry control.
+
+- **Key (Video)**: A technique that uses a mask signal to select between two video sources on a per-pixel basis: grid regions show one source, non-grid regions show another.
+
+- **Lattice**: A regular, repeating arrangement of intersecting elements; in this program, a two-dimensional grid of bars generated by phase accumulators.
+
+- **Moiré**: An interference pattern that appears when two similar periodic structures overlap with a slight frequency or phase difference.
+
+- **Phase Accumulator**: A counter that adds a fixed step value on each clock tick, producing a repeating ramp (sawtooth) waveform whose frequency is proportional to the step size.
+
+- **Sawtooth (Ramp)**: A waveform that rises linearly from minimum to maximum and then wraps abruptly back to minimum, producing an asymmetric repeating pattern.
+
+- **Threshold**: A comparison value that divides a continuous waveform into binary regions (above the threshold is "on," below is "off.")
+
+- **Triangle Wave**: A symmetric waveform that rises linearly to a peak and then falls linearly back to the minimum, producing evenly balanced high and low regions.
+
+- **XOR Tessellation**: A tiled pattern created by exclusive-OR combination of two grid masks, producing alternating filled and empty cells like a chessboard.
 
 ---

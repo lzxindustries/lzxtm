@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 196
 slug: /instruments/videomancer/mobius
@@ -7,365 +7,417 @@ image: /img/instruments/videomancer/mobius/mobius_hero_s1.png
 description: "Mobius maps video onto the surface of a Möbius strip — a one-sided topological surface created by taking a rectangular band, giving it a half-twist, and joining the ends."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import mobius_control_panel from '/img/instruments/videomancer/mobius/mobius_control_panel.png';
-import mobius_source1_fruit from '/img/instruments/videomancer/mobius/mobius_source1_fruit.png';
-import mobius_source2_ballerina from '/img/instruments/videomancer/mobius/mobius_source2_ballerina.png';
-import mobius_source3_clouds from '/img/instruments/videomancer/mobius/mobius_source3_clouds.png';
-import mobius_source4_pattern from '/img/instruments/videomancer/mobius/mobius_source4_pattern.png';
-import mobius_source5_boy from '/img/instruments/videomancer/mobius/mobius_source5_boy.png';
-import mobius_source6_knit from '/img/instruments/videomancer/mobius/mobius_source6_knit.png';
-import mobius_hero_s1 from '/img/instruments/videomancer/mobius/mobius_hero_s1.png';
-import mobius_hero_s2 from '/img/instruments/videomancer/mobius/mobius_hero_s2.png';
-import mobius_hero_s3 from '/img/instruments/videomancer/mobius/mobius_hero_s3.png';
-import mobius_hero_s4 from '/img/instruments/videomancer/mobius/mobius_hero_s4.png';
-import mobius_hero_s5 from '/img/instruments/videomancer/mobius/mobius_hero_s5.png';
-import mobius_hero_s6 from '/img/instruments/videomancer/mobius/mobius_hero_s6.png';
-import mobius_ex1_s1 from '/img/instruments/videomancer/mobius/mobius_ex1_s1.png';
-import mobius_ex1_s2 from '/img/instruments/videomancer/mobius/mobius_ex1_s2.png';
-import mobius_ex1_s3 from '/img/instruments/videomancer/mobius/mobius_ex1_s3.png';
-import mobius_ex1_s4 from '/img/instruments/videomancer/mobius/mobius_ex1_s4.png';
-import mobius_ex1_s5 from '/img/instruments/videomancer/mobius/mobius_ex1_s5.png';
-import mobius_ex1_s6 from '/img/instruments/videomancer/mobius/mobius_ex1_s6.png';
-import mobius_ex2_s1 from '/img/instruments/videomancer/mobius/mobius_ex2_s1.png';
-import mobius_ex2_s2 from '/img/instruments/videomancer/mobius/mobius_ex2_s2.png';
-import mobius_ex2_s3 from '/img/instruments/videomancer/mobius/mobius_ex2_s3.png';
-import mobius_ex2_s4 from '/img/instruments/videomancer/mobius/mobius_ex2_s4.png';
-import mobius_ex2_s5 from '/img/instruments/videomancer/mobius/mobius_ex2_s5.png';
-import mobius_ex2_s6 from '/img/instruments/videomancer/mobius/mobius_ex2_s6.png';
-import mobius_ex3_s1 from '/img/instruments/videomancer/mobius/mobius_ex3_s1.png';
-import mobius_ex3_s2 from '/img/instruments/videomancer/mobius/mobius_ex3_s2.png';
-import mobius_ex3_s3 from '/img/instruments/videomancer/mobius/mobius_ex3_s3.png';
-import mobius_ex3_s4 from '/img/instruments/videomancer/mobius/mobius_ex3_s4.png';
-import mobius_ex3_s5 from '/img/instruments/videomancer/mobius/mobius_ex3_s5.png';
-import mobius_ex3_s6 from '/img/instruments/videomancer/mobius/mobius_ex3_s6.png';
-
-# Mobius
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: mobius_source1_fruit, after: mobius_hero_s1 },
-    { label: "Ballerina", before: mobius_source2_ballerina, after: mobius_hero_s2 },
-    { label: "Clouds", before: mobius_source3_clouds, after: mobius_hero_s3 },
-    { label: "Pattern", before: mobius_source4_pattern, after: mobius_hero_s4 },
-    { label: "Boy", before: mobius_source5_boy, after: mobius_hero_s5 },
-    { label: "Knit", before: mobius_source6_knit, after: mobius_hero_s6 },
-  ]}
-/>
-*Mobius applying a progressive half-twist warp to a landscape source — the image folds over itself with luma inversion and chroma rotation revealing a seamless topological surface.*
+![Mobius hero image](/img/instruments/videomancer/mobius/mobius_hero_s1.png)
+*Mobius applying topological twist mapping to fold video through progressive mirror, luma inversion, and quadrant-based chroma rotation.*
 
 ---
 
 ## Overview
 
-Mobius maps video onto the surface of a Möbius strip — a one-sided topological surface created by taking a rectangular band, giving it a half-twist, and joining the ends. In the FPGA, this is realized as a per-scanline coordinate transform: each row of pixels is displaced horizontally by an amount that varies smoothly from zero at the twist center to a full mirror-flip at the frame edges. Combined with progressive luma inversion and chroma hue rotation that track the twist phase, the result is a continuous surface where top and bottom blend seamlessly into each other through a twist that inverts brightness and rotates color.
+**Mobius** reimagines your video as a surface with only one side. The familiar rectangle of the screen becomes a twisted band: as your eye moves from top to bottom, the image progressively mirrors, its brightness inverts toward a photographic negative, and its colors rotate through a complete hue cycle. At the twist midpoint the transformation is at full strength: then it unwinds, returning to normal by the bottom of the frame. The result is a seamless topological loop where the beginning and the end are the same.
 
-The name references the Möbius strip discovered by August Ferdinand Möbius in 1858 — a surface with only one side and one edge. If you trace a finger along a Möbius strip, you return to the starting point having traversed both "sides" without ever crossing an edge. The program recreates this disorienting continuity: the image appears to fold over itself, with what was dark becoming light and what was blue becoming orange as you follow the twist around the frame.
+A luminous seam line traces across the frame, marking the single boundary where the virtual strip's surface folds back on itself. Mobius requires no frame buffer: every transformation is a per-pixel coordinate computation, giving the effect a crisp, immediate character with zero latency beyond the pipeline.
 
-At conservative settings — low twist rate, no animation — the effect is a subtle horizontal displacement that makes the image appear gently warped, like a reflection in a slightly curved mirror. At extreme settings — high twist rate, full inversion depth, active hue rotation, animation enabled — the frame becomes a writhing, color-shifting topological illusion where the boundary between original and transformed imagery dissolves.
+Mobius operates in the ***Warp*** category. At subtle settings it adds an uncanny symmetry to ordinary footage. At extreme settings it fractures the image into kaleidoscopic color fields that bear little resemblance to the source, especially when the animation engine is engaged and the twist scrolls continuously through the frame.
+
+:::tip
+Mobius is a ***processing*** program: it transforms an incoming video signal. Feed it a camera, a pattern generator, or the output of another Videomancer program for best results.
+:::
+
+### What's In a Name?
+
+A ***Möbius strip*** is the famous mathematical surface with only one side and one boundary. You can make one by taking a strip of paper, giving it a single half-twist, and gluing the ends together. An ant walking along the surface would traverse both "sides" before returning to its starting point, never crossing an edge. **Mobius** maps this topology onto video: as scanlines advance down the frame, the image undergoes a continuous twist: mirroring, inverting, and rotating: then unwinds back to normal, forming a closed loop with no seam between the beginning and the end.
 
 ---
 
 ## Quick Start
 
-1. **TwstRate is the primary shape control**: Low rates create subtle warps; high rates create dense, folded structures. Start low and increase gradually to find the sweet spot.
-2. **InvDepth reveals the topology**: Without inversion, the twist is just a spatial warp. With inversion, the continuous surface nature of the Möbius strip becomes visible — you can "see" the twist through the brightness transition.
-3. **Animation makes it hypnotic**: Enable Animate and set AnimSpd to a slow value (~10–20%). The twist scrolls through the frame like a rotating surface, creating a mesmerizing barber-pole motion.
+1. Turn **Twist Rate** (Knob 1) clockwise to about 40%. You'll see the image begin to mirror vertically from the center of the frame: the top half gradually flips while the bottom half remains normal.
+2. Increase **Inversion Depth** (Knob 3) past 50%. The twisted region now darkens and inverts, resembling a photographic negative at the midpoint of the twist.
+3. Turn **Hue Rotation** (Knob 4) clockwise. Colors in the twisted region begin shifting: reds become blues, greens become magentas: as chroma rotates through quadrant-based hue shifts.
+4. Set **Seam Width** (Knob 5) to around 25% and observe a bright line tracing across the frame, marking the boundary of the virtual Möbius surface.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Mobius loaded](/img/instruments/videomancer/mobius/mobius_control_panel.png)
+*Videomancer's front panel with Mobius active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — TwstRate
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Twist Rate** controls how many ***half-twists*** the virtual Möbius band makes across the height of the frame. At minimum, a single gentle half-twist stretches from top to bottom: the image barely folds before unwinding. As you increase Twist Rate, the band winds more tightly: two half-twists, then four, then eight. Each additional half-twist adds another cycle of mirroring, inversion, and hue rotation within the frame height.
+
+At low values, the effect is a broad, sweeping warp. At high values, the frame fills with rapid oscillations of mirrored and inverted bands, creating a striped, almost kaleidoscopic texture.
+
+:::note
+The twist phase follows a ***triangle wave***, ramping from 0 to full effect and back again smoothly. This is what creates the seamless topological loop: the image at the bottom of the frame matches the image at the top.
+:::
+
+---
+
+### Knob 2 — TwstCntr
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Twist Center** sets the vertical origin line around which the twist is computed. At 50%, the twist is centered in the middle of the frame. Turning the knob counterclockwise shifts the twist origin toward the top of the frame; turning it clockwise shifts it toward the bottom.
+
+Moving the center repositions the entire twist pattern vertically, which changes where the maximum-effect zone falls within the visible image.
+
+---
+
+### Knob 3 — InvDepth
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Inversion Depth** controls the strength of the ***luma inversion*** component of the twist. At 0% the twist only mirrors: brightness is unaffected. As Inversion Depth increases, pixels in the twisted region progressively invert: midtones stay stable while highlights become shadows and shadows become highlights. At 100%, the midpoint of the twist is a full photographic negative.
+
+When **Mode** (Switch 8) is set to Mirror, Inversion Depth has no visible effect (the inversion pathway is disabled entirely.)
+
+---
+
+### Knob 4 — Hue Rot
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Hue Rotation** controls the strength of the ***chroma rotation*** applied in the twisted region. At 0%, colors pass through unchanged regardless of the twist phase. As Hue Rotation increases, the U and V chroma channels rotate through four quadrants as the twist progresses: original → 90° → 180° → 270° → original. At 100%, the full quadrant rotation is applied.
+
+The rotation uses ***quadrant interpolation***: instead of a smooth continuous rotation, the chroma snaps between four cardinal directions and interpolates within each quadrant. This produces bold, graphic color shifts rather than subtle tinting.
+
+:::tip
+Setting Hue Rotation to maximum while keeping Inversion Depth at zero isolates the color effect: you get a rainbow-banded image without any brightness changes.
+:::
+
+---
+
+### Knob 5 — SeamWdth
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 13% |
+
+**Seam Width** sets the thickness of the bright boundary line that traces the single edge of the Möbius surface across the frame. At 0%, no seam is visible. As Seam Width increases, a white line appears and grows wider, marking the fold point of the twist. The seam's horizontal position follows the twist phase, sweeping across the frame as the twist oscillates.
+
+The seam replaces the processed video with a bright achromatic line (white with neutral chroma). When **Seam** (Switch 9) is set to Soft, the seam fades at its edges rather than cutting sharply.
+
+---
+
+### Knob 6 — AnimSpd
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Animation Speed** controls how quickly the twist phase scrolls when animation is enabled. At 0% the twist is stationary. Increasing the value causes the twist pattern to drift continuously downward through the frame, driven by a ***phase accumulator*** that advances once per video field. Higher values produce faster scrolling.
+
+Animation Speed has no effect unless **Animate** (Switch 7) is set to On.
+
+---
+
+### Switch 7 — Animate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Animate** enables or disables the automatic animation engine. When set to Off, the twist pattern is fixed in position: it responds only to the static **Twist Rate** and **Twist Center** parameters. When set to On, the twist scrolls continuously through the frame at a rate determined by **Animation Speed** (Knob 6). The animation accumulates phase over time, so the twist pattern cycles endlessly.
+
+---
+
+### Switch 8 — Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Full |
+| On | Mirror |
+| Default | Full |
+
+**Mode** selects between two twist behaviors. In Full mode, the twist applies all three transformations: mirroring, luma inversion, and chroma rotation: creating the complete Möbius topology. In Mirror mode, only the mirror component is active: brightness and color pass through unchanged, and only the spatial mirroring of horizontal position follows the twist phase.
+
+:::note
+Mirror mode is useful when you want the geometric folding without the tonal or color changes. It's a gentler, more purely spatial effect.
+:::
+
+---
+
+### Switch 9 — Seam
+
+| Property | Value |
+|----------|-------|
+| Off | Hard |
+| On | Soft |
+| Default | Hard |
+
+**Seam** controls the rendering style of the boundary line. In Hard mode, pixels within the seam width are replaced with solid white (maximum luminance, neutral chroma), creating a crisp geometric line. In Soft mode, the seam brightness falls off with distance from the center of the line, producing a glowing, anti-aliased appearance.
+
+---
+
+### Switch 10 — Channels
+
+| Property | Value |
+|----------|-------|
+| Off | YUV |
+| On | Y Only |
+| Default | YUV |
+
+**Channels** selects which color channels receive the twist transformation. In YUV mode, all three channels (Y, U, and V) are processed: luma inversion affects brightness and chroma rotation affects color. In Y Only mode, the chroma rotation is disabled: only the luminance channel is twisted, while U and V pass through unchanged. This produces a monochromatic twist where brightness shifts but colors stay anchored to the original image.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all Mobius processing stages. The sync delay pipeline still aligns timing, so there is no glitch when toggling. Use Bypass for instant A/B comparison between the raw input and the twisted result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input and the wet (twisted) output. At 0%, only the original signal appears. At 100%, only the Mobius-processed signal appears. Intermediate values blend the two, which can produce ghostly overlays of the twisted and original images.
 
 ---
 
 ## Background
 
-### What Is a Möbius Strip?
+### The Möbius Strip in Mathematics
 
-A **Möbius strip** is the simplest non-orientable surface. Take a strip of paper, give one end a 180° twist (a half-twist), and tape the ends together. The result is a loop with the remarkable property that it has only one continuous side. In three dimensions, a Möbius strip is a two-dimensional surface embedded in three-dimensional space; it cannot exist without the twist.
+The ***Möbius strip*** (or Möbius band) is a surface with the remarkable property of being ***non-orientable***: it has only one side and one boundary curve. Discovered independently by August Ferdinand Möbius and Johann Benedict Listing in 1858, it became one of the most recognized objects in topology, the branch of mathematics concerned with properties preserved under continuous deformation.
 
-This program simulates the visual effect of mapping a flat 2D image onto this twisted surface. Imagine printing a photograph on a long strip of transparent film, giving it a half-twist, and joining the ends into a loop. Looking at the loop from the front, the image gradually transitions from its normal orientation at one point to a mirror-reversed, brightness-inverted version at the opposite point — and then back again. The twist rate parameter controls how many half-twists fit across the frame.
+The key property that Mobius borrows is the twist. On a physical Möbius strip, traveling along the surface reverses your orientation: left becomes right, up becomes down. The program maps this to video: as you move down the frame, the image progressively flips horizontally (mirroring), inverts tonally (negative), and rotates chromatically (hue shift). At the twist midpoint the transformation is at full strength. By the bottom of the frame, it has unwound completely: the video matches the top again, forming a closed topological loop.
 
-### What Is a DDS Phase Accumulator?
+### Quadrant Chroma Rotation
 
-The animation system uses a **Direct Digital Synthesis** (DDS) phase accumulator — a counter that increments by a fixed step value every frame. When the counter overflows its register width, it wraps around, producing a continuously advancing phase angle. This phase is used to scroll the twist pattern across the frame, creating the illusion of the Möbius surface rotating. The AnimSpd register controls the step size: larger steps produce faster scrolling, and zero disables animation entirely.
+The chroma rotation in Mobius is not a smooth angular sweep: it uses ***quadrant interpolation*** to approximate a full 360° rotation using only addition, subtraction, and fixed-point multiplication. The U and V chroma channels are treated as coordinates on a plane centered at neutral gray (512, 512). The twist phase divides this plane into four quadrants:
 
-### What Is a Triangle Wave?
+| Quadrant | U transform | V transform |
+|----------|-------------|-------------|
+| 0 (0°–90°) | U → −V | V → U |
+| 1 (90°–180°) | U → −U | V → −V |
+| 2 (180°–270°) | U → V | V → −U |
+| 3 (270°–360°) | U → U | V → V |
 
-The twist displacement follows a **triangle wave** profile across the vertical axis — linearly increasing from zero at the twist center to a maximum at the edges, then linearly decreasing back. This produces a smooth, continuous displacement that is zero at the center of the twist and maximal at the extremes. Unlike a sine wave, the triangle wave has constant slope, creating a uniform shear effect rather than the accelerating/decelerating displacement of sinusoidal warping.
+Within each quadrant, the program interpolates linearly between the start and end positions. This produces color shifts that move through the primaries in bold steps rather than continuous sweeps: an aesthetic choice that gives the effect a graphic, almost posterized quality.
 
-### What Is Quadrant-Based Hue Rotation?
+### Phase Accumulator Animation
 
-The chroma rotation in Mobius uses a **quadrant-based** approach to transform the U and V color components. The twist phase at each scanline determines a rotation angle, and the U/V pair is rotated in the color plane by that angle. This is implemented approximately using sign flips and interpolation rather than trigonometric functions — the colour plane is divided into quadrants, and within each quadrant a linear interpolation approximates the sine/cosine relationship. The result is a smooth but computationally efficient hue shift that tracks the twist progression.
+When animation is enabled, a 16-bit ***phase accumulator*** advances by the animation speed value on every vertical sync pulse. This is a ***direct digital synthesis*** (DDS) technique: a fixed increment is added to a running counter each frame, and the counter's value determines the current phase offset of the twist. Because the accumulator wraps at 16 bits, the animation loops seamlessly: the twist pattern scrolls endlessly through the frame without discontinuities.
 
 
 ---
 
 ## Signal Flow
 
-DDS Phase Accumulator → Per-Scanline Twist → Y Channel → ... → Sync Signals → Bypass
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── DDS Phase Accumulator ──────────────────────────────────────
-│   │
-│   └─ 1. Per-frame phase increment (auto-scroll)
-│            ◄── AnimSpd (reg 5), Animate (toggle bit 0)
-│
-├── Per-Scanline Twist Computation ─────────────────────────────
-│   │
-│   ├─ 2. Compute twist phase = (scanline - TwstCntr) × TwstRate + DDS
-│   │        ◄── TwstRate (reg 0), TwstCntr (reg 1)
-│   ├─ 3. Triangle wave fold → displacement magnitude
-│   └─ 4. Mirror/non-mirror from twist phase sign
-│            ◄── Mode (toggle bit 1)
-│
-├── Y Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 5. Horizontal pixel displacement (coordinate warp)
-│   ├─ 6. Luma inversion blend: Y' = Y × (1 − inv) + (1 − Y) × inv
-│   │        ◄── InvDepth (reg 2)
-│   └─ 7. Seam line overlay (at twist boundary)
-│            ◄── SeamWdth (reg 4), Seam (toggle bit 2)
-│
-├── U/V Channels ───────────────────────────────────────────────
-│   │
-│   ├─ 5. Same horizontal displacement as Y
-│   ├─ 6. Quadrant-based hue rotation per scanline
-│   │        ◄── Hue Rot (reg 3), Channels (toggle bit 3)
-│   └─ 7. Seam chroma (neutral at seam lines)
-│
-├── Output Mixing ──────────────────────────────────────────────
-│   └─ 8. Interpolator wet/dry mix
-│            ◄── Mix (reg 7)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ Pass-through (hsync, vsync, field, avid)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select original or processed signal
-         ◄── Bypass (toggle bit 4)
-```
+The critical interaction is between the ***twist phase*** and the three transformation channels (mirror, inversion, chroma rotation). All three are modulated by the same triangle-wave phase signal derived from the vertical position counter, twist scale, and animation offset. This means mirroring, inversion, and color rotation always move in lockstep (they cannot be independently animated.)
 
-The key interaction is between the twist displacement and the luma inversion / chroma rotation. The displacement alone produces a warp effect — pixels slide horizontally. But the inversion and hue rotation track the same twist phase, so as the image warps it also inverts and shifts in color. This coupling is what creates the Möbius illusion: a surface that continuously transitions through itself. The seam line marks the boundary where the twist phase wraps, providing a visible reference for the topological discontinuity.
+The ***triangle wave folding*** is essential to the Möbius topology. The raw phase (distance × scale + animation) is a sawtooth that could jump discontinuously. Bit 10 of the raw phase determines the fold direction: when it's 0, the phase ramps up; when it's 1, the phase ramps down (1023 minus the lower bits). This creates a smooth back-and-forth sweep that gives the twist its seamless, looping character.
+
+:::tip
+Because all three transformations share a single phase signal, adjusting **Twist Rate** changes the spatial frequency of mirroring, inversion, *and* hue rotation simultaneously. To isolate just one transformation, use **Mode** (Mirror only) or **Channels** (Y Only) to disable the others.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={mobius_control_panel} alt="Videomancer front panel with Mobius loaded"/>
-*Videomancer's front panel with Mobius active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — TwstRate
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-At minimum, the twist is subtle — a gentle shear that barely displaces pixels. At maximum, multiple full twists compress into the frame height, creating a tight zigzag displacement pattern where the image folds over itself many times. Each half-twist introduces one inversion boundary, so higher twist rates produce more alternating bands of normal and inverted imagery. Internally, controls the number of half-twists mapped across the vertical extent of the frame.
-
----
-
-#### Knob 2 — TwstCntr
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Sets the vertical center point of the twist. At 50%, the twist is centered in the frame — equal displacement above and below the midpoint. Moving the center toward the top or bottom shifts the entire twist pattern vertically, creating asymmetric warping where one half of the frame is more displaced than the other. This is equivalent to translating the Möbius strip vertically relative to the viewing window.
-
----
-
-#### Knob 3 — InvDepth
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At minimum, no inversion occurs — the twist warps pixel positions but leaves brightness unchanged. As InvDepth increases, scanlines at the peak of the twist progressively invert their luminance: midtones stay constant, highlights darken, shadows brighten. At maximum, scanlines at the twist apex are fully inverted. The inversion blends linearly with the twist displacement, creating a smooth transition from normal to inverted. Internally, controls the depth of the luminance inversion that tracks the twist phase.
-
----
-
-#### Knob 4 — Hue Rot
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls how strongly the chroma (U/V) rotates with the twist phase. At minimum, color is unaffected by the twist. As the value increases, scanlines at peak twist undergo progressive hue rotation — blues shift toward red, reds shift toward green, following the quadrant-based rotation. At maximum, a full 180° hue rotation occurs at the twist apex, complementing the luma inversion to create a complete color negative at the most twisted points.
-
----
-
-#### Knob 5 — SeamWdth
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 13% |
-| Suffix | % |
-
-At minimum, the seam is a single pixel or invisible. At maximum, a wide bright band marks the boundary. The seam serves as a visual reference for the topological discontinuity and can be used as a design element — a bright horizon line dividing the twisted zones. Internally, controls the width of the visible seam line drawn at the twist boundary — the point where the twist phase wraps from one cycle to the next.
-
----
-
-#### Knob 6 — AnimSpd
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-At minimum, the twist pattern is either static (Animate off) or scrolls imperceptibly slowly. At maximum, the twist pattern races vertically through the frame, creating a rapid rolling-shutter-like effect as different scanlines cycle through their twist phases. Moderate values produce a gentle, mesmerizing drift of the twist pattern. Internally, controls the DDS phase increment for auto-scrolling animation.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Animate** | Off | On |
-| **8 — Mode** | Full | Mirror |
-| **9 — Seam** | Hard | Soft |
-| **10 — Channels** | YUV | Y Only |
-| **11 — Bypass** | Off | On |
-
-Toggle 7 enables animation, Toggle 8 selects between full Möbius warp and mirror-only mode, Toggle 9 controls seam hardness, Toggle 10 limits processing to luma-only or full YUV, and Toggle 11 is the standard bypass. The Mode toggle has the most dramatic visual effect — mirror-only removes the horizontal displacement and color transform, leaving only the vertical reflection.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Controls the wet/dry mix between the processed Möbius output and the original input. At 100%, the full twist effect is visible. At 0%, the original input passes through unmodified. Intermediate values blend the warped and unwarped imagery, creating a ghostly double-exposure where the twisted version overlays the original at reduced opacity.
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Mobius processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises progressively build the Möbius effect from simple displacement through full topological illusion, each adding one dimension of the transform.
-
+These exercises progress from simple mirroring to full topological color mapping. Each exercise introduces additional transformation layers.
 ### Exercise 1: The Basic Twist
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: mobius_source1_fruit, after: mobius_ex1_s1 },
-    { label: "Ballerina", before: mobius_source2_ballerina, after: mobius_ex1_s2 },
-    { label: "Clouds", before: mobius_source3_clouds, after: mobius_ex1_s3 },
-    { label: "Pattern", before: mobius_source4_pattern, after: mobius_ex1_s4 },
-    { label: "Boy", before: mobius_source5_boy, after: mobius_ex1_s5 },
-    { label: "Knit", before: mobius_source6_knit, after: mobius_ex1_s6 },
-  ]}
-/>
+![The Basic Twist result](/img/instruments/videomancer/mobius/mobius_ex1_s1.png)
 *The Basic Twist — simulated result across source images.*
-**Source**: A static image or camera feed with strong horizontal and vertical features — architecture, grid patterns, or text.
+#### Exercise Illustration
 
-**What You'll Create**: Understand how TwstRate and TwstCntr produce horizontal displacement that varies across the frame.
+***A description of the exercise illustration.***
 
-1. **Minimal twist**: Set TwstRate to ~10%, TwstCntr to ~50% (centered). The image has a subtle horizontal shear — straight vertical lines bend gently.
-2. **Increase twist**: Sweep TwstRate to ~40%. Vertical lines develop a visible S-curve as the displacement increases.
-3. **Multiple twists**: Push TwstRate to ~80%. The image folds over itself — multiple bands of image appear, each shifted horizontally by a different amount.
-4. **Move the center**: Sweep TwstCntr from 0% to 100%. The twist pattern slides vertically. At the extremes, the maximum displacement is near one edge of the frame.
-5. **Observe boundaries**: Note where the displacement wraps — this is where the seam line will appear once enabled.
+#### Learning Outcomes
 
-**Key concepts**: TwstRate controls the number of half-twists, TwstCntr shifts the twist vertically, displacement follows a triangle wave profile, vertical lines reveal the warp most clearly
+A symmetric mirror effect that folds the image like a paper strip, demonstrating the core Möbius geometry.
 
----
+#### Key Concepts
 
-### Exercise 2: Adding Inversion and Color
+- The twist phase creates a triangle-wave mirror pattern
+- Twist Rate controls the spatial frequency of the fold
+- Twist Center repositions the origin
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: mobius_source1_fruit, after: mobius_ex2_s1 },
-    { label: "Ballerina", before: mobius_source2_ballerina, after: mobius_ex2_s2 },
-    { label: "Clouds", before: mobius_source3_clouds, after: mobius_ex2_s3 },
-    { label: "Pattern", before: mobius_source4_pattern, after: mobius_ex2_s4 },
-    { label: "Boy", before: mobius_source5_boy, after: mobius_ex2_s5 },
-    { label: "Knit", before: mobius_source6_knit, after: mobius_ex2_s6 },
-  ]}
-/>
-*Adding Inversion and Color — simulated result across source images.*
-**Source**: Footage with distinct bright and dark regions and saturated colors — sunset skies, neon signage, or color bars.
+#### Video Source
 
-**What You'll Create**: See how luma inversion and chroma rotation coupled to the twist phase create the continuity illusion of a Möbius surface.
+A live camera feed or recorded footage with clear left-right asymmetry (text, faces, or objects placed off-center).
 
-1. **Start with twist**: Set TwstRate to ~35%, TwstCntr to ~50%, Mode off (full Möbius).
-2. **Add inversion**: Slowly increase InvDepth from 0 to ~70%. Watch as scanlines at the twist peak progressively invert — bright areas darken, dark areas brighten, creating a smooth negative-positive transition across the frame.
-3. **Add hue rotation**: Increase Hue Rot to ~60%. Colors shift at the twist peak — reds become blue-green, blues become orange. The combined inversion and hue shift creates a complete color negative at maximum twist.
-4. **Enable seam**: Increase SeamWdth to ~30%. A bright line appears at the twist boundary, marking where the surface "joins."
-5. **Soft seam**: Toggle Seam (Toggle 9) to soft mode. The seam line blends into the image.
-6. **Y-only mode**: Toggle Channels (Toggle 10) on. Hue rotation disables — only the luma inversion remains. The structural twist is preserved but original colors survive.
+#### Steps
 
-**Key concepts**: Luma inversion tracks twist phase creating continuous surface illusion, chroma rotation complements inversion, seam marks the topological join, Y-only preserves original color
+1. Set **Mode** (Switch 8) to Mirror to isolate the spatial component.
+2. Turn **Twist Rate** (Knob 1) slowly clockwise from minimum. At low values, a single broad fold appears (the bottom of the frame mirrors the top.)
+3. Continue increasing Twist Rate. The frame fills with alternating normal and mirrored bands, like a hall of mirrors laid horizontally.
+4. Sweep **Twist Center** (Knob 2) from left to right. The fold pattern slides up and down the frame as the origin moves.
+5. Enable **Animate** (Switch 7) and set **Animation Speed** (Knob 6) to around 25%. The mirror bands scroll continuously through the frame.
 
----
+#### Settings
 
-### Exercise 3: Animated Rotation
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Fruit", before: mobius_source1_fruit, after: mobius_ex3_s1 },
-    { label: "Ballerina", before: mobius_source2_ballerina, after: mobius_ex3_s2 },
-    { label: "Clouds", before: mobius_source3_clouds, after: mobius_ex3_s3 },
-    { label: "Pattern", before: mobius_source4_pattern, after: mobius_ex3_s4 },
-    { label: "Boy", before: mobius_source5_boy, after: mobius_ex3_s5 },
-    { label: "Knit", before: mobius_source6_knit, after: mobius_ex3_s6 },
-  ]}
-/>
-*Animated Rotation — simulated result across source images.*
-**Source**: Moving footage — dancers, traffic, flowing water — material where the twist animation interacts with the source motion.
-
-**What You'll Create**: Combine animation with the full twist to create a continuously evolving topological warp.
-
-1. **Full Möbius**: Set TwstRate ~25%, InvDepth ~50%, Hue Rot ~40%, SeamWdth ~20%.
-2. **Enable animation**: Toggle Animate on (Toggle 7). Set AnimSpd to ~15%.
-3. **Observe drift**: The twist pattern scrolls vertically — the inverted/rotated bands move smoothly through the frame like a barber pole stripe.
-4. **Increase speed**: Push AnimSpd to ~50%. The twist cycles rapidly. The source video appears to roll through the twisted surface.
-5. **Mirror mode**: Toggle Mode (Toggle 8) to mirror-only. The horizontal displacement and color transforms disappear — only a vertically scrolling mirror remains. This is a simpler, kaleidoscopic variant.
-6. **Return to full Möbius**: Toggle Mode back off. Compare the full topological effect with the simpler mirror.
-7. **Mix down**: Sweep Mix to ~50%. The twisted version ghosts over the original, creating a double-exposure composite.
-
-**Key concepts**: DDS animation scrolls the twist pattern vertically, AnimSpd controls scroll rate, Mode toggle adds/removes the displacement and color transforms, Mix blends twisted with original
+| Control | Value |
+|---------|-------|
+| Twist Rate | ~40% |
+| Twist Center | 50% |
+| Inversion Depth | 0% |
+| Hue Rotation | 0% |
+| Seam Width | 0% |
+| Animation Speed | ~25% |
+| Animate | Off |
+| Mode | Mirror |
+| Seam | Hard |
+| Channels | YUV |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 2: Negative Twist with Seam
 
-## Tips
+![Negative Twist with Seam result](/img/instruments/videomancer/mobius/mobius_ex2_s1.png)
+*Negative Twist with Seam — simulated result across source images.*
+#### Exercise Illustration
 
-- **Mirror mode simplifies**: Toggle Mode to mirror-only when you want vertical kaleidoscope symmetry without the displacement and color transforms.
-- **Seam as design element**: The seam line marks the topological join. Make it wide and bright for a structural dividing line, or thin/invisible for seamless flow.
-- **Y-only preserves source color**: Toggle Channels on to keep original chrominance while still getting the structural twist and luma inversion — useful for sources where color is critical.
-- **Feedback creates infinite corridors**: Route the output back to the input. The twist feeding on itself creates recursive displacements that converge into complex interference patterns.
-- **Combine with other programs**: The Möbius warp is a geometric transform that chains well with colorizers and texture generators. Route through a posterizer or ditherer before Mobius for unique interactions.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A dramatic inversion effect where the image alternates between positive and negative, with a visible boundary line tracing the twist.
+
+#### Key Concepts
+
+- Luma inversion creates photographic negative zones
+- The seam line traces the Möbius boundary
+- Hard vs. soft seam rendering
+
+#### Video Source
+
+High-contrast footage: strong blacks and whites show the inversion most clearly. Architectural subjects or bold graphics work well.
+
+#### Steps
+
+1. Set **Mode** (Switch 8) to Full and **Twist Rate** (Knob 1) to about 40%.
+2. Increase **Inversion Depth** (Knob 3) to 100%. The twisted regions now fully invert: bright areas become dark and vice versa, meeting normal regions at the fold boundary.
+3. Set **Seam Width** (Knob 5) to about 25%. A bright white line appears, tracing the fold point across the frame.
+4. Toggle **Seam** (Switch 9) between Hard and Soft. Hard produces a crisp geometric line; Soft produces a glowing falloff.
+5. Enable **Animate** (Switch 7) and set **Animation Speed** (Knob 6) to about 50%. The seam sweeps across the frame as the twist scrolls.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Twist Rate | ~40% |
+| Twist Center | 50% |
+| Inversion Depth | 100% |
+| Hue Rotation | 0% |
+| Seam Width | ~25% |
+| Animation Speed | ~50% |
+| Animate | On |
+| Mode | Full |
+| Seam | Soft |
+| Channels | YUV |
+| Bypass | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Full Topological Color Map
+
+![Full Topological Color Map result](/img/instruments/videomancer/mobius/mobius_ex3_s1.png)
+*Full Topological Color Map — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+The complete Möbius experience: mirroring, inversion, and rainbow chroma rotation scrolling through an animated twist.
+
+#### Key Concepts
+
+- Quadrant chroma rotation produces bold hue shifts
+- All three transformations lock to a single phase
+- Mix crossfade creates ghostly overlay effects
+
+#### Video Source
+
+Colorful footage with a variety of hues: nature scenes, abstract patterns, or a color bar test signal.
+
+#### Steps
+
+1. Set **Mode** (Switch 8) to Full and **Channels** (Switch 10) to YUV.
+2. Set **Twist Rate** (Knob 1) to about 50% and **Inversion Depth** (Knob 3) to about 70%.
+3. Turn **Hue Rotation** (Knob 4) to 100%. The twisted regions now cycle through bold color shifts: reds become blues, greens become magentas: locked to the same phase as the mirror and inversion.
+4. Set **Seam Width** (Knob 5) to about 15% with **Seam** set to Soft for a glowing boundary line.
+5. Enable **Animate** (Switch 7) and set **Animation Speed** (Knob 6) to about 35%. Watch the complete topological transformation scroll endlessly through the frame.
+6. Lower **Mix** (Fader 12) to about 60%. The processed and original images overlap, creating a ghostly double-exposure where twisted and untwisted versions of the image coexist.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Twist Rate | ~50% |
+| Twist Center | 50% |
+| Inversion Depth | ~70% |
+| Hue Rotation | 100% |
+| Seam Width | ~15% |
+| Animation Speed | ~35% |
+| Animate | On |
+| Mode | Full |
+| Seam | Soft |
+| Channels | YUV |
+| Bypass | Off |
+| Mix | ~60% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **BT.601** | ITU-R BT.601 color space standard defining the YUV encoding matrix used in standard-definition video and throughout the Videomancer pipeline. |
-| **Chroma** | The color components (U and V) of a YUV video signal, encoding hue and saturation independently of brightness. |
-| **DDS** | Direct Digital Synthesis; a technique using an incrementing phase accumulator to generate periodic waveforms or scrolling animations. |
-| **Half-Twist** | A 180° rotation of a strip before joining the ends, creating the non-orientable Möbius surface. |
-| **Hue Rotation** | Rotating the (U, V) color vector in the chroma plane, shifting all colors toward different parts of the spectrum. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
-| **Möbius Strip** | A non-orientable surface with only one side and one edge, formed by giving a rectangular strip a half-twist and joining the ends. |
-| **Triangle Wave** | A periodic waveform with constant-slope linear ramps, used here for the twist displacement profile. |
+- **Chroma**: The color information in a video signal, encoded as U and V components in YUV color space.
+
+- **Direct Digital Synthesis (DDS)**: A technique for generating periodic waveforms by incrementing a phase accumulator at a fixed rate. Used here to animate the twist.
+
+- **Half-Twist**: A 180° rotation of a strip before joining its ends; the defining operation of a Möbius strip. Mobius maps this to one full cycle of mirror + invert + hue rotate.
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness.
+
+- **Luma Inversion**: Subtracting the luminance value from the maximum (1023 − Y), producing a photographic negative.
+
+- **Non-Orientable**: A surface that has no consistent "inside" and "outside." The Möbius strip is the simplest example.
+
+- **Phase Accumulator**: A counter that adds a fixed increment each frame, wrapping at overflow. Its current value sets the animation position.
+
+- **Quadrant Interpolation**: Approximating a full 360° rotation by dividing the angle into four 90° segments and interpolating linearly within each.
+
+- **Topology**: The branch of mathematics concerned with properties that are preserved under continuous deformation: stretching, twisting, and bending, but not tearing or gluing.
+
+- **Triangle Wave**: A periodic waveform that ramps linearly up and then linearly down, creating a symmetric back-and-forth oscillation.
 
 ---

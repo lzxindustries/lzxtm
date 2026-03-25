@@ -14,7 +14,7 @@ description: "Every surface radiates energy."
 
 ## Overview
 
-**Isotherm** is a false-color thermal camera simulator. It treats the luminance of your input video as a temperature proxy and maps it through one of four color palettes — Ironbow, Rainbow, White-Hot, or Black-Hot — to produce imagery that looks like it came from a thermal imaging camera. Bright areas glow hot; dark areas read cold. The illusion is surprisingly convincing.
+**Isotherm** is a false-color thermal camera simulator. It treats the luminance of your input video as a temperature proxy and maps it through one of four color palettes: Ironbow, Rainbow, White-Hot, or Black-Hot: to produce imagery that looks like it came from a thermal imaging camera. Bright areas glow hot; dark areas read cold. The illusion is surprisingly convincing.
 
 Beyond simple palette mapping, Isotherm draws ***isotherm contour lines*** at configurable intervals, marking the boundaries between luminance zones the way a weather map traces temperature gradients. A military-style ***HUD overlay*** adds a center crosshair and corner bracket reticles for a surveillance-camera aesthetic. An ***auto-range*** system continuously tracks the brightest and darkest pixels in the frame and stretches the palette to fill the available range, maximizing contrast automatically.
 
@@ -24,16 +24,16 @@ Isotherm is in the **Analysis** category because it reveals hidden structure in 
 
 ### What's In a Name?
 
-An ***isotherm*** is a line on a map connecting points of equal temperature. Meteorologists use isotherms on weather charts to visualize temperature distribution across a region. In this program, the "temperature" is luminance, and the isotherm contour lines trace boundaries between brightness zones — topographic lines for a landscape of light.
+An ***isotherm*** is a line on a map connecting points of equal temperature. Meteorologists use isotherms on weather charts to visualize temperature distribution across a region. In this program, the "temperature" is luminance, and the isotherm contour lines trace boundaries between brightness zones (topographic lines for a landscape of light.)
 
 ---
 
 ## Quick Start
 
-1. Feed any video source into Videomancer and select **Isotherm**. The image immediately transforms into a false-color thermal view using the default Ironbow palette — dark blues for shadows, reds and oranges for midtones, and white-hot highlights.
+1. Feed any video source into Videomancer and select **Isotherm**. The image immediately transforms into a false-color thermal view using the default Ironbow palette: dark blues for shadows, reds and oranges for midtones, and white-hot highlights.
 2. Turn **Contour Wid** (Knob 6) clockwise to about 50%. White contour lines appear, tracing boundaries between luminance zones like elevation lines on a topographic map.
 3. Flip **Palette A** (Switch 7) to **Hi** to switch from Ironbow to the White-Hot palette. The image becomes a monochrome thermal view where brightness maps directly to "temperature."
-4. Turn **Posterize** (Knob 1) clockwise to increase the quantization level. The smooth gradient collapses into flat thermal bands, each a distinct color step — a heat map with visible zone boundaries.
+4. Turn **Posterize** (Knob 1) clockwise to increase the quantization level. The smooth gradient collapses into flat thermal bands, each a distinct color step (a heat map with visible zone boundaries.)
 
 ---
 
@@ -49,7 +49,7 @@ An ***isotherm*** is a line on a map connecting points of equal temperature. Met
 | Range | 0 – 7 |
 | Default | 0 |
 
-**Posterize** controls the number of quantization bands applied to the luminance signal before palette mapping. At the minimum setting, posterization is disabled and the full 10-bit luminance range maps smoothly through the palette. As you increase the value, luminance is progressively truncated to fewer bits, producing flat thermal zones separated by hard color boundaries. At the maximum setting, only eight distinct luminance levels survive — eight bold color bands like a simplified weather map.
+**Posterize** controls the number of quantization bands applied to the luminance signal before palette mapping. At the minimum setting, posterization is disabled and the full 10-bit luminance range maps smoothly through the palette. As you increase the value, luminance is progressively truncated to fewer bits, producing flat thermal zones separated by hard color boundaries. At the maximum setting, only eight distinct luminance levels survive (eight bold color bands like a simplified weather map.)
 
 :::note
 Posterization happens *before* palette lookup. The banded luminance feeds into the palette interpolator, so each band maps to a single palette color rather than a gradient.
@@ -112,7 +112,7 @@ Smoothing is especially useful with noisy or low-quality video sources. A small 
 | Range | 0.0% – 100.0% |
 | Default | 25.0% |
 
-**Contour Wid** controls the thickness of isotherm contour lines. At the minimum value, contour lines are drawn as hairlines — one or two pixels wide. As the value increases, the lines thicken, eventually becoming wide bands that visually merge with the palette colors at very high settings. The contour width interacts with **Contour Int**: wide contour lines at narrow intervals can fill most of the image with white.
+**Contour Wid** controls the thickness of isotherm contour lines. At the minimum value, contour lines are drawn as hairlines: one or two pixels wide. As the value increases, the lines thicken, eventually becoming wide bands that visually merge with the palette colors at very high settings. The contour width interacts with **Contour Int**: wide contour lines at narrow intervals can fill most of the image with white.
 
 :::warning
 Setting both **Contour Wid** high and **Contour Int** to a dense interval may produce a mostly-white image. Reduce one or both to restore visible palette color beneath the contour overlay.
@@ -210,7 +210,7 @@ The Ironbow palette mimics the classic look of uncooled thermal cameras. Rainbow
 | Range | 0.0% – 100.0% |
 | Default | 100.0% |
 
-**Mix** crossfades between the dry (unprocessed) input signal and the wet (false-color) output. At 0%, the output is the original input video with no thermal processing visible. At 100% (the default), the output is fully false-colored. Intermediate values blend the two, creating a translucent thermal overlay on top of the source image. This is useful for orientation — you can see the original scene underneath the thermal coloring.
+**Mix** crossfades between the dry (unprocessed) input signal and the wet (false-color) output. At 0%, the output is the original input video with no thermal processing visible. At 100% (the default), the output is fully false-colored. Intermediate values blend the two, creating a translucent thermal overlay on top of the source image. This is useful for orientation: you can see the original scene underneath the thermal coloring.
 
 ---
 
@@ -218,54 +218,31 @@ The Ironbow palette mimics the classic look of uncooled thermal cameras. Rainbow
 
 ### False-Color Imaging
 
-***False-color*** imaging assigns arbitrary colors to measurable quantities. In scientific imaging, false color reveals information invisible to the naked eye — infrared cameras render heat as color, satellite imagery maps vegetation health, and medical scans highlight tissue density. The technique works because the human visual system is far more sensitive to color differences than to luminance differences. A smooth gray gradient might look uniform, but map it through a rainbow palette and subtle variations leap out in vivid hues.
+***False-color*** imaging assigns arbitrary colors to measurable quantities. In scientific imaging, false color reveals information invisible to the naked eye: infrared cameras render heat as color, satellite imagery maps vegetation health, and medical scans highlight tissue density. The technique works because the human visual system is far more sensitive to color differences than to luminance differences. A smooth gray gradient might look uniform, but map it through a rainbow palette and subtle variations leap out in vivid hues.
 
-Isotherm applies this principle to video luminance. The input luma is treated as a scalar field — a "temperature" that varies across the frame — and the palette maps that scalar to a color. This transforms any video source into a thermal-style visualization.
+Isotherm applies this principle to video luminance. The input luma is treated as a scalar field: a "temperature" that varies across the frame: and the palette maps that scalar to a color. This transforms any video source into a thermal-style visualization.
 
 ### Piecewise-Linear Palettes
 
-Rather than storing a full 1024-entry lookup table for each palette, Isotherm defines 16 ***key-point*** colors per palette and interpolates linearly between them. The input luminance selects a segment between two adjacent key-points, and a fractional index drives piecewise-linear blending across all three color channels (Y, Cb, Cr) simultaneously. This approach requires only registers — no block RAM — while producing smooth color gradients.
+Rather than storing a full 1024-entry lookup table for each palette, Isotherm defines 16 ***key-point*** colors per palette and interpolates linearly between them. The input luminance selects a segment between two adjacent key-points, and a fractional index drives piecewise-linear blending across all three color channels (Y, Cb, Cr) simultaneously. This approach requires only registers: no block RAM: while producing smooth color gradients.
 
 ### Auto-Ranging
 
 Real thermal cameras use ***automatic gain control*** to stretch the sensor's output to fill the display range, ensuring maximum contrast regardless of the scene's absolute temperature. Isotherm implements a digital equivalent: an IIR envelope tracker follows the minimum and maximum luminance values across each frame, gradually decaying toward the extremes. The tracked range normalizes the input before palette mapping, so even low-contrast scenes produce vivid, full-range thermal imagery.
 
-### Signal Flow
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 1. IIR Horizontal Smoothing    (shift-based low-pass filter)
-│   ├─ 2. Auto-Range Tracking         (IIR min/max envelope per frame)
-│   ├─ 3. Gain + Centering            (auto: normalise to tracked range;
-│   │                                   manual: contrast × input + brightness)
-│   ├─ 4. Posterize + Invert          (bitmask LSB truncation, palette flip)
-│   ├─ 5. Palette Lookup              (16-key piecewise-linear → YCbCr)
-│   ├─ 6. Contour Line Generation     (power-of-2 bitmask compare)
-│   ├─ 7. HUD Overlay                 (crosshair + corner brackets)
-│   └─ 8. Wet/Dry Mix                 (interpolator_u crossfade)
-│
-├── Cb/Cr Channels ─────────────────────────────────────────────
-│   └─ Palette output replaces original chroma (no chroma input processing)
-│       └─ Wet/Dry Mix               (interpolator_u crossfade with dry Cb/Cr)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ 13-clock delay pipeline (hsync, vsync, field, avid)
-│
-└── Output ─────────────────────────────────────────────────────
-    └─ Mixed YUV 4:4:4
-```
+---
+
+## Signal Flow
 
 ### Signal Flow Notes
 
-The key architectural decision is that **the entire palette mapping operates on the Y (luminance) channel only**. The input Cb and Cr channels are not processed at all — they are delayed and available only for the dry side of the wet/dry mix. The "color" in the false-color output comes entirely from the palette lookup, which outputs all three channels (Y, Cb, Cr) as a function of the single luminance input.
+The key architectural decision is that **the entire palette mapping operates on the Y (luminance) channel only**. The input Cb and Cr channels are not processed at all: they are delayed and available only for the dry side of the wet/dry mix. The "color" in the false-color output comes entirely from the palette lookup, which outputs all three channels (Y, Cb, Cr) as a function of the single luminance input.
 
 Auto-range and manual mode share the same pipeline stages but take different paths through them. In auto mode, stages 2 and 3 normalize the input to the tracked min/max envelope, then stage 3b applies contrast and brightness as post-normalization adjustments. In manual mode, stage 3 applies contrast as raw gain and brightness as a DC offset directly, bypassing the auto-range normalization.
 
 :::tip
-**Contour lines are generated from the post-posterize luminance.** This means posterization creates discrete zones, and contour lines appear at the boundaries *between* those zones. More posterization bands mean more contour lines at a given interval — and fewer bands mean fewer, bolder contours.
+**Contour lines are generated from the post-posterize luminance.** This means posterization creates discrete zones, and contour lines appear at the boundaries *between* those zones. More posterization bands mean more contour lines at a given interval (and fewer bands mean fewer, bolder contours.)
 :::
 
 
@@ -278,21 +255,33 @@ These exercises progress from basic palette exploration to precision thermal ana
 
 ![Thermal Palette Survey result](/img/instruments/videomancer/isotherm/isotherm_ex1_s1.png)
 *Thermal Palette Survey — simulated result across source images.*
-**Key Concepts**: - Palette selection via two-bit toggle combination
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Explore all four palettes and understand how each renders the same scene differently.
+
+#### Key Concepts
+
+- Palette selection via two-bit toggle combination
 - Ironbow mimics thermal camera aesthetics
 - Monochrome palettes (White-Hot, Black-Hot) emphasize pure luminance structure
 
-**What You'll Create**: Explore all four palettes and understand how each renders the same scene differently.
+#### Video Source
 
-**Source**: A live camera feed with a mix of bright and dark areas — a face lit from one side, a lamp beside a shadow, or any scene with a wide tonal range.
+A live camera feed with a mix of bright and dark areas: a face lit from one side, a lamp beside a shadow, or any scene with a wide tonal range.
 
-1. **Ironbow baseline**: Start with the default palette: both **Palette A** (Switch 7) and **Palette B** (Switch 8) set to **Lo**. This is **Ironbow** — the classic thermal camera look. Notice how shadows appear deep blue and bright areas glow orange to white.
-2. **Rainbow spectrum**: Flip **Palette B** to **Hi** (keeping Palette A on Lo). This selects **Rainbow**. The same scene now shows a full spectral sweep — violets in the darkest areas cycling through blue, cyan, green, yellow, and red to white.
-3. **White-Hot clarity**: Flip **Palette A** to **Hi** and **Palette B** back to **Lo**. This is **White-Hot** — a pure monochrome ramp. Compare how much luminance detail is visible versus the colored palettes.
-4. **Inverted polarity**: Set both switches to **Hi** for **Black-Hot** — the inverted monochrome ramp. Notice how your perception of "hot" and "cold" reverses.
-5. **Compare inversions**: Return to **Ironbow** and toggle **Invert Map** (Switch 11). Compare inverted Ironbow to the Black-Hot palette — they look similar but are not identical because Ironbow's color curve is asymmetric.
+#### Steps
 
-**Settings**:
+1. **Ironbow baseline**: Start with the default palette: both **Palette A** (Switch 7) and **Palette B** (Switch 8) set to **Lo**. This is **Ironbow**: the classic thermal camera look. Notice how shadows appear deep blue and bright areas glow orange to white.
+2. **Rainbow spectrum**: Flip **Palette B** to **Hi** (keeping Palette A on Lo). This selects **Rainbow**. The same scene now shows a full spectral sweep: violets in the darkest areas cycling through blue, cyan, green, yellow, and red to white.
+3. **White-Hot clarity**: Flip **Palette A** to **Hi** and **Palette B** back to **Lo**. This is **White-Hot**: a pure monochrome ramp. Compare how much luminance detail is visible versus the colored palettes.
+4. **Inverted polarity**: Set both switches to **Hi** for **Black-Hot**: the inverted monochrome ramp. Notice how your perception of "hot" and "cold" reverses.
+5. **Compare inversions**: Return to **Ironbow** and toggle **Invert Map** (Switch 11). Compare inverted Ironbow to the Black-Hot palette: they look similar but are not identical because Ironbow's color curve is asymmetric.
+
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -315,13 +304,25 @@ These exercises progress from basic palette exploration to precision thermal ana
 
 ![Contour Mapping result](/img/instruments/videomancer/isotherm/isotherm_ex2_s1.png)
 *Contour Mapping — simulated result across source images.*
-**Key Concepts**: - Contour lines mark luminance zone boundaries
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Learn to use isotherm contour lines and posterization to create topographic luminance maps.
+
+#### Key Concepts
+
+- Contour lines mark luminance zone boundaries
 - Posterization creates discrete thermal bands
 - Contour interval and width interact to control line density
 
-**What You'll Create**: Learn to use isotherm contour lines and posterization to create topographic luminance maps.
+#### Video Source
 
-**Source**: A slowly moving video source with smooth gradients — clouds, water, or gently lit surfaces work well.
+A slowly moving video source with smooth gradients (clouds, water, or gently lit surfaces work well.)
+
+#### Steps
 
 1. **Draw contour lines**: Enable contour lines: set **Contour Int** (Knob 2) to interval 3 (about 40%) and **Contour Wid** (Knob 6) to about 25%. White lines appear tracing luminance boundaries.
 2. **Sweep density**: Slowly sweep **Contour Int** through all eight steps. At the densest setting, fine contour lines reveal every subtle gradient. At wider intervals, only major luminance boundaries are marked.
@@ -329,7 +330,7 @@ These exercises progress from basic palette exploration to precision thermal ana
 4. **Thicken the lines**: Increase **Contour Wid** to about 75%. The contour lines thicken into wide white bands separating the thermal zones.
 5. **Surveillance overlay**: Enable **HUD** (Switch 10). The crosshair and corner brackets appear, completing the surveillance-camera aesthetic.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -352,13 +353,25 @@ These exercises progress from basic palette exploration to precision thermal ana
 
 ![Abstract Heat Landscapes result](/img/instruments/videomancer/isotherm/isotherm_ex3_s1.png)
 *Abstract Heat Landscapes — simulated result across source images.*
-**Key Concepts**: - Smoothing before palette mapping creates soft, painterly heat gradients
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Combine smoothing, posterization, manual gain, and palette inversion to create abstract compositions that depart from the thermal camera simulation.
+
+#### Key Concepts
+
+- Smoothing before palette mapping creates soft, painterly heat gradients
 - Manual contrast and brightness control precise palette window and level
 - Mix blends the thermal overlay with the original source
 
-**What You'll Create**: Combine smoothing, posterization, manual gain, and palette inversion to create abstract compositions that depart from the thermal camera simulation.
+#### Video Source
 
-**Source**: Any visually complex footage — architectural scenes, nature footage, or abstract video synthesis patterns.
+Any visually complex footage: architectural scenes, nature footage, or abstract video synthesis patterns.
+
+#### Steps
 
 1. **Manual exposure**: Disable auto-range: flip **Auto Range** (Switch 9) to **Off**. The palette now maps the raw input luminance.
 2. **Narrow the window**: Set **Contrast** (Knob 4) to about 60% and **Brightness** (Knob 5) to about 40%. This narrows the palette window, concentrating color detail in the midtones.
@@ -368,7 +381,7 @@ These exercises progress from basic palette exploration to precision thermal ana
 6. **Blend with source**: Pull **Mix** (Fader 12) down to about 50%. The original source image bleeds through the thermal overlay, creating a translucent heat map effect.
 7. **Flip hot and cold**: Toggle **Invert Map** (Switch 11) to flip the palette direction. Observe how the composition changes as "hot" and "cold" swap roles.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|

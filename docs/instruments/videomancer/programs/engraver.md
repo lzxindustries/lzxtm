@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 103
 slug: /instruments/videomancer/engraver
@@ -7,372 +7,411 @@ image: /img/instruments/videomancer/engraver/engraver_hero_s1.png
 description: "In traditional engraving, a craftsman cuts lines into a metal plate."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import engraver_control_panel from '/img/instruments/videomancer/engraver/engraver_control_panel.png';
-import engraver_source1_boat from '/img/instruments/videomancer/engraver/engraver_source1_boat.png';
-import engraver_source2_skull from '/img/instruments/videomancer/engraver/engraver_source2_skull.png';
-import engraver_source3_collage from '/img/instruments/videomancer/engraver/engraver_source3_collage.png';
-import engraver_source4_pattern from '/img/instruments/videomancer/engraver/engraver_source4_pattern.png';
-import engraver_source5_boy from '/img/instruments/videomancer/engraver/engraver_source5_boy.png';
-import engraver_source6_paint from '/img/instruments/videomancer/engraver/engraver_source6_paint.png';
-import engraver_hero_s1 from '/img/instruments/videomancer/engraver/engraver_hero_s1.png';
-import engraver_hero_s2 from '/img/instruments/videomancer/engraver/engraver_hero_s2.png';
-import engraver_hero_s3 from '/img/instruments/videomancer/engraver/engraver_hero_s3.png';
-import engraver_hero_s4 from '/img/instruments/videomancer/engraver/engraver_hero_s4.png';
-import engraver_hero_s5 from '/img/instruments/videomancer/engraver/engraver_hero_s5.png';
-import engraver_hero_s6 from '/img/instruments/videomancer/engraver/engraver_hero_s6.png';
-import engraver_ex1_s1 from '/img/instruments/videomancer/engraver/engraver_ex1_s1.png';
-import engraver_ex1_s2 from '/img/instruments/videomancer/engraver/engraver_ex1_s2.png';
-import engraver_ex1_s3 from '/img/instruments/videomancer/engraver/engraver_ex1_s3.png';
-import engraver_ex1_s4 from '/img/instruments/videomancer/engraver/engraver_ex1_s4.png';
-import engraver_ex1_s5 from '/img/instruments/videomancer/engraver/engraver_ex1_s5.png';
-import engraver_ex1_s6 from '/img/instruments/videomancer/engraver/engraver_ex1_s6.png';
-import engraver_ex2_s1 from '/img/instruments/videomancer/engraver/engraver_ex2_s1.png';
-import engraver_ex2_s2 from '/img/instruments/videomancer/engraver/engraver_ex2_s2.png';
-import engraver_ex2_s3 from '/img/instruments/videomancer/engraver/engraver_ex2_s3.png';
-import engraver_ex2_s4 from '/img/instruments/videomancer/engraver/engraver_ex2_s4.png';
-import engraver_ex2_s5 from '/img/instruments/videomancer/engraver/engraver_ex2_s5.png';
-import engraver_ex2_s6 from '/img/instruments/videomancer/engraver/engraver_ex2_s6.png';
-import engraver_ex3_s1 from '/img/instruments/videomancer/engraver/engraver_ex3_s1.png';
-import engraver_ex3_s2 from '/img/instruments/videomancer/engraver/engraver_ex3_s2.png';
-import engraver_ex3_s3 from '/img/instruments/videomancer/engraver/engraver_ex3_s3.png';
-import engraver_ex3_s4 from '/img/instruments/videomancer/engraver/engraver_ex3_s4.png';
-import engraver_ex3_s5 from '/img/instruments/videomancer/engraver/engraver_ex3_s5.png';
-import engraver_ex3_s6 from '/img/instruments/videomancer/engraver/engraver_ex3_s6.png';
-
-# Engraver
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: engraver_source1_boat, after: engraver_hero_s1 },
-    { label: "Skull", before: engraver_source2_skull, after: engraver_hero_s2 },
-    { label: "Collage", before: engraver_source3_collage, after: engraver_hero_s3 },
-    { label: "Pattern", before: engraver_source4_pattern, after: engraver_hero_s4 },
-    { label: "Boy", before: engraver_source5_boy, after: engraver_hero_s5 },
-    { label: "Paint", before: engraver_source6_paint, after: engraver_hero_s6 },
-  ]}
-/>
-*Engraver reducing a video signal to flat posterized regions bounded by crisp edge lines, evoking intaglio printmaking and cartoon cel-shading.*
+![Engraver hero image](/img/instruments/videomancer/engraver/engraver_hero_s1.png)
+*Engraver carving crisp contour lines from a posterized video source, reducing the image to flat tonal bands separated by sharp drawn edges like an etched copper plate.*
 
 ---
 
 ## Overview
 
-In traditional engraving, a craftsman cuts lines into a metal plate. Ink fills the grooves, and the flat surface is wiped clean — so the printed image is made entirely of lines. Engraver applies this concept to a live video signal. It reduces the tonal range of each YUV channel to a small number of discrete levels (posterization), then detects the boundaries between those levels and draws explicit edge lines over the quantized fill. The result sits somewhere between a cartoon cel, a vintage line engraving, and a screen-printed poster.
+**Engraver** combines two foundational image processing techniques: ***posterization*** and ***edge detection***: to produce effects that range from cartoon cel-shading to the dense linework of an etched copper plate. The posterization stage reduces all three video channels to a programmable number of discrete levels, collapsing smooth gradients into flat bands of color. The edge detection stage then compares each pixel to its immediate horizontal neighbor, drawing a contour line wherever pixel values cross a quantization boundary.
 
-The name *Engraver* references the intaglio printmaking family — etching, engraving, mezzotint — where the image is defined by incised lines rather than continuous tone. Unlike photographic reproduction, where the goal is smoothness, engraving embraces the discrete nature of its medium. Engraver does the same thing with digital video: it makes quantization visible, then draws the boundaries it creates.
+The interplay between these two stages is the heart of Engraver. Coarse quantization creates large flat regions with a few bold contour lines: the clean outlines of an animated cartoon. Fine quantization preserves more tonal steps and scatters edge lines across the frame, imitating the dense hatching of an engraved plate. Independent controls for edge brightness, edge color, fill style, and chroma removal let you shape the final image into anything from a monochrome pen-and-ink illustration to a vivid neon wireframe.
 
-At mild settings the effect is a subtle cel-shaded look — flat-shaded regions with thin dark outlines, like a hand-drawn animation cel. At extreme settings the image collapses to a handful of color bands separated by bold graphic lines, approaching the look of a woodblock print or a technical diagram.
+:::tip
+Start with a low number of quantization levels and the contour lines will leap out immediately. Fewer levels produce fewer: but bolder: edge lines.
+:::
+
+### What's In a Name?
+
+An ***engraver*** is a craftsperson who carves lines into a surface: traditionally a polished copper plate: to create an image defined entirely by incised marks. When the plate is inked and pressed to paper, the carved grooves hold pigment while the flat surface wipes clean, so the printed image is built from lines alone. Engraver applies the same principle to video: it finds the natural contour boundaries of the quantized image and draws them over a simplified fill, producing results that evoke copperplate engravings, woodcut illustrations, and cel-shaded animation.
 
 ---
 
 ## Quick Start
 
-1. **Fewer levels = bolder lines**: Reducing the quantization depth creates wider tonal bands with edges at each boundary. Two or four levels produce dramatic bold outlines; 32 or more levels produce fine, hair-like lines.
-2. **Edge brightness is your line weight**: Edge Y (Pot 4) controls perceived line weight. Low values give thin, subtle lines that blend into dark fills. High values create bold, high-contrast outlines.
-3. **Colored edges emulate ink tints**: Setting Edge U and Edge V away from center tints the edge lines — sepia for warm, cyan for cool — while the fill can remain monochrome (with Desaturate on) for an authentic printed-engraving look.
+1. Feed a video source with clear shapes: a face, a hand, or geometric objects work well. Turn **Y Levels** (Knob 1) counter-clockwise to reduce the number of quantization levels. Watch as smooth gradients collapse into flat brightness bands. Fine contour lines appear at the boundaries between bands: these are the detected edges.
+2. Increase **U Levels** (Knob 2) to brighten the contour lines. At low values the edges are dim or invisible; at high values they burn bright across the image.
+3. Set **Desaturate** (Switch 9) to **On**. The fill regions vanish, leaving only the extracted contour lines on a black background (a pure line drawing carved from the video.)
+4. Pull **Mix** (Fader 12) down from 100% to blend the line drawing back over the unprocessed source, creating an overlay effect where edges are inscribed onto the original footage.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Engraver loaded](/img/instruments/videomancer/engraver/engraver_control_panel.png)
+*Videomancer's front panel with Engraver active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Y Levels
+
+| Property | Value |
+|----------|-------|
+| Range | 2 – 32 |
+| Default | 10 |
+
+**Y Levels** controls the quantization depth applied to all three video channels simultaneously. Turning it counter-clockwise reduces the number of distinct tonal levels, collapsing smooth gradients into hard-edged bands of flat color. At the minimum setting, the image is crushed to just two stark levels. Turning it clockwise restores tonal steps; at the maximum, hundreds of discrete levels are available and the image closely tracks the original.
+
+Because quantization depth directly determines where contour boundaries fall, this control also governs the density and placement of edge lines. Fewer levels mean fewer, bolder lines. More levels scatter finer lines across the frame.
+
+---
+
+### Knob 2 — U Levels
+
+| Property | Value |
+|----------|-------|
+| Range | 2 – 32 |
+| Default | 10 |
+
+**U Levels** controls the luminance of detected edge pixels. At the minimum, edge lines are black and invisible against a dark fill. As the value increases, edge pixels grow progressively brighter, making the contour lines more visible and dominant. At the maximum, edge lines render at peak brightness.
+
+This control has no effect on fill regions between edges (it adjusts only the brightness of edge pixels themselves.)
+
+:::tip
+Think of **U Levels** as the "ink darkness" on the engraved plate. Turn it up to make the carved lines stand out; turn it down for subtle, barely visible contours.
+:::
+
+---
+
+### Knob 3 — V Levels
+
+| Property | Value |
+|----------|-------|
+| Range | 2 – 32 |
+| Default | 10 |
+
+**V Levels** sets the luminance of the fill region when flat fill mode is active (see **Edge Invert**, Switch 8). At the minimum, the fill is black regardless of the input. At the maximum, the fill is a bright, uniform tone. When flat fill mode is disabled: the default: this control has no visible effect because the fill uses the quantized input values instead.
+
+---
+
+### Knob 4 — Edge Y
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Edge Y** sets the U (blue-difference) chrominance of the fill in flat fill mode. At the minimum, the fill's blue-difference component is at its lowest. Turning clockwise shifts the fill color along the blue-orange axis. This control only affects the output when flat fill mode is engaged via **Edge Invert** (Switch 8).
+
+---
+
+### Knob 5 — Edge U
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Edge U** sets the V (red-difference) chrominance of the fill in flat fill mode. At the default midpoint, the fill's red-difference component is neutral. Turning counter-clockwise shifts toward green; turning clockwise shifts toward magenta. Combined with **Edge Y** (Knob 4), these two knobs let you dial in any fill color when flat fill mode is active.
+
+---
+
+### Knob 6 — Edge V
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Edge V** tints the edge lines with color. At its midpoint, edge lines are neutral: pure grayscale with no chrominance. Turning the knob away from center adds a complementary-color tint: one direction pushes the hue toward warm tones, the other toward cool tones. The farther from center, the more saturated the edge color becomes.
+
+:::tip
+To create a colored wireframe on a black background, engage **Desaturate** (Switch 9) for edge-only mode, set **U Levels** (Knob 2) for edge brightness, and adjust **Edge V** (Knob 6) to tint the lines.
+:::
+
+---
+
+### Switch 7 — Edge Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Fill+Edge |
+| On | Edge Only |
+| Default | Fill+Edge |
+
+**Edge Mode** controls whether the input luminance is inverted before processing. In its default position (**Fill+Edge**), the luminance channel passes through normally. When set to **Edge Only**, the luminance is bitwise-inverted: bright becomes dark and dark becomes bright: before quantization and edge detection occur. Because edge positions depend on where quantized values change, inverting the luma shifts the contour lines to different locations in the image, producing an alternate version of the line drawing.
+
+---
+
+### Switch 8 — Edge Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Edge Invert** selects the fill style for non-edge regions. When **Off**, the fill uses the quantized version of the input video: you see flat posterized bands in the colors of the original source. When **On**, the fill switches to a uniform flat color determined by **V Levels** (Knob 3), **Edge Y** (Knob 4), and **Edge U** (Knob 5). This flat fill mode is useful for creating clean graphic looks where contour lines stand out against a solid-color background.
+
+---
+
+### Switch 9 — Desaturate
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Desaturate** enables edge-only mode. When **Off**, both the fill regions and the edge lines are visible. When **On**, the fill regions are replaced with black and neutral chroma, and only the edge lines remain: a pure line drawing on a dark canvas. This mode isolates the contour lines entirely.
+
+:::note
+**Desaturate** overrides the fill mode selected by **Edge Invert** (Switch 8). When Desaturate is On, the fill is always black regardless of the fill mode setting.
+:::
+
+---
+
+### Switch 10 — Link Levels
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Link Levels** removes all chrominance from the quantized fill, producing a grayscale posterized image. When **Off**, the quantized fill preserves the original color information. When **On**, the U and V channels are replaced with neutral gray, leaving only the brightness structure of the quantized image.
+
+This control affects only the quantized fill mode (the default). In flat fill mode (**Edge Invert** On) or edge-only mode (**Desaturate** On), this control has no visible effect because those modes override the quantized fill.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input directly to the output, skipping all processing stages. The sync timing pipeline still runs, so there is no glitch when toggling. Use Bypass for instant A/B comparison between the raw input and the processed result.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the original (dry) input and the processed (wet) output. At the minimum, the output is 100% dry: the original video passes through untouched. At the maximum, the output is 100% wet: the fully processed signal. Intermediate positions blend the two, which is useful for subtly overlaying contour lines onto the unprocessed source or softening the effect's intensity.
 
 ---
 
 ## Background
 
-### The Intaglio Family
-
-Intaglio printing (from the Italian *intagliare*, "to cut") is a family of printmaking techniques in which the image is incised into a surface. Engraving uses a burin to cut V-shaped grooves directly into a copper or steel plate. Etching uses acid to bite lines into a wax-coated plate. Mezzotint roughens the entire plate surface and then smooths areas to create tone. In all cases the image is defined by the relationship between incised lines and flat surfaces — precisely the relationship Engraver creates by combining quantization with edge detection.
-
-### Cel-Shading in Animation
-
-Traditional animation cels use a small number of flat color regions bounded by ink outlines. The animator draws the outlines first, then fills the enclosed regions with uniform paint. Engraver reverses this workflow but arrives at a similar look: it quantizes the video to create flat regions, then extracts and overlays the boundaries. The fill-plus-edge model is a direct digital analogue of the ink-and-paint process.
-
 ### Posterization and Quantization
 
-Posterization is the reduction of a continuous-tone image to a limited number of discrete tonal levels. The name comes from poster printing, where cost constraints limit the number of ink colors. Mathematically, posterization is uniform scalar quantization: the input range is divided into equal bins, and every value in a bin maps to the same output level. Engraver implements this with a bit-shift operation — right-shifting to discard low-order bits, then left-shifting to restore scale — which divides the 10-bit range into 2, 4, 8, 16, 32, 64, 128, 256, or 512 uniform levels.
+When the continuous range of pixel values is forced into a smaller set of discrete steps, the result is called ***posterization***. Named after the flat, limited-color aesthetic of block-printed posters, this technique collapses smooth gradients into bands of uniform tone. Engraver's quantization stage works by masking the lower bits of each pixel value, rounding it down to the nearest power-of-two step. The number of surviving levels is always a power of two: 2, 4, 8, 16, 32, 64, 128, 256, or 512: depending on how many bits are discarded.
 
-### Horizontal Edge Detection
+Posterization is applied identically to all three YUV channels. Luminance and both chrominance components are quantized by the same depth, creating a unified flat-shaded look where color transitions simplify alongside brightness transitions.
 
-Edge detection identifies boundaries where a signal changes abruptly. Engraver uses the simplest possible edge detector: a one-pixel horizontal delay. If the quantized value of the current pixel differs from the quantized value of the previous pixel, an edge is declared. Because the input has already been quantized to a small number of levels, the edges are guaranteed to be clean single-pixel lines at every level boundary — no thresholding or gradient magnitude computation is needed. This horizontal-only detection produces vertical edge lines (at the boundaries of horizontal level transitions), which gives the output its characteristic engraved-line quality.
+### Edge Detection by Adjacency
 
-### Line Art and Contour Rendering
+Engraver uses a simple, efficient form of ***edge detection***. Each quantized pixel is compared to the pixel that arrived one clock cycle earlier: its immediate horizontal neighbor. If any of the three quantized channels (Y, U, or V) differ between the two pixels, the current pixel is flagged as an edge. This method finds horizontal transitions only: wherever the image crosses a quantization boundary from left to right, a contour line is drawn.
 
-Contour rendering in computer graphics refers to drawing lines only at the silhouettes and creases of a 3D surface. Non-photorealistic rendering (NPR) research has explored many variations — variable-width contours, hatching, stippling. Engraver's edge-only mode is a real-time video analogue of contour rendering: it extracts the level boundaries and discards everything else, leaving only the line drawing.
+Because edges are detected on the quantized signal rather than the original, the density of contour lines is directly tied to the quantization depth. Fewer quantization levels mean fewer boundaries to cross, producing bold, sparse outlines. Many quantization levels scatter thin lines across the image, creating a dense, hatched texture reminiscent of engraved illustrations.
+
+### Composition Priority
+
+Engraver composes its output pixel by pixel using a priority chain:
+
+1. **Edge pixels** always take visual precedence. If a pixel is flagged as an edge, it receives a brightness set by the edge gain control and a chrominance tint set by the edge color control.
+2. **Edge-only mode** is checked next. If active, non-edge pixels are replaced with black.
+3. **Flat fill mode** is checked next. If active, non-edge pixels receive a uniform fill color.
+4. **Quantized fill** is the default. Non-edge pixels retain their quantized channel values, with optional chrominance removal.
+
+This priority chain means edge pixels always dominate, and edge-only mode always overrides the fill style.
 
 
 ---
 
 ## Signal Flow
 
-Input Register → Quantization → Edge Detection → Compose Output
+### Signal Flow Notes
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Stage 1: Input Register ────────────────────────────────────
-│   ├─ Y: optional luma invert (bitwise complement)
-│   ├─ U: pass-through
-│   └─ V: pass-through
-│
-├── Stage 2: Quantization ──────────────────────────────────────
-│   ├─ Single shift amount derived from Levels parameter
-│   ├─ Y: right-shift then left-shift (mask lower bits)
-│   ├─ U: same shift amount as Y
-│   ├─ V: same shift amount as Y
-│   └─ Store previous quantized values (1-pixel delay)
-│
-├── Stage 3: Edge Detection ────────────────────────────────────
-│   ├─ Compare current quantized Y vs previous quantized Y
-│   ├─ Compare current quantized U vs previous quantized U
-│   ├─ Compare current quantized V vs previous quantized V
-│   └─ edge_any = Y_edge OR U_edge OR V_edge
-│
-├── Stage 4: Compose Output ────────────────────────────────────
-│   ├─ If edge_any:
-│   │   ├─ Y = Edge Gain parameter
-│   │   ├─ UV = Edge Color displacement from neutral (512)
-│   │   └─ (edge pixel overrides fill)
-│   ├─ Elif Edge Only mode:
-│   │   ├─ Y = 0 (black)
-│   │   └─ UV = 512 (neutral)
-│   ├─ Elif Fill Mode (flat):
-│   │   ├─ Y = Y Fill parameter
-│   │   └─ UV = U Fill / V Fill parameters
-│   └─ Else (quantized fill):
-│       ├─ Y = quantized Y
-│       └─ UV = quantized UV (or 512 if Chroma Kill)
-│
-├── Stage 5–8: Interpolator ×3 (wet/dry mix) ──────────────────
-│   ├─ Y: lerp(dry_Y, comp_Y, mix_amount)
-│   ├─ U: lerp(dry_U, comp_U, mix_amount)
-│   └─ V: lerp(dry_V, comp_V, mix_amount)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ Pass-through (hsync, vsync, field — delayed 8 clocks)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select delayed original or processed signal
-```
+Two key facts about Engraver's processing order:
 
-The critical design choice is that all three YUV channels share a single quantization shift amount derived from the Levels parameter. This means edge boundaries align across channels — a level change in Y always co-occurs with the same spatial boundary in U and V. The edge detector fires when *any* channel's quantized value differs from its predecessor, so edges appear at the union of all three channel boundaries.
+1. **Quantization feeds edge detection.** The edge detector operates on the quantized output, not the original input. Edge lines always fall exactly on quantization boundaries. Changing the quantization depth with **Y Levels** (Knob 1) moves and redraws the contour lines (they are not independent of the posterization.)
 
-The compose stage uses a strict priority: edge pixels always win over fill. This guarantees that edge lines are never obscured by the fill — exactly as in traditional engraving, where the incised line is always visible against the wiped plate surface.
+2. **Luma inversion is the first step.** When **Edge Mode** is set to **Edge Only**, the luminance channel is inverted before the quantizer sees it. This changes the values entering the quantizer, which shifts where quantization boundaries fall, which changes the positions of every contour line. All downstream stages: quantization, edge detection, and composition: see a different image.
+
+:::tip
+**Edge density = quantization depth.** The single most powerful control in Engraver is **Y Levels** (Knob 1). Sweeping it from low to high takes the output from bold cartoon outlines to fine engraved hatching.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={engraver_control_panel} alt="Videomancer front panel with Engraver loaded"/>
-*Videomancer's front panel with Engraver active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Y Levels
-| Property | Value |
-|----------|-------|
-| Range | 2 – 32 |
-| Default | 10 |
-
-Controls the quantization depth applied uniformly to all three YUV channels. The 10-bit register is divided into nine zones, each selecting a different bit-shift amount. At minimum, only two levels remain — the image becomes a stark black-and-white silhouette. At maximum, 512 levels are retained and quantization is nearly invisible. The sweet spot for a visible engraving effect is typically between 4 and 16 levels, where posterization bands are clearly visible and edge lines mark every transition.
-
----
-
-#### Knob 2 — U Levels
-| Property | Value |
-|----------|-------|
-| Range | 2 – 32 |
-| Default | 10 |
-
-Controls the quantization depth for the U (blue-difference) chrominance channel. The firmware maps the Y Levels, U Levels, and V Levels pots to different VHDL registers, but the VHDL internally uses only a single Levels register (reg 0) for all three channels. When Link Levels is engaged, the three knobs track together. When disengaged, only Pot 1 controls the actual quantization depth — Pots 2 and 3 have no effect on the quantization shift in the current VHDL implementation.
-
----
-
-#### Knob 3 — V Levels
-| Property | Value |
-|----------|-------|
-| Range | 2 – 32 |
-| Default | 10 |
-
-Controls the quantization depth for the V (red-difference) chrominance channel. As with U Levels, this parameter feeds VHDL register 2 (V Fill), which sets the flat-fill V brightness rather than an independent quantization level. The per-channel level labels in the TOML provide future expansion points for independent channel quantization.
-
----
-
-#### Knob 4 — Edge Y
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-At zero, edge lines are black — dark grooves against lighter fill, like an etched copper plate. At maximum, edge lines are bright white — light lines against darker fill, resembling chalk on a blackboard or a photographic negative of an engraving. The edge brightness applies uniformly to all detected edge pixels regardless of which channel triggered the detection. Internally, sets the luminance brightness of edge pixels.
-
----
-
-#### Knob 5 — Edge U
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Sets the chrominance displacement of edge pixels along the U axis. At the 50% midpoint (register 512), edges are chromatically neutral. Turning the knob below center pushes edge color toward yellow; above center pushes toward blue. Combined with Edge V, this creates colored edge lines — a tinted-ink effect reminiscent of sepia or cyanotype printing.
-
----
-
-#### Knob 6 — Edge V
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Sets the chrominance displacement of edge pixels along the V axis. At the 50% midpoint, edges are neutral. Below center shifts toward cyan-green; above center shifts toward red-magenta. Together with Edge U, the two chroma controls let you dial in any edge line hue — gold, copper, blue-black, or any intermediate tint.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Edge Mode** | Fill+Edge | Edge Only |
-| **8 — Edge Invert** | Off | On |
-| **9 — Desaturate** | Off | On |
-| **10 — Link Levels** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggles partition into three functional groups. Toggles 7 and 8 control the fill-versus-edge composition: Edge Mode selects between showing fill with edge overlay or edges only, while Edge Invert swaps the luminance polarity of the input before quantization. Toggle 9 (Desaturate) kills chroma on the fill, and Toggle 10 (Link Levels) is a firmware-level feature linking the three level knobs. Toggle 11 is the standard bypass switch.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the fully processed (wet) output. At 0% the original signal passes through unchanged. At 100% the full engraving effect is applied. Intermediate values blend the two, which can produce a subtle embossed or relief look where the original image shows through the quantized regions with faint edge lines overlaid.
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Engraver processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These three exercises progress from basic posterization to full engraved line art, building familiarity with the interaction between quantization depth, edge detection, and fill composition.
-
+These exercises progress from a simple cartoon look to a detailed etching and finally to a colorized contour map. Each one builds on the previous, engaging more of Engraver's control surface.
 ### Exercise 1: Cartoon Cel-Shading
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: engraver_source1_boat, after: engraver_ex1_s1 },
-    { label: "Skull", before: engraver_source2_skull, after: engraver_ex1_s2 },
-    { label: "Collage", before: engraver_source3_collage, after: engraver_ex1_s3 },
-    { label: "Pattern", before: engraver_source4_pattern, after: engraver_ex1_s4 },
-    { label: "Boy", before: engraver_source5_boy, after: engraver_ex1_s5 },
-    { label: "Paint", before: engraver_source6_paint, after: engraver_ex1_s6 },
-  ]}
-/>
+![Cartoon Cel-Shading result](/img/instruments/videomancer/engraver/engraver_ex1_s1.png)
 *Cartoon Cel-Shading — simulated result across source images.*
-**Source**: A camera feed or recorded footage with a human face or recognizable subject against a medium-contrast background.
+#### Exercise Illustration
 
-**What You'll Create**: Create a classic cel-shaded animation look with flat-colored regions bounded by dark outlines.
+***A description of the exercise illustration.***
 
-1. **Set quantization**: Turn Y Levels (Pot 1) to roughly 25% — about 8 visible tonal bands. The image should look like a poster with distinct flat regions.
-2. **Dark edges**: Set Edge Y (Pot 4) to about 10% for thin dark outlines at every level boundary.
-3. **Neutral edge color**: Center Edge U (Pot 5) and Edge V (Pot 6) at 50% for black edge lines.
-4. **Full color fill**: Ensure Desaturate (Toggle 9) is Off and Edge Mode (Toggle 7) is Fill+Edge.
-5. **Observe**: The output should resemble a hand-drawn animation cel — flat-shaded skin tones, hair, and background with ink outlines at every tonal transition.
-6. **Adjust levels**: Sweep Y Levels to see how more levels create subtle shading while fewer levels create bold graphic regions.
+#### Learning Outcomes
 
-**Key concepts**: Quantization creates flat regions, edge detection finds the boundaries between those regions, edge brightness controls line weight
+A cartoon cel-shaded version of live video with flat gray bands outlined by visible contour lines, resembling the bold outlines of a traditionally animated TV show.
 
----
+#### Key Concepts
 
-### Exercise 2: Copper Plate Engraving
+- Quantization creates flat tonal bands
+- Edge detection draws contour lines at band boundaries
+- Chroma kill creates a clean monochrome look
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: engraver_source1_boat, after: engraver_ex2_s1 },
-    { label: "Skull", before: engraver_source2_skull, after: engraver_ex2_s2 },
-    { label: "Collage", before: engraver_source3_collage, after: engraver_ex2_s3 },
-    { label: "Pattern", before: engraver_source4_pattern, after: engraver_ex2_s4 },
-    { label: "Boy", before: engraver_source5_boy, after: engraver_ex2_s5 },
-    { label: "Paint", before: engraver_source6_paint, after: engraver_ex2_s6 },
-  ]}
-/>
-*Copper Plate Engraving — simulated result across source images.*
-**Source**: A still photograph or slow-moving footage with fine detail — architecture, foliage, or textured fabrics.
+#### Video Source
 
-**What You'll Create**: Simulate the look of an intaglio copper plate print using desaturated fill with warm-tinted edge lines.
+A live camera feed or footage with recognizable subjects (faces, hands, or objects with clear silhouettes work best.)
 
-1. **Moderate quantization**: Set Y Levels to about 40% for 16–32 visible tonal bands — enough to preserve some modeling in the fill.
-2. **Bright edges**: Increase Edge Y (Pot 4) to about 70% for prominent white-on-dark edge lines.
-3. **Warm edge tint**: Set Edge U (Pot 5) to about 35% and Edge V (Pot 6) to about 65% for a warm sepia-copper edge hue.
-4. **Desaturate fill**: Enable Desaturate (Toggle 9) to make the fill monochrome. The colored edges stand out against the gray fill.
-5. **Invert test**: Toggle Edge Invert (Toggle 8) to see how the edge pattern changes when the luminance polarity flips.
-6. **Mix down**: Set Mix (Fader 12) to about 70% to blend some of the original image through the engraving.
+#### Steps
 
-**Key concepts**: Desaturation isolates edge color from fill color, warm edge tints simulate copper-plate ink, mix blending creates relief effects
+1. Feed video into Videomancer and select the **Engraver** program.
+2. Turn **Y Levels** (Knob 1) to about three-quarters clockwise. The image posterizes into several distinct brightness bands. Fine contour lines appear at the boundaries.
+3. Raise **U Levels** (Knob 2) to roughly one-third. Edge lines become visible as dim contours overlaid on the posterized fill.
+4. Turn on **Link Levels** (Switch 10). The image desaturates to grayscale, giving a clean inkwash look with contour lines separating each brightness band.
+5. Experiment with **Y Levels** to taste: turning it lower reduces the band count and makes the contour lines bolder and fewer.
 
----
+#### Settings
 
-### Exercise 3: Pure Line Drawing
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: engraver_source1_boat, after: engraver_ex3_s1 },
-    { label: "Skull", before: engraver_source2_skull, after: engraver_ex3_s2 },
-    { label: "Collage", before: engraver_source3_collage, after: engraver_ex3_s3 },
-    { label: "Pattern", before: engraver_source4_pattern, after: engraver_ex3_s4 },
-    { label: "Boy", before: engraver_source5_boy, after: engraver_ex3_s5 },
-    { label: "Paint", before: engraver_source6_paint, after: engraver_ex3_s6 },
-  ]}
-/>
-*Pure Line Drawing — simulated result across source images.*
-**Source**: High-contrast footage — text on a screen, geometric objects, or a high-contrast face lit from the side.
-
-**What You'll Create**: Extract only edge lines with no fill, producing a contour line drawing.
-
-1. **Coarse quantization**: Set Y Levels to about 15% for very few levels — bold, widely-spaced level transitions produce thick line clusters.
-2. **Edge Only mode**: Switch Edge Mode (Toggle 7) to Edge Only. The fill disappears, replaced by black.
-3. **Bright white edges**: Set Edge Y (Pot 4) to 100% for maximum brightness edge lines.
-4. **Add edge color**: Sweep Edge U and Edge V away from center to tint the lines — try blue (Edge U high, Edge V low) for a blueprint look.
-5. **Invert**: Toggle Edge Invert (Toggle 8). The edges now appear at different spatial locations because the inverted luminance quantizes differently.
-6. **Sweep levels**: Slowly increase Y Levels. Watch the line drawing gain more detail as more quantization boundaries appear.
-
-**Key concepts**: Edge Only mode discards fill to isolate contour lines, fewer quantization levels produce fewer but bolder edges, inversion changes which boundaries are detected
+| Control | Value |
+|---------|-------|
+| Y Levels | ~25 |
+| U Levels | ~10 |
+| V Levels | ~8 |
+| Edge Y | 0.0% |
+| Edge U | 50.0% |
+| Edge V | 50.0% |
+| Edge Mode | Fill+Edge |
+| Edge Invert | Off |
+| Desaturate | Off |
+| Link Levels | On |
+| Bypass | Off |
+| Mix | 100.0% |
 
 ---
 
+### Exercise 2: Copper Plate Etching
 
-## Tips
+![Copper Plate Etching result](/img/instruments/videomancer/engraver/engraver_ex2_s1.png)
+*Copper Plate Etching — simulated result across source images.*
+#### Exercise Illustration
 
-- **Horizontal-only edges give vertical lines**: The edge detector compares each pixel with its left neighbor. This means it detects *horizontal transitions*, which produce *vertical edge lines*. Diagonal and horizontal structures in the source create the densest line patterns.
-- **Edge Only for contour extraction**: Edge Only mode (Toggle 7) discards the fill entirely, leaving a pure line drawing on black. This is useful as a key source or overlay layer in a multi-program video chain.
-- **Invert before quantizing**: Edge Invert flips luminance *before* the quantizer sees it, so the set of pixels assigned to each level changes. This repositions every edge in the image — a fast way to explore alternative line compositions from the same source.
-- **Mix for embossed relief**: Setting Mix to 50–70% blends the original image underneath the engraved result, creating a raised-relief or embossed appearance where the original texture shows through the flat quantized regions.
-- **Feedback creates recursive contours**: Routing the output back to the input re-quantizes the already-quantized signal. With enough feedback gain, edges accumulate into dense interference patterns.
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A dense network of contour lines on a dark background imitating the line-dense aesthetic of a traditional copperplate etching or engraving print.
+
+#### Key Concepts
+
+- Edge-only mode isolates contour lines on a black background
+- Finer quantization creates denser linework
+- Mixing dry signal with edge extraction creates overlay effects
+
+#### Video Source
+
+Footage with rich textures and tonal variation (fabric, foliage, architectural details, or skin.)
+
+#### Steps
+
+1. Turn **Y Levels** (Knob 1) fully clockwise for maximum quantization depth. Many fine contour lines emerge across the frame.
+2. Set **U Levels** (Knob 2) to about three-quarters. The lines are bright and crisp.
+3. Turn on **Desaturate** (Switch 9). The fill regions disappear, leaving only the edge lines on black (a pure line drawing.)
+4. Adjust **Edge V** (Knob 6) slightly below center to tint the lines with a cool copper-like hue. Return to center for neutral white lines.
+5. Pull **Mix** (Fader 12) down to about 70%. The original image bleeds through behind the line drawing, creating a ghostly overlay where the engraved lines are inscribed onto a faint version of the source.
+6. Slowly reduce **Y Levels** and watch the linework go from dense hatching to bold contours.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Y Levels | 32 |
+| U Levels | ~23 |
+| V Levels | ~13 |
+| Edge Y | 50.0% |
+| Edge U | 65.0% |
+| Edge V | 30.0% |
+| Edge Mode | Fill+Edge |
+| Edge Invert | Off |
+| Desaturate | On |
+| Link Levels | On |
+| Bypass | Off |
+| Mix | 70.0% |
 
 ---
 
+### Exercise 3: Neon Contour Map
+
+![Neon Contour Map result](/img/instruments/videomancer/engraver/engraver_ex3_s1.png)
+*Neon Contour Map — simulated result across source images.*
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+A vivid, color-tinted contour map: bright colored edge lines drawn over a solid-color flat fill, with inverted luma for unexpected contour placement.
+
+#### Key Concepts
+
+- Flat fill mode creates a uniform background for contour lines
+- Edge color tints the extracted lines with chrominance
+- Luma inversion shifts the contour positions for an alternate line drawing
+
+#### Video Source
+
+Any footage with interesting shapes: dancers or athletes work well because their movement continuously redraws the contour map in real time.
+
+#### Steps
+
+1. Set **Y Levels** (Knob 1) to about half for moderate quantization (a balance between bold and fine linework.)
+2. Set **U Levels** (Knob 2) to about three-quarters for bright, prominent edge lines.
+3. Turn on **Edge Invert** (Switch 8) to activate flat fill mode. The regions between edges snap to a uniform color.
+4. Set **V Levels** (Knob 3) to a low value for a dim background. Adjust **Edge Y** (Knob 4) and **Edge U** (Knob 5) to choose the fill color (try a deep blue or dark green.)
+5. Rotate **Edge V** (Knob 6) well away from center to tint the contour lines. The farther from center, the more vivid the edge color.
+6. Toggle **Edge Mode** (Switch 7) to **Edge Only**. The luma inverts and the contour lines jump to new positions in the image, revealing an alternate map.
+7. Observe how movement redraws the neon contour map in real time.
+
+#### Settings
+
+| Control | Value |
+|---------|-------|
+| Y Levels | ~17 |
+| U Levels | ~25 |
+| V Levels | ~10 |
+| Edge Y | 30.0% |
+| Edge U | 70.0% |
+| Edge V | 20.0% |
+| Edge Mode | Edge Only |
+| Edge Invert | On |
+| Desaturate | Off |
+| Link Levels | Off |
+| Bypass | Off |
+| Mix | 100.0% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **BT.601** | ITU standard defining the color matrix used to convert between RGB and YUV in standard-definition video. Videomancer uses BT.601 coefficients throughout. |
-| **Cel** | A transparent sheet (cellulose acetate) used in traditional animation, painted with flat colors and overlaid on backgrounds. |
-| **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **Contour** | A line drawn at the boundary of a region; in NPR rendering, contour lines mark silhouettes and creases. |
-| **Edge Detection** | A signal processing technique that identifies abrupt transitions in value between adjacent samples. |
-| **Intaglio** | A family of printmaking techniques where the image is incised into a surface (engraving, etching, mezzotint). |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Posterization** | Reducing the number of distinct tonal levels in an image, creating flat areas of uniform color or brightness. |
-| **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels, producing visible steps in gradients. |
+- **Chroma**: The color information in a video signal, encoded as U (blue-difference) and V (red-difference) components in YUV color space.
+
+- **Contour Line**: A visible line drawn at the boundary where quantized pixel values change between two adjacent horizontal pixels.
+
+- **Edge Detection**: The process of identifying boundaries where pixel values change sharply; Engraver uses horizontal pixel-pair comparison on the quantized signal.
+
+- **Engraving**: A printmaking technique where lines are carved into a polished metal plate to hold ink, producing images built entirely from incised marks.
+
+- **Flat Fill**: A uniform color substituted for the quantized input in non-edge regions, controlled by brightness and chroma fill parameters.
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color.
+
+- **Posterization**: Reducing continuous tonal values to a limited set of discrete levels, creating flat areas of uniform color or brightness separated by hard transitions.
+
+- **Quantization**: Mapping a continuous range of values to a smaller set of fixed steps by discarding lower-order bits; the resolution of the staircase determines edge density.
+
+- **Wet/Dry Mix**: A crossfade between the processed output (wet) and the unprocessed input (dry), allowing partial blending of the effect.
 
 ---

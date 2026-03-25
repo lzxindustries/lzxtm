@@ -16,15 +16,15 @@ description: "Every video image is made of three things: how bright each pixel i
 
 **Lumarian** is a comprehensive color correction and edge enhancement program. It combines a traditional ***proc amp*** (contrast and brightness), adjustable ***gamma*** curve, variable-frequency ***edge enhancement***, saturation control, inversions, and luminance threshold keying into a single processing chain. Each stage feeds the next, so adjustments at one point in the chain ripple through all downstream stages.
 
-At subtle settings, Lumarian provides gentle color correction — a slight lift to contrast, a nudge to gamma, a touch of edge sharpening. At extreme settings, it becomes a dramatic image sculpting tool: crushed blacks, blazing highlights, razor-sharp edges folded into psychedelic shapes by the rectifier, and hard luminance keys that carve the image into bright islands floating in darkness.
+At subtle settings, Lumarian provides gentle color correction: a slight lift to contrast, a nudge to gamma, a touch of edge sharpening. At extreme settings, it becomes a dramatic image sculpting tool: crushed blacks, blazing highlights, razor-sharp edges folded into psychedelic shapes by the rectifier, and hard luminance keys that carve the image into bright islands floating in darkness.
 
 :::note
-Lumarian processes all three channels (Y, U, V) but its strongest personality lives in the luminance path. The six knobs sculpt brightness, contrast, tonal curves, and edge detail — the chroma controls complement that work without stealing focus.
+Lumarian processes all three channels (Y, U, V) but its strongest personality lives in the luminance path. The six knobs sculpt brightness, contrast, tonal curves, and edge detail: the chroma controls complement that work without stealing focus.
 :::
 
 ### What's In a Name?
 
-The name ***Lumarian*** blends ***luma*** — the brightness component of a video signal — with the suffix *-arian*, suggesting one who studies or practices an art. A lumarian is a practitioner of light. There's also a nod to ***luminary***, a source of light or inspiration, and a hint of the mythic — ancient civilizations that mastered the mysteries of illumination.
+The name ***Lumarian*** blends ***luma***: the brightness component of a video signal: with the suffix *-arian*, suggesting one who studies or practices an art. A lumarian is a practitioner of light. There's also a nod to ***luminary***, a source of light or inspiration, and a hint of the mythic: ancient civilizations that mastered the mysteries of illumination.
 
 ---
 
@@ -33,7 +33,7 @@ The name ***Lumarian*** blends ***luma*** — the brightness component of a vide
 1. Feed a video source and turn **Contrast** (Knob 1) clockwise past the midpoint. The image gains punch as shadows deepen and highlights bloom.
 2. Sweep **Gamma** (Knob 4) from one extreme to the other. Below center, midtones are crushed into shadow; above center, they are lifted toward brightness. Return to center for a neutral curve.
 3. Turn up **Edge Gain** (Knob 5) while slowly increasing **Edge Cutoff** (Knob 6). Fine edges appear as bright halos around contours in the image.
-4. Toggle **Luma Invert** (Switch 7). The entire luminance channel flips — what was bright becomes dark, and the edge enhancement and threshold stages respond to the inverted tones.
+4. Toggle **Luma Invert** (Switch 7). The entire luminance channel flips: what was bright becomes dark, and the edge enhancement and threshold stages respond to the inverted tones.
 
 ---
 
@@ -90,7 +90,7 @@ The saturation proc amp uses a fixed brightness offset of 512 (mid-scale), which
 | Range | -2.000 – 2.000 |
 | Default | 0.002 |
 
-**Gamma** reshapes the luminance transfer curve. The processing stage generates two curves from a shared squarer — an ***exponential curve*** (input squared) and a ***logarithmic curve*** (inverted squared complement) — and crossfades between them. At the center position (0.000), the two curves blend into a roughly linear response. Turning counterclockwise toward −2.000 applies the exponential curve, compressing midtones toward black. Turning clockwise toward 2.000 applies the logarithmic curve, lifting midtones toward white.
+**Gamma** reshapes the luminance transfer curve. The processing stage generates two curves from a shared squarer: an ***exponential curve*** (input squared) and a ***logarithmic curve*** (inverted squared complement): and crossfades between them. At the center position (0.000), the two curves blend into a roughly linear response. Turning counterclockwise toward −2.000 applies the exponential curve, compressing midtones toward black. Turning clockwise toward 2.000 applies the logarithmic curve, lifting midtones toward white.
 
 :::tip
 Gamma is the most powerful tonal control. A small adjustment around center yields natural-looking correction. Extreme values create dramatic contrast curves that reveal hidden detail in shadows or highlights.
@@ -132,7 +132,7 @@ High **Edge Gain** combined with low **Edge Cutoff** amplifies very fine detail 
 | On | On |
 | Default | Off |
 
-**Luma Invert** applies a bitwise complement to the luminance channel. When set to **On**, every pixel's brightness is flipped — bright becomes dark and dark becomes bright. This inversion occurs *after* the edge enhancement stage but *before* the threshold key, so it reverses the luminance values that the threshold compares against.
+**Luma Invert** applies a bitwise complement to the luminance channel. When set to **On**, every pixel's brightness is flipped: bright becomes dark and dark becomes bright. This inversion occurs *after* the edge enhancement stage but *before* the threshold key, so it reverses the luminance values that the threshold compares against.
 
 ---
 
@@ -144,7 +144,7 @@ High **Edge Gain** combined with low **Edge Cutoff** amplifies very fine detail 
 | On | On |
 | Default | Off |
 
-**Chroma Invert** applies a bitwise complement to both U and V chrominance channels simultaneously. When set to **On**, colors shift to their complementary hues — reds become cyan, blues become yellow, greens become magenta. Chroma inversion happens early in the pipeline, before the saturation proc amp, so the inverted colors are then scaled by the **Saturation** control.
+**Chroma Invert** applies a bitwise complement to both U and V chrominance channels simultaneously. When set to **On**, colors shift to their complementary hues: reds become cyan, blues become yellow, greens become magenta. Chroma inversion happens early in the pipeline, before the saturation proc amp, so the inverted colors are then scaled by the **Saturation** control.
 
 ---
 
@@ -168,7 +168,7 @@ High **Edge Gain** combined with low **Edge Cutoff** amplifies very fine detail 
 | On | On |
 | Default | Off |
 
-**Edge Rectify** enables full-wave rectification of the edge signal. When set to **On**, the rectifier folds the negative portion of the high-pass filter's output up to become positive, doubling the visible edge frequency — a "both sides of the edge" effect where every contour shows as a bright line regardless of the direction of the luminance transition.
+**Edge Rectify** enables full-wave rectification of the edge signal. When set to **On**, the rectifier folds the negative portion of the high-pass filter's output up to become positive, doubling the visible edge frequency: a "both sides of the edge" effect where every contour shows as a bright line regardless of the direction of the luminance transition.
 
 ---
 
@@ -180,7 +180,7 @@ High **Edge Gain** combined with low **Edge Cutoff** amplifies very fine detail 
 | On | Both |
 | Default | Single |
 
-**Edge Select** chooses between single-edge and dual-edge modes. When set to **Single**, the edge enhancement responds to only one polarity of luminance transition — either light-to-dark or dark-to-light depending on the **Edge Invert** setting. When set to **Both**, both polarities produce visible edge lines. This toggle modifies bit 2 of the 3-bit rectifier mode, enabling half-wave rectification behavior.
+**Edge Select** chooses between single-edge and dual-edge modes. When set to **Single**, the edge enhancement responds to only one polarity of luminance transition: either light-to-dark or dark-to-light depending on the **Edge Invert** setting. When set to **Both**, both polarities produce visible edge lines. This toggle modifies bit 2 of the 3-bit rectifier mode, enabling half-wave rectification behavior.
 
 ---
 
@@ -207,49 +207,24 @@ A ***processing amplifier***, or proc amp, is the most fundamental building bloc
 
 ### Gamma correction
 
-***Gamma*** describes the nonlinear relationship between signal value and perceived brightness. In the physical world, doubling the voltage in a CRT display more than doubles the brightness because the phosphor response follows a power law. Gamma correction compensates for this curve — or intentionally distorts it for creative effect.
+***Gamma*** describes the nonlinear relationship between signal value and perceived brightness. In the physical world, doubling the voltage in a CRT display more than doubles the brightness because the phosphor response follows a power law. Gamma correction compensates for this curve (or intentionally distorts it for creative effect.)
 
 Lumarian's gamma stage doesn't use a lookup table or a true power function. Instead, it approximates gamma curves algebraically by computing two shapes: an exponential curve (the input squared, which compresses midtones) and a logarithmic curve (the complement squared and subtracted from maximum, which expands midtones). A crossfade interpolator blends between these two curves based on the control value. The result is a smoothly adjustable transfer curve that reshapes the midtone distribution.
 
 ### Edge enhancement
 
-Edge enhancement, also called ***unsharp masking*** in photography, sharpens an image by emphasizing transitions between adjacent tonal regions. Lumarian extracts edges using a ***variable high-pass filter*** — a filter whose cutoff frequency is adjustable via the **Edge Cutoff** control. The high-pass output contains only the rapid transitions in the image. This edge signal is then shaped by a ***complex rectifier*** that can invert, half-wave rectify, or full-wave rectify the signal in eight combinations, and finally scaled by a ***differential multiplier*** controlled by **Edge Gain** before being blended back into the image.
+Edge enhancement, also called ***unsharp masking*** in photography, sharpens an image by emphasizing transitions between adjacent tonal regions. Lumarian extracts edges using a ***variable high-pass filter***: a filter whose cutoff frequency is adjustable via the **Edge Cutoff** control. The high-pass output contains only the rapid transitions in the image. This edge signal is then shaped by a ***complex rectifier*** that can invert, half-wave rectify, or full-wave rectify the signal in eight combinations, and finally scaled by a ***differential multiplier*** controlled by **Edge Gain** before being blended back into the image.
 
-### Signal Flow
 
-```
-Input Video (YUV 4:4:4)
-│
-├── Y Channel ──────────────────────────────────────────────────
-│   │
-│   ├─ 1. Proc Amp              (Contrast gain + Brightness offset)
-│   ├─ 2. Gamma                  (Exponential/Log curve crossfade)
-│   ├─ 3. Edge Enhance           (High-pass filter → Rectifier → Gain)
-│   │      ├─ Variable Filter    (adjustable cutoff, high-pass output)
-│   │      ├─ Rectifier          (8-mode: invert/half/full-wave)
-│   │      └─ Diff Multiplier    (edge gain blend with original)
-│   ├─ 4. Luma Invert            (optional bitwise complement)
-│   └─ 5. Threshold Key          (below threshold → black)
-│
-├── U/V Channels ───────────────────────────────────────────────
-│   │
-│   ├─ 1. Chroma Invert          (optional bitwise complement)
-│   ├─ 2. Saturation Proc Amp    (chroma gain, fixed offset at 512)
-│   ├─ 3. Delay                  (33-stage pipeline alignment)
-│   └─ 4. Threshold Key          (keyed to neutral when Y below cutoff)
-│
-├── Sync Signals ───────────────────────────────────────────────
-│   └─ 47-stage shift register delay + IO alignment
-│
-└── Output ─────────────────────────────────────────────────────
-    └─ 3-stage IO alignment registers → data_out
-```
+---
+
+## Signal Flow
 
 ### Signal Flow Notes
 
 Two key structural details:
 
-1. **Y path dominates latency.** The luminance chain passes through three heavyweight processing blocks — proc amp (9 cycles), gamma (squarer + interpolator, ~14 cycles), and edge enhance (filter + rectifier + multiplier, ~18 cycles) — for a total processing latency of roughly 47 clock cycles. The chroma channels are much shorter (invert + proc amp + delay), so a 33-stage delay line aligns U/V with the Y output. The sync path uses a matched 47-stage shift register.
+1. **Y path dominates latency.** The luminance chain passes through three heavyweight processing blocks: proc amp (9 cycles), gamma (squarer + interpolator, ~14 cycles), and edge enhance (filter + rectifier + multiplier, ~18 cycles): for a total processing latency of roughly 47 clock cycles. The chroma channels are much shorter (invert + proc amp + delay), so a 33-stage delay line aligns U/V with the Y output. The sync path uses a matched 47-stage shift register.
 
 2. **Edge enhancement is a parallel blend.** The enhance stage does not simply add edges to the signal. It runs the gamma output through a variable filter to extract high-frequency content, shapes it through the rectifier, then uses a differential multiplier to blend the shaped edge signal back with the original. When Edge Gain is zero, the original passes through unchanged. When Edge Gain is high, edges are amplified and added.
 
@@ -267,21 +242,33 @@ These exercises progress from basic color correction to creative edge sculpting.
 
 ![Classical Color Correction result](/img/instruments/videomancer/lumarian/lumarian_ex1_s1.png)
 *Classical Color Correction — simulated result across source images.*
-**Key Concepts**: - Contrast scales the tonal range; brightness shifts it
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Learn how the proc amp and gamma stages interact to achieve balanced color correction.
+
+#### Key Concepts
+
+- Contrast scales the tonal range; brightness shifts it
 - Gamma reshapes the midtone distribution without clipping
 - Saturation controls color intensity independently of luminance
 
-**What You'll Create**: Learn how the proc amp and gamma stages interact to achieve balanced color correction.
+#### Video Source
 
-**Source**: A live camera feed or recorded footage with a mix of shadow, midtone, and highlight areas.
+A live camera feed or recorded footage with a mix of shadow, midtone, and highlight areas.
 
-1. **Boost contrast**: Turn **Contrast** (Knob 1) clockwise to about 130%. The image gains dynamic range — shadows darken, highlights brighten.
+#### Steps
+
+1. **Boost contrast**: Turn **Contrast** (Knob 1) clockwise to about 130%. The image gains dynamic range (shadows darken, highlights brighten.)
 2. **Compensate brightness**: Adjust **Brightness** (Knob 2) slightly counterclockwise to bring the overall level back to a natural balance.
 3. **Lift midtones**: Turn **Gamma** (Knob 4) slightly clockwise (above center). Notice how shadow detail becomes visible without blowing out highlights.
 4. **Desaturate gently**: Reduce **Saturation** (Knob 3) to about 80%. Colors become more muted and filmic.
 5. **Compare**: Toggle each control back to its default position one at a time to hear the difference each correction makes.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -304,13 +291,25 @@ These exercises progress from basic color correction to creative edge sculpting.
 
 ![Edge Sculpting result](/img/instruments/videomancer/lumarian/lumarian_ex2_s1.png)
 *Edge Sculpting — simulated result across source images.*
-**Key Concepts**: - The high-pass filter extracts edges; cutoff controls their scale
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Explore the edge enhancement chain and its rectifier modes to create dramatic edge outlines.
+
+#### Key Concepts
+
+- The high-pass filter extracts edges; cutoff controls their scale
 - The rectifier shapes edge polarity; three toggles yield eight combinations
 - Edge gain blends enhanced edges back into the image
 
-**What You'll Create**: Explore the edge enhancement chain and its rectifier modes to create dramatic edge outlines.
+#### Video Source
 
-**Source**: Footage with strong contours — architectural shapes, faces, or high-contrast graphic patterns.
+Footage with strong contours: architectural shapes, faces, or high-contrast graphic patterns.
+
+#### Steps
 
 1. **Apply moderate contrast**: Set **Contrast** to about 120% and **Gamma** slightly above center to establish a clean tonal base.
 2. **Reveal edges**: Turn **Edge Gain** (Knob 5) to about 100%. Turn **Edge Cutoff** (Knob 6) to about 50%. Bright halos appear along contours.
@@ -319,7 +318,7 @@ These exercises progress from basic color correction to creative edge sculpting.
 5. **Invert edge polarity**: Toggle **Edge Invert** (Switch 9) to **On**. Edge halos become dark grooves. Toggle it back off and notice the difference.
 6. **Threshold carve**: Slowly increase **Luma Blank** (Fader 12) to about 40%. Only the brightest edge-enhanced regions survive, creating glowing outlines on black.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
@@ -342,13 +341,25 @@ These exercises progress from basic color correction to creative edge sculpting.
 
 ![Inverted Luminance Key result](/img/instruments/videomancer/lumarian/lumarian_ex3_s1.png)
 *Inverted Luminance Key — simulated result across source images.*
-**Key Concepts**: - Gamma extremes create dramatic contrast curves
+#### Exercise Illustration
+
+***A description of the exercise illustration.***
+
+#### Learning Outcomes
+
+Combine gamma curves, inversion, and threshold keying to create a luminance key mask.
+
+#### Key Concepts
+
+- Gamma extremes create dramatic contrast curves
 - Luma Invert flips the tonal map, changing what the threshold keeps
 - Chroma Invert shifts hues to their complements
 
-**What You'll Create**: Combine gamma curves, inversion, and threshold keying to create a luminance key mask.
+#### Video Source
 
-**Source**: High-contrast footage such as silhouettes, text on a background, or stage lighting.
+High-contrast footage such as silhouettes, text on a background, or stage lighting.
+
+#### Steps
 
 1. **Crush with gamma**: Turn **Gamma** (Knob 4) fully counterclockwise. Midtones collapse into shadows, leaving only the brightest highlights.
 2. **Boost contrast**: Set **Contrast** (Knob 1) to about 160% to amplify the stark gamma curve.
@@ -358,7 +369,7 @@ These exercises progress from basic color correction to creative edge sculpting.
 6. **Key threshold**: Increase **Luma Blank** (Fader 12) until only the desired tonal regions remain. With both inversions active, the threshold carves into the flipped image.
 7. **Adjust saturation**: Sweep **Saturation** (Knob 3) to tint the remaining key regions.
 
-**Settings**:
+#### Settings
 
 | Control | Value |
 |---------|-------|
