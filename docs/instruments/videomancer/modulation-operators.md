@@ -54,7 +54,9 @@ Manual Knob Position
 
 Each modulator updates once per video field (approximately 50 or 60 times per second depending on the video standard). Some operators also produce **per-line** output — a different value for every scanline within the field — which allows modulation to vary spatially across the frame.
 
-The **velocity gate** is an optional final stage that applies MIDI note velocity to the output. When a MIDI note-on targeting that modulator is active (note 0 for P1, note 1 for P2, etc.), the note's velocity value is added to the output. This allows MIDI keyboards and sequencers to influence modulation intensity dynamically — harder key strikes produce larger offsets. When no note is active, the velocity gate has no effect.
+The **velocity gate** is an optional final stage that applies MIDI note velocity to the output. When a MIDI note-on targeting that modulator is active (note 0 for P1, note 1 for P2, etc.), the note's velocity value scales the output. In linear mode, velocity is added to the output as an offset. In boolean mode, any active note with non-zero velocity forces the output to maximum (fully on). When no note is active, the velocity gate has no effect.
+
+> **Important**: The transport starts in the **stopped** state on power-up. Most operators produce no modulation output while the transport is stopped — only the manual knob position and MIDI CC offset are applied. Press the Play button or send a MIDI Start message to begin modulation. CV Input and Audio Input are the only operators that produce output regardless of transport state.
 
 ### The Three Parameters
 
@@ -81,49 +83,49 @@ Modulators operate in one of two output modes:
 
 ## Operator Reference
 
-The 39 operators are grouped by category below. Use this index to find an operator by its numeric ID:
+The 39 operators are grouped by category below. Use this index to find an operator by its numeric ID. The **Display** column shows the single-character indicator that appears on the Motion screen next to each modulator channel.
 
-| ID | Operator | Category | Per-line |
-|----|----------|----------|----------|
-| 0 | Disabled | — | — |
-| 1 | Free LFO | Oscillators | No |
-| 2 | Sync LFO | Oscillators | No |
-| 3 | CV Input | External Input | Yes |
-| 4 | Audio Input | External Input | Yes |
-| 5 | Random | Random & Chaos | No |
-| 6 | Envelope | Envelopes & Followers | No |
-| 7 | Sample & Hold | Envelopes & Followers | No |
-| 8 | Trigger Env | Envelopes & Followers | No |
-| 9 | Step Seq | Sequencing & Rhythm | No |
-| 10 | FFT Band | Envelopes & Followers | No |
-| 11 | H Displace | Spatial | Yes |
-| 12 | Turing Machine | Random & Chaos | No |
-| 13 | Bouncing Ball | Physics | No |
-| 14 | Logistic Map | Random & Chaos | No |
-| 15 | Euclidean Rhythm | Sequencing & Rhythm | No |
-| 16 | Motion LFO | Oscillators | No |
-| 17 | V Gradient | Spatial | Yes |
-| 18 | Comparator | Envelopes & Followers | Yes |
-| 19 | Pendulum | Physics | No |
-| 20 | Drift | Random & Chaos | No |
-| 21 | Ring Mod | External Input | Yes |
-| 22 | Cellular | Random & Chaos | No |
-| 23 | Pulse Width | Oscillators | No |
-| 24 | Peak Hold | Envelopes & Followers | Yes |
-| 25 | Field Accum | Envelopes & Followers | No |
-| 26 | Slew Limiter | Envelopes & Followers | No |
-| 27 | Perlin Noise | Random & Chaos | No |
-| 28 | Wavefolder | Oscillators | No |
-| 29 | Clock Div | Sequencing & Rhythm | No |
-| 30 | Prob Gate | Sequencing & Rhythm | No |
-| 31 | Quantizer | Envelopes & Followers | Yes |
-| 32 | Mouse | USB HID Input | No |
-| 33 | Keyboard | USB HID Input | No |
-| 34 | Gamepad | USB HID Input | No |
-| 35 | Tablet | USB HID Input | No |
-| 36 | Joystick | USB HID Input | No |
-| 37 | Sensor | USB HID Input | No |
-| 38 | MIDI Turing | Random & Chaos | No |
+| ID | Operator | Display | Category | Per-line |
+|----|----------|---------|----------|----------|
+| 0 | Disabled | `·` | — | — |
+| 1 | Free LFO | `L` | Oscillators | No |
+| 2 | Sync LFO | `S` | Oscillators | No |
+| 3 | CV Input | `C` | External Input | Yes |
+| 4 | Audio Input | `A` | External Input | Yes |
+| 5 | Random | `R` | Random & Chaos | No |
+| 6 | Envelope | `E` | Envelopes & Followers | No |
+| 7 | Sample & Hold | `H` | Envelopes & Followers | No |
+| 8 | Trigger Env | `T` | Envelopes & Followers | No |
+| 9 | Step Seq | `Q` | Sequencing & Rhythm | No |
+| 10 | FFT Band | `F` | Envelopes & Followers | No |
+| 11 | H Displace | `D` | Spatial (disabled) | No |
+| 12 | Turing Machine | `U` | Random & Chaos | No |
+| 13 | Bouncing Ball | `B` | Physics | No |
+| 14 | Logistic Map | `X` | Random & Chaos | No |
+| 15 | Euclidean Rhythm | `Y` | Sequencing & Rhythm | No |
+| 16 | Motion LFO | `M` | Oscillators | No |
+| 17 | V Gradient | `G` | Spatial (disabled) | No |
+| 18 | Comparator | `K` | Envelopes & Followers | Yes |
+| 19 | Pendulum | `N` | Physics | No |
+| 20 | Drift | `W` | Random & Chaos | No |
+| 21 | Ring Mod | `*` | External Input | Yes |
+| 22 | Cellular | `#` | Random & Chaos | No |
+| 23 | Pulse Width | `P` | Oscillators | No |
+| 24 | Peak Hold | `J` | Envelopes & Followers | Yes |
+| 25 | Field Accum | `I` | Envelopes & Followers | No |
+| 26 | Slew Limiter | `/` | Envelopes & Followers | No |
+| 27 | Perlin Noise | `~` | Random & Chaos | No |
+| 28 | Wavefolder | `Z` | Oscillators | No |
+| 29 | Clock Div | `V` | Sequencing & Rhythm | No |
+| 30 | Prob Gate | `?` | Sequencing & Rhythm | No |
+| 31 | Quantizer | `O` | Envelopes & Followers | Yes |
+| 32 | Mouse | `m` | USB HID Input | No |
+| 33 | Keyboard | `k` | USB HID Input | No |
+| 34 | Gamepad | `g` | USB HID Input | No |
+| 35 | Tablet | `t` | USB HID Input | No |
+| 36 | Joystick | `?` | USB HID Input | No |
+| 37 | Sensor | `?` | USB HID Input | No |
+| 38 | MIDI Turing | `?` | Random & Chaos | No |
 
 ### Oscillators
 
@@ -155,7 +157,7 @@ Passthrough. The modulator outputs the manual knob position plus any MIDI CC off
 
 **Per-line**: No
 
-A free-running low-frequency oscillator. This is the most straightforward modulation source — a repeating waveform at a controllable rate. The oscillator runs continuously regardless of transport state and does not lock to any external clock. It never resets unless you switch to a different operator and back.
+A low-frequency oscillator. This is the most straightforward modulation source — a repeating waveform at a controllable rate. The oscillator does not lock to any external clock, but it does respect transport state: it only runs while the transport is playing. When the transport stops, Free LFO resets its phase to zero. When the transport pauses, the output freezes at its current value. When playback resumes from a pause, the oscillator continues from where it left off; when playback starts from a stop, it begins fresh from phase zero.
 
 The eight waveshapes cover the fundamental periodic functions. Triangle and sine produce smooth, rounded motion. Square produces hard switching between two values (useful for toggling effects on and off rhythmically). Ramp and sawtooth produce asymmetric sweeps — one direction slow, the other instant. Logarithmic and exponential produce curves that spend more time near one extreme than the other. Parabola produces a rounded bounce shape.
 
@@ -173,7 +175,7 @@ The eight waveshapes cover the fundamental periodic functions. Triangle and sine
 
 **Per-line**: No
 
-A tempo-synced LFO whose speed is derived from the current BPM. Unlike Free LFO, this oscillator only advances when the transport is playing — it freezes when playback stops. The waveform stays in rhythmic relationship to the beat.
+A tempo-synced LFO whose speed is derived from the current BPM. Like Free LFO, this oscillator only advances when the transport is playing — its output drops to zero when the transport stops, and freezes at its current value when the transport pauses. The waveform stays in rhythmic relationship to the beat.
 
 The musical divisions are multiplicative: at 1/1 division, the oscillator completes one full cycle per bar. At 1/4, it completes four cycles per bar (quarter-note rate). At 4/1, it takes four bars to complete one cycle. Dotted divisions (3/2, 3/4, 3/8) and triplet divisions (1/3, 1/6) provide swing and polyrhythmic relationships.
 
@@ -191,9 +193,9 @@ The musical divisions are multiplicative: at 1/1 division, the oscillator comple
 
 **Per-line**: No
 
-A transport-locked LFO that follows the transport position exactly rather than running its own internal clock. The distinction from Sync LFO matters: Sync LFO *runs at the same speed* as the transport but can drift slightly over time. Motion LFO is perfectly phase-locked to the transport — no drift, no jitter. If you stop and restart the transport, Motion LFO snaps to the exact same position in the waveform every time.
+A transport-locked LFO that follows the transport position exactly rather than running its own internal clock. The distinction from Sync LFO matters: Sync LFO *runs at the same speed* as the transport but can drift slightly over time because it runs its own phase accumulator derived from BPM. Motion LFO is perfectly phase-locked to the transport — no drift, no jitter. If you stop and restart the transport, Motion LFO snaps to the exact same position in the waveform every time.
 
-Use Motion LFO when you need modulation that is tightly synchronized to a master clock or sequencer. Use Sync LFO when you want tempo-related motion that is allowed to free-run when the transport stops.
+Both Sync LFO and Motion LFO output zero when stopped and freeze when paused. The practical difference is accuracy: use Motion LFO when you need guaranteed phase lock to the transport. Use Sync LFO when BPM-relative speed is sufficient and exact phase alignment is not critical.
 
 ![Motion LFO — Tempo-Locked Divisions](/img/instruments/videomancer/modulation/motion_lfo.png)
 
@@ -359,15 +361,15 @@ This is the operator to use when you want a parameter to respond to MIDI keyboar
 |-----------|-------|----------|
 | Time | Slew | Envelope smoothing. Fully counter-clockwise = instant response. Fully clockwise = very slow response. |
 | Space | Gain | Output amplitude. |
-| Slope | Band | Octave band select. Eight bands from sub-bass (~60 Hz) to treble (~8 kHz), evenly spaced across the knob. |
+| Slope | Band | *(Display only — does not affect audio processing. The display shows a band label but the output always tracks broadband energy.)* |
 
 **Per-line**: No
 
-Extracts the energy in one of eight octave-spaced frequency bands from the audio input (always Input 1). The output is smoothed by an envelope follower controlled by the Slew knob.
+> **Note**: Despite its name, FFT Band does not perform frequency-selective analysis in the current firmware. It reads broadband energy from Input 1 (rectified and scaled) and tracks it with an envelope follower controlled by the Slew knob. The Slope knob's "Band" label changes the display but has no effect on the audio processing — all band selections produce the same output. This operator functions as a simple audio energy follower on Input 1.
 
-This turns Videomancer into an audio-reactive system — different parameters can respond to different frequency ranges of the input audio. Assign the bass band to one modulator, the treble band to another, and each parameter moves independently in response to the music.
+Use FFT Band when you want a parameter to respond to the overall loudness of an audio signal on Input 1. For true frequency-selective behavior, apply external bandpass filtering before the input jack.
 
-![FFT Bands — Octave Spectrum](/img/instruments/videomancer/modulation/fft_bands.png)
+![FFT Band — Broadband Energy Follower](/img/instruments/videomancer/modulation/fft_bands.png)
 
 ---
 
@@ -399,9 +401,7 @@ In per-line mode, the comparison happens independently at each scanline, so the 
 
 **Per-line**: No
 
-A rate-limited follower of an analog input signal. The output tracks the input, but the maximum speed at which it can move upward (rise) and downward (fall) is independently limited. If the input jumps instantly from low to high, the output ramps up at the rise rate. If the input drops, the output ramps down at the fall rate.
-
-> **Note**: The Slope (Fall) knob also selects which analog input channel is read. Low settings read channel 1 with a slow fall rate; high settings read channels 3+4 with an instant fall rate. Channel selection and fall rate are coupled on the same control.
+A rate-limited follower of an analog input signal (always Input 1). The output tracks the input, but the maximum speed at which it can move upward (rise) and downward (fall) is independently limited. If the input jumps instantly from low to high, the output ramps up at the rise rate. If the input drops, the output ramps down at the fall rate.
 
 Asymmetric slew rates produce distinctive motion profiles. Fast rise and slow fall creates a signal that snaps to peaks and gently decays — useful for making parameters respond quickly to transients but recover slowly. Slow rise and fast fall creates the opposite: sluggish response to increasing input but instant response to decreasing input.
 
@@ -437,9 +437,7 @@ The per-line variant outputs the *maximum* of the held peak and the current scan
 
 **Per-line**: No
 
-Field Accum operates as an integrator: it continuously adds the input signal (minus the midpoint) to a running total. Over time, the total drifts upward if the input is above center, or downward if below. The Leak parameter applies a constant drain that pulls the total back toward center, preventing it from railing at the extremes.
-
-> **Note**: The Slope (Leak) knob also selects which analog input channel is read, using the same six-option mapping as CV Input. Low settings read channel 1 with no leak; high settings read channels 3+4 with fast leak. Channel selection and leak rate are coupled on the same control.
+Field Accum operates as an integrator: it continuously adds the input signal from Input 1 (minus the midpoint) to a running total. Over time, the total drifts upward if the input is above center, or downward if below. The Leak parameter applies a constant drain that pulls the total back toward center, preventing it from railing at the extremes.
 
 With no leak and a steady input, Field Accum ramps steadily in one direction until it hits the rail — useful for generating slow ramps locked to an input signal. With moderate leak, it produces a smoothed, sluggishly-responding version of the input. With high leak, the output tracks the input loosely, acting as a weighted running average.
 
@@ -679,9 +677,9 @@ Prob Gate is designed for generative composition — it produces rhythmic on/off
 
 ---
 
-### Spatial
+### Spatial (Disabled)
 
-These operators produce values that vary across the video frame rather than (or in addition to) varying over time. They are the modulation equivalent of gradients and patterns.
+These operators are designed to produce values that vary across the video frame rather than (or in addition to) varying over time. Both are currently disabled in firmware and behave as passthrough (identical to Disabled). They are reserved for a future firmware update.
 
 ---
 
@@ -689,15 +687,13 @@ These operators produce values that vary across the video frame rather than (or 
 
 | Parameter | Label | Function |
 |-----------|-------|----------|
-| Time | Freq | Spatial frequency. Controls how many waveform cycles appear across the frame height (0.5–16 cycles). |
-| Space | Depth | Output amplitude. |
-| Slope | Wave | Waveshape select (eight shapes). |
+| Time | Freq | *(unused)* |
+| Space | Depth | *(unused)* |
+| Slope | Wave | *(unused)* |
 
-**Per-line**: Yes
+**Per-line**: No
 
-Generates a per-line spatial waveform across the frame height with a slow auto-scrolling phase drift (~0.25 Hz). Each scanline gets a different modulation value based on its vertical position in the frame, creating a spatial pattern that slowly drifts over time.
-
-At one cycle per frame, the output is a single waveform period from top to bottom. At higher frequencies, multiple cycles appear, creating horizontal bands of varying modulation intensity. The slow auto-scroll means the pattern constantly shifts position, creating a gentle animation even with a static input.
+> **Note**: H Displace is currently **disabled** in firmware. Selecting it behaves identically to Disabled — the modulator passes through the manual knob position with no modulation applied. This operator is reserved for a future firmware update.
 
 ---
 
@@ -705,17 +701,13 @@ At one cycle per frame, the output is a single waveform period from top to botto
 
 | Parameter | Label | Function |
 |-----------|-------|----------|
-| Time | Freq | Spatial frequency (0.5–16 cycles per frame). |
-| Space | Depth | Output amplitude. |
-| Slope | Wave | Waveshape select (eight shapes). |
+| Time | Freq | *(unused)* |
+| Space | Depth | *(unused)* |
+| Slope | Wave | *(unused)* |
 
-**Per-line**: Yes
+**Per-line**: No
 
-A static vertical gradient — identical to H Displace but without the auto-scrolling phase drift. The waveform is fixed in position, so each scanline always receives the same modulation value. This produces a pure spatial modulation pattern: the parameter varies from the top of the frame to the bottom according to the selected waveshape but does not change from frame to frame.
-
-Use V Gradient when you want a parameter to have a fixed spatial profile — for example, making the bottom of the frame brighter than the top, or applying a different effect intensity at different vertical positions. Use H Displace when you want the same kind of spatial variation but with slow temporal animation.
-
-![Spatial Waveforms — Per-Line Modulation](/img/instruments/videomancer/modulation/spatial_waveforms.png)
+> **Note**: V Gradient is currently **disabled** in firmware. Selecting it behaves identically to Disabled — the modulator passes through the manual knob position with no modulation applied. This operator is reserved for a future firmware update.
 
 ---
 
@@ -737,7 +729,7 @@ These operators simulate physical systems. They produce the kinds of motion that
 
 Simulates a ball bouncing on a floor. The ball starts at the top, falls under gravity, hits the floor, and bounces back. Each bounce is lower than the last (unless Bounce is set very high). When the ball comes to rest, it automatically retriggers after approximately half a second, starting a new drop.
 
-A MIDI note-on resets the ball to the ceiling, triggering a fresh drop. This makes Bouncing Ball useful as a MIDI-triggered decay effect — press a key and the parameter bounces rapidly at first, then settles to a resting value.
+A MIDI note-on resets the ball to the ceiling when the ball has come to rest on the floor, triggering a fresh drop. Note-on messages received while the ball is still bouncing are ignored. This makes Bouncing Ball useful as a MIDI-triggered decay effect — press a key and the parameter bounces rapidly at first, then settles to a resting value.
 
 ![Bouncing Ball — Elasticity](/img/instruments/videomancer/modulation/bouncing_ball.png)
 
@@ -779,7 +771,7 @@ These operators use USB-connected human interface devices as modulation sources.
 
 **Per-line**: No
 
-Tracks USB mouse movement as an accumulated position. Moving the mouse left/right or up/down sweeps the modulation value across its full range. The position is clamped at both ends, so continuous movement in one direction eventually hits the limit. Reconnecting or switching away does not reset the position — it persists as long as Videomancer is powered.
+Tracks USB mouse movement as an accumulated position. Moving the mouse left/right or up/down sweeps the modulation value across its full range. The position is clamped at both ends, so continuous movement in one direction eventually hits the limit. Reconnecting or switching away does not reset the position — it persists as long as the device is powered.
 
 The Wheel axis accumulates scroll wheel deltas. The Buttons axis provides a gate output — any mouse button press drives the output to maximum.
 
@@ -889,18 +881,18 @@ See [Sensor](#sensor) in USB HID Devices for axis orientation, rest positions, a
 
 ## Per-Line Rendering
 
-Eight of the 39 operators produce per-scanline varying output. This means the modulation value changes for every horizontal line of the video frame, not just once per field. Per-line rendering enables spatial modulation effects that would be impossible with field-rate updates alone.
+Six of the 39 operators produce per-scanline varying output. This means the modulation value changes for every horizontal line of the video frame, not just once per field. Per-line rendering enables spatial modulation effects that would be impossible with field-rate updates alone.
 
 | Operator | Per-line function | What varies per line |
 |------|-------------------|---------------------|
 | **CV Input** | Reads input at each scanline | Input voltage at that moment in the scan |
 | **Audio Input** | Reads input at each scanline | Audio waveform mapped to vertical position |
-| **H Displace** | Evaluates waveform at line position | Spatial wave pattern with slow drift |
-| **V Gradient** | Evaluates waveform at line position | Static spatial wave pattern |
 | **Comparator** | Compares input at each scanline | Binary threshold map across frame |
 | **Ring Mod** | Multiplies two input channels per line | Product of two input signals, spatially varying |
 | **Peak Hold** | Combines held peak with per-line input | Spatial floor at the held peak value |
 | **Quantizer** | Quantizes input at each scanline | Staircase-quantized spatial pattern |
+
+> **Note**: H Displace and V Gradient are listed in the operator reference as spatial per-line operators, but they are currently disabled in firmware and produce no per-line output. They are reserved for a future firmware update.
 
 When a per-line operator is active, the parameter is updated once per scanline during active video rather than once per field. This means the top of the frame may have a different value than the bottom.
 
@@ -931,7 +923,7 @@ Eleven modulation operators read from the analog inputs — CV Input, Audio Inpu
 
 The mixed-pair options (Ch 1+2 and Ch 3+4) are useful when you want a modulation source derived from two related signals — for example, left and right channels of a stereo audio signal.
 
-**FFT Band** is an exception — it always reads Input 1 regardless of the Slope setting. Slope selects the frequency band instead.
+**FFT Band**, **Field Accum**, and **Slew Limiter** are exceptions — they always read Input 1 regardless of the Slope setting. FFT Band uses Slope to select a display-only band label. Field Accum uses Slope to control leak rate. Slew Limiter uses Slope to control fall rate.
 
 ### Signal Conditioning
 
@@ -968,30 +960,17 @@ Some operators process signals that swing above and below a center point. The ce
 
 ### Per-Line Spatial Modulation
 
-Eight operators support **per-line rendering**, where the modulation value changes for each scanline of the video frame. Instead of updating once per field, the parameter updates once per scanline. This maps the input signal spatially across the frame — the top of the image can have a different modulation value than the bottom.
+Six operators support **per-line rendering**, where the modulation value changes for each scanline of the video frame. Instead of updating once per field, the parameter updates once per scanline. This maps the input signal spatially across the frame — the top of the image can have a different modulation value than the bottom.
 
 Per-line rendering is particularly powerful with audio inputs. Feeding a sine wave into Audio Input in per-line mode maps the instantaneous audio waveform vertically across the frame. Higher frequencies create more visible oscillations in the vertical dimension. This technique produces modulation effects that would be impossible with conventional per-frame updates.
 
-The eight per-line operators are: CV Input, Audio Input, H Displace, V Gradient, Comparator, Ring Mod, Peak Hold, and Quantizer.
+The six per-line operators are: CV Input, Audio Input, Comparator, Ring Mod, Peak Hold, and Quantizer.
 
 ### Frequency Analysis (FFT Bands)
 
-The FFT Band operator provides frequency-selective audio analysis. The input signal is analyzed to isolate the energy in one of eight octave-spaced frequency bands, turning Videomancer into a multi-band audio-reactive system.
+> **Note**: The FFT Band operator does not currently perform frequency-selective analysis. In the current firmware, it reads broadband energy from Input 1 (rectified envelope) and tracks it with a smoothing filter. The Slope knob's "Band" label is display-only and does not change the audio processing. All band selections produce the same output — a broadband energy follower on Input 1.
 
-| Band | Approximate Frequency | Character |
-|------|----------------------|-----------|
-| 0 | ~60 Hz | Lowest octave, rumble |
-| 1 | ~120 Hz | Sub-bass, kick drum |
-| 2 | ~250 Hz | Bass, rhythm |
-| 3 | ~500 Hz | Upper bass, warmth |
-| 4 | ~1 kHz | Lower mids |
-| 5 | ~2 kHz | Mids, vocal clarity |
-| 6 | ~4 kHz | Upper mids, presence |
-| 7 | ~8 kHz | Highest harmonics, sibilance |
-
-*(Frequencies are approximate for SD video timing. HD timing shifts all bands slightly higher.)*
-
-FFT Band always reads Input 1. The eight bands roughly correspond to musical octaves, so assigning different bands to different modulators creates independent audio-reactive modulation — the bass guitar drives one parameter while the hi-hat drives another. The output passes through an envelope follower with configurable smoothing via the Slew knob, so fast transients can be captured faithfully or averaged into slow, smooth energy contours.
+To achieve frequency-selective audio reactivity with the current firmware, apply external bandpass filtering (via a hardware filter or mixer EQ) before the input jack, and assign separate filtered signals to different input channels using the Envelope or CV Input operators.
 
 ---
 
@@ -1250,10 +1229,11 @@ Three MIDI messages control the transport state:
 | **Stop** | Stops playback. BPM continues to be tracked from incoming clock messages. |
 
 Transport state affects different operators differently:
-- **Sync LFO** advances only while playing. It freezes in place when stopped.
+- **Free LFO** and most operators produce no modulation output while the transport is stopped. Free LFO resets its phase to zero on stop.
+- **Sync LFO** advances only while playing. Its output drops to zero when stopped and freezes when paused.
 - **Motion LFO** reads the transport phase directly. It jumps to the correct position when playback starts.
 - **Clock Div** produces gates derived from the transport phase. It stops gating when the transport stops.
-- **Free LFO**, random, and physics operators are unaffected by transport state — they run continuously.
+- **CV Input** and **Audio Input** are the exceptions — they run regardless of transport state.
 
 ![Transport Timeline — Sync vs. Motion LFO](/img/instruments/videomancer/modulation/transport_timeline.png)
 
@@ -1459,12 +1439,12 @@ These exercises progress from basic oscillator modulation through external input
 **Objective**: Use an external audio signal to drive parameter changes.
 
 1. Connect an audio source to Videomancer's Input 1.
-2. Set a modulator to **FFT Band**. Set Band to about 10% (sub-bass — kick drum territory). Set Gain to maximum. Set Slew to about 30% for gentle smoothing.
-3. Play music with a strong bass line. Watch the modulated parameter pulse in time with the kick drum.
-4. Now set a second modulator to FFT Band on a different parameter. Set Band to about 90% (treble — hi-hats and cymbals). The two parameters now respond to different parts of the frequency spectrum independently.
-5. Switch the first modulator to **Envelope**. Set Attack to about 20% and Release to 60%. Compare how the envelope follower tracks the audio versus the FFT band — the envelope responds to overall loudness, while FFT Band responds to energy in a specific frequency range.
+2. Set a modulator to **FFT Band**. Set Gain to maximum. Set Slew to about 30% for gentle smoothing.
+3. Play music with a strong bass line. Watch the modulated parameter pulse in time with the audio energy.
+4. Now set a second modulator to **Envelope** on a different parameter. Set Attack to about 20% and Release to 60%. Compare how the envelope follower tracks the audio versus FFT Band — both respond to overall loudness, but with different smoothing characteristics.
+5. For true frequency-selective reactivity, apply external bandpass filtering before the input jack — route bass-filtered audio to Input 1 and treble-filtered audio to Input 2, then use separate CV Input or Envelope operators on each channel.
 
-**Key concepts**: FFT Band isolates frequency ranges, Envelope tracks overall amplitude, multiple modulators on different parameters create multi-dimensional audio reactivity.
+**Key concepts**: FFT Band tracks broadband audio energy on Input 1, Envelope tracks overall amplitude with configurable attack/release, external filtering enables frequency-selective multi-band reactivity.
 
 ---
 
@@ -1503,9 +1483,9 @@ These exercises progress from basic oscillator modulation through external input
 - **Start with Free LFO**. It is the simplest operator and the best way to learn what a modulator does to any given FPGA parameter. Once you understand the effect, switch to more complex operators.
 - **Boolean mode for toggles**. When modulating a toggle switch, the modulator outputs 0 or 1. Any operator that produces values crossing the midpoint creates rhythmic toggling — a triangle LFO becomes an alternating on/off pattern.
 - **Layer slow and fast**. Combine a slow modulator (Drift or Perlin Noise at low speed) with a fast one (Free LFO or Euclidean Rhythm). The slow operator creates gradual evolution while the fast one adds rhythmic detail.
-- **Motion LFO vs. Sync LFO**. Use Motion LFO when you need perfect phase lock to the transport. Use Sync LFO when you want tempo-related motion that can free-run when the transport is stopped.
+- **Motion LFO vs. Sync LFO**. Use Motion LFO when you need guaranteed phase lock to the transport. Use Sync LFO when BPM-relative speed is sufficient and exact phase alignment is not critical.
 - **Depth is your friend**. If a modulated effect is too dramatic, reduce Depth before changing anything else. Most operators produce useful results across their full parameter range — the issue is usually amplitude, not the operator itself.
-- **Per-line operators for spatial effects**. Any of the eight per-line operators can create spatial variation across the frame. CV Input with a ramp or triangle wave on the input produces a clean vertical gradient controlled by the external signal.
+- **Per-line operators for spatial effects**. Any of the six per-line operators can create spatial variation across the frame. CV Input with a ramp or triangle wave on the input produces a clean vertical gradient controlled by the external signal.
 - **MIDI triggers**. Trigger Env, Bouncing Ball, Pendulum, and MIDI Turing all respond to MIDI note messages. Connect a keyboard or sequencer to create musically timed one-shot events.
 - **Chaos is a spectrum**. Logistic Map's Chaos parameter and Turing Machine's Mutate parameter both control the balance between order and randomness. The most interesting territory is usually in the middle — not fully ordered, not fully random.
 - **Combine pattern generators**. Euclidean Rhythm + Prob Gate + Clock Div on three different parameters creates interlocking rhythmic modulation with a mix of deterministic structure and probabilistic variation.
@@ -1519,7 +1499,7 @@ These exercises progress from basic oscillator modulation through external input
 - **14-bit CC for smooth sweeps**. If your MIDI controller supports high-resolution CC (MSB + LSB pairs), Videomancer uses both values for full precision. This eliminates the stepping visible with standard-resolution CC on slowly moving parameters.
 - **USB hub for multi-device setups**. A single USB hub on the host port supports up to four HID devices simultaneously — combine a MIDI controller and a gamepad, or a keyboard and a drawing tablet, for layered input sources.
 - **TRS MIDI for hardware rigs**. Use TRS MIDI for connecting to Eurorack MIDI-to-CV modules, drum machines, and hardware sequencers. The Type A pinout is used — check your adapter if connecting to devices with 5-pin DIN.
-- **FFT bands for frequency isolation**. Assign different FFT bands to different modulators for multi-band audio reactivity — bass drives one parameter, treble drives another. Use slow Slew for smooth energy tracking or fast Slew for rhythmic transient response.
+- **FFT bands for audio energy tracking**. FFT Band tracks broadband energy from Input 1 — it responds to overall loudness rather than specific frequency bands. For frequency-selective reactivity, apply external bandpass filtering before the input jack and use separate Envelope or CV Input operators on different input channels.
 - **Channel filter for multi-device MIDI**. When multiple MIDI devices are connected, set the channel filter to isolate one device's channel. Set it to Omni when using a single controller.
 - **CV gain for quiet signals**. If your CV source does not fill the full voltage range, turn up the Space knob to amplify — the gain reaches 4× at maximum. The output is clamped, so overdriving is safe — it just clips at maximum.
 - **Program Change for live preset recall**. Map your MIDI foot controller's program change buttons to Videomancer presets for hands-free preset switching during performance.
