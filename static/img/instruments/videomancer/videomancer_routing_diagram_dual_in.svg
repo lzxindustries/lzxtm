@@ -1,0 +1,102 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="774pt" height="360pt" viewBox="0.00 0.00 774.06 360">
+<g id="graph0" class="graph" transform="translate(27.64504766464233,332.3548969942569) scale(0.7679179906845089)" data-name="videomancer_routing_diagram_dual_in">
+
+<polygon fill="#24143a" stroke="none" points="-36,36 -36,-432.8 972,-432.8 972,36 -36,36"/>
+<text text-anchor="middle" x="468" y="-371.2" font-family="Goldplay SemiBold" font-size="24.00" fill="#ccfff5">Dual In Routing</text>
+<!-- videomancer -->
+<g id="node1" class="node" pointer-events="visible" data-name="videomancer">
+
+
+<text text-anchor="start" x="414.59" y="-297" font-family="Goldplay SemiBold" font-size="20" fill="#ccfff5">Videomancer</text><text text-anchor="start" x="55.2" y="-262.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">HDMI in</text>
+<text text-anchor="start" x="150.45" y="-262.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">1V R out</text>
+<text text-anchor="start" x="244.95" y="-262.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">1V G out</text>
+<text text-anchor="start" x="340.45" y="-262.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">1V B out</text>
+<text text-anchor="start" x="436.7" y="-262.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">Sync out</text>
+<text text-anchor="start" x="534.95" y="-262.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">1V R in</text>
+<text text-anchor="start" x="629.45" y="-262.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">1V G in</text>
+<text text-anchor="start" x="724.95" y="-262.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">1V B in</text>
+<text text-anchor="start" x="810.7" y="-262.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">HDMI out</text>
+<polygon fill="none" stroke="#ccfff5" points="39.45,-251.5 39.45,-322.5 896.45,-322.5 896.45,-251.5 39.45,-251.5"/>
+</g>
+<!-- source -->
+<g id="node2" class="node" pointer-events="visible" data-name="source">
+
+<polygon fill="none" stroke="#24143a" points="1.95,-55 1.95,-91 87.95,-91 87.95,-55 1.95,-55"/>
+<text text-anchor="middle" x="44.72" y="-67" font-family="Goldplay SemiBold" font-size="20.00" fill="#ccfff5">Source</text>
+</g>
+<!-- videomancer&#45;&gt;source -->
+<g id="edge1" class="edge" data-name="videomancer-&gt;source">
+
+<path fill="none" stroke="#ccfff5" d="M87.58,-239.51C83.38,-176.24 44.95,-161.2 44.95,-92"/>
+<polygon fill="#ccfff5" stroke="#ccfff5" points="84.08,-239.61 87.9,-249.49 91.08,-239.38 84.08,-239.61"/>
+</g>
+<!-- modular -->
+<g id="node3" class="node" pointer-events="visible" data-name="modular">
+
+
+<text text-anchor="start" x="154.95" y="-84.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">1V R in</text><text text-anchor="start" x="249.45" y="-84.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">1V G in</text>
+<text text-anchor="start" x="344.95" y="-84.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">1V B in</text>
+<text text-anchor="start" x="441.2" y="-84.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">Sync in</text>
+<text text-anchor="start" x="530.45" y="-84.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">1V R out</text>
+<text text-anchor="start" x="624.95" y="-84.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">1V G out</text>
+<text text-anchor="start" x="720.45" y="-84.8" font-family="Relief SingleLine Outline" font-size="18" fill="#ccfff5">1V B out</text>
+<text text-anchor="start" x="408.17" y="-50" font-family="Goldplay SemiBold" font-size="20.00" fill="#ccfff5">Modular Synth</text>
+<polygon fill="none" stroke="#ccfff5" points="134.45,-37.5 134.45,-108.5 801.45,-108.5 801.45,-37.5 134.45,-37.5"/>
+</g>
+<!-- videomancer&#45;&gt;modular -->
+<g id="edge2" class="edge" data-name="videomancer-&gt;modular">
+
+<path fill="none" stroke="#ccfff5" d="M182.95,-251C182.95,-191.42 182.95,-173.73 182.95,-119.38"/>
+<polygon fill="#ccfff5" stroke="#ccfff5" points="186.45,-119.51 182.95,-109.51 179.45,-119.51 186.45,-119.51"/>
+</g>
+<!-- videomancer&#45;&gt;modular -->
+<g id="edge3" class="edge" data-name="videomancer-&gt;modular">
+
+<path fill="none" stroke="#ccfff5" d="M277.95,-251C277.95,-191.42 277.95,-173.73 277.95,-119.38" style=""/>
+<polygon fill="#ccfff5" stroke="#ccfff5" points="281.45,-119.51 277.95,-109.51 274.45,-119.51 281.45,-119.51"/>
+</g>
+<!-- videomancer&#45;&gt;modular -->
+<g id="edge4" class="edge" data-name="videomancer-&gt;modular">
+
+<path fill="none" stroke="#ccfff5" d="M372.95,-251C372.95,-191.42 372.95,-173.73 372.95,-119.38" style=""/>
+<polygon fill="#ccfff5" stroke="#ccfff5" points="376.45,-119.51 372.95,-109.51 369.45,-119.51 376.45,-119.51"/>
+</g>
+<!-- videomancer&#45;&gt;modular -->
+<g id="edge5" class="edge" data-name="videomancer-&gt;modular">
+
+<path fill="none" stroke="#ccfff5" d="M468.95,-251C468.95,-191.42 468.95,-173.73 468.95,-119.38" style=""/>
+<polygon fill="#ccfff5" stroke="#ccfff5" points="472.45,-119.51 468.95,-109.51 465.45,-119.51 472.45,-119.51"/>
+</g>
+<!-- destination -->
+<g id="node4" class="node" pointer-events="visible" data-name="destination">
+
+<polygon fill="none" stroke="#24143a" points="847.95,-55 847.95,-91 933.95,-91 933.95,-55 847.95,-55"/>
+<text text-anchor="middle" x="891.05" y="-67" font-family="Goldplay SemiBold" font-size="20.00" fill="#ccfff5">Destination</text>
+</g>
+<!-- videomancer&#45;&gt;destination -->
+<g id="edge9" class="edge" data-name="videomancer-&gt;destination">
+
+<path fill="none" stroke="#ccfff5" d="M848.95,-251C848.95,-181.91 886.48,-166.67 890.59,-103.47"/>
+<polygon fill="#ccfff5" stroke="#ccfff5" points="894.08,-103.62 890.9,-93.51 887.09,-103.4 894.08,-103.62"/>
+</g>
+<!-- modular&#45;&gt;videomancer -->
+<g id="edge6" class="edge" data-name="modular-&gt;videomancer">
+
+<path fill="none" stroke="#ccfff5" d="M563.95,-108C563.95,-167.58 563.95,-185.27 563.95,-239.62"/>
+<polygon fill="#ccfff5" stroke="#ccfff5" points="560.45,-239.49 563.95,-249.49 567.45,-239.49 560.45,-239.49"/>
+</g>
+<!-- modular&#45;&gt;videomancer -->
+<g id="edge7" class="edge" data-name="modular-&gt;videomancer">
+
+<path fill="none" stroke="#ccfff5" d="M658.95,-108C658.95,-167.58 658.95,-185.27 658.95,-239.62" style=""/>
+<polygon fill="#ccfff5" stroke="#ccfff5" points="655.45,-239.49 658.95,-249.49 662.45,-239.49 655.45,-239.49"/>
+</g>
+<!-- modular&#45;&gt;videomancer -->
+<g id="edge8" class="edge" data-name="modular-&gt;videomancer">
+
+<path fill="none" stroke="#ccfff5" d="M753.95,-108C753.95,-167.58 753.95,-185.27 753.95,-239.62" style=""/>
+<polygon fill="#ccfff5" stroke="#ccfff5" points="750.45,-239.49 753.95,-249.49 757.45,-239.49 750.45,-239.49"/>
+</g>
+</g>
+</svg>

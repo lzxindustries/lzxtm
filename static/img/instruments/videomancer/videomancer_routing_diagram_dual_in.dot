@@ -1,0 +1,96 @@
+digraph videomancer_routing_diagram_dual_in {
+    label = "Dual In Routing"
+    labelloc = "t"
+    fontsize="24pt"
+
+graph[
+    bgcolor = "#24143a",
+    rankdir="TB",
+    ratio="fill"
+    size = "13,5",
+    pad = 0.5,
+    splines = true,
+    fontcolor = "#ccfff5",
+    fontname = "Goldplay SemiBold",
+    splines = true
+    ];
+	
+node[
+    shape=record; 
+    fontcolor = "#ccfff5",
+    fontname = "Goldplay SemiBold",
+    color = "#ccfff5"
+    ];
+
+edge [color="#ccfff5",];
+    
+/* connections */
+
+videomancer:in_hdmi:s  -> source:n [dir=back]
+
+videomancer:out_r:s -> modular:in_r:n
+
+videomancer:out_g:s -> modular:in_g:n
+
+videomancer:out_b:s -> modular:in_b:n
+
+videomancer:out_sync:s -> modular:in_sync:n
+
+modular:out_r:n -> videomancer:in_r:s
+
+modular:out_g:n -> videomancer:in_g:s
+
+modular:out_b:n -> videomancer:in_b:s
+
+videomancer:out_hdmi:s -> destination:n
+
+/* nodes */
+
+videomancer [
+  shape=plaintext
+  label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6">
+      <TR>
+        <TD COLSPAN="9" ALIGN="CENTER"><FONT FACE="Goldplay SemiBold" POINT-SIZE="20">Videomancer</FONT></TD>
+      </TR>
+      <TR>
+        <TD WIDTH="95" PORT="in_HDMI"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">HDMI in</FONT></TD>
+        <TD WIDTH="95" PORT="out_r"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">1V R out</FONT></TD>
+        <TD WIDTH="95" PORT="out_g"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">1V G out</FONT></TD>
+        <TD WIDTH="95" PORT="out_b"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">1V B out</FONT></TD>
+        <TD WIDTH="95" PORT="out_sync"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">Sync out</FONT></TD>
+        <TD WIDTH="95" PORT="in_r"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">1V R in</FONT></TD>
+        <TD WIDTH="95" PORT="in_g"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">1V G in</FONT></TD>
+        <TD WIDTH="95" PORT="in_b"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">1V B in</FONT></TD>
+        <TD WIDTH="95" PORT="out_HDMI"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">HDMI out</FONT></TD>
+      </TR>
+    </TABLE>
+  >
+];
+
+modular [
+  shape=plaintext
+  label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6">
+    <TR>
+        <TD WIDTH="95" PORT="in_r"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">1V R in</FONT></TD>
+        <TD WIDTH="95" PORT="in_g"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">1V G in</FONT></TD>
+        <TD WIDTH="95" PORT="in_b"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">1V B in</FONT></TD>
+        <TD WIDTH="95" PORT="in_sync"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">Sync in</FONT></TD>
+        <TD WIDTH="95" PORT="out_r"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">1V R out</FONT></TD>
+        <TD WIDTH="95" PORT="out_g"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">1V G out</FONT></TD>
+        <TD WIDTH="95" PORT="out_b"><FONT FACE="Relief SingleLine Outline" POINT-SIZE="18">1V B out</FONT></TD>
+
+      </TR>
+      <TR>
+        <TD COLSPAN="9" ALIGN="CENTER"><FONT FACE="Goldplay SemiBold" POINT-SIZE="20">Modular Synth</FONT></TD>
+      </TR>
+    </TABLE>
+  >
+];
+
+source [fixedsize="true" width="1.2" color="#24143a" fontname = "Goldplay SemiBold" fontsize="20pt" label="Source"];
+
+destination [fixedsize="true" width="1.2" color="#24143a" fontname = "Goldplay SemiBold" fontsize="20pt" label="Destination"];
+
+}
