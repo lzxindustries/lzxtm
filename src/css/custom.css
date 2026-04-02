@@ -107,6 +107,16 @@ article h1 {
   --ifm-hr-color: var(--ifm-color-gray-0); /* Dark mode HR color */
 }
 
+html[data-theme='light'] table,
+html[data-theme='light'] table td,
+html[data-theme='light'] table th {
+  border-color: #1d1d1d !important;
+}
+
+html[data-theme='light'] table thead tr {
+  border-bottom: 1px solid #1d1d1d !important;
+}
+
 hr {
   border: none !important;
   height: 2px !important;
@@ -117,10 +127,11 @@ hr {
   font-family: system-ui, sans-serif;
 }
 
-.code-like-block {
+.code-like-block-vm {
   display: block;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  background-color: #282a36;
+  color: #ccfff5;
+  background-color: #24143a;
   padding: 1em;
   overflow-x: auto;
   white-space: pre;
