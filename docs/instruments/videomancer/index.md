@@ -13,6 +13,24 @@ import videomancer_frontpanel from '/img/instruments/videomancer/videomancer_fro
 
 import videomancer_rearpanel from '/img/instruments/videomancer/videomancer_rearpanel.png';
 
+import videomancer_LCD_vid_route_HDMI from '/img/instruments/videomancer/videomancer_LCD_vid_route_HDMI.png';
+
+import videomancer_LCD_system_status from '/img/instruments/videomancer/videomancer_LCD_system_status.png';
+
+import videomancer_LCD_parameter from '/img/instruments/videomancer/videomancer_LCD_parameter.png';
+
+import videomancer_LCD_modulation_selection from '/img/instruments/videomancer/videomancer_LCD_modulation_selection.png';
+
+import videomancer_LCD_slope_wave_sine from '/img/instruments/videomancer/videomancer_LCD_slope_wave_sine.png';
+
+import videomancer_LCD_timecode_bpm from '/img/instruments/videomancer/videomancer_LCD_timecode_bpm.png';
+
+import videomancer_LCD_presets_F1_basic from '/img/instruments/videomancer/videomancer_LCD_presets_F1_basic.png';
+
+import videomancer_LCD_motion_overview from '/img/instruments/videomancer/videomancer_LCD_motion_overview.png';
+
+import videomancer_routing_diagram_dual_in from '/img/instruments/videomancer/videomancer_routing_diagram_dual_in.svg';
+
 # Videomancer
 
 :::warning
@@ -125,7 +143,6 @@ Videomancer is the second standalone instrument released by LZX, the first being
 * **MIDI** in and out
     - TRS 3.5 mm (1/8&rdquo;) mini-jacks
     - MIDI standard Type A
-    <!-- - Input signal passed through to output -->
 * **USB** ports
     - Two USB-C jacks
     - **Device** port
@@ -255,6 +272,9 @@ Videomancer can't convert resolutions or frame rates, but it ***can*** convert b
 
 Videomancer provides many options for video inputs and outputs, making it exceptionally flexible. It's compatible with nearly any video device with HDMI or analog connections.
 
+<img src={videomancer_LCD_vid_route_HDMI} alt="Videomancer Vid Route Mode display" />
+*Video Routing*
+
 #### General procedure
 
 To choose from the available video inputs and outputs:
@@ -291,6 +311,13 @@ In every Vid Route Mode except Dual In, the same signal is sent to the HDMI and 
 **Dual In Route Mode**
 
 Integrate Videomancer with analog devices such as a modular synthesizer with **Dual In** Mode. Videomancer routes incoming HDMI video to the active analog output. Process video with an external device, or chain of devices. Video connected to Videomancer's active analog input is routed to the processor.
+
+<img 
+  src="/img/instruments/videomancer/videomancer_routing_diagram_dual_in.svg" 
+  alt="Videomancer Dual In routing diagram showing connections to a modular synth" 
+  style={{ width: '100%', height: 'auto' }} 
+/>
+*Dual In routing diagram showing connections to a modular synth*
 
 **Dual In setup procedure:**
 
@@ -434,9 +461,60 @@ On the other hand, there's no issue at all when integrating a modular system usi
 
 ## Operation
 
-### System
+### Menu Structure
 
-Pressing the **SYSTEM** button activates the System menu. By default, the current **Program**, video input, and format standard are displayed. Turn the Rotary Encoder to cycle through the System submenus:
+The following outline illustrates the overall structure of the Videomancer menus. Specific options per menu are listed or described in the corresponding sections of this User Guide, or in supplemental documents such as the [Modulation Guide](/docs/instruments/videomancer/modulation-operators.md).
+
+- **SYSTEM**, **MOTION**, and **STATE** menus are chosen by pressing the labeled white Button, indicated by a circled bullet character: &nbsp;<span class="system-ui">◉</span>
+- **Parameter** menus are chosen by repeatedly pressing a black Parameter Button, labeled **1** through **&#42;** (12), indicated by a hollow bullet character: &nbsp;<span class="system-ui">○</span>
+- Most menus are chosen by turning the Rotary Encoder, indicated by a left-right horizontal arrow: &nbsp;<span class="system-ui">&harr;</span>
+- Any menu accessed by pressing the Rotary Encoder is indicated by a down arrow: &nbsp;<span class="system-ui">&darr;</span>
+
+<span class="code-like-block">
+Videomancer
+│
+├── SYSTEM ◉
+│   ├─ Current Program, Video In, and format <span class="system-ui">&harr;</span>
+|   |   └─ Program Selection ↓
+│   ├─ Video Route Mode <span class="system-ui">&harr;</span>
+│   ├─ Analog In Mode <span class="system-ui">&harr;</span>
+│   ├─ Analog Out Mode <span class="system-ui">&harr;</span>
+│   ├─ HDMI Out Mode <span class="system-ui">&harr;</span>
+│   ├─ MIDI Channel <span class="system-ui">&harr;</span>
+│   ├─ MIDI Out Mode <span class="system-ui">&harr;</span>
+│   ├─ Developer Mode <span class="system-ui">&harr;</span>
+│   ├─ Soft Pickup <span class="system-ui">&harr;</span>
+│   ├─ Language <span class="system-ui">&harr;</span>
+│   ├─ Preferred Timing <span class="system-ui">&harr;</span>
+|   └─ Escape to Parameter menu ◉
+│
+├── MOTION ◉
+│   ├─ Timecode & Beats Per Minute
+│   ├─ Motion Overview ◉
+|   └─ Escape to Parameter menu ◉
+│
+├── STATE ◉
+│   ├─ Presets <span class="system-ui">&harr;</span>
+|   └─ Escape to Parameter menu ◉
+│
+└── Parameter ○
+&nbsp;   ├─ Manual ○
+&nbsp;   ├─ Time ○
+&nbsp;   ├─ Space ○
+&nbsp;   ├─ Slope ○
+&nbsp;   └─ Modulation Selection ○ <span class="system-ui">&harr;</span>
+</span>
+
+---
+
+### SYSTEM
+
+Press the **SYSTEM** button to access the System menus. By default, the current **Program**, video input, and format standard are displayed. 
+
+<img src={videomancer_LCD_system_status} alt="Videomancer System Status display" />
+*System Status*
+
+Turn the Rotary Encoder to cycle through the System menus:
 
 | Menu                      | Display Text    | Options                                     |
 |:--------------------------|:----------------|:--------------------------------------------|
@@ -451,8 +529,9 @@ Pressing the **SYSTEM** button activates the System menu. By default, the curren
 | **Language**              | Language        | English, Deustch, Francais, Espanol, Dansk, Svenska, Suomi, Italiano, Portugues, Indonesia, Nederlands, Norsk, Turkce, Catala, Polski, Hrvatski, Romana, Cestina |
 | **Preferred Timing**      | Pref. Timing    | [Video Formats and Standards](/docs/instruments/videomancer/index.md#supported-formats-and-standards) |
 
-To make changes to System settings:
+**System settings procedure:**
 
+* Press the SYSTEM button
 * Turn the Rotary Encoder to choose a System submenu
 * Press the Rotary Encoder to move the cursor to the bottom row
 * Turn the Rotary Encoder to change the setting
@@ -485,11 +564,24 @@ Some Programs may default to a black output. Typically, the **&ast; Slider** for
 
 ### Parameters
 
-Any **Parameter** 1 through 12 can be adjusted manually at any time via the Parameter Knobs, Switches, or Fader. If Videomancer is in Parameter display mode, then the Parameter number, name, and values of the *focused* Parameter are shown onscreen.
+Any **Parameter** 1 through 12 can be adjusted manually at any time via the Parameter Knobs, Switches, or Fader. If Videomancer is in Parameter display mode, then the Parameter number, name, and values of the ***focused*** Parameter are shown onscreen.
 
-To enter Parameter display mode, press any of the Parameter buttons labeled **1** through **&ast;** (Parameters 1 through 12). The selected Parameter is given focus and its properties are displayed.
+<img src={videomancer_LCD_parameter} alt="Videomancer Parameter Mode display" />
+*Parameter mode*
 
-If Parameter display mode is active, simply moving a Parameter control brings that Parameter into focus and displays the Parameter's **Manual** value onscreen. Moving a Time, Space, or Slope control knob displays the associated Modulation property and its value.
+To enter Parameter display mode, press any of the Parameter buttons labeled **1** through **&ast;** (Parameters 1 through 12). The selected Parameter is given focus and its properties are displayed. The top row of the display lists the Parameter number and name.
+
+The bottom row displays additional information:
+
+- Manual value of the physical control
+- Name and value of the Time Modulation Knob
+- Name and value of the Space Modulation Knob
+- Name and value of the Slope Modulation Knob
+- Modulation Operator assigned to the Parameter
+
+Press the Parameter button repeatedly to cycle through all Parameter display modes.
+
+If any Parameter display mode is active, simply moving a different Parameter control brings that Parameter into focus and its **Manual** value onscreen. Moving a Time, Space, or Slope control knob displays the associated Modulation property and its value.
 
 If Videomancer is in **SYSTEM**, **MOTION**, or **STATE** mode, then the LCD display shows the menus for that mode. In this case, the properties of the focused Parameter are not displayed. However, all Parameter controls are still active. The **Time**, **Space**, and **Slope** Modulation controls for the focused Parameter are also active.
 
@@ -513,7 +605,11 @@ $$
 
 Videomancer features dozens of **Modulation Operators** of various types, ranging from raw control voltage input to generative algorithms. Modulation Operators are documented in full in the [Modulation Guide](/docs/instruments/videomancer/modulation-operators.md).
 
-Modulation Operator sample rate is usually latched to the current video format. Values are constrained to the current frame/field rate. This prevents frame tearing that could occur if a modulation value changes in the middle of a frame. Additionally, some Modulation Operators, such as **Audio In**, are capable of operating at video line rate.
+:::note
+**MOTION** transport playback usually needs to be running to apply modulation. Press the **PLAY** button to enable all Modulation Operators.
+:::
+
+Modulation Operator sample rate is latched to the current video format. Values are usually constrained to the current frame/field rate. This prevents frame tearing that could occur if a modulation value changes in the middle of a frame. Additionally, some Modulation Operators, such as **Audio In**, are capable of operating at the higher sample rate of individual video scanlines.
 
 **Modulation Operators include:**
 
@@ -534,13 +630,9 @@ Modulation Operator sample rate is usually latched to the current video format. 
         - Game controller
         - Joystick
         - Sensor
-- MIDI
-        - Continuous Controllers
-        - MIDI Keys
 
-:::note
-The **MOTION** button doesn't choose Modulation operators. Pressing the MOTION button displays the current **Timecode** and **BPM** (beats per minute).
-:::
+<img src={videomancer_LCD_modulation_selection} alt="Videomancer Modulation Selection display" />
+*Modulation Selection*
 
 **Modulation Operator selection procedure:**
 
@@ -550,13 +642,13 @@ The **MOTION** button doesn't choose Modulation operators. Pressing the MOTION b
 
 Selection of a Modulation Operator takes place immediately. If the name of a Modulation Operator is displayed, it's active.
 
-:::warning
-**MOTION** transport playback needs to be running to apply any modulation. Press the **PLAY** button to enable all Modulation Operators.
+:::note
+The **MOTION** button doesn't choose Modulation operators. Pressing the MOTION button displays the current **Timecode** and **BPM** (beats per minute).
 :::
 
 **Disabling Modulation**
 
-To control Parameters with the physical controls only, disable the Modulation operator. When the Modulation Operator name is displayed, scroll to set the Modulation mode to **Disabled**, or simply press the Rotary Encoder.
+To change Parameter values with Manual controls and/or MIDI only, disable the Modulation operator. When the Modulation Operator name is displayed, turn the Rotary Encoder to set the Modulation mode to **Disabled**, or simply press the Rotary Encoder.
 
 <!--
 :::tip
@@ -573,6 +665,9 @@ Modulation Operator properties are adjusted with the **Time**, **Space**, and **
 **Space** controls the **Gain** or amplitude of modulation. The range of the Gain property depends on the current Modulation Operator. For example, **LFO** modulators have a maximum Gain of 100%. **CV** and **Audio** modulators have a maximum Gain of 400% to accommodate sources with different voltage ranges.
 
 **Time** and **Slope** knobs perform different functions depending on the active Modulation Operator, as described in the [Modulation Guide](/docs/instruments/videomancer/modulation-operators.md). For example, Time adjusts the period of an oscillator, and Slope chooses the waveform type.
+
+<img src={videomancer_LCD_slope_wave_sine} alt="Videomancer Slope display" />
+*Slope display showing Sine LFO waveform selection*
 
 If Modulation is disabled, and no Modulation Operator is assigned to the focused Parameter, then the Time, Space, and Slope controls have no effect. The LCD screen merely displays the name of the active Knob and its value from 0 to 100.
 
@@ -644,9 +739,12 @@ Videomancer can control external devices via MIDI Continuous Controller messages
 
 ---
 
-### Motion
+### MOTION
 
 Press the **MOTION** button to display the current values of Timecode (**TC**) and Beats Per Minute (**BPM**).
+
+<img src={videomancer_LCD_timecode_bpm} alt="Videomancer Timecode and BPM display" />
+*Timecode and Beats Per Minute*
 
 Modulation within Videomancer is usually linked to the Timecode displayed in Motion mode. Videomancer can generate timecode internally, or [synchronize to MIDI](/docs/instruments/videomancer#midi-synchronization).
 
@@ -657,6 +755,8 @@ Modulation is deterministic based on Videomancer's timecode. For example, oscill
 Press the **START** button to activate playback of internal Timecode.
 
 Press the **STOP** button to deactivate playback of internal Timecode. The time index is reset to `00:00:00:00`.
+
+When the transport is stopped, a left arrow ( **&larr;** )appears on the lower left of the display. When the transport is running, a right arrow ( **&rarr;** ) is displayed.
 
 :::note
 Videomancer does not have a manual pause button. Stopping playback sends the timecode value to zero, resetting all modulation. Use [MIDI Timecode](/docs/instruments/videomancer#midi-synchronization) if you wish to pause and resume playback.
@@ -679,6 +779,49 @@ To change the **BPM** value rhythmically during playback:
 
 The new tempo takes effect immediately.
 
+#### MOTION Overview
+
+Pressing the MOTION button a second time brings up the **Motion Overview** display.
+
+<img src={videomancer_LCD_motion_overview} alt="Videomancer Motion Overview display" />
+*Motion Overview*
+
+The illustration above indicates the following:
+
+- Parameter 1 Modulation Operator is **Free LFO**
+- Parameter 3 Modulation Operator is **Turing Machine**
+- Playback is stopped
+- Beats Per Minute is 120.00
+- Two Modulation Operators are active
+
+The top row lists all active Modulation Operators. Each character or symbol to the right of the word **Mod** represents one of the 12 Parameters, in numerical order from left to right. The first place is Parameter 1, the second is Parameter 2, etc. The table below lists which Modulation Operator is signified by each symbol.
+
+| Symbol | Modulation Operator | Symbol | Modulation Operator |
+|:-------|:--------------------|:-------|:--------------------|
+| <span class="system-ui">&bull;</span>      | Disabled            | K      | Comparator          |
+| L      | Free LFO            | N      | Pendulum            |
+| S      | Sync LFO            | W      | Drift               |
+| C      | CV Input            | *      | Ring Mod            |
+| A      | Audio Input         | #      | Cellular            |
+| R      | Random              | P      | Pulse Width         |
+| E      | Envelope            | J      | Peak Hold           |
+| H      | Sample & Hold       | I      | Field Accum         |
+| T      | Trigger Envelope    | /      | Slew Limiter        |
+| Q      | Step Sequencer      | ~      | Perlin Noise        |
+| F      | FFT Band            | Z      | Wavefolder          |
+| D      | H Displace          | V      | Clock Div           |
+| U      | Turing Machine      | ?      | Prob Gate           |
+| B      | Bouncing Ball       | O      | Quantizer           |
+| X      | Logistic Map        | m      | Mouse               |
+| Y      | Euclidean Rhythm    | k      | Keyboard            |
+| M      | Motion LFO          | g      | Gamepad             |
+| G      | V Gradient          | t      | Tablet              |
+
+
+The second row of the Motion Overview displays the state of the Motion transport and the current Beats Per Minute. A left-facing arrow indicates that the transport is stopped, a right-facing arrow indicates that the transport is playing. To the right of the arrow, the current BPM value is displayed.
+
+Also on the second row, the total number of active Modulation Operators is indicated by the word **Act:** followed by a number.
+
 ---
 
 ### MIDI Synchronization
@@ -699,28 +842,43 @@ If the MIDI source transmits both MIDI Clock and MIDI Timecode, Videomancer give
 
 ---
 
-### State Presets
+### STATE Presets
 
 The **STATE** button accesses factory or user-defined **Presets** for a particular Program. All Modulation and Parameter values are stored in non-volatile internal flash memory. Videomancer will commit your spell to memory, and recall it even after a power failure or reboot.
 
-Programs can include up to eight Factory Presets, indicated by the letter **F**. User Presets are signified by the letter **U**. Internal storage provides a total of 32 Preset registers. User presets can also be stored on microSD card.
+Programs can include up to eight Factory Presets, indicated by the letter **F**. User Presets are signified by the letter **U**. The currently loaded Preset number is followed by a slash, then by the total number of Presets, either Factory or User. Internal storage provides a total of 32 Preset registers. User presets can also be stored on microSD card.
 
-**Preset load procedure:**
+<img src={videomancer_LCD_presets_F1_basic} alt="Videomancer Preset Selection display" />
+*Preset Selection display*
+
+**Procedure to load a Preset:**
 
 * Press the **STATE** button
 * Turn the Rotary Encoder to select a Preset number
 * Press the Rotary Encoder to confirm the load operation
 
-**User Preset save procedure:**
+**Procedure to save a new User Preset :**
 
 * Press the **STATE** button
-* If User Presets exist, turn the Rotary Encoder to select a register number
 * Long-press and hold the Rotary Encoder for at least two seconds
 * Define the Preset name
     * Turn the Rotary Encoder to choose a character
     * Press the Rotary Encoder to advance to the next place
     * Repeat until the Preset name is completed
 * Press the Rotary Encoder to confirm the save operation
+
+**Procedure to overwrite an existing User Preset**
+
+* Press the **STATE** button
+* Turn the Rotary Encoder to select a User Preset
+* Long-press and hold the Rotary Encoder for at least two seconds
+* Press the Rotary Encoder to confirm overwrite
+* Define the Preset name
+    * Turn the Rotary Encoder to choose a character
+    * Press the Rotary Encoder to advance to the next place
+    * Repeat until the Preset name is completed
+* Press the Rotary Encoder to confirm the save operation
+
 
 **MIDI Program Change**
 

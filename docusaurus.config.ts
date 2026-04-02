@@ -21,11 +21,6 @@ const config: Config = {
   projectName: 'lzxindustries.github.io', // Usually your repo name.
   deploymentBranch: 'main',
   onBrokenLinks: 'throw',
-  markdown: {
-    hooks: {
-      onBrokenMarkdownLinks: 'warn',
-    },
-  },
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -112,6 +107,10 @@ const config: Config = {
     ],
   ],
   markdown: {
+    hooks: {
+    onBrokenMarkdownLinks: 'warn', // 'throw' or 'warn' or 'ignore',
+    onBrokenMarkdownImages: 'warn', // or 'ignore' or 'throw'
+    },
     mermaid: true,
   },
   themes: ['@docusaurus/theme-mermaid'],
