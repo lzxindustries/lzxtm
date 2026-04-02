@@ -29,7 +29,7 @@ import videomancer_LCD_presets_F1_basic from '/img/instruments/videomancer/video
 
 import videomancer_LCD_motion_overview from '/img/instruments/videomancer/videomancer_LCD_motion_overview.png';
 
-import videomancer_routing_diagram_dual_in from '/img/instruments/videomancer/videomancer_routing_diagram_dual_in.svg';
+import videomancer_routing_diagram_dual_in from '/img/instruments/videomancer/videomancer_routing_diagram_dual_in.png';
 
 # Videomancer
 
@@ -103,7 +103,7 @@ Videomancer is the second standalone instrument released by LZX, the first being
 ## Key Specifications
 
 | Parameter         | Value                                                                           |
-| ----------------- | ------------------------------------------------------------------------------- |
+|:----------------- |:------------------------------------------------------------------------------- |
 | Dimensions (mm)   | 234.2 width / 178.1 depth / 75.44 height                                        |
 | Dimensions (inch) | 9.22 width / 7.01 depth / 2.97 height                                           |
 | Power Consumption | 12V @ 500 mA                                                                   |
@@ -255,7 +255,7 @@ Videomancer genlocks to incoming video, assuming the timing, resolution, and fra
 
 ---
 
-Videomancer can't convert resolutions or frame rates, but it ***can*** convert between color spaces and color encoding formats. Choose the input and output options via the System menu, as described in [Video Routing](/docs/instruments/videomancer#video-routing) below.
+Videomancer can't convert resolutions or frame rates, but it ***can*** convert between color spaces and color encoding formats. Choose the input and output options via the System menu, as described in [Video Route Modes](/docs/instruments/videomancer#video-route-modes) below.
 
 | Color formats                         |
 |:--------------------------------------|
@@ -312,11 +312,7 @@ In every Vid Route Mode except Dual In, the same signal is sent to the HDMI and 
 
 Integrate Videomancer with analog devices such as a modular synthesizer with **Dual In** Mode. Videomancer routes incoming HDMI video to the active analog output. Process video with an external device, or chain of devices. Video connected to Videomancer's active analog input is routed to the processor.
 
-<img 
-  src="/img/instruments/videomancer/videomancer_routing_diagram_dual_in.svg" 
-  alt="Videomancer Dual In routing diagram showing connections to a modular synth" 
-  style={{ width: '100%', height: 'auto' }} 
-/>
+<img src={videomancer_routing_diagram_dual_in} alt="Videomancer Dual In routing diagram showing connections to a modular synth" />
 *Dual In routing diagram showing connections to a modular synth*
 
 **Dual In setup procedure:**
@@ -470,7 +466,7 @@ The following outline illustrates the overall structure of the Videomancer menus
 - Most menus are chosen by turning the Rotary Encoder, indicated by a left-right horizontal arrow: &nbsp;<span class="system-ui">&harr;</span>
 - Any menu accessed by pressing the Rotary Encoder is indicated by a down arrow: &nbsp;<span class="system-ui">&darr;</span>
 
-<span class="code-like-block">
+<span class="code-like-block-vm">
 Videomancer
 │
 ├── SYSTEM ◉
@@ -729,13 +725,15 @@ There's no Modulation operator for MIDI, it's always enabled.
 
 Videomancer can control external devices via MIDI Continuous Controller messages. Send the values of Parameter Manual controls, active Modulation Operators, or their combined values. <!-- Or echo the MIDI input to the MIDI output with Thru mode. --> Choose the desired behavior from **System &#8594; MIDI Out Mode**.
 
-| MIDI Out       | Display Text |
-|:---------------|:-------------|
-| None           | Disabled     |
-| Manual control + Modulation Operator | Manual+Mod |
-| Manual control | Manual Only |
-| Modulation Operator | Mod Only |
-<!-- | Echo input messages | Thru | -->
+| Option         | MIDI Out                             |
+|:---------------|:-------------------------------------|
+| Disabled       | None                                 |
+| Manual+Mod     | Manual control + Modulation Operator |
+| Manual Only    | Manual control only                  |
+| Mod Only       | Modulation Operator only             |
+<!--
+| Thru           | Echo input messages                  |
+-->
 
 ---
 
@@ -851,13 +849,13 @@ Programs can include up to eight Factory Presets, indicated by the letter **F**.
 <img src={videomancer_LCD_presets_F1_basic} alt="Videomancer Preset Selection display" />
 *Preset Selection display*
 
-**Procedure to load a Preset:**
+**To load a Preset:**
 
 * Press the **STATE** button
 * Turn the Rotary Encoder to select a Preset number
 * Press the Rotary Encoder to confirm the load operation
 
-**Procedure to save a new User Preset :**
+**To save a new User Preset :**
 
 * Press the **STATE** button
 * Long-press and hold the Rotary Encoder for at least two seconds
@@ -867,7 +865,7 @@ Programs can include up to eight Factory Presets, indicated by the letter **F**.
     * Repeat until the Preset name is completed
 * Press the Rotary Encoder to confirm the save operation
 
-**Procedure to overwrite an existing User Preset**
+**To overwrite an existing User Preset:**
 
 * Press the **STATE** button
 * Turn the Rotary Encoder to select a User Preset
