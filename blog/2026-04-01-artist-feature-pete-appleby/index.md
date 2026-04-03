@@ -24,8 +24,8 @@ Pete begins with a base picture or video, either filmed by him or taken from his
 
 Currently, Pete is exploring the use of video-rate CV for modulation, a new facet of video processing he has yet to experiment with. In this project, he is using a combination of lights, crystals, and laser pointers to create a unique blend with various CGI clips. His short-term goal is to keep learning how to use Videomancer in new and unique ways to inspire his creative process. He also looks forward to the anticipated release of Chromagnon.
 
-![Crystal Explorations Volume I](./pete_appleby_03.png)
-*Crystal Explorations Volume I*
+![Crystal Explorartions Volume I](./pete_appleby_03.png)
+*Crystal Explorartions Volume I*
 
 ![My Magic Marble II](./pete_appleby_04.png)
 *My Magic Marble II*
