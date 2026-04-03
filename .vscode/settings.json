@@ -35,5 +35,6 @@
 	"typescript.suggest.classMemberSnippets.enabled": false,
 	"typescript.suggest.enabled": false,
 	"typescript.suggest.objectLiteralMethodSnippets.enabled": false,
-	"terminal.integrated.defaultProfile.windows": "PowerShell"
+	"terminal.integrated.defaultProfile.windows": "PowerShell",
+	"mdx-preview.framework": "docusaurus"
 }

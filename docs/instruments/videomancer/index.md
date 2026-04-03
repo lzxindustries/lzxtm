@@ -152,9 +152,9 @@ Videomancer is the second standalone instrument released by LZX, the first being
         - Connect to class-compliant USB MIDI devices such as musical keyboard or fader box
         - Connect to Human Interface Devices such as mouse or game controller
 * **microSD** card slot for additional non-volatile storage
-    - User Presets
-    - Additional Programs from LZX and the [community](https://github.com/lzxindustries/videomancer-community-programs)
-    - Library management with **LZX Connect** desktop application
+    - Additional **Programs** from LZX and the [community](https://github.com/lzxindustries/videomancer-community-programs)
+    - **Presets** for Programs stored on microSD card
+    - Planned: library management with **LZX Connect** desktop application
 * **DC Power**
     - Barrel jack
         - 2.1 mm diameter center conductor
@@ -172,9 +172,9 @@ Videomancer is the second standalone instrument released by LZX, the first being
     - Incremental digital data entry
     - Turn to choose an option from the menu
     - Push to execute
-    - Define global **System** settings
+    - Define global **SYSTEM** settings
     - Choose **Modulation Operator** per Parameter
-    - Load and save **State** presets
+    - Load and save **STATE** presets
 * **Navigation** buttons
     - Press to access a function on the LCD display
     - White buttons: **SYSTEM**, **MOTION**, and **STATE**
@@ -209,7 +209,7 @@ Videomancer is the second standalone instrument released by LZX, the first being
 **Front Panel Indicators**
 
 * LCD screen
-    - User feedback for System settings and functions, State Presets, Modulation modes, Parameter values, and Motion Timecode / BPM
+    - User feedback for SYSTEM settings and functions, STATE Presets, Modulation modes, Parameter values, and MOTION Timecode / BPM
 * Front panel LED lights
     - Parameter knob, switch, and fader LEDs indicate the currently focused Parameter: 1 through 12
     - Modulation knob LEDs indicate the focused Modulation control: Time, Space, Slope
@@ -280,7 +280,7 @@ Videomancer provides many options for video inputs and outputs, making it except
 To choose from the available video inputs and outputs:
 
 - Press the **SYSTEM** button
-- Turn the rotary encoder to select the desired System submenu:
+- Turn the rotary encoder to select the desired SYSTEM submenu:
     - **Vid Route Mode**
     - **Analog In Mode**
     - **Analog Out Mode**
@@ -295,13 +295,13 @@ All of Videomancer's outputs are always active.
 
 #### Video Route Modes
 
-The most fundamental System property is how video is routed through Videomancer. The **Vid Route Mode** menu chooses which inputs are active, if any, and how they are routed to the processor.
+The most fundamental SYSTEM property is how video is routed through Videomancer. The **Vid Route Mode** menu chooses which inputs are active, if any, and how they are routed to the processor.
 
 | Vid Route Mode | Signal Path(s)                                                                    |
 |:---------------|:----------------------------------------------------------------------------------|
 | HDMI In        | Send HDMI digital video to Videomancer processor                                  |
 | Dual In        | Send HDMI to analog outputs and send analog inputs to processor                   |
-| Standalone     | Disable all inputs. Video format is set with **System &#8594; Preferred Timing**. |
+| Standalone     | Disable all inputs. Video format is set with **SYSTEM &#8594; Preferred Timing**. |
 | Analog In      | Send analog video to processor                                                    |
 
 :::note
@@ -318,9 +318,9 @@ Integrate Videomancer with analog devices such as a modular synthesizer with **D
 **Dual In setup procedure:**
 
 1. Connect Videomancer's analog output to the input of another device. 
-2. Choose the output signal type from **System &#8594; Analog Out Mode**. 
+2. Choose the output signal type from **SYSTEM &#8594; Analog Out Mode**. 
 3. Connect the analog output of another device to Videomancer's analog input.
-4. Choose the input signal type from the **System &#8594; Analog In Mode** menu.
+4. Choose the input signal type from the **SYSTEM &#8594; Analog In Mode** menu.
 
 :::tip
 There's no law that says Videomancer's analog inputs and outputs have to form a single circuit with some other system. A signal can loop through something as an &ldquo;effects send&rdquo; and back to Videomancer, but it doesn't ***have to***. You can connect whatever you want to the analog inputs. That signal can be completely independent of the ***HDMI input &#8594; analog output*** chain, giving you a high quality digital to analog converter for free.
@@ -583,7 +583,7 @@ If Videomancer is in **SYSTEM**, **MOTION**, or **STATE** mode, then the LCD dis
 
 **Soft Pickup**
 
-Parameter controls feature an optional soft takeover method for updating the value Parameter. When **Soft Pickup** is enabled, the physical control must be moved beyond the current Parameter value in order to take effect. When the Parameter value doesn't match the physical control position, an exclamation point ( **!** ) is displayed on the left side of the value.
+Parameter controls feature an optional soft takeover method for updating the value Parameter. When **Soft Pickup** is enabled, the physical control must be moved beyond the current Parameter value in order to take effect. When the Parameter value doesn't match the physical control position, an exclamation point ( **&excl;** ) is displayed on the left side of the value.
 
 Soft Pickup is enabled or disabled from its submenu in the System menu.
 
@@ -667,7 +667,7 @@ Modulation Operator properties are adjusted with the **Time**, **Space**, and **
 
 If Modulation is disabled, and no Modulation Operator is assigned to the focused Parameter, then the Time, Space, and Slope controls have no effect. The LCD screen merely displays the name of the active Knob and its value from 0 to 100.
 
-<!-- 
+<!--
 **Free LFO** and **Sync LFO**:
 * **Slope** = waveform **Shape**
     - **Ramp** (rising)
@@ -723,7 +723,7 @@ There's no Modulation operator for MIDI, it's always enabled.
 
 ### MIDI Output
 
-Videomancer can control external devices via MIDI Continuous Controller messages. Send the values of Parameter Manual controls, active Modulation Operators, or their combined values. <!-- Or echo the MIDI input to the MIDI output with Thru mode. --> Choose the desired behavior from **System &#8594; MIDI Out Mode**.
+Videomancer can control external devices via MIDI Continuous Controller messages. Send the values of Parameter Manual controls, active Modulation Operators, or their combined values. <!-- Or echo the MIDI input to the MIDI output with Thru mode.--> Choose the desired behavior from **System &#8594; MIDI Out Mode**.
 
 | Option         | MIDI Out                             |
 |:---------------|:-------------------------------------|
@@ -744,7 +744,7 @@ Press the **MOTION** button to display the current values of Timecode (**TC**) a
 <img src={videomancer_LCD_timecode_bpm} alt="Videomancer Timecode and BPM display" />
 *Timecode and Beats Per Minute*
 
-Modulation within Videomancer is usually linked to the Timecode displayed in Motion mode. Videomancer can generate timecode internally, or [synchronize to MIDI](/docs/instruments/videomancer#midi-synchronization).
+Modulation within Videomancer is usually linked to the Timecode displayed in MOTION mode. Videomancer can generate timecode internally, or [synchronize to MIDI](/docs/instruments/videomancer#midi-synchronization).
 
 Modulation is deterministic based on Videomancer's timecode. For example, oscillators begin with a phase of zero at timecode value `00:00:00:00`. If the Time properties of Modulation Operators don't change, then the exact same Modulation patterns are generated each time playback begins from zero.
 
@@ -816,7 +816,7 @@ The top row lists all active Modulation Operators. Each character or symbol to t
 | G      | V Gradient          | t      | Tablet              |
 
 
-The second row of the Motion Overview displays the state of the Motion transport and the current Beats Per Minute. A left-facing arrow indicates that the transport is stopped, a right-facing arrow indicates that the transport is playing. To the right of the arrow, the current BPM value is displayed.
+The second row of the Motion Overview displays the state of the MOTION transport and the current Beats Per Minute. A left-facing arrow indicates that the transport is stopped, a right-facing arrow indicates that the transport is playing. To the right of the arrow, the current BPM value is displayed.
 
 Also on the second row, the total number of active Modulation Operators is indicated by the word **Act:** followed by a number.
 
@@ -844,7 +844,7 @@ If the MIDI source transmits both MIDI Clock and MIDI Timecode, Videomancer give
 
 The **STATE** button accesses factory or user-defined **Presets** for a particular Program. All Modulation and Parameter values are stored in non-volatile internal flash memory. Videomancer will commit your spell to memory, and recall it even after a power failure or reboot.
 
-Programs can include up to eight Factory Presets, indicated by the letter **F**. User Presets are signified by the letter **U**. The currently loaded Preset number is followed by a slash, then by the total number of Presets, either Factory or User. Internal storage provides a total of 32 Preset registers. User presets can also be stored on microSD card.
+Programs can include up to eight Factory Presets, indicated by the letter **F**. User Presets are signified by the letter **U**. The currently loaded Preset number is followed by a slash, then by the total number of Presets, either Factory or User. Internal storage provides a total of 32 Preset registers.
 
 <img src={videomancer_LCD_presets_F1_basic} alt="Videomancer Preset Selection display" />
 *Preset Selection display*
@@ -884,6 +884,44 @@ Presets can be recalled remotely with MIDI Program Change messages, as described
 
 ---
 
+### MicroSD Card
+
+Expand the storage capabilities of Videomancer with a **microSD** card. Load additional **Programs** and their associated **Presets**. In addition to the Programs provided by LZX, third party developers can create Programs with the [Software Developer's Kit](https://github.com/lzxindustries/videomancer-sdk).
+
+#### Compatibility
+
+All brands of microSD cards should be compatible with Videomancer. Storage capacities up to 2 TB are supported.
+
+Format the microSD card on a personal computer. The FAT32 file system is recommended, but Videomancer also supports FAT12, FAT16, FAT32, and exFAT. 
+
+#### Functionality
+
+Presently, microSD card storage is limited to Programs and Presets. Additional functionality is planned, and intended to be integrated with the **LZX Connect** desktop application.
+
+At boot time, Videomancer scans internal flash storage and microSD card for Program files with the extension `.vmprog`. In the case of duplicate filenames, Videomancer loads the highest version number, or the internally stored version.
+
+:::note
+By default, Videomancer ignores third party Programs or those with version numbers lower than 1.0.0. To load Programs developed by third parties, or currently in alpha or beta development stage, [Developer Mode](/docs/instruments/videomancer#developer-mode) must be enabled. See below.
+:::
+
+Currently, Videomancer recursively scans the entire file system of the microSD card, looking for `.vmprog` files. You can organize Programs in any folder structure you like, and Videomancer will find them. However, be aware that the number of files and folders affects the time it takes for Videomancer to boot up. We recommend keeping the microSD card free of any extraneous data to minimize boot times.
+
+#### Presets
+
+Both Factory Presets and User **Presets** are stored in the same place from which the Program was loaded. Presets for internal Programs are stored in internal flash memory, Presets for microSD card Programs are stored on the card. **Factory Presets** are embedded in the `.vmprog` file. **User Presets** are stored in sidecar files with the extension `.toml`.
+
+---
+
+### Developer Mode
+
+For testing purposes, Videomancer firmware may include Programs that are currently in development. These have version numbers lower than 1.0.0. Normally, they are hidden from the Videomancer Program Selection menu. To expose them, enable **Developer Mode** from the SYSTEM menu. When prompted to `**Restart Device?**`, choose `**Yes**` to reboot and rescan the internal and microSD file systems.
+
+:::note
+Any Programs in development may not have full functionality, will probably have bugs, and won't be publicly documented.
+:::
+
+---
+
 ## Firmware Update
 
 Keeping Videomancer updated with the latest firmware ensures access to the latest programs, features, and bug fixes. The process is very simple and only takes a few minutes. It can be performed manually through the computer's file browser, or via the **LZX Connect** desktop application.
@@ -902,7 +940,7 @@ Keeping Videomancer updated with the latest firmware ensures access to the lates
 - Hold down Videomancer **BOOT** button
 - Switch Videomancer power to the **ON** position
 - Release the **BOOT** button
-- A new USB storage device is listed in the computer's filesystem. It shows up as a Raspberry Pi, because that's the control system for Videomancer's USB ports.
+- A new USB storage device is listed in the computer's file system. It shows up as a Raspberry Pi, because that's the control system for Videomancer's USB ports.
 - Copy the firmware `.UF2` file to the newly detected storage device. Wait a few minutes for the transfer to complete.
 - Videomancer automatically reboots into the new firmware and displays the currently installed version
 
