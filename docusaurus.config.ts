@@ -226,7 +226,7 @@ const config: Config = {
             },
             {
               label: 'Twitter',
-              href: 'https://twitter.com/lzxindustries',
+              href: 'https://x.com/lzxindustries',
             },
           ],
         },
