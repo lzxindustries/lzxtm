@@ -1,10 +1,10 @@
 ---
 draft: false
 sidebar_position: 1
-slug: /instruments/videomancer
-title: "Videomancer"
+slug: /instruments/videomancer/user-manual
+title: "User Manual"
 image: /img/instruments/videomancer/videomancer_frontpanel.png
-description: "Documentation and program guides for Videomancer, a standalone video synthesis instrument with an open source hybrid digital/analog architecture."
+description: "Complete documentation for Videomancer, a standalone video synthesis instrument with an open source hybrid digital/analog architecture. Covers connectors, controls, signal paths, operation, modulation, MIDI, presets, firmware, and developer resources."
 ---
 
 import videomancer_connectors_and_controls from '/img/instruments/videomancer/videomancer-connectors-and-controls.png';
@@ -33,9 +33,7 @@ import videomancer_routing_diagram_dual_in from '/img/instruments/videomancer/vi
 
 # Videomancer
 
-:::warning
-This documentation is a work in progress, and all content is subject to change before the official documentation launch.
-:::
+<span class="head2_nolink">User Manual</span>
 
 <img src={videomancer_frontpanel} alt="Videomancer front panel"/>
 
@@ -123,7 +121,7 @@ Videomancer is the second standalone instrument released by LZX, the first being
 
 * **HDMI** digital video/audio in and out
     - Full-size HDMI jacks
-    - Supporting a wide range of digital video [formats](/docs/instruments/videomancer#supported-formats-and-standards)
+    - Supporting a wide range of digital video [formats](/docs/instruments/videomancer/user-manual#supported-formats-and-standards)
     - Output configurable as HDMI YCbCr or DVI RGB
 * **Multi-format Analog** video in and out
     - Triple RCA jacks configurable as:
@@ -200,7 +198,7 @@ Videomancer is the second standalone instrument released by LZX, the first being
 
 * **Power** switch
 * **Boot** button
-    - For [firmware update](/docs/instruments/videomancer#firmware-update)
+    - For [firmware update](/docs/instruments/videomancer/user-manual#firmware-update)
 
 ---
 
@@ -255,7 +253,7 @@ Videomancer genlocks to incoming video, assuming the timing, resolution, and fra
 
 ---
 
-Videomancer can't convert resolutions or frame rates, but it ***can*** convert between color spaces and color encoding formats. Choose the input and output options via the System menu, as described in [Video Route Modes](/docs/instruments/videomancer#video-route-modes) below.
+Videomancer can't convert resolutions or frame rates, but it ***can*** convert between color spaces and color encoding formats. Choose the input and output options via the System menu, as described in [Video Route Modes](/docs/instruments/videomancer/user-manual#video-route-modes) below.
 
 | Color formats                         |
 |:--------------------------------------|
@@ -523,7 +521,7 @@ Turn the Rotary Encoder to cycle through the System menus:
 | **Developer Mode**        | Developer Mode  | Disabled, Enabled                           |
 | **Soft Pickup**           | Soft Pickup     | Disabled, Enabled                           |
 | **Language**              | Language        | English, Deustch, Francais, Espanol, Dansk, Svenska, Suomi, Italiano, Portugues, Indonesia, Nederlands, Norsk, Turkce, Catala, Polski, Hrvatski, Romana, Cestina |
-| **Preferred Timing**      | Pref. Timing    | [Video Formats and Standards](/docs/instruments/videomancer/index.md#supported-formats-and-standards) |
+| **Preferred Timing**      | Pref. Timing    | [Video Formats and Standards](/docs/instruments/videomancer/user-manual#supported-formats-and-standards) |
 
 **System settings procedure:**
 
@@ -744,7 +742,7 @@ Press the **MOTION** button to display the current values of Timecode (**TC**) a
 <img src={videomancer_LCD_timecode_bpm} alt="Videomancer Timecode and BPM display" />
 *Timecode and Beats Per Minute*
 
-Modulation within Videomancer is usually linked to the Timecode displayed in MOTION mode. Videomancer can generate timecode internally, or [synchronize to MIDI](/docs/instruments/videomancer#midi-synchronization).
+Modulation within Videomancer is usually linked to the Timecode displayed in MOTION mode. Videomancer can generate timecode internally, or [synchronize to MIDI](/docs/instruments/videomancer/user-manual#midi-synchronization).
 
 Modulation is deterministic based on Videomancer's timecode. For example, oscillators begin with a phase of zero at timecode value `00:00:00:00`. If the Time properties of Modulation Operators don't change, then the exact same Modulation patterns are generated each time playback begins from zero.
 
@@ -757,7 +755,7 @@ Press the **STOP** button to deactivate playback of internal Timecode. The time 
 When the transport is stopped, a left arrow ( **&larr;** )appears on the lower left of the display. When the transport is running, a right arrow ( **&rarr;** ) is displayed.
 
 :::note
-Videomancer does not have a manual pause button. Stopping playback sends the timecode value to zero, resetting all modulation. Use [MIDI Timecode](/docs/instruments/videomancer#midi-synchronization) if you wish to pause and resume playback.
+Videomancer does not have a manual pause button. Stopping playback sends the timecode value to zero, resetting all modulation. Use [MIDI Timecode](/docs/instruments/videomancer/user-manual#midi-synchronization) if you wish to pause and resume playback.
 :::
 
 #### Internal BPM Tempo
@@ -901,7 +899,7 @@ Presently, microSD card storage is limited to Programs and Presets. Additional f
 At boot time, Videomancer scans internal flash storage and microSD card for Program files with the extension `.vmprog`. In the case of duplicate filenames, Videomancer loads the highest version number, or the internally stored version.
 
 :::note
-By default, Videomancer ignores third party Programs or those with version numbers lower than 1.0.0. To load Programs developed by third parties, or currently in alpha or beta development stage, [Developer Mode](/docs/instruments/videomancer#developer-mode) must be enabled. See below.
+By default, Videomancer ignores third party Programs or those with version numbers lower than 1.0.0. To load Programs developed by third parties, or currently in alpha or beta development stage, [Developer Mode](/docs/instruments/videomancer/user-manual#developer-mode) must be enabled. See below.
 :::
 
 Currently, Videomancer recursively scans the entire file system of the microSD card, looking for `.vmprog` files. You can organize Programs in any folder structure you like, and Videomancer will find them. However, be aware that the number of files and folders affects the time it takes for Videomancer to boot up. We recommend keeping the microSD card free of any extraneous data to minimize boot times.
