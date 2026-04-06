@@ -7,7 +7,7 @@ import rehypeKatex from 'rehype-katex';
 const config: Config = {
   title: 'LZX Technical Manual',
   tagline: 'Documentation and resources for LZX Industries video synthesizers.',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
   // Set the production url of your site here
   url: 'https://docs.lzxindustries.net',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -219,6 +219,14 @@ const config: Config = {
             {
               label: 'Instagram',
               href: 'https://www.instagram.com/lzxindustries',
+            },
+            {
+              label: 'TikTok',
+              href: 'https://www.tiktok.com/@lzxindustries',
+            },
+            {
+              label: 'Twitter',
+              href: 'https://twitter.com/laboratlzx',
             },
           ],
         },
