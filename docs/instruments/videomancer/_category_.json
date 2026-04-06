@@ -3,6 +3,7 @@
   "position": 1,
   "link": {
     "type": "generated-index",
-    "description": "Documentation for Videomancer, the standalone video synthesis instrument."
+    "description": "Documentation for Videomancer, the standalone video synthesis instrument.",
+    "image": "/img/instruments/videomancer/videomancer_frontpanel.png"
   }
 }

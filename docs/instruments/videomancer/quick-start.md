@@ -4,6 +4,7 @@ sidebar_position: 0
 slug: /instruments/videomancer/quick-start
 title: "Quick Start Guide"
 description: "Get up and running with Videomancer in minutes. Connect HDMI, load a program, and start exploring video synthesis."
+image: /img/instruments/videomancer/videomancer_frontpanel.png
 ---
 
 import videomancer_frontpanel from '/img/instruments/videomancer/videomancer_frontpanel.png';

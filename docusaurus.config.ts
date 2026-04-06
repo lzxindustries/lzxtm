@@ -184,45 +184,57 @@ const config: Config = {
     footer: {
       style: 'light',
       links: [
-        // {
-        //   title: 'Docs',
-        //   items: [
-        //     {
-        //       label: 'Tutorial',
-        //       to: '/docs/intro',
-        //     },
-        //   ],
-        // },
-        // {
-        // title: 'Community',
-        // items: [
-        //   {
-        //     label: 'Stack Overflow',
-        //     href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-        //   },
-        //   {
-        //     label: 'Discord',
-        //     href: 'https://discordapp.com/invite/docusaurus',
-        //   },
-        //   {
-        //     label: 'Twitter',
-        //     href: 'https://twitter.com/docusaurus',
-        //   },
-        // ],
-        // },
-        // {
-        //   title: 'More',
-        //   items: [
-        //     {
-        //       label: 'Blog',
-        //       to: '/blog',
-        //     },
-        //     // {
-        //     //   label: 'GitHub',
-        //     //   href: 'https://github.com/facebook/docusaurus',
-        //     // },
-        //   ],
-        // },
+        {
+          title: 'Documentation',
+          items: [
+            {
+              label: 'Guides',
+              to: '/docs/guides/what-is-a-video-synthesizer',
+            },
+            {
+              label: 'Instruments',
+              to: '/docs/category/videomancer',
+            },
+            {
+              label: 'Modules',
+              to: '/docs/modules/module-list',
+            },
+          ],
+        },
+        {
+          title: 'Community',
+          items: [
+            {
+              label: 'Discord',
+              href: 'https://discord.gg/7xzD4XzhGn',
+            },
+            {
+              label: 'Forum',
+              href: 'https://community.lzxindustries.net',
+            },
+            {
+              label: 'YouTube',
+              href: 'https://www.youtube.com/lzxindustries',
+            },
+            {
+              label: 'Instagram',
+              href: 'https://www.instagram.com/lzxindustries',
+            },
+          ],
+        },
+        {
+          title: 'More',
+          items: [
+            {
+              label: 'Blog',
+              to: '/blog',
+            },
+            {
+              label: 'LZX Industries',
+              href: 'https://lzxindustries.net',
+            },
+          ],
+        },
       ],
       copyright: `© ${new Date().getFullYear()} LZX`,
     },

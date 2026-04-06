@@ -3,6 +3,7 @@ draft: false
 title: "What Is a Video Synthesizer?"
 sidebar_position: 2
 description: "Introduction to video synthesizers, how they work, and how modular video synthesis differs from other forms of video processing."
+image: /img/guides/your_first_patch_kit.jpg
 ---
 # What Is a Video Synthesizer?
 

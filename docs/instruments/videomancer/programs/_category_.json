@@ -3,6 +3,7 @@
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "Program guides for all Videomancer programs."
+    "description": "Program guides for all Videomancer programs.",
+    "image": "/img/instruments/videomancer/videomancer_frontpanel.png"
   }
 }

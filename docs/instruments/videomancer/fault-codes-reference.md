@@ -2,6 +2,7 @@
 draft: false
 sidebar_position: 5
 title: "Fault Codes Reference"
+image: /img/instruments/videomancer/videomancer_frontpanel.png
 ---
 
 # Videomancer Fault Codes Reference
