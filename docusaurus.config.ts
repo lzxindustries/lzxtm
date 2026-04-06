@@ -43,7 +43,7 @@ const config: Config = {
       tagName: "link",
       attributes: {
         rel: "preload",
-        href: "static/font/ReliefSingleLineOutline-Regular.woff2",
+        href: "/font/ReliefSingleLineOutline-Regular.woff2",
         as: "font",
         type: "font/woff2",
         crossorigin: "anonymous",
@@ -226,7 +226,7 @@ const config: Config = {
             },
             {
               label: 'Twitter',
-              href: 'https://twitter.com/laboratlzx',
+              href: 'https://twitter.com/lzxindustries',
             },
           ],
         },
