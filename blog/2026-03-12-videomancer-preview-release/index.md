@@ -14,7 +14,7 @@ As promised, here's the March 12th Videomancer update. This is a **preview relea
 
 This release includes 17 new programs, an entire rewrite of the firmware engine  and a round of bug fixes. Some new draft documentation is available:
 
-- [Program Guides](/docs/category/programs)
+- [Program Guides](/docs/category/program-guides)
 - [Modulation Operators](/docs/instruments/videomancer/modulation-operators) 
 
 ## Download

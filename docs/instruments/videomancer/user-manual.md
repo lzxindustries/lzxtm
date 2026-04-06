@@ -537,7 +537,7 @@ Turn the Rotary Encoder to cycle through the System menus:
 
 Videomancer includes numerous **Programs**, which are firmware applications that can be loaded on the fly. 
 
-Each Program is seperately documented on its own Program Guide page. The complete list of all available Program Guides is found in the documentation navigation menu and on the [Programs](/docs/category/programs) page.
+Each Program is seperately documented on its own Program Guide page. The complete list of all available Program Guides is found in the documentation navigation menu and on the [Programs](/docs/category/program-guides) page.
 
 **Program loading procedure:**
 

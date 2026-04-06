@@ -18,7 +18,7 @@ import videomancer_LCD_parameter from '/img/instruments/videomancer/videomancer_
 <span class="head2_nolink">Quick Start Guide</span>
 
 :::tip Before You Begin
-This guide gets you up and running with Videomancer in minutes. For complete documentation on all features, connections, and capabilities, see the **[User Manual](/docs/instruments/videomancer/user-manual)**. For individual program documentation, see the **[Program Guides](/docs/category/programs)** index.
+This guide gets you up and running with Videomancer in minutes. For complete documentation on all features, connections, and capabilities, see the **[User Manual](/docs/instruments/videomancer/user-manual)**. For individual program documentation, see the **[Program Guides](/docs/category/program-guides)** index.
 :::
 
 <img src={videomancer_frontpanel} alt="Videomancer front panel" />
@@ -140,5 +140,5 @@ You've connected Videomancer, loaded a Program, and explored its Parameters. Her
 
 **Save States** — Save and recall your favorite settings as Presets. See [STATE Presets](/docs/instruments/videomancer/user-manual#state-presets) in the User Manual.
 
-**Program Guides** — Detailed documentation for individual Programs, including parameter references, signal flow diagrams, and creative techniques. See the [Program Guides](/docs/category/programs) index.
+**Program Guides** — Detailed documentation for individual Programs, including parameter references, signal flow diagrams, and creative techniques. See the [Program Guides](/docs/category/program-guides) index.
 :::

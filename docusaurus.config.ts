@@ -58,8 +58,8 @@ const config: Config = {
         redirects: [
           // /docs/oldDoc -> /docs/newDoc
           {
-            to: '/docs/instruments/videomancer',
-            from: '/instruments/videomancer',
+            to: '/docs/category/videomancer',
+            from: ['/instruments/videomancer', '/docs/instruments/videomancer'],
           },
         ]
       }

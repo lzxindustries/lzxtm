@@ -30,11 +30,11 @@ For the time being, we intend to continue releasing new Videomancer firmware ver
 
 Power off your Videomancer. Hold the **BOOT** button while connecting USB-C to your computer. The device will appear as a USB drive. Drag and drop the `.uf2` file onto the drive. The device will reboot automatically when the transfer completes.
 
-See the [Videomancer documentation](/docs/instruments/videomancer) for full details.
+See the [Videomancer documentation](/docs/category/videomancer) for full details.
 
 ## Documentation
 
 Updated program guides and modulation operator documentation are available:
 
-- [Program Guides](/docs/category/programs)
+- [Program Guides](/docs/category/program-guides)
 - [Modulation Operators](/docs/instruments/videomancer/modulation-operators)
