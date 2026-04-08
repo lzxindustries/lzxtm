@@ -54,7 +54,6 @@ const config: Config = {
     ['@docusaurus/plugin-client-redirects',
       {
         fromExtensions: ['html', 'htm'], // /myPage.html -> /myPage
-        toExtensions: ['zip'], // /myAsset -> /myAsset.zip (if latter exists)
         redirects: [
           // /docs/oldDoc -> /docs/newDoc
           {
@@ -108,8 +107,7 @@ const config: Config = {
   ],
   markdown: {
     hooks: {
-    onBrokenMarkdownLinks: 'warn', // 'throw' or 'warn' or 'ignore',
-    onBrokenMarkdownImages: 'warn', // or 'ignore' or 'throw'
+      onBrokenMarkdownLinks: 'warn',
     },
     mermaid: true,
   },
@@ -174,11 +172,11 @@ const config: Config = {
         // },
         // {to: '/docs/glossary', label: 'Glossary', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'left'},
-        // {
-        //   href: 'https://github.com/lzxindustries',
-        //   label: 'GitHub',
-        //   position: 'right',
-        // },
+        {
+          href: 'https://lzxindustries.net',
+          label: 'Shop',
+          position: 'right',
+        },
       ],
     },
     footer: {
