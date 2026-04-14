@@ -1,6 +1,6 @@
 ﻿---
 draft: false
-sidebar_position: 3
+sidebar_position: 2
 slug: /instruments/videomancer/modulation-operators
 title: "Modulation Guide"
 image: /img/instruments/videomancer/videomancer_frontpanel.png

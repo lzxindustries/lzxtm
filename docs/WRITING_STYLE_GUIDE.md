@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 # LZX Technical Manual — Writing Style Guide
 
 > **Purpose**: This document is a comprehensive model of the writing voice, tone, and style used in the LZX Technical Manual module documentation. It is designed so that AI systems can absorb its full context and generate new documentation that is nearly indistinguishable from the existing body of work.

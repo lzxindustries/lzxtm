@@ -6,4 +6,8 @@ tags: [videomancer]
 draft: false
 ---
 
-The next Videomancer update is being pushed to tomorrow, March 20th, by end of day. We've had some service outages and other fires to put out this week, and we want to finalize our IO testing before posting the next version. 
+The next Videomancer update is being pushed to tomorrow, March 20th, by end of day.
+
+<!--truncate-->
+
+We've had some service outages and other fires to put out this week, and we want to finalize our IO testing before posting the next version. 

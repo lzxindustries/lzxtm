@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 2
+sidebar_position: 4
 title: "Vidiot"
 description: "Documentation for Vidiot, a compact all-in-one analog video synthesizer instrument by LZX Industries."
 ---

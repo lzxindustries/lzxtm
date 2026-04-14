@@ -6,8 +6,8 @@
 
  @font-face {
   font-family: "Relief Single Line Outline Regular";
-  src: url("/static/font/ReliefSingleLineOutline-Regular.woff2") format("woff2 supports variations"),
-    url("/static/font/ReliefSingleLineOutline-Regular.woff2") format("woff2-variations");
+  src: url("/font/ReliefSingleLineOutline-Regular.woff2") format("woff2 supports variations"),
+    url("/font/ReliefSingleLineOutline-Regular.woff2") format("woff2-variations");
   font-weight: 200 2400;
   font-stretch: 75% 150%;
 }

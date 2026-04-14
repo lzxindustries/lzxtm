@@ -13,6 +13,11 @@ software:
   permalink: /software
   description: Software downloads and releases
 
+video:
+  label: Video
+  permalink: /video
+  description: Video demos and recordings
+
 videomancer:
   label: Videomancer
   permalink: /videomancer

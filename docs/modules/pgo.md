@@ -16,7 +16,7 @@ import pgo_all_front_panels from '/img/modules/pgo/pgo-diagrams/pgo_all-front-pa
 import pgo_programming_gain from '/img/modules/pgo/pgo-diagrams/pgo_programming-gain.png';
 import pgo_programming_offset from '/img/modules/pgo/pgo-diagrams/pgo_programming-offset.png';
 
-import pgo_normalled_connections from '/img/modules/pgo/pgo-diagrams/pgo_understanding-cascading-input-jacks​.png';
+import pgo_normalled_connections from '/img/modules/pgo/pgo-diagrams/pgo_understanding-cascading-input-jacks.png';
 import pgo_controls_connectors_indicators from '/img/modules/pgo/pgo-diagrams/pgo_controls-connectors-indicators.png';
 
 import pgo_patch_unipolar_to_bipolar from '/img/modules/pgo/pgo-diagrams/pgo_unipolar-to-bipolar.png';
@@ -103,13 +103,13 @@ PGO sits at a lower level of abstraction than more complex modules like video sh
 
 PGO is a *patch-programmable* operator. Its overall function is determined by patch connections rather than switch positions or variable voltages. Connections to specific input and output jacks define operations at different mixing ratios and amounts of gain.
 
-### Understanding Cascading Input Jacks​
+### Understanding Cascading Input Jacks
 
 PGO uses switched, or normalled, connections between some of its input jacks. With no cable inserted, a signal flows from one input jack to another. This connection is overridden when a cable is inserted. Normalled inputs are indicated on the front panel with arrows.
 
 <img src={pgo_normalled_connections} alt="Normalled Connections"/>
 
-### Difference Amplifier​
+### Difference Amplifier
 
 A difference amplifier subtracts one voltage from another. It is similar to a differential amplifier, but is specifically optimized to subtract one voltage from another with accuracy.  PGO's amplifier is fully differential, meaning that it has both positive and negative outputs.  
 
@@ -117,7 +117,7 @@ In PGO's implementation, the positive input and negative input of the difference
 
 <img src={pgo_programming_gain} alt="Programming Gain"/>
 
-### Voltage Reference​
+### Voltage Reference
 
 PGO provides a static voltage reference of 1V at its output jack. This level corresponds to a luminance value of white, or to the 100% brightness level of an RGB channel. This reference voltage may be patched anywhere in your system, or to the inputs on PGO.
 

@@ -9,7 +9,7 @@ import mlt_frontpanel from '/img/modules/mlt/mlt-diagrams/mlt_front-panel.png';
 import mlt_controls_connectors_indicators from '/img/modules/mlt/mlt-diagrams/mlt_controls-connectors-indicators.png';
 import mlt_mounting_power_sync from '/img/modules/mlt/mlt-diagrams/mlt_mounting-power-sync.png';
 import mlt_mults from '/img/modules/mlt/mlt-diagrams/mlt_mults.png';
-import mlt_understanding_cascading_input_jacks from '/img/modules/mlt/mlt-diagrams/mlt_understanding-cascading-input-jacks​.png';
+import mlt_understanding_cascading_input_jacks from '/img/modules/mlt/mlt-diagrams/mlt_understanding-cascading-input-jacks.png';
 
 # MLT
 <span class="head2_nolink">Passive Multiples</span>
@@ -37,7 +37,7 @@ import mlt_understanding_cascading_input_jacks from '/img/modules/mlt/mlt-diagra
 
 ## Operation
 
-### Understanding Cascading Input Jacks​
+### Understanding Cascading Input Jacks
 
 MLT uses switched, or normalled, connections between some of its input jacks. With no cable inserted, a signal flows down from one input jack to another. This connection is overridden when a cable is inserted. Normalled inputs are indicated on the front panel with arrows.
 

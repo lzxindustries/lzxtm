@@ -1,6 +1,6 @@
 ---
 draft: false
-sidebar_position: 4
+sidebar_position: 3
 slug: /instruments/videomancer/serial-command-guide
 title: "Serial Port Guide"
 image: /img/instruments/videomancer/videomancer_frontpanel.png

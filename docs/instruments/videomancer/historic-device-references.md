@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 6
+sidebar_position: 5
 slug: /instruments/videomancer/historic-device-references
 title: "Videomancer: Historic Device References"
 image: /img/instruments/videomancer/videomancer_frontpanel.png

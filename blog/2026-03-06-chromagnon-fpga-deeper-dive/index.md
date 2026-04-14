@@ -2,7 +2,7 @@
 slug: chromagnon-fpga-deeper-dive
 title: "Chromagnon: FPGA Deeper Dive"
 authors: [lars]
-tags: [chromagnon, engineering]
+tags: [chromagnon, behind-the-scenes]
 draft: false
 ---
 

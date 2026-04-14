@@ -9,7 +9,7 @@ import pab_front_panel from '/img/modules/pab/pab-diagrams/pab_front-panel.png';
 import pab_all_front_panels from '/img/modules/pab/pab-diagrams/pab_all-front-panels.png';
 import pab_mounting_power_sync from '/img/modules/pab/pab-diagrams/pab_mounting-power-sync.png';
 import pab_controls_connectors_indicators from '/img/modules/pab/pab-diagrams/pab_controls-connectors-indicators.png';
-import pab_understanding_cascading_input_jacks from '/img/modules/pab/pab-diagrams/pab_understanding-cascading-input-jacks​.png';
+import pab_understanding_cascading_input_jacks from '/img/modules/pab/pab-diagrams/pab_understanding-cascading-input-jacks.png';
 
 # PAB
 <span class="head2_nolink">Programmable Active Buffers</span>
@@ -56,7 +56,7 @@ PAB is most helpful in larger systems with many modules, or if you're concerned 
 
 <img src={pab_controls_connectors_indicators} alt="pab_controls_connectors_indicators"/>
 
-### Understanding Cascading Input Jacks​
+### Understanding Cascading Input Jacks
 
 PAB uses switched, or normalled, connections between its input jacks. With no cable inserted, a signal flows down from one input jack to another. This connection is overridden when a cable is inserted. Normalled inputs are indicated on the front panel with arrows.
 

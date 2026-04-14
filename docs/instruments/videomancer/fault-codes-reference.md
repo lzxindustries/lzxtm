@@ -1,7 +1,9 @@
 ---
 draft: false
-sidebar_position: 5
+sidebar_position: 4
+slug: /instruments/videomancer/fault-codes-reference
 title: "Fault Codes Reference"
+description: "Reference table for Videomancer fault codes displayed on the LCD during error conditions."
 image: /img/instruments/videomancer/videomancer_frontpanel.png
 ---
 

@@ -9,7 +9,7 @@ import lnk_front_panel from '/img/modules/lnk/lnk-diagrams/lnk_front-panel.png';
 import lnk_controls_connectors_indicators from '/img/modules/lnk/lnk-diagrams/lnk_controls-connectors-indicators.png';
 import lnk_mounting_power_sync from '/img/modules/lnk/lnk-diagrams/lnk_mounting-power-sync.png';
 import lnk_mults from '/img/modules/lnk/lnk-diagrams/lnk_mults.png';
-import lnk_understanding_cascading_input_jacks from '/img/modules/lnk/lnk-diagrams/lnk_understanding-cascading-input-jacks​.png';
+import lnk_understanding_cascading_input_jacks from '/img/modules/lnk/lnk-diagrams/lnk_understanding-cascading-input-jacks.png';
 
 # LNK
 <span class="head2_nolink">Passive Links</span>
@@ -43,7 +43,7 @@ import lnk_understanding_cascading_input_jacks from '/img/modules/lnk/lnk-diagra
 
 ## Operation
 
-### Understanding Cascading Input Jacks​
+### Understanding Cascading Input Jacks
 
 LNK uses switched, or normalled, connections between its input jacks. With no cable inserted, a signal flows down from one input jack to another. This connection is overridden when a cable is inserted. Normalled inputs are indicated on the front panel with arrows.
 
