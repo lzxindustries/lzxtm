@@ -1,27 +1,18 @@
 #!/usr/bin/env pwsh
-# Deploy script for LZX Technical Manual
-# Uses a persistent local clone of the deploy repo to enable incremental pushes,
-# avoiding GitHub's 2 GB pack size limit.
-# Large image directories are committed and pushed in batches.
+# Deploy script for docs.lzxindustries.net redirect site.
+# Pushes the 4-file redirect-site/ directory to GitHub Pages.
+# No build step required.
 
 $ErrorActionPreference = 'Stop'
 
-$root       = "c:\Users\lars\lzxtm"
-$buildDir   = "$root\build"
-$deployRepo = "$root\.deploy-repo"
-$repoUrl    = "git@github.com:lzxindustries/lzxindustries.github.io.git"
-$branch     = "main"
-$vmImgRel   = "img\instruments\videomancer"  # large dir to batch
+$root        = $PSScriptRoot
+$redirectDir = Join-Path $root "redirect-site"
+$deployRepo  = Join-Path $root ".deploy-repo"
+$repoUrl     = "git@github.com:lzxindustries/lzxindustries.github.io.git"
+$branch      = "main"
 
-# 1. Build
-Write-Host "`n=== Building site ===" -ForegroundColor Cyan
-Push-Location $root
-npm run build
-if ($LASTEXITCODE -ne 0) { Pop-Location; throw "Build failed." }
-Pop-Location
-
-# 2. Ensure persistent deploy repo clone exists
-if (Test-Path "$deployRepo\.git") {
+# 1. Ensure persistent deploy repo clone exists
+if (Test-Path (Join-Path $deployRepo ".git")) {
     Write-Host "`n=== Updating existing deploy repo ===" -ForegroundColor Cyan
     Push-Location $deployRepo
     git fetch origin $branch
@@ -33,82 +24,30 @@ if (Test-Path "$deployRepo\.git") {
     git clone --branch $branch $repoUrl $deployRepo
 }
 
-# 3. Mirror build output into deploy repo, EXCLUDING the large videomancer images
-Write-Host "`n=== Syncing build output (excluding $vmImgRel) ===" -ForegroundColor Cyan
-
-# Remove all tracked content except .git and the videomancer img dir (handled separately)
+# 2. Clear all tracked content from deploy repo
+Write-Host "`n=== Clearing deploy repo content ===" -ForegroundColor Cyan
 Push-Location $deployRepo
 Get-ChildItem -Force | Where-Object { $_.Name -ne '.git' } | Remove-Item -Recurse -Force
 Pop-Location
 
-# Copy everything except videomancer images
-robocopy "$buildDir" "$deployRepo" /E /XD "$buildDir\$vmImgRel" /NFL /NDL /NJH /NJS /NC /NS /NP | Out-Null
+# 3. Copy redirect-site files (including hidden .nojekyll)
+Write-Host "`n=== Copying redirect-site files ===" -ForegroundColor Cyan
+Get-ChildItem -Path $redirectDir -Force | ForEach-Object {
+    Copy-Item -Path $_.FullName -Destination (Join-Path $deployRepo $_.Name) -Force
+}
 
-# 4. Commit and push everything except videomancer images
-Write-Host "`n=== Committing base content ===" -ForegroundColor Cyan
+# 4. Commit and push
 $sourceCommit = (git -C $root rev-parse --short HEAD)
 Push-Location $deployRepo
 git add --all
 $status = git status --porcelain
 if ($status) {
-    git commit -m "Deploy website (base) - based on $sourceCommit"
-    Write-Host "=== Pushing base content ===" -ForegroundColor Cyan
+    git commit -m "Deploy redirect site - based on $sourceCommit"
+    Write-Host "`n=== Pushing ===" -ForegroundColor Cyan
     git push origin $branch
-    if ($LASTEXITCODE -ne 0) { Pop-Location; throw "Base push failed." }
+    if ($LASTEXITCODE -ne 0) { Pop-Location; throw "Push failed." }
+    Write-Host "`n=== Done ===" -ForegroundColor Green
 } else {
-    Write-Host "No base changes." -ForegroundColor Yellow
+    Write-Host "No changes to deploy." -ForegroundColor Yellow
 }
 Pop-Location
-
-# 5. Batch-copy and push videomancer images in chunks (~1.2 GB each)
-Write-Host "`n=== Syncing videomancer images in batches ===" -ForegroundColor Cyan
-$vmBuildDir = "$buildDir\$vmImgRel"
-$vmDeployDir = "$deployRepo\$vmImgRel"
-if (-not (Test-Path $vmDeployDir)) { New-Item -ItemType Directory -Path $vmDeployDir -Force | Out-Null }
-
-$programDirs = Get-ChildItem $vmBuildDir -Directory | Sort-Object Name
-$batchMaxBytes = 1200MB
-$batchNum = 1
-$batchSize = 0
-$batchDirs = @()
-
-function Push-Batch {
-    param($num, $dirs)
-    if ($dirs.Count -eq 0) { return }
-    Write-Host "  Batch $num`: $($dirs.Count) programs ($($dirs[0])..$($dirs[-1]))" -ForegroundColor Yellow
-    Push-Location $deployRepo
-    git add "$vmImgRel"
-    $st = git status --porcelain
-    if ($st) {
-        git commit -m "Deploy images batch $num - based on $sourceCommit"
-        git push origin $branch
-        if ($LASTEXITCODE -ne 0) { Pop-Location; throw "Batch $num push failed." }
-    } else {
-        Write-Host "    (no changes)" -ForegroundColor DarkGray
-    }
-    Pop-Location
-}
-
-foreach ($d in $programDirs) {
-    $dirSize = (Get-ChildItem $d.FullName -Recurse -File | Measure-Object -Property Length -Sum).Sum
-    if (($batchSize + $dirSize) -gt $batchMaxBytes -and $batchDirs.Count -gt 0) {
-        # Push current batch
-        Push-Batch -num $batchNum -dirs $batchDirs
-        $batchNum++
-        $batchSize = 0
-        $batchDirs = @()
-    }
-    # Copy this program dir
-    $dest = "$vmDeployDir\$($d.Name)"
-    if (Test-Path $dest) { Remove-Item $dest -Recurse -Force }
-    Copy-Item $d.FullName $dest -Recurse -Force
-    $batchSize += $dirSize
-    $batchDirs += $d.Name
-}
-
-# Push final batch
-if ($batchDirs.Count -gt 0) {
-    Push-Batch -num $batchNum -dirs $batchDirs
-}
-
-Write-Host "`n=== Deploy complete ===" -ForegroundColor Green

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Fallback for no-JS: redirect to homepage -->
+  <meta http-equiv="refresh" content="0;url=https://lzxindustries.net">
+  <title>LZX Industries</title>
+  <script>
+    (function () {
+      var BASE = "https://lzxindustries.net";
+      var path = window.location.pathname.replace(/\/$/, "") || "/";
+
+      function dest(p) {
+        // /blog and /blog/{slug} — slugs are identical on main site
+        if (p === "/blog") return BASE + "/blog";
+        if (p.startsWith("/blog/")) return BASE + p;
+
+        // /docs/modules/{module-code}
+        var modMatch = p.match(/^\/docs\/modules\/(.+)$/);
+        if (modMatch) {
+          var code = modMatch[1];
+          // module-list → specs comparison page
+          if (code === "module-list") return BASE + "/modules/specs";
+          return BASE + "/modules/" + code;
+        }
+
+        // /docs/instruments/{name}
+        var instrMatch = p.match(/^\/docs\/instruments\/(.+)$/);
+        if (instrMatch) return BASE + "/instruments/" + instrMatch[1];
+
+        // /docs/category/* — Docusaurus auto-generated category pages
+        var catMatch = p.match(/^\/docs\/category\/(.+)$/);
+        if (catMatch) {
+          var cat = catMatch[1];
+          var catMap = {
+            "videomancer":     "instruments/videomancer",
+            "chromagnon":      "instruments/chromagnon",
+            "instruments":     "instruments",
+            "modules":         "modules",
+            "guides":          "getting-started",
+            "case-and-power":  "cases-and-power"
+          };
+          return BASE + "/" + (catMap[cat] || "docs");
+        }
+
+        // /docs/case-and-power/*
+        if (p.startsWith("/docs/case-and-power")) return BASE + "/cases-and-power";
+
+        // /docs/guides/*
+        if (p.startsWith("/docs/guides/")) return BASE + "/getting-started";
+
+        // /docs/* catch-all
+        if (p.startsWith("/docs/")) return BASE + "/docs";
+
+        // Root
+        if (p === "/" || p === "") return BASE;
+
+        // Unknown — homepage
+        return BASE;
+      }
+
+      window.location.replace(dest(path));
+    })();
+  </script>
+</head>
+<body>
+  <p>This site has moved. <a href="https://lzxindustries.net">Click here</a> to continue.</p>
+</body>
+</html>
