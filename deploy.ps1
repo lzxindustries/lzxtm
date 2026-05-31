@@ -8,7 +8,7 @@ $ErrorActionPreference = 'Stop'
 $root        = $PSScriptRoot
 $redirectDir = Join-Path $root "redirect-site"
 $deployRepo  = Join-Path $root ".deploy-repo"
-$repoUrl     = "git@github.com:lzxindustries/lzxindustries.github.io.git"
+$repoUrl     = "https://github.com/lzxindustries/lzxindustries.github.io.git"
 $branch      = "main"
 
 # 1. Ensure persistent deploy repo clone exists
